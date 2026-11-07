@@ -27,6 +27,7 @@
 #include "xLightsMain.h"
 #include "render/GPURenderUtils.h"
 #include "settings/XLightsConfigAdapter.h"
+#include "settings/UILanguage.h"
 
 //(*IdInit(OtherSettingsPanel)
 const wxWindowID OtherSettingsPanel::ID_CHECKBOX1 = wxNewId();
@@ -61,6 +62,7 @@ const wxWindowID OtherSettingsPanel::ID_STATICTEXT_LAYOUTDOUBLECLICKACTION = wxN
 const wxWindowID OtherSettingsPanel::ID_CHOICE_LAYOUTDOUBLECLICKACTION = wxNewId();
 //*)
 const wxWindowID OtherSettingsPanel::ID_CHOICE_GfxBackend = wxNewId();
+const wxWindowID OtherSettingsPanel::ID_CHOICE_Language = wxNewId();
 
 BEGIN_EVENT_TABLE(OtherSettingsPanel,wxPanel)
 	//(*EventTable(OtherSettingsPanel)
@@ -275,6 +277,21 @@ OtherSettingsPanel::OtherSettingsPanel(wxWindow* parent, xLightsFrame* f, wxWind
     }
 #endif
 
+    {
+        wxFlexGridSizer* langSizer = new wxFlexGridSizer(0, 2, 0, 0);
+        wxStaticText* langLabel = new wxStaticText(this, wxID_ANY, _("Language (restart required):"));
+        langSizer->Add(langLabel, 1, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 5);
+        LanguageChoice = new wxChoice(this, ID_CHOICE_Language);
+        for (const auto& lang : UILanguage::Available()) {
+            // Language names are shown in their own language, except "System default".
+            LanguageChoice->Append(lang.code.empty() ? _("System default") : lang.nativeName);
+        }
+        LanguageChoice->SetSelection(0);
+        langSizer->Add(LanguageChoice, 1, wxALL | wxEXPAND, 5);
+        GridBagSizer1->Add(langSizer, wxGBPosition(12, 1), wxDefaultSpan, wxALL | wxEXPAND, 0);
+        Connect(ID_CHOICE_Language, wxEVT_COMMAND_CHOICE_SELECTED, (wxObjectEventFunction)&OtherSettingsPanel::OnControlChanged);
+    }
+
 #ifdef __LINUX__
     // The renderer choice list is Windows-vendor-specific (CUDA/QSV/AMF/
     // DirectX11); Linux's decode path always auto-tries vaapi then vdpau
@@ -338,6 +355,13 @@ bool OtherSettingsPanel::TransferDataFromWindow() {
         config->Flush();
     }
 #endif
+    if (LanguageChoice != nullptr) {
+        const auto& langs = UILanguage::Available();
+        const int sel = LanguageChoice->GetSelection();
+        if (sel >= 0 && sel < (int)langs.size()) {
+            UILanguage::SetConfigured(langs[sel].code);
+        }
+    }
     return true;
 }
 
@@ -375,6 +399,16 @@ bool OtherSettingsPanel::TransferDataToWindow() {
         }
     }
 #endif
+    if (LanguageChoice != nullptr) {
+        const auto& langs = UILanguage::Available();
+        const std::string current = UILanguage::GetConfigured();
+        for (size_t i = 0; i < langs.size(); ++i) {
+            if (langs[i].code == current) {
+                LanguageChoice->SetSelection((int)i);
+                break;
+            }
+        }
+    }
 
 // Remove attempt to sneak functionality into the windows build
 #ifndef __WXMSW__

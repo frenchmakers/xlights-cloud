@@ -1061,6 +1061,9 @@ if(WIN32)
             "${CMAKE_SOURCE_DIR}/resources/effectmetadata"
             "$<TARGET_FILE_DIR:xLights>/effectmetadata"
         COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${CMAKE_SOURCE_DIR}/resources/locale"
+            "$<TARGET_FILE_DIR:xLights>/locale"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
             "${CMAKE_SOURCE_DIR}/resources/meshobjects"
             "$<TARGET_FILE_DIR:xLights>/meshobjects"
         COMMAND ${CMAKE_COMMAND} -E copy_directory

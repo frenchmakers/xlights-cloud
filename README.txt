@@ -12,6 +12,8 @@ XLIGHTS/NUTCRACKER RELEASE NOTES
 ---------------------------------
 2026.20  October ??, 2026
 
+    -enh (FrenchMakers)          Interface language can be chosen in Preferences > Other (restart
+                                 required); first partial French translation (menus, Preferences)
     -bug (derwin12)              Import Effects and other dialogs no longer open on a monitor that is no
                                  longer attached (which looked like a hang); they open centred instead (#7304)
     -bug (dkulp)                 iPad - Faces and State effects could not switch to Timing Track; the

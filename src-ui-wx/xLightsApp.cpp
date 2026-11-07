@@ -55,6 +55,7 @@ void SetHeadlessNoDock(); // ExternalHooksMacOSUI.mm — demote to background (n
 #include <curl/curl.h>
 
 #include "xLightsApp.h"
+#include "settings/UILanguage.h"
 #include "xLightsVersion.h"
 #include "UtilFunctions.h"
 #include "graphics/xlGraphicsCapability.h"
@@ -1132,6 +1133,10 @@ bool xLightsApp::OnInit()
     GetResourcesDirectory(); // bootstrap GetResourcesDir() with wx-dependent path lookup
     InitializeXLightsConfig();
     DumpConfig();
+
+    if (!headlessArg) {
+        UILanguage::Initialise();
+    }
 
     // Point VAMP_PATH at the per-user plugin dir + standard location before any
     // Vamp plugin is loaded (xLights doesn't bundle the GPL/AGPL plugin pack).

@@ -128,6 +128,7 @@ Source: "../../documentation/xlDo Commands.txt"; DestDir: "{app}"
 Source: "../../resources/dictionaries/*";   DestDir: "{app}/dictionaries";   Flags: ignoreversion
 Source: "../../bin/german_dictionary";      DestDir: "{app}"
 Source: "../../resources/effectmetadata/*"; DestDir: "{app}/effectmetadata"; Flags: ignoreversion recursesubdirs
+Source: "../../resources/locale/*.mo";     DestDir: "{app}/locale";         Flags: ignoreversion recursesubdirs
 Source: "../../resources/controllers/*.*";  DestDir: "{app}/controllers";    Flags: ignoreversion recursesubdirs
 Source: "../../resources/prompts/*.*";      DestDir: "{app}/prompts";        Flags: ignoreversion recursesubdirs
 Source: "../../resources/html/*.*";         DestDir: "{app}/html";           Flags: ignoreversion recursesubdirs

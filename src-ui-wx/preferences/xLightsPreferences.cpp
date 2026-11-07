@@ -139,7 +139,8 @@ public:
             scrolledWindow->SetMinSize(wxSize(minWidth, minHeight));
 
             listbook->AddPage(scrolledWindow, p.name, false, idx);
-            if (!initialPage.IsEmpty() && p.name == initialPage) {
+            // initialPage is the untranslated page name; the shown names are translated.
+            if (!initialPage.IsEmpty() && p.name == wxGetTranslation(initialPage)) {
                 selectIdx = idx;
             }
             ++idx;
@@ -192,48 +193,48 @@ void xLightsFrame::ShowPreferencesDialog(const wxString& initialPage)
     };
 
     std::vector<PrefPageDef> pages;
-    pages.push_back({ "Backup",
+    pages.push_back({ _("Backup"),
                       wxArtProvider::GetBitmapBundle(wxART_HARDDISK, wxART_BUTTON, wxSize(28, 28)),
                       wxArtProvider::GetBitmapBundle(wxART_HARDDISK, wxART_BUTTON, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new BackupSettingsPanel(p, this)); } });
-    pages.push_back({ "View",
+    pages.push_back({ _("View"),
                       wxArtProvider::GetBitmapBundle(wxART_FULL_SCREEN, wxART_BUTTON, iconSize),
                       wxArtProvider::GetBitmapBundle(wxART_FULL_SCREEN, wxART_BUTTON, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new ViewSettingsPanel(p, this)); } });
-    pages.push_back({ "Effects Grid",
+    pages.push_back({ _("Effects Grid"),
                       wxBitmapBundle(gridIcon),
                       scaledBundle(gridImage, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new EffectsGridSettingsPanel(p, this)); } });
-    pages.push_back({ "Sequences",
+    pages.push_back({ _("Sequences"),
                       wxArtProvider::GetBitmapBundle("xlART_SETTINGS", wxART_BUTTON, iconSize),
                       wxArtProvider::GetBitmapBundle("xlART_SETTINGS", wxART_BUTTON, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new SequenceFileSettingsPanel(p, this)); } });
-    pages.push_back({ "Output",
+    pages.push_back({ _("Output"),
                       wxArtProvider::GetBitmapBundle("xlART_OUTPUT_LIGHTS_ON", wxART_BUTTON, iconSize),
                       wxArtProvider::GetBitmapBundle("xlART_OUTPUT_LIGHTS_ON", wxART_BUTTON, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new OutputSettingsPanel(p, this)); } });
-    pages.push_back({ "Check Sequence",
+    pages.push_back({ _("Check Sequence"),
                       wxArtProvider::GetBitmapBundle("xlART_SETTINGS", wxART_BUTTON, iconSize),
                       wxArtProvider::GetBitmapBundle("xlART_SETTINGS", wxART_BUTTON, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new CheckSequenceSettingsPanel(p, this)); } });
-    pages.push_back({ "Random Effects",
+    pages.push_back({ _("Random Effects"),
                       wxArtProvider::GetBitmapBundle("xlART_DICE_ICON", wxART_BUTTON, wxSize(28, 28)),
                       wxArtProvider::GetBitmapBundle("xlART_DICE_ICON", wxART_BUTTON, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new RandomEffectsSettingsPanel(p, this)); } });
-    pages.push_back({ "Colors",
+    pages.push_back({ _("Colors"),
                       wxArtProvider::GetBitmapBundle("xlART_RENDER_ALL", wxART_BUTTON, iconSize),
                       wxArtProvider::GetBitmapBundle("xlART_RENDER_ALL", wxART_BUTTON, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new ColorManagerSettingsPanel(p, this)); } });
-    pages.push_back({ "Other",
+    pages.push_back({ _("Other"),
                       wxBitmapBundle(settingIcon),
                       scaledBundle(settingsImage, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new OtherSettingsPanel(p, this)); } });
-    pages.push_back({ "Toolbars",
+    pages.push_back({ _("Toolbars"),
                       wxArtProvider::GetBitmapBundle(wxART_LIST_VIEW, wxART_BUTTON, iconSize),
                       wxArtProvider::GetBitmapBundle(wxART_LIST_VIEW, wxART_BUTTON, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new ToolbarsSettingsPanel(p, this)); } });
 #ifdef ENABLE_SERVICES
-    pages.push_back({ "Services",
+    pages.push_back({ _("Services"),
                       wxArtProvider::GetBitmapBundle("xlART_SETTINGS", wxART_BUTTON, iconSize),
                       wxArtProvider::GetBitmapBundle("xlART_SETTINGS", wxART_BUTTON, listIconSize),
                       [this](wxWindow* p) { return (wxWindow*)(new ServicesPanel(p, _serviceManager.get())); } });
@@ -246,7 +247,7 @@ void xLightsFrame::ShowPreferencesDialog(const wxString& initialPage)
     // opens Preferences on macOS, just not pre-selected to Toolbars - the
     // user has one extra click there versus the Windows/Linux list dialog.
     if (!mPreferencesEditor.get()) {
-        mPreferencesEditor.reset(new wxPreferencesEditor("Preferences"));
+        mPreferencesEditor.reset(new wxPreferencesEditor(_("Preferences")));
         for (auto& p : pages) {
             std::function<wxWindow*(wxWindow*)> f = p.factory;
             mPreferencesEditor->AddPage(new xLightsPreferencesPage(p.name, p.nativeIcon, f));
