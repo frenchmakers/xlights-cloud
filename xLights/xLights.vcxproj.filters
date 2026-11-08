@@ -1578,6 +1578,7 @@
     <ClCompile Include="..\src-core\controllers\PowerDMX.cpp" />
     <ClCompile Include="..\src-core\settings\XLightsSettings.cpp" />
     <ClCompile Include="..\src-ui-wx\settings\XLightsConfigAdapter.cpp" />
+    <ClCompile Include="..\src-ui-wx\settings\UILanguage.cpp" />
     <ClCompile Include="..\src-ui-wx\layout\ControllerListPanel.cpp" />
     <ClCompile Include="..\src-ui-wx\layout\ControllerTreeUtils.cpp" />
     <ClCompile Include="..\src-ui-wx\layout\ControllerFullColumnsDialog.cpp" />
@@ -3257,6 +3258,7 @@
     <ClInclude Include="..\src-core\controllers\PowerDMX.h" />
     <ClInclude Include="..\src-core\settings\XLightsSettings.h" />
     <ClInclude Include="..\src-ui-wx\settings\XLightsConfigAdapter.h" />
+    <ClInclude Include="..\src-ui-wx\settings\UILanguage.h" />
     <ClInclude Include="..\src-ui-wx\layout\ControllerListPanel.h" />
     <ClInclude Include="..\src-ui-wx\layout\ControllerTreeUtils.h" />
     <ClInclude Include="..\src-ui-wx\layout\ControllerFullColumnsDialog.h" />

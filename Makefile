@@ -163,6 +163,7 @@ install:
 	cp -r resources/valuecurves/* $(DESTDIR)/${PREFIX}/share/xLights/valuecurves
 	install -d -m 755 $(DESTDIR)/${PREFIX}/share/xLights/effectmetadata
 	cp -r resources/effectmetadata/* $(DESTDIR)/${PREFIX}/share/xLights/effectmetadata
+	cd resources/locale && find . -name '*.mo' -exec install -D -m 644 {} $(DESTDIR)/${PREFIX}/share/xLights/locale/{} \;
 	install -d -m 755 $(DESTDIR)/${PREFIX}/share/xLights/mhpresets
 	cp -r resources/mhpresets/* $(DESTDIR)/${PREFIX}/share/xLights/mhpresets
 	install -d -m 755 $(DESTDIR)/${PREFIX}/share/xLights/palettes
