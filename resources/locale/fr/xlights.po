@@ -5071,7 +5071,7 @@ msgstr "Visible"
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269
 msgid "Effect"
-msgstr "Effet"
+msgstr ""
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:64 src-ui-wx/sequencer/SeqSettingsDialog.cpp:440
 msgid "Move Up"
