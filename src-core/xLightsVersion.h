@@ -22,7 +22,7 @@ static const std::string xlights_version_string  = "2026.19.1";
 #ifdef DEBUG
 static const std::string xlights_qualifier       = " DEBUG";
 #else
-static const std::string xlights_qualifier       = ""; // " BETA,ALPHA,PROD";
+static const std::string xlights_qualifier       = " Cloud"; // " BETA,ALPHA,PROD";
 #endif
 extern const std::string xlights_build_date;
 

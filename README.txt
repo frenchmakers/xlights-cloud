@@ -23,11 +23,6 @@ XLIGHTS/NUTCRACKER RELEASE NOTES
                                  start corner and switch to another after save and reload
     -bug (scott)                 A new Matrix model's Starting Location showed Bottom Left in the property
                                  grid even though the saved file had StartSide="T" (Top)
-    -enh (FrenchMakers)          File > Backup to Cloud uploads the whole show folder (media, rendered .fseq
-                                 files and a layout thumbnail included) to Cloudflare R2 or any S3-compatible
-                                 storage, in the background with progress. File > Restore from Cloud brings a
-                                 chosen backup back into a new folder, and can delete old backups; older ones
-                                 can also be removed automatically. Set it up in Preferences > Cloud Storage
     -enh (scott)                 Bulk Edit: new "Edit Properties" popup edits a shared model type's
                                  properties across every selected model of that type at once
     -enh (heffneil)              Bulk Controller Upload: Select All checkbox, filter box, multi-row

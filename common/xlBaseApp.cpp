@@ -792,6 +792,11 @@ std::string xlCrashHandler::BuildUploadFileName(std::string const& appName, wxDa
 void xlCrashHandler::SendReport(std::string const& appName, std::string const& loc, wxDebugReportCompress& report,
                                 std::string const& fileName)
 {
+    // xLights Cloud is not built by the xLights team, so its crash reports stay
+    // on this computer instead of going to the official crash server.
+    spdlog::info("xLights Cloud: crash report kept locally, not uploaded.");
+    return;
+
     wxHTTP http;
     http.Connect("dankulp.com");
 

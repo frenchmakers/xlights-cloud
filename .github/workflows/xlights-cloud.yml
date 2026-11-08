@@ -1,0 +1,221 @@
+# xLights Cloud: the official xLights plus Backup to Cloud / Restore from Cloud.
+#
+# Every day this checks the official project (xLightsSequencer/xLights):
+#   * a trial merge of its master into this branch: on a conflict it opens an
+#     issue here, so the conflict is fixed long before the next release;
+#   * its newest release tag (2026.19, ...): when there is no "<version>-cloud"
+#     release yet, it applies this branch's changes onto that exact tag, builds
+#     it on Windows and publishes the installer as release "<version>-cloud".
+#
+# The official project's own workflows are turned off in this fork on every run.
+
+name: xLights Cloud (Windows)
+
+on:
+  schedule:
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Official version to build, e.g. 2026.19 (empty = newest)'
+        required: false
+        default: ''
+      rebuild:
+        description: 'Build again even when that release exists (replaces its installer)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: xlights-cloud
+  cancel-in-progress: false
+
+env:
+  UPSTREAM_REPO: xLightsSequencer/xLights
+  GH_REPO: ${{ github.repository }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.pick.outputs.version }}
+      build: ${{ steps.pick.outputs.build }}
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout xLights Cloud
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Turn off the official project's workflows
+        run: |
+          gh api "repos/$GH_REPO/actions/workflows" --paginate \
+            --jq '.workflows[] | select(.state == "active") | select(.path | startswith(".github/workflows/")) | select(.path != ".github/workflows/xlights-cloud.yml") | "\(.id) \(.path)"' |
+          while read -r id path; do
+            gh api -X PUT "repos/$GH_REPO/actions/workflows/$id/disable" && echo "Disabled $path"
+          done
+
+      - name: Fetch the official project
+        run: |
+          git config user.name "xLights Cloud bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch --no-tags --no-recurse-submodules "https://github.com/$UPSTREAM_REPO.git" \
+            '+refs/heads/master:refs/remotes/upstream/master' \
+            '+refs/tags/*:refs/upstream-tags/*'
+
+      - name: Check that the official master still merges
+        run: |
+          title="Merge conflict with the official xLights master"
+          open=$(gh issue list --state open --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -1)
+          if git merge --no-commit --no-ff upstream/master > /dev/null 2>&1; then
+            git merge --abort 2> /dev/null || git reset --hard -q
+            echo "The official master merges cleanly."
+            if [ -n "$open" ]; then
+              gh issue close "$open" --comment "The official master merges cleanly again ($(git rev-parse --short upstream/master))."
+            fi
+          else
+            files=$(git diff --name-only --diff-filter=U | sed 's/^/- `/; s/$/`/')
+            git merge --abort 2> /dev/null || git reset --hard -q
+            body=$(printf 'Merging the official master (%s) into `%s` conflicts on:\n\n%s\n\nMerge it locally, fix the conflicts and push:\n\n```\ngit fetch https://github.com/%s.git master\ngit merge FETCH_HEAD\n```\n\nReleases still build while this is open, as long as these changes apply onto the release tag.' \
+              "$(git rev-parse --short upstream/master)" "$GITHUB_REF_NAME" "$files" "$UPSTREAM_REPO")
+            if [ -n "$open" ]; then
+              gh issue comment "$open" --body "$body"
+            else
+              gh issue create --title "$title" --body "$body"
+            fi
+            echo "::warning::The official master conflicts with this branch"
+          fi
+
+      - name: Pick the version to build
+        id: pick
+        run: |
+          version="${{ inputs.version }}"
+          if [ -z "$version" ]; then
+            version=$(git for-each-ref --format='%(refname:lstrip=2)' refs/upstream-tags/ |
+                      grep -E '^[0-9]{4}\.[0-9]+(\.[0-9]+)?$' | sort -V | tail -1)
+          fi
+          if ! git rev-parse -q --verify "refs/upstream-tags/$version^{commit}" > /dev/null; then
+            echo "::error::No official tag '$version'"
+            exit 1
+          fi
+          build=true
+          if gh release view "$version-cloud" > /dev/null 2>&1 && [ "${{ inputs.rebuild }}" != "true" ]; then
+            build=false
+            echo "Release $version-cloud already exists."
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "build=$build" >> "$GITHUB_OUTPUT"
+          echo "Official version: $version, build: $build"
+
+      - name: Apply xLights Cloud onto the official version
+        if: steps.pick.outputs.build == 'true'
+        run: |
+          version="${{ steps.pick.outputs.version }}"
+          base=$(git merge-base HEAD upstream/master)
+          git diff --binary "$base" HEAD > "$RUNNER_TEMP/feature.patch"
+          git checkout -q --detach "refs/upstream-tags/$version"
+          if ! git apply --3way --index "$RUNNER_TEMP/feature.patch"; then
+            title="xLights Cloud does not apply onto $version"
+            files=$(git diff --name-only --diff-filter=U | sed 's/^/- `/; s/$/`/')
+            gh issue create --title "$title" \
+              --body "$(printf 'Applying `%s` (%s) onto the official tag `%s` conflicts on:\n\n%s\n\nRun the workflow again once the branch is fixed.' "$GITHUB_REF_NAME" "${GITHUB_SHA::9}" "$version" "$files")" || true
+            exit 1
+          fi
+          git diff --cached --binary "refs/upstream-tags/$version" > "$RUNNER_TEMP/release.patch"
+          git diff --cached --stat "refs/upstream-tags/$version" | tail -1
+
+      - name: Keep the release patch
+        if: steps.pick.outputs.build == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-patch
+          path: ${{ runner.temp }}/release.patch
+          retention-days: 7
+
+  build:
+    needs: check
+    if: needs.check.outputs.build == 'true'
+    runs-on: windows-2025-vs2026
+    env:
+      VERSION: ${{ needs.check.outputs.version }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout the official xLights ${{ needs.check.outputs.version }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.UPSTREAM_REPO }}
+          ref: refs/tags/${{ needs.check.outputs.version }}
+          submodules: 'true'
+
+      - name: Get the release patch
+        uses: actions/download-artifact@v4
+        with:
+          name: release-patch
+          path: ${{ runner.temp }}
+
+      - name: Apply xLights Cloud
+        shell: bash
+        run: git apply --binary --whitespace=nowarn "$RUNNER_TEMP/release.patch" && git status --short | tail -5
+
+      - name: Setup msbuild
+        uses: microsoft/setup-msbuild@v3
+
+      - name: install ISPC
+        uses: ispc/install-ispc-action@main
+        with:
+          version: 1.31.0
+
+      # glslc (Vulkan SDK) compiles the compute kernels in the xLights.vcxproj pre-build step.
+      - name: Install Vulkan SDK
+        uses: jakoch/install-vulkan-sdk-action@v1
+        with:
+          install_runtime: false
+          cache: true
+
+      - name: Build All
+        shell: cmd
+        working-directory: build_scripts\msw
+        run: call build_VS_x64.cmd
+
+      - name: Build the xLights Cloud installer
+        working-directory: build_scripts\msw
+        run: |
+          python xlights_cloud_installer.py $env:VERSION
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          ISCC.exe xLights_Cloud_64bit.iss
+          if ($LASTEXITCODE -ne 0) { exit 1 }
+          Get-ChildItem output\*.exe | ForEach-Object { "{0}  {1:N1} MB" -f $_.Name, ($_.Length / 1MB) }
+
+      - name: Keep the installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: xLights_Cloud_Installer
+          path: build_scripts\msw\output\*.exe
+          retention-days: 14
+
+      - name: Publish the release
+        shell: bash
+        run: |
+          tag="$VERSION-cloud"
+          installer=$(ls build_scripts/msw/output/*.exe)
+          cat > "$RUNNER_TEMP/notes.md" << EOF
+          **xLights Cloud $VERSION** is the official [xLights $VERSION](https://github.com/$UPSTREAM_REPO/releases/tag/$VERSION) plus **File > Backup to Cloud** and **File > Restore from Cloud** (Cloudflare R2 or any S3-compatible storage, set up in Preferences > Cloud Storage).
+
+          - Windows 64-bit. It installs next to the official xLights, in *C:\\Program Files\\xLights Cloud*, and shares its settings. \`.xsq\` files still open with the official xLights.
+          - Not made or supported by the xLights team: report problems [here](https://github.com/$GH_REPO/issues), not to the xLights project. Crash reports stay on your computer.
+          - The installer is not code-signed, so Windows SmartScreen warns before running it (More info > Run anyway).
+
+          Built from the official tag \`$VERSION\` with [\`${GITHUB_SHA::9}\`](https://github.com/$GH_REPO/commit/$GITHUB_SHA) of this repository applied on top.
+          EOF
+          if gh release view "$tag" > /dev/null 2>&1; then
+            gh release upload "$tag" "$installer" --clobber
+            gh release edit "$tag" --notes-file "$RUNNER_TEMP/notes.md"
+          else
+            gh release create "$tag" "$installer" --target "$GITHUB_SHA" \
+              --title "xLights Cloud $VERSION" --notes-file "$RUNNER_TEMP/notes.md" --latest
+          fi

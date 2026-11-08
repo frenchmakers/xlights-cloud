@@ -8017,7 +8017,8 @@ void xLightsFrame::RequestReleaseList(int retriesLeft, bool canSkipUpdates, bool
 {
     // include 6 tags, first will LIKELY be the nightly, this then includes 5 to walk
     // back and find one that has the right asset for the platform
-    const std::string githubTagURL = "https://api.github.com/repos/xLightsSequencer/xLights/releases?per_page=6";
+    // xLights Cloud updates come from its own releases, tagged "<version>-cloud".
+    const std::string githubTagURL = "https://api.github.com/repos/frenchmakers/xlights-cloud/releases?per_page=6";
     spdlog::debug("Downloading {}", (const char*)githubTagURL.c_str());
 
     // Queued, not synchronous. The synchronous form pumped the UI through
@@ -8074,6 +8075,9 @@ void xLightsFrame::HandleReleaseList(const std::string& resp, bool canSkipUpdate
     for (int x = 0; x < (int)val.size() && downloadURL.empty(); x++) {
         if (val[x].contains("name")) {
             std::string verName = val[x].contains("tag_name") ? val[x]["tag_name"].get<std::string>() : val[x]["name"].get<std::string>();
+            if (verName.ends_with("-cloud")) {
+                verName.resize(verName.size() - 6);
+            }
             if (verName != "nightly" && val[x].contains("assets")) {
                 // not a nightly, so check if it has the needed asses
                 for (int a = 0 ; a < (int)val[x]["assets"].size(); a++) {
