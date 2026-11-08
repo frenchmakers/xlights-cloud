@@ -10,7 +10,7 @@ msgstr ""
 
 #: src-ui-wx/app-shell/AboutDialog.cpp:34
 msgid "About xLights"
-msgstr ""
+msgstr "À propos de xLights"
 
 #: src-ui-wx/app-shell/AboutDialog.cpp:47 src-ui-wx/app-shell/SplashDialog.cpp:36
 msgid "xLights"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: src-ui-wx/app-shell/AboutDialog.cpp:49
 msgid "Version:"
-msgstr ""
+msgstr "Version :"
 
 #: src-ui-wx/app-shell/AboutDialog.cpp:52
 msgid "LegalText"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: src-ui-wx/app-shell/AboutDialog.cpp:56
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Politique de confidentialité"
 
 #: src-ui-wx/app-shell/AboutDialog.cpp:56 src-ui-wx/app-shell/AboutDialog.cpp:58
 msgid "https://xlights.org/privacy-policy/"
@@ -297,18 +297,30 @@ msgid ""
 "\n"
 "Thank you for helping us improve xLights."
 msgstr ""
+"Il arrive que xLights plante, et nous avons parfois besoin de plus d'informations de la part des utilisateurs pour corriger le problème.\n"
+"Pour cela, nous vous proposons d'indiquer ici votre adresse e-mail.\n"
+"\n"
+"Notre politique à ce sujet :\n"
+"\n"
+"1. Votre adresse e-mail est enregistrée sur votre ordinateur... pas chez nous.\n"
+"2. Votre adresse e-mail est écrite dans le journal à chaque démarrage de xLights.\n"
+"3. Si vous envoyez un rapport de plantage, il contient les journaux, donc votre adresse e-mail.\n"
+"4. Quand xLights plante et que vous cliquez sur OK, votre adresse e-mail est jointe à l'envoi vers notre serveur sécurisé de rapports.\n"
+"5. Nous n'utiliserons votre adresse que pour vous contacter au sujet de plantages, et ce sera rare.\n"
+"\n"
+"Merci de nous aider à améliorer xLights."
 
 #: src-ui-wx/app-shell/EmailDialog.cpp:49
 msgid "Email Address:"
-msgstr ""
+msgstr "Adresse e-mail :"
 
 #: src-ui-wx/app-shell/EmailDialog.cpp:55 src-ui-wx/color/ColorCurveDialog.cpp:143 src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:104 src-ui-wx/import_export/SuperStarImportDialog.cpp:117 src-ui-wx/import_export/VsaImportDialog.cpp:101 ... (+27)
 msgid "Ok"
-msgstr ""
+msgstr "OK"
 
 #: src-ui-wx/app-shell/EmailDialog.cpp:58
 msgid "No Thanks"
-msgstr ""
+msgstr "Non merci"
 
 #: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:409 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:410 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:411 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:412 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:132 ... (+1)
 msgid "Y"
@@ -320,35 +332,35 @@ msgstr ""
 
 #: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:58
 msgid "Edit Keybindings"
-msgstr ""
+msgstr "Modifier les raccourcis clavier"
 
 #: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:66
 msgid "Scope:"
-msgstr ""
+msgstr "Portée :"
 
 #: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:83
 msgid "Add Effect"
-msgstr ""
+msgstr "Ajouter un effet"
 
 #: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:85
 msgid "Add Preset"
-msgstr ""
+msgstr "Ajouter un préréglage"
 
 #: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:87
 msgid "Add Apply Setting"
-msgstr ""
+msgstr "Ajouter un réglage à appliquer"
 
 #: src-ui-wx/app-shell/RestoreBackupDialog.cpp:121
 msgid "Restore Dialog"
-msgstr ""
+msgstr "Restauration"
 
 #: src-ui-wx/app-shell/RestoreBackupDialog.cpp:134
 msgid "Backups:"
-msgstr ""
+msgstr "Sauvegardes :"
 
 #: src-ui-wx/app-shell/RestoreBackupDialog.cpp:150
 msgid "Controllers/Layout"
-msgstr ""
+msgstr "Contrôleurs/disposition"
 
 #: src-ui-wx/app-shell/RestoreBackupDialog.cpp:151 src-ui-wx/preferences/xLightsPreferences.cpp:213
 msgid "Sequences"
@@ -356,41 +368,43 @@ msgstr "Séquences"
 
 #: src-ui-wx/app-shell/RestoreBackupDialog.cpp:158
 msgid "Restore Files"
-msgstr ""
+msgstr "Restaurer les fichiers"
 
 #: src-ui-wx/app-shell/SaveChangesDialog.cpp:42
 msgid "Save Sequence Changes?"
-msgstr ""
+msgstr "Enregistrer les modifications de la séquence ?"
 
 #: src-ui-wx/app-shell/SaveChangesDialog.cpp:45
 msgid "*** The sequence you are closing has unsaved changes. ***"
-msgstr ""
+msgstr "*** La séquence que vous fermez a des modifications non enregistrées. ***"
 
 #: src-ui-wx/app-shell/SaveChangesDialog.cpp:50
 msgid ""
 "Please choose whether you would like to Save or Discard the changes \n"
 "or hit Cancel to return to the sequence."
 msgstr ""
+"Choisissez d'enregistrer ou d'abandonner les modifications, \n"
+"ou cliquez sur Annuler pour revenir à la séquence."
 
 #: src-ui-wx/app-shell/SaveChangesDialog.cpp:56
 msgid "&Save Changes"
-msgstr ""
+msgstr "&Enregistrer les modifications"
 
 #: src-ui-wx/app-shell/SaveChangesDialog.cpp:58
 msgid "&Discard Changes"
-msgstr ""
+msgstr "A&bandonner les modifications"
 
 #: src-ui-wx/app-shell/SaveChangesDialog.cpp:60
 msgid "&Cancel"
-msgstr ""
+msgstr "&Annuler"
 
 #: src-ui-wx/app-shell/TabConvert.cpp:750
 msgid "Export Model Video"
-msgstr ""
+msgstr "Exporter la vidéo du modèle"
 
 #: src-ui-wx/app-shell/TabConvert.cpp:750
 msgid "Exporting model video..."
-msgstr ""
+msgstr "Export de la vidéo du modèle..."
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1129 src-ui-wx/sequencer/EffectListDialog.cpp:86
 msgid "Enter new name"
@@ -398,7 +412,7 @@ msgstr "Saisissez le nouveau nom"
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1383 src-ui-wx/app-shell/TabSequence.cpp:1465
 msgid "Checking sequence "
-msgstr ""
+msgstr "Vérification de la séquence "
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1383 src-ui-wx/app-shell/TabSequence.cpp:1465
 msgid "."
@@ -406,58 +420,58 @@ msgstr ""
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1437
 msgid "Batch Check Sequence Cancelled."
-msgstr ""
+msgstr "Vérification des séquences par lots annulée."
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1524
 msgid "Batch Render Done."
-msgstr ""
+msgstr "Rendu par lots terminé."
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1559
 msgid "Batch Render Cancelled."
-msgstr ""
+msgstr "Rendu par lots annulé."
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1627
 msgid "could not be opened"
-msgstr ""
+msgstr "n'a pas pu être ouverte"
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1654 src-ui-wx/app-shell/TabSequence.cpp:1684 src-ui-wx/app-shell/TabSequence.cpp:1848 src-ui-wx/app-shell/TabSequence.cpp:1866 src-ui-wx/app-shell/TabSequence.cpp:1911 ... (+1)
 msgid "Saving "
-msgstr ""
+msgstr "Enregistrement de "
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1654 src-ui-wx/app-shell/TabSequence.cpp:1866
 msgid " ... Rendering."
-msgstr ""
+msgstr " ... rendu."
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1684 src-ui-wx/app-shell/TabSequence.cpp:1911 src-ui-wx/app-shell/TabSequence.cpp:1928
 msgid " ... Writing fseq."
-msgstr ""
+msgstr " ... écriture du fseq."
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1689
 msgid "aborted twice, may be incomplete"
-msgstr ""
+msgstr "interrompu deux fois, peut être incomplet"
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1693 src-ui-wx/app-shell/TabSequence.cpp:1916 src-ui-wx/app-shell/TabSequence.cpp:1937
 #, c-format
 msgid "%s     Updated in %7.3f seconds"
-msgstr ""
+msgstr "%s     Mis à jour en %7.3f secondes"
 
 #: src-ui-wx/app-shell/TabSequence.cpp:1848
 msgid " ... Saving xsq."
-msgstr ""
+msgstr " ... enregistrement du xsq."
 
 #: src-ui-wx/app-shell/TabSequence.cpp:2101
 msgid "Rendering all layers"
-msgstr ""
+msgstr "Rendu de tous les calques"
 
 #: src-ui-wx/app-shell/TabSequence.cpp:2115
 #, c-format
 msgid "Rendered in %7.3f seconds"
-msgstr ""
+msgstr "Rendu en %7.3f secondes"
 
 #: src-ui-wx/app-shell/TabSequence.cpp:758
 #, c-format
 msgid "'%s' loaded in %4.3f sec."
-msgstr ""
+msgstr "« %s » chargé en %4.3f s."
 
 #: src-ui-wx/app-shell/TabSetup.cpp:1525
 #, c-format
@@ -465,6 +479,8 @@ msgid ""
 "\n"
 "    ...and %d more"
 msgstr ""
+"\n"
+"    ...et %d autres"
 
 #: src-ui-wx/app-shell/TabSetup.cpp:1529
 #, c-format
@@ -474,10 +490,14 @@ msgid ""
 "\n"
 "Are you sure you want to add them?"
 msgstr ""
+"La recherche a trouvé %d contrôleur(s) absent(s) de votre liste :\n"
+"%s\n"
+"\n"
+"Voulez-vous vraiment les ajouter ?"
 
 #: src-ui-wx/app-shell/TabSetup.cpp:1530
 msgid "Add New Controllers"
-msgstr ""
+msgstr "Ajouter les nouveaux contrôleurs"
 
 #: src-ui-wx/app-shell/TabSetup.cpp:174
 #, c-format
@@ -485,6 +505,8 @@ msgid ""
 "xLights could not get access to the show folder:\n"
 "%s"
 msgstr ""
+"xLights n'a pas pu accéder au dossier du show :\n"
+"%s"
 
 #: src-ui-wx/app-shell/TabSetup.cpp:178
 #, c-format
@@ -492,80 +514,84 @@ msgid ""
 "This show folder no longer exists:\n"
 "%s"
 msgstr ""
+"Ce dossier de show n'existe plus :\n"
+"%s"
 
 #: src-ui-wx/app-shell/TabSetup.cpp:293
 msgid "Loading show..."
-msgstr ""
+msgstr "Chargement du show..."
 
 #: src-ui-wx/app-shell/TabSetup.cpp:404
 msgid "The show directory '"
-msgstr ""
+msgstr "Le dossier du show « "
 
 #: src-ui-wx/app-shell/TabSetup.cpp:875
 msgid "Unable to save network definition file"
-msgstr ""
+msgstr "Impossible d'enregistrer le fichier de définition du réseau"
 
 #: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:144
 msgid "Tip of the day"
-msgstr ""
+msgstr "Astuce du jour"
 
 #: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:152
 msgid "<html><body><p>Loading...</p></body></html>"
-msgstr ""
+msgstr "<html><body><p>Chargement...</p></body></html>"
 
 #: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:156
 msgid "Show Tips on Startup"
-msgstr ""
+msgstr "Afficher les astuces au démarrage"
 
 #: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:159
 msgid "Give me another one"
-msgstr ""
+msgstr "Une autre"
 
 #: src-ui-wx/app-shell/UpdaterDialog.cpp:54
 msgid "xLights Update Available"
-msgstr ""
+msgstr "Mise à jour de xLights disponible"
 
 #: src-ui-wx/app-shell/UpdaterDialog.cpp:56
 msgid ""
 "You are running xLights version xxx\n"
 "Whereas the most recent release is xxx"
 msgstr ""
+"Vous utilisez xLights version xxx\n"
+"alors que la version la plus récente est xxx"
 
 #: src-ui-wx/app-shell/UpdaterDialog.cpp:59
 msgid "Download new release"
-msgstr ""
+msgstr "Télécharger la nouvelle version"
 
 #: src-ui-wx/app-shell/UpdaterDialog.cpp:61
 msgid "Ignore this version"
-msgstr ""
+msgstr "Ignorer cette version"
 
 #: src-ui-wx/app-shell/UpdaterDialog.cpp:63
 msgid "Skip this time"
-msgstr ""
+msgstr "Pas cette fois"
 
 #: src-ui-wx/automation/ScriptsDialog.cpp:101
 msgid "Run"
-msgstr ""
+msgstr "Exécuter"
 
 #: src-ui-wx/automation/ScriptsDialog.cpp:105 src-ui-wx/effectpanels/MovingHeadPanel.cpp:379 src-ui-wx/setup/ShowDirectoriesDialog.cpp:136
 msgid "Clear"
-msgstr ""
+msgstr "Effacer"
 
 #: src-ui-wx/automation/ScriptsDialog.cpp:282
 msgid "Please Select an script before trying to Run it"
-msgstr ""
+msgstr "Choisissez un script avant de l'exécuter"
 
 #: src-ui-wx/automation/ScriptsDialog.cpp:87
 msgid "Select the Lua Script to Run."
-msgstr ""
+msgstr "Choisissez le script Lua à exécuter."
 
 #: src-ui-wx/color/ColorCurveDialog.cpp:111
 msgid "Color Curve"
-msgstr ""
+msgstr "Courbe de couleur"
 
 #: src-ui-wx/color/ColorCurveDialog.cpp:123 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:818
 msgid "Blend Mode"
-msgstr ""
+msgstr "Mode de fusion"
 
 #: src-ui-wx/color/ColorCurveDialog.cpp:126 src-ui-wx/controllers/FPPConnectDialog.cpp:731 src-ui-wx/controllers/FPPConnectDialog.cpp:742 src-ui-wx/effectpanels/MovingHeadPanel.cpp:229 src-ui-wx/import_export/SuperStarImportDialog.cpp:94 ... (+3)
 msgid "None"
@@ -581,7 +607,7 @@ msgstr ""
 
 #: src-ui-wx/color/ColorCurveDialog.cpp:131
 msgid "Flip Colours"
-msgstr ""
+msgstr "Inverser les couleurs"
 
 #: src-ui-wx/color/ColorCurveDialog.cpp:138 src-ui-wx/model/PathGenerationDialog.cpp:82 src-ui-wx/setup/PixelTestDialog.cpp:1131 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:274
 msgid "Load"
@@ -593,27 +619,27 @@ msgstr "Exporter"
 
 #: src-ui-wx/color/ColorCurveDialog.cpp:786
 msgid "Choose color curve file"
-msgstr ""
+msgstr "Choisir le fichier de courbe de couleur"
 
 #: src-ui-wx/color/ColourReplaceDialog.cpp:101
 msgid "Replace Color"
-msgstr ""
+msgstr "Remplacer la couleur"
 
 #: src-ui-wx/color/ColourReplaceDialog.cpp:105
 msgid "Find Color:"
-msgstr ""
+msgstr "Couleur à trouver :"
 
 #: src-ui-wx/color/ColourReplaceDialog.cpp:109
 msgid "Replace Color:"
-msgstr ""
+msgstr "Couleur de remplacement :"
 
 #: src-ui-wx/color/ColourReplaceDialog.cpp:116
 msgid "Selected Effects Only"
-msgstr ""
+msgstr "Effets sélectionnés uniquement"
 
 #: src-ui-wx/color/ColourReplaceDialog.cpp:121
 msgid "Replace"
-msgstr ""
+msgstr "Remplacer"
 
 #: src-ui-wx/color/xlColorPickerFields.cpp:103
 msgid "G:"
@@ -649,96 +675,96 @@ msgstr ""
 
 #: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1053
 msgid "Delete this device"
-msgstr ""
+msgstr "Supprimer cet appareil"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1337
 msgid "Checking models"
-msgstr ""
+msgstr "Vérification des modèles"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1338
 msgid "Comparing the models on each FPP with the layout"
-msgstr ""
+msgstr "Comparaison des modèles de chaque FPP avec la disposition"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1348
 msgid "Models will be uploaded"
-msgstr ""
+msgstr "Les modèles seront envoyés"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1372
 msgid "Out of date: "
-msgstr ""
+msgstr "Pas à jour : "
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1374
 msgid "Up to date"
-msgstr ""
+msgstr "À jour"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1380
 msgid "nothing to check"
-msgstr ""
+msgstr "rien à vérifier"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1380
 msgid "up to date"
-msgstr ""
+msgstr "à jour"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1380
 msgid "will be uploaded"
-msgstr ""
+msgstr "sera envoyé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1394
 msgid " - left as is"
-msgstr ""
+msgstr " - laissé tel quel"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1396
 msgid ", left as is"
-msgstr ""
+msgstr ", laissé tel quel"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1403
 msgid " - will be uploaded"
-msgstr ""
+msgstr " - sera envoyé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1405
 msgid ", will be uploaded"
-msgstr ""
+msgstr ", sera envoyé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1423
 msgid "Sending controller settings"
-msgstr ""
+msgstr "Envoi des réglages des contrôleurs"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1430
 #, c-format
 msgid "Sending settings to %s - %s"
-msgstr ""
+msgstr "Envoi des réglages à %s - %s"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1445
 msgid "playlist"
-msgstr ""
+msgstr "playlist"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1449
 msgid "proxies"
-msgstr ""
+msgstr "proxys"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1460 src-ui-wx/controllers/FPPConnectDialog.cpp:1464
 msgid "UDP outputs"
-msgstr ""
+msgstr "sorties UDP"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1476 src-ui-wx/controllers/FPPConnectDialog.cpp:1516
 msgid "controller outputs"
-msgstr ""
+msgstr "sorties du contrôleur"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1494 src-ui-wx/controllers/FPPConnectDialog.cpp:1501
 msgid "models"
-msgstr ""
+msgstr "modèles"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:151
 msgid "FPP Upload"
-msgstr ""
+msgstr "Envoi FPP"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1529
 msgid "Sent "
-msgstr ""
+msgstr "Envoyé "
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1532
 msgid "Failed: no usable connection"
-msgstr ""
+msgstr "Échec : aucune connexion utilisable"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1535 src-ui-wx/controllers/FPPConnectDialog.cpp:1846 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:188 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:163
 msgid "Failed"
@@ -746,42 +772,42 @@ msgstr "Échec"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1538 src-ui-wx/controllers/FPPConnectDialog.cpp:1846 src-ui-wx/controllers/FPPConnectDialog.cpp:1853 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:193
 msgid "Cancelled"
-msgstr ""
+msgstr "Annulé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1540
 msgid "Nothing to send"
-msgstr ""
+msgstr "Rien à envoyer"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1545
 msgid "Not sent"
-msgstr ""
+msgstr "Non envoyé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1554
 msgid "done"
-msgstr ""
+msgstr "terminé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1558
 msgid "cancelled"
-msgstr ""
+msgstr "annulé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1560
 msgid "Controller settings"
-msgstr ""
+msgstr "Réglages des contrôleurs"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1606
 #, c-format
 msgid "Checking media (%s) and FSEQ file for %s"
-msgstr ""
+msgstr "Vérification du média (%s) et du fichier FSEQ de %s"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1608
 #, c-format
 msgid "Checking FSEQ file for %s"
-msgstr ""
+msgstr "Vérification du fichier FSEQ de %s"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1684
 #, c-format
 msgid "Preparing FSEQ file for %s"
-msgstr ""
+msgstr "Préparation du fichier FSEQ de %s"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:169 src-ui-wx/controllers/HinksPixExportDialog.cpp:251 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:840 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:897 src-ui-wx/layout/ModelGroupPanel.cpp:246 ... (+3)
 msgid "Filter:"
@@ -793,12 +819,12 @@ msgstr "Recherche récursive"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:173 src-ui-wx/controllers/HinksPixExportDialog.cpp:255
 msgid "Only Current Directory"
-msgstr ""
+msgstr "Dossier actuel uniquement"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1734
 #, c-format
 msgid "Sending %s to controllers"
-msgstr ""
+msgstr "Envoi de %s aux contrôleurs"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:175 src-ui-wx/controllers/HinksPixExportDialog.cpp:257 src-ui-wx/sequencer/BatchRenderDialog.cpp:93
 msgid "Folder:"
@@ -806,7 +832,7 @@ msgstr "Dossier :"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:179
 msgid "Selected: 0"
-msgstr ""
+msgstr "Sélectionnés : 0"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1842 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:188 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:163
 #, c-format
@@ -815,39 +841,39 @@ msgstr "Échec : %s"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1850 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:183
 msgid "Already up to date"
-msgstr ""
+msgstr "Déjà à jour"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1853
 msgid "Uploaded"
-msgstr ""
+msgstr "Envoyé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1856
 msgid "Not uploaded"
-msgstr ""
+msgstr "Non envoyé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1864
 msgid "could not open the fseq"
-msgstr ""
+msgstr "impossible d'ouvrir le fseq"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1939
 msgid "Controller messages"
-msgstr ""
+msgstr "Messages des contrôleurs"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:196
 msgid "Add FPP"
-msgstr ""
+msgstr "Ajouter un FPP"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:198
 msgid "Re-Discover"
-msgstr ""
+msgstr "Rechercher à nouveau"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:202
 msgid "Keep Open"
-msgstr ""
+msgstr "Garder ouvert"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:205 src-ui-wx/setup/MultiControllerUploadDialog.cpp:107
 msgid "Upload"
-msgstr ""
+msgstr "Envoyer"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:673 src-ui-wx/controllers/FPPConnectDialog.cpp:687 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:108
 msgid "V1"
@@ -891,36 +917,36 @@ msgstr ""
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:148
 msgid "Getting ready to upload"
-msgstr ""
+msgstr "Préparation de l'envoi"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:152
 msgid "Completed"
-msgstr ""
+msgstr "Terminé"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:163
 #, c-format
 msgid "Uploading %d/%d: %s"
-msgstr ""
+msgstr "Envoi %d/%d : %s"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:178
 #, c-format
 msgid "Uploaded (%s)"
-msgstr ""
+msgstr "Envoyé (%s)"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:199
 #, c-format
 msgid "Completed (%d of %d sequences)"
-msgstr ""
+msgstr "Terminé (%d séquences sur %d)"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:249
 #, c-format
 msgid "Elapsed %s"
-msgstr ""
+msgstr "Écoulé %s"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:250
 #, c-format
 msgid "%d of %d done - elapsed %s"
-msgstr ""
+msgstr "%d sur %d terminés - écoulé %s"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:253 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:223
 #, c-format
@@ -934,17 +960,17 @@ msgstr "Non commencé"
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:283
 #, c-format
 msgid "Total time %s"
-msgstr ""
+msgstr "Durée totale %s"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:285
 #, c-format
 msgid "%d uploaded, %d already up to date, %d failed"
-msgstr ""
+msgstr "%d envoyés, %d déjà à jour, %d en échec"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:287
 #, c-format
 msgid ", %d not uploaded"
-msgstr ""
+msgstr ", %d non envoyés"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:289 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:203
 #, c-format
@@ -953,27 +979,27 @@ msgstr " - durée totale %s"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:296
 msgid "Upload cancelled"
-msgstr ""
+msgstr "Envoi annulé"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:298
 msgid "Upload finished with problems"
-msgstr ""
+msgstr "Envoi terminé avec des problèmes"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:300
 msgid "Upload complete"
-msgstr ""
+msgstr "Envoi terminé"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:33
 msgid "Upload Progress"
-msgstr ""
+msgstr "Progression de l'envoi"
 
 #: src-ui-wx/controllers/FPPUploadProgressDialog.cpp:38
 msgid "Action"
-msgstr ""
+msgstr "Action"
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:242
 msgid "Playlist:"
-msgstr ""
+msgstr "Playlist :"
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:246 src-ui-wx/layout/ViewsModelsPanel.cpp:186 src-ui-wx/model/EditAliasesDialog.cpp:52 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:64 src-ui-wx/model/ModelFacesPanel.cpp:152 ... (+7)
 msgid "Add"
@@ -1013,23 +1039,23 @@ msgstr "Contrôleurs"
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:292
 msgid "Playlists"
-msgstr ""
+msgstr "Playlists"
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:293
 msgid "Schedule"
-msgstr ""
+msgstr "Planning"
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:296
 msgid "Refresh USB Drives"
-msgstr ""
+msgstr "Actualiser les clés USB"
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:300
 msgid "Export to SD Card"
-msgstr ""
+msgstr "Exporter sur carte SD"
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:302
 msgid "Upload to Controller"
-msgstr ""
+msgstr "Envoyer au contrôleur"
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:391
 msgid "Master"
@@ -1276,19 +1302,19 @@ msgstr "Modèle :"
 
 #: src-ui-wx/diagnostics/RenderProgressDialog.cpp:39
 msgid "Rendering Progress"
-msgstr ""
+msgstr "Progression du rendu"
 
 #: src-ui-wx/diagnostics/SearchPanel.cpp:66 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:264
 msgid "Regex"
-msgstr ""
+msgstr "Regex"
 
 #: src-ui-wx/diagnostics/SearchPanel.cpp:69
 msgid "Search:"
-msgstr ""
+msgstr "Rechercher :"
 
 #: src-ui-wx/diagnostics/SearchPanel.cpp:73
 msgid "Find"
-msgstr ""
+msgstr "Rechercher"
 
 #: src-ui-wx/diagnostics/SearchPanel.cpp:78 src-ui-wx/model/NodeSelectGrid.cpp:249 src-ui-wx/sequencer/SelectPanel.cpp:92 src-ui-wx/sequencer/SelectPanel.cpp:127 src-ui-wx/setup/MultiControllerUploadDialog.cpp:127
 msgid "Select All"
@@ -1296,7 +1322,7 @@ msgstr "Tout sélectionner"
 
 #: src-ui-wx/diagnostics/SeqElementMismatchDialog.cpp:41
 msgid "Sequence Element Mismatch"
-msgstr ""
+msgstr "Élément de séquence introuvable"
 
 #: src-ui-wx/diagnostics/SeqElementMismatchDialog.cpp:47
 msgid "Message"
@@ -1304,39 +1330,39 @@ msgstr ""
 
 #: src-ui-wx/diagnostics/SeqElementMismatchDialog.cpp:49
 msgid "What action do you want to take?"
-msgstr ""
+msgstr "Que voulez-vous faire ?"
 
 #: src-ui-wx/diagnostics/SeqElementMismatchDialog.cpp:51
 msgid "Delete this element from the sequence"
-msgstr ""
+msgstr "Supprimer cet élément de la séquence"
 
 #: src-ui-wx/diagnostics/SeqElementMismatchDialog.cpp:54
 msgid "Map effects to other elements"
-msgstr ""
+msgstr "Associer les effets à d'autres éléments"
 
 #: src-ui-wx/diagnostics/SeqElementMismatchDialog.cpp:56
 msgid "Rename this element to:"
-msgstr ""
+msgstr "Renommer cet élément en :"
 
 #: src-ui-wx/diagnostics/SeqElementMismatchDialog.cpp:60
 msgid "Also add alias to model (auto-remap future sequences)"
-msgstr ""
+msgstr "Ajouter aussi un alias au modèle (réassociation automatique des futures séquences)"
 
 #: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:48
 msgid "Find Show Folder Dialog"
-msgstr ""
+msgstr "Recherche du dossier du show"
 
 #: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:59
 msgid "Change Temporary"
-msgstr ""
+msgstr "Changer temporairement"
 
 #: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:61 src-ui-wx/setup/ShowDirectoriesDialog.cpp:101
 msgid "Change Permanently"
-msgstr ""
+msgstr "Changer définitivement"
 
 #: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:63
 msgid "Open in Explorer"
-msgstr ""
+msgstr "Ouvrir dans l'explorateur"
 
 #: src-ui-wx/effectpanels/DMXPanel.cpp:120
 msgid "Inv"
@@ -1344,31 +1370,31 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/DMXPanel.cpp:133
 msgid "Remap Channels"
-msgstr ""
+msgstr "Réassigner les canaux"
 
 #: src-ui-wx/effectpanels/DMXPanel.cpp:138
 msgid "Save As State"
-msgstr ""
+msgstr "Enregistrer comme état"
 
 #: src-ui-wx/effectpanels/DMXPanel.cpp:142
 msgid "Load From State"
-msgstr ""
+msgstr "Charger depuis un état"
 
 #: src-ui-wx/effectpanels/FacesPanel.cpp:114
 msgid "Transparent Black"
-msgstr ""
+msgstr "Noir transparent"
 
 #: src-ui-wx/effectpanels/FacesPanel.cpp:53
 msgid "Phoneme"
-msgstr ""
+msgstr "Phonème"
 
 #: src-ui-wx/effectpanels/FacesPanel.cpp:79 src-ui-wx/effectpanels/StatePanel.cpp:78
 msgid "Timing Track"
-msgstr ""
+msgstr "Piste de timing"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:1070 src-ui-wx/effectpanels/MovingHeadPanel.cpp:1083
 msgid "Delete Preset"
-msgstr ""
+msgstr "Supprimer le préréglage"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:1083
 #, c-format
@@ -1376,14 +1402,16 @@ msgid ""
 "Delete preset file\n"
 "%s ?"
 msgstr ""
+"Supprimer le fichier de préréglage\n"
+"%s ?"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:1316
 msgid "MH Preset file to save"
-msgstr ""
+msgstr "Fichier de préréglage de lyre à enregistrer"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:222
 msgid "Fixtures"
-msgstr ""
+msgstr "Projecteurs"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:2228
 msgid "Pathing (Linked)"
@@ -1399,11 +1427,11 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:231
 msgid "Evens"
-msgstr ""
+msgstr "Pairs"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:233
 msgid "Odds"
-msgstr ""
+msgstr "Impairs"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:235 src-ui-wx/sequencer/BufferSizeDialog.cpp:93
 msgid "Left"
@@ -1415,15 +1443,15 @@ msgstr "Droite"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:2406
 msgid "No following Moving Head effect on this row"
-msgstr ""
+msgstr "Aucun effet Moving Head suivant sur cette ligne"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:2408
 msgid "Next effect is not a Moving Head effect"
-msgstr ""
+msgstr "L'effet suivant n'est pas un effet Moving Head"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:2410
 msgid "No active heads"
-msgstr ""
+msgstr "Aucune lyre active"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:242 src-ui-wx/effectpanels/MovingHeadPanel.cpp:329 src-ui-wx/effectpanels/MovingHeadPanel.cpp:339 src-ui-wx/effects/CharMapDialog.cpp:101 src-ui-wx/model/GenerateCustomModelDialog.cpp:2665 ... (+4)
 msgid "1"
@@ -1459,59 +1487,59 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:279
 msgid "Pan (deg):"
-msgstr ""
+msgstr "Pan (degrés) :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:290
 msgid "Tilt (deg): "
-msgstr ""
+msgstr "Tilt (degrés) : "
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:301
 msgid "Fan Pan:  "
-msgstr ""
+msgstr "Éventail pan :  "
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:312
 msgid "Fan Tilt:   "
-msgstr ""
+msgstr "Éventail tilt :   "
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:323
 msgid "Groupings:"
-msgstr ""
+msgstr "Regroupements :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:334
 msgid "Cycles:"
-msgstr ""
+msgstr "Cycles :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:342 src-ui-wx/effectpanels/MovingHeadPanel.cpp:362 src-ui-wx/effectpanels/MovingHeadPanel.cpp:417 src-ui-wx/effectpanels/MovingHeadPanel.cpp:558
 msgid "Save Preset"
-msgstr ""
+msgstr "Enregistrer le préréglage"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:377
 msgid "Continue"
-msgstr ""
+msgstr "Continuer"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:389
 msgid "Scale:"
-msgstr ""
+msgstr "Échelle :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:400 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:248
 msgid "Time Offset:"
-msgstr ""
+msgstr "Décalage temporel :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:410
 msgid "Ignore Pan"
-msgstr ""
+msgstr "Ignorer le pan"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:413
 msgid "Ignore Tilt"
-msgstr ""
+msgstr "Ignorer le tilt"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:427
 msgid "Enable Pattern"
-msgstr ""
+msgstr "Activer le motif"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:432
 msgid "Shape:"
-msgstr ""
+msgstr "Forme :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:435
 msgid "Circle"
@@ -1555,7 +1583,7 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:449
 msgid "Pan Size:"
-msgstr ""
+msgstr "Amplitude pan :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:454 src-ui-wx/effectpanels/MovingHeadPanel.cpp:545
 msgid "90"
@@ -1563,7 +1591,7 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:459
 msgid "Tilt Size:"
-msgstr ""
+msgstr "Amplitude tilt :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:464
 msgid "45"
@@ -1571,43 +1599,43 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:469
 msgid "Pan Center:"
-msgstr ""
+msgstr "Centre pan :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:479
 msgid "Tilt Center:"
-msgstr ""
+msgstr "Centre tilt :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:489
 msgid "Rotation:"
-msgstr ""
+msgstr "Rotation :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:500
 msgid "Start Offset:"
-msgstr ""
+msgstr "Décalage de début :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:510
 msgid "Head Spread:"
-msgstr ""
+msgstr "Écart entre lyres :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:520
 msgid "X Frequency:"
-msgstr ""
+msgstr "Fréquence X :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:530
 msgid "Y Frequency:"
-msgstr ""
+msgstr "Fréquence Y :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:540
 msgid "X Phase:"
-msgstr ""
+msgstr "Phase X :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:550
 msgid "Y Phase:"
-msgstr ""
+msgstr "Phase Y :"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:593
 msgid "Auto Shutter"
-msgstr ""
+msgstr "Obturateur auto"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:599 src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:98 src-ui-wx/model/ModelFacesPanel.cpp:189 src-ui-wx/model/ModelFacesPanel.cpp:313 src-ui-wx/model/ModelStatesPanel.cpp:187 ... (+1)
 msgid "Color"
@@ -1619,17 +1647,19 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:602
 msgid "Enable Shutter"
-msgstr ""
+msgstr "Activer l'obturateur"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:612
 msgid ""
 "Link end position to next Moving Head effect\n"
 "(forces Dimmer to 0 at end)"
 msgstr ""
+"Lier la position finale à l'effet Moving Head suivant\n"
+"(force le Dimmer à 0 à la fin)"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:625
 msgid "Reset to Default"
-msgstr ""
+msgstr "Valeurs par défaut"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:630
 msgid "Position"
@@ -1657,27 +1687,27 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/ServoPanel.cpp:118
 msgid "End:"
-msgstr ""
+msgstr "Fin :"
 
 #: src-ui-wx/effectpanels/ServoPanel.cpp:154
 msgid "Sync"
-msgstr ""
+msgstr "Synchro"
 
 #: src-ui-wx/effectpanels/ServoPanel.cpp:162
 msgid "Equal"
-msgstr ""
+msgstr "Égaliser"
 
 #: src-ui-wx/effectpanels/ServoPanel.cpp:167
 msgid "Swap"
-msgstr ""
+msgstr "Échanger"
 
 #: src-ui-wx/effectpanels/ServoPanel.cpp:305
 msgid "Value:"
-msgstr ""
+msgstr "Valeur :"
 
 #: src-ui-wx/effectpanels/ServoPanel.cpp:81 src-ui-wx/effectpanels/ServoPanel.cpp:318
 msgid "Start:"
-msgstr ""
+msgstr "Début :"
 
 #: src-ui-wx/effectpanels/ShaderPanel.cpp:219
 msgid "1.00"
@@ -1690,61 +1720,71 @@ msgstr ""
 #: src-ui-wx/effectpanels/WarpPanel.cpp:53
 #, c-format
 msgid "Speed %"
-msgstr ""
+msgstr "Vitesse %"
 
 #: src-ui-wx/effectpanels/assist/PicturesAssistPanel.cpp:173
 msgid ""
 "New\n"
 "Image"
 msgstr ""
+"Nouvelle\n"
+"image"
 
 #: src-ui-wx/effectpanels/assist/PicturesAssistPanel.cpp:175
 msgid ""
 "Load\n"
 "Image"
 msgstr ""
+"Charger\n"
+"l'image"
 
 #: src-ui-wx/effectpanels/assist/PicturesAssistPanel.cpp:177
 msgid ""
 "Save\n"
 "Image"
 msgstr ""
+"Enregistrer\n"
+"l'image"
 
 #: src-ui-wx/effectpanels/assist/PicturesAssistPanel.cpp:179
 msgid ""
 "Save As\n"
 "Image"
 msgstr ""
+"Enregistrer\n"
+"sous"
 
 #: src-ui-wx/effectpanels/assist/PicturesAssistPanel.cpp:181
 msgid ""
 "Resize\n"
 "Image"
 msgstr ""
+"Redimensionner\n"
+"l'image"
 
 #: src-ui-wx/effectpanels/assist/PicturesAssistPanel.cpp:184
 msgid "Current Image:"
-msgstr ""
+msgstr "Image actuelle :"
 
 #: src-ui-wx/effectpanels/assist/PicturesAssistPanel.cpp:186
 msgid "Image Size:"
-msgstr ""
+msgstr "Taille de l'image :"
 
 #: src-ui-wx/effectpanels/assist/PicturesAssistPanel.cpp:188
 msgid "Model Size:"
-msgstr ""
+msgstr "Taille du modèle :"
 
 #: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:361
 msgid "Choose xLights Sketch File"
-msgstr ""
+msgstr "Choisir le fichier Sketch xLights"
 
 #: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:396
 msgid "Save xLights Sketch File"
-msgstr ""
+msgstr "Enregistrer le fichier Sketch xLights"
 
 #: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:416
 msgid "Choose SVG File"
-msgstr ""
+msgstr "Choisir le fichier SVG"
 
 #: src-ui-wx/effects/CharMapDialog.cpp:103
 msgid ">"
@@ -1752,11 +1792,11 @@ msgstr ""
 
 #: src-ui-wx/effects/CharMapDialog.cpp:89
 msgid "Character Map"
-msgstr ""
+msgstr "Table des caractères"
 
 #: src-ui-wx/effects/CharMapDialog.cpp:97
 msgid "Page:"
-msgstr ""
+msgstr "Page :"
 
 #: src-ui-wx/effects/CharMapDialog.cpp:99
 msgid "<"
@@ -1764,7 +1804,7 @@ msgstr ""
 
 #: src-ui-wx/effects/ShaderDownloadDialog.cpp:291
 msgid "Shader sites"
-msgstr ""
+msgstr "Sites de shaders"
 
 #: src-ui-wx/effects/ShaderDownloadDialog.cpp:307 src-ui-wx/import_export/VendorModelDialog.cpp:212 src-ui-wx/import_export/VendorMusicDialog.cpp:119 src-ui-wx/sequencer/SeqSettingsDialog.cpp:353
 msgid "Website:"
@@ -1776,7 +1816,7 @@ msgstr ""
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:104
 msgid "Output Format:"
-msgstr ""
+msgstr "Format de sortie :"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:107 src-ui-wx/import_export/SeqExportDialog.cpp:77 src-ui-wx/import_export/SeqExportDialog.cpp:118
 msgid "xLights/FPP, *.fseq"
@@ -1816,27 +1856,27 @@ msgstr ""
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:117 src-ui-wx/import_export/LorConvertDialog.cpp:43
 msgid "All channels off at end:"
-msgstr ""
+msgstr "Tous les canaux éteints à la fin :"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:123
 msgid "LOR Import Options"
-msgstr ""
+msgstr "Options d'import LOR"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:126 src-ui-wx/import_export/LorConvertDialog.cpp:48
 msgid "Map Empty LMS Channels:"
-msgstr ""
+msgstr "Associer les canaux LMS vides :"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:131
 msgid "Map LMS Channels with no network"
-msgstr ""
+msgstr "Associer les canaux LMS sans réseau"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:136
 msgid "Show Verbose Channel Map:"
-msgstr ""
+msgstr "Afficher la correspondance des canaux détaillée :"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:141
 msgid "Time Resolution"
-msgstr ""
+msgstr "Résolution temporelle"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:144
 msgid "25 ms"
@@ -1852,11 +1892,11 @@ msgstr ""
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:151
 msgid "Start Conversion"
-msgstr ""
+msgstr "Lancer la conversion"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:158
 msgid "Conversion Messages:"
-msgstr ""
+msgstr "Messages de conversion :"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:172 src-ui-wx/model/GenerateCustomModelDialog.cpp:2821
 msgid "Select file"
@@ -1881,27 +1921,27 @@ msgstr ""
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:84
 msgid "xLights File Conversion"
-msgstr ""
+msgstr "Conversion de fichiers xLights"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:89
 msgid "Entries on the Setup tab will guide the conversion. Make sure you have your lighting networks defined accurately before you start a conversion."
-msgstr ""
+msgstr "La conversion s'appuie sur l'onglet Configuration. Vérifiez que vos réseaux d'éclairage sont bien définis avant de lancer une conversion."
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:91
 msgid "For LMS imports, LOR networks should be first followed by DMX starting at universe 1."
-msgstr ""
+msgstr "Pour les imports LMS, les réseaux LOR doivent venir en premier, suivis du DMX à partir de l'univers 1."
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:97
 msgid "Sequence files to convert:"
-msgstr ""
+msgstr "Séquences à convertir :"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:99
 msgid "Choose Files"
-msgstr ""
+msgstr "Choisir les fichiers"
 
 #: src-ui-wx/import_export/ConvertLogDialog.cpp:57
 msgid "Conversion Log"
-msgstr ""
+msgstr "Journal de conversion"
 
 #: src-ui-wx/import_export/ExportEffects.cpp:62
 msgid "Effect Name,StartTime,EndTime,Duration,Description,Element,ElementType,Files\n"
@@ -1921,7 +1961,7 @@ msgstr ""
 
 #: src-ui-wx/import_export/ExportModelSelect.cpp:39
 msgid "Model to Export"
-msgstr ""
+msgstr "Modèle à exporter"
 
 #: src-ui-wx/import_export/ImportEffects.cpp:257
 #, c-format
@@ -1929,6 +1969,8 @@ msgid ""
 "The sequence this was imported from no longer exists:\n"
 "%s"
 msgstr ""
+"La séquence d'origine de l'import n'existe plus :\n"
+"%s"
 
 #: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:109 src-ui-wx/import_export/VsaImportDialog.cpp:106 src-ui-wx/sequencer/GenerateLyricsDialog.cpp:116 src-ui-wx/setup/RemapDMXChannelsDialog.cpp:76
 msgid "Load Mapping"
@@ -1940,19 +1982,19 @@ msgstr "Enregistrer la correspondance"
 
 #: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:62 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:775
 msgid "Map Channels"
-msgstr ""
+msgstr "Associer les canaux"
 
 #: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:70
 msgid "Add Model For Import"
-msgstr ""
+msgstr "Ajouter un modèle pour l'import"
 
 #: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:75 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:787
 msgid "Time Adjust (ms)"
-msgstr ""
+msgstr "Décalage temporel (ms)"
 
 #: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:86
 msgid "Map by Strand/CCR"
-msgstr ""
+msgstr "Associer par brin/CCR"
 
 #: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:94 src-ui-wx/import_export/VsaImportDialog.cpp:87 src-ui-wx/setup/PixelTestDialog.cpp:1177
 msgid "Model"
@@ -1960,7 +2002,7 @@ msgstr ""
 
 #: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:95
 msgid "Strand"
-msgstr ""
+msgstr "Brin"
 
 #: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:97 src-ui-wx/import_export/VsaImportDialog.cpp:88 src-ui-wx/model/CustomModelDialog.cpp:493 src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:48
 msgid "Channel"
@@ -1968,7 +2010,7 @@ msgstr "Canal"
 
 #: src-ui-wx/import_export/LorConvertDialog.cpp:53
 msgid "Map LMS Channels with no network:"
-msgstr ""
+msgstr "Associer les canaux LMS sans réseau :"
 
 #: src-ui-wx/import_export/ModelRemap.cpp:36
 msgid "Set in code"
@@ -1976,23 +2018,23 @@ msgstr ""
 
 #: src-ui-wx/import_export/ModelRemap.cpp:40
 msgid "Custom xModel File With the faces/states/submodels:"
-msgstr ""
+msgstr "Fichier xModel personnalisé avec les visages/états/sous-modèles :"
 
 #: src-ui-wx/import_export/ModelRemap.cpp:42 src-ui-wx/import_export/ModelRemap.cpp:46
 msgid "Select a file"
-msgstr ""
+msgstr "Choisir un fichier"
 
 #: src-ui-wx/import_export/ModelRemap.cpp:44
 msgid "Custom xModel File with the correct wiring layout:"
-msgstr ""
+msgstr "Fichier xModel personnalisé avec le bon câblage :"
 
 #: src-ui-wx/import_export/ModelRemap.cpp:49
 msgid "Select xModel files."
-msgstr ""
+msgstr "Choisissez les fichiers xModel."
 
 #: src-ui-wx/import_export/ModelRemap.cpp:51
 msgid "Generate xModel"
-msgstr ""
+msgstr "Générer le xModel"
 
 #: src-ui-wx/import_export/SeqExportDialog.cpp:119
 msgid "FPP Sub sequence. *.eseq"
@@ -2004,11 +2046,11 @@ msgstr ""
 
 #: src-ui-wx/import_export/SeqExportDialog.cpp:45
 msgid "Export Sequence"
-msgstr ""
+msgstr "Exporter la séquence"
 
 #: src-ui-wx/import_export/SeqExportDialog.cpp:50
 msgid "Select export format:"
-msgstr ""
+msgstr "Choisir le format d'export :"
 
 #: src-ui-wx/import_export/SeqExportDialog.cpp:55 src-ui-wx/model/GenerateCustomModelDialog.cpp:2584 src-ui-wx/model/GenerateCustomModelDialog.cpp:2626 src-ui-wx/model/GenerateCustomModelDialog.cpp:2648 src-ui-wx/model/GenerateCustomModelDialog.cpp:2689 ... (+1)
 msgid "Next"
@@ -2080,18 +2122,21 @@ msgid ""
 "\n"
 "You will not be able to save changes directly using Save. You must use Save As to save it within the show directory."
 msgstr ""
+"Cette séquence se trouve en dehors du dossier du show actuel.\n"
+"\n"
+"Vous ne pourrez pas enregistrer les modifications avec Enregistrer. Utilisez Enregistrer sous pour l'enregistrer dans le dossier du show."
 
 #: src-ui-wx/import_export/SeqFileUtilities.cpp:705
 msgid "Sequence Outside Show Directory"
-msgstr ""
+msgstr "Séquence hors du dossier du show"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:100
 msgid "Timing Adjustment (ms):"
-msgstr ""
+msgstr "Décalage du timing (ms) :"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:105
 msgid "Layer Blend:"
-msgstr ""
+msgstr "Fusion des calques :"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:108
 msgid "Average"
@@ -2111,18 +2156,21 @@ msgid ""
 "for CCR ribbon trees.  X/Y Size and Offset only apply to SuperStar. \n"
 "X/Y Size is ignored unless the sequence type is a Visualization.\n"
 msgstr ""
+"SuperStar : actuellement prévu pour les séquences SuperStar\n"
+"des sapins à rubans CCR. Taille et décalage X/Y ne concernent que SuperStar. \n"
+"La taille X/Y est ignorée sauf si la séquence est de type Visualization.\n"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:55
 msgid "SuperStar Import"
-msgstr ""
+msgstr "Import SuperStar"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:63
 msgid "Select Model:"
-msgstr ""
+msgstr "Choisir le modèle :"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:71
 msgid "X Size:"
-msgstr ""
+msgstr "Taille X :"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:73
 msgid "12"
@@ -2130,11 +2178,11 @@ msgstr ""
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:75
 msgid "X Offset:"
-msgstr ""
+msgstr "Décalage X :"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:80
 msgid "Y Size:"
-msgstr ""
+msgstr "Taille Y :"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:82
 msgid "50"
@@ -2142,11 +2190,11 @@ msgstr ""
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:84
 msgid "Y Offset:"
-msgstr ""
+msgstr "Décalage Y :"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:91
 msgid "Image Resizing:"
-msgstr ""
+msgstr "Redimensionnement des images :"
 
 #: src-ui-wx/import_export/SuperStarImportDialog.cpp:95
 msgid "Exact Width"
@@ -2162,19 +2210,19 @@ msgstr ""
 
 #: src-ui-wx/import_export/VendorModelDialog.cpp:197
 msgid "Don't download this vendors list of models"
-msgstr ""
+msgstr "Ne pas télécharger la liste de modèles de ce fabricant"
 
 #: src-ui-wx/import_export/VendorModelDialog.cpp:208 src-ui-wx/import_export/VendorMusicDialog.cpp:115
 msgid "Facebook:"
-msgstr ""
+msgstr "Facebook :"
 
 #: src-ui-wx/import_export/VendorModelDialog.cpp:245 src-ui-wx/import_export/VendorMusicDialog.cpp:137
 msgid "Web Link:"
-msgstr ""
+msgstr "Lien web :"
 
 #: src-ui-wx/import_export/VendorModelDialog.cpp:250
 msgid "Insert Model"
-msgstr ""
+msgstr "Insérer le modèle"
 
 #: src-ui-wx/import_export/VendorModelDialog.cpp:253 src-ui-wx/import_export/VendorMusicDialog.cpp:149
 msgid "Vendor"
@@ -2182,11 +2230,11 @@ msgstr ""
 
 #: src-ui-wx/import_export/VendorModelDialog.cpp:254 src-ui-wx/import_export/VendorMusicDialog.cpp:150 src-ui-wx/shared/utils/wxCheckedListCtrl.cpp:19
 msgid "Item"
-msgstr ""
+msgstr "Article"
 
 #: src-ui-wx/import_export/VendorModelDialog.cpp:259 src-ui-wx/import_export/VendorModelDialog.cpp:1338
 msgid "NOTE: Models are provided by the vendors, not by xLights. They are free to use in your layout, but the designs are copyrighted and not licensed for recreation or public distribution."
-msgstr ""
+msgstr "REMARQUE : les modèles sont fournis par les fabricants, pas par xLights. Vous pouvez les utiliser librement dans votre disposition, mais les créations sont protégées par le droit d'auteur et ne peuvent être ni reproduites ni diffusées publiquement."
 
 #: src-ui-wx/import_export/VendorModelDialog.cpp:285 src-ui-wx/layout/ViewsModelsPanel.cpp:272 src-ui-wx/setup/ControllerModelDialog.cpp:2195 src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:354
 msgid "Filter models..."
@@ -2194,11 +2242,11 @@ msgstr "Filtrer les modèles..."
 
 #: src-ui-wx/import_export/VendorMusicDialog.cpp:133
 msgid "Video:"
-msgstr ""
+msgstr "Vidéo :"
 
 #: src-ui-wx/import_export/VendorMusicDialog.cpp:141
 msgid "Music Link:"
-msgstr ""
+msgstr "Lien de la musique :"
 
 #: src-ui-wx/import_export/VendorMusicDialog.cpp:94 src-ui-wx/sequencer/EffectTreeDialog.cpp:156
 msgid "Search"
@@ -2206,7 +2254,7 @@ msgstr "Rechercher"
 
 #: src-ui-wx/import_export/VsaImportDialog.cpp:75
 msgid "Assign VSA Tracks to xLights Models/Layers"
-msgstr ""
+msgstr "Associer les pistes VSA aux modèles/calques xLights"
 
 #: src-ui-wx/import_export/VsaImportDialog.cpp:86 src-ui-wx/sequencer/NoteImportDialog.cpp:98 src-ui-wx/sequencer/SeqSettingsDialog.cpp:553
 msgid "Track"
@@ -2214,71 +2262,71 @@ msgstr "Piste"
 
 #: src-ui-wx/import_export/VsaImportDialog.cpp:89
 msgid "Layer"
-msgstr ""
+msgstr "Calque"
 
 #: src-ui-wx/import_export/VsaImportDialog.cpp:95
 msgid "Set All Models:"
-msgstr ""
+msgstr "Pour tous les modèles :"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1002 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1046
 msgid "Sort by Name"
-msgstr ""
+msgstr "Trier par nom"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1003 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1047
 msgid "Sort by Master View"
-msgstr ""
+msgstr "Trier selon la vue principale"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1038
 #, c-format
 msgid "Add %d Groups to Layout and Map"
-msgstr ""
+msgstr "Ajouter %d groupes à la disposition et les associer"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1039
 msgid "Add Group to Layout and Map"
-msgstr ""
+msgstr "Ajouter le groupe à la disposition et l'associer"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1047
 msgid "Sort in File Order"
-msgstr ""
+msgstr "Trier dans l'ordre du fichier"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1075
 msgid "Clear All"
-msgstr ""
+msgstr "Tout effacer"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1335
 #, c-format
 msgid "A group or model named '%s' already exists."
-msgstr ""
+msgstr "Un groupe ou un modèle nommé « %s » existe déjà."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1337
 msgid "Enter a different name for the new group:"
-msgstr ""
+msgstr "Saisissez un autre nom pour le nouveau groupe :"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1337
 msgid "Group Already Exists"
-msgstr ""
+msgstr "Le groupe existe déjà"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1343
 msgid "The name cannot be empty."
-msgstr ""
+msgstr "Le nom ne peut pas être vide."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1345
 #, c-format
 msgid "'%s' is also already in use."
-msgstr ""
+msgstr "« %s » est aussi déjà utilisé."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1394
 msgid "The group is added to this screen and mapped. It will not be committed until you press Ok in the import window."
-msgstr ""
+msgstr "Le groupe est ajouté à cet écran et associé. Il ne sera validé que lorsque vous cliquerez sur OK dans la fenêtre d'import."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1395
 #, c-format
 msgid "%d groups are added to this screen and mapped. They will not be committed until you press Ok in the import window."
-msgstr ""
+msgstr "%d groupes sont ajoutés à cet écran et associés. Ils ne seront validés que lorsque vous cliquerez sur OK dans la fenêtre d'import."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1398
 msgid "Not added: "
-msgstr ""
+msgstr "Non ajoutés : "
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1725 src-ui-wx/layout/LayoutPanel.cpp:3277
 msgid "Filter models"
@@ -2290,18 +2338,20 @@ msgid ""
 "Shows only matching models. Every action -- Ok, Save Map, Auto Map, Clear All -- still covers the hidden rows.\n"
 "%s"
 msgstr ""
+"N'affiche que les modèles correspondants. Toutes les actions (OK, enregistrer, association auto, tout effacer) s'appliquent quand même aux lignes masquées.\n"
+"%s"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1737
 msgid "Hide Unmapped"
-msgstr ""
+msgstr "Masquer les non associés"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1739
 msgid "Collapse All"
-msgstr ""
+msgstr "Tout replier"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1754
 msgid "Filter sources"
-msgstr ""
+msgstr "Filtrer les sources"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1755
 #, c-format
@@ -2309,151 +2359,153 @@ msgid ""
 "Shows only matching sources. Mappings to hidden sources are kept, and Auto Map and Load Map still see every source.\n"
 "%s"
 msgstr ""
+"N'affiche que les sources correspondantes. Les associations vers des sources masquées sont conservées, et l'association auto et le chargement voient toujours toutes les sources.\n"
+"%s"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1763
 msgid "Show Compare"
-msgstr ""
+msgstr "Afficher la comparaison"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1767
 msgid "Compare is only available when importing an xLights sequence (.xsq, .xsqz, .piz, .zip or .xml)."
-msgstr ""
+msgstr "La comparaison n'est disponible que pour l'import d'une séquence xLights (.xsq, .xsqz, .piz, .zip ou .xml)."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1775
 msgid "Show Timeline"
-msgstr ""
+msgstr "Afficher la ligne de temps"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:2064 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:5730
 #, c-format
 msgid "Showing %d of %d"
-msgstr ""
+msgstr "%d affichés sur %d"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3353
 #, c-format
 msgid " and %d more"
-msgstr ""
+msgstr " et %d autres"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3356
 #, c-format
 msgid "The group you added, %s, will be removed from your layout."
-msgstr ""
+msgstr "Le groupe ajouté, %s, sera retiré de votre disposition."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3357
 #, c-format
 msgid "The %d groups you added (%s) will be removed from your layout."
-msgstr ""
+msgstr "Les %d groupes ajoutés (%s) seront retirés de votre disposition."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3360
 msgid "Are you sure you want to exit?"
-msgstr ""
+msgstr "Voulez-vous vraiment quitter ?"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3360
 msgid "Are you sure you want to cancel?"
-msgstr ""
+msgstr "Voulez-vous vraiment annuler ?"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3469
 #, c-format
 msgid "%s - showing %s of %d"
-msgstr ""
+msgstr "%s - %s affichés sur %d"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3472
 #, c-format
 msgid "%s - %d submodels of %s"
-msgstr ""
+msgstr "%s - %d sous-modèles de %s"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3474
 #, c-format
 msgid "%s - showing %s (%d of %d submodels)"
-msgstr ""
+msgstr "%s - affichage de %s (%d sous-modèles sur %d)"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3556
 msgid "Click a vendor model to show it here"
-msgstr ""
+msgstr "Cliquez sur un modèle du fabricant pour l'afficher ici"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3556 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3758
 msgid "No preview available (sequence has no layout data)"
-msgstr ""
+msgstr "Pas d'aperçu (la séquence n'a pas de données de disposition)"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3558 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3865
 msgid "Hover or click your models to compare"
-msgstr ""
+msgstr "Survolez ou cliquez sur vos modèles pour comparer"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3594
 msgid "Drag to resize the compare previews. Double-click to reset."
-msgstr ""
+msgstr "Faites glisser pour redimensionner les aperçus de comparaison. Double-clic pour réinitialiser."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3641
 msgid "Show the vendor's model next to yours so you can see whether they look alike."
-msgstr ""
+msgstr "Affiche le modèle du fabricant à côté du vôtre pour voir s'ils se ressemblent."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3758 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3869
 #, c-format
 msgid "No preview available for %s"
-msgstr ""
+msgstr "Pas d'aperçu pour %s"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3778 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3890
 #, c-format
 msgid "No preview available for %s (group has different models)"
-msgstr ""
+msgstr "Pas d'aperçu pour %s (le groupe contient des modèles différents)"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3875 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3888
 msgid "hovering"
-msgstr ""
+msgstr "survolé"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3875 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:3888
 msgid "selected"
-msgstr ""
+msgstr "sélectionné"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:5788
 msgid "Update Aliases Done."
-msgstr ""
+msgstr "Mise à jour des alias terminée."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:794
 msgid "Map CCR/Strand"
-msgstr ""
+msgstr "Associer CCR/brin"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:799
 msgid "Erase existing effects on imported models"
-msgstr ""
+msgstr "Effacer les effets existants des modèles importés"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:802
 msgid "Lock effects on import"
-msgstr ""
+msgstr "Verrouiller les effets à l'import"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:805
 msgid "Convert Render Style"
-msgstr ""
+msgstr "Convertir le style de rendu"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:807
 msgid "When mapping model to group, convert render style to 'Per Model' when applicable"
-msgstr ""
+msgstr "Lors de l'association d'un modèle à un groupe, convertit si possible le style de rendu en « Per Model »"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:809
 msgid "Record donor sequence in this sequence's metadata"
-msgstr ""
+msgstr "Noter la séquence d'origine dans les métadonnées de cette séquence"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:811
 msgid "Remember which sequence these effects were imported from, so it shows in Sequence Settings and can be re-opened from Import > Open Original File."
-msgstr ""
+msgstr "Retient la séquence d'où viennent ces effets : elle s'affiche dans les réglages de séquence et peut être rouverte depuis Import > Open Original File."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:815
 msgid "Import Model Blend Mode"
-msgstr ""
+msgstr "Importer le mode de fusion des modèles"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:822
 msgid "Import matrix face definitions into the sequence (embedded)"
-msgstr ""
+msgstr "Importer les visages matriciels dans la séquence (intégrés)"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:824
 msgid "When on, Matrix (image) face definitions on the imported models are stored in this sequence (with images embedded) instead of being added to the mapped models in your layout. Node/Coro faces are unaffected."
-msgstr ""
+msgstr "Si activé, les visages matriciels (images) des modèles importés sont enregistrés dans cette séquence (images intégrées) au lieu d'être ajoutés aux modèles associés de votre disposition. Les visages par nœuds/Coro ne sont pas concernés."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:828
 msgid "Import Media"
-msgstr ""
+msgstr "Importer les médias"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:831
 msgid "View/Change Options"
-msgstr ""
+msgstr "Voir/modifier les options"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:834 src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:61
 msgid "Timing Tracks"
@@ -2461,91 +2513,95 @@ msgstr "Pistes de timing"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:861
 msgid "Auto Map"
-msgstr ""
+msgstr "Association auto"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:863
 msgid "AI Map"
-msgstr ""
+msgstr "Association par IA"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:865
 msgid "Update Aliases w/ Maps"
-msgstr ""
+msgstr "Mettre à jour les alias"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:872
 msgid "Save Map"
-msgstr ""
+msgstr "Enregistrer l'association"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:875
 msgid "Load Map"
-msgstr ""
+msgstr "Charger une association"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:122
 msgid "Webcam node identification (build/fix an existing model's node positions)"
-msgstr ""
+msgstr "Identification des nœuds par webcam (créer/corriger les positions des nœuds d'un modèle existant)"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:18
 msgid "Generate Custom Model"
-msgstr ""
+msgstr "Générer un modèle personnalisé"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:198
 msgid ""
 "No ONVIF cameras were found on the network.\n"
 "You can still enter a stream URL manually."
 msgstr ""
+"Aucune caméra ONVIF trouvée sur le réseau.\n"
+"Vous pouvez saisir une URL de flux à la main."
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:200
 msgid "Discover Cameras"
-msgstr ""
+msgstr "Rechercher des caméras"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:236
 msgid ""
 "Could not read the camera's streams.\n"
 "Check the username / password."
 msgstr ""
+"Impossible de lire les flux de la caméra.\n"
+"Vérifiez l'identifiant et le mot de passe."
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:238
 msgid "Remote Camera"
-msgstr ""
+msgstr "Caméra distante"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:24
 msgid "How do you want to build this model?"
-msgstr ""
+msgstr "Comment voulez-vous créer ce modèle ?"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:28
 msgid "Classic flow (record video, decode manually)"
-msgstr ""
+msgstr "Méthode classique (filmer, décoder à la main)"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:31
 msgid "Camera scan (KLightMapper, automatic)"
-msgstr ""
+msgstr "Relevé par caméra (KLightMapper, automatique)"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:69
 msgid "Remote camera (RTSP / IP camera)"
-msgstr ""
+msgstr "Caméra distante (RTSP / caméra IP)"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:78
 msgid "Discovered:"
-msgstr ""
+msgstr "Trouvées :"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:82 src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:190
 msgid "(enter URL manually below)"
-msgstr ""
+msgstr "(saisir l'URL ci-dessous)"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:85
 msgid "Discover"
-msgstr ""
+msgstr "Rechercher"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:89
 msgid "or Stream URL:"
-msgstr ""
+msgstr "ou URL du flux :"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:94
 msgid "Username:"
-msgstr ""
+msgstr "Identifiant :"
 
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:98
 msgid "Password:"
-msgstr ""
+msgstr "Mot de passe :"
 
 #: src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:102
 msgid ""
@@ -3096,11 +3152,11 @@ msgstr "Timing/Modèle"
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:101
 msgid "Shaders"
-msgstr ""
+msgstr "Shaders"
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:110
 msgid "Videos"
-msgstr ""
+msgstr "Vidéos"
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:120 src-ui-wx/sequencer/LyricUserDictDialog.cpp:143
 msgid "OK"
@@ -3108,7 +3164,7 @@ msgstr "OK"
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:62
 msgid "Media Import Options"
-msgstr ""
+msgstr "Options d'import des médias"
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:66
 msgid ""
@@ -3117,10 +3173,14 @@ msgid ""
 "NOTE:  Only media files from mapped effects which actually exist in the sequence package \n"
 "you are mapping from will be imported."
 msgstr ""
+"Choisissez pour chaque type de média le dossier où importer les fichiers disponibles.\n"
+"\n"
+"REMARQUE : seuls les médias des effets associés réellement présents dans le paquet \n"
+"de séquence d'origine seront importés."
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:70
 msgid "Restore Defaults"
-msgstr ""
+msgstr "Rétablir les valeurs par défaut"
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:74 src-ui-wx/sequencer/SeqSettingsDialog.cpp:539
 msgid "Faces"
@@ -3132,7 +3192,7 @@ msgstr ""
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:92
 msgid "Images"
-msgstr ""
+msgstr "Images"
 
 #: src-ui-wx/media/ResizeImageDialog.cpp:45 src-ui-wx/model/CustomModelDialog.cpp:391
 msgid "Width"
@@ -3144,7 +3204,7 @@ msgstr "Hauteur"
 
 #: src-ui-wx/media/ResizeImageDialog.cpp:55
 msgid "Scaling Type"
-msgstr ""
+msgstr "Type de mise à l'échelle"
 
 #: src-ui-wx/media/ResizeImageDialog.cpp:59
 msgid "Bilinear"
@@ -3164,11 +3224,11 @@ msgstr ""
 
 #: src-ui-wx/media/VideoExporter.cpp:74
 msgid "Export progress"
-msgstr ""
+msgstr "Progression de l'export"
 
 #: src-ui-wx/media/VideoExporter.cpp:74
 msgid "Exporting video..."
-msgstr ""
+msgstr "Export de la vidéo..."
 
 #: src-ui-wx/model/AlignmentDialog.cpp:44
 msgid "Select alignment point"
@@ -5239,7 +5299,7 @@ msgstr "Tout rendre et enregistrer sous"
 
 #: src-ui-wx/render/RenderUI.cpp:508
 msgid "Rendering all layers for time slice"
-msgstr ""
+msgstr "Rendu de tous les calques pour la tranche de temps"
 
 #: src-ui-wx/sequencer/AutoLabelDialog.cpp:29
 msgid "Auto Label Timing Track"
@@ -6467,39 +6527,39 @@ msgstr ""
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:115
 msgid "Set Start Null Nodes"
-msgstr ""
+msgstr "Définir les nœuds nuls de début"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:122
 msgid "Set End Null Nodes"
-msgstr ""
+msgstr "Définir les nœuds nuls de fin"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:129
 msgid "Set Brightness"
-msgstr ""
+msgstr "Définir la luminosité"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:136
 msgid "Set Gamma"
-msgstr ""
+msgstr "Définir le gamma"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:142
 msgid "Group Count"
-msgstr ""
+msgstr "Nombre de groupes"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:69
 msgid "Protocol"
-msgstr ""
+msgstr "Protocole"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:74
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:79
 msgid "Smart Remote"
-msgstr ""
+msgstr "Smart Remote"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:83
 msgid "Set Direction"
-msgstr ""
+msgstr "Définir le sens"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:87
 msgid "Forward"
@@ -6511,7 +6571,7 @@ msgstr ""
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:91
 msgid "Set Color Order"
-msgstr ""
+msgstr "Définir l'ordre des couleurs"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:95 src-ui-wx/setup/PixelTestDialog.cpp:1347
 msgid "RGB"
@@ -6535,27 +6595,27 @@ msgstr ""
 
 #: src-ui-wx/setup/ControllerModelDialog.cpp:2148
 msgid "Controller Visualiser"
-msgstr ""
+msgstr "Visualiseur de contrôleur"
 
 #: src-ui-wx/setup/ControllerModelDialog.cpp:2169
 msgid "Box Size:"
-msgstr ""
+msgstr "Taille des cases :"
 
 #: src-ui-wx/setup/ControllerModelDialog.cpp:2173
 msgid "Box Size"
-msgstr ""
+msgstr "Taille des cases"
 
 #: src-ui-wx/setup/ControllerModelDialog.cpp:2175
 msgid "Font Size:"
-msgstr ""
+msgstr "Taille de police :"
 
 #: src-ui-wx/setup/ControllerModelDialog.cpp:2179
 msgid "Font Size"
-msgstr ""
+msgstr "Taille de police"
 
 #: src-ui-wx/setup/ControllerModelDialog.cpp:2191
 msgid "Hide models assigned to other controllers"
-msgstr ""
+msgstr "Masquer les modèles affectés à d'autres contrôleurs"
 
 #: src-ui-wx/setup/ControllerModelDialog.cpp:2263
 #, c-format
@@ -6563,130 +6623,136 @@ msgid ""
 "Filters the model pool and dims non-matching models on the controller visualizer. Empty filter = normal view.\n"
 "%s"
 msgstr ""
+"Filtre la liste des modèles et assombrit les modèles non correspondants dans le visualiseur. Filtre vide = vue normale.\n"
+"%s"
 
 #: src-ui-wx/setup/ControllerModelDialog.cpp:3278
 msgid "Save Controller Spreadsheet"
-msgstr ""
+msgstr "Enregistrer le tableur du contrôleur"
 
 #: src-ui-wx/setup/DiscoveryAuthDialog.cpp:24
 msgid "Save Password"
-msgstr ""
+msgstr "Enregistrer le mot de passe"
 
 #: src-ui-wx/setup/IPEntryDialog.cpp:39
 msgid "Enter IP Address"
-msgstr ""
+msgstr "Saisir l'adresse IP"
 
 #: src-ui-wx/setup/IPEntryDialog.cpp:44
 msgid "IP Address:"
-msgstr ""
+msgstr "Adresse IP :"
 
 #: src-ui-wx/setup/MultiControllerUploadDialog.cpp:102
 msgid "Select all the controllers you want to upload to."
-msgstr ""
+msgstr "Sélectionnez tous les contrôleurs vers lesquels envoyer."
 
 #: src-ui-wx/setup/MultiControllerUploadDialog.cpp:128
 msgid "Select / clear all controllers shown in the list"
-msgstr ""
+msgstr "Sélectionne / désélectionne tous les contrôleurs de la liste"
 
 #: src-ui-wx/setup/MultiControllerUploadDialog.cpp:133
 msgid "name, IP or description"
-msgstr ""
+msgstr "nom, IP ou description"
 
 #: src-ui-wx/setup/MultiControllerUploadDialog.cpp:425
 msgid "Check Selected"
-msgstr ""
+msgstr "Cocher la sélection"
 
 #: src-ui-wx/setup/MultiControllerUploadDialog.cpp:426
 msgid "Uncheck Selected"
-msgstr ""
+msgstr "Décocher la sélection"
 
 #: src-ui-wx/setup/MultiControllerUploadDialog.cpp:431
 msgid "Invert Selection"
-msgstr ""
+msgstr "Inverser la sélection"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1114
 msgid "Test Lights"
-msgstr ""
+msgstr "Tester les lumières"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1174
 msgid "Outputs"
-msgstr ""
+msgstr "Sorties"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1186
 msgid "Output to lights"
-msgstr ""
+msgstr "Sortie vers les lumières"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1189
 msgid "Don't send data to unused outputs"
-msgstr ""
+msgstr "Ne pas envoyer de données aux sorties inutilisées"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1200 src-ui-wx/setup/PixelTestDialog.cpp:1254 src-ui-wx/setup/PixelTestDialog.cpp:1309 src-ui-wx/setup/PixelTestDialog.cpp:1334
 msgid "Function"
-msgstr ""
+msgstr "Fonction"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1204 src-ui-wx/setup/PixelTestDialog.cpp:1258
 msgid "Chase"
-msgstr ""
+msgstr "Chenillard"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1206 src-ui-wx/setup/PixelTestDialog.cpp:1260
 msgid "Chase 1/3"
-msgstr ""
+msgstr "Chenillard 1/3"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1208 src-ui-wx/setup/PixelTestDialog.cpp:1262
 msgid "Chase 1/4"
-msgstr ""
+msgstr "Chenillard 1/4"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1210 src-ui-wx/setup/PixelTestDialog.cpp:1264
 msgid "Chase 1/5"
-msgstr ""
+msgstr "Chenillard 1/5"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1212 src-ui-wx/setup/PixelTestDialog.cpp:1266
 msgid "Alternate"
-msgstr ""
+msgstr "Alterné"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1214 src-ui-wx/setup/PixelTestDialog.cpp:1268
 #, c-format
 msgid "Twinkle 5%"
-msgstr ""
+msgstr "Scintillement 5%"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1216 src-ui-wx/setup/PixelTestDialog.cpp:1270
 #, c-format
 msgid "Twinkle 10%"
-msgstr ""
+msgstr "Scintillement 10%"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1218 src-ui-wx/setup/PixelTestDialog.cpp:1272
 #, c-format
 msgid "Twinkle 25%"
-msgstr ""
+msgstr "Scintillement 25%"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1220 src-ui-wx/setup/PixelTestDialog.cpp:1274
 #, c-format
 msgid "Twinkle 50%"
-msgstr ""
+msgstr "Scintillement 50%"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1224 src-ui-wx/setup/PixelTestDialog.cpp:1278
 msgid "Background Only"
-msgstr ""
+msgstr "Fond uniquement"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1232
 msgid ""
 "Background\n"
 "Intensity"
 msgstr ""
+"Intensité\n"
+"du fond"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1240
 msgid ""
 "Highlight\n"
 "Intensity"
 msgstr ""
+"Intensité\n"
+"de la surbrillance"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1284
 msgid "Background Color"
-msgstr ""
+msgstr "Couleur de fond"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1294
 msgid "Highlight Color"
-msgstr ""
+msgstr "Couleur de surbrillance"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1313
 msgid "A-B-C"
@@ -6702,7 +6768,7 @@ msgstr ""
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1319
 msgid "Mixed Colors"
-msgstr ""
+msgstr "Couleurs mélangées"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1321
 msgid "R-G-B-W"
@@ -6711,163 +6777,163 @@ msgstr ""
 #: src-ui-wx/setup/PixelTestDialog.cpp:1323
 #, c-format
 msgid "Tag every 50th node white @ 50%"
-msgstr ""
+msgstr "Un nœud sur 50 en blanc à 50%"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1325
 msgid "This is really only useful if you are testing a single model"
-msgstr ""
+msgstr "Utile surtout pour tester un seul modèle"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1338
 msgid "Port Cycle"
-msgstr ""
+msgstr "Cycle des ports"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1340
 msgid "10 Pixel Blocks"
-msgstr ""
+msgstr "Blocs de 10 pixels"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1346
 msgid "Standard"
-msgstr ""
+msgstr "Standard"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1348
 msgid "RGB Cycle"
-msgstr ""
+msgstr "Cycle RGB"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1353
 msgid "Speed"
-msgstr ""
+msgstr "Vitesse"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1422 src-ui-wx/setup/PixelTestDialog.cpp:2111
 msgid "Filter by name..."
-msgstr ""
+msgstr "Filtrer par nom..."
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:2877
 msgid "Select test configuration"
-msgstr ""
+msgstr "Choisir une configuration de test"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:2877
 msgid "Load Test Settings"
-msgstr ""
+msgstr "Charger des réglages de test"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:2905
 msgid "Enter a name for this test configuration"
-msgstr ""
+msgstr "Saisissez un nom pour cette configuration de test"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:2905
 msgid "Save Test Settings"
-msgstr ""
+msgstr "Enregistrer les réglages de test"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:2918
 msgid "Name already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Ce nom existe déjà. Voulez-vous le remplacer ?"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:2918
 msgid "Warning"
-msgstr ""
+msgstr "Avertissement"
 
 #: src-ui-wx/setup/RemapDMXChannelsDialog.cpp:45
 msgid "Remap DMX Channels"
-msgstr ""
+msgstr "Réassigner les canaux DMX"
 
 #: src-ui-wx/setup/RemapDMXChannelsDialog.cpp:58
 msgid "Map From"
-msgstr ""
+msgstr "Depuis"
 
 #: src-ui-wx/setup/RemapDMXChannelsDialog.cpp:59
 msgid "Map To"
-msgstr ""
+msgstr "Vers"
 
 #: src-ui-wx/setup/RemapDMXChannelsDialog.cpp:60
 msgid "Scale"
-msgstr ""
+msgstr "Échelle"
 
 #: src-ui-wx/setup/RemapDMXChannelsDialog.cpp:61
 msgid "Offset"
-msgstr ""
+msgstr "Décalage"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:104 src-ui-wx/setup/ShowDirectoriesDialog.cpp:253
 msgid "Change Temporarily"
-msgstr ""
+msgstr "Changer temporairement"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:107
 msgid "Change Temporarily Again"
-msgstr ""
+msgstr "Changer encore temporairement"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:114
 msgid "Base Show Directory:"
-msgstr ""
+msgstr "Dossier de show de base :"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:115
 msgid "No base show directory"
-msgstr ""
+msgstr "Aucun dossier de show de base"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:129
 msgid "Change"
-msgstr ""
+msgstr "Changer"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:133
 msgid "Open the base show folder"
-msgstr ""
+msgstr "Ouvre le dossier de show de base"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:139
 msgid "Auto Update On Load"
-msgstr ""
+msgstr "Mise à jour auto au chargement"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:163
 msgid "Folder"
-msgstr ""
+msgstr "Dossier"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:167
 msgid "Add Current"
-msgstr ""
+msgstr "Ajouter l'actuel"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:168
 msgid "Pin the current show folder as a favorite"
-msgstr ""
+msgstr "Ajoute le dossier du show actuel aux favoris"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:171
 msgid "Change the name shown in the File menu"
-msgstr ""
+msgstr "Change le nom affiché dans le menu Fichier"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:176
 msgid "Switch Permanently"
-msgstr ""
+msgstr "Basculer définitivement"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:178
 msgid "Switch Temporarily"
-msgstr ""
+msgstr "Basculer temporairement"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:233
 msgid "No Base Show Directory"
-msgstr ""
+msgstr "Aucun dossier de show de base"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:260
 msgid "Restore to Permanent"
-msgstr ""
+msgstr "Revenir au dossier permanent"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:308
 msgid "Select Base Show Directory"
-msgstr ""
+msgstr "Choisir le dossier de show de base"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:413
 msgid "Rename Favorite"
-msgstr ""
+msgstr "Renommer le favori"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:423
 msgid "Name for this show folder:"
-msgstr ""
+msgstr "Nom de ce dossier de show :"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:463
 msgid "Add Favorite"
-msgstr ""
+msgstr "Ajouter un favori"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:77 src-ui-wx/setup/ShowDirectoriesDialog.cpp:83
 msgid "Directories"
-msgstr ""
+msgstr "Dossiers"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:87
 msgid "Show Directory:"
-msgstr ""
+msgstr "Dossier du show :"
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:90
 msgid "{Show Directory not set}"
@@ -6875,27 +6941,27 @@ msgstr ""
 
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:91 src-ui-wx/setup/ShowDirectoriesDialog.cpp:116
 msgid "Double-click to open in file manager"
-msgstr ""
+msgstr "Double-cliquez pour ouvrir dans le gestionnaire de fichiers"
 
 #: src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:104
 msgid "Filter"
-msgstr ""
+msgstr "Filtrer"
 
 #: src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:349
 msgid "Select Model"
-msgstr ""
+msgstr "Choisir un modèle"
 
 #: src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:55
 msgid "Choose Items..."
-msgstr ""
+msgstr "Choisir des éléments..."
 
 #: src-ui-wx/shared/dialogs/OptionChooser.cpp:37
 msgid "Select Options:"
-msgstr ""
+msgstr "Choisir des options :"
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:154
 msgid "Value Curve"
-msgstr ""
+msgstr "Courbe de valeur"
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:182
 msgid "Flat"
@@ -6979,31 +7045,31 @@ msgstr ""
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:214
 msgid "Parameter 2"
-msgstr ""
+msgstr "Paramètre 2"
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:221
 msgid "Parameter 3"
-msgstr ""
+msgstr "Paramètre 3"
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:236
 msgid "Wrap Values"
-msgstr ""
+msgstr "Boucler les valeurs"
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:244
 msgid "Flip"
-msgstr ""
+msgstr "Inverser"
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:255
 msgid "Timing Track:"
-msgstr ""
+msgstr "Piste de timing :"
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:260
 msgid "Filter Label:"
-msgstr ""
+msgstr "Filtre d'étiquette :"
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:319
 msgid "Audio Track:"
-msgstr ""
+msgstr "Piste audio :"
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:407
 msgid "(Main Track)"
@@ -7011,43 +7077,43 @@ msgstr ""
 
 #: src-ui-wx/shared/utils/wxFilterQuery.h:61
 msgid "Words may be in any order and separators are optional. * and ? are wildcards. /pattern/ is a regular expression."
-msgstr ""
+msgstr "Les mots peuvent être dans n'importe quel ordre et les séparateurs sont facultatifs. * et ? sont des jokers. /motif/ est une expression régulière."
 
 #: src-ui-wx/shared/utils/xlLockButton.cpp:35
 msgid "Lock/Unlock. If Locked then a \"Create Random Effects\" will NOT change this value."
-msgstr ""
+msgstr "Verrouiller/déverrouiller. Si verrouillée, « Create Random Effects » ne modifiera PAS cette valeur."
 
 #: src-ui-wx/xLightsApp.cpp:1278
 msgid "Wiping settings\n"
-msgstr ""
+msgstr "Effacement des réglages\n"
 
 #: src-ui-wx/xLightsApp.cpp:1286
 msgid "Setting show directory to "
-msgstr ""
+msgstr "Dossier du show défini sur "
 
 #: src-ui-wx/xLightsApp.cpp:1304
 msgid "Setting media directory to "
-msgstr ""
+msgstr "Dossier des médias défini sur "
 
 #: src-ui-wx/xLightsApp.cpp:1333
 msgid "No files matched pattern "
-msgstr ""
+msgstr "Aucun fichier ne correspond au motif "
 
 #: src-ui-wx/xLightsApp.cpp:1348
 msgid "Loading read only sequence "
-msgstr ""
+msgstr "Chargement de la séquence en lecture seule "
 
 #: src-ui-wx/xLightsApp.cpp:1353
 msgid "Loading sequence "
-msgstr ""
+msgstr "Chargement de la séquence "
 
 #: src-ui-wx/xLightsApp.cpp:1371
 msgid "Illegal combination of files. Load of zip file will take priority.\n"
-msgstr ""
+msgstr "Combinaison de fichiers non valide. Le fichier zip sera chargé en priorité.\n"
 
 #: src-ui-wx/xLightsApp.cpp:1391
 msgid "Unrecognized command line parameters"
-msgstr ""
+msgstr "Paramètres de ligne de commande non reconnus"
 
 #: src-ui-wx/xLightsMain.cpp:1001
 msgid "Recent Show Folders"

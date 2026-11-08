@@ -49,6 +49,15 @@ toujours de la même façon.
   filtres de visages, placements d'image, sources de notes (MIDI File…),
   timings fixes (25ms, Metronome…), découpes de sous-modèles (Horizontal
   Slices…).
+- **Libellés comparés à du texte anglais écrit en dur** : onglets du panneau
+  Moving Head (Position, Dimmer, Pathing, Pattern, Control, Link, Status,
+  ColorWheel), onglet « Info / Media » des réglages de séquence, « Beginning »
+  (chaînage des modèles). Avant de traduire un libellé, chercher dans son
+  fichier une comparaison `== "…"` avec le même texte.
+- **Choix des contrôleurs et des imports** : versions FSEQ et Local / Proxied
+  de FPP Connect, Master / Remote de HinksPix, Forward / Reverse, modes de
+  fusion SuperStar (« 2 reveals 1 »…).
+- **Contenu écrit dans des fichiers** (en-têtes CSV des exports d'effets).
 - **Valeurs initiales de champs de saisie** (`<group name>`, `Insert text
   here`) : enregistrées telles quelles si l'utilisateur ne les change pas.
 - **Libellés internes jamais affichés** de wxSmith (Item label, Pane caption,
