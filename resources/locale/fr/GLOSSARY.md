@@ -26,6 +26,21 @@ toujours de la même façon.
 - **Types de modèles** (Matrix, Tree, Arches, Candy Canes, Custom, Poly
   Line…) et **valeurs de listes enregistrées** (voir `README.md`, « Do not save
   a translated label »).
+- **Types de courbes de valeur** (Flat, Ramp, Ramp Up/Down, Saw Tooth,
+  Parabolic…) : `ValueCurveDialog` les relit par leur nom.
+- **Éléments de listes relus par leur libellé** (`GetStringSelection` /
+  `SetStringSelection`) :
+  - Préférences > Other : Always Prompt / Always Yes / Always No, Show Folder /
+    AppData-shared, Faces/States/Submodels / Unassigned, Beginner /
+    Intermediate / Advanced / Expert, None / Inputs and Outputs, codecs
+    (Auto, H.264…), OpenGL / Vulkan ;
+  - Sequences : Enabled / Disabled / Locked Effects Only, Unlimited et les
+    tailles (100 MB…), « Locked Only » (valeur par défaut enregistrée) ;
+  - View : Normal / Large (taille de palette).
+  Comme une phrase anglaise n'a qu'une traduction, ces mots restent en anglais
+  partout où ils apparaissent.
+- **Libellés internes jamais affichés** de wxSmith (Item label, Pane caption,
+  Label, Status bar, RECENT1…).
 - **Noms de produits et protocoles** : xLights, xSchedule, FPP, Falcon, WLED,
   ESPixelStick, HinksPix, DMX, E1.31, sACN, Art-Net, DDP, ZCPP, Peppol, S3,
   Cloudflare R2, Jukebox, Vamp, Papagayo.

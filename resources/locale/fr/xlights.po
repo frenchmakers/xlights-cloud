@@ -34,116 +34,116 @@ msgstr ""
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:127
 msgid "Preparing..."
-msgstr ""
+msgstr "Préparation..."
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:136 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/color/ColorCurveDialog.cpp:145 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:47 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:1408 ... (+33)
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:337
 msgid "Backup complete"
-msgstr ""
+msgstr "Sauvegarde terminée"
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:337
 msgid "Backup cancelled"
-msgstr ""
+msgstr "Sauvegarde annulée"
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:337
 msgid "Backup failed"
-msgstr ""
+msgstr "Échec de la sauvegarde"
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:91 src-ui-wx/app-shell/TipOfTheDayDialog.cpp:161 ... (+12)
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:371
 msgid "Waiting for your answer..."
-msgstr ""
+msgstr "En attente de votre réponse..."
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:380
 msgid "Scanning the show folder..."
-msgstr ""
+msgstr "Analyse du dossier du show..."
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:383
 msgid "Step 1/2: building the archive"
-msgstr ""
+msgstr "Étape 1/2 : création de l'archive"
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:386
 msgid "Step 2/2: uploading"
-msgstr ""
+msgstr "Étape 2/2 : envoi"
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:389
 msgid "Writing the manifest..."
-msgstr ""
+msgstr "Écriture du manifeste..."
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:394 src-ui-wx/app-shell/CloudRestoreDialog.cpp:699
 msgid "Cancelling..."
-msgstr ""
+msgstr "Annulation..."
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:426
 msgid "Cancel the cloud backup in progress?"
-msgstr ""
+msgstr "Annuler la sauvegarde cloud en cours ?"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:124 src-ui-wx/automation/ScriptsDialog.cpp:103 src-ui-wx/sequencer/SelectPanel.cpp:130
 msgid "Refresh"
-msgstr ""
+msgstr "Actualiser"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:126
 msgid "Settings..."
-msgstr ""
+msgstr "Paramètres..."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:132
 msgid "Shows"
-msgstr ""
+msgstr "Shows"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:138
 msgid "Backups"
-msgstr ""
+msgstr "Sauvegardes"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:140
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:141
 msgid "Size"
-msgstr ""
+msgstr "Taille"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:155
 msgid "Restore to"
-msgstr ""
+msgstr "Restaurer dans"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:157
 msgid "A new or empty folder. The current show is never overwritten."
-msgstr ""
+msgstr "Un dossier nouveau ou vide. Le show actuel n'est jamais écrasé."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:159
 msgid "Browse..."
-msgstr ""
+msgstr "Parcourir..."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:172
 msgid "Delete Backup..."
-msgstr ""
+msgstr "Supprimer la sauvegarde..."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:173
 msgid "Removes the selected backup from the bucket to free space."
-msgstr ""
+msgstr "Supprime la sauvegarde sélectionnée du bucket pour libérer de la place."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:176
 msgid "Restore"
-msgstr ""
+msgstr "Restaurer"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:285
 msgid "Cloud storage is not set up."
-msgstr ""
+msgstr "Le stockage cloud n'est pas configuré."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:286
 msgid ". Click Settings... to enter the storage details."
-msgstr ""
+msgstr ". Cliquez sur Paramètres... pour saisir les informations du stockage."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:291
 #, c-format
 msgid "Bucket \"%s\" on %s"
-msgstr ""
+msgstr "Bucket « %s » sur %s"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:292 src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:44
 msgid "Cloudflare R2"
@@ -151,36 +151,36 @@ msgstr ""
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:299
 msgid "Looking for backups..."
-msgstr ""
+msgstr "Recherche des sauvegardes..."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:330
 msgid "Unable to list the bucket: "
-msgstr ""
+msgstr "Impossible de lister le bucket : "
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:338
 msgid "No backups found in this bucket."
-msgstr ""
+msgstr "Aucune sauvegarde trouvée dans ce bucket."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:341
 #, c-format
 msgid "%d show(s) found. Select one, then a backup."
-msgstr ""
+msgstr "%d show(s) trouvé(s). Choisissez-en un, puis une sauvegarde."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:364
 msgid "Listing backups..."
-msgstr ""
+msgstr "Liste des sauvegardes..."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:382
 msgid "Unable to list the backups: "
-msgstr ""
+msgstr "Impossible de lister les sauvegardes : "
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:391
 msgid "This show has no complete backup."
-msgstr ""
+msgstr "Ce show n'a aucune sauvegarde complète."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:418
 msgid "Loading..."
-msgstr ""
+msgstr "Chargement..."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:457
 #, c-format
@@ -189,18 +189,21 @@ msgid ""
 ".fseq files: %s\n"
 "Made with xLights %s"
 msgstr ""
+"%d séquences, %d fichiers, %s non compressés\n"
+"Fichiers .fseq : %s\n"
+"Créée avec xLights %s"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:460
 msgid "included"
-msgstr ""
+msgstr "inclus"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:460
 msgid "not included"
-msgstr ""
+msgstr "non inclus"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:477
 msgid "Folder to restore the show into (new or empty)"
-msgstr ""
+msgstr "Dossier où restaurer le show (nouveau ou vide)"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:492
 #, c-format
@@ -209,6 +212,9 @@ msgid ""
 "\n"
 "This cannot be undone."
 msgstr ""
+"Supprimer du bucket la sauvegarde de « %s » faite le %s (%s) ?\n"
+"\n"
+"Cette opération est irréversible."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:495
 msgid ""
@@ -216,62 +222,65 @@ msgid ""
 "\n"
 "It is the only backup of this show."
 msgstr ""
+"\n"
+"\n"
+"C'est la seule sauvegarde de ce show."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:497
 msgid "Delete Backup"
-msgstr ""
+msgstr "Supprimer la sauvegarde"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:503
 msgid "Deleting the backup..."
-msgstr ""
+msgstr "Suppression de la sauvegarde..."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:528
 msgid "Backup deleted."
-msgstr ""
+msgstr "Sauvegarde supprimée."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:528
 msgid "Unable to delete the backup: "
-msgstr ""
+msgstr "Impossible de supprimer la sauvegarde : "
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:539
 msgid "Choose the folder to restore into."
-msgstr ""
+msgstr "Choisissez le dossier de restauration."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:544
 msgid "The destination must be a full folder path."
-msgstr ""
+msgstr "La destination doit être un chemin de dossier complet."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:550
 msgid "The destination is a file, not a folder."
-msgstr ""
+msgstr "La destination est un fichier, pas un dossier."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:554
 msgid "The destination folder is not empty. Choose a new or empty folder."
-msgstr ""
+msgstr "Le dossier de destination n'est pas vide. Choisissez un dossier nouveau ou vide."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:559
 msgid "The destination cannot be the current show folder or a folder inside it."
-msgstr ""
+msgstr "La destination ne peut pas être le dossier du show actuel ni l'un de ses sous-dossiers."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:669
 msgid "The show was restored. Open it now as the current show folder?"
-msgstr ""
+msgstr "Le show a été restauré. L'ouvrir maintenant comme dossier du show actuel ?"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:689
 msgid "Step 1/2: downloading"
-msgstr ""
+msgstr "Étape 1/2 : téléchargement"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:692
 msgid "Checking the download..."
-msgstr ""
+msgstr "Vérification du téléchargement..."
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:695
 msgid "Step 2/2: extracting"
-msgstr ""
+msgstr "Étape 2/2 : extraction"
 
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:719
 msgid "Cancel the restore in progress? The files restored so far are removed."
-msgstr ""
+msgstr "Annuler la restauration en cours ? Les fichiers déjà restaurés seront supprimés."
 
 #: src-ui-wx/app-shell/EmailDialog.cpp:45
 msgid ""
@@ -580,7 +589,7 @@ msgstr ""
 
 #: src-ui-wx/color/ColorCurveDialog.cpp:140 src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:81 src-ui-wx/sequencer/EffectTreeDialog.cpp:150 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:276
 msgid "Export"
-msgstr ""
+msgstr "Exporter"
 
 #: src-ui-wx/color/ColorCurveDialog.cpp:786
 msgid "Choose color curve file"
@@ -972,7 +981,7 @@ msgstr ""
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:248 src-ui-wx/model/ViewpointDialog.cpp:58 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:156 src-ui-wx/sequencer/SeqSettingsDialog.cpp:396 src-ui-wx/sequencer/SeqSettingsDialog.cpp:559 ... (+1)
 msgid "Remove"
-msgstr ""
+msgstr "Retirer"
 
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:281
 msgid "PlayList"
@@ -2442,7 +2451,7 @@ msgstr ""
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:834 src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:61
 msgid "Timing Tracks"
-msgstr ""
+msgstr "Pistes de timing"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:861
 msgid "Auto Map"
@@ -4302,51 +4311,51 @@ msgstr ""
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:54
 msgid "Backup On Save"
-msgstr ""
+msgstr "Sauvegarder à l'enregistrement"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:57
 msgid "Backup On Launch"
-msgstr ""
+msgstr "Sauvegarder au démarrage"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:60
 msgid "Backup Subfolders"
-msgstr ""
+msgstr "Sauvegarder les sous-dossiers"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:65
 msgid "Purge Backups"
-msgstr ""
+msgstr "Purger les sauvegardes"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:68
 msgid "Never"
-msgstr ""
+msgstr "Jamais"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:69
 msgid "Older than 360 days"
-msgstr ""
+msgstr "Plus de 360 jours"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:70
 msgid "Older than 90 days"
-msgstr ""
+msgstr "Plus de 90 jours"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:71
 msgid "Older than 30 days"
-msgstr ""
+msgstr "Plus de 30 jours"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:72
 msgid "Older than 7 days"
-msgstr ""
+msgstr "Plus de 7 jours"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:75
 msgid "Backup Directory"
-msgstr ""
+msgstr "Dossier de sauvegarde"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:76 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:117 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:141
 msgid "Use Show Folder"
-msgstr ""
+msgstr "Utiliser le dossier du show"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:82
 msgid "Alternative Backup Directory"
-msgstr ""
+msgstr "Dossier de sauvegarde alternatif"
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:48
 msgid ""
@@ -4356,72 +4365,79 @@ msgid ""
 "Please ensure you understand what the check sequence options do before deciding\n"
 "to disable them on someone's advice."
 msgstr ""
+"Désactiver des vérifications de séquence allège les résultats de la vérification,\n"
+"mais peut aussi masquer la cause de problèmes comme des pixels allumés à tort ou un rendu lent.\n"
+"\n"
+"Assurez-vous de comprendre le rôle de chaque option de vérification avant de la désactiver\n"
+"sur le conseil de quelqu'un."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:50
 msgid "Disable checks on duplicate use of universe/id across controllers."
-msgstr ""
+msgstr "Désactiver la vérification des univers/ID utilisés par plusieurs contrôleurs."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:52
 msgid "If you are using unicast and not using #universe:startchannel addressing then this check can be disabled."
-msgstr ""
+msgstr "Si vous utilisez l'unicast sans l'adressage #universe:startchannel, cette vérification peut être désactivée."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:54
 msgid "Disable checks for non-contiguous channels on controller ports."
-msgstr ""
+msgstr "Désactiver la vérification des canaux non contigus sur les ports des contrôleurs."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:56
 msgid "If you only use controllers that support virtual strings then this check can be safely disabled."
-msgstr ""
+msgstr "Si vous n'utilisez que des contrôleurs qui gèrent les chaînes virtuelles, cette vérification peut être désactivée sans risque."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:58
 msgid "Disable checks for groups containing models from different previews."
-msgstr ""
+msgstr "Désactiver la vérification des groupes contenant des modèles de différents aperçus."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:60
 msgid "Adding models to groups from different previews can make them appear in other views with no obvious reason why they do."
-msgstr ""
+msgstr "Ajouter à un groupe des modèles de différents aperçus peut les faire apparaître dans d'autres vues sans raison apparente."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:62
 msgid "Disable checks for duplicate nodes in model groups."
-msgstr ""
+msgstr "Désactiver la vérification des nœuds en double dans les groupes de modèles."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:64
 msgid "Duplicate nodes in model groups can lead to pixels lighting during effects at unexpected times."
-msgstr ""
+msgstr "Des nœuds en double dans les groupes de modèles peuvent allumer des pixels à des moments inattendus pendant les effets."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:66
 msgid "Disable transition time checking."
-msgstr ""
+msgstr "Désactiver la vérification des durées de transition."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:68
 msgid "Transition times that overlap or extend beyond the duration of the effect can lead to unexpected amounts of dimming."
-msgstr ""
+msgstr "Des durées de transition qui se chevauchent ou dépassent la durée de l'effet peuvent atténuer la luminosité de façon inattendue."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:70
 msgid "Disable custom model size checking."
-msgstr ""
+msgstr "Désactiver la vérification de la taille des modèles personnalisés."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:72
 msgid "Large custom models with largely empty cells generate significant rendering overhead. You may want to consider shrinking the custom model dimensions if this can done without too significantly adversely affecting appearance."
-msgstr ""
+msgstr "Les grands modèles personnalisés dont la plupart des cellules sont vides alourdissent beaucoup le rendu. Pensez à réduire leurs dimensions si cela n'altère pas trop leur apparence."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:74
 msgid "Disable sketch image file checking."
-msgstr ""
+msgstr "Désactiver la vérification des images de l'effet Sketch."
 
 #: src-ui-wx/preferences/CheckSequenceSettingsPanel.cpp:76
 msgid "Sketch effect image files are not essential to rendering."
-msgstr ""
+msgstr "Les images de l'effet Sketch ne sont pas indispensables au rendu."
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:100
 msgid "backups of each show (0 = keep them all)"
-msgstr ""
+msgstr "sauvegardes de chaque show (0 = tout garder)"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:101
 msgid ""
 "After each successful backup, older backups of the same show are deleted from the bucket.\n"
 "Backups can also be deleted one at a time from File > Restore from Cloud."
 msgstr ""
+"Après chaque sauvegarde réussie, les anciennes sauvegardes du même show sont supprimées du bucket.\n"
+"Les sauvegardes peuvent aussi être supprimées une à une depuis Fichier > Restaurer depuis le cloud."
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:107
 msgid ""
@@ -4431,154 +4447,159 @@ msgid ""
 "On storage with versioning or object lock turned on, deleted backups can still use space.\n"
 "Settings are stored on this computer; the secret key is kept in the system's secure storage."
 msgstr ""
+"Cloudflare R2 est recommandé : son offre gratuite inclut 10 Go de stockage et les téléchargements.\n"
+"Utilisez un jeton limité au bucket de sauvegarde et gardez-le privé : toute personne ayant ces clés\n"
+"peut lire les sauvegardes, fichiers audio compris. Ne rendez jamais le bucket public.\n"
+"Sur un stockage avec versionnage ou verrouillage d'objets, les sauvegardes supprimées peuvent encore occuper de la place.\n"
+"Les paramètres sont enregistrés sur cet ordinateur ; la clé secrète est conservée dans le stockage sécurisé du système."
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:224
 msgid "Testing connection..."
-msgstr ""
+msgstr "Test de la connexion..."
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:229
 msgid "Connection OK: the bucket is writable."
-msgstr ""
+msgstr "Connexion OK : le bucket est accessible en écriture."
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:33
 msgid "Storage"
-msgstr ""
+msgstr "Stockage"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:45
 msgid "Other S3-compatible storage"
-msgstr ""
+msgstr "Autre stockage compatible S3"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:47
 msgid "Provider"
-msgstr ""
+msgstr "Fournisseur"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:50
 msgid "Cloudflare account ID"
-msgstr ""
+msgstr "ID de compte Cloudflare"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:51
 msgid "Account ID"
-msgstr ""
+msgstr "ID de compte"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:55
 msgid "Endpoint URL"
-msgstr ""
+msgstr "URL du point de terminaison"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:59
 msgid "Region"
-msgstr ""
+msgstr "Région"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:61
 msgid "Path-style addressing (endpoint/bucket/key)"
-msgstr ""
+msgstr "Adressage de type chemin (endpoint/bucket/clé)"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:66
 msgid "Bucket"
-msgstr ""
+msgstr "Bucket"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:69
 msgid "Folder inside the bucket. Backups go to <prefix>/<show folder name>/."
-msgstr ""
+msgstr "Dossier dans le bucket. Les sauvegardes vont dans <préfixe>/<nom du dossier du show>/."
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:70
 msgid "Folder prefix"
-msgstr ""
+msgstr "Préfixe de dossier"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:73
 msgid "Access key ID"
-msgstr ""
+msgstr "ID de clé d'accès"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:76
 msgid "Secret access key"
-msgstr ""
+msgstr "Clé d'accès secrète"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:81
 msgid "Test Connection"
-msgstr ""
+msgstr "Tester la connexion"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:89
 msgid "Include rendered .fseq files"
-msgstr ""
+msgstr "Inclure les fichiers .fseq rendus"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:90
 msgid "A restored show can be played right away without rendering every sequence again."
-msgstr ""
+msgstr "Un show restauré peut être lu tout de suite, sans refaire le rendu de chaque séquence."
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:92
 msgid "Include a thumbnail of the layout (.png)"
-msgstr ""
+msgstr "Inclure une miniature de la disposition (.png)"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:93
 msgid "Shown when choosing a backup to restore."
-msgstr ""
+msgstr "Affichée lors du choix d'une sauvegarde à restaurer."
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:96
 msgid "Keep the last"
-msgstr ""
+msgstr "Garder les"
 
 #: src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:65
 msgid "Effect Grid"
-msgstr ""
+msgstr "Grille des effets"
 
 #: src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:75
 msgid "Suppress Dark Mode"
-msgstr ""
+msgstr "Désactiver le mode sombre"
 
 #: src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:79 src-ui-wx/sequencer/SeqSettingsDialog.cpp:414 src-ui-wx/sequencer/SeqSettingsDialog.cpp:435
 msgid "Import"
-msgstr ""
+msgstr "Importer"
 
 #: src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:83
 msgid "Reset Defaults"
-msgstr ""
+msgstr "Rétablir les valeurs par défaut"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:101
 msgid "Display Transition Marks"
-msgstr ""
+msgstr "Afficher les repères de transition"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:106
 msgid "Hide Color Update Warning"
-msgstr ""
+msgstr "Masquer l'avertissement de mise à jour des couleurs"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:111
 msgid "Show Alternate Timing Format"
-msgstr ""
+msgstr "Afficher l'autre format de temps"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:113
 msgid "Sequencer timing will be displayed in seconds and milliseconds"
-msgstr ""
+msgstr "Le temps du séquenceur sera affiché en secondes et millisecondes"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:117
 msgid "Bell on render completion or error"
-msgstr ""
+msgstr "Signal sonore à la fin du rendu ou en cas d'erreur"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:122
 msgid "Paste As"
-msgstr ""
+msgstr "Coller en"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:125 src-ui-wx/sequencer/EffectTreeDialog.cpp:120
 msgid "Relative"
-msgstr ""
+msgstr "Relatif"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:126
 msgid "Layers"
-msgstr ""
+msgstr "Calques"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:127
 msgid "Relative: paste effects at the selected position. As Layers: paste preserving layer structure from copied effects."
-msgstr ""
+msgstr "Relatif : colle les effets à la position sélectionnée. Calques : colle en conservant la structure des calques des effets copiés."
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:56
 msgid "Spacing"
-msgstr ""
+msgstr "Espacement"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:59
 msgid "Extra Small"
-msgstr ""
+msgstr "Très petit"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:60 src-ui-wx/preferences/ViewSettingsPanel.cpp:63 src-ui-wx/preferences/ViewSettingsPanel.cpp:74 src-ui-wx/preferences/ViewSettingsPanel.cpp:112
 msgid "Small"
-msgstr ""
+msgstr "Petit"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:62 src-ui-wx/preferences/ViewSettingsPanel.cpp:65 src-ui-wx/preferences/ViewSettingsPanel.cpp:72 src-ui-wx/preferences/ViewSettingsPanel.cpp:110 src-ui-wx/preferences/ViewSettingsPanel.cpp:121
 msgid "Large"
@@ -4586,51 +4607,51 @@ msgstr ""
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:63 src-ui-wx/preferences/ViewSettingsPanel.cpp:66 src-ui-wx/preferences/ViewSettingsPanel.cpp:73
 msgid "Extra Large"
-msgstr ""
+msgstr "Très grand"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:66
 msgid "Effect Backgrounds"
-msgstr ""
+msgstr "Fonds des effets"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:68
 msgid "Show gif backgrounds for most effects"
-msgstr ""
+msgstr "Afficher les fonds animés (gif) de la plupart des effets"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:72
 msgid "Node Values"
-msgstr ""
+msgstr "Valeurs des nœuds"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:77
 msgid "Group Effect Indicator"
-msgstr ""
+msgstr "Indicateur d'effet de groupe"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:79
 msgid "Show bar on model box to indicate presence of an effect"
-msgstr ""
+msgstr "Affiche une barre sur le modèle pour signaler la présence d'un effet"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:83
 msgid "Snap to Timing Marks"
-msgstr ""
+msgstr "Aimanter aux repères de timing"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:88
 msgid "Double Click Mode"
-msgstr ""
+msgstr "Mode du double-clic"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:91
 msgid "Edit Text"
-msgstr ""
+msgstr "Modifier le texte"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:92
 msgid "Play Timing"
-msgstr ""
+msgstr "Lire le timing"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:95
 msgid "Small Waveform"
-msgstr ""
+msgstr "Forme d'onde réduite"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:97
 msgid "Reduce the vertical size of the waveform"
-msgstr ""
+msgstr "Réduit la hauteur de la forme d'onde"
 
 #: src-ui-wx/preferences/OtherSettingsPanel.cpp:101
 msgid "DirectX11"
@@ -4850,19 +4871,19 @@ msgstr "Décodage vidéo matériel"
 
 #: src-ui-wx/preferences/OutputSettingsPanel.cpp:48
 msgid "Use Frame Sync"
-msgstr ""
+msgstr "Utiliser la synchro de trame"
 
 #: src-ui-wx/preferences/OutputSettingsPanel.cpp:51
 msgid "Force Local IP"
-msgstr ""
+msgstr "Forcer l'IP locale"
 
 #: src-ui-wx/preferences/OutputSettingsPanel.cpp:53
 msgid "Duplicate Frames to Suppress"
-msgstr ""
+msgstr "Trames en double à supprimer"
 
 #: src-ui-wx/preferences/OutputSettingsPanel.cpp:55
 msgid "API Port"
-msgstr ""
+msgstr "Port de l'API"
 
 #: src-ui-wx/preferences/OutputSettingsPanel.cpp:62
 msgid "10"
@@ -4890,27 +4911,27 @@ msgstr ""
 
 #: src-ui-wx/preferences/RandomEffectsSettingsPanel.cpp:41
 msgid "Select Effects for Generate Random"
-msgstr ""
+msgstr "Effets utilisables par la génération aléatoire"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:100
 msgid "10 Minutes"
-msgstr ""
+msgstr "10 minutes"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:101
 msgid "15 Minutes"
-msgstr ""
+msgstr "15 minutes"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:102
 msgid "30 Minutes"
-msgstr ""
+msgstr "30 minutes"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:103
 msgid "A backup file (.bkp) will be created of the current open sequence at this interval. No render created."
-msgstr ""
+msgstr "Un fichier de sauvegarde (.bkp) de la séquence ouverte sera créé à cet intervalle. Aucun rendu n'est créé."
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:105
 msgid "FSEQ Version"
-msgstr ""
+msgstr "Version FSEQ"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:109
 msgid "V2 ZSTD"
@@ -4922,15 +4943,15 @@ msgstr ""
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:112
 msgid "V2 ZSTD/sparse (Default)"
-msgstr ""
+msgstr "V2 ZSTD/sparse (par défaut)"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:114
 msgid "Render Cache Directory"
-msgstr ""
+msgstr "Dossier du cache de rendu"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:122
 msgid "Maximum Render Cache Size:"
-msgstr ""
+msgstr "Taille maximale du cache de rendu :"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:125
 msgid "Unlimited"
@@ -4982,39 +5003,39 @@ msgstr ""
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:140
 msgid "FSEQ Directory"
-msgstr ""
+msgstr "Dossier FSEQ"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:147
 msgid "Media/Resource Directories"
-msgstr ""
+msgstr "Dossiers de médias/ressources"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:161
 msgid "Default View for New Sequences"
-msgstr ""
+msgstr "Vue par défaut des nouvelles séquences"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:162 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:166
 msgid "This option is used to select which models will populate the master view when a new sequence is created."
-msgstr ""
+msgstr "Choisit les modèles qui rempliront la vue principale à la création d'une séquence."
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:72
 msgid "Render on Save"
-msgstr ""
+msgstr "Rendu à l'enregistrement"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:75
 msgid "Low Definition Render"
-msgstr ""
+msgstr "Rendu basse définition"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:78
 msgid "Save FSEQ File On Save"
-msgstr ""
+msgstr "Enregistrer le fichier FSEQ à l'enregistrement"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:81
 msgid "Default Model Blending for New Sequences"
-msgstr ""
+msgstr "Fusion des modèles par défaut des nouvelles séquences"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:87
 msgid "Render Cache"
-msgstr ""
+msgstr "Cache de rendu"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:91
 msgid "Locked Effects Only"
@@ -5022,119 +5043,119 @@ msgstr ""
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:94
 msgid "Auto Save Interval"
-msgstr ""
+msgstr "Intervalle d'enregistrement automatique"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:98
 msgid "3 Minutes"
-msgstr ""
+msgstr "3 minutes"
 
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:99
 msgid "5 Minutes"
-msgstr ""
+msgstr "5 minutes"
 
 #: src-ui-wx/preferences/ServicesPanel.cpp:127
 msgid "Select Service"
-msgstr ""
+msgstr "Choisir un service"
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:48
 msgid "Effects Toolbar"
-msgstr ""
+msgstr "Barre d'outils des effets"
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:49
 msgid "Choose which effects appear in the toolbar, and their order:"
-msgstr ""
+msgstr "Choisissez les effets affichés dans la barre d'outils, et leur ordre :"
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:53
 msgid "Visible"
-msgstr ""
+msgstr "Visible"
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269
 msgid "Effect"
-msgstr ""
+msgstr "Effet"
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:64 src-ui-wx/sequencer/SeqSettingsDialog.cpp:440
 msgid "Move Up"
-msgstr ""
+msgstr "Monter"
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:65 src-ui-wx/sequencer/SeqSettingsDialog.cpp:443
 msgid "Move Down"
-msgstr ""
+msgstr "Descendre"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:101
 msgid "Hide Preset Previews"
-msgstr ""
+msgstr "Masquer les aperçus des préréglages"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:104
 msgid "Zoom To Cursor"
-msgstr ""
+msgstr "Zoomer vers le curseur"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:107
 msgid "Group Center Crosshair Size"
-msgstr ""
+msgstr "Taille de la croix du centre de groupe"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:113
 msgid "Tiny"
-msgstr ""
+msgstr "Minuscule"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:115
 msgid "Control the size of the crosshair for group centering"
-msgstr ""
+msgstr "Règle la taille de la croix de centrage des groupes"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:117
 msgid "Color Palette Size"
-msgstr ""
+msgstr "Taille de la palette de couleurs"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:60
 msgid "Effect Icon Size"
-msgstr ""
+msgstr "Taille des icônes d'effets"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:68
 msgid "Model Handle Size"
-msgstr ""
+msgstr "Taille des poignées des modèles"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:76
 msgid "Effect Assist Window"
-msgstr ""
+msgstr "Fenêtre d'assistance aux effets"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:79
 msgid "Always On"
-msgstr ""
+msgstr "Toujours affichée"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:80
 msgid "Always Off"
-msgstr ""
+msgstr "Jamais affichée"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:81
 msgid "Auto Toggle"
-msgstr ""
+msgstr "Automatique"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:83
 msgid "Show Play Controls on Preview"
-msgstr ""
+msgstr "Afficher les commandes de lecture dans l'aperçu"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:86
 msgid "Auto Show House Preview"
-msgstr ""
+msgstr "Afficher automatiquement l'aperçu de la maison"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:89
 msgid "Disable key acceleration when held down"
-msgstr ""
+msgstr "Désactiver l'accélération des touches maintenues"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:92
 msgid "Enable Base Show Folder Settings"
-msgstr ""
+msgstr "Activer les paramètres du dossier de show de base"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:95
 msgid "Timeline Zooming"
-msgstr ""
+msgstr "Zoom de la ligne de temps"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:98
 msgid "Play Marker Position"
-msgstr ""
+msgstr "Position du repère de lecture"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:99
 msgid "Mouse Marker Position"
-msgstr ""
+msgstr "Position de la souris"
 
 #: src-ui-wx/preferences/xLightsPreferences.cpp:111 src-ui-wx/preferences/xLightsPreferences.cpp:255
 msgid "Preferences"
@@ -5146,7 +5167,7 @@ msgstr "Sauvegarde"
 
 #: src-ui-wx/preferences/xLightsPreferences.cpp:201
 msgid "Cloud Storage"
-msgstr ""
+msgstr "Stockage cloud"
 
 #: src-ui-wx/preferences/xLightsPreferences.cpp:209
 msgid "Effects Grid"
@@ -5170,11 +5191,11 @@ msgstr "Services"
 
 #: src-ui-wx/preferences/xLightsPreferences.cpp:268
 msgid "Render All and Save"
-msgstr ""
+msgstr "Tout rendre et enregistrer"
 
 #: src-ui-wx/preferences/xLightsPreferences.cpp:269
 msgid "Render All and Save As"
-msgstr ""
+msgstr "Tout rendre et enregistrer sous"
 
 #: src-ui-wx/render/RenderUI.cpp:508
 msgid "Rendering all layers for time slice"
@@ -6992,11 +7013,11 @@ msgstr "Sauvegarde alternative\tF11"
 
 #: src-ui-wx/xLightsMain.cpp:1011 src-ui-wx/app-shell/CloudBackupDialog.cpp:123 src-ui-wx/app-shell/CloudBackupDialog.cpp:197 src-ui-wx/app-shell/CloudBackupDialog.cpp:426 src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:88
 msgid "Backup to Cloud"
-msgstr ""
+msgstr "Sauvegarder dans le cloud"
 
 #: src-ui-wx/xLightsMain.cpp:1013 src-ui-wx/app-shell/CloudRestoreDialog.cpp:116 src-ui-wx/app-shell/CloudRestoreDialog.cpp:669 src-ui-wx/app-shell/CloudRestoreDialog.cpp:719
 msgid "Restore from Cloud"
-msgstr ""
+msgstr "Restaurer depuis le cloud"
 
 #: src-ui-wx/xLightsMain.cpp:1015
 msgid "Quit\tAlt-F4"
@@ -7352,7 +7373,7 @@ msgstr "Fort"
 
 #: src-ui-wx/xLightsMain.cpp:1212 src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:61 src-ui-wx/preferences/ViewSettingsPanel.cpp:64
 msgid "Medium"
-msgstr ""
+msgstr "Moyen"
 
 #: src-ui-wx/xLightsMain.cpp:1214
 msgid "Quiet"
@@ -7464,19 +7485,19 @@ msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:2142
 msgid "Render and Save"
-msgstr ""
+msgstr "Rendre et enregistrer"
 
 #: src-ui-wx/xLightsMain.cpp:2143
 msgid "Render and Save As"
-msgstr ""
+msgstr "Rendre et enregistrer sous"
 
 #: src-ui-wx/xLightsMain.cpp:2150
 msgid "Revert To..."
-msgstr ""
+msgstr "Revenir à..."
 
 #: src-ui-wx/xLightsMain.cpp:2187 src-ui-wx/xLightsMain.cpp:5980
 msgid "Open New xLights Instance"
-msgstr ""
+msgstr "Ouvrir une nouvelle instance de xLights"
 
 #: src-ui-wx/xLightsMain.cpp:2778
 #, c-format
@@ -7484,10 +7505,12 @@ msgid ""
 "Version: %s\n"
 "%s"
 msgstr ""
+"Version : %s\n"
+"%s"
 
 #: src-ui-wx/xLightsMain.cpp:2852 src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:69
 msgid "Layout Tab"
-msgstr ""
+msgstr "Onglet Disposition"
 
 #: src-ui-wx/xLightsMain.cpp:2853
 msgid ""
@@ -7495,38 +7518,41 @@ msgid ""
 "\n"
 "Click the Open button to select an xLights sequence to be previewed. Note that any xLights sequence can be previewed, not just those created on the Sequencer tab. Click Play to start preview playback. Use the Pause button to stop play, and then the Play button to resume. You can drag the slider that appears across the top of the preview area to move playback to any spot in your sequence. The Stop Now button in the upper left will also stop playback."
 msgstr ""
+"Créez des éléments affichés en cliquant sur les boutons Modèles. Faites glisser le curseur dans la zone d'aperçu pour déplacer l'élément. N'oubliez pas de cliquer sur Enregistrer pour enregistrer votre aperçu !\n"
+"\n"
+"Cliquez sur Ouvrir pour choisir une séquence xLights à prévisualiser. Toute séquence xLights peut être prévisualisée, pas seulement celles créées dans l'onglet Séquenceur. Cliquez sur Lire pour lancer la lecture de l'aperçu. Le bouton Pause l'arrête, et le bouton Lire la reprend. Faites glisser le curseur affiché en haut de la zone d'aperçu pour vous placer n'importe où dans la séquence. Le bouton Stop Now en haut à gauche arrête aussi la lecture."
 
 #: src-ui-wx/xLightsMain.cpp:2856
 msgid "Sequencer Tab"
-msgstr ""
+msgstr "Onglet Séquenceur"
 
 #: src-ui-wx/xLightsMain.cpp:2857
 msgid "The Sequencer tab can be used to create RGB sequences. First, create a model of your RGB display element(s) by clicking on the Models button. Then try the different effects and settings until you create something you like. You can save the settings as a preset by clicking the New Preset button. From then on, that preset will be available in the presets drop-down list. You can combine effects by creating a second effect in the Effect 2 area, then choosing a Layering Method. To create a series of effects that will be used in a sequence, click the open file icon to open an xLights sequence. Choose which display elements/models you will use in this sequence. Then click the insert rows icon and type in the start time in seconds when that effect should begin. Rows will automatically sort by start time. To add an effect to the sequence, click on the grid cell in the desired display model column and the desired start time row, then click the Update button. When you are done creating effects for the sequence, click the save icon and the xLights sequence will be updated with the effects you stored in the grid."
-msgstr ""
+msgstr "L'onglet Séquenceur permet de créer des séquences RGB. Créez d'abord un modèle de vos éléments RGB en cliquant sur le bouton Modèles. Essayez ensuite les différents effets et réglages jusqu'à obtenir un résultat qui vous plaît. Vous pouvez enregistrer les réglages comme préréglage avec le bouton New Preset : ce préréglage sera ensuite disponible dans la liste des préréglages. Vous pouvez combiner des effets en créant un second effet dans la zone Effect 2, puis en choisissant une méthode de superposition. Pour créer une série d'effets à utiliser dans une séquence, cliquez sur l'icône d'ouverture pour ouvrir une séquence xLights. Choisissez les éléments ou modèles utilisés dans cette séquence. Cliquez ensuite sur l'icône d'insertion de lignes et saisissez l'heure de début, en secondes, de l'effet. Les lignes se trient automatiquement par heure de début. Pour ajouter un effet à la séquence, cliquez sur la cellule de la grille à l'intersection de la colonne du modèle et de la ligne de l'heure de début, puis sur le bouton Update. Une fois les effets de la séquence créés, cliquez sur l'icône d'enregistrement : la séquence xLights sera mise à jour avec les effets de la grille."
 
 #: src-ui-wx/xLightsMain.cpp:5135
 msgid "Previews"
-msgstr ""
+msgstr "Aperçus"
 
 #: src-ui-wx/xLightsMain.cpp:5141
 msgid "Show All"
-msgstr ""
+msgstr "Tout afficher"
 
 #: src-ui-wx/xLightsMain.cpp:5374
 msgid "Select alternate backup directory"
-msgstr ""
+msgstr "Choisir un dossier de sauvegarde alternatif"
 
 #: src-ui-wx/xLightsMain.cpp:5398 src-ui-wx/xLightsMain.cpp:6162 src-ui-wx/xLightsMain.cpp:9410 src-ui-wx/color/ColorCurveDialog.cpp:828 src-ui-wx/import_export/SeqExportDialog.cpp:272 ... (+14)
 msgid "Choose output file"
-msgstr ""
+msgstr "Choisir le fichier de sortie"
 
 #: src-ui-wx/xLightsMain.cpp:5978
 msgid "Could not locate the xLights application bundle. A new instance can only be launched when xLights is run from a .app bundle."
-msgstr ""
+msgstr "Impossible de trouver le paquet d'application xLights. Une nouvelle instance ne peut être lancée que si xLights est exécuté depuis un paquet .app."
 
 #: src-ui-wx/xLightsMain.cpp:7919
 msgid "A batch render is already running."
-msgstr ""
+msgstr "Un rendu par lots est déjà en cours."
 
 #: src-ui-wx/xLightsMain.cpp:818
 msgid "<use variables in xLightsMain.h>"
@@ -7534,47 +7560,47 @@ msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:822
 msgid "Open Show Directory"
-msgstr ""
+msgstr "Ouvrir le dossier du show"
 
 #: src-ui-wx/xLightsMain.cpp:822 src-ui-wx/app-shell/TabSetup.cpp:657
 msgid "Select Show Directory"
-msgstr ""
+msgstr "Choisir le dossier du show"
 
 #: src-ui-wx/xLightsMain.cpp:823 src-ui-wx/xLightsMain.cpp:823
 msgid "New Sequence"
-msgstr ""
+msgstr "Nouvelle séquence"
 
 #: src-ui-wx/xLightsMain.cpp:824 src-ui-wx/xLightsMain.cpp:824
 msgid "Open Sequence"
-msgstr ""
+msgstr "Ouvrir une séquence"
 
 #: src-ui-wx/xLightsMain.cpp:825 src-ui-wx/xLightsMain.cpp:825 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:89 src-ui-wx/layout/LayoutPanel.cpp:693 src-ui-wx/model/GenerateCustomModelDialog.cpp:2799 ... (+3)
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
 #: src-ui-wx/xLightsMain.cpp:826 src-ui-wx/xLightsMain.cpp:826 src-ui-wx/preferences/xLightsPreferences.cpp:273
 msgid "Save As"
-msgstr ""
+msgstr "Enregistrer sous"
 
 #: src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:827
 msgid "Render All"
-msgstr ""
+msgstr "Tout rendre"
 
 #: src-ui-wx/xLightsMain.cpp:829
 msgid "Main Tool Bar"
-msgstr ""
+msgstr "Barre d'outils principale"
 
 #: src-ui-wx/xLightsMain.cpp:831 src-ui-wx/xLightsMain.cpp:831 src-ui-wx/model/ModelStatesPanel.cpp:248 src-ui-wx/model/ModelStatesPanel.cpp:2237 src-ui-wx/model/SubModelsPanel.cpp:307 ... (+1)
 msgid "Play"
-msgstr ""
+msgstr "Lire"
 
 #: src-ui-wx/xLightsMain.cpp:832 src-ui-wx/xLightsMain.cpp:832 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:157
 msgid "Pause"
-msgstr ""
+msgstr "Pause"
 
 #: src-ui-wx/xLightsMain.cpp:833 src-ui-wx/xLightsMain.cpp:833 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:159 src-ui-wx/model/ModelStatesPanel.cpp:2253 src-ui-wx/model/SubModelsPanel.cpp:4204 ... (+1)
 msgid "Stop"
-msgstr ""
+msgstr "Arrêter"
 
 #: src-ui-wx/xLightsMain.cpp:834 src-ui-wx/xLightsMain.cpp:835 src-ui-wx/xLightsMain.cpp:836
 msgid "Item label"
@@ -7582,23 +7608,23 @@ msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:834
 msgid "First Frame"
-msgstr ""
+msgstr "Première image"
 
 #: src-ui-wx/xLightsMain.cpp:835
 msgid "Last Frame"
-msgstr ""
+msgstr "Dernière image"
 
 #: src-ui-wx/xLightsMain.cpp:836
 msgid "Replay Section"
-msgstr ""
+msgstr "Rejouer la section"
 
 #: src-ui-wx/xLightsMain.cpp:837 src-ui-wx/xLightsMain.cpp:837
 msgid "Output To Lights"
-msgstr ""
+msgstr "Sortie vers les lumières"
 
 #: src-ui-wx/xLightsMain.cpp:839
 msgid "Play Tool Bar"
-msgstr ""
+msgstr "Barre de lecture"
 
 #: src-ui-wx/xLightsMain.cpp:841 src-ui-wx/xLightsMain.cpp:841 src-ui-wx/xLightsMain.cpp:1149
 msgid "Effect Settings"
@@ -7606,7 +7632,7 @@ msgstr "Paramètres de l'effet"
 
 #: src-ui-wx/xLightsMain.cpp:842 src-ui-wx/xLightsMain.cpp:842
 msgid "Effect Colors"
-msgstr ""
+msgstr "Couleurs de l'effet"
 
 #: src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:1155
 msgid "Layer Settings"
@@ -7626,7 +7652,7 @@ msgstr "Aperçu de la maison"
 
 #: src-ui-wx/xLightsMain.cpp:847 src-ui-wx/controllers/FPPConnectDialog.cpp:1381 src-ui-wx/controllers/FPPConnectDialog.cpp:1396 src-ui-wx/controllers/FPPConnectDialog.cpp:1405 src-ui-wx/layout/LayoutPanel.cpp:678 ... (+2)
 msgid "Models"
-msgstr ""
+msgstr "Modèles"
 
 #: src-ui-wx/xLightsMain.cpp:847 src-ui-wx/xLightsMain.cpp:1143
 msgid "Display Elements"
@@ -7634,47 +7660,47 @@ msgstr "Éléments affichés"
 
 #: src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:921
 msgid "Effects"
-msgstr ""
+msgstr "Effets"
 
 #: src-ui-wx/xLightsMain.cpp:849 src-ui-wx/xLightsMain.cpp:849
 msgid "Effects Assistant"
-msgstr ""
+msgstr "Assistant d'effets"
 
 #: src-ui-wx/xLightsMain.cpp:850 src-ui-wx/xLightsMain.cpp:850
 msgid "Select Effects"
-msgstr ""
+msgstr "Sélectionner des effets"
 
 #: src-ui-wx/xLightsMain.cpp:8513
 msgid "Loading dictionaries ..."
-msgstr ""
+msgstr "Chargement des dictionnaires ..."
 
 #: src-ui-wx/xLightsMain.cpp:852
 msgid "Windows Tool Bar"
-msgstr ""
+msgstr "Barre des fenêtres"
 
 #: src-ui-wx/xLightsMain.cpp:854 src-ui-wx/xLightsMain.cpp:854
 msgid "Paste By Time"
-msgstr ""
+msgstr "Coller par temps"
 
 #: src-ui-wx/xLightsMain.cpp:855 src-ui-wx/xLightsMain.cpp:855
 msgid "Paste By Cell"
-msgstr ""
+msgstr "Coller par cellule"
 
 #: src-ui-wx/xLightsMain.cpp:857
 msgid "Paste Toolbar"
-msgstr ""
+msgstr "Barre de collage"
 
 #: src-ui-wx/xLightsMain.cpp:891
 msgid "Disable"
-msgstr ""
+msgstr "Désactiver"
 
 #: src-ui-wx/xLightsMain.cpp:893 src-ui-wx/media/MediaImportOptionsDialog.cpp:79 src-ui-wx/media/MediaImportOptionsDialog.cpp:88 src-ui-wx/media/MediaImportOptionsDialog.cpp:97 src-ui-wx/media/MediaImportOptionsDialog.cpp:106 ... (+1)
 msgid "Select"
-msgstr ""
+msgstr "Sélectionner"
 
 #: src-ui-wx/xLightsMain.cpp:893
 msgid "Select - SHIFT L"
-msgstr ""
+msgstr "Sélectionner - SHIFT L"
 
 #: src-ui-wx/xLightsMain.cpp:894 src-ui-wx/effectpanels/MovingHeadPanel.cpp:359 src-ui-wx/preferences/OtherSettingsPanel.cpp:155 src-ui-wx/setup/PixelTestDialog.cpp:1202 src-ui-wx/setup/PixelTestDialog.cpp:1256 ... (+2)
 msgid "Off"
@@ -7710,27 +7736,27 @@ msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:899 src-ui-wx/model/GenerateCustomModelDialog.cpp:2543
 msgid "Intensity"
-msgstr ""
+msgstr "Intensité"
 
 #: src-ui-wx/xLightsMain.cpp:899
 msgid "Intensity - I"
-msgstr ""
+msgstr "Intensité - I"
 
 #: src-ui-wx/xLightsMain.cpp:900
 msgid "Ramp Up"
-msgstr ""
+msgstr "Rampe montante"
 
 #: src-ui-wx/xLightsMain.cpp:900
 msgid "Ramp Up - U"
-msgstr ""
+msgstr "Rampe montante - U"
 
 #: src-ui-wx/xLightsMain.cpp:901
 msgid "Ramp Down"
-msgstr ""
+msgstr "Rampe descendante"
 
 #: src-ui-wx/xLightsMain.cpp:901
 msgid "Ramp Down - D"
-msgstr ""
+msgstr "Rampe descendante - D"
 
 #: src-ui-wx/xLightsMain.cpp:902 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:184
 msgid "Ramp Up/Down"
@@ -7738,7 +7764,7 @@ msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:902
 msgid "Ramp Up/Down - A"
-msgstr ""
+msgstr "Rampe montante/descendante - A"
 
 #: src-ui-wx/xLightsMain.cpp:903
 msgid "Parm1"
@@ -7750,39 +7776,39 @@ msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:906
 msgid "Fill"
-msgstr ""
+msgstr "Remplir"
 
 #: src-ui-wx/xLightsMain.cpp:906
 msgid "Fill - F"
-msgstr ""
+msgstr "Remplir - F"
 
 #: src-ui-wx/xLightsMain.cpp:907
 msgid "Cascade"
-msgstr ""
+msgstr "Cascade"
 
 #: src-ui-wx/xLightsMain.cpp:907
 msgid "Cascade - H"
-msgstr ""
+msgstr "Cascade - H"
 
 #: src-ui-wx/xLightsMain.cpp:909
 msgid "Foreground"
-msgstr ""
+msgstr "Premier plan"
 
 #: src-ui-wx/xLightsMain.cpp:909
 msgid "Foreground - G"
-msgstr ""
+msgstr "Premier plan - G"
 
 #: src-ui-wx/xLightsMain.cpp:910
 msgid "Background"
-msgstr ""
+msgstr "Arrière-plan"
 
 #: src-ui-wx/xLightsMain.cpp:910
 msgid "Background - B"
-msgstr ""
+msgstr "Arrière-plan - B"
 
 #: src-ui-wx/xLightsMain.cpp:912
 msgid "AC Toolbar"
-msgstr ""
+msgstr "Barre d'outils AC"
 
 #: src-ui-wx/xLightsMain.cpp:914 src-ui-wx/xLightsMain.cpp:914 src-ui-wx/xLightsMain.cpp:1118 src-ui-wx/model/CustomModelDialog.cpp:434
 msgid "Zoom In"
@@ -7798,15 +7824,15 @@ msgstr "Paramètres de la séquence"
 
 #: src-ui-wx/xLightsMain.cpp:916
 msgid "Settings"
-msgstr ""
+msgstr "Paramètres"
 
 #: src-ui-wx/xLightsMain.cpp:918
 msgid "View Toolbar"
-msgstr ""
+msgstr "Barre d'affichage"
 
 #: src-ui-wx/xLightsMain.cpp:923 src-ui-wx/xLightsMain.cpp:923 src-ui-wx/preferences/ServicesPanel.cpp:131
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #: src-ui-wx/xLightsMain.cpp:924 src-ui-wx/xLightsMain.cpp:924 src-ui-wx/preferences/xLightsPreferences.cpp:221
 msgid "Check Sequence"
@@ -7814,11 +7840,11 @@ msgstr "Vérification de séquence"
 
 #: src-ui-wx/xLightsMain.cpp:925 src-ui-wx/xLightsMain.cpp:925
 msgid "Package Sequence"
-msgstr ""
+msgstr "Empaqueter la séquence"
 
 #: src-ui-wx/xLightsMain.cpp:926 src-ui-wx/xLightsMain.cpp:926 src-ui-wx/xLightsMain.cpp:7919 src-ui-wx/sequencer/BatchRenderDialog.cpp:81 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:41
 msgid "Batch Render"
-msgstr ""
+msgstr "Rendu par lots"
 
 #: src-ui-wx/xLightsMain.cpp:927 src-ui-wx/xLightsMain.cpp:927
 msgid "FPP Connect"
@@ -7830,19 +7856,19 @@ msgstr "Envoi groupé vers les contrôleurs"
 
 #: src-ui-wx/xLightsMain.cpp:929 src-ui-wx/xLightsMain.cpp:929
 msgid "View Log"
-msgstr ""
+msgstr "Voir le journal"
 
 #: src-ui-wx/xLightsMain.cpp:931
 msgid "Tools Toolbar"
-msgstr ""
+msgstr "Barre des outils"
 
 #: src-ui-wx/xLightsMain.cpp:940
 msgid "Layout"
-msgstr ""
+msgstr "Disposition"
 
 #: src-ui-wx/xLightsMain.cpp:941
 msgid "Sequencer"
-msgstr ""
+msgstr "Séquenceur"
 
 #: src-ui-wx/xLightsMain.cpp:942
 msgid "Pane caption"
