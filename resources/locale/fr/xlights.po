@@ -1087,7 +1087,7 @@ msgstr "Nœud"
 
 #: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:130 src-ui-wx/effectpanels/MovingHeadPanel.cpp:636 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:61
 msgid "Status"
-msgstr "État"
+msgstr ""
 
 #: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:1301
 #, c-format
@@ -4228,7 +4228,7 @@ msgstr "Taille du texte :"
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:402
 msgid "Beginning"
-msgstr "Début"
+msgstr ""
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:482
 msgid "In Model Set"
@@ -6299,7 +6299,7 @@ msgstr "Réimporter"
 
 #: src-ui-wx/sequencer/SeqSettingsDialog.cpp:451
 msgid "Info / Media"
-msgstr "Infos / média"
+msgstr ""
 
 #: src-ui-wx/sequencer/SeqSettingsDialog.cpp:452
 msgid "Meta Data"
