@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00031.html" title="Troubleshooting light control" category="General" level="Beginner" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Dépanner la commande des lumières</h1>
+<p>Que faire quand vos lumières ne fonctionnent pas bien ? La question est vaste et, selon les symptômes, on peut aller droit au problème, mais voici quelques conseils généraux.</p>
+<ol>
+<li>Commencez toujours au plus près des lumières qui ne marchent pas. Si elles sont sur un smart receiver, utilisez son bouton de test, puis la fonction de test du contrôleur. Si elles sont branchées sur un contrôleur, commencez par son mode test. Si vos lumières ne marchent pas avec le mode test du contrôleur, elles ne marcheront ni dans xLights, ni dans xSchedule, ni dans FPP. Utilisez l'option RGBW si elle existe. En blanc, il ne doit pas y avoir de scintillement. S'il y en a, vous avez un problème de luminosité, d'alimentation ou de signal à résoudre.</li>
+<li>Passez ensuite au mode test de xLights en choisissant des univers ou des contrôleurs. Commencez simple, par exemple le fond à 50 %. Votre contrôleur reçoit-il des paquets réseau (s'il l'indique) ? Si non, c'est un problème de réseau. Si oui, c'est un problème de configuration des ports. Un problème de réseau peut venir d'adresses IP erronées ou de données envoyées par la mauvaise carte réseau. Si le contrôleur peut afficher les données reçues, vérifiez qu'elles arrivent bien.</li>
+<li>Testez ensuite les modèles en mode test. Les bons modèles s'allument-ils ? Si non, c'est un problème de configuration des ports ou de canaux de début des modèles.</li>
+<li>Passez au mode A-B-C. Les couleurs sont-elles les bonnes ? Si non, ajustez l'ordre des couleurs dans xLights ou dans le contrôleur.</li>
+<li>Essayez maintenant de lire une séquence dans xLights. Est-ce que ça marche ? À ce stade, ça devrait.</li>
+<li>Vous pouvez enfin passer à votre lecteur (FPP ou xSchedule). Commencez par le mode test, puis, si tout va bien, lancez une séquence.</li>
+</ol>
+<p>Quelques outils de dépannage :</p>
+<ul>
+<li>Le ping est idéal pour vérifier que les contrôleurs sont joignables.</li>
+<li>N'oubliez pas la vérification de séquence et la vérification du planning : elles signalent certains problèmes.</li>
+<li>xScanner peut aider à détecter les appareils.</li>
+<li><a href="https://www.da-share.com/software/da_e131/">da-E131</a> est un outil indépendant pratique pour envoyer des données à certains contrôleurs.</li>
+<li>Quand tout le reste a échoué, j'aime Wireshark... pas pour les âmes sensibles, mais je l'utilise pour prouver que les données quittent bien le PC.</li>
+<li>On trouve des testeurs WS2811 pour moins de 20 $ : un outil de test de pixels utilisable partout.</li>
+<li>Rien ne vaut un appareil comme le F-Amp pour nettoyer les problèmes de signal sur les longues lignes de données.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00009.html" title="What is a Universe" category="Controller" level="Beginner" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Qu'est-ce qu'un univers ?</h1>
+<p>Avec des protocoles comme E1.31, ArtNet ou même DMX, on entend souvent parler d'univers. De quoi s'agit-il exactement ?</p>
+<p>Un univers compte de 1 à 512 canaux, le plus souvent 510 ou 512. Chaque canal commande quelque chose. Pour les pixels, il s'agit de la luminosité d'une LED R, G ou B... il faut donc 3 canaux par pixel. Comme 512 n'est pas divisible par 3, on utilise souvent des univers de 510 canaux, soit 170 × 3.</p>
+<p>Les univers sont la façon dont les données sont emballées et envoyées de votre PC vers votre contrôleur. Le nombre d'univers nécessaires correspond en gros au nombre de canaux à commander divisé par 510 (ou 512).</p>
+<p>Cela varie beaucoup selon les contrôleurs, mais il n'y a en général pas de lien fixe entre un univers et un port du contrôleur. Chaque port peut prendre ses données dans n'importe quel univers envoyé au contrôleur. Quand la notice indique par exemple 6 univers par port... il s'agit en réalité de 6 × 510 canaux, qui peuvent venir de n'importe quel univers.</p>
+<p>Quand un port utilise les données de plusieurs univers, on indique en général seulement le premier univers/canal du port : une fois tous les canaux de cet univers utilisés, le contrôleur passe de lui-même à l'univers suivant.</p>
+<p>Depuis que le visualiseur sert à configurer les contrôleurs, on se préoccupe beaucoup moins des univers : pour la plupart des utilisateurs, xLights calcule tout et configure le contrôleur en prime. Le visualiseur regroupe vos données dans le moins d'univers possible, si bien qu'il est courant de voir le même univers (avec des canaux différents) utilisé sur plusieurs ports.</p>
+<p>Des protocoles comme DDP ont complètement abandonné la notion d'univers : ils envoient simplement un grand bloc de canaux au contrôleur et vous cachent la façon dont il est découpé pour la transmission. C'est bien plus efficace et, pour beaucoup, moins déroutant.</p>
+</body>
+</html>

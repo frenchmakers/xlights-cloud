@@ -16,6 +16,7 @@
 //*)
 
 #include <wx/stdpaths.h>
+#include <wx/translation.h>
 
 #include "UtilFunctions.h"
 #include "settings/XLightsConfigAdapter.h"
@@ -34,6 +35,20 @@ static const std::string TOD_BASE_URL = "https://raw.githubusercontent.com/xLigh
 #endif
 
 #define USE_GITHUB_HOSTED_TOD
+
+// xLights Cloud hosts the French tips in its own repository. Its tod.xml lists
+// every tip: translated ones by file name, the others by their full official URL.
+static const std::string TOD_FR_BASE_URL = "https://raw.githubusercontent.com/frenchmakers/xlights-cloud/xlights-cloud/TipOfDay/fr/";
+static std::string s_todBaseURL = TOD_BASE_URL;
+
+static std::string LocalisedTipBaseURL()
+{
+    auto* t = wxTranslations::Get();
+    if (t != nullptr && t->GetBestTranslation("xlights", wxLANGUAGE_ENGLISH_US).StartsWith("fr")) {
+        return TOD_FR_BASE_URL;
+    }
+    return TOD_BASE_URL;
+}
 
 //(*IdInit(TipOfTheDayDialog)
 const long TipOfTheDayDialog::ID_HTMLWINDOW1 = wxNewId();
@@ -87,7 +102,11 @@ public:
     virtual void* Entry() override
     {
         // download Tip of day content here
-        auto file = CachedFileDownloader::GetDefaultCache().GetFile(TOD_BASE_URL + "tod.xml", CACHEFOR::CACHETIME_DAY);
+        auto file = CachedFileDownloader::GetDefaultCache().GetFile(s_todBaseURL + "tod.xml", CACHEFOR::CACHETIME_DAY);
+        if (file.empty() && s_todBaseURL != TOD_BASE_URL) {
+            s_todBaseURL = TOD_BASE_URL;
+            file = CachedFileDownloader::GetDefaultCache().GetFile(s_todBaseURL + "tod.xml", CACHEFOR::CACHETIME_DAY);
+        }
         CachedFileDownloader::GetDefaultCache().Save();
 
         wxCommandEvent e(EVT_TIPOFDAY_READY);
@@ -226,7 +245,10 @@ void TipOfTheDayDialog::LoadURL(const std::string& url)
 std::string TipOfTheDayDialog::BuildURL(const std::string& url) const
 {
 #ifdef USE_GITHUB_HOSTED_TOD
-    return TOD_BASE_URL + url;
+    if (StartsWith(url, "https://")) {
+        return url;
+    }
+    return s_todBaseURL + url;
 #else
     // exe location/TipOfDay/tod.xml
     wxFileName f(wxStandardPaths::Get().GetExecutablePath());
@@ -417,6 +439,7 @@ void TipOfTheDayDialog::PrepTipOfDay(wxWindow* notify)
 {
     // if we want to now we can spin up a thread and download any tip of day content. When done we should send to the notify within a EVT_TIPOFDAY_READY message
 #ifdef USE_GITHUB_HOSTED_TOD
+    s_todBaseURL = LocalisedTipBaseURL();
     _thread = new TipOfDayThread(notify);
     _thread->Run();
 #else

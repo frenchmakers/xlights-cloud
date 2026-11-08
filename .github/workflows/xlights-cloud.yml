@@ -91,6 +91,20 @@ jobs:
             echo "::warning::The official master conflicts with this branch"
           fi
 
+      # New official tips show in English in the French tips window until they
+      # are translated, so the French list follows the official one every day.
+      - name: Refresh the French tips list
+        if: github.ref_name == 'xlights-cloud'
+        run: |
+          git show upstream/master:TipOfDay/tod.xml > "$RUNNER_TEMP/tod.xml"
+          python3 ci_scripts/xlights_cloud_tips.py "$RUNNER_TEMP/tod.xml"
+          if ! git diff --quiet -- TipOfDay/fr/tod.xml; then
+            git add TipOfDay/fr/tod.xml
+            git commit -q -m "Refresh the French tips list from the official tips"
+            git push -q origin "HEAD:$GITHUB_REF_NAME"
+            echo "French tips list updated."
+          fi
+
       - name: Pick the version to build
         id: pick
         run: |

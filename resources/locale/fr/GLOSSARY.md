@@ -83,6 +83,7 @@ toujours de la même façon.
 | Model Set / Set | ensemble de modèles / ensemble | modèles déplacés ensemble dans la disposition |
 | Viewpoint | point de vue | |
 | Submodel | sous-modèle | |
+| LED | LED, pluriel LEDs | « une LED », « des LEDs » |
 | Node | nœud | un point adressable, qui peut regrouper plusieurs LED |
 | String | chaîne | ensemble de nœuds sur une sortie |
 | Strand | brin | |

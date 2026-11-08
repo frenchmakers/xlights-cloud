@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00003.html" title="Troubleshooting why the visualiser won't work" category="Controller" level="Beginner" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Pourquoi le visualiseur ne fonctionne pas</h1>
+<p>On ne comprend pas toujours pourquoi le bouton du visualiseur est parfois actif dans l'onglet Contrôleurs et parfois grisé. Voici les conditions à remplir pour qu'il fonctionne.</p>
+<ul>
+<li>La sortie vers les lumières doit être désactivée. Le visualiseur ne peut pas être utilisé pendant l'envoi vers les lumières.</li>
+<li>Les propriétés « Vendor », « Model » et, quand elle apparaît, « Variant » du contrôleur doivent avoir une valeur valide. Sans elles, le visualiseur ne connaît pas votre contrôleur : il ne peut ni afficher le nombre de ports ni appliquer ses limites.</li>
+<li>Le contrôleur ne doit pas être de type NULL. Honnêtement, il y a aujourd'hui peu de raisons d'utiliser un contrôleur NULL, à part peut-être pour une matrice virtuelle xSchedule.</li>
+</ul>
+<p>Sans être obligatoire, nous conseillons aussi de cocher « Auto Layout Models » et « Auto Size ». xLights peut alors réorganiser les canaux de début des modèles pour les adapter au mieux à votre contrôleur.</p>
+</body>
+</html>
