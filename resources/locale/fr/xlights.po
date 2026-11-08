@@ -4814,7 +4814,7 @@ msgstr "Utiliser le sélecteur de couleur personnalisé"
 
 #: src-ui-wx/preferences/OtherSettingsPanel.cpp:224
 msgid "Double-click on layout opens:"
-msgstr "Le double-clic dans le Layout ouvre :"
+msgstr "Le double-clic dans la disposition ouvre :"
 
 #: src-ui-wx/preferences/OtherSettingsPanel.cpp:227
 msgid "Faces/States/Submodels"
@@ -6972,11 +6972,11 @@ msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:1001
 msgid "Recent Show Folders"
-msgstr "Dossiers de spectacle récents"
+msgstr "Dossiers de show récents"
 
 #: src-ui-wx/xLightsMain.cpp:1003 src-ui-wx/setup/ShowDirectoriesDialog.cpp:159
 msgid "Favorite Show Folders"
-msgstr "Dossiers de spectacle favoris"
+msgstr "Dossiers de show favoris"
 
 #: src-ui-wx/xLightsMain.cpp:1004
 msgid "Backup\tF10"
@@ -7088,7 +7088,7 @@ msgstr "Ranger les emplacements des fichiers"
 
 #: src-ui-wx/xLightsMain.cpp:1058
 msgid "Moves all files into or under the show folder."
-msgstr "Déplace tous les fichiers dans le dossier du spectacle ou ses sous-dossiers."
+msgstr "Déplace tous les fichiers dans le dossier du show ou ses sous-dossiers."
 
 #: src-ui-wx/xLightsMain.cpp:1060
 msgid "Package &Sequence"
@@ -7204,7 +7204,7 @@ msgstr "Dictionnaire de paroles utilisateur"
 
 #: src-ui-wx/xLightsMain.cpp:1114
 msgid "Search for Show Folders"
-msgstr "Rechercher des dossiers de spectacle"
+msgstr "Rechercher des dossiers de show"
 
 #: src-ui-wx/xLightsMain.cpp:1116
 msgid "&Tools"
@@ -7244,7 +7244,7 @@ msgstr "Enregistrement automatique"
 
 #: src-ui-wx/xLightsMain.cpp:1138
 msgid "Save the current perspective between sessions independent of the show directory."
-msgstr "Conserve la perspective actuelle d'une session à l'autre, quel que soit le dossier du spectacle."
+msgstr "Conserve la perspective actuelle d'une session à l'autre, quel que soit le dossier du show."
 
 #: src-ui-wx/xLightsMain.cpp:1141 src-ui-wx/xLightsMain.cpp:1184
 msgid "Perspectives"
@@ -7898,7 +7898,7 @@ msgstr "Exporter la vidéo de l'aperçu maison"
 
 #: src-ui-wx/xLightsMain.cpp:995
 msgid "Select Show Folder"
-msgstr "Choisir le dossier du spectacle"
+msgstr "Choisir le dossier du show"
 
 #: src-ui-wx/xLightsMain.cpp:999
 msgid "RECENTFOLDER1"

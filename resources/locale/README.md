@@ -20,6 +20,9 @@ python ci_scripts/xlights_i18n.py update    # add new strings to every <lang>/xl
 python ci_scripts/xlights_i18n.py compile   # <lang>/xlights.po -> <lang>/xlights.mo
 ```
 
+French terms are fixed in `fr/GLOSSARY.md`; follow it so a word is always
+translated the same way.
+
 Edit the `.po` with any gettext editor (Poedit, Weblate, a text editor). Keep
 the `\t...` accelerator suffix of menu items unchanged
 (`"Save\tCTRL-S"` -> `"Enregistrer\tCTRL-S"`). Entries marked `fuzzy` or left
