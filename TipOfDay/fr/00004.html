@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00004.html" title="Force Local IP" category="Controller" level="Expert" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Forcer l'IP locale</h1>
+<p>Sur les contrôleurs Ethernet, ainsi qu'en réglage global, vous pouvez forcer l'adresse IP locale utilisée par xLights (et xSchedule).</p>
+<p>Forcer l'adresse IP locale revient à faire sortir les paquets réseau de votre PC par la carte réseau qui porte cette adresse.</p>
+<p>Ce n'est nécessaire que dans de rares cas : par défaut, votre PC choisit en général la meilleure carte réseau.</p>
+<p>Si vous forcez l'IP locale, utilisez une adresse IP fixe. Avec une adresse DHCP, le réglage cassera probablement au prochain changement d'adresse.</p>
+<p>Les seuls cas où il peut être utile :</p>
+<ul>
+<li>Votre PC a plusieurs cartes réseau et votre contrôleur utilise le multicast. xLights doit alors savoir par quelle interface envoyer le trafic multicast.</li>
+<li>Votre PC a plusieurs cartes réseau reliées au réseau du contrôleur. Ce n'est pas nécessaire, mais cela permet d'imposer la carte à utiliser.</li>
+</ul>
+<p>En règle générale, je conseille de ne pas forcer l'IP locale, et de ne le faire que si le contrôleur ne reçoit pas les paquets qu'il devrait recevoir.</p>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00035.html" title="Channels, Controllers and Models" category="Layout" level="Advanced" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Canaux, contrôleurs et modèles</h1>
+<p>Beaucoup d'utilisateurs semblent perdus devant l'onglet Contrôleurs et ses liens avec les modèles, les univers, etc. J'ai donc voulu expliquer comment tout cela fonctionne en coulisses. Il faudra peut-être relire deux fois, mais je pense que cela aide à comprendre ce qui se passe.</p>
+<p>Au fond, xLights ne fait que produire un tas de données dans un grand bloc de mémoire. Cette mémoire est découpée en images (frames), chacune représentant les canaux envoyés à vos lumières toutes les 50 ou 25 ms. Quand le fichier FSEQ est enregistré, plus de 99 % du fichier n'est que cette mémoire écrite sur le disque.</p>
+<p>Regardons donc une image. Quelle est sa taille ?</p>
+<p>C'est le maximum de deux calculs possibles.</p>
+<ol>
+<li>Dans l'onglet Contrôleurs, vous définissez tout un tas de contrôleurs, et xLights additionne les canaux définis pour ces contrôleurs. Ce total est l'une des tailles d'image possibles.</li>
+<li>L'autre est plus compliqué. Chaque modèle de l'onglet Disposition a un canal de début et un nombre de canaux. On parcourt tous les modèles, on calcule leur canal de début, puis on ajoute le nombre de canaux du modèle pour obtenir son canal de fin. Le plus grand canal de fin de tous vos modèles est la seconde taille d'image possible. Cela peut donner des résultats délirants : si vous créez un modèle d'une seule chaîne de 50 pixels avec un canal de début à 1 000 000, son canal de fin est 1 000 149... ça fait beaucoup de canaux pour un seul modèle.</li>
+</ol>
+<p>Une fois la taille de l'image connue, on peut revoir l'onglet Contrôleurs sous un autre angle. Les contrôleurs indiquent simplement à xLights quoi faire des données de l'image quand il faut les envoyer aux lumières. Si votre premier contrôleur est un Renard de 510 canaux, les 510 premiers octets du tampon partent sur le port série vers votre contrôleur Renard. Si vous avez ensuite 10 univers E1.31 de 512 canaux, 10 paquets E1.31 sont envoyés à ces contrôleurs, toujours en lisant les données dans la mémoire de l'image. Dans ce processus, les modèles n'existent pas du tout : la sortie prend simplement des données dans la mémoire de l'image et les envoie au bon appareil. Si vos modèles donnent une image plus grande que les sorties définies, les données qui ne correspondent à aucune sortie ne sont envoyées nulle part.</p>
+<p>Revenons aux modèles : le canal de début d'un modèle indique simplement à xLights où placer, dans le tampon de l'image, les données de ce modèle. Avec un canal de début à 200 et un modèle de 150 canaux, un effet posé sur ce modèle écrit ses données entre les canaux 200 et 349. Des propriétés comme les brins par chaîne ou l'ordre des couleurs des nœuds changent la façon dont les canaux 200 à 349 sont remplis, mais pas la taille ni la façon dont la sortie les lit et les envoie à vos contrôleurs.</p>
+<p>Avec des formats de canal de début comme #universe:startchannel ou >nommodele:decalage, les choses deviennent un peu plus floues. Le canal de début bouge alors selon les changements de l'onglet Contrôleurs ou des autres modèles. Mais quelle que soit la façon de l'indiquer, il aboutit toujours à un nombre absolu (affiché entre accolades dans la liste des modèles de l'onglet Disposition). C'est là que les données sont écrites au rendu. Si vous changez le canal de début, il faut refaire le rendu et réenregistrer pour mettre à jour le fichier fseq.</p>
+<p>Le visualiseur n'a rien de magique : il règle simplement le canal de début sous la forme !&lt;nomcontroleur&gt;:canaldebut. La seule différence est qu'en général l'option Auto Layout Models est activée, et xLights réorganise alors les modèles dans la plage de canaux du contrôleur pour l'optimiser.</p>
+</body>
+</html>

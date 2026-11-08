@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00008.html" title="Controller Active Property" category="Controller" level="Advanced" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Propriété Active des contrôleurs</h1>
+<p>Les contrôleurs ont une propriété Active qui peut prendre 3 valeurs :</p>
+<ul>
+<li><i>Active</i> : les contrôleurs actifs reçoivent toujours les données quand vous activez la sortie vers les lumières, lancez une séquence dans xSchedule ou lisez une séquence sur FPP.</li>
+<li><i>Inactive</i> : les contrôleurs inactifs ne reçoivent jamais de données. Très utile quand un contrôleur est temporairement débranché, car envoyer des données à un contrôleur absent peut provoquer des erreurs avec les contrôleurs USB, ou des ralentissements réguliers avec les contrôleurs Ethernet.</li>
+<li><i>xLights only</i> : ces contrôleurs reçoivent les données quand vous activez la sortie vers les lumières dans xLights, mais pas quand une séquence est lancée depuis xSchedule ou après envoi sur FPP. C'est utile pour les décors sur des contrôleurs pilotés par des paquets de synchronisation, ou locaux au lecteur du show.</li>
+</ul>
+</body>
+</html>

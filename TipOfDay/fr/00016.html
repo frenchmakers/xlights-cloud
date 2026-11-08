@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00016.html" title="Working on large sequences" category="Sequencing" level="Advanced" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Travailler sur de grosses séquences</h1>
+<p>Travailler sur de grosses séquences peut être une vraie galère. Une séquence peut devenir lourde parce que :</p>
+<ul>
+<li>votre disposition est énorme... surtout avec de grands panneaux Px ou des matrices virtuelles ;</li>
+<li>vous tenez à séquencer un show de 30 minutes comme une seule chanson ;</li>
+<li>vous avez importé des séquences d'un autre séquenceur et vous retrouvez avec des milliers de petits effets ;</li>
+<li>vous utilisez de la vidéo haute définition, plusieurs calques d'effets shader, des calques et des calques d'effets en mode canevas ou des effets liquides aux réglages extrêmes, tous capables d'un rendu extrêmement lent.</li>
+</ul>
+<p>Que faire pour améliorer votre confort de séquençage ?</p>
+<p>Cela dépend en partie du cas, mais voici quelques pistes :</p>
+<ul>
+<li>Désactivez le rendu quand vous n'en avez pas besoin. Globalement, avec la case « Suspendre le rendu » sous la liste des modèles de l'onglet Séquenceur. Pour un modèle précis, faites un clic droit sur le nom de la ligne du modèle et, dans le menu « Model », choisissez « Suspend Render ». Au niveau des effets, sélectionnez-les, faites un clic droit et choisissez « Disable Render ».</li>
+<li>Lancez la vérification de séquence. Elle repère plusieurs causes connues de rendu lent. Une des plus courantes : rendre une vidéo haute définition sur un modèle basse résolution. C'est un travail énorme qu'on évite en réduisant d'abord la vidéo, avec votre logiciel de montage préféré, à une taille proche de celle du modèle.</li>
+<li>Activez le cache de rendu dans les préférences. Il échange de la mémoire et de l'espace disque contre un rendu plus rapide... en gardant une copie précalculée des effets les plus coûteux, réutilisable tant que l'effet n'a pas changé depuis sa mise en cache.</li>
+<li>Certains modèles (notamment les matrices et les sapins) ont un « Low Definition Factor ». Réglé par exemple sur 10, il divise par 100 le travail de rendu d'une matrice pendant le séquençage. Les effets paraissent plus pixellisés, mais vous obtenez le rendu final avec le rendu par lots, en décochant « Rendu basse définition » dans les préférences, ou en remettant le « Low Definition Factor » à 100 sur les modèles.</li>
+<li>Sur les séquences de milliers d'effets, la durée de l'enregistrement automatique peut devenir pénible. Vous pouvez l'espacer dans les préférences, au prix bien sûr d'un risque plus grand de perdre du travail si xLights plante.</li>
+<li>Activer le décodage vidéo matériel et les shaders en tâche de fond peut aussi améliorer le débit, avec des effets de bord possibles comme de l'instabilité ou des différences de rendu.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00049.html" title="Triac failures" category="xSchedule" level="Advanced" exclude="OSX"/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Triacs en panne</h1>
+<p>Si vous utilisez un contrôleur LOR avec xSchedule, qu'un triac lâche et que vous devez déplacer des lumières d'une sortie à une autre... vous pouvez réaffecter rapidement le canal dans xSchedule, sans avoir à modifier et refaire le rendu de toutes vos séquences.</p>
+<ol>
+<li>Dans le menu Edit de xSchedule, choisissez Output Processing.</li>
+<li>Ajoutez un élément Remap.</li>
+<li>Saisissez le canal absolu d'origine et de destination, et notez-vous un commentaire pour vous rappeler plus tard ce que vous avez fait et pourquoi.</li>
+</ol>
+<p>Désormais, pendant la lecture des séquences, les données destinées au canal mort sont copiées de façon transparente vers le nouveau canal.</p>
+<p>FPP propose une fonction similaire.</p>
+</body>
+</html>

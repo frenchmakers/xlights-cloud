@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00007.html" title="Invalid Start Channels" category="Layout" level="Advanced" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Canaux de début non valides</h1>
+<p>Quand le canal de début d'un modèle ne peut pas être déterminé, il apparaît dans la liste des modèles de l'onglet Disposition précédé de « *** ».</p>
+<img src="../00007.png" alt="Image montrant le préfixe *** devant le canal de début"/>
+<p>Plusieurs raisons sont possibles :</p>
+<ul>
+<li>Un chaînage vers un modèle qui n'existe pas dans la disposition. >modele_inexistant:1</li>
+<li>Un chaînage circulaire, par exemple modelC suit modelB, qui suit modelA, qui suit modelC.</li>
+<li>Un canal de début de contrôleur pour un contrôleur inexistant. !controleur_inexistant:1</li>
+<li>Un chaînage vers un modèle défini sans contrôleur.</li>
+<li>Une référence à un univers qui n'existe pas.</li>
+</ul>
+<p>Pour corriger, vous pouvez utiliser le visualiseur pour tout configurer correctement, ou faire un clic droit sur la liste des modèles et choisir « Make All Start Channels Valid ». Cette seconde méthode ne règle pas vraiment le problème : elle place tous les canaux de début non valides sans contrôleur, avec un canal de début fixe situé hors de la plage de tous les contrôleurs définis. Il faudra bien sûr leur donner un canal de début valide sur un contrôleur avant de pouvoir envoyer des données au modèle.</p>
+</body>
+</html>

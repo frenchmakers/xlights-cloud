@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00051.html" title="Render progress" category="Sequencing" level="Advanced" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Progression du rendu</h1>
+<p>Pendant un rendu complet, la progression s'affiche dans la barre d'état en bas de l'écran. Un clic sur l'indicateur de progression ouvre la fenêtre de progression détaillée, modèle par modèle.</p>
+<p>Si le rendu est lent, elle peut vous aider à repérer le modèle qui ralentit.</p>
+<p>On voit souvent beaucoup de modèles lents. C'est en général parce que des modèles ou des groupes partagent des canaux : l'un doit être rendu avant les autres, qui avancent alors aussi lentement que le modèle dont ils dépendent. Dans ce cas, le premier modèle lent de la liste est en général le coupable.</p>
+<p>Survoler une barre affiche le détail de l'effet en cours de rendu. Avec un seul calque, c'est bien l'effet en cause ; avec plusieurs calques, cela n'aide pas forcément à trouver ce qui est lent.</p>
+<p>Les groupes de modèles sont l'une des principales causes de rendu lent. Si vous avez par exemple un simple effet On d'une seconde sur un modèle qui fait aussi partie d'un groupe portant un effet vidéo sur toute la séquence, avec la fusion entre modèles activée, alors tout l'effet vidéo doit être refait au rendu de l'effet On, car ils dépendent directement l'un de l'autre. C'est là que le cache de rendu peut faire une énorme différence de temps.</p>
+</body>
+</html>
