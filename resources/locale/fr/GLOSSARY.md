@@ -39,6 +39,18 @@ toujours de la même façon.
   - View : Normal / Large (taille de palette).
   Comme une phrase anglaise n'a qu'une traduction, ces mots restent en anglais
   partout où ils apparaissent.
+- **Libellés de grilles et d'arbres relus par le code** : lignes de la grille
+  des visages (Face Outline, Mouth - AI…, Eyes - Open…), colonnes Eyes Open /
+  Eyes Closed, grilles des états et des sous-modèles, planning HinksPix.
+  Ils construisent des clés enregistrées dans le modèle.
+- **Choix relus par leur libellé dans le séquenceur et la disposition** :
+  types de séquence (Media / Animation / Effect), modes de rendu (Canvas /
+  Erase), dispositions de groupes (Horizontal Stack, Grid as per preview…),
+  filtres de visages, placements d'image, sources de notes (MIDI File…),
+  timings fixes (25ms, Metronome…), découpes de sous-modèles (Horizontal
+  Slices…).
+- **Valeurs initiales de champs de saisie** (`<group name>`, `Insert text
+  here`) : enregistrées telles quelles si l'utilisateur ne les change pas.
 - **Libellés internes jamais affichés** de wxSmith (Item label, Pane caption,
   Label, Status bar, RECENT1…).
 - **Noms de produits et protocoles** : xLights, xSchedule, FPP, Falcon, WLED,
@@ -59,6 +71,8 @@ toujours de la même façon.
 | Effect panel / settings | panneau / paramètres de l'effet | |
 | Model | modèle | |
 | Model group | groupe de modèles | |
+| Model Set / Set | ensemble de modèles / ensemble | modèles déplacés ensemble dans la disposition |
+| Viewpoint | point de vue | |
 | Submodel | sous-modèle | |
 | Node | nœud | un point adressable, qui peut regrouper plusieurs LED |
 | String | chaîne | ensemble de nœuds sur une sortie |
@@ -71,6 +85,8 @@ toujours de la même façon.
 | Timing track | piste de timing | |
 | Timing mark | repère de timing | |
 | Lyrics / Phonemes | paroles / phonèmes | |
+| Chorus / Peak (sections de chanson) | refrain / pic | générateur d'effets de lyres |
+| Wizard | assistant | |
 | Layer | calque | |
 | Blend / Blending | fusion | « Layer Blending » → Fusion des calques |
 | Transition | transition | |
