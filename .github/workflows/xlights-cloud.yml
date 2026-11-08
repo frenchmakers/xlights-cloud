@@ -141,9 +141,18 @@ jobs:
     needs: check
     if: needs.check.outputs.build == 'true'
     runs-on: windows-2025-vs2026
+    # The OIDC token subject (repo:<this repo>:environment:signing) is what the
+    # Entra federated credential trusts for Azure Artifact Signing. Signing runs
+    # only when the SIGNING_ENABLED repository variable is 'true'; until then the
+    # release is built unsigned.
+    environment: signing
+    permissions:
+      contents: write
+      id-token: write
     env:
       VERSION: ${{ needs.check.outputs.version }}
       GH_TOKEN: ${{ github.token }}
+      SIGN: ${{ vars.SIGNING_ENABLED == 'true' }}
     steps:
       - name: Checkout the official xLights ${{ needs.check.outputs.version }}
         uses: actions/checkout@v4
@@ -182,6 +191,75 @@ jobs:
         working-directory: build_scripts\msw
         run: call build_VS_x64.cmd
 
+      # --- Authenticode signing via Azure Artifact Signing ----------------------
+      # Same steps as the official release workflow: our executables, then the
+      # bundled DLLs that have no vendor signature (Windows 11 Smart App Control
+      # refuses unsigned DLLs, see xLights #7044), then the installer.
+      - name: Azure login (OIDC)
+        if: env.SIGN == 'true'
+        uses: azure/login@v3
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Sign xLights.exe
+        if: env.SIGN == 'true'
+        uses: azure/artifact-signing-action@v2
+        with:
+          endpoint: ${{ vars.SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.SIGNING_ACCOUNT }}
+          certificate-profile-name: ${{ vars.SIGNING_PROFILE }}
+          files-folder: xlights\x64\Release
+          files-folder-filter: exe
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+
+      - name: Sign xlDo.exe
+        if: env.SIGN == 'true'
+        uses: azure/artifact-signing-action@v2
+        with:
+          endpoint: ${{ vars.SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.SIGNING_ACCOUNT }}
+          certificate-profile-name: ${{ vars.SIGNING_PROFILE }}
+          files-folder: xlDo\x64\Release
+          files-folder-filter: exe
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+
+      - name: Sign fseq_convert.exe
+        if: env.SIGN == 'true'
+        uses: azure/artifact-signing-action@v2
+        with:
+          endpoint: ${{ vars.SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.SIGNING_ACCOUNT }}
+          certificate-profile-name: ${{ vars.SIGNING_PROFILE }}
+          files-folder: fseq_convert\cmake_vs\Release
+          files-folder-filter: exe
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+
+      - name: List unsigned bundled DLLs
+        id: unsigned_dlls
+        if: env.SIGN == 'true'
+        shell: pwsh
+        run: |
+          $unsigned = Get-ChildItem bin64\*.dll | Where-Object { (Get-AuthenticodeSignature $_.FullName).Status -ne 'Valid' } | ForEach-Object { $_.Name }
+          Set-Content -Path bin64\sign-catalog.txt -Value $unsigned
+          "Signing: $($unsigned -join ', ')"
+          "count=$($unsigned.Count)" >> $env:GITHUB_OUTPUT
+
+      - name: Sign bundled DLLs
+        if: env.SIGN == 'true' && steps.unsigned_dlls.outputs.count != '0'
+        uses: azure/artifact-signing-action@v2
+        with:
+          endpoint: ${{ vars.SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.SIGNING_ACCOUNT }}
+          certificate-profile-name: ${{ vars.SIGNING_PROFILE }}
+          files-catalog: bin64\sign-catalog.txt
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+
       - name: Build the xLights Cloud installer
         working-directory: build_scripts\msw
         run: |
@@ -190,6 +268,31 @@ jobs:
           ISCC.exe xLights_Cloud_64bit.iss
           if ($LASTEXITCODE -ne 0) { exit 1 }
           Get-ChildItem output\*.exe | ForEach-Object { "{0}  {1:N1} MB" -f $_.Name, ($_.Length / 1MB) }
+
+      - name: Sign the installer
+        if: env.SIGN == 'true'
+        uses: azure/artifact-signing-action@v2
+        with:
+          endpoint: ${{ vars.SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.SIGNING_ACCOUNT }}
+          certificate-profile-name: ${{ vars.SIGNING_PROFILE }}
+          files-folder: build_scripts\msw\output
+          files-folder-filter: exe
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+
+      - name: Check the signatures
+        if: env.SIGN == 'true'
+        shell: pwsh
+        run: |
+          $files = @(Get-ChildItem xLights\x64\Release\xLights.exe, build_scripts\msw\output\*.exe)
+          $bad = 0
+          foreach ($f in $files) {
+            $s = Get-AuthenticodeSignature $f.FullName
+            "{0}: {1} ({2})" -f $f.Name, $s.Status, $s.SignerCertificate.Subject
+            if ($s.Status -ne 'Valid') { $bad++ }
+          }
+          if ($bad) { exit 1 }
 
       - name: Keep the installer
         uses: actions/upload-artifact@v4
@@ -203,12 +306,17 @@ jobs:
         run: |
           tag="$VERSION-cloud"
           installer=$(ls build_scripts/msw/output/*.exe)
+          if [ "$SIGN" = "true" ]; then
+            SIGNING_NOTE="Signed by SYNAPSE DEVELOPPEMENT (FrenchMakers). Windows SmartScreen may still ask for confirmation while this new publisher builds its reputation."
+          else
+            SIGNING_NOTE="The installer is not code-signed, so Windows SmartScreen warns before running it (More info > Run anyway)."
+          fi
           cat > "$RUNNER_TEMP/notes.md" << EOF
           **xLights Cloud $VERSION** is the official [xLights $VERSION](https://github.com/$UPSTREAM_REPO/releases/tag/$VERSION) plus **File > Backup to Cloud** and **File > Restore from Cloud** (Cloudflare R2 or any S3-compatible storage, set up in Preferences > Cloud Storage).
 
           - Windows 64-bit. It installs next to the official xLights, in *C:\\Program Files\\xLights Cloud*, and shares its settings. \`.xsq\` files still open with the official xLights.
           - Not made or supported by the xLights team: report problems [here](https://github.com/$GH_REPO/issues), not to the xLights project. Crash reports stay on your computer.
-          - The installer is not code-signed, so Windows SmartScreen warns before running it (More info > Run anyway).
+          - $SIGNING_NOTE
 
           Built from the official tag \`$VERSION\` with [\`${GITHUB_SHA::9}\`](https://github.com/$GH_REPO/commit/$GITHUB_SHA) of this repository applied on top.
           EOF
