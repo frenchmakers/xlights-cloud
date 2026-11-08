@@ -97,12 +97,39 @@ jobs:
         if: github.ref_name == 'xlights-cloud'
         run: |
           git show upstream/master:TipOfDay/tod.xml > "$RUNNER_TEMP/tod.xml"
-          python3 ci_scripts/xlights_cloud_tips.py "$RUNNER_TEMP/tod.xml"
+          python3 ci_scripts/xlights_cloud_tips.py "$RUNNER_TEMP/tod.xml" "$RUNNER_TEMP/untranslated.md"
           if ! git diff --quiet -- TipOfDay/fr/tod.xml; then
             git add TipOfDay/fr/tod.xml
             git commit -q -m "Refresh the French tips list from the official tips"
             git push -q origin "HEAD:$GITHUB_REF_NAME"
             echo "French tips list updated."
+          fi
+
+      # One issue lists the official tips that have no French page yet: it is
+      # opened (or commented on, for each new tip) so GitHub notifies you, and
+      # closed once every tip is translated again.
+      - name: Report tips to translate
+        if: github.ref_name == 'xlights-cloud'
+        run: |
+          title="Astuces à traduire en français"
+          list="$RUNNER_TEMP/untranslated.md"
+          open=$(gh issue list --state open --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -1)
+          intro=$(printf 'Ces astuces du jour officielles n%sont pas encore de page française : elles s%saffichent en anglais dans la fenêtre française.\n\nTraduisez-les dans `TipOfDay/fr/` (même nom de fichier, voir `resources/locale/fr/GLOSSARY.md`).\n\n' "'" "'")
+          if [ -s "$list" ]; then
+            body="$intro$(cat "$list")"
+            if [ -z "$open" ]; then
+              gh issue create --title "$title" --body "$body"
+            else
+              old=$(gh issue view "$open" --json body --jq .body)
+              new_lines=$(grep -vxF -f <(printf '%s\n' "$old") "$list" || true)
+              if [ -n "$new_lines" ]; then
+                gh issue edit "$open" --body "$body"
+                gh issue comment "$open" --body "$(printf 'Nouvelles astuces à traduire :\n\n%s' "$new_lines")"
+              fi
+            fi
+            echo "::notice::$(grep -c . "$list") tip(s) to translate"
+          elif [ -n "$open" ]; then
+            gh issue close "$open" --comment "Toutes les astuces officielles ont maintenant une page française."
           fi
 
       - name: Pick the version to build

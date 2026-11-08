@@ -7,9 +7,11 @@ branch on GitHub. It lists every official tip, in the official order:
   - any other tip points at the official English page, so new tips from the
     xLights team still show (in English) until they are translated.
 
-  python ci_scripts/xlights_cloud_tips.py [official-tod.xml]
+  python ci_scripts/xlights_cloud_tips.py [official-tod.xml [untranslated.md]]
 
 Without an argument the official list is TipOfDay/tod.xml of this checkout.
+With untranslated.md, the official tips that have no French page yet are
+written there as a Markdown list (an empty file when every tip is translated).
 """
 
 import os
@@ -27,6 +29,7 @@ def main():
 
     out = ET.Element("tipofday")
     translated = 0
+    missing = []
     for tip in tips:
         url = tip.get("url", "")
         if not url:
@@ -36,6 +39,13 @@ def main():
             translated += 1
         else:
             entry.set("url", OFFICIAL_URL + url)
+            line = f"- `{url}` [{tip.get('title', url)}]({OFFICIAL_URL}{url}) ({tip.get('level', '')})\n"
+            if line not in missing:
+                missing.append(line)
+
+    if len(sys.argv) > 2:
+        with open(sys.argv[2], "w", encoding="utf-8", newline="\n") as f:
+            f.writelines(missing)
 
     ET.indent(out, space="   ")
     os.makedirs(FR_DIR, exist_ok=True)
