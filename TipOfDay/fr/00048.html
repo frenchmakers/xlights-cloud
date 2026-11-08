@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00048.html" title="Overlapping channels" category="Layout" level="Intermediate" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Canaux qui se chevauchent</h1>
+<p>Des canaux se chevauchent quand plusieurs modèles de la disposition sont associés aux mêmes canaux des contrôleurs. On le remarque souvent en lisant une séquence, quand des lumières s'allument de façon inattendue sur certains modèles.</p>
+<p>Outils > Vérification de séquence aide alors : elle passe en revue tous vos modèles pour repérer ces chevauchements.</p>
+<p>Vous pouvez aussi cocher « Vérification des chevauchements activée » dans l'onglet Disposition. En cliquant sur un modèle, les pixels des autres modèles qui utilisent les mêmes canaux sont surlignés en rouge.</p>
+<p>Ce n'est pas très courant, mais le chevauchement est parfois voulu. On parle alors de « shadow models » : un second modèle est volontairement conçu pour chevaucher un autre. Le plus souvent, c'est pour contourner des limites du visualiseur, par exemple répartir un modèle sur plusieurs contrôleurs, ou utiliser un modèle intégré avec plusieurs chaînes dont le motif voulu n'est pas pris en charge. Dans ce cas, réglez la propriété « Shadow Model For » pour masquer les avertissements de la vérification.</p>
+<p>Pour corriger des chevauchements, on utilise en général le visualiseur, ou on configure soigneusement toutes les affectations aux contrôleurs. Pour une correction rapide, faites un clic droit dans la liste des modèles de l'onglet Disposition et choisissez « Make All Start Channels Not Overlapping ». Cela ne les rendra pas justes, mais supprimera tous les chevauchements.</p>
+</body>
+</html>

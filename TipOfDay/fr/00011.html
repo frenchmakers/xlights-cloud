@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00011.html" title="Backups" category="Tools" level="Intermediate" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Sauvegardes</h1>
+<p>Les options de sauvegarde se trouvent dans les préférences :</p>
+<ul>
+<li><i>Sauvegarder à l'enregistrement</i> : en général à désactiver, car cela produit un nombre excessif de sauvegardes. Activée, xLights sauvegarde votre dossier du show à chaque enregistrement d'une séquence.</li>
+<li><i>Sauvegarder au démarrage</i> : en général à activer, sauf si une autre stratégie de sauvegarde vous garantit de pouvoir revenir à n'importe quel fichier enregistré. Activée, le dossier du show est sauvegardé à chaque lancement de xLights, ce qui permet de récupérer n'importe quelle séquence même après un plantage.</li>
+<li><i>Sauvegarder les sous-dossiers</i> : si toutes vos séquences (fichiers xsq) sont à la racine du dossier du show, vous pouvez la désactiver. Si vous les rangez dans des sous-dossiers, vous devez l'activer, sinon xLights ne sauvegardera PAS vos séquences.</li>
+<li><i>Purger les sauvegardes</i> : je la règle en général sur environ 90 jours pour contenir la taille du dossier de sauvegarde. Au démarrage, xLights supprime alors les sauvegardes plus anciennes que la durée choisie.</li>
+<li><i>Dossier de sauvegarde</i> : par défaut, votre dossier du show. Mais si ce dossier est synchronisé dans le cloud et que vous ne pouvez pas en exclure le dossier de sauvegarde, je le déplacerais vers un emplacement purement local. Sinon, vous utiliserez beaucoup de stockage distant sans vraie raison.</li>
+</ul>
+<p>La sauvegarde parcourt le dossier du show à la recherche des fichiers XML, XSQ et XBKP et les copie dans un sous-dossier du dossier de sauvegarde.</p>
+<p>Les fichiers XBKP sont les enregistrements automatiques. Après un plantage, ce sont eux qu'il faut regarder pour récupérer le travail non enregistré. Pour une séquence jamais enregistrée, le fichier d'enregistrement automatique s'appelle _.XBKP.</p>
+<p>Pour récupérer un fichier XBKP, renommez-le simplement en XML ou XSQ (selon ce qu'il sauvegarde).</p>
+</body>
+</html>

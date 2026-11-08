@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <!--xlights>
+            <tip url="00066.html" title="Lua Script: Render and Export Model to Video" category="Sequencing" level="Intermediate" exclude=""/>
+        </xlights-->
+    </head>
+    <body>
+<h1>Script Lua : rendre et exporter un modèle en vidéo</h1>
+<p>Le script Lua intégré <b>RenderExportModel</b> (dans <b>Outils &gt; Exécuter des scripts</b>) fait le rendu d'une ou plusieurs séquences et exporte un modèle en fichier vidéo, en une seule étape, sans ouvrir chaque séquence à la main.</p>
+<p>Au lancement du script, vous choisissez :</p>
+<ul>
+<li>le <b>modèle</b> à exporter ;</li>
+<li>le <b>format vidéo</b> (voir ci-dessous) ;</li>
+<li>les <b>séquences</b> à traiter ;</li>
+<li>s'il faut forcer le rendu en <b>haute définition</b>.</li>
+</ul>
+<p>Chaque séquence est ouverte, rendue, exportée dans un sous-dossier portant le nom du modèle, puis fermée automatiquement.</p>
+<h2>Formats vidéo disponibles</h2>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Choix de format</th><th>Sortie</th><th>Remarques</th></tr>
+<tr><td>Compressed MP4</td><td>.mp4</td><td>H.264 : fichier le plus léger, bonne compatibilité</td></tr>
+<tr><td>High Quality MP4</td><td>.mp4</td><td>HEVC : quasi sans perte, plus léger que le brut</td></tr>
+<tr><td>Uncompressed AVI</td><td>.avi</td><td>RGB brut : fichier le plus lourd, sans perte de qualité</td></tr>
+<tr><td>Lossless RGB MOV</td><td>.mov</td><td>Sans perte, alternative à l'AVI adaptée au Mac</td></tr>
+<tr><td>ProRes 4444 MOV</td><td>.mov</td><td>4:4:4 quasi sans perte ; idéal pour le montage vidéo</td></tr>
+<tr><td>HD ProRes MOV</td><td>.mov</td><td>ProRes 4444 mis à l'échelle en 1920&times;1080</td></tr>
+</table>
+<p>Le script <b>BatchRenderExportModel</b> exporte le modèle choisi en Compressed MP4 pour chaque séquence sélectionnée.</p>
+</body>
+</html>
