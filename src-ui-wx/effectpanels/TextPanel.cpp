@@ -70,7 +70,7 @@ wxWindow* TextPanel::BuildFileRow(wxWindow* parentWin, wxSizer* sizer, int cols)
     // surrounding flat 4-col grid alignment. The hidden file picker holds
     // the actual path for serialization (saved as E_FILEPICKERCTRL_Text_File);
     // the MediaPickerCtrl is what the user actually interacts with.
-    auto* label = new wxStaticText(parentWin, wxID_ANY, "From File");
+    auto* label = new wxStaticText(parentWin, wxID_ANY, _("From File"));
     sizer->Add(label, 1, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
 
     _hiddenFilePicker = new BulkEditFilePickerCtrl(parentWin, wxNewId(),
@@ -110,7 +110,7 @@ wxWindow* TextPanel::BuildXLFontRow(wxWindow* parentWin, wxSizer* sizer, int col
     // as a custom control with the legacy name keeps the saved key
     // E_CHOICE_Text_Font intact while letting the framework own the
     // wxFontPicker via fontpicker controlType.
-    auto* label = new wxStaticText(parentWin, wxID_ANY, "XL Font");
+    auto* label = new wxStaticText(parentWin, wxID_ANY, _("XL Font"));
     sizer->Add(label, 1, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 5);
 
     _xlFontChoice = new BulkEditChoice(parentWin, wxNewId(),

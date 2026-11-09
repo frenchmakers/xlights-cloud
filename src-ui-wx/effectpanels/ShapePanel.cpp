@@ -183,7 +183,7 @@ wxWindow* ShapePanel::CreateCustomControl(wxWindow* parentWin, wxSizer* sizer, c
 
     if (id == "SVG") {
         // Row: label | hidden file picker + MediaPickerCtrl
-        auto* label = new wxStaticText(parentWin, wxID_ANY, "SVG File");
+        auto* label = new wxStaticText(parentWin, wxID_ANY, _("SVG File"));
         sizer->Add(label, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 5);
 
         // Hidden file picker for serialization
@@ -205,7 +205,7 @@ wxWindow* ShapePanel::CreateCustomControl(wxWindow* parentWin, wxSizer* sizer, c
 
     if (id == "Shape_Font") {
         // Row: label | font picker
-        auto* label = new wxStaticText(parentWin, wxID_ANY, "Character");
+        auto* label = new wxStaticText(parentWin, wxID_ANY, _("Character"));
         sizer->Add(label, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 5);
 
         _fontPicker = new BulkEditFontPicker(parentWin, wxNewId(), wxNullFont,
@@ -237,7 +237,7 @@ wxWindow* ShapePanel::CreateCustomControl(wxWindow* parentWin, wxSizer* sizer, c
         rowSizer->Add(_emojiDisplay, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
         rowSizer->Add(6, -1);
 
-        _charBrowseBtn = new wxButton(parentWin, wxNewId(), "Browse...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
+        _charBrowseBtn = new wxButton(parentWin, wxNewId(), _("Browse..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
         _charBrowseBtn->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) {
             if (_fontPicker && _charSpin) {
                 CharMapDialog dlg(this, _fontPicker->GetSelectedFont(), _charSpin->GetValue());
@@ -258,7 +258,7 @@ wxWindow* ShapePanel::CreateCustomControl(wxWindow* parentWin, wxSizer* sizer, c
 
     if (id == "Shape_SkinTone") {
         // Row: label | skin tone choice
-        auto* label = new wxStaticText(parentWin, wxID_ANY, "Skin Tone");
+        auto* label = new wxStaticText(parentWin, wxID_ANY, _("Skin Tone"));
         sizer->Add(label, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 5);
 
         _skinToneChoice = new BulkEditChoice(parentWin, wxNewId(), wxDefaultPosition, wxDefaultSize,

@@ -710,54 +710,54 @@ ManageMediaPanel::ManageMediaPanel(wxWindow* parent, SequenceMedia* sequenceMedi
 
     rightSizer->Add(0, 2, 0);
 
-    _addButton = new wxButton(this, wxID_ANY, "Add...");
-    _addButton->SetToolTip("Add a media file to the sequence");
+    _addButton = new wxButton(this, wxID_ANY, _("Add..."));
+    _addButton->SetToolTip(_("Add a media file to the sequence"));
     _addButton->Show(!singleSelect);
     rightSizer->Add(_addButton, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 2);
 
-    _aiGenerateButton = new wxButton(this, wxID_ANY, "AI Generate...");
-    _aiGenerateButton->SetToolTip("Generate an image using an AI service and add it to the sequence media");
+    _aiGenerateButton = new wxButton(this, wxID_ANY, _("AI Generate..."));
+    _aiGenerateButton->SetToolTip(_("Generate an image using an AI service and add it to the sequence media"));
     rightSizer->Add(_aiGenerateButton, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 2);
 
     rightSizer->Add(0, 4, 0);
 
-    _renameButton = new wxButton(this, wxID_ANY, "Rename...");
-    _renameButton->SetToolTip("Rename the selected embedded image and update all sequence references");
+    _renameButton = new wxButton(this, wxID_ANY, _("Rename..."));
+    _renameButton->SetToolTip(_("Rename the selected embedded image and update all sequence references"));
     _renameButton->Disable();
     rightSizer->Add(_renameButton, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 2);
 
     rightSizer->Add(0, 4, 0);
 
-    _embedButton = new wxButton(this, wxID_ANY, "Embed");
-    _embedButton->SetToolTip("Store this media inside the sequence file");
+    _embedButton = new wxButton(this, wxID_ANY, _("Embed"));
+    _embedButton->SetToolTip(_("Store this media inside the sequence file"));
     _embedButton->Disable();
     rightSizer->Add(_embedButton, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 2);
 
-    _extractButton = new wxButton(this, wxID_ANY, "Extract");
-    _extractButton->SetToolTip("Reference this media from an external file path");
+    _extractButton = new wxButton(this, wxID_ANY, _("Extract"));
+    _extractButton->SetToolTip(_("Reference this media from an external file path"));
     _extractButton->Disable();
     rightSizer->Add(_extractButton, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 2);
 
-    _embedAllButton = new wxButton(this, wxID_ANY, "Embed All");
-    _embedAllButton->SetToolTip("Store all media inside the sequence file");
+    _embedAllButton = new wxButton(this, wxID_ANY, _("Embed All"));
+    _embedAllButton->SetToolTip(_("Store all media inside the sequence file"));
     rightSizer->Add(_embedAllButton, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 2);
 
-    _extractAllButton = new wxButton(this, wxID_ANY, "Extract All");
-    _extractAllButton->SetToolTip("Reference all media from external file paths");
+    _extractAllButton = new wxButton(this, wxID_ANY, _("Extract All"));
+    _extractAllButton->SetToolTip(_("Reference all media from external file paths"));
     rightSizer->Add(_extractAllButton, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 2);
 
     rightSizer->Add(0, 4, 0);
 
-    _removeButton = new wxButton(this, wxID_ANY, "Remove");
-    _removeButton->SetToolTip("Remove the selected embedded media from the sequence");
+    _removeButton = new wxButton(this, wxID_ANY, _("Remove"));
+    _removeButton->SetToolTip(_("Remove the selected embedded media from the sequence"));
     _removeButton->Disable();
     _removeButton->Show(!singleSelect);
     rightSizer->Add(_removeButton, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 2);
 
     rightSizer->Add(0, 4, 0);
 
-    _checkMediaButton = new wxButton(this, wxID_ANY, "Check Media...");
-    _checkMediaButton->SetToolTip("Check the sequence's audio/video files for formats that won't render on upcoming xLights versions");
+    _checkMediaButton = new wxButton(this, wxID_ANY, _("Check Media..."));
+    _checkMediaButton->SetToolTip(_("Check the sequence's audio/video files for formats that won't render on upcoming xLights versions"));
     _checkMediaButton->Show(!singleSelect && _xlFrame != nullptr);
     rightSizer->Add(_checkMediaButton, 0, wxLEFT | wxRIGHT | wxBOTTOM | wxEXPAND, 2);
 
@@ -2900,8 +2900,8 @@ SelectMediaDialog::SelectMediaDialog(wxWindow* parent, SequenceMedia* sequenceMe
 
     // "Add from disk..." and OK / Cancel buttons
     wxBoxSizer* btnRowSizer = new wxBoxSizer(wxHORIZONTAL);
-    _addFromDiskButton = new wxButton(this, wxID_ANY, "Add from disk...");
-    _addFromDiskButton->SetToolTip("Browse for a file on disk to add to the sequence media");
+    _addFromDiskButton = new wxButton(this, wxID_ANY, _("Add from disk..."));
+    _addFromDiskButton->SetToolTip(_("Browse for a file on disk to add to the sequence media"));
     btnRowSizer->Add(_addFromDiskButton, 0, wxALL, 4);
 
     btnRowSizer->AddStretchSpacer();
@@ -2910,7 +2910,7 @@ SelectMediaDialog::SelectMediaDialog(wxWindow* parent, SequenceMedia* sequenceMe
     _okButton = new wxButton(this, wxID_OK, "OK");
     _okButton->Enable(false);
     stdBtnSizer->AddButton(_okButton);
-    stdBtnSizer->AddButton(new wxButton(this, wxID_CANCEL, "Cancel"));
+    stdBtnSizer->AddButton(new wxButton(this, wxID_CANCEL, _("Cancel")));
     stdBtnSizer->Realize();
     btnRowSizer->Add(stdBtnSizer, 0, wxALL, 4);
 

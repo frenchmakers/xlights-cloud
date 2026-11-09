@@ -178,12 +178,12 @@ wxWindow* BlendingPanel::BuildLayerMorphRow(wxWindow* parentWin, wxSizer* sizer)
     auto* row = new wxFlexGridSizer(0, 4, 0, 0);
     row->AddGrowableCol(1);
 
-    _layerMorphCheck = new BulkEditCheckBox(parentWin, wxNewId(), "Morph",
+    _layerMorphCheck = new BulkEditCheckBox(parentWin, wxNewId(), _("Morph"),
                                              wxDefaultPosition, wxDefaultSize, 0,
                                              wxDefaultValidator,
                                              _T("ID_CHECKBOX_LayerMorph"));
     _layerMorphCheck->SetValue(false);
-    _layerMorphCheck->SetToolTip("Gradual cross-fade from Effect1 to Effect2");
+    _layerMorphCheck->SetToolTip(_("Gradual cross-fade from Effect1 to Effect2"));
     row->Add(_layerMorphCheck, 1, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
 
     _effectLayerMixSlider = new BulkEditSlider(parentWin, wxNewId(), 0, 0, 100,
@@ -205,7 +205,7 @@ wxWindow* BlendingPanel::BuildLayerMorphRow(wxWindow* parentWin, wxSizer* sizer)
                                       wxDefaultPosition, wxSize(14, 14),
                                       wxBU_AUTODRAW | wxBORDER_NONE, wxDefaultValidator,
                                       _T("ID_BITMAPBUTTON_SLIDER_EffectLayerMix"));
-    _layerMixLock->SetToolTip("Lock/Unlock. If Locked then a \"Create Random Effects\" will NOT change this value.");
+    _layerMixLock->SetToolTip(_("Lock/Unlock. If Locked then a \"Create Random Effects\" will NOT change this value."));
     _layerMixLock->Bind(wxEVT_BUTTON, &BlendingPanel::OnLockButtonClick, this);
     row->Add(_layerMixLock, 0, wxALL | wxALIGN_CENTER_HORIZONTAL | wxALIGN_CENTER_VERTICAL, 2);
 
@@ -237,7 +237,7 @@ wxWindow* BlendingPanel::BuildLayerMethodRow(wxWindow* parentWin, wxSizer* sizer
     _aboutLayersButton = new wxButton(parentWin, wxNewId(), "?",
                                        wxDefaultPosition, wxSize(25, 23), 0,
                                        wxDefaultValidator, _T("IDD_BUTTON_ABOUT_LAYERS"));
-    _aboutLayersButton->SetToolTip("About Layer Blending Types");
+    _aboutLayersButton->SetToolTip(_("About Layer Blending Types"));
     row->Add(_aboutLayersButton, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
     _aboutLayersButton->Bind(wxEVT_BUTTON, &BlendingPanel::OnAboutLayersClick, this);
 
@@ -272,7 +272,7 @@ wxWindow* BlendingPanel::BuildTransitionHeader(wxWindow* parentWin, wxSizer* siz
     typeChoice->Bind(wxEVT_CHOICE, [this](wxCommandEvent& e) { ValidateWindow(); e.Skip(); });
 
     // "Time (s)" label
-    auto* label = new wxStaticText(parentWin, wxID_ANY, "Time (s)");
+    auto* label = new wxStaticText(parentWin, wxID_ANY, _("Time (s)"));
     row->Add(label, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 
     // Fade combobox — construct empty, then AppendDefault + Append common values.
@@ -341,7 +341,7 @@ wxWindow* BlendingPanel::BuildCanvasRow(wxWindow* parentWin, wxSizer* sizer) {
     // of the width so the left cluster doesn't stretch.
     auto* row = new wxBoxSizer(wxHORIZONTAL);
 
-    CheckBox_Canvas = new BulkEditCheckBox(parentWin, wxNewId(), "Canvas",
+    CheckBox_Canvas = new BulkEditCheckBox(parentWin, wxNewId(), wxGETTEXT_IN_CONTEXT("checkbox", "Canvas"),
                                             wxDefaultPosition, wxDefaultSize, 0,
                                             wxDefaultValidator,
                                             _T("ID_CHECKBOX_Canvas"));
@@ -349,7 +349,7 @@ wxWindow* BlendingPanel::BuildCanvasRow(wxWindow* parentWin, wxSizer* sizer) {
     row->Add(CheckBox_Canvas, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     CheckBox_Canvas->Bind(wxEVT_CHECKBOX, &BlendingPanel::OnCanvasClick, this);
 
-    _layersButton = new wxButton(parentWin, wxNewId(), "Layers ...",
+    _layersButton = new wxButton(parentWin, wxNewId(), _("Layers ..."),
                                   wxDefaultPosition, wxDefaultSize, 0,
                                   wxDefaultValidator, _T("IDD_BUTTON_Layers"));
     row->Add(_layersButton, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);

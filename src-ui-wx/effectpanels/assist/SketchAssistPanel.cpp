@@ -60,7 +60,7 @@ SketchAssistPanel::SketchAssistPanel(wxWindow* parent, wxWindowID id /*wxID_ANY*
     auto controlsSizer = new wxBoxSizer(wxVERTICAL);
     auto primaryActionSizer = new wxBoxSizer(wxHORIZONTAL);
     auto fileActionSizer = new wxBoxSizer(wxHORIZONTAL);
-    auto pathsSizer = new wxStaticBoxSizer(wxVERTICAL, this, "Paths");
+    auto pathsSizer = new wxStaticBoxSizer(wxVERTICAL, this, _("Paths"));
     auto pathsHeaderSizer = new wxBoxSizer(wxHORIZONTAL);
     auto pathToolbarSizer = new wxBoxSizer(wxHORIZONTAL);
     auto pathDescriptionSizer = new wxBoxSizer(wxVERTICAL);
@@ -74,34 +74,34 @@ SketchAssistPanel::SketchAssistPanel(wxWindow* parent, wxWindowID id /*wxID_ANY*
     canvasFrameSizer->Add(m_sketchCanvasPanel, 1, wxALL | wxEXPAND);
     canvasFrame->SetSizer(canvasFrameSizer);
 
-    m_startPathBtn = new wxButton(this, wxID_ANY, "Start");
-    m_continuePathBtn = new wxButton(this, wxID_ANY, "Continue");
-    m_endPathBtn = new wxButton(this, wxID_ANY, "End");
-    m_closePathBtn = new wxButton(this, wxID_ANY, "Close");
+    m_startPathBtn = new wxButton(this, wxID_ANY, _("Start"));
+    m_continuePathBtn = new wxButton(this, wxID_ANY, _("Continue"));
+    m_endPathBtn = new wxButton(this, wxID_ANY, _("End"));
+    m_closePathBtn = new wxButton(this, wxID_ANY, _("Close"));
 
-    m_importSketchBtn = new wxButton(this, wxID_ANY, "Import Sketch");
-    m_exportSketchBtn = new wxButton(this, wxID_ANY, "Export Sketch");
-    m_importSVGBtn = new wxButton(this, wxID_ANY, "Import SVG");
-    m_clearSketchBtn = new wxButton(this, wxID_ANY, "Clear Sketch");
+    m_importSketchBtn = new wxButton(this, wxID_ANY, _("Import Sketch"));
+    m_exportSketchBtn = new wxButton(this, wxID_ANY, _("Export Sketch"));
+    m_importSVGBtn = new wxButton(this, wxID_ANY, _("Import SVG"));
+    m_clearSketchBtn = new wxButton(this, wxID_ANY, _("Clear Sketch"));
 
     m_movePathUpBtn = new wxButton(pathsSizer->GetStaticBox(), wxID_ANY, L"▲", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
     m_movePathDownBtn = new wxButton(pathsSizer->GetStaticBox(), wxID_ANY, L"▼", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
-    m_movePathUpBtn->SetToolTip("Move path up");
-    m_movePathDownBtn->SetToolTip("Move path down");
+    m_movePathUpBtn->SetToolTip(_("Move path up"));
+    m_movePathDownBtn->SetToolTip(_("Move path down"));
 
-    primaryActionSizer->Add(new wxStaticText(this, wxID_ANY, "Path Editing:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+    primaryActionSizer->Add(new wxStaticText(this, wxID_ANY, _("Path Editing:")), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
     primaryActionSizer->Add(m_startPathBtn, 0, wxALL, 3);
     primaryActionSizer->Add(m_continuePathBtn, 0, wxALL, 3);
     primaryActionSizer->Add(m_endPathBtn, 0, wxALL, 3);
     primaryActionSizer->Add(m_closePathBtn, 0, wxALL, 3);
 
-    fileActionSizer->Add(new wxStaticText(this, wxID_ANY, "File:"), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
+    fileActionSizer->Add(new wxStaticText(this, wxID_ANY, _("File:")), 0, wxALL | wxALIGN_CENTER_VERTICAL, 3);
     fileActionSizer->Add(m_importSketchBtn, 0, wxALL, 3);
     fileActionSizer->Add(m_exportSketchBtn, 0, wxALL, 3);
     fileActionSizer->Add(m_importSVGBtn, 0, wxALL, 3);
     fileActionSizer->Add(m_clearSketchBtn, 0, wxALL, 3);
 
-    m_pathsHeaderLabel = new wxStaticText(pathsSizer->GetStaticBox(), wxID_ANY, "Paths (0)");
+    m_pathsHeaderLabel = new wxStaticText(pathsSizer->GetStaticBox(), wxID_ANY, _("Paths (0)"));
     pathsHeaderSizer->Add(m_pathsHeaderLabel, 0, wxALIGN_CENTER_VERTICAL);
     pathsHeaderSizer->AddStretchSpacer(1);
     pathToolbarSizer->Add(m_movePathUpBtn, 0, wxALL, 2);
@@ -114,13 +114,13 @@ SketchAssistPanel::SketchAssistPanel(wxWindow* parent, wxWindowID id /*wxID_ANY*
     m_pathsListBox->SetMinSize(wxSize(-1, pathListHeight));
     pathsSizer->Add(m_pathsListBox, 1, wxALL | wxEXPAND, 3);
 
-    m_pathDescriptionLabel = new wxStaticText(this, wxID_ANY, "Path Description");
+    m_pathDescriptionLabel = new wxStaticText(this, wxID_ANY, _("Path Description"));
     m_pathDescriptionText = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
     m_pathDescriptionText->SetHint("Enter path description...");
     pathDescriptionSizer->Add(m_pathDescriptionLabel, 0, wxBOTTOM, 2);
     pathDescriptionSizer->Add(m_pathDescriptionText, 0, wxEXPAND);
 
-    hotkeysSizer->Add(new wxStaticText(this, wxID_ANY, "Canvas Hotkeys"), 0, wxBOTTOM, 2);
+    hotkeysSizer->Add(new wxStaticText(this, wxID_ANY, _("Canvas Hotkeys")), 0, wxBOTTOM, 2);
     auto hotkeysText = new wxStaticText(this, wxID_ANY, HotkeysText);
     hotkeysText->Wrap(260);
     hotkeysSizer->Add(hotkeysText, 0, wxEXPAND);
@@ -714,7 +714,7 @@ void SketchAssistPanel::UpdatePathDescriptionEditorFromSelection()
         m_lastCommittedPathDescription.clear();
         m_pathDescriptionText->Enable(false);
         if (m_pathDescriptionLabel != nullptr)
-            m_pathDescriptionLabel->SetLabel("Path Description");
+            m_pathDescriptionLabel->SetLabel(_("Path Description"));
         return;
     }
 
@@ -725,7 +725,7 @@ void SketchAssistPanel::UpdatePathDescriptionEditorFromSelection()
     m_lastCommittedPathDescription = m_sketch.paths()[index]->GetDescription();
     m_pathDescriptionText->Enable(true);
     if (m_pathDescriptionLabel != nullptr)
-        m_pathDescriptionLabel->SetLabel("Path Description");
+        m_pathDescriptionLabel->SetLabel(_("Path Description"));
 }
 
 void SketchAssistPanel::UpdatePathLabels()

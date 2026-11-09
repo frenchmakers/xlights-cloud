@@ -32,58 +32,58 @@ void AdjustPanel::ValidateWindow() {
     auto action = actionCtrl->GetStringSelection().ToStdString();
 
     if (action == "None") {
-        label1->SetLabel("Unused:");
+        label1->SetLabel(_("Unused:"));
         spin1->Disable();
-        label2->SetLabel("Unused:");
+        label2->SetLabel(_("Unused:"));
         spin2->Disable();
     } else if (action == "Adjust By Value") {
-        label1->SetLabel("Adjust by:");
+        label1->SetLabel(_("Adjust by:"));
         spin1->SetRange(-255, 255);
         spin1->Enable();
-        label2->SetLabel("Unused:");
+        label2->SetLabel(_("Unused:"));
         spin2->Disable();
     } else if (action == "Adjust By Percentage") {
-        label1->SetLabel("Adjust by:");
+        label1->SetLabel(_("Adjust by:"));
         spin1->SetRange(-100, 25500);
         spin1->Enable();
-        label2->SetLabel("Unused:");
+        label2->SetLabel(_("Unused:"));
         spin2->Disable();
     } else if (action == "Set Minimum") {
-        label1->SetLabel("Minimum:");
+        label1->SetLabel(_("Minimum:"));
         spin1->SetRange(0, 255);
         spin1->Enable();
-        label2->SetLabel("Unused:");
+        label2->SetLabel(_("Unused:"));
         spin2->Disable();
     } else if (action == "Set Maximum") {
-        label1->SetLabel("Maximum:");
+        label1->SetLabel(_("Maximum:"));
         spin1->SetRange(0, 255);
         spin1->Enable();
-        label2->SetLabel("Unused:");
+        label2->SetLabel(_("Unused:"));
         spin2->Disable();
     } else if (action == "Set Range") {
-        label1->SetLabel("Minimum:");
+        label1->SetLabel(_("Minimum:"));
         spin1->SetRange(0, 255);
         spin1->Enable();
-        label2->SetLabel("Maximum:");
+        label2->SetLabel(_("Maximum:"));
         spin2->SetRange(0, 255);
         spin2->Enable();
     } else if (action == "Shift With Wrap By Value") {
-        label1->SetLabel("Shift by:");
+        label1->SetLabel(_("Shift by:"));
         spin1->SetRange(-255, 255);
         spin1->Enable();
-        label2->SetLabel("Unused:");
+        label2->SetLabel(_("Unused:"));
         spin2->Disable();
     } else if (action == "Prevent Range") {
-        label1->SetLabel("Minimum:");
+        label1->SetLabel(_("Minimum:"));
         spin1->SetRange(0, 255);
         spin1->Enable();
-        label2->SetLabel("Maximum:");
+        label2->SetLabel(_("Maximum:"));
         spin2->SetRange(0, 255);
         spin2->Enable();
     } else if (action == "Reverse") {
-        label1->SetLabel("Unused:");
+        label1->SetLabel(_("Unused:"));
         spin1->Disable();
-        label2->SetLabel("Unused:");
+        label2->SetLabel(_("Unused:"));
         spin2->Disable();
     }
 }

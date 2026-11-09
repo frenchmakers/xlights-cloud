@@ -57,12 +57,12 @@ public:
         // Wrap() is still called as a belt-and-suspenders for narrower widths
         // (user resize, platforms where default font is wider, etc).
         auto* intro = new wxStaticText(this, wxID_ANY,
-            "Each selected model will be replaced with a copy of the current model.");
+            _("Each selected model will be replaced with a copy of the current model."));
         intro->Wrap(420);
         top->Add(intro, 0, wxALL, 8);
 
         auto* filterRow = new wxBoxSizer(wxHORIZONTAL);
-        filterRow->Add(new wxStaticText(this, wxID_ANY, "Filter:"),
+        filterRow->Add(new wxStaticText(this, wxID_ANY, _("Filter:")),
                        0, wxALIGN_CENTER_VERTICAL | wxLEFT | wxRIGHT, 8);
         _filterCtrl = new wxTextCtrl(this, wxID_ANY);
         _filterCtrl->SetHint("type to filter by name...");
@@ -88,8 +88,8 @@ public:
         auto* headerSizer = new wxBoxSizer(wxHORIZONTAL);
         _masterCB = new wxCheckBox(headerPanel, wxID_ANY, wxEmptyString,
                                    wxDefaultPosition, wxDefaultSize, wxCHK_3STATE);
-        _masterCB->SetToolTip("Select / clear all currently visible models");
-        auto* headerLabel = new wxStaticText(headerPanel, wxID_ANY, "Model Name");
+        _masterCB->SetToolTip(_("Select / clear all currently visible models"));
+        auto* headerLabel = new wxStaticText(headerPanel, wxID_ANY, _("Model Name"));
         wxFont headerFont = headerLabel->GetFont();
         headerFont.SetWeight(wxFONTWEIGHT_BOLD);
         headerLabel->SetFont(headerFont);
@@ -120,14 +120,14 @@ public:
 
         top->Add(listBoxSizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxTOP, 8);
 
-        top->Add(new wxStaticText(this, wxID_ANY, "For each replaced model, also:"),
+        top->Add(new wxStaticText(this, wxID_ANY, _("For each replaced model, also:")),
                  0, wxLEFT | wxRIGHT | wxTOP, 8);
         _copyStartChannelCB = new wxCheckBox(this, wxID_ANY,
-            "Keep each target's start channel and controller settings");
+            _("Keep each target's start channel and controller settings"));
         _mergeSubmodelsCB = new wxCheckBox(this, wxID_ANY,
-            "Keep each target's submodels");
+            _("Keep each target's submodels"));
         _copySizePosCB = new wxCheckBox(this, wxID_ANY,
-            "Keep each target's position and size");
+            _("Keep each target's position and size"));
         _copyStartChannelCB->SetValue(true);
         _copySizePosCB->SetValue(true);
         const int cbFlags = wxLEFT | wxRIGHT | wxTOP;
@@ -243,10 +243,10 @@ private:
             if (baseLinked) {
                 cb->SetValue(false);
                 cb->Disable();
-                cb->SetToolTip("Linked from the base show folder - cannot be replaced");
+                cb->SetToolTip(_("Linked from the base show folder - cannot be replaced"));
                 auto* icon = new wxStaticBitmap(panel, wxID_ANY,
                     wxArtProvider::GetBitmapBundle("xlART_LINK", wxART_OTHER, FromDIP(wxSize(16, 16))));
-                icon->SetToolTip("Linked from the base show folder");
+                icon->SetToolTip(_("Linked from the base show folder"));
                 rowSizer->Add(cb, 0, wxALIGN_CENTER_VERTICAL);
                 rowSizer->Add(icon, 0, wxALIGN_CENTER_VERTICAL | wxLEFT, 4);
             } else {

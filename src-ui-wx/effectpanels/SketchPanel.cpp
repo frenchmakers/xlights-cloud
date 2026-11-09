@@ -118,7 +118,7 @@ wxWindow* SketchPanel::BuildSketchDefRow(wxWindow* parentWin, wxSizer* sizer) {
     auto* row = new wxFlexGridSizer(0, 2, 0, 0);
     row->AddGrowableCol(1);
 
-    auto* label = new wxStaticText(parentWin, wxID_ANY, "Sketch:");
+    auto* label = new wxStaticText(parentWin, wxID_ANY, _("Sketch:"));
     row->Add(label, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
 
     _sketchDefText = new BulkEditTextCtrl(parentWin, wxNewId(), wxEmptyString,
@@ -140,7 +140,7 @@ wxWindow* SketchPanel::BuildBackgroundRow(wxWindow* parentWin, wxSizer* sizer) {
     auto* row = new wxFlexGridSizer(0, 2, 0, 0);
     row->AddGrowableCol(1);
 
-    auto* label = new wxStaticText(parentWin, wxID_ANY, "Background:");
+    auto* label = new wxStaticText(parentWin, wxID_ANY, _("Background:"));
     row->Add(label, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
 
     _hiddenFilePicker = new xlSketchFilePickerCtrl(parentWin, wxNewId(),

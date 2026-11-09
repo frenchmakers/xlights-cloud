@@ -135,7 +135,7 @@ VUMeterPanel::VUMeterPanel(wxWindow* parent, const nlohmann::json& metadata)
     }
 
     if (_filterText) {
-        _filterText->SetToolTip("Only trigger on timing events which contain this token in their text. Blank matches all. Multiple tokens can be ; separated in non-regex mode.");
+        _filterText->SetToolTip(_("Only trigger on timing events which contain this token in their text. Blank matches all. Multiple tokens can be ; separated in non-regex mode."));
     }
 
     RefreshNoteTooltips();

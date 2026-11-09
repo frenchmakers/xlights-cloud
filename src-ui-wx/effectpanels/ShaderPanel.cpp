@@ -136,14 +136,14 @@ wxWindow* ShaderPanel::BuildFilenameBlock(wxWindow* parentWin, wxSizer* sizer, i
 
     auto* buttonSizer = new wxFlexGridSizer(0, 1, 0, 0);
     auto* selectRow = new wxBoxSizer(wxHORIZONTAL);
-    _selectButton = new wxButton(parentWin, wxID_ANY, "Select...");
+    _selectButton = new wxButton(parentWin, wxID_ANY, _("Select..."));
     selectRow->Add(_selectButton, 1, wxRIGHT, 2);
     wxBitmap clearBmp = wxArtProvider::GetBitmap(wxART_DELETE, wxART_BUTTON);
     _clearButton = new wxBitmapButton(parentWin, wxID_ANY, clearBmp, wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
     selectRow->Add(_clearButton, 0, 0, 0);
     buttonSizer->Add(selectRow, 0, wxALL | wxEXPAND, 5);
 
-    _downloadButton = new wxButton(parentWin, wxID_ANY, "Download");
+    _downloadButton = new wxButton(parentWin, wxID_ANY, _("Download"));
     buttonSizer->Add(_downloadButton, 0, wxALL | wxEXPAND, 5);
     topRow->Add(buttonSizer, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
 
@@ -193,7 +193,7 @@ wxWindow* ShaderPanel::BuildSpeedRow(wxWindow* parentWin, wxSizer* sizer, int co
     auto* row = new wxFlexGridSizer(0, 4, 0, 0);
     row->AddGrowableCol(1);
 
-    _speedLabel = new wxStaticText(parentWin, wxID_ANY, "Time Speed");
+    _speedLabel = new wxStaticText(parentWin, wxID_ANY, _("Time Speed"));
     row->Add(_speedLabel, 1, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
 
     auto* sliderSizer = new wxFlexGridSizer(0, 2, 0, 0);

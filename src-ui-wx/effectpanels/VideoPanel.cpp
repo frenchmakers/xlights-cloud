@@ -157,7 +157,7 @@ wxWindow* VideoPanel::BuildFilenameBlock(wxWindow* parentWin, wxSizer* sizer) {
 
     auto* buttonSizer = new wxFlexGridSizer(0, 1, 0, 0);
     auto* selectRow = new wxBoxSizer(wxHORIZONTAL);
-    _selectButton = new wxButton(parentWin, wxNewId(), "Select...");
+    _selectButton = new wxButton(parentWin, wxNewId(), _("Select..."));
     selectRow->Add(_selectButton, 1, wxRIGHT, 2);
     wxBitmap clearBmp = wxArtProvider::GetBitmap(wxART_DELETE, wxART_BUTTON);
     _clearButton = new wxBitmapButton(parentWin, wxNewId(), clearBmp,
@@ -207,7 +207,7 @@ wxWindow* VideoPanel::BuildDurationRow(wxWindow* parentWin, wxSizer* sizer) {
 
     auto* row = new wxFlexGridSizer(0, 3, 0, 0);
     row->AddGrowableCol(2);
-    auto* durLabel = new wxStaticText(parentWin, wxID_ANY, "Duration");
+    auto* durLabel = new wxStaticText(parentWin, wxID_ANY, _("Duration"));
     row->Add(durLabel, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
     // Fixed compact width so the duration text doesn't stretch the panel
     // — 0:00:00.000 fits in roughly 60 dialog units.
@@ -221,7 +221,7 @@ wxWindow* VideoPanel::BuildDurationRow(wxWindow* parentWin, wxSizer* sizer) {
     row->Add(-1, -1, 1, 0, 0);  // expanding spacer fills the rest of the row
     outer->Add(row, 0, wxALL | wxEXPAND, 0);
 
-    _matchDurationButton = new wxButton(parentWin, wxNewId(), "Match Effect To Video Duration");
+    _matchDurationButton = new wxButton(parentWin, wxNewId(), _("Match Effect To Video Duration"));
     outer->Add(_matchDurationButton, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 5);
 
     sizer->Add(outer, 1, wxALL | wxEXPAND, 0);
@@ -238,7 +238,7 @@ wxWindow* VideoPanel::BuildTransparentBlackRow(wxWindow* parentWin, wxSizer* siz
     auto* row = new wxFlexGridSizer(0, 3, 0, 0);
     row->AddGrowableCol(1);
 
-    _transparentBlackCheck = new BulkEditCheckBox(parentWin, wxNewId(), "Transparent Black",
+    _transparentBlackCheck = new BulkEditCheckBox(parentWin, wxNewId(), _("Transparent Black"),
                                                     wxDefaultPosition, wxDefaultSize, 0,
                                                     wxDefaultValidator,
                                                     _T("ID_CHECKBOX_Video_TransparentBlack"));

@@ -369,7 +369,7 @@ wxWindow* ColorPanel::BuildChromaKeyRow(wxWindow* parentWin, wxSizer* sizer) {
     auto* row = new wxFlexGridSizer(0, 4, 0, 0);
     row->AddGrowableCol(1);
 
-    auto* label = new wxStaticText(parentWin, wxID_ANY, "Chroma Key");
+    auto* label = new wxStaticText(parentWin, wxID_ANY, _("Chroma Key"));
     row->Add(label, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
 
     _chromaSensitivity = new BulkEditSlider(parentWin, wxNewId(), 1, 1, 255,
@@ -407,7 +407,7 @@ wxWindow* ColorPanel::BuildSparklesRow(wxWindow* parentWin, wxSizer* sizer) {
     auto* topRow = new wxFlexGridSizer(0, 4, 0, 0);
     topRow->AddGrowableCol(1);
 
-    auto* label = new wxStaticText(parentWin, wxID_ANY, "Sparkles",
+    auto* label = new wxStaticText(parentWin, wxID_ANY, _("Sparkles"),
                                     wxDefaultPosition, wxDefaultSize, 0,
                                     _T("ID_STATICTEXT_SparkleFrequency"));
     topRow->Add(label, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
@@ -448,7 +448,7 @@ wxWindow* ColorPanel::BuildSparklesRow(wxWindow* parentWin, wxSizer* sizer) {
     // Row 2: music checkbox + sparkles color picker + lock, indented under
     // the Sparkles label.
     auto* musicRow = new wxBoxSizer(wxHORIZONTAL);
-    _musicSparklesCheck = new BulkEditCheckBox(parentWin, wxNewId(), "Sparkles reflect music",
+    _musicSparklesCheck = new BulkEditCheckBox(parentWin, wxNewId(), _("Sparkles reflect music"),
                                                 wxDefaultPosition, wxDefaultSize, 0,
                                                 wxDefaultValidator,
                                                 _T("ID_CHECKBOX_MusicSparkles"));
@@ -484,7 +484,7 @@ wxWindow* ColorPanel::BuildBrightnessLevelRow(wxWindow* parentWin, wxSizer* size
     // "E_CHECKBOX_BRIGHTNESSLEVEL" — but the render engine reads the no-
     // underscore form. Build manually with the legacy name to preserve
     // round-trip compatibility.
-    _brightnessLevelCheck = new BulkEditCheckBox(parentWin, wxNewId(), "Brightness Level",
+    _brightnessLevelCheck = new BulkEditCheckBox(parentWin, wxNewId(), _("Brightness Level"),
                                                   wxDefaultPosition, wxDefaultSize, 0,
                                                   wxDefaultValidator,
                                                   _T("ID_CHECKBOXBRIGHTNESSLEVEL"));

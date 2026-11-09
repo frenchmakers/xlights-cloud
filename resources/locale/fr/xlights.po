@@ -32,10 +32,6 @@ msgstr "À partir de"
 msgid "Palette Rep"
 msgstr "Répét. palette"
 
-#: resources/effectmetadata/Bars.json resources/effectmetadata/Garlands.json resources/effectmetadata/MovingHead.json resources/effectmetadata/Shockwave.json resources/effectmetadata/SingleStrand.json
-msgid "Cycles"
-msgstr "Cycles"
-
 #: resources/effectmetadata/Bars.json resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json
 msgid "Angle"
 msgstr "Angle"
@@ -292,10 +288,6 @@ msgstr "Nb de pales"
 msgid "# Elements"
 msgstr "Nb d'éléments"
 
-#: resources/effectmetadata/Fan.json
-msgid "Duration"
-msgstr "Durée"
-
 #: resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json resources/effectmetadata/Shockwave.json
 msgid "Acceleration"
 msgstr "Accélération"
@@ -456,10 +448,6 @@ msgstr "Longueur d'onde de base"
 msgid "Vary Wavelength By String"
 msgstr "Varier la longueur d'onde par corde"
 
-#: resources/effectmetadata/Guitar.json resources/effectmetadata/MusicEffect.json resources/effectmetadata/SingleStrand.json
-msgid "Fade"
-msgstr "Fondu"
-
 #: resources/effectmetadata/Guitar.json
 msgid "Collapse"
 msgstr "Replier"
@@ -515,10 +503,6 @@ msgstr "Mouvement X"
 #: resources/effectmetadata/Lines.json
 msgid "Lines"
 msgstr "Lignes"
-
-#: resources/effectmetadata/Lines.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
-msgid "Points"
-msgstr "Points"
 
 #: resources/effectmetadata/Lines.json resources/effectmetadata/Marquee.json resources/effectmetadata/Shape.json resources/effectmetadata/Sketch.json resources/effectmetadata/Spirals.json ... (+1)
 msgid "Thickness"
@@ -632,10 +616,6 @@ msgstr "Images de préchauffage"
 msgid "Horizontal Offset"
 msgstr "Décalage horizontal"
 
-#: resources/effectmetadata/Meteors.json resources/effectmetadata/Tendril.json resources/effectmetadata/VUMeter.json
-msgid "Vertical Offset"
-msgstr "Décalage vertical"
-
 #: resources/effectmetadata/Meteors.json
 msgid "Adjust count based on music"
 msgstr "Ajuster le nombre selon la musique"
@@ -699,10 +679,6 @@ msgstr "Afficher la tête au début"
 #: resources/effectmetadata/Morph.json
 msgid "Auto Repeat"
 msgstr "Répétition auto"
-
-#: resources/effectmetadata/Morph.json
-msgid "Quick Set"
-msgstr "Réglage rapide"
 
 #: resources/effectmetadata/MovingHead.json
 msgid "Pan (deg)"
@@ -963,20 +939,8 @@ msgid "Object to Draw"
 msgstr "Objet à dessiner"
 
 #: resources/effectmetadata/Shape.json
-msgid "Character"
-msgstr "Caractère"
-
-#: resources/effectmetadata/Shape.json
 msgid "Character Code"
 msgstr "Code du caractère"
-
-#: resources/effectmetadata/Shape.json
-msgid "Skin Tone"
-msgstr "Couleur de peau"
-
-#: resources/effectmetadata/Shape.json resources/effectmetadata/VUMeter.json
-msgid "SVG File"
-msgstr "Fichier SVG"
 
 #: resources/effectmetadata/Shape.json
 msgid "Start Size"
@@ -1247,20 +1211,12 @@ msgid "Manual Y"
 msgstr "Y manuel"
 
 #: resources/effectmetadata/Text.json
-msgid "From File"
-msgstr "Depuis un fichier"
-
-#: resources/effectmetadata/Text.json
 msgid "From Lyrics"
 msgstr "Depuis les paroles"
 
 #: resources/effectmetadata/Text.json
 msgid "Font"
 msgstr "Police"
-
-#: resources/effectmetadata/Text.json
-msgid "XL Font"
-msgstr "Police XL"
 
 #: resources/effectmetadata/Text.json
 msgid "Move to center"
@@ -1353,10 +1309,6 @@ msgstr "Flash"
 #: resources/effectmetadata/Twinkle.json
 msgid "Re-Randomize after twinkle"
 msgstr "Nouveau tirage après scintillement"
-
-#: resources/effectmetadata/VUMeter.json
-msgid "Gain"
-msgstr "Gain"
 
 #: resources/effectmetadata/VUMeter.json
 msgid "Slow Down Falls"
@@ -1602,7 +1554,7 @@ msgstr "Supprimer"
 msgid "Rename"
 msgstr "Renommer"
 
-#: src-ui-wx/EffectSymbolDialog.cpp:58 src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:99 ... (+13)
+#: src-ui-wx/EffectSymbolDialog.cpp:58 src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:99 ... (+14)
 msgid "Close"
 msgstr "Fermer"
 
@@ -1634,7 +1586,7 @@ msgstr ""
 msgid "Preparing..."
 msgstr "Préparation..."
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:136 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/color/ColorCurveDialog.cpp:145 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:47 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:1408 ... (+33)
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:136 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/color/ColorCurveDialog.cpp:145 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:47 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:1408 ... (+35)
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -1710,7 +1662,7 @@ msgstr "Restaurer dans"
 msgid "A new or empty folder. The current show is never overwritten."
 msgstr "Un dossier nouveau ou vide. Le show actuel n'est jamais écrasé."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:159
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:159 src-ui-wx/effectpanels/ShapePanel.cpp:240
 msgid "Browse..."
 msgstr "Parcourir..."
 
@@ -2390,6 +2342,22 @@ msgstr "Impossible de déposer une courbe de couleur sur ce sélecteur de couleu
 msgid "Reset panel when changing effects"
 msgstr "Réinitialiser le panneau au changement d'effet"
 
+#: src-ui-wx/color/ColorPanel.cpp:372
+msgid "Chroma Key"
+msgstr "Incrustation (chroma key)"
+
+#: src-ui-wx/color/ColorPanel.cpp:410
+msgid "Sparkles"
+msgstr "Scintillements"
+
+#: src-ui-wx/color/ColorPanel.cpp:451
+msgid "Sparkles reflect music"
+msgstr "Scintillements selon la musique"
+
+#: src-ui-wx/color/ColorPanel.cpp:487
+msgid "Brightness Level"
+msgstr "Niveau de luminosité"
+
 #: src-ui-wx/color/ColorPanel.cpp:979
 msgid "Are you sure you want to change the colours on all selected effects?"
 msgstr "Voulez-vous vraiment changer les couleurs de tous les effets sélectionnés ?"
@@ -2926,7 +2894,7 @@ msgstr "Vérification du fichier FSEQ de %s"
 msgid "Preparing FSEQ file for %s"
 msgstr "Préparation du fichier FSEQ de %s"
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:169 src-ui-wx/controllers/HinksPixExportDialog.cpp:251 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:840 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:897 src-ui-wx/layout/ModelGroupPanel.cpp:246 ... (+3)
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:169 src-ui-wx/controllers/HinksPixExportDialog.cpp:251 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:840 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:897 src-ui-wx/layout/ModelGroupPanel.cpp:246 ... (+4)
 msgid "Filter:"
 msgstr "Filtre :"
 
@@ -3198,7 +3166,7 @@ msgstr "Playlist :"
 msgid "Add"
 msgstr "Ajouter"
 
-#: src-ui-wx/controllers/HinksPixExportDialog.cpp:248 src-ui-wx/model/ViewpointDialog.cpp:58 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:156 src-ui-wx/sequencer/SeqSettingsDialog.cpp:396 src-ui-wx/sequencer/SeqSettingsDialog.cpp:559 ... (+1)
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:248 src-ui-wx/media/ManageMediaPanel.cpp:751 src-ui-wx/model/ViewpointDialog.cpp:58 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:156 src-ui-wx/sequencer/SeqSettingsDialog.cpp:396 ... (+2)
 msgid "Remove"
 msgstr "Retirer"
 
@@ -4133,7 +4101,7 @@ msgstr "Progression du rendu"
 msgid "Regex"
 msgstr "Regex"
 
-#: src-ui-wx/diagnostics/SearchPanel.cpp:69
+#: src-ui-wx/diagnostics/SearchPanel.cpp:69 src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:79
 msgid "Search:"
 msgstr "Rechercher :"
 
@@ -4193,6 +4161,26 @@ msgstr "Dossier"
 msgid "Opens"
 msgstr "Ouvertures"
 
+#: src-ui-wx/effectpanels/AdjustPanel.cpp:35 src-ui-wx/effectpanels/AdjustPanel.cpp:37 src-ui-wx/effectpanels/AdjustPanel.cpp:43 src-ui-wx/effectpanels/AdjustPanel.cpp:49 src-ui-wx/effectpanels/AdjustPanel.cpp:55 ... (+4)
+msgid "Unused:"
+msgstr "Inutilisé :"
+
+#: src-ui-wx/effectpanels/AdjustPanel.cpp:40 src-ui-wx/effectpanels/AdjustPanel.cpp:46
+msgid "Adjust by:"
+msgstr "Ajuster de :"
+
+#: src-ui-wx/effectpanels/AdjustPanel.cpp:52 src-ui-wx/effectpanels/AdjustPanel.cpp:64 src-ui-wx/effectpanels/AdjustPanel.cpp:77
+msgid "Minimum:"
+msgstr "Minimum :"
+
+#: src-ui-wx/effectpanels/AdjustPanel.cpp:58 src-ui-wx/effectpanels/AdjustPanel.cpp:67 src-ui-wx/effectpanels/AdjustPanel.cpp:80
+msgid "Maximum:"
+msgstr "Maximum :"
+
+#: src-ui-wx/effectpanels/AdjustPanel.cpp:71
+msgid "Shift by:"
+msgstr "Décaler de :"
+
 #: src-ui-wx/effectpanels/DMXPanel.cpp:120
 msgid "Inv"
 msgstr ""
@@ -4217,7 +4205,7 @@ msgstr "Édition groupée"
 msgid "State does not have Force Custom Colors or Single Node Type"
 msgstr "L'état n'a ni « Force Custom Colors » ni le type « Single Node »"
 
-#: src-ui-wx/effectpanels/FacesPanel.cpp:114
+#: src-ui-wx/effectpanels/FacesPanel.cpp:114 src-ui-wx/effectpanels/PicturesPanel.cpp:182 src-ui-wx/effectpanels/VideoPanel.cpp:241
 msgid "Transparent Black"
 msgstr "Noir transparent"
 
@@ -4248,6 +4236,14 @@ msgstr "Centre axe Y"
 #: src-ui-wx/effectpanels/JsonEffectPanel.cpp:801 resources/effectmetadata/Marquee.json
 msgid "Wrap Y"
 msgstr "Boucler en Y"
+
+#: src-ui-wx/effectpanels/MorphPanel.cpp:134 resources/effectmetadata/Morph.json
+msgid "Quick Set"
+msgstr "Réglage rapide"
+
+#: src-ui-wx/effectpanels/MorphPanel.cpp:165
+msgid "Swap Start and End"
+msgstr "Inverser le début et la fin"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:1070 src-ui-wx/effectpanels/MovingHeadPanel.cpp:1083
 msgid "Delete Preset"
@@ -4370,7 +4366,7 @@ msgstr "Cycles :"
 msgid "Save Preset"
 msgstr "Enregistrer le préréglage"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:377
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:377 src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:78
 msgid "Continue"
 msgstr "Continuer"
 
@@ -4542,6 +4538,30 @@ msgstr ""
 msgid "Link"
 msgstr ""
 
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:720
+msgid "⚠ Path crosses behind the fixture - may cause a fast pan/tilt snap"
+msgstr "⚠ Le tracé passe derrière la lyre - peut provoquer un saut brusque du pan/tilt"
+
+#: src-ui-wx/effectpanels/PicturesPanel.cpp:128 src-ui-wx/effectpanels/ShaderPanel.cpp:139 src-ui-wx/effectpanels/VideoPanel.cpp:160
+msgid "Select..."
+msgstr "Choisir..."
+
+#: src-ui-wx/effectpanels/PicturesPanel.cpp:133
+msgid "Clear image"
+msgstr "Effacer l'image"
+
+#: src-ui-wx/effectpanels/PicturesPanel.cpp:137 src-ui-wx/media/ManageMediaPanel.cpp:718
+msgid "AI Generate..."
+msgstr "Générer par IA..."
+
+#: src-ui-wx/effectpanels/PicturesPanel.cpp:329 src-ui-wx/effectpanels/PicturesPanel.cpp:336
+msgid "Value curve cannot be used on vector movement."
+msgstr "Une courbe de valeur ne peut pas servir pour un mouvement vectoriel."
+
+#: src-ui-wx/effectpanels/RipplePanel.cpp:79 src-ui-wx/effectpanels/ShapePanel.cpp:186 resources/effectmetadata/Shape.json resources/effectmetadata/VUMeter.json
+msgid "SVG File"
+msgstr "Fichier SVG"
+
 #: src-ui-wx/effectpanels/ServoPanel.cpp:118
 msgid "End:"
 msgstr "Fin :"
@@ -4566,13 +4586,53 @@ msgstr "Valeur :"
 msgid "Start:"
 msgstr "Début :"
 
+#: src-ui-wx/effectpanels/ShaderPanel.cpp:196
+msgid "Time Speed"
+msgstr "Vitesse du temps"
+
 #: src-ui-wx/effectpanels/ShaderPanel.cpp:219
 msgid "1.00"
 msgstr ""
 
+#: src-ui-wx/effectpanels/ShapePanel.cpp:208 resources/effectmetadata/Shape.json
+msgid "Character"
+msgstr "Caractère"
+
+#: src-ui-wx/effectpanels/ShapePanel.cpp:261 resources/effectmetadata/Shape.json
+msgid "Skin Tone"
+msgstr "Couleur de peau"
+
+#: src-ui-wx/effectpanels/SketchPanel.cpp:121
+msgid "Sketch:"
+msgstr "Croquis :"
+
+#: src-ui-wx/effectpanels/SketchPanel.cpp:143
+msgid "Background:"
+msgstr "Arrière-plan :"
+
 #: src-ui-wx/effectpanels/StatePanel.cpp:63 src-ui-wx/model/ModelStatesPanel.cpp:185 src-ui-wx/model/ModelStatesPanel.cpp:266 resources/effectmetadata/Faces.json
 msgid "State"
 msgstr ""
+
+#: src-ui-wx/effectpanels/TextPanel.cpp:113 resources/effectmetadata/Text.json
+msgid "XL Font"
+msgstr "Police XL"
+
+#: src-ui-wx/effectpanels/TextPanel.cpp:73 resources/effectmetadata/Text.json
+msgid "From File"
+msgstr "Depuis un fichier"
+
+#: src-ui-wx/effectpanels/VUMeterPanel.cpp:138 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:330
+msgid "Only trigger on timing events which contain this token in their text. Blank matches all. Multiple tokens can be ; separated in non-regex mode."
+msgstr "Ne se déclenche que sur les événements de timing dont le texte contient ce mot. Vide : tous les événements. Hors mode regex, plusieurs mots peuvent être séparés par ;"
+
+#: src-ui-wx/effectpanels/VideoPanel.cpp:210 resources/effectmetadata/Fan.json
+msgid "Duration"
+msgstr "Durée"
+
+#: src-ui-wx/effectpanels/VideoPanel.cpp:224
+msgid "Match Effect To Video Duration"
+msgstr "Ajuster l'effet à la durée de la vidéo"
 
 #: src-ui-wx/effectpanels/WarpPanel.cpp:53
 #, c-format
@@ -4631,6 +4691,18 @@ msgstr "Taille de l'image :"
 msgid "Model Size:"
 msgstr "Taille du modèle :"
 
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:104
+msgid "Paths (0)"
+msgstr "Tracés (0)"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:117 src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:717 src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:728
+msgid "Path Description"
+msgstr "Description du tracé"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:123
+msgid "Canvas Hotkeys"
+msgstr "Raccourcis du canevas"
+
 #: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:361
 msgid "Choose xLights Sketch File"
 msgstr "Choisir le fichier Sketch xLights"
@@ -4646,6 +4718,50 @@ msgstr "Choisir le fichier SVG"
 #: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:575
 msgid "Sort All by Description"
 msgstr "Tout trier par description"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:63
+msgid "Paths"
+msgstr "Tracés"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:77 src-ui-wx/sequencer/SelectPanel.cpp:97 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1364 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1369 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1379 ... (+2)
+msgid "Start"
+msgstr "Début"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:79 src-ui-wx/sequencer/SelectPanel.cpp:103 resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json
+msgid "End"
+msgstr "Fin"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:82
+msgid "Import Sketch"
+msgstr "Importer un croquis"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:83
+msgid "Export Sketch"
+msgstr "Exporter le croquis"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:84
+msgid "Import SVG"
+msgstr "Importer un SVG"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:85
+msgid "Clear Sketch"
+msgstr "Effacer le croquis"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:89
+msgid "Move path up"
+msgstr "Monter le tracé"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:90
+msgid "Move path down"
+msgstr "Descendre le tracé"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:92
+msgid "Path Editing:"
+msgstr "Édition du tracé :"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:98
+msgid "File:"
+msgstr "Fichier :"
 
 #: src-ui-wx/effectpanels/assist/xlGridCanvasPictures.cpp:419
 msgid "Error creating image!"
@@ -5137,7 +5253,7 @@ msgstr "Vidéo :"
 msgid "Music Link:"
 msgstr "Lien de la musique :"
 
-#: src-ui-wx/import_export/VendorMusicDialog.cpp:94 src-ui-wx/sequencer/EffectTreeDialog.cpp:156
+#: src-ui-wx/import_export/VendorMusicDialog.cpp:94 src-ui-wx/sequencer/EffectTreeDialog.cpp:156 src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:84
 msgid "Search"
 msgstr "Rechercher"
 
@@ -5934,7 +6050,7 @@ msgstr "Ajouter la sélection à l'ensemble"
 msgid "Remove from Set"
 msgstr "Retirer de l'ensemble"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3084
+#: src-ui-wx/layout/LayoutPanel.cpp:3084 src-ui-wx/media/ManageMediaPanel.cpp:724
 msgid "Rename..."
 msgstr "Renommer..."
 
@@ -6114,7 +6230,7 @@ msgstr ""
 msgid "Overlap checks enabled"
 msgstr "Vérification des chevauchements activée"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:712 src-ui-wx/layout/LayoutPrintPreviewDialog.cpp:264 src-ui-wx/layout/ModelGroupPanel.cpp:193
+#: src-ui-wx/layout/LayoutPanel.cpp:712 src-ui-wx/layout/LayoutPrintPreviewDialog.cpp:264 src-ui-wx/layout/ModelGroupPanel.cpp:193 src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:99
 msgid "Preview:"
 msgstr "Aperçu :"
 
@@ -6672,6 +6788,22 @@ msgstr "Crayon taille 2 (fin - 4 px)"
 msgid "Pencil Size 1 (Extra Fine - 2px)"
 msgstr "Crayon taille 1 (très fin - 2 px)"
 
+#: src-ui-wx/layout/ReplaceModelDialog.h:123
+msgid "For each replaced model, also:"
+msgstr "Pour chaque modèle remplacé, également :"
+
+#: src-ui-wx/layout/ReplaceModelDialog.h:126
+msgid "Keep each target's start channel and controller settings"
+msgstr "Conserver le canal de début et les réglages de contrôleur de chaque cible"
+
+#: src-ui-wx/layout/ReplaceModelDialog.h:128
+msgid "Keep each target's submodels"
+msgstr "Conserver les sous-modèles de chaque cible"
+
+#: src-ui-wx/layout/ReplaceModelDialog.h:130
+msgid "Keep each target's position and size"
+msgstr "Conserver la position et la taille de chaque cible"
+
 #: src-ui-wx/layout/ReplaceModelDialog.h:146
 msgid "Do not change destination models' groups"
 msgstr "Ne pas modifier les groupes des modèles de destination"
@@ -6691,6 +6823,26 @@ msgstr "Groupes de modèles"
 #: src-ui-wx/layout/ReplaceModelDialog.h:154
 msgid "Applies to direct group membership only. Groups inherited through a subgroup, and groups from the base show folder, are left unchanged."
 msgstr "Ne concerne que l'appartenance directe aux groupes. Les groupes hérités par un sous-groupe et ceux du dossier de show de base ne sont pas modifiés."
+
+#: src-ui-wx/layout/ReplaceModelDialog.h:246
+msgid "Linked from the base show folder - cannot be replaced"
+msgstr "Lié depuis le dossier du show de base - ne peut pas être remplacé"
+
+#: src-ui-wx/layout/ReplaceModelDialog.h:249
+msgid "Linked from the base show folder"
+msgstr "Lié depuis le dossier du show de base"
+
+#: src-ui-wx/layout/ReplaceModelDialog.h:60
+msgid "Each selected model will be replaced with a copy of the current model."
+msgstr "Chaque modèle sélectionné sera remplacé par une copie du modèle actuel."
+
+#: src-ui-wx/layout/ReplaceModelDialog.h:91
+msgid "Select / clear all currently visible models"
+msgstr "Sélectionner / désélectionner tous les modèles visibles"
+
+#: src-ui-wx/layout/ReplaceModelDialog.h:92
+msgid "Model Name"
+msgstr "Nom du modèle"
 
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:1365 src-ui-wx/preferences/xLightsPreferences.cpp:205
 msgid "View"
@@ -6875,6 +7027,74 @@ msgstr "Rechercher les images en lot..."
 #: src-ui-wx/media/ManageMediaPanel.cpp:1440
 msgid "Bulk Copy External Images..."
 msgstr "Copier les images externes en lot..."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:2903
+msgid "Add from disk..."
+msgstr "Ajouter depuis le disque..."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:2904
+msgid "Browse for a file on disk to add to the sequence media"
+msgstr "Parcourt le disque pour ajouter un fichier aux médias de la séquence."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:713
+msgid "Add..."
+msgstr "Ajouter..."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:714
+msgid "Add a media file to the sequence"
+msgstr "Ajoute un fichier média à la séquence."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:719
+msgid "Generate an image using an AI service and add it to the sequence media"
+msgstr "Génère une image avec un service d'IA et l'ajoute aux médias de la séquence."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:725
+msgid "Rename the selected embedded image and update all sequence references"
+msgstr "Renomme l'image intégrée sélectionnée et met à jour toutes ses références dans la séquence."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:731
+msgid "Embed"
+msgstr "Intégrer"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:732
+msgid "Store this media inside the sequence file"
+msgstr "Stocker ce média dans le fichier de séquence"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:736
+msgid "Extract"
+msgstr "Extraire"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:737
+msgid "Reference this media from an external file path"
+msgstr "Référencer ce média depuis un fichier externe"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:741
+msgid "Embed All"
+msgstr "Tout intégrer"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:742
+msgid "Store all media inside the sequence file"
+msgstr "Stocker tous les médias dans le fichier de séquence"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:745
+msgid "Extract All"
+msgstr "Tout extraire"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:746
+msgid "Reference all media from external file paths"
+msgstr "Référencer tous les médias depuis des fichiers externes"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:752
+msgid "Remove the selected embedded media from the sequence"
+msgstr "Retire de la séquence le média intégré sélectionné."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:759
+msgid "Check Media..."
+msgstr "Vérifier les médias..."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:760
+msgid "Check the sequence's audio/video files for formats that won't render on upcoming xLights versions"
+msgstr "Vérifie que les fichiers audio/vidéo de la séquence utilisent des formats encore pris en charge par les prochaines versions d'xLights."
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:101
 msgid "Shaders"
@@ -10891,6 +11111,35 @@ msgstr "Arrête maintenant. La séquence en cours de rendu est abandonnée et so
 msgid "Copy Results"
 msgstr "Copier les résultats"
 
+#: src-ui-wx/sequencer/BlendingPanel.cpp:181
+msgid "Morph"
+msgstr ""
+
+#: src-ui-wx/sequencer/BlendingPanel.cpp:186
+msgid "Gradual cross-fade from Effect1 to Effect2"
+msgstr "Fondu enchaîné progressif de l'effet 1 vers l'effet 2"
+
+#: src-ui-wx/sequencer/BlendingPanel.cpp:208 src-ui-wx/shared/utils/xlLockButton.cpp:35
+msgid "Lock/Unlock. If Locked then a \"Create Random Effects\" will NOT change this value."
+msgstr "Verrouiller/déverrouiller. Si verrouillée, « Create Random Effects » ne modifiera PAS cette valeur."
+
+#: src-ui-wx/sequencer/BlendingPanel.cpp:240
+msgid "About Layer Blending Types"
+msgstr "À propos des types de fusion des calques"
+
+#: src-ui-wx/sequencer/BlendingPanel.cpp:275
+msgid "Time (s)"
+msgstr "Temps (s)"
+
+#: src-ui-wx/sequencer/BlendingPanel.cpp:344
+msgctxt "checkbox"
+msgid "Canvas"
+msgstr "Canevas"
+
+#: src-ui-wx/sequencer/BlendingPanel.cpp:352
+msgid "Layers ..."
+msgstr "Calques..."
+
 #: src-ui-wx/sequencer/BufferSizeDialog.cpp:114 resources/effectmetadata/Circles.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
 msgid "X Center"
 msgstr "Centre X"
@@ -11328,6 +11577,34 @@ msgstr "Premier canal (absolu) :"
 #: src-ui-wx/sequencer/GenerateLyricsDialog.cpp:97
 msgid "Node Offsets From First Channel"
 msgstr ""
+
+#: src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:108
+msgid "Enter a search query to find lyrics."
+msgstr "Saisissez une recherche pour trouver des paroles."
+
+#: src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:111
+msgid "Caution: All timings/labels on this track will be replaced."
+msgstr "Attention : tous les timings et étiquettes de cette piste seront remplacés."
+
+#: src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:227
+msgid "Please enter a search query."
+msgstr "Saisissez une recherche."
+
+#: src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:231
+msgid "Searching..."
+msgstr "Recherche..."
+
+#: src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:251
+msgid "No results found or network error."
+msgstr "Aucun résultat, ou erreur réseau."
+
+#: src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:259
+msgid "Unexpected response from LRCLIB."
+msgstr "Réponse inattendue de LRCLIB."
+
+#: src-ui-wx/sequencer/LRCLIBSearchDialog.cpp:311
+msgid "Error parsing search results."
+msgstr "Erreur de lecture des résultats de recherche."
 
 #: src-ui-wx/sequencer/LayerSelectDialog.cpp:158
 msgid "Select Layers With Effects"
@@ -12089,10 +12366,6 @@ msgstr "Aucune phrase trouvée."
 msgid "No synced lyrics lines found."
 msgstr "Aucune ligne de paroles synchronisées trouvée."
 
-#: src-ui-wx/sequencer/SelectPanel.cpp:103 resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json
-msgid "End"
-msgstr "Fin"
-
 #: src-ui-wx/sequencer/SelectPanel.cpp:110
 msgid "Select All "
 msgstr "Tout sélectionner "
@@ -12120,10 +12393,6 @@ msgstr "Style de rendu :"
 #: src-ui-wx/sequencer/SelectPanel.cpp:85 src-ui-wx/sequencer/SelectPanel.cpp:478 src-ui-wx/sequencer/SelectPanel.cpp:496
 msgid "Any"
 msgstr ""
-
-#: src-ui-wx/sequencer/SelectPanel.cpp:97 resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json
-msgid "Start"
-msgstr "Début"
 
 #: src-ui-wx/sequencer/SelectTimingsDialog.cpp:34
 msgid "Select Timings"
@@ -13120,6 +13389,90 @@ msgstr "Choisir des éléments..."
 msgid "Select Options:"
 msgstr "Choisir des options :"
 
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1276
+msgid "Level"
+msgstr "Niveau"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1284 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1321 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1333 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1341 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1346 ... (+4)
+msgid "Start Level"
+msgstr "Niveau de début"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1285 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1323 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1334 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1342 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1347 ... (+4)
+msgid "End Level"
+msgstr "Niveau de fin"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1291 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1298 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1304 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1310 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1316
+msgid "Low"
+msgstr "Bas"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1292 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1299 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1305 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1311 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1317
+msgid "High"
+msgstr "Haut"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1300
+msgid "Frames"
+msgstr "Images"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1306
+msgid "Prportion"
+msgstr "Proportion"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1312 resources/effectmetadata/VUMeter.json
+msgid "Gain"
+msgstr "Gain"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1318
+msgid "Trigger"
+msgstr "Déclencheur"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1319 resources/effectmetadata/Guitar.json resources/effectmetadata/MusicEffect.json resources/effectmetadata/SingleStrand.json
+msgid "Fade"
+msgstr "Fondu"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1322 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1328
+msgid "Mid Level"
+msgstr "Niveau médian"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1327
+msgid "Start/End Level"
+msgstr "Niveau de début/fin"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1329
+msgid "Mid Level Time"
+msgstr "Temps du niveau médian"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1335 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1366 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1371 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1381 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1386 ... (+6)
+msgid "Cycles"
+msgstr "Cycles"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1339 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1344
+msgid "Slope"
+msgstr "Pente"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1340 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1345 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1350 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1355 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1360 ... (+6)
+msgid "Vertical Offset"
+msgstr "Décalage vertical"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1349 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1354 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1359
+msgid "Rate"
+msgstr "Fréquence"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1365 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1370 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1380
+msgid "Amplitude"
+msgstr "Amplitude"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1374
+msgid "Minimum"
+msgstr "Minimum"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1375
+msgid "Maximum"
+msgstr "Maximum"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1376 resources/effectmetadata/Lines.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
+msgid "Points"
+msgstr "Points"
+
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:154
 msgid "Value Curve"
 msgstr "Courbe de valeur"
@@ -13251,10 +13604,6 @@ msgstr "Information"
 #: src-ui-wx/shared/utils/wxUtilities.cpp:157
 msgid "CRITICAL"
 msgstr "CRITIQUE"
-
-#: src-ui-wx/shared/utils/xlLockButton.cpp:35
-msgid "Lock/Unlock. If Locked then a \"Create Random Effects\" will NOT change this value."
-msgstr "Verrouiller/déverrouiller. Si verrouillée, « Create Random Effects » ne modifiera PAS cette valeur."
 
 #: src-ui-wx/shared/utils/xlPropertyGrid.h:116
 msgid "--Click To Edit--"
@@ -13740,7 +14089,7 @@ msgstr "Forum"
 msgid "Video Tutorials"
 msgstr "Tutoriels vidéo"
 
-#: src-ui-wx/xLightsMain.cpp:1244 src-ui-wx/automation/ScriptsDialog.cpp:107 src-ui-wx/effects/ShaderDownloadDialog.cpp:312 src-ui-wx/import_export/VendorMusicDialog.cpp:146
+#: src-ui-wx/xLightsMain.cpp:1244 src-ui-wx/automation/ScriptsDialog.cpp:107 src-ui-wx/effectpanels/ShaderPanel.cpp:146 src-ui-wx/effects/ShaderDownloadDialog.cpp:312 src-ui-wx/import_export/VendorMusicDialog.cpp:146
 msgid "Download"
 msgstr "Télécharger"
 

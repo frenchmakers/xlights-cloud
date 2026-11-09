@@ -125,16 +125,16 @@ wxWindow* PicturesPanel::BuildFilenameBlock(wxWindow* parentWin, wxSizer* sizer)
 
     // Select + Clear (X) on one row.
     auto* selectRow = new wxBoxSizer(wxHORIZONTAL);
-    _selectButton = new wxButton(parentWin, wxNewId(), "Select...");
+    _selectButton = new wxButton(parentWin, wxNewId(), _("Select..."));
     selectRow->Add(_selectButton, 1, wxRIGHT, 2);
     wxBitmap clearBmp = wxArtProvider::GetBitmap(wxART_DELETE, wxART_BUTTON);
     _clearButton = new wxBitmapButton(parentWin, wxNewId(), clearBmp,
                                        wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
-    _clearButton->SetToolTip("Clear image");
+    _clearButton->SetToolTip(_("Clear image"));
     selectRow->Add(_clearButton, 0, 0, 0);
     buttonSizer->Add(selectRow, 0, wxALL | wxEXPAND, 5);
 
-    _aiGenerateButton = new wxButton(parentWin, wxNewId(), "AI Generate...");
+    _aiGenerateButton = new wxButton(parentWin, wxNewId(), _("AI Generate..."));
     buttonSizer->Add(_aiGenerateButton, 1, wxALL | wxEXPAND, 5);
 
     topRow->Add(buttonSizer, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
@@ -179,7 +179,7 @@ wxWindow* PicturesPanel::BuildTransparentBlackRow(wxWindow* parentWin, wxSizer* 
     auto* row = new wxFlexGridSizer(0, 3, 0, 0);
     row->AddGrowableCol(1);
 
-    _transparentBlackCheck = new BulkEditCheckBox(parentWin, wxNewId(), "Transparent Black",
+    _transparentBlackCheck = new BulkEditCheckBox(parentWin, wxNewId(), _("Transparent Black"),
                                                     wxDefaultPosition, wxDefaultSize, 0,
                                                     wxDefaultValidator,
                                                     _T("ID_CHECKBOX_Pictures_TransparentBlack"));
@@ -326,14 +326,14 @@ void PicturesPanel::ValidateWindow() {
     // disable them visually so the user doesn't try to combine the two.
     if (_xcVcButton) {
         if (isVector) {
-            _xcVcButton->SetToolTip("Value curve cannot be used on vector movement.");
+            _xcVcButton->SetToolTip(_("Value curve cannot be used on vector movement."));
         } else {
             _xcVcButton->UnsetToolTip();
         }
     }
     if (_ycVcButton) {
         if (isVector) {
-            _ycVcButton->SetToolTip("Value curve cannot be used on vector movement.");
+            _ycVcButton->SetToolTip(_("Value curve cannot be used on vector movement."));
         } else {
             _ycVcButton->UnsetToolTip();
         }

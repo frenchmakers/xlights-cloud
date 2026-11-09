@@ -76,12 +76,12 @@ LRCLIBSearchDialog::LRCLIBSearchDialog(wxWindow* parent, const wxString& songTit
 
     // Search bar
     auto* searchSizer = new wxBoxSizer(wxHORIZONTAL);
-    auto* searchLabel = new wxStaticText(this, wxID_ANY, "Search:");
+    auto* searchLabel = new wxStaticText(this, wxID_ANY, _("Search:"));
     searchSizer->Add(searchLabel, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
     m_searchText = new wxTextCtrl(this, ID_SEARCH_TEXT, wxEmptyString, wxDefaultPosition,
                                   wxDefaultSize, wxTE_PROCESS_ENTER);
     searchSizer->Add(m_searchText, 1, wxALL | wxEXPAND, 5);
-    m_searchButton = new wxButton(this, ID_SEARCH_BUTTON, "Search", wxDefaultPosition, wxDefaultSize);
+    m_searchButton = new wxButton(this, ID_SEARCH_BUTTON, _("Search"), wxDefaultPosition, wxDefaultSize);
     searchSizer->Add(m_searchButton, 0, wxALL, 5);
     mainSizer->Add(searchSizer, 0, wxEXPAND | wxALL, 5);
 
@@ -96,7 +96,7 @@ LRCLIBSearchDialog::LRCLIBSearchDialog(wxWindow* parent, const wxString& songTit
     mainSizer->Add(m_resultsList, 1, wxEXPAND | wxLEFT | wxRIGHT, 10);
 
     // Preview
-    auto* previewLabel = new wxStaticText(this, wxID_ANY, "Preview:");
+    auto* previewLabel = new wxStaticText(this, wxID_ANY, _("Preview:"));
     mainSizer->Add(previewLabel, 0, wxLEFT | wxRIGHT | wxTOP, 10);
     m_previewText = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize(-1, 120),
                                    wxTE_MULTILINE | wxTE_READONLY | wxTE_DONTWRAP);
@@ -105,10 +105,10 @@ LRCLIBSearchDialog::LRCLIBSearchDialog(wxWindow* parent, const wxString& songTit
     mainSizer->Add(m_previewText, 1, wxEXPAND | wxLEFT | wxRIGHT, 10);
 
     // Status + caution
-    m_statusText = new wxStaticText(this, wxID_ANY, "Enter a search query to find lyrics.");
+    m_statusText = new wxStaticText(this, wxID_ANY, _("Enter a search query to find lyrics."));
     mainSizer->Add(m_statusText, 0, wxLEFT | wxRIGHT | wxTOP, 10);
     auto* cautionText = new wxStaticText(this, wxID_ANY,
-        "Caution: All timings/labels on this track will be replaced.");
+        _("Caution: All timings/labels on this track will be replaced."));
     wxFont cautionFont(10, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
     cautionText->SetFont(cautionFont);
     mainSizer->Add(cautionText, 0, wxLEFT | wxRIGHT, 10);
@@ -117,7 +117,7 @@ LRCLIBSearchDialog::LRCLIBSearchDialog(wxWindow* parent, const wxString& songTit
     auto* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
     buttonSizer->AddStretchSpacer();
     m_okButton = new wxButton(this, ID_OK_BUTTON, "OK");
-    m_cancelButton = new wxButton(this, ID_CANCEL_BUTTON, "Cancel");
+    m_cancelButton = new wxButton(this, ID_CANCEL_BUTTON, _("Cancel"));
     buttonSizer->Add(m_okButton, 0, wxALL, 5);
     buttonSizer->Add(m_cancelButton, 0, wxALL, 5);
     mainSizer->Add(buttonSizer, 0, wxEXPAND | wxALL, 5);
@@ -224,11 +224,11 @@ void LRCLIBSearchDialog::DoSearch()
 {
     wxString query = m_searchText->GetValue().Trim().Trim(false);
     if (query.IsEmpty()) {
-        m_statusText->SetLabel("Please enter a search query.");
+        m_statusText->SetLabel(_("Please enter a search query."));
         return;
     }
 
-    m_statusText->SetLabel("Searching...");
+    m_statusText->SetLabel(_("Searching..."));
     m_resultsList->DeleteAllItems();
     m_previewText->Clear();
     m_results.clear();
@@ -248,7 +248,7 @@ void LRCLIBSearchDialog::DoSearch()
 
     if (response.empty()) {
         spdlog::warn("LRCLIB search returned empty response (HTTP {})", responseCode);
-        m_statusText->SetLabel("No results found or network error.");
+        m_statusText->SetLabel(_("No results found or network error."));
         ValidateWindow();
         return;
     }
@@ -256,7 +256,7 @@ void LRCLIBSearchDialog::DoSearch()
     try {
         nlohmann::json val = nlohmann::json::parse(response);
         if (!val.is_array()) {
-            m_statusText->SetLabel("Unexpected response from LRCLIB.");
+            m_statusText->SetLabel(_("Unexpected response from LRCLIB."));
             ValidateWindow();
             return;
         }
@@ -308,7 +308,7 @@ void LRCLIBSearchDialog::DoSearch()
                                                 m_results.size(), syncedCount));
     } catch (std::exception& e) {
         spdlog::error("LRCLIB JSON parse error: {}", e.what());
-        m_statusText->SetLabel("Error parsing search results.");
+        m_statusText->SetLabel(_("Error parsing search results."));
     }
 
     ValidateWindow();

@@ -717,7 +717,7 @@ MovingHeadPanel::MovingHeadPanel(wxWindow* parent) : xlEffectPanel()
     // fold used to reach the back hemisphere snaps 180 degrees mid-move. See
     // MovingHeadEffect::CalculatePathPositions.
     m_pathWarningText = new wxStaticText(PanelPathing, wxID_ANY,
-        "⚠ Path crosses behind the fixture - may cause a fast pan/tilt snap",
+        _("⚠ Path crosses behind the fixture - may cause a fast pan/tilt snap"),
         wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL);
     m_pathWarningText->SetForegroundColour(*wxRED);
     m_pathWarningText->Wrap(240);

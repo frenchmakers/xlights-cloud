@@ -131,7 +131,7 @@ wxWindow* MorphPanel::BuildQuickSet(wxWindow* parentWin, wxSizer* sizer, int col
     // Quick Set writes preset values into the eight X/Y text controls.
     // Not serialized — the selection is reset to the placeholder after use.
     // Using IDD_ prefix on the name keeps the serializer from saving it.
-    auto* label = new wxStaticText(parentWin, wxID_ANY, "Quick Set");
+    auto* label = new wxStaticText(parentWin, wxID_ANY, _("Quick Set"));
     sizer->Add(label, 1, wxALL | wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL, 5);
 
     _quickSetChoice = new MorphQuickSet(parentWin, wxNewId(),
@@ -162,7 +162,7 @@ wxWindow* MorphPanel::BuildSwapButton(wxWindow* parentWin, wxSizer* sizer, int c
     // Swap exchanges Start/End X/Y text control values (and active value curves).
     // Not serialized — purely an in-panel action button.
     sizer->Add(-1, -1, 1, wxALL, 1);
-    _swapButton = new wxButton(parentWin, wxNewId(), "Swap Start and End");
+    _swapButton = new wxButton(parentWin, wxNewId(), _("Swap Start and End"));
     sizer->Add(_swapButton, 1, wxALL | wxEXPAND, 5);
     _swapButton->Bind(wxEVT_BUTTON, &MorphPanel::OnSwapClick, this);
 

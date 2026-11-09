@@ -76,7 +76,7 @@ wxWindow* RipplePanel::CreateCustomControl(wxWindow* parentWin, wxSizer* sizer, 
 
     if (id == "Ripple_SVG") {
         // Row: label | hidden file picker + MediaPickerCtrl
-        auto* label = new wxStaticText(parentWin, wxID_ANY, "SVG File");
+        auto* label = new wxStaticText(parentWin, wxID_ANY, _("SVG File"));
         sizer->Add(label, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 5);
 
         // Hidden file picker holds the actual file path for serialization.

@@ -327,7 +327,7 @@ ValueCurveDialog::ValueCurveDialog(wxWindow* parent, ValueCurve* vc, bool slider
         }, ID_CHOICE_AudioTrack);
     }
 
-    TextCtrl_FilterLabel->SetToolTip("Only trigger on timing events which contain this token in their text. Blank matches all. Multiple tokens can be ; separated in non-regex mode.");
+    TextCtrl_FilterLabel->SetToolTip(_("Only trigger on timing events which contain this token in their text. Blank matches all. Multiple tokens can be ; separated in non-regex mode."));
 
     Button_Ok->SetDefault();
     SetEscapeId(ID_BUTTON2);
@@ -1273,7 +1273,7 @@ void ValueCurveDialog::ValidateWindow() {
     }
 
     if (type == "Flat") {
-        StaticText_P1->SetLabel("Level");
+        StaticText_P1->SetLabel(_("Level"));
         StaticText_P2->SetLabel("N/A");
         StaticText_P3->SetLabel("N/A");
         StaticText_P4->SetLabel("N/A");
@@ -1281,113 +1281,113 @@ void ValueCurveDialog::ValidateWindow() {
         _vc->SetParameter3(0);
         _vc->SetParameter4(0);
     } else if (type == "Ramp") {
-        StaticText_P1->SetLabel("Start Level");
-        StaticText_P2->SetLabel("End Level");
+        StaticText_P1->SetLabel(_("Start Level"));
+        StaticText_P2->SetLabel(_("End Level"));
         StaticText_P3->SetLabel("N/A");
         StaticText_P4->SetLabel("N/A");
         _vc->SetParameter3(0);
         _vc->SetParameter4(0);
     } else if (type == "Timing Track Toggle") {
-        StaticText_P1->SetLabel("Low");
-        StaticText_P2->SetLabel("High");
+        StaticText_P1->SetLabel(_("Low"));
+        StaticText_P2->SetLabel(_("High"));
         StaticText_P3->SetLabel("N/A");
         StaticText_P4->SetLabel("N/A");
         _vc->SetParameter3(0);
         _vc->SetParameter4(0);
     } else if (type == "Timing Track Fade Fixed") {
-        StaticText_P1->SetLabel("Low");
-        StaticText_P2->SetLabel("High");
-        StaticText_P3->SetLabel("Frames");
+        StaticText_P1->SetLabel(_("Low"));
+        StaticText_P2->SetLabel(_("High"));
+        StaticText_P3->SetLabel(_("Frames"));
         StaticText_P4->SetLabel("N/A");
         _vc->SetParameter4(0);
     } else if (type == "Timing Track Fade Proportional") {
-        StaticText_P1->SetLabel("Low");
-        StaticText_P2->SetLabel("High");
-        StaticText_P3->SetLabel("Prportion");
+        StaticText_P1->SetLabel(_("Low"));
+        StaticText_P2->SetLabel(_("High"));
+        StaticText_P3->SetLabel(_("Prportion"));
         StaticText_P4->SetLabel("N/A");
         _vc->SetParameter4(0);
     } else if (type == "Music" || type == "Inverted Music") {
-        StaticText_P1->SetLabel("Low");
-        StaticText_P2->SetLabel("High");
-        StaticText_P3->SetLabel("Gain");
+        StaticText_P1->SetLabel(_("Low"));
+        StaticText_P2->SetLabel(_("High"));
+        StaticText_P3->SetLabel(_("Gain"));
         StaticText_P4->SetLabel("N/A");
         _vc->SetParameter4(0);
     } else if (type == "Music Trigger Fade") {
-        StaticText_P1->SetLabel("Low");
-        StaticText_P2->SetLabel("High");
-        StaticText_P3->SetLabel("Trigger");
-        StaticText_P4->SetLabel("Fade");
+        StaticText_P1->SetLabel(_("Low"));
+        StaticText_P2->SetLabel(_("High"));
+        StaticText_P3->SetLabel(_("Trigger"));
+        StaticText_P4->SetLabel(_("Fade"));
     } else if (type == "Ramp Up/Down") {
-        StaticText_P1->SetLabel("Start Level");
-        StaticText_P2->SetLabel("Mid Level");
-        StaticText_P3->SetLabel("End Level");
+        StaticText_P1->SetLabel(_("Start Level"));
+        StaticText_P2->SetLabel(_("Mid Level"));
+        StaticText_P3->SetLabel(_("End Level"));
         StaticText_P4->SetLabel("N/A");
         _vc->SetParameter4(0);
     } else if (type == "Ramp Up/Down Hold") {
-        StaticText_P1->SetLabel("Start/End Level");
-        StaticText_P2->SetLabel("Mid Level");
-        StaticText_P3->SetLabel("Mid Level Time");
+        StaticText_P1->SetLabel(_("Start/End Level"));
+        StaticText_P2->SetLabel(_("Mid Level"));
+        StaticText_P3->SetLabel(_("Mid Level Time"));
         StaticText_P4->SetLabel("N/A");
         _vc->SetParameter4(0);
     } else if (type == "Saw Tooth") {
-        StaticText_P1->SetLabel("Start Level");
-        StaticText_P2->SetLabel("End Level");
-        StaticText_P3->SetLabel("Cycles");
+        StaticText_P1->SetLabel(_("Start Level"));
+        StaticText_P2->SetLabel(_("End Level"));
+        StaticText_P3->SetLabel(_("Cycles"));
         StaticText_P4->SetLabel("N/A");
         _vc->SetParameter4(0);
     } else if (type == "Parabolic Down") {
-        StaticText_P1->SetLabel("Slope");
-        StaticText_P2->SetLabel("Vertical Offset");
-        StaticText_P3->SetLabel("Start Level");
-        StaticText_P4->SetLabel("End Level");
+        StaticText_P1->SetLabel(_("Slope"));
+        StaticText_P2->SetLabel(_("Vertical Offset"));
+        StaticText_P3->SetLabel(_("Start Level"));
+        StaticText_P4->SetLabel(_("End Level"));
     } else if (type == "Parabolic Up") {
-        StaticText_P1->SetLabel("Slope");
-        StaticText_P2->SetLabel("Vertical Offset");
-        StaticText_P3->SetLabel("Start Level");
-        StaticText_P4->SetLabel("End Level");
+        StaticText_P1->SetLabel(_("Slope"));
+        StaticText_P2->SetLabel(_("Vertical Offset"));
+        StaticText_P3->SetLabel(_("Start Level"));
+        StaticText_P4->SetLabel(_("End Level"));
     } else if (type == "Logarithmic Up") {
-        StaticText_P1->SetLabel("Rate");
-        StaticText_P2->SetLabel("Vertical Offset");
-        StaticText_P3->SetLabel("Start Level");
-        StaticText_P4->SetLabel("End Level");
+        StaticText_P1->SetLabel(_("Rate"));
+        StaticText_P2->SetLabel(_("Vertical Offset"));
+        StaticText_P3->SetLabel(_("Start Level"));
+        StaticText_P4->SetLabel(_("End Level"));
     } else if (type == "Logarithmic Down") {
-        StaticText_P1->SetLabel("Rate");
-        StaticText_P2->SetLabel("Vertical Offset");
-        StaticText_P3->SetLabel("Start Level");
-        StaticText_P4->SetLabel("End Level");
+        StaticText_P1->SetLabel(_("Rate"));
+        StaticText_P2->SetLabel(_("Vertical Offset"));
+        StaticText_P3->SetLabel(_("Start Level"));
+        StaticText_P4->SetLabel(_("End Level"));
     } else if (type == "Exponential Up" || type == "Exponential Down") {
-        StaticText_P1->SetLabel("Rate");
-        StaticText_P2->SetLabel("Vertical Offset");
-        StaticText_P3->SetLabel("Start Level");
-        StaticText_P4->SetLabel("End Level");
+        StaticText_P1->SetLabel(_("Rate"));
+        StaticText_P2->SetLabel(_("Vertical Offset"));
+        StaticText_P3->SetLabel(_("Start Level"));
+        StaticText_P4->SetLabel(_("End Level"));
     } else if (type == "Sine") {
-        StaticText_P1->SetLabel("Start");
-        StaticText_P2->SetLabel("Amplitude");
-        StaticText_P3->SetLabel("Cycles");
-        StaticText_P4->SetLabel("Vertical Offset");
+        StaticText_P1->SetLabel(_("Start"));
+        StaticText_P2->SetLabel(_("Amplitude"));
+        StaticText_P3->SetLabel(_("Cycles"));
+        StaticText_P4->SetLabel(_("Vertical Offset"));
     } else if (type == "Decaying Sine") {
-        StaticText_P1->SetLabel("Start");
-        StaticText_P2->SetLabel("Amplitude");
-        StaticText_P3->SetLabel("Cycles");
-        StaticText_P4->SetLabel("Vertical Offset");
+        StaticText_P1->SetLabel(_("Start"));
+        StaticText_P2->SetLabel(_("Amplitude"));
+        StaticText_P3->SetLabel(_("Cycles"));
+        StaticText_P4->SetLabel(_("Vertical Offset"));
     } else if (type == "Random") {
-        StaticText_P1->SetLabel("Minimum");
-        StaticText_P2->SetLabel("Maximum");
-        StaticText_P3->SetLabel("Points");
+        StaticText_P1->SetLabel(_("Minimum"));
+        StaticText_P2->SetLabel(_("Maximum"));
+        StaticText_P3->SetLabel(_("Points"));
         StaticText_P4->SetLabel("N/A");
     } else if (type == "Abs Sine") {
-        StaticText_P1->SetLabel("Start");
-        StaticText_P2->SetLabel("Amplitude");
-        StaticText_P3->SetLabel("Cycles");
-        StaticText_P4->SetLabel("Vertical Offset");
+        StaticText_P1->SetLabel(_("Start"));
+        StaticText_P2->SetLabel(_("Amplitude"));
+        StaticText_P3->SetLabel(_("Cycles"));
+        StaticText_P4->SetLabel(_("Vertical Offset"));
     } else if (type == "Square") {
-        StaticText_P1->SetLabel("Start Level");
-        StaticText_P2->SetLabel("End Level");
-        StaticText_P3->SetLabel("Cycles");
+        StaticText_P1->SetLabel(_("Start Level"));
+        StaticText_P2->SetLabel(_("End Level"));
+        StaticText_P3->SetLabel(_("Cycles"));
         StaticText_P4->SetLabel("N/A");
         _vc->SetParameter4(0);
     } else if (type == "Custom") {
-        StaticText_P1->SetLabel("Cycles");
+        StaticText_P1->SetLabel(_("Cycles"));
         StaticText_P2->SetLabel("N/A");
         StaticText_P3->SetLabel("N/A");
         StaticText_P4->SetLabel("N/A");
