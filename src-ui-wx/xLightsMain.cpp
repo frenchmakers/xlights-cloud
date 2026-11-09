@@ -3638,7 +3638,7 @@ void xLightsFrame::BackupDirectory(wxString sourceDir, wxString targetDirName, w
         }
     }
 
-    SetStatusText("All xml files backed up.");
+    SetStatusText(_("All xml files backed up."));
 }
 
 bool xLightsFrame::isRandom_(wxControl* ctl, const char* debug)
@@ -4074,7 +4074,7 @@ bool xLightsFrame::ExportVideoPreview(wxString const& path, int desiredWidth, in
     if (exportStatus) {
         spdlog::debug("Finished writing house-preview video.");
         float elapsedTime = sw.Time() / 1000.0; // msec => sec
-        SetStatusText(wxString::Format("'%s' exported in %4.3f sec.", path.c_str(), elapsedTime));
+        SetStatusText(wxString::Format(_("'%s' exported in %4.3f sec."), path.c_str(), elapsedTime));
     } else {
         DisplayError("Exporting house preview video failed.  " + emsg, this);
     }
@@ -6974,9 +6974,9 @@ void xLightsFrame::OnMenuItem_CleanupFileLocationsSelected(wxCommandEvent& event
     spdlog::debug("Cleaning up file locations.");
     CleanupRGBEffectsFileLocations();
     if (CurrentSeqXmlFile != nullptr) {
-        SetStatusText("Cleaning up file locations.");
+        SetStatusText(_("Cleaning up file locations."));
         CleanupSequenceFileLocations();
-        SetStatusText("Cleaning up file locations ... DONE.");
+        SetStatusText(_("Cleaning up file locations ... DONE."));
         wxBell();
     } else {
         wxMessageBox(_("You must have a sequence opened in order to run Cleanup File Locations."), _("Missing Sequence"), wxOK);
@@ -8886,7 +8886,7 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
                 }
 
                 if (edits.size() == 0) {
-                    SetStatusText("No edits found in RPP file.");
+                    SetStatusText(_("No edits found in RPP file."));
                     return;
                 }
             }
@@ -8973,16 +8973,16 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
                     }
                 }
                 if (edits.size() == 0) {
-                    SetStatusText("No edits found in xAudio file.");
+                    SetStatusText(_("No edits found in xAudio file."));
                     return;
                 }
             } else {
-                SetStatusText("Invalid xAudio file.");
+                SetStatusText(_("Invalid xAudio file."));
                 return;
             }
         }
 
-        SetStatusText("Loading audio files.");
+        SetStatusText(_("Loading audio files."));
 
         // load the audio files
         std::map<std::string, AudioManager*> sourceSongs;
@@ -9034,7 +9034,7 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
         }
 
         if (sampleRate == -1) {
-            SetStatusText("Audio file creation failed - No input audio.");
+            SetStatusText(_("Audio file creation failed - No input audio."));
             ok = false;
         }
 
@@ -9057,7 +9057,7 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
                     // check the data is actually loaded
                     audio->GetRawLeftData(audio->GetTrackSize() - 1);
 
-                    SetStatusText("Combining audio clips.");
+                    SetStatusText(_("Combining audio clips."));
 
                     spdlog::debug("Processing sample from {}.", it.file);
                     long startOutput = sampleRate * it.start;
@@ -9157,7 +9157,7 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
                     }
                 }
             }
-            SetStatusText("Saving output file.");
+            SetStatusText(_("Saving output file."));
 
             if (!AudioManager::EncodeAudio(left,
                                right,
@@ -9165,12 +9165,12 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
                                targetFile.GetFullPath(),
                                firstAudio)) {
                 wxMessageBox(_("Error creating audio file. See log for details."));
-                SetStatusText("Audio file creation failed.");
+                SetStatusText(_("Audio file creation failed."));
             } else {
                 SetStatusText("Audio file created: " + targetFile.GetFullPath());
             }
         } else {
-            SetStatusText("Audio file creation failed.");
+            SetStatusText(_("Audio file creation failed."));
         }
 
         for (const auto& it : sourceSongs) {

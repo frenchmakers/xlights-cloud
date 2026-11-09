@@ -1933,7 +1933,7 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
     // The results list is only worth keeping on screen when FPP Connect itself stays open.
     const bool stayOpen = KeepWinOpen->Get3StateValue() == wxCHK_CHECKED && !_closeRequestedDuringUpload;
     if (messages != "") {
-        xlframe->SetStatusText("FPP Connect Upload had errors or warnings", 0);
+        xlframe->SetStatusText(_("FPP Connect Upload had errors or warnings"), 0);
         spdlog::warn("FPP Connect Upload had errors or warnings:\n" + messages);
         if (stayOpen) {
             prgs->finishStep(ToUTF8(_("Controller messages")),
@@ -1945,10 +1945,10 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
         prgs->finish(prgs->isCancelled(), 2, stayOpen);
     } else {
         if (cancelled) {
-            xlframe->SetStatusText("FPP Connect Upload Cancelled", 0);
+            xlframe->SetStatusText(_("FPP Connect Upload Cancelled"), 0);
             prgs->finish(prgs->isCancelled(), 1, stayOpen);
         } else {
-            xlframe->SetStatusText("FPP Connect Upload Complete", 0);
+            xlframe->SetStatusText(_("FPP Connect Upload Complete"), 0);
             prgs->finish(false, 0, stayOpen);
         }
     };

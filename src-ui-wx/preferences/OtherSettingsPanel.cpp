@@ -9,6 +9,27 @@
  **************************************************************/
 
 #include "OtherSettingsPanel.h"
+#include "shared/utils/TranslatedChoice.h"
+
+// Choice items saved by their English text, shown translated (TranslateChoiceItems).
+[[maybe_unused]] static const char* const PREFERENCE_CHOICE_TEXTS[] = {
+    wxTRANSLATE_IN_CONTEXT("preference", "None"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Inputs and Outputs"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Always Prompt"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Always Yes"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Always No"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Show Folder"),
+    wxTRANSLATE_IN_CONTEXT("preference", "AppData-shared"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Faces/States/Submodels"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Unassigned"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Auto"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Off"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Beginner"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Intermediate"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Advanced"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Expert"),
+};
+
 #include "color/xlColourData.h"
 
 //(*InternalHeaders(OtherSettingsPanel)
@@ -256,6 +277,11 @@ OtherSettingsPanel::OtherSettingsPanel(wxWindow* parent, xLightsFrame* f, wxWind
     Connect(wxEVT_PAINT, (wxObjectEventFunction)&OtherSettingsPanel::OnPaint);
     //*)
 
+    for (wxChoice* c : { Choice_LinkControllerUpload, Choice_AliasPromptBehavior, Choice_KeybindingsLocation,
+                         Choice_LayoutDoubleClickAction, ChoiceCodec, Choice_MinTipLevel }) {
+        TranslateChoiceItems(c, "preference");
+    }
+
 #ifdef HAVE_VULKAN
     // Hand-added outside the wxSmith guards: preview graphics backend choice
     // (read directly by xlVulkanCanvas::VulkanSelected at startup).
@@ -271,6 +297,7 @@ OtherSettingsPanel::OtherSettingsPanel(wxWindow* parent, xLightsFrame* f, wxWind
         GraphicsBackendChoice->Append(_("OpenGL"));
         GraphicsBackendChoice->Append(_("Vulkan"));
         GraphicsBackendChoice->SetSelection(0);
+        TranslateChoiceItems(GraphicsBackendChoice, "preference");
         gfxSizer->Add(GraphicsBackendChoice, 1, wxALL | wxEXPAND, 5);
         GridBagSizer1->Add(gfxSizer, wxGBPosition(10, 1), wxDefaultSpan, wxALL | wxEXPAND, 0);
         Connect(ID_CHOICE_GfxBackend, wxEVT_COMMAND_CHOICE_SELECTED, (wxObjectEventFunction)&OtherSettingsPanel::OnControlChanged);
@@ -334,16 +361,16 @@ bool OtherSettingsPanel::TransferDataFromWindow() {
     frame->SetUseGPURendering(GPURenderCheckbox->IsChecked());
     frame->SetShadersOnBackgroundThreads(ShaderCheckbox->IsChecked());
     frame->SetUserEMAIL(eMailTextControl->GetValue());
-    frame->SetRenameModelAliasPromptBehavior(Choice_AliasPromptBehavior->GetStringSelection());
-    frame->SetKeybindingsLocation(Choice_KeybindingsLocation->GetStringSelection());
-    frame->SetLayoutDoubleClickAction(Choice_LayoutDoubleClickAction->GetStringSelection());
+    frame->SetRenameModelAliasPromptBehavior(GetEnglishSelection(Choice_AliasPromptBehavior));
+    frame->SetKeybindingsLocation(GetEnglishSelection(Choice_KeybindingsLocation));
+    frame->SetLayoutDoubleClickAction(GetEnglishSelection(Choice_LayoutDoubleClickAction));
 	frame->SetPromptBatchRenderIssues(CheckBox_BatchRenderPromptIssues->GetValue());
 	frame->SetIgnoreVendorModelRecommendations(CheckBox_IgnoreVendorModelRecommendations->GetValue());
     frame->SetControllerPingInterval(CtrlPingInterval->GetValue());
 	frame->SetPurgeDownloadCacheOnStart(CheckBox_PurgeDownloadCache->GetValue());
-    frame->SetVideoExportCodec(ChoiceCodec->GetStringSelection());
+    frame->SetVideoExportCodec(GetEnglishSelection(ChoiceCodec));
     frame->SetVideoExportBitrate(SpinCtrlDoubleBitrate->GetValue());
-    frame->SetMinTipLevel(Choice_MinTipLevel->GetStringSelection());
+    frame->SetMinTipLevel(GetEnglishSelection(Choice_MinTipLevel));
     frame->SetRecycleTips(!CheckBox_RecycleTips->GetValue());
     frame->SetEnablePositionZones(CheckBox_EnablePositionZones->GetValue());
     frame->SetShowZoneIndicator(CheckBox_ShowZoneIndicator->GetValue());
@@ -351,7 +378,7 @@ bool OtherSettingsPanel::TransferDataFromWindow() {
 #ifdef HAVE_VULKAN
     if (GraphicsBackendChoice != nullptr) {
         auto* config = GetXLightsConfig();
-        config->Write("xLightsGraphicsBackend", GraphicsBackendChoice->GetStringSelection());
+        config->Write("xLightsGraphicsBackend", GetEnglishSelection(GraphicsBackendChoice));
         config->Flush();
     }
 #endif
@@ -376,17 +403,17 @@ bool OtherSettingsPanel::TransferDataToWindow() {
     GPURenderCheckbox->SetValue(frame->UseGPURendering());
     ShaderCheckbox->SetValue(frame->ShadersOnBackgroundThreads());
     eMailTextControl->ChangeValue(frame->UserEMAIL());
-	Choice_LinkControllerUpload->SetStringSelection(frame->GetLinkedControllerUpload());
-    Choice_AliasPromptBehavior->SetStringSelection(frame->GetRenameModelAliasPromptBehavior());
-    Choice_KeybindingsLocation->SetStringSelection(frame->GetKeybindingsLocation());
-    Choice_LayoutDoubleClickAction->SetStringSelection(frame->GetLayoutDoubleClickAction());
+	SetEnglishSelection(Choice_LinkControllerUpload, frame->GetLinkedControllerUpload());
+    SetEnglishSelection(Choice_AliasPromptBehavior, frame->GetRenameModelAliasPromptBehavior());
+    SetEnglishSelection(Choice_KeybindingsLocation, frame->GetKeybindingsLocation());
+    SetEnglishSelection(Choice_LayoutDoubleClickAction, frame->GetLayoutDoubleClickAction());
 	CheckBox_BatchRenderPromptIssues->SetValue(frame->GetPromptBatchRenderIssues());
 	CheckBox_IgnoreVendorModelRecommendations->SetValue(frame->GetIgnoreVendorModelRecommendations());
     CtrlPingInterval->SetValue(frame->GetControllerPingInterval());
 	CheckBox_PurgeDownloadCache->SetValue(frame->GetPurgeDownloadCacheOnStart());
-    ChoiceCodec->SetStringSelection(frame->GetVideoExportCodec());
+    SetEnglishSelection(ChoiceCodec, frame->GetVideoExportCodec());
     SpinCtrlDoubleBitrate->SetValue(frame->GetVideoExportBitrate());
-    Choice_MinTipLevel->SetStringSelection(frame->GetMinTipLevel());
+    SetEnglishSelection(Choice_MinTipLevel, frame->GetMinTipLevel());
     CheckBox_RecycleTips->SetValue(!frame->GetRecycleTips());
     CheckBox_EnablePositionZones->SetValue(frame->GetEnablePositionZones());
     CheckBox_ShowZoneIndicator->SetValue(frame->GetShowZoneIndicator());
@@ -394,7 +421,7 @@ bool OtherSettingsPanel::TransferDataToWindow() {
 #ifdef HAVE_VULKAN
     if (GraphicsBackendChoice != nullptr) {
         wxString backend = GetXLightsConfig()->Read("xLightsGraphicsBackend", "Auto");
-        if (!GraphicsBackendChoice->SetStringSelection(backend)) {
+        if (!SetEnglishSelection(GraphicsBackendChoice, backend)) {
             GraphicsBackendChoice->SetSelection(0);
         }
     }

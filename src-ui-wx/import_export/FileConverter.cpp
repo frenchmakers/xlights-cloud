@@ -686,7 +686,7 @@ void FileConverter::ReadLorFile(ConvertParameters& params)
     if (params.media_filename)
         params.AppendConvertStatus(wxString("Media file=") + *params.media_filename, false);
     params.AppendConvertStatus(string_format(wxString("New # of time periods=%ld"), params.seq_data.NumFrames()), false);
-    params.SetStatusText(wxString("LOR sequence converted successfully"));
+    params.SetStatusText(wxString(_("LOR sequence converted successfully")));
 
     wxYield();
 }

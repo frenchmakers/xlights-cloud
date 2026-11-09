@@ -785,7 +785,7 @@ void EffectsGrid::AddShimmer() {
                     wxCommandEvent eventRowHeaderChanged(EVT_ROW_HEADINGS_CHANGED);
                     wxPostEvent(mParent, eventRowHeaderChanged);
                     Draw();
-                    xlights->SetStatusText(wxString::Format("Added '-shimmer' to %d phoneme(s).", modifiedCount));
+                    xlights->SetStatusText(wxString::Format(_("Added '-shimmer' to %d phoneme(s)."), modifiedCount));
                 } else {
                     wxMessageBox(_("No valid phoneme selected."), _("Add Shimmer"), wxOK | wxICON_INFORMATION);
                 }
@@ -828,7 +828,7 @@ void EffectsGrid::RemoveShimmer() {
                     wxCommandEvent eventRowHeaderChanged(EVT_ROW_HEADINGS_CHANGED);
                     wxPostEvent(mParent, eventRowHeaderChanged);
                     Draw();
-                    xlights->SetStatusText(wxString::Format("Removed '-shimmer' from %d phoneme(s).", modifiedCount));
+                    xlights->SetStatusText(wxString::Format(_("Removed '-shimmer' from %d phoneme(s)."), modifiedCount));
                 } else {
                     wxMessageBox(_("No phoneme with '-shimmer' selected."), _("Remove Shimmer"), wxOK | wxICON_INFORMATION);
                 }
@@ -971,7 +971,7 @@ void EffectsGrid::Replace() {
             Draw();
         }
 
-        xlights->SetStatusText(wxString::Format("Replaced %d occurrence(s).", replacedCount));
+        xlights->SetStatusText(wxString::Format(_("Replaced %d occurrence(s)."), replacedCount));
     } else {
         wxMessageBox(_("No matching text found for replacement."), _("Replace All"), wxOK | wxICON_INFORMATION);
     }
@@ -8766,7 +8766,7 @@ void EffectsGrid::UpdateEffectMoveDragState(int x, int y, bool snapToTiming, boo
         if (minStart != INT_MAX) {
             ((MainSequencer*)mParent)->PanelWaveForm->SetEffectDragOverride(minStart, maxEnd);
             xlights->SetStatusText(
-                wxString::Format("start: %s  end: %s  duration: %s%s",
+                wxString::Format(_("start: %s  end: %s  duration: %s%s"),
                                  FORMATTIME(minStart), FORMATTIME(maxEnd),
                                  FORMATTIME(maxEnd - minStart),
                                  mEffectMoveLockTime ? "  [timing locked]" : ""), true);

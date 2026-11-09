@@ -1260,7 +1260,7 @@ void ConvertDialog::ReadLorFile(const wxString& filename, int LORImportInterval)
 
     _parent->ConversionInit();
     AppendConvertStatus(wxString("Reading LOR sequence\n"));
-    SetStatusText(wxString("Reading LOR sequence"));
+    SetStatusText(wxString(_("Reading LOR sequence")));
 
     int centisec = -1;
     int nodecnt = 0;
@@ -1656,7 +1656,7 @@ void ConvertDialog::ReadLorFile(const wxString& filename, int LORImportInterval)
     AppendConvertStatus(string_format(wxString("# of effects=%d\n"), EffectCnt), false);
     AppendConvertStatus(wxString("Media file=") + mediaFilename + wxString("\n"), false);
     AppendConvertStatus(string_format(wxString("New # of time periods=%ld\n"), SeqData.NumFrames()), false);
-    SetStatusText(wxString("LOR sequence loaded successfully"));
+    SetStatusText(wxString(_("LOR sequence loaded successfully")));
 }
 
 void ConvertDialog::DoConversion(const wxString& Filename, const wxString& OutputFormat)

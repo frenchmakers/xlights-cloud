@@ -9,6 +9,18 @@
  **************************************************************/
 
 #include "ViewSettingsPanel.h"
+#include "shared/utils/TranslatedChoice.h"
+
+// Choice items saved by their English text, shown translated (TranslateChoiceItems).
+[[maybe_unused]] static const char* const PREFERENCE_CHOICE_TEXTS[] = {
+    wxTRANSLATE_IN_CONTEXT("preference", "Normal"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Large"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Extra Large"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Small"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Tiny"),
+    wxTRANSLATE_IN_CONTEXT("preference", "None"),
+};
+
 
 //(*InternalHeaders(ViewSettingsPanel)
 #include <wx/checkbox.h>
@@ -136,6 +148,10 @@ ViewSettingsPanel::ViewSettingsPanel(wxWindow* parent, xLightsFrame* f, wxWindow
     Connect(ID_CHOICE_PALETTE_SIZE, wxEVT_COMMAND_CHOICE_SELECTED, (wxObjectEventFunction)&ViewSettingsPanel::OnChoice_PaletteSizeSelect);
     //*)
 
+    for (wxChoice* c : { Choice_PaletteSize, ModelHandleSizeChoice, CrosshairSizeChoice }) {
+        TranslateChoiceItems(c, "preference");
+    }
+
 #ifdef _MSC_VER
     MSWDisableComposited();
 #endif
@@ -179,7 +195,7 @@ bool ViewSettingsPanel::TransferDataToWindow()
     Choice_TimelineZooming->SetSelection(frame->GetTimelineZooming() & 1);
     CheckBox_PresetPreview->SetValue(frame->HidePresetPreview());
     CheckBox_DisableKeyAcceleration->SetValue(frame->IsDisableKeyAcceleration());
-    Choice_PaletteSize->SetStringSelection(frame->GetPaletteSizeString());
+    SetEnglishSelection(Choice_PaletteSize, frame->GetPaletteSizeString());
 
     return true;
 }
@@ -212,7 +228,7 @@ bool ViewSettingsPanel::TransferDataFromWindow()
     frame->ViewSizePreferencesChanged();
     frame->SetTimelineZooming(Choice_TimelineZooming->GetSelection());
     frame->SetHidePresetPreview(CheckBox_PresetPreview->IsChecked());
-    frame->SetPaletteSizeString(Choice_PaletteSize->GetStringSelection());
+    frame->SetPaletteSizeString(GetEnglishSelection(Choice_PaletteSize));
     return true;
 }
 

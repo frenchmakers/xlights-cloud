@@ -1384,7 +1384,7 @@ void LayoutPanel::UpdateDirectoriesFooter()
             label += "Base: (None)\n";
         }
     }
-    label += wxString::Format("Show: %s", show_dir);
+    label += wxString::Format(_("Show: %s"), show_dir);
 
     bool permanent = (xlights->_permanentShowFolder.empty() || xlights->_permanentShowFolder == xlights->CurrentDir.ToStdString());
     if (permanent) {
@@ -8739,9 +8739,9 @@ void LayoutPanel::ExportModelAsCAD()
         ObtainAccessToURL(ToStdString(filename), true);
         wxFileName file(filename);
         if (ModelToCAD::ExportCAD(md, filename, file.GetExt())) {
-            xlights->SetStatusText(wxString::Format("Exported '%s' Successfully", filename));
+            xlights->SetStatusText(wxString::Format(_("Exported '%s' Successfully"), filename));
         } else {
-            xlights->SetStatusText(wxString::Format("Export Failed '%s'", filename));
+            xlights->SetStatusText(wxString::Format(_("Export Failed '%s'"), filename));
         }
     }
 }
@@ -8752,9 +8752,9 @@ void LayoutPanel::ExportLayoutDXF()
     if (filename != "") {
         ObtainAccessToURL(ToStdString(filename), true);
         if (ModelToCAD::ExportCAD(&xlights->AllModels, filename, "dxf", currentLayoutGroup)) {
-            xlights->SetStatusText(wxString::Format("Exported '%s' Successfully", filename));
+            xlights->SetStatusText(wxString::Format(_("Exported '%s' Successfully"), filename));
         } else {
-            xlights->SetStatusText(wxString::Format("Export Failed '%s'", filename));
+            xlights->SetStatusText(wxString::Format(_("Export Failed '%s'"), filename));
         }
     }
 }
@@ -12760,7 +12760,7 @@ void LayoutPanel::DockPanesOnMissingDisplays() {
         docked = true;
     }
     if (docked) {
-        xlights->SetStatusText("A saved floating Layout panel was off-screen and has been docked.");
+        xlights->SetStatusText(_("A saved floating Layout panel was off-screen and has been docked."));
     }
 }
 

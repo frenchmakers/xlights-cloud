@@ -2119,6 +2119,11 @@ msgstr "Aucune séquence n'est ouverte."
 msgid "Export Song Region as New Sequence"
 msgstr "Exporter la région du morceau en nouvelle séquence"
 
+#: src-ui-wx/app-shell/TabSequence.cpp:2694
+#, c-format
+msgid "Exported song region '%s' to %s"
+msgstr "Région du morceau « %s » exportée vers %s"
+
 #: src-ui-wx/app-shell/TabSequence.cpp:2706
 msgid "No song structure regions defined."
 msgstr "Aucune section de structure du morceau n'est définie."
@@ -2139,6 +2144,11 @@ msgstr "Export des régions du morceau"
 msgid "Starting export..."
 msgstr "Début de l'export..."
 
+#: src-ui-wx/app-shell/TabSequence.cpp:2778
+#, c-format
+msgid "Exported %d song regions to %s"
+msgstr "%d régions du morceau exportées vers %s"
+
 #: src-ui-wx/app-shell/TabSequence.cpp:279
 msgid "Invalid RGB effects file ... creating a default one."
 msgstr "Fichier d'effets RGB invalide... création d'un fichier par défaut."
@@ -2151,7 +2161,7 @@ msgstr "Fichier de préréglages enregistré automatiquement plus récent trouv�
 msgid "Loading of xLights v3 rgbeffects is no longer supported."
 msgstr "Le chargement des fichiers rgbeffects de xLights v3 n'est plus pris en charge."
 
-#: src-ui-wx/app-shell/TabSequence.cpp:758
+#: src-ui-wx/app-shell/TabSequence.cpp:758 src-ui-wx/import_export/SeqFileUtilities.cpp:679
 #, c-format
 msgid "'%s' loaded in %4.3f sec."
 msgstr "« %s » chargé en %4.3f s."
@@ -2173,6 +2183,14 @@ msgstr "Impossible d'enregistrer le fichier d'effets RGB"
 #: src-ui-wx/app-shell/TabSequence.cpp:963
 msgid "Unable to save effect presets file"
 msgstr "Impossible d'enregistrer le fichier des préréglages d'effets"
+
+#: src-ui-wx/app-shell/TabSetup.cpp:1359
+msgid "Running controller discovery ..."
+msgstr "Recherche des contrôleurs..."
+
+#: src-ui-wx/app-shell/TabSetup.cpp:1370
+msgid "Processing discovered controllers..."
+msgstr "Traitement des contrôleurs trouvés..."
 
 #: src-ui-wx/app-shell/TabSetup.cpp:1525
 #, c-format
@@ -2200,6 +2218,10 @@ msgstr ""
 msgid "Add New Controllers"
 msgstr "Ajouter les nouveaux contrôleurs"
 
+#: src-ui-wx/app-shell/TabSetup.cpp:1578
+msgid "Discovery complete."
+msgstr "Recherche terminée."
+
 #: src-ui-wx/app-shell/TabSetup.cpp:168 src-ui-wx/app-shell/TabSetup.cpp:271
 msgid "Show directory cannot be changed in read only mode."
 msgstr "Le dossier du show ne peut pas être changé en mode lecture seule."
@@ -2207,6 +2229,18 @@ msgstr "Le dossier du show ne peut pas être changé en mode lecture seule."
 #: src-ui-wx/app-shell/TabSetup.cpp:168 src-ui-wx/app-shell/TabSetup.cpp:271 src-ui-wx/preferences/xLightsPreferences.cpp:178
 msgid "Read Only Mode"
 msgstr "Mode lecture seule"
+
+#: src-ui-wx/app-shell/TabSetup.cpp:1694 src-ui-wx/app-shell/TabSetup.cpp:1731
+msgid "Uploading inputs and outputs."
+msgstr "Envoi des entrées et des sorties."
+
+#: src-ui-wx/app-shell/TabSetup.cpp:1696
+msgid "Uploading inputs."
+msgstr "Envoi des entrées."
+
+#: src-ui-wx/app-shell/TabSetup.cpp:1734
+msgid "Uploading outputs"
+msgstr "Envoi des sorties"
 
 #: src-ui-wx/app-shell/TabSetup.cpp:174
 #, c-format
@@ -2216,6 +2250,10 @@ msgid ""
 msgstr ""
 "xLights n'a pas pu accéder au dossier du show :\n"
 "%s"
+
+#: src-ui-wx/app-shell/TabSetup.cpp:1753
+msgid "Uploading inputs to controller."
+msgstr "Envoi des entrées au contrôleur."
 
 #: src-ui-wx/app-shell/TabSetup.cpp:1760 src-ui-wx/app-shell/TabSetup.cpp:1845
 msgid "Controller IP Address"
@@ -2233,6 +2271,10 @@ msgid ""
 msgstr ""
 "Ce dossier de show n'existe plus :\n"
 "%s"
+
+#: src-ui-wx/app-shell/TabSetup.cpp:1838
+msgid "Uploading outputs to controller."
+msgstr "Envoi des sorties au contrôleur."
 
 #: src-ui-wx/app-shell/TabSetup.cpp:293
 msgid "Loading show..."
@@ -2411,6 +2453,154 @@ msgstr "Choisir le fichier de courbe de couleur"
 #: src-ui-wx/color/ColorCurveDialog.cpp:804
 msgid "Are you sure you want to discard your current color curve?"
 msgstr "Voulez-vous vraiment abandonner la courbe de couleur actuelle ?"
+
+#: src-ui-wx/color/ColorManager.h:123
+msgid "Timing 1"
+msgstr "Timing 1"
+
+#: src-ui-wx/color/ColorManager.h:124
+msgid "Timing 2"
+msgstr "Timing 2"
+
+#: src-ui-wx/color/ColorManager.h:125
+msgid "Timing 3"
+msgstr "Timing 3"
+
+#: src-ui-wx/color/ColorManager.h:126
+msgid "Timing 4"
+msgstr "Timing 4"
+
+#: src-ui-wx/color/ColorManager.h:127
+msgid "Timing 5"
+msgstr "Timing 5"
+
+#: src-ui-wx/color/ColorManager.h:129 src-ui-wx/sequencer/SeqSettingsDialog.cpp:453
+msgid "Timings"
+msgstr "Timings"
+
+#: src-ui-wx/color/ColorManager.h:131
+msgid "Effect Selected"
+msgstr "Effet sélectionné"
+
+#: src-ui-wx/color/ColorManager.h:132
+msgid "Reference Effect"
+msgstr "Effet de référence"
+
+#: src-ui-wx/color/ColorManager.h:133
+msgid "RowHeader"
+msgstr "En-tête de ligne"
+
+#: src-ui-wx/color/ColorManager.h:134
+msgid "RowHeader Text"
+msgstr "Texte de l'en-tête de ligne"
+
+#: src-ui-wx/color/ColorManager.h:135
+msgid "Row Header Selected"
+msgstr "En-tête de ligne sélectionné"
+
+#: src-ui-wx/color/ColorManager.h:136 src-ui-wx/color/ColorManager.h:149
+msgid "Dashed Select"
+msgstr "Sélection en pointillés"
+
+#: src-ui-wx/color/ColorManager.h:137
+msgid "Gridlines"
+msgstr "Lignes de la grille"
+
+#: src-ui-wx/color/ColorManager.h:138
+msgid "Labels"
+msgstr "Étiquettes"
+
+#: src-ui-wx/color/ColorManager.h:139
+msgid "Label Outline"
+msgstr "Contour des étiquettes"
+
+#: src-ui-wx/color/ColorManager.h:140
+msgid "Phrases"
+msgstr "Phrases"
+
+#: src-ui-wx/color/ColorManager.h:141
+msgid "Words"
+msgstr "Mots"
+
+#: src-ui-wx/color/ColorManager.h:142 src-ui-wx/sequencer/LyricUserDictDialog.cpp:135
+msgid "Phonemes"
+msgstr "Phonèmes"
+
+#: src-ui-wx/color/ColorManager.h:144
+msgid "Model Default"
+msgstr "Modèle par défaut"
+
+#: src-ui-wx/color/ColorManager.h:145
+msgid "Model Selected"
+msgstr "Modèle sélectionné"
+
+#: src-ui-wx/color/ColorManager.h:146
+msgid "Model Overlap"
+msgstr "Chevauchement de modèles"
+
+#: src-ui-wx/color/ColorManager.h:147
+msgid "Model Not On Controller"
+msgstr "Modèle hors contrôleur"
+
+#: src-ui-wx/color/ColorManager.h:148
+msgid "Model Picked In Visualiser"
+msgstr "Modèle choisi dans le visualiseur"
+
+#: src-ui-wx/color/ColorManager.h:150
+msgid "Fixed Timings"
+msgstr "Timings fixes"
+
+#: src-ui-wx/color/ColorManager.h:151
+msgid "Selected Locked Effects"
+msgstr "Effets verrouillés sélectionnés"
+
+#: src-ui-wx/color/ColorManager.h:152
+msgid "Locked Reference Effect"
+msgstr "Effet de référence verrouillé"
+
+#: src-ui-wx/color/ColorManager.h:153
+msgid "Waveform"
+msgstr "Forme d'onde"
+
+#: src-ui-wx/color/ColorManager.h:154
+msgid "Waveform Background"
+msgstr "Fond de la forme d'onde"
+
+#: src-ui-wx/color/ColorManager.h:155
+msgid "Waveform Selected"
+msgstr "Forme d'onde sélectionnée"
+
+#: src-ui-wx/color/ColorManager.h:156
+msgid "Waveform Selected Effect"
+msgstr "Effet sélectionné sur la forme d'onde"
+
+#: src-ui-wx/color/ColorManager.h:157
+msgid "Disabled Effects"
+msgstr "Effets désactivés"
+
+#: src-ui-wx/color/ColorManager.h:158
+msgid "Locked Effects"
+msgstr "Effets verrouillés"
+
+#: src-ui-wx/color/ColorManager.h:159
+msgid "Selected Disabled Effects"
+msgstr "Effets désactivés sélectionnés"
+
+#: src-ui-wx/color/ColorManager.h:161
+msgid "Disabled Reference Effect"
+msgstr "Effet de référence désactivé"
+
+#: src-ui-wx/color/ColorManager.h:162
+msgid "Waveform Mouse Marker"
+msgstr "Repère de la souris sur la forme d'onde"
+
+#: src-ui-wx/color/ColorManager.h:163
+msgid "Unselected Text"
+msgstr "Texte non sélectionné"
+
+#: src-ui-wx/color/ColorManager.h:164
+msgid "Highlighted Text"
+msgstr "Texte en surbrillance"
 
 #: src-ui-wx/color/ColorPanel.cpp:1051
 msgid "Update Palette"
@@ -3123,6 +3313,10 @@ msgstr "Non envoyé"
 msgid "could not open the fseq"
 msgstr "impossible d'ouvrir le fseq"
 
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1936
+msgid "FPP Connect Upload had errors or warnings"
+msgstr "L'envoi FPP Connect a rencontré des erreurs ou des avertissements"
+
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1939
 msgid "Controller messages"
 msgstr "Messages des contrôleurs"
@@ -3130,6 +3324,14 @@ msgstr "Messages des contrôleurs"
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1943
 msgid "Problems Uploading"
 msgstr "Problèmes d'envoi"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1948
+msgid "FPP Connect Upload Cancelled"
+msgstr "Envoi FPP Connect annulé"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1951
+msgid "FPP Connect Upload Complete"
+msgstr "Envoi FPP Connect terminé"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:196
 msgid "Add FPP"
@@ -3203,7 +3405,7 @@ msgstr "Trier"
 msgid "Select Subnet"
 msgstr "Sélectionner le sous-réseau"
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:673 src-ui-wx/controllers/FPPConnectDialog.cpp:687 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:108
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:673 src-ui-wx/controllers/FPPConnectDialog.cpp:687 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:123
 msgid "V1"
 msgstr ""
 
@@ -3227,7 +3429,7 @@ msgstr ""
 msgid "V2 Sparse/zlib"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:691 src-ui-wx/controllers/FPPConnectDialog.cpp:708 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:110
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:691 src-ui-wx/controllers/FPPConnectDialog.cpp:708 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:125
 msgid "V2 Uncompressed"
 msgstr ""
 
@@ -3381,7 +3583,7 @@ msgstr "Playlist :"
 msgid "Add"
 msgstr "Ajouter"
 
-#: src-ui-wx/controllers/HinksPixExportDialog.cpp:248 src-ui-wx/media/ManageMediaPanel.cpp:751 src-ui-wx/model/ViewpointDialog.cpp:58 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:156 src-ui-wx/sequencer/SeqSettingsDialog.cpp:396 ... (+2)
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:248 src-ui-wx/media/ManageMediaPanel.cpp:751 src-ui-wx/model/ViewpointDialog.cpp:58 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:171 src-ui-wx/sequencer/SeqSettingsDialog.cpp:396 ... (+2)
 msgid "Remove"
 msgstr "Retirer"
 
@@ -3405,7 +3607,7 @@ msgstr ""
 msgid "End Min"
 msgstr ""
 
-#: src-ui-wx/controllers/HinksPixExportDialog.cpp:286 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:84 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:90 resources/effectmetadata/Liquid.json
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:286 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:99 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:105 resources/effectmetadata/Liquid.json
 msgid "Enabled"
 msgstr ""
 
@@ -3505,7 +3707,7 @@ msgstr "Intensité utilisée pour allumer les nœuds. Si la détection manque de
 msgid "No camera image"
 msgstr "Aucune image de la caméra"
 
-#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:108 src-ui-wx/preferences/OtherSettingsPanel.cpp:119 src-ui-wx/preferences/OtherSettingsPanel.cpp:270
+#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:108 src-ui-wx/preferences/OtherSettingsPanel.cpp:140 src-ui-wx/preferences/OtherSettingsPanel.cpp:296
 msgid "Auto"
 msgstr ""
 
@@ -5178,6 +5380,10 @@ msgstr "Options d'import LOR"
 msgid "Map Empty LMS Channels:"
 msgstr "Associer les canaux LMS vides :"
 
+#: src-ui-wx/import_export/ConvertDialog.cpp:1263
+msgid "Reading LOR sequence"
+msgstr "Lecture de la séquence LOR"
+
 #: src-ui-wx/import_export/ConvertDialog.cpp:131
 msgid "Map LMS Channels with no network"
 msgstr "Associer les canaux LMS sans réseau"
@@ -5209,6 +5415,10 @@ msgstr "Lancer la conversion"
 #: src-ui-wx/import_export/ConvertDialog.cpp:158
 msgid "Conversion Messages:"
 msgstr "Messages de conversion :"
+
+#: src-ui-wx/import_export/ConvertDialog.cpp:1659
+msgid "LOR sequence loaded successfully"
+msgstr "Séquence LOR chargée"
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:172 src-ui-wx/model/GenerateCustomModelDialog.cpp:2821
 msgid "Select file"
@@ -5295,9 +5505,18 @@ msgstr "Options d'export XLSX"
 msgid "Fields to Include"
 msgstr "Champs à inclure"
 
+#: src-ui-wx/import_export/FileConverter.cpp:689
+msgid "LOR sequence converted successfully"
+msgstr "Séquence LOR convertie"
+
 #: src-ui-wx/import_export/ImportEffects.cpp:110
 msgid "Choose file to import"
 msgstr "Choisir le fichier à importer"
+
+#: src-ui-wx/import_export/ImportEffects.cpp:1351 src-ui-wx/import_export/ImportEffects.cpp:1424 src-ui-wx/import_export/ImportEffects.cpp:3727 src-ui-wx/import_export/ImportEffects.cpp:3893
+#, c-format
+msgid "'%s' imported in %4.3f sec."
+msgstr "« %s » importé en %4.3f s."
 
 #: src-ui-wx/import_export/ImportEffects.cpp:1393
 msgid "Please select the target model!"
@@ -5327,6 +5546,11 @@ msgstr "Paquet de séquence non valide"
 #: src-ui-wx/import_export/ImportEffects.cpp:3346
 msgid "SystemConfig.xml could not be found. Import impossible."
 msgstr "SystemConfig.xml est introuvable. Import impossible."
+
+#: src-ui-wx/import_export/ImportEffects.cpp:354 src-ui-wx/import_export/ImportEffects.cpp:1178 src-ui-wx/import_export/ImportEffects.cpp:1333 src-ui-wx/import_export/ImportEffects.cpp:1342 src-ui-wx/import_export/ImportEffects.cpp:1360
+#, c-format
+msgid "'%s' imported."
+msgstr "« %s » importé."
 
 #: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:109 src-ui-wx/import_export/VsaImportDialog.cpp:106 src-ui-wx/sequencer/GenerateLyricsDialog.cpp:116 src-ui-wx/setup/RemapDMXChannelsDialog.cpp:76
 msgid "Load Mapping"
@@ -5531,6 +5755,11 @@ msgstr ""
 msgid "Old Sequence Version"
 msgstr "Ancienne version de séquence"
 
+#: src-ui-wx/import_export/SeqFileUtilities.cpp:674
+#, c-format
+msgid "Failed to load: '%s'."
+msgstr "Échec du chargement : « %s »."
+
 #: src-ui-wx/import_export/SeqFileUtilities.cpp:704
 msgid ""
 "This sequence is located outside the current show directory.\n"
@@ -5590,7 +5819,7 @@ msgstr "Fusion des calques :"
 msgid "Average"
 msgstr ""
 
-#: src-ui-wx/import_export/SuperStarImportDialog.cpp:109 src-ui-wx/media/ResizeImageDialog.cpp:58 src-ui-wx/preferences/ViewSettingsPanel.cpp:71 src-ui-wx/preferences/ViewSettingsPanel.cpp:111 src-ui-wx/preferences/ViewSettingsPanel.cpp:120
+#: src-ui-wx/import_export/SuperStarImportDialog.cpp:109 src-ui-wx/media/ResizeImageDialog.cpp:58 src-ui-wx/preferences/ViewSettingsPanel.cpp:83 src-ui-wx/preferences/ViewSettingsPanel.cpp:123 src-ui-wx/preferences/ViewSettingsPanel.cpp:132
 msgid "Normal"
 msgstr ""
 
@@ -6493,6 +6722,10 @@ msgstr "Changer le nom de l'aperçu"
 msgid "Enter the new preview name:"
 msgstr "Nom du nouvel aperçu :"
 
+#: src-ui-wx/layout/LayoutPanel.cpp:12763
+msgid "A saved floating Layout panel was off-screen and has been docked."
+msgstr "Un panneau flottant de la disposition était hors de l'écran ; il a été ancré."
+
 #: src-ui-wx/layout/LayoutPanel.cpp:12858
 msgid "Controller Properties"
 msgstr "Propriétés du contrôleur"
@@ -6604,6 +6837,11 @@ msgstr "Rendre tous les canaux de début valides"
 #: src-ui-wx/layout/LayoutPanel.cpp:13142
 msgid "Make All Start Channels Not Overlapping"
 msgstr "Rendre tous les canaux de début sans chevauchement"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:1387
+#, c-format
+msgid "Show: %s"
+msgstr "Show : %s"
 
 #: src-ui-wx/layout/LayoutPanel.cpp:2596
 msgid "Choose the controller name"
@@ -7246,6 +7484,16 @@ msgstr "Confirmer la suppression du point de vue"
 #: src-ui-wx/layout/LayoutPanel.cpp:8737
 msgid "Choose Output File"
 msgstr "Choisir le fichier de sortie"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:8742 src-ui-wx/layout/LayoutPanel.cpp:8755
+#, c-format
+msgid "Exported '%s' Successfully"
+msgstr "« %s » exporté"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:8744 src-ui-wx/layout/LayoutPanel.cpp:8757
+#, c-format
+msgid "Export Failed '%s'"
+msgstr "Échec de l'export de « %s »"
 
 #: src-ui-wx/layout/LayoutPanel.cpp:8767
 msgid ""
@@ -11340,7 +11588,7 @@ msgstr "Plus de 7 jours"
 msgid "Backup Directory"
 msgstr "Dossier de sauvegarde"
 
-#: src-ui-wx/preferences/BackupSettingsPanel.cpp:76 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:117 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:141
+#: src-ui-wx/preferences/BackupSettingsPanel.cpp:76 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:132 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:156
 msgid "Use Show Folder"
 msgstr "Utiliser le dossier du show"
 
@@ -11596,15 +11844,15 @@ msgstr "Espacement"
 msgid "Extra Small"
 msgstr "Très petit"
 
-#: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:60 src-ui-wx/preferences/ViewSettingsPanel.cpp:63 src-ui-wx/preferences/ViewSettingsPanel.cpp:74 src-ui-wx/preferences/ViewSettingsPanel.cpp:112
+#: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:60 src-ui-wx/preferences/ViewSettingsPanel.cpp:75 src-ui-wx/preferences/ViewSettingsPanel.cpp:86 src-ui-wx/preferences/ViewSettingsPanel.cpp:124
 msgid "Small"
 msgstr "Petit"
 
-#: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:62 src-ui-wx/preferences/ViewSettingsPanel.cpp:65 src-ui-wx/preferences/ViewSettingsPanel.cpp:72 src-ui-wx/preferences/ViewSettingsPanel.cpp:110 src-ui-wx/preferences/ViewSettingsPanel.cpp:121
+#: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:62 src-ui-wx/preferences/ViewSettingsPanel.cpp:77 src-ui-wx/preferences/ViewSettingsPanel.cpp:84 src-ui-wx/preferences/ViewSettingsPanel.cpp:122 src-ui-wx/preferences/ViewSettingsPanel.cpp:133
 msgid "Large"
 msgstr ""
 
-#: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:63 src-ui-wx/preferences/ViewSettingsPanel.cpp:66 src-ui-wx/preferences/ViewSettingsPanel.cpp:73
+#: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:63 src-ui-wx/preferences/ViewSettingsPanel.cpp:78 src-ui-wx/preferences/ViewSettingsPanel.cpp:85
 msgid "Extra Large"
 msgstr "Très grand"
 
@@ -11652,221 +11900,296 @@ msgstr "Forme d'onde réduite"
 msgid "Reduce the vertical size of the waveform"
 msgstr "Réduit la hauteur de la forme d'onde"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:101
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:118
+msgid "Hardware Video Decoding"
+msgstr "Décodage vidéo matériel"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:122
 msgid "DirectX11"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:102
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:123
 msgid "FFmpeg Auto"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:103
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:124
 msgid "FFmpeg CUDA"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:104
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:125
 msgid "FFmpeg QSV"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:105
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:126
 msgid "FFmpeg Vulkan"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:106
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:127
 msgid "FFmpeg AMF"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:107
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:128
 msgid "FFmpeg DirectX11"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:110
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:131
 msgid "Shaders on Background Threads"
 msgstr "Shaders sur des threads en arrière-plan"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:113
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:134
 msgid "Video Export Settings"
 msgstr "Paramètres d'export vidéo"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:116
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:137
 msgid "Video Codec:"
 msgstr "Codec vidéo :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:120
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:141
 msgid "H.264"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:121
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:142
 msgid "H.265"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:122
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:143
 msgid "MPEG-4"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:124
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:145
 msgid "Bitrate(KB/s,0=Auto):"
 msgstr "Débit (Ko/s, 0=Auto) :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:131
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:152
 msgid "Packaging Sequences"
 msgstr "Empaquetage des séquences"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:133
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:154
 msgid "Exclude Videos"
 msgstr "Exclure les vidéos"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:136
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:157
 msgid "Exclude Audio"
 msgstr "Exclure l'audio"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:141
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:16 src-ui-wx/preferences/ViewSettingsPanel.cpp:21
+msgctxt "preference"
+msgid "None"
+msgstr "Aucun"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:162
 msgid "Prompt issues during batch render"
 msgstr "Signaler les problèmes pendant le rendu par lots"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:144
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:165
 msgid "Purge download cache at startup"
 msgstr "Vider le cache des téléchargements au démarrage"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:147
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:168
 msgid "Ignore vendor model recommendations"
 msgstr "Ignorer les modèles recommandés par les fabricants"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:150
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:17
+msgctxt "preference"
+msgid "Inputs and Outputs"
+msgstr "Entrées et sorties"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:171
 msgid "Tip Of The Day"
 msgstr "Astuce du jour"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:152
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:173
 msgid "Minimum Tip Level"
 msgstr "Niveau minimum des astuces"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:156
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:177
 msgid "Beginner"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:157
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:178
 msgid "Intermediate"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:158
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:179
 msgid "Advanced"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:159
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:18
+msgctxt "preference"
+msgid "Always Prompt"
+msgstr "Toujours demander"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:180
 msgid "Expert"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:162
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:183
 msgid "Recycle tips once all seen"
 msgstr "Reprendre les astuces une fois toutes vues"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:168
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:189
 msgid "Link controller upload:"
 msgstr "Lier l'envoi aux contrôleurs :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:172
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:19
+msgctxt "preference"
+msgid "Always Yes"
+msgstr "Toujours oui"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:193
 msgid "Inputs and Outputs"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:176
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:197
 msgid "Model renaming alias behavior:"
 msgstr "Alias lors du renommage d'un modèle :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:179
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:20
+msgctxt "preference"
+msgid "Always No"
+msgstr "Toujours non"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:200
 msgid "Always Prompt"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:180
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:201
 msgid "Always Yes"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:181
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:202
 msgid "Always No"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:185
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:206
 msgid "Use keybindings from:"
 msgstr "Raccourcis clavier depuis :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:188
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:209
 msgid "Show Folder"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:189
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:21
+msgctxt "preference"
+msgid "Show Folder"
+msgstr "Dossier du show"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:210
 msgid "AppData-shared"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:193
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:214
 msgid "eMail Address:"
 msgstr "Adresse e-mail :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:195
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:216
 msgid "noone@nowhere.xlights.org"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:198
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:219
 msgid "GPU Rendering"
 msgstr "Rendu sur GPU"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:200
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:22
+msgctxt "preference"
+msgid "AppData-shared"
+msgstr "AppData (partagé)"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:221
 msgid "Some effects can be rendered on the GPU if this is enabled."
 msgstr "Si activé, certains effets peuvent être rendus sur le GPU."
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:204
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:225
 msgid "Controller ping interval in seconds (0=Off):"
 msgstr "Intervalle de ping des contrôleurs en secondes (0=désactivé) :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:210
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:23
+msgctxt "preference"
+msgid "Faces/States/Submodels"
+msgstr "Visages/états/sous-modèles"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:231
 msgid "Moving Head Adv - Position Zones"
 msgstr "Lyres avancées - Zones de position"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:212
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:233
 msgid "Enable Position Zones"
 msgstr "Activer les zones de position"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:215
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:236
 msgid "Show Zone Indicator in Preview"
 msgstr "Afficher l'indicateur de zone dans l'aperçu"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:220
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:24
+msgctxt "preference"
+msgid "Unassigned"
+msgstr "Non attribué"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:241
 msgid "Use custom color picker"
 msgstr "Utiliser le sélecteur de couleur personnalisé"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:224
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:245
 msgid "Double-click on layout opens:"
 msgstr "Le double-clic dans la disposition ouvre :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:227
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:248
 msgid "Faces/States/Submodels"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:228
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:249
 msgid "Unassigned"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:264
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:25
+msgctxt "preference"
+msgid "Auto"
+msgstr "Auto"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:26
+msgctxt "preference"
+msgid "Off"
+msgstr "Désactivé"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:27
+msgctxt "preference"
+msgid "Beginner"
+msgstr "Débutant"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:28
+msgctxt "preference"
+msgid "Intermediate"
+msgstr "Intermédiaire"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:29
+msgctxt "preference"
+msgid "Advanced"
+msgstr "Avancé"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:290
 msgid "Preview graphics (restart required):"
 msgstr "Graphismes de l'aperçu (redémarrage requis) :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:271
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:297
 msgid "OpenGL"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:272
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:298
 msgid "Vulkan"
 msgstr ""
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:282
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:30
+msgctxt "preference"
+msgid "Expert"
+msgstr "Expert"
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:309
 msgid "Language (restart required):"
 msgstr "Langue (redémarrage requis) :"
 
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:287
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:314
 msgid "System default"
 msgstr "Langue du système"
-
-#: src-ui-wx/preferences/OtherSettingsPanel.cpp:97
-msgid "Hardware Video Decoding"
-msgstr "Décodage vidéo matériel"
 
 #: src-ui-wx/preferences/OutputSettingsPanel.cpp:48
 msgid "Use Frame Sync"
@@ -11892,7 +12215,7 @@ msgstr ""
 msgid "40"
 msgstr ""
 
-#: src-ui-wx/preferences/OutputSettingsPanel.cpp:67 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:85 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:92 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:97
+#: src-ui-wx/preferences/OutputSettingsPanel.cpp:67 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:100 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:107 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:112
 msgid "Disabled"
 msgstr ""
 
@@ -11908,149 +12231,194 @@ msgstr ""
 msgid "Select Effects for Generate Random"
 msgstr "Effets utilisables par la génération aléatoire"
 
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:100
-msgid "10 Minutes"
-msgstr "10 minutes"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:101
-msgid "15 Minutes"
-msgstr "15 minutes"
-
 #: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:102
-msgid "30 Minutes"
-msgstr "30 minutes"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:103
-msgid "A backup file (.bkp) will be created of the current open sequence at this interval. No render created."
-msgstr "Un fichier de sauvegarde (.bkp) de la séquence ouverte sera créé à cet intervalle. Aucun rendu n'est créé."
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:105
-msgid "FSEQ Version"
-msgstr "Version FSEQ"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:109
-msgid "V2 ZSTD"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:111
-msgid "V2 ZLIB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:112
-msgid "V2 ZSTD/sparse (Default)"
-msgstr "V2 ZSTD/sparse (par défaut)"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:114
-msgid "Render Cache Directory"
-msgstr "Dossier du cache de rendu"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:122
-msgid "Maximum Render Cache Size:"
-msgstr "Taille maximale du cache de rendu :"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:125
-msgid "Unlimited"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:126
-msgid "100 MB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:127
-msgid "200 MB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:128
-msgid "500 MB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:129
-msgid "1 GB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:130
-msgid "3 GB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:131
-msgid "5 GB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:132
-msgid "10 GB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:133
-msgid "20 GB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:134
-msgid "50 GB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:135
-msgid "100 GB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:136
-msgid "200 GB"
-msgstr ""
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:140
-msgid "FSEQ Directory"
-msgstr "Dossier FSEQ"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:147
-msgid "Media/Resource Directories"
-msgstr "Dossiers de médias/ressources"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:161
-msgid "Default View for New Sequences"
-msgstr "Vue par défaut des nouvelles séquences"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:162 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:166
-msgid "This option is used to select which models will populate the master view when a new sequence is created."
-msgstr "Choisit les modèles qui rempliront la vue principale à la création d'une séquence."
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:489
-msgid "Choose media directory"
-msgstr "Choisir le dossier des médias"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:72
-msgid "Render on Save"
-msgstr "Rendu à l'enregistrement"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:75
-msgid "Low Definition Render"
-msgstr "Rendu basse définition"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:78
-msgid "Save FSEQ File On Save"
-msgstr "Enregistrer le fichier FSEQ à l'enregistrement"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:81
-msgid "Default Model Blending for New Sequences"
-msgstr "Fusion des modèles par défaut des nouvelles séquences"
-
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:87
 msgid "Render Cache"
 msgstr "Cache de rendu"
 
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:91
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:106
 msgid "Locked Effects Only"
 msgstr ""
 
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:94
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:109
 msgid "Auto Save Interval"
 msgstr "Intervalle d'enregistrement automatique"
 
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:98
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:113
 msgid "3 Minutes"
 msgstr "3 minutes"
 
-#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:99
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:114
 msgid "5 Minutes"
 msgstr "5 minutes"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:115
+msgid "10 Minutes"
+msgstr "10 minutes"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:116
+msgid "15 Minutes"
+msgstr "15 minutes"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:117
+msgid "30 Minutes"
+msgstr "30 minutes"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:118
+msgid "A backup file (.bkp) will be created of the current open sequence at this interval. No render created."
+msgstr "Un fichier de sauvegarde (.bkp) de la séquence ouverte sera créé à cet intervalle. Aucun rendu n'est créé."
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:120
+msgid "FSEQ Version"
+msgstr "Version FSEQ"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:124
+msgid "V2 ZSTD"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:126
+msgid "V2 ZLIB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:127
+msgid "V2 ZSTD/sparse (Default)"
+msgstr "V2 ZSTD/sparse (par défaut)"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:129
+msgid "Render Cache Directory"
+msgstr "Dossier du cache de rendu"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:137
+msgid "Maximum Render Cache Size:"
+msgstr "Taille maximale du cache de rendu :"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:140
+msgid "Unlimited"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:141
+msgid "100 MB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:142
+msgid "200 MB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:143
+msgid "500 MB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:144
+msgid "1 GB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:145
+msgid "3 GB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:146
+msgid "5 GB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:147
+msgid "10 GB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:148
+msgid "20 GB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:149
+msgid "50 GB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:150
+msgid "100 GB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:151
+msgid "200 GB"
+msgstr ""
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:155
+msgid "FSEQ Directory"
+msgstr "Dossier FSEQ"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:16
+msgctxt "preference"
+msgid "Enabled"
+msgstr "Activé"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:162
+msgid "Media/Resource Directories"
+msgstr "Dossiers de médias/ressources"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:17
+msgctxt "preference"
+msgid "Disabled"
+msgstr "Désactivé"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:176
+msgid "Default View for New Sequences"
+msgstr "Vue par défaut des nouvelles séquences"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:177 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:181
+msgid "This option is used to select which models will populate the master view when a new sequence is created."
+msgstr "Choisit les modèles qui rempliront la vue principale à la création d'une séquence."
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:18
+msgctxt "preference"
+msgid "Locked Effects Only"
+msgstr "Effets verrouillés seulement"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:19
+msgctxt "preference"
+msgid "Unlimited"
+msgstr "Illimité"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:20
+msgctxt "preference"
+msgid "100 MB"
+msgstr "100 Mo"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:21
+msgctxt "preference"
+msgid "200 MB"
+msgstr "200 Mo"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:22
+msgctxt "preference"
+msgid "500 MB"
+msgstr "500 Mo"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:23
+msgctxt "preference"
+msgid "1 GB"
+msgstr "1 Go"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:24
+msgctxt "preference"
+msgid "3 GB"
+msgstr "3 Go"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:508
+msgid "Choose media directory"
+msgstr "Choisir le dossier des médias"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:87
+msgid "Render on Save"
+msgstr "Rendu à l'enregistrement"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:90
+msgid "Low Definition Render"
+msgstr "Rendu basse définition"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:93
+msgid "Save FSEQ File On Save"
+msgstr "Enregistrer le fichier FSEQ à l'enregistrement"
+
+#: src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:96
+msgid "Default Model Blending for New Sequences"
+msgstr "Fusion des modèles par défaut des nouvelles séquences"
 
 #: src-ui-wx/preferences/ServicesPanel.cpp:127
 msgid "Select Service"
@@ -12073,80 +12441,105 @@ msgid "Move Down"
 msgstr "Descendre"
 
 #: src-ui-wx/preferences/ViewSettingsPanel.cpp:101
-msgid "Hide Preset Previews"
-msgstr "Masquer les aperçus des préréglages"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:104
-msgid "Zoom To Cursor"
-msgstr "Zoomer vers le curseur"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:107
-msgid "Group Center Crosshair Size"
-msgstr "Taille de la croix du centre de groupe"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:113
-msgid "Tiny"
-msgstr "Minuscule"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:115
-msgid "Control the size of the crosshair for group centering"
-msgstr "Règle la taille de la croix de centrage des groupes"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:117
-msgid "Color Palette Size"
-msgstr "Taille de la palette de couleurs"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:60
-msgid "Effect Icon Size"
-msgstr "Taille des icônes d'effets"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:68
-msgid "Model Handle Size"
-msgstr "Taille des poignées des modèles"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:76
-msgid "Effect Assist Window"
-msgstr "Fenêtre d'assistance aux effets"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:79
-msgid "Always On"
-msgstr "Toujours affichée"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:80
-msgid "Always Off"
-msgstr "Jamais affichée"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:81
-msgid "Auto Toggle"
-msgstr "Automatique"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:83
-msgid "Show Play Controls on Preview"
-msgstr "Afficher les commandes de lecture dans l'aperçu"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:86
-msgid "Auto Show House Preview"
-msgstr "Afficher automatiquement l'aperçu de la maison"
-
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:89
 msgid "Disable key acceleration when held down"
 msgstr "Désactiver l'accélération des touches maintenues"
 
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:92
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:104
 msgid "Enable Base Show Folder Settings"
 msgstr "Activer les paramètres du dossier de show de base"
 
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:95
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:107
 msgid "Timeline Zooming"
 msgstr "Zoom de la ligne de temps"
 
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:98
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:110
 msgid "Play Marker Position"
 msgstr "Position du repère de lecture"
 
-#: src-ui-wx/preferences/ViewSettingsPanel.cpp:99
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:111
 msgid "Mouse Marker Position"
 msgstr "Position de la souris"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:113
+msgid "Hide Preset Previews"
+msgstr "Masquer les aperçus des préréglages"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:116
+msgid "Zoom To Cursor"
+msgstr "Zoomer vers le curseur"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:119
+msgid "Group Center Crosshair Size"
+msgstr "Taille de la croix du centre de groupe"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:125
+msgid "Tiny"
+msgstr "Minuscule"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:127
+msgid "Control the size of the crosshair for group centering"
+msgstr "Règle la taille de la croix de centrage des groupes"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:129
+msgid "Color Palette Size"
+msgstr "Taille de la palette de couleurs"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:16
+msgctxt "preference"
+msgid "Normal"
+msgstr "Normal"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:17
+msgctxt "preference"
+msgid "Large"
+msgstr "Grand"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:18
+msgctxt "preference"
+msgid "Extra Large"
+msgstr "Très grand"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:19
+msgctxt "preference"
+msgid "Small"
+msgstr "Petit"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:20
+msgctxt "preference"
+msgid "Tiny"
+msgstr "Minuscule"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:72
+msgid "Effect Icon Size"
+msgstr "Taille des icônes d'effets"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:80
+msgid "Model Handle Size"
+msgstr "Taille des poignées des modèles"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:88
+msgid "Effect Assist Window"
+msgstr "Fenêtre d'assistance aux effets"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:91
+msgid "Always On"
+msgstr "Toujours affichée"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:92
+msgid "Always Off"
+msgstr "Jamais affichée"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:93
+msgid "Auto Toggle"
+msgstr "Automatique"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:95
+msgid "Show Play Controls on Preview"
+msgstr "Afficher les commandes de lecture dans l'aperçu"
+
+#: src-ui-wx/preferences/ViewSettingsPanel.cpp:98
+msgid "Auto Show House Preview"
+msgstr "Afficher automatiquement l'aperçu de la maison"
 
 #: src-ui-wx/preferences/xLightsPreferences.cpp:111 src-ui-wx/preferences/xLightsPreferences.cpp:255
 msgid "Preferences"
@@ -12818,6 +13211,11 @@ msgstr "Rechercher le précédent"
 msgid "Replace All..."
 msgstr "Tout remplacer..."
 
+#: src-ui-wx/sequencer/EffectsGrid.cpp:788
+#, c-format
+msgid "Added '-shimmer' to %d phoneme(s)."
+msgstr "« -shimmer » ajouté à %d phonème(s)."
+
 #: src-ui-wx/sequencer/EffectsGrid.cpp:790
 msgid "No valid phoneme selected."
 msgstr "Aucun phonème valide sélectionné."
@@ -12825,6 +13223,11 @@ msgstr "Aucun phonème valide sélectionné."
 #: src-ui-wx/sequencer/EffectsGrid.cpp:790
 msgid "Add Shimmer"
 msgstr "Ajouter Shimmer"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:831
+#, c-format
+msgid "Removed '-shimmer' from %d phoneme(s)."
+msgstr "« -shimmer » retiré de %d phonème(s)."
 
 #: src-ui-wx/sequencer/EffectsGrid.cpp:833
 msgid "No phoneme with '-shimmer' selected."
@@ -12849,6 +13252,11 @@ msgstr "La recherche ne fonctionne que sur les pistes de timing."
 #: src-ui-wx/sequencer/EffectsGrid.cpp:866 src-ui-wx/sequencer/EffectsGrid.cpp:903 src-ui-wx/sequencer/EffectsGrid.cpp:940
 msgid "No effect layer found."
 msgstr "Aucun calque d'effet trouvé."
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:8769
+#, c-format
+msgid "start: %s  end: %s  duration: %s%s"
+msgstr "début : %s  fin : %s  durée : %s%s"
 
 #: src-ui-wx/sequencer/EffectsGrid.cpp:886 src-ui-wx/sequencer/EffectsGrid.cpp:923
 msgid "Text not found."
@@ -12911,6 +13319,11 @@ msgstr "Vers quelle piste de timing dupliquer les repères sélectionnés ?"
 #, c-format
 msgid "%d timing mark(s) were skipped because they overlap existing marks on the destination track."
 msgstr "%d repère(s) de timing ont été ignorés, car ils chevauchent des repères existants sur la piste de destination."
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:974
+#, c-format
+msgid "Replaced %d occurrence(s)."
+msgstr "%d occurrence(s) remplacée(s)."
 
 #: src-ui-wx/sequencer/EffectsGrid.cpp:976
 msgid "No matching text found for replacement."
@@ -13071,10 +13484,6 @@ msgstr "Modifier le mot"
 msgid "Word"
 msgstr "Mot"
 
-#: src-ui-wx/sequencer/LyricUserDictDialog.cpp:135
-msgid "Phonemes"
-msgstr "Phonèmes"
-
 #: src-ui-wx/sequencer/LyricUserDictDialog.cpp:221
 msgid "Delete Phonemes"
 msgstr "Supprimer les phonèmes"
@@ -13128,6 +13537,11 @@ msgstr "Temps : %d:%02d.%02d"
 #, c-format
 msgid "Time: %d.%02ds"
 msgstr "Temps : %d.%02ds"
+
+#: src-ui-wx/sequencer/MainSequencer.cpp:792 src-ui-wx/sequencer/MainSequencer.cpp:797
+#, c-format
+msgid "Speed now set %.2f "
+msgstr "Vitesse réglée sur %.2f "
 
 #: src-ui-wx/sequencer/MetronomeLabelDialog.cpp:50
 msgid "Enter Metronome Timing and Repeating Tag"
@@ -14142,10 +14556,6 @@ msgstr ""
 #: src-ui-wx/sequencer/SeqSettingsDialog.cpp:452
 msgid "Meta Data"
 msgstr "Métadonnées"
-
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:453
-msgid "Timings"
-msgstr "Timings"
 
 #: src-ui-wx/sequencer/SeqSettingsDialog.cpp:454
 msgid "Data Layers"
@@ -15857,7 +16267,7 @@ msgstr "Lecture à 1/4"
 msgid "Loud"
 msgstr "Fort"
 
-#: src-ui-wx/xLightsMain.cpp:1214 src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:61 src-ui-wx/preferences/ViewSettingsPanel.cpp:64
+#: src-ui-wx/xLightsMain.cpp:1214 src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:61 src-ui-wx/preferences/ViewSettingsPanel.cpp:76
 msgid "Medium"
 msgstr "Moyen"
 
@@ -16088,9 +16498,18 @@ msgstr "Aucun dossier de show n'est ouvert."
 msgid "The open sequence has unsaved changes. Save it before the backup?"
 msgstr "La séquence ouverte a des changements non enregistrés. L'enregistrer avant la sauvegarde ?"
 
+#: src-ui-wx/xLightsMain.cpp:3641
+msgid "All xml files backed up."
+msgstr "Tous les fichiers xml sont sauvegardés."
+
 #: src-ui-wx/xLightsMain.cpp:3892 src-ui-wx/xLightsMain.cpp:8587 src-ui-wx/app-shell/TabSequence.cpp:165
 msgid "Sequences cannot be opened in read only mode!"
 msgstr "Les séquences ne peuvent pas être ouvertes en mode lecture seule !"
+
+#: src-ui-wx/xLightsMain.cpp:4077
+#, c-format
+msgid "'%s' exported in %4.3f sec."
+msgstr "« %s » exporté en %4.3f s."
 
 #: src-ui-wx/xLightsMain.cpp:4120
 msgid "Toolbar locations will reset to defaults upon restart."
@@ -16271,6 +16690,14 @@ msgstr "Symboles d'effets détectés"
 msgid "Show directory invalid. Cleanup aborted."
 msgstr "Dossier du show non valide. Rangement annulé."
 
+#: src-ui-wx/xLightsMain.cpp:6977
+msgid "Cleaning up file locations."
+msgstr "Rangement des emplacements des fichiers."
+
+#: src-ui-wx/xLightsMain.cpp:6979
+msgid "Cleaning up file locations ... DONE."
+msgstr "Rangement des emplacements des fichiers... TERMINÉ."
+
 #: src-ui-wx/xLightsMain.cpp:6982
 msgid "You must have a sequence opened in order to run Cleanup File Locations."
 msgstr "Une séquence doit être ouverte pour ranger les emplacements des fichiers."
@@ -16439,7 +16866,7 @@ msgstr "Modèles"
 msgid "Display Elements"
 msgstr "Éléments affichés"
 
-#: src-ui-wx/xLightsMain.cpp:850 src-ui-wx/xLightsMain.cpp:850 src-ui-wx/xLightsMain.cpp:923 src-ui-wx/sequencer/tabSequencer.cpp:204
+#: src-ui-wx/xLightsMain.cpp:850 src-ui-wx/xLightsMain.cpp:850 src-ui-wx/xLightsMain.cpp:923 src-ui-wx/color/ColorManager.h:130 src-ui-wx/sequencer/tabSequencer.cpp:204
 msgid "Effects"
 msgstr "Effets"
 
@@ -16491,6 +16918,10 @@ msgstr "Le dossier de show ne peut pas être changé en mode lecture seule ! Fer
 msgid "Choose reaper file describing the changes required to the audio."
 msgstr "Choisir le fichier Reaper qui décrit les changements à apporter à l'audio."
 
+#: src-ui-wx/xLightsMain.cpp:8889
+msgid "No edits found in RPP file."
+msgstr "Aucune modification dans le fichier RPP."
+
 #: src-ui-wx/xLightsMain.cpp:893
 msgid "Disable"
 msgstr "Désactiver"
@@ -16503,7 +16934,7 @@ msgstr "Sélectionner"
 msgid "Select - SHIFT L"
 msgstr "Sélectionner - SHIFT L"
 
-#: src-ui-wx/xLightsMain.cpp:896 src-ui-wx/effectpanels/MovingHeadPanel.cpp:359 src-ui-wx/preferences/OtherSettingsPanel.cpp:155 src-ui-wx/setup/PixelTestDialog.cpp:1202 src-ui-wx/setup/PixelTestDialog.cpp:1256 ... (+2)
+#: src-ui-wx/xLightsMain.cpp:896 src-ui-wx/effectpanels/MovingHeadPanel.cpp:359 src-ui-wx/preferences/OtherSettingsPanel.cpp:176 src-ui-wx/setup/PixelTestDialog.cpp:1202 src-ui-wx/setup/PixelTestDialog.cpp:1256 ... (+2)
 msgid "Off"
 msgstr ""
 
@@ -16519,6 +16950,10 @@ msgstr ""
 msgid "On - O"
 msgstr ""
 
+#: src-ui-wx/xLightsMain.cpp:8976
+msgid "No edits found in xAudio file."
+msgstr "Aucune modification dans le fichier xAudio."
+
 #: src-ui-wx/xLightsMain.cpp:898 src-ui-wx/setup/PixelTestDialog.cpp:1222 src-ui-wx/setup/PixelTestDialog.cpp:1276 resources/effectmetadata/ColorWash.json resources/effectmetadata/On.json ... (+1)
 msgid "Shimmer"
 msgstr ""
@@ -16526,6 +16961,14 @@ msgstr ""
 #: src-ui-wx/xLightsMain.cpp:898
 msgid "Shimmer - S"
 msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:8980
+msgid "Invalid xAudio file."
+msgstr "Fichier xAudio non valide."
+
+#: src-ui-wx/xLightsMain.cpp:8985
+msgid "Loading audio files."
+msgstr "Chargement des fichiers audio."
 
 #: src-ui-wx/xLightsMain.cpp:899
 msgid "Twinkle"
@@ -16563,6 +17006,10 @@ msgstr "Rampe descendante"
 msgid "Ramp Down - D"
 msgstr "Rampe descendante - D"
 
+#: src-ui-wx/xLightsMain.cpp:9037
+msgid "Audio file creation failed - No input audio."
+msgstr "Échec de la création du fichier audio : aucun audio en entrée."
+
 #: src-ui-wx/xLightsMain.cpp:904 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:184
 msgid "Ramp Up/Down"
 msgstr ""
@@ -16578,6 +17025,10 @@ msgstr ""
 #: src-ui-wx/xLightsMain.cpp:906
 msgid "Parm2"
 msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:9060
+msgid "Combining audio clips."
+msgstr "Assemblage des extraits audio."
 
 #: src-ui-wx/xLightsMain.cpp:908 src-ui-wx/layout/LayoutPanel.cpp:4240
 msgid "Fill"
@@ -16623,9 +17074,17 @@ msgstr "Choisir le nom du fichier audio à enregistrer."
 msgid "Zoom In"
 msgstr "Zoom avant"
 
+#: src-ui-wx/xLightsMain.cpp:9160
+msgid "Saving output file."
+msgstr "Enregistrement du fichier de sortie."
+
 #: src-ui-wx/xLightsMain.cpp:9167 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2413
 msgid "Error creating audio file. See log for details."
 msgstr "Erreur lors de la création du fichier audio. Consultez le journal pour les détails."
+
+#: src-ui-wx/xLightsMain.cpp:9168 src-ui-wx/xLightsMain.cpp:9173
+msgid "Audio file creation failed."
+msgstr "Échec de la création du fichier audio."
 
 #: src-ui-wx/xLightsMain.cpp:917 src-ui-wx/xLightsMain.cpp:917 src-ui-wx/xLightsMain.cpp:1122 src-ui-wx/model/CustomModelDialog.cpp:438
 msgid "Zoom Out"

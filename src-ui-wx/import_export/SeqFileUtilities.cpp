@@ -671,12 +671,12 @@ void xLightsFrame::OpenSequence(const wxString& passed_filename, ConvertLogDialo
         if (loaded_fseq) {
             GetOutputModelManager()->AddASAPWork(OutputModelManager::WORK_REDRAW_LAYOUTPREVIEW, "LayoutPanel::HandleLayoutKey::OpenSequence");
         } else if (!loaded_xml) {
-            SetStatusText(wxString::Format("Failed to load: '%s'.", filename));
+            SetStatusText(wxString::Format(_("Failed to load: '%s'."), filename));
             return;
         }
 
         float elapsedTime = sw.Time() / 1000.0; // msec => sec
-        SetStatusText(wxString::Format("'%s' loaded in %4.3f sec.", filename, elapsedTime));
+        SetStatusText(wxString::Format(_("'%s' loaded in %4.3f sec."), filename, elapsedTime));
         SetTitle(xlights_base_name + xlights_qualifier + " - " + filename);
 
         // Check media compatibility with AVFoundation/AudioToolbox

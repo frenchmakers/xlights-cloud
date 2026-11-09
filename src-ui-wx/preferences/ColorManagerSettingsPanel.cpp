@@ -147,7 +147,7 @@ void ColorManagerSettingsPanel::AddButtonsToDialog()
         const long static_text_id = wxNewId();
         const long bitmapbutton_id = wxNewId();
 
-        wxStaticText* txt = new wxStaticText(this, static_text_id, frame->color_mgr.xLights_color[i].display_name, wxDefaultPosition, wxDefaultSize, 0, static_text_id_str);
+        wxStaticText* txt = new wxStaticText(this, static_text_id, wxGetTranslation(frame->color_mgr.xLights_color[i].display_name), wxDefaultPosition, wxDefaultSize, 0, static_text_id_str);
         wxBitmapButton* btn = new wxBitmapButton(this, bitmapbutton_id, wxNullBitmap, wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW, wxDefaultValidator, bitmapbutton_id_str);
 
         Connect(bitmapbutton_id,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ColorManagerSettingsPanel::ColorButtonSelected);

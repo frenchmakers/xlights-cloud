@@ -9,6 +9,21 @@
  **************************************************************/
 
 #include "SequenceFileSettingsPanel.h"
+#include "shared/utils/TranslatedChoice.h"
+
+// Choice items saved by their English text, shown translated (TranslateChoiceItems).
+[[maybe_unused]] static const char* const PREFERENCE_CHOICE_TEXTS[] = {
+    wxTRANSLATE_IN_CONTEXT("preference", "Enabled"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Disabled"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Locked Effects Only"),
+    wxTRANSLATE_IN_CONTEXT("preference", "Unlimited"),
+    wxTRANSLATE_IN_CONTEXT("preference", "100 MB"),
+    wxTRANSLATE_IN_CONTEXT("preference", "200 MB"),
+    wxTRANSLATE_IN_CONTEXT("preference", "500 MB"),
+    wxTRANSLATE_IN_CONTEXT("preference", "1 GB"),
+    wxTRANSLATE_IN_CONTEXT("preference", "3 GB"),
+};
+
 
 //(*InternalHeaders(SequenceFileSettingsPanel)
 #include <wx/button.h>
@@ -187,6 +202,10 @@ SequenceFileSettingsPanel::SequenceFileSettingsPanel(wxWindow* parent,xLightsFra
 	Connect(ID_CHOICE_VIEW_DEFAULT,wxEVT_COMMAND_CHOICE_SELECTED,(wxObjectEventFunction)&SequenceFileSettingsPanel::OnViewDefaultChoiceSelect);
 	//*)
 
+    for (wxChoice* c : { ModelBlendDefaultChoice, RenderCacheChoice, AutoSaveIntervalChoice, Choice_MaximumRenderCache }) {
+        TranslateChoiceItems(c, "preference");
+    }
+
 	GridBagSizer1->Fit(this);
 	GridBagSizer1->SetSizeHints(this);
     #ifdef _MSC_VER
@@ -202,7 +221,7 @@ SequenceFileSettingsPanel::~SequenceFileSettingsPanel()
 
 bool SequenceFileSettingsPanel::TransferDataFromWindow() {
     frame->SetSaveFSEQVersion(FSEQVersionChoice->GetSelection() + 1);
-    frame->SetEnableRenderCache(RenderCacheChoice->GetStringSelection());
+    frame->SetEnableRenderCache(GetEnglishSelection(RenderCacheChoice));
     frame->SetRenderOnSave(RenderOnSaveCheckBox->IsChecked());
     frame->SetSaveFseqOnSave(FSEQSaveCheckBox->IsChecked());
     frame->SetModelBlendDefaultOff(ModelBlendDefaultChoice->GetSelection());
@@ -243,7 +262,7 @@ bool SequenceFileSettingsPanel::TransferDataFromWindow() {
     frame->SetRenderCacheFolder(CheckBox_RenderCache->GetValue(), DirPickerCtrl_RenderCache->GetPath());
 
     frame->SetDefaultSeqView(ViewDefaultChoice->GetStringSelection());
-    frame->SetRenderCacheMaximumSizeMB(DecodeMaxRenderCache(Choice_MaximumRenderCache->GetStringSelection()));
+    frame->SetRenderCacheMaximumSizeMB(DecodeMaxRenderCache(GetEnglishSelection(Choice_MaximumRenderCache)));
 
     return true;
 }
@@ -312,7 +331,7 @@ bool SequenceFileSettingsPanel::TransferDataToWindow() {
     if (rc == "Locked Only") {
         rc = "Locked Effects Only";
     }
-    RenderCacheChoice->SetStringSelection(rc);
+    SetEnglishSelection(RenderCacheChoice, rc);
     FSEQSaveCheckBox->SetValue(frame->SaveFseqOnSave());
     RenderOnSaveCheckBox->SetValue(frame->RenderOnSave());
     
@@ -360,7 +379,7 @@ bool SequenceFileSettingsPanel::TransferDataToWindow() {
     CheckBox_RenderCache->SetValue(cb);
     DirPickerCtrl_RenderCache->SetPath(folder);
     CheckBox_LowDefinitionRender->SetValue(frame->IsLowDefinitionRender());
-    Choice_MaximumRenderCache->SetStringSelection(EncodeMaxRenderCache(frame->RenderCacheMaximumSizeMB()));
+    SetEnglishSelection(Choice_MaximumRenderCache, EncodeMaxRenderCache(frame->RenderCacheMaximumSizeMB()));
 
     ViewDefaultChoice->Clear();
     ViewDefaultChoice->Append(wxString());

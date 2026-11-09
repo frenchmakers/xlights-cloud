@@ -12,6 +12,7 @@
 
 #include <map>
 #include <wx/settings.h>
+#include <wx/translation.h>
 #include <pugixml.hpp>
 #include "Color.h"
 #include "XmlSerializer/BaseSerializingVisitor.h"
@@ -119,48 +120,48 @@ class ColorManager
 
         const ColorDefinition xLights_color[NUM_COLORS] =
         {
-            { ColorManager::ColorNames::COLOR_TIMING1, "Timing1", "Timing 1", xlCYAN, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
-            { ColorManager::ColorNames::COLOR_TIMING2, "Timing2", "Timing 2", xlRED, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
-            { ColorManager::ColorNames::COLOR_TIMING3, "Timing3", "Timing 3", xlGREEN, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
-            { ColorManager::ColorNames::COLOR_TIMING4, "Timing4", "Timing 4", xlBLUE, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
-            { ColorManager::ColorNames::COLOR_TIMING5, "Timing5", "Timing 5", xlYELLOW, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
+            { ColorManager::ColorNames::COLOR_TIMING1, "Timing1", wxTRANSLATE("Timing 1"), xlCYAN, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
+            { ColorManager::ColorNames::COLOR_TIMING2, "Timing2", wxTRANSLATE("Timing 2"), xlRED, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
+            { ColorManager::ColorNames::COLOR_TIMING3, "Timing3", wxTRANSLATE("Timing 3"), xlGREEN, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
+            { ColorManager::ColorNames::COLOR_TIMING4, "Timing4", wxTRANSLATE("Timing 4"), xlBLUE, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
+            { ColorManager::ColorNames::COLOR_TIMING5, "Timing5", wxTRANSLATE("Timing 5"), xlYELLOW, ColorManager::ColorCategory::COLOR_CAT_TIMINGS },
 
-            { ColorManager::ColorNames::COLOR_TIMING_DEFAULT, "TimingDefault", "Timings", xlWHITE, ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_EFFECT_DEFAULT, "EffectDefault", "Effects", xlColor(192, 192, 192), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_EFFECT_SELECTED, "EffectSelected", "Effect Selected", xlColor(204, 102, 255), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_REFERENCE_EFFECT, "ReferenceEffect", "Reference Effect", xlColor(255, 0, 255), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_ROW_HEADER, "RowHeader", "RowHeader", xlColor(212, 208, 200), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID, wxSYS_COLOUR_BTNFACE },
-            { ColorManager::ColorNames::COLOR_ROW_HEADER_TEXT, "RowHeaderText", "RowHeader Text", xlColor(0, 0, 0), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID, wxSYS_COLOUR_BTNTEXT },
-            { ColorManager::ColorNames::COLOR_ROW_HEADER_SELECTED, "RowHeaderSelected", "Row Header Selected", xlColor(130, 178, 207), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_GRID_DASHES, "GridDashes", "Dashed Select", xlYELLOW, ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_GRIDLINES, "Gridlines", "Gridlines", xlColor(40, 40, 40), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_LABELS, "Labels", "Labels", xlColor(255, 255, 204), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_LABEL_OUTLINE, "LabelOutline", "Label Outline", xlColor(103, 103, 103), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_PHRASES, "Phrases", "Phrases", xlColor(153, 255, 153), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_WORDS, "Words", "Words", xlColor(255, 218, 145), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_PHONEMES, "Phonemes", "Phonemes", xlColor(255, 181, 218), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_TIMING_DEFAULT, "TimingDefault", wxTRANSLATE("Timings"), xlWHITE, ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_EFFECT_DEFAULT, "EffectDefault", wxTRANSLATE("Effects"), xlColor(192, 192, 192), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_EFFECT_SELECTED, "EffectSelected", wxTRANSLATE("Effect Selected"), xlColor(204, 102, 255), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_REFERENCE_EFFECT, "ReferenceEffect", wxTRANSLATE("Reference Effect"), xlColor(255, 0, 255), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_ROW_HEADER, "RowHeader", wxTRANSLATE("RowHeader"), xlColor(212, 208, 200), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID, wxSYS_COLOUR_BTNFACE },
+            { ColorManager::ColorNames::COLOR_ROW_HEADER_TEXT, "RowHeaderText", wxTRANSLATE("RowHeader Text"), xlColor(0, 0, 0), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID, wxSYS_COLOUR_BTNTEXT },
+            { ColorManager::ColorNames::COLOR_ROW_HEADER_SELECTED, "RowHeaderSelected", wxTRANSLATE("Row Header Selected"), xlColor(130, 178, 207), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_GRID_DASHES, "GridDashes", wxTRANSLATE("Dashed Select"), xlYELLOW, ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_GRIDLINES, "Gridlines", wxTRANSLATE("Gridlines"), xlColor(40, 40, 40), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_LABELS, "Labels", wxTRANSLATE("Labels"), xlColor(255, 255, 204), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_LABEL_OUTLINE, "LabelOutline", wxTRANSLATE("Label Outline"), xlColor(103, 103, 103), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_PHRASES, "Phrases", wxTRANSLATE("Phrases"), xlColor(153, 255, 153), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_WORDS, "Words", wxTRANSLATE("Words"), xlColor(255, 218, 145), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_PHONEMES, "Phonemes", wxTRANSLATE("Phonemes"), xlColor(255, 181, 218), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
 
-            { ColorManager::ColorNames::COLOR_MODEL_DEFAULT, "ModelDefault", "Model Default", xlLIGHT_GREY, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
-            { ColorManager::ColorNames::COLOR_MODEL_SELECTED, "ModelSelected", "Model Selected", xlYELLOW, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
-            { ColorManager::ColorNames::COLOR_MODEL_OVERLAP, "ModelOverlap", "Model Overlap", xlRED, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
-            { ColorManager::ColorNames::COLOR_MODEL_NOT_ON_CONTROLLER, "ModelNotOnController", "Model Not On Controller", xlORANGE, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
-            { ColorManager::ColorNames::COLOR_MODEL_IN_VISUALISER, "ModelInVisualiser", "Model Picked In Visualiser", xlColor(0, 128, 255), ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
-            { ColorManager::ColorNames::COLOR_LAYOUT_DASHES, "LayoutDashes", "Dashed Select", xlYELLOW, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
-            { ColorManager::ColorNames::COLOR_EFFECT_SELECTED_FIXED, "EffectSelectedFixed", "Fixed Timings", xlColor(255, 128, 0), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_EFFECT_SELECTED_LOCKED, "EffectSelectedLocked", "Selected Locked Effects", xlColor(200, 128, 152), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_REFERENCE_EFFECT_LOCKED, "ReferenceEffectLocked", "Locked Reference Effect", xlColor(255, 0, 127), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_WAVEFORM, "Waveform", "Waveform", xlColor(130, 178, 207), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_WAVEFORM_BACKGROUND, "WaveformBackground", "Waveform Background", xlColor(212, 208, 200), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID, wxSYS_COLOUR_BTNFACE },
-            { ColorManager::ColorNames::COLOR_WAVEFORM_SELECTED, "WaveformSelected", "Waveform Selected", xlColor(0, 0, 200, 45), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_WAVEFORM_SELECTEDEFFECT, "WaveformSelectedEffect", "Waveform Selected Effect", xlORANGE, ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_DISABLED_EFFECT, "DisabledEffect", "Disabled Effects", xlColor(200, 200, 0), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_LOCKED_EFFECT, "LockedEffect", "Locked Effects", xlColor(200, 0, 0), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_EFFECT_SELECTED_DISABLED, "EffectSelectedDisabled", "Selected Disabled Effects", xlColor(200, 200, 64), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_MODEL_DEFAULT, "ModelDefault", wxTRANSLATE("Model Default"), xlLIGHT_GREY, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
+            { ColorManager::ColorNames::COLOR_MODEL_SELECTED, "ModelSelected", wxTRANSLATE("Model Selected"), xlYELLOW, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
+            { ColorManager::ColorNames::COLOR_MODEL_OVERLAP, "ModelOverlap", wxTRANSLATE("Model Overlap"), xlRED, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
+            { ColorManager::ColorNames::COLOR_MODEL_NOT_ON_CONTROLLER, "ModelNotOnController", wxTRANSLATE("Model Not On Controller"), xlORANGE, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
+            { ColorManager::ColorNames::COLOR_MODEL_IN_VISUALISER, "ModelInVisualiser", wxTRANSLATE("Model Picked In Visualiser"), xlColor(0, 128, 255), ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
+            { ColorManager::ColorNames::COLOR_LAYOUT_DASHES, "LayoutDashes", wxTRANSLATE("Dashed Select"), xlYELLOW, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
+            { ColorManager::ColorNames::COLOR_EFFECT_SELECTED_FIXED, "EffectSelectedFixed", wxTRANSLATE("Fixed Timings"), xlColor(255, 128, 0), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_EFFECT_SELECTED_LOCKED, "EffectSelectedLocked", wxTRANSLATE("Selected Locked Effects"), xlColor(200, 128, 152), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_REFERENCE_EFFECT_LOCKED, "ReferenceEffectLocked", wxTRANSLATE("Locked Reference Effect"), xlColor(255, 0, 127), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_WAVEFORM, "Waveform", wxTRANSLATE("Waveform"), xlColor(130, 178, 207), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_WAVEFORM_BACKGROUND, "WaveformBackground", wxTRANSLATE("Waveform Background"), xlColor(212, 208, 200), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID, wxSYS_COLOUR_BTNFACE },
+            { ColorManager::ColorNames::COLOR_WAVEFORM_SELECTED, "WaveformSelected", wxTRANSLATE("Waveform Selected"), xlColor(0, 0, 200, 45), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_WAVEFORM_SELECTEDEFFECT, "WaveformSelectedEffect", wxTRANSLATE("Waveform Selected Effect"), xlORANGE, ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_DISABLED_EFFECT, "DisabledEffect", wxTRANSLATE("Disabled Effects"), xlColor(200, 200, 0), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_LOCKED_EFFECT, "LockedEffect", wxTRANSLATE("Locked Effects"), xlColor(200, 0, 0), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_EFFECT_SELECTED_DISABLED, "EffectSelectedDisabled", wxTRANSLATE("Selected Disabled Effects"), xlColor(200, 200, 64), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
 
-            { ColorManager::ColorNames::COLOR_REFERENCE_EFFECT_DISABLED, "ReferenceEffectDisabled", "Disabled Reference Effect", xlColor(255, 255, 127), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_WAVEFORM_MOUSE_MARKER, "WaveformMouseMarker", "Waveform Mouse Marker", xlColor(0, 0, 255), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
-            { ColorManager::ColorNames::COLOR_TEXT_UNSELECTED, "TextUnselected", "Unselected Text", xlBLACK, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
-            { ColorManager::ColorNames::COLOR_TEXT_HIGHLIGHTED, "TextHighlighted", "Highlighted Text", xlBLACK, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB }
+            { ColorManager::ColorNames::COLOR_REFERENCE_EFFECT_DISABLED, "ReferenceEffectDisabled", wxTRANSLATE("Disabled Reference Effect"), xlColor(255, 255, 127), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_WAVEFORM_MOUSE_MARKER, "WaveformMouseMarker", wxTRANSLATE("Waveform Mouse Marker"), xlColor(0, 0, 255), ColorManager::ColorCategory::COLOR_CAT_EFFECT_GRID },
+            { ColorManager::ColorNames::COLOR_TEXT_UNSELECTED, "TextUnselected", wxTRANSLATE("Unselected Text"), xlBLACK, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB },
+            { ColorManager::ColorNames::COLOR_TEXT_HIGHLIGHTED, "TextHighlighted", wxTRANSLATE("Highlighted Text"), xlBLACK, ColorManager::ColorCategory::COLOR_CAT_LAYOUT_TAB }
         };
         std::map<std::string, xlColor> GetColors() { return colors; }
         std::map<std::string, xlColor> GetDefaultColors() { return colors_default; }

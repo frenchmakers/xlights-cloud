@@ -351,7 +351,7 @@ bool xLightsFrame::ImportXLights(const wxFileName& filename, std::string const& 
         }
     }
 
-    SetStatusText(wxString::Format("'%s' imported.", filename.GetPath()));
+    SetStatusText(wxString::Format(_("'%s' imported."), filename.GetPath()));
     return true;
 }
 
@@ -1175,7 +1175,7 @@ void xLightsFrame::ImportVix(const wxFileName& filename)
         }
     }
 
-    SetStatusText(wxString::Format("'%s' imported.", filename.GetPath()));
+    SetStatusText(wxString::Format(_("'%s' imported."), filename.GetPath()));
 }
 
 void xLightsFrame::ImportHLS(const wxFileName& filename)
@@ -1330,7 +1330,7 @@ void xLightsFrame::ImportHLS(const wxFileName& filename)
         }
     }
 
-    SetStatusText(wxString::Format("'%s' imported.", filename.GetPath()));
+    SetStatusText(wxString::Format(_("'%s' imported."), filename.GetPath()));
 }
 
 void xLightsFrame::ImportLMS(const wxFileName& filename)
@@ -1339,7 +1339,7 @@ void xLightsFrame::ImportLMS(const wxFileName& filename)
     if (!input_xml.load_file(filename.GetFullPath().mb_str()))
         return;
     ImportLMS(input_xml, filename);
-    SetStatusText(wxString::Format("'%s' imported.", filename.GetPath()));
+    SetStatusText(wxString::Format(_("'%s' imported."), filename.GetPath()));
 }
 
 void xLightsFrame::ImportLPE(const wxFileName& filename)
@@ -1348,7 +1348,7 @@ void xLightsFrame::ImportLPE(const wxFileName& filename)
     if (!input_xml.load_file(filename.GetFullPath().mb_str()))
         return;
     ImportLPE(input_xml, filename);
-    SetStatusText(wxString::Format("'%s' imported in %4.3f sec.", filename.GetPath()));
+    SetStatusText(wxString::Format(_("'%s' imported in %4.3f sec."), filename.GetPath()));
 }
 
 void xLightsFrame::ImportS5(const wxFileName& filename)
@@ -1357,7 +1357,7 @@ void xLightsFrame::ImportS5(const wxFileName& filename)
     if (!input_xml.load_file(filename.GetFullPath().mb_str()))
         return;
     ImportS5(input_xml, filename);
-    SetStatusText(wxString::Format("'%s' imported.", filename.GetPath()));
+    SetStatusText(wxString::Format(_("'%s' imported."), filename.GetPath()));
 }
 
 void xLightsFrame::ImportSuperStar(const wxFileName& filename)
@@ -1421,7 +1421,7 @@ void xLightsFrame::ImportSuperStar(const wxFileName& filename)
     }
 
     float elapsedTime = sw.Time() / 1000.0;
-    SetStatusText(wxString::Format("'%s' imported in %4.3f sec.", filename.GetPath(), elapsedTime));
+    SetStatusText(wxString::Format(_("'%s' imported in %4.3f sec."), filename.GetPath(), elapsedTime));
 }
 
 Element* xLightsFrame::FindModelOrSubModelElement(const std::string& fullName)
@@ -3724,7 +3724,7 @@ void xLightsFrame::ImportLSP(const wxFileName& filename)
     }
 
     float elapsedTime = sw.Time() / 1000.0; // msec => sec
-    SetStatusText(wxString::Format("'%s' imported in %4.3f sec.", filename.GetPath(), elapsedTime));
+    SetStatusText(wxString::Format(_("'%s' imported in %4.3f sec."), filename.GetPath(), elapsedTime));
 }
 
 static void ImportServoData(int min_limit, int max_limit, EffectLayer* layer, std::string name,
@@ -3890,7 +3890,7 @@ void xLightsFrame::ImportVsa(const wxFileName& filename)
     }
 
     float elapsedTime = sw.Time() / 1000.0; // msec => sec
-    SetStatusText(wxString::Format("'%s' imported in %4.3f sec.", filename.GetPath(), elapsedTime));
+    SetStatusText(wxString::Format(_("'%s' imported in %4.3f sec."), filename.GetPath(), elapsedTime));
 }
 
 void xLightsFrame::CloneXLightsEffects(EffectLayer* target, EffectLayer* src, bool eraseExisting)

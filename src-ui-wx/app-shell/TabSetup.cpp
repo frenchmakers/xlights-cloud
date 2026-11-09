@@ -1356,7 +1356,7 @@ void xLightsFrame::OnButtonDiscoverClick(wxCommandEvent& event) {
 
 
     spdlog::debug("[Discovery] Running controller discovery.");
-    SetStatusText("Running controller discovery ...");
+    SetStatusText(_("Running controller discovery ..."));
     SetCursor(wxCURSOR_WAIT);
 
     bool hasChanges = false;
@@ -1367,7 +1367,7 @@ void xLightsFrame::OnButtonDiscoverClick(wxCommandEvent& event) {
     discovery.Discover();
     FPP::FinishControllerSeeding(discovery, seeded);
 
-    SetStatusText("Processing discovered controllers...");
+    SetStatusText(_("Processing discovered controllers..."));
     spdlog::debug("[Discovery] Processing discovered controllers...");
     struct FPPDiscInfo {
         std::string hostname;
@@ -1575,7 +1575,7 @@ void xLightsFrame::OnButtonDiscoverClick(wxCommandEvent& event) {
         _outputModelManager.AddLayoutTabWork(OutputModelManager::WORK_CALCULATE_START_CHANNELS, "OnButton_DiscoverClick");
         PingActiveControllers();
     }
-    SetStatusText("Discovery complete.");
+    SetStatusText(_("Discovery complete."));
     spdlog::debug("[Discovery] Controller discovery complete.");
 }
 
@@ -1691,9 +1691,9 @@ void xLightsFrame::UploadControllerInput(Controller* controller) {
     if (controller == nullptr) return;
 
     if (IsControllerUploadLinked()) {
-        SetStatusText("Uploading inputs and outputs.");
+        SetStatusText(_("Uploading inputs and outputs."));
     } else {
-        SetStatusText("Uploading inputs.");
+        SetStatusText(_("Uploading inputs."));
     }
 
     SetCursor(wxCURSOR_WAIT);
@@ -1728,10 +1728,10 @@ void xLightsFrame::UploadControllerOutput(Controller* controller) {
     wxString message;
     auto caps = GetControllerCaps(controller->GetName());
     if (IsControllerUploadLinked() && caps != nullptr && caps->SupportsInputOnlyUpload()) {
-        SetStatusText("Uploading inputs and outputs.");
+        SetStatusText(_("Uploading inputs and outputs."));
         ok = UploadInputToController(controller, message);
     } else {
-        SetStatusText("Uploading outputs");
+        SetStatusText(_("Uploading outputs"));
     }
 
     if (ok) UploadOutputToController(controller, message);
@@ -1750,7 +1750,7 @@ bool xLightsFrame::UploadInputToController(Controller* controller, wxString &mes
 
     auto caps = GetControllerCaps(controller->GetName());
     if (caps != nullptr) {
-        SetStatusText("Uploading inputs to controller.");
+        SetStatusText(_("Uploading inputs to controller."));
         caps->Dump();
         if (caps->SupportsInputOnlyUpload()) {
             auto vendor = controller->GetVendor();
@@ -1835,7 +1835,7 @@ bool xLightsFrame::UploadOutputToController(Controller* controller, wxString& me
 
     auto caps = GetControllerCaps(controller->GetName());
     if (caps != nullptr) {
-        SetStatusText("Uploading outputs to controller.");
+        SetStatusText(_("Uploading outputs to controller."));
         caps->Dump();
         if (caps->SupportsUpload()) {
             auto vendor = controller->GetVendor();

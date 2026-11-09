@@ -2691,7 +2691,7 @@ void xLightsFrame::ExportSongRegion(int startMS, int endMS, const std::string& r
     if (!err.empty()) {
         DisplayError(err, this);
     } else {
-        SetStatusText(wxString::Format("Exported song region '%s' to %s", wxString::FromUTF8(regionLabel), outputPath));
+        SetStatusText(wxString::Format(_("Exported song region '%s' to %s"), wxString::FromUTF8(regionLabel), outputPath));
     }
 }
 
@@ -2775,6 +2775,6 @@ void xLightsFrame::ExportAllSongRegions() {
     if (failed > 0) {
         DisplayError(wxString::Format("Exported %d regions, %d failed. Check log for details.", exported, failed).ToStdString(), this);
     } else {
-        SetStatusText(wxString::Format("Exported %d song regions to %s", exported, outputDir));
+        SetStatusText(wxString::Format(_("Exported %d song regions to %s"), exported, outputDir));
     }
 }

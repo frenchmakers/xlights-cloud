@@ -789,12 +789,12 @@ bool MainSequencer::HandleSequencerKeyBinding(wxKeyEvent& event)
             } else if (type == "INCREASE_SPEED") {
                 float t = xLightsApp::GetFrame()->GetPlaySpeed();
                 xLightsApp::GetFrame()->SetPlaySpeedTo(t + 0.25);
-                xLightsApp::GetFrame()->SetStatusText(wxString::Format("Speed now set %.2f ", t + 0.25));
+                xLightsApp::GetFrame()->SetStatusText(wxString::Format(_("Speed now set %.2f "), t + 0.25));
             } else if (type == "DECREASE_SPEED") {
                 float t = xLightsApp::GetFrame()->GetPlaySpeed();
                 if (t > 0.50) {
                     xLightsApp::GetFrame()->SetPlaySpeedTo(t - 0.25);
-                    xLightsApp::GetFrame()->SetStatusText(wxString::Format("Speed now set %.2f ", t - 0.25));
+                    xLightsApp::GetFrame()->SetStatusText(wxString::Format(_("Speed now set %.2f "), t - 0.25));
                 }
             } else if (type == "PLAY_PRIOR_TAG") {
                 spdlog::debug("play prior tag");
