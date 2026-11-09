@@ -572,7 +572,7 @@ void SketchAssistPanel::OnListBox_ContextMenu(wxContextMenuEvent& event)
     if (m_pathsListBox->GetCount() > 1) {
         if (mnu.GetMenuItemCount() > 0)
             mnu.AppendSeparator();
-        mnu.Append(ID_MENU_SortByDescription, "Sort All by Description");
+        mnu.Append(ID_MENU_SortByDescription, _("Sort All by Description"));
     }
 
     if (mnu.GetMenuItemCount() == 0)

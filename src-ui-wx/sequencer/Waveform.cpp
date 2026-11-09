@@ -255,21 +255,21 @@ void Waveform::rightClick(wxMouseEvent& event)
     wxMenu mnuWave;
     if( (mTimeline->GetSelectedPositionStartMS() != -1 ) &&
         (mTimeline->GetSelectedPositionEndMS() != -1 ) ) {
-        mnuWave.Append(ID_WAVE_MNU_RENDER,"Render Selected Region");
+        mnuWave.Append(ID_WAVE_MNU_RENDER,_("Render Selected Region"));
     }
     if (_media != nullptr) {
         if (mnuWave.GetMenuItemCount() > 0) {
             mnuWave.AppendSeparator();
         }
 
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_RAW, "Raw waveform")->Check(_type == AUDIOSAMPLETYPE::RAW);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_BASS, "Bass waveform")->Check(_type == AUDIOSAMPLETYPE::BASS);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_TREBLE, "Treble waveform")->Check(_type == AUDIOSAMPLETYPE::TREBLE);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_ALTO, "Alto waveform")->Check(_type == AUDIOSAMPLETYPE::ALTO);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_CUSTOM, "Custom filtered waveform")->Check(_type == AUDIOSAMPLETYPE::CUSTOM);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_NONVOCALS, "Non Vocals waveform")->Check(_type == AUDIOSAMPLETYPE::NONVOCALS);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_VOCALS, "Vocals waveform (center extract)")->Check(_type == AUDIOSAMPLETYPE::VOCALS);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_LUFS, "Perceptual (LUFS)")->Check(_type == AUDIOSAMPLETYPE::LUFS);
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_RAW, _("Raw waveform"))->Check(_type == AUDIOSAMPLETYPE::RAW);
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_BASS, _("Bass waveform"))->Check(_type == AUDIOSAMPLETYPE::BASS);
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_TREBLE, _("Treble waveform"))->Check(_type == AUDIOSAMPLETYPE::TREBLE);
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_ALTO, _("Alto waveform"))->Check(_type == AUDIOSAMPLETYPE::ALTO);
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_CUSTOM, _("Custom filtered waveform"))->Check(_type == AUDIOSAMPLETYPE::CUSTOM);
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_NONVOCALS, _("Non Vocals waveform"))->Check(_type == AUDIOSAMPLETYPE::NONVOCALS);
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_VOCALS, _("Vocals waveform (center extract)"))->Check(_type == AUDIOSAMPLETYPE::VOCALS);
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_LUFS, _("Perceptual (LUFS)"))->Check(_type == AUDIOSAMPLETYPE::LUFS);
 #ifdef __APPLE__
         // A8 — HTDemucs stems. Each in the same radio group so its
         // checkmark tracks the active `_type`. First activation runs
@@ -277,30 +277,30 @@ void Waveform::rightClick(wxMouseEvent& event)
         // cache hits. Only offered on macOS 12+ — the Float16
         // MLMultiArray I/O the model uses isn't available before.
         if (__builtin_available(macOS 12.0, *)) {
-            mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_DRUMS, "Stem — Drums")
+            mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_DRUMS, _("Stem — Drums"))
                 ->Check(_type == AUDIOSAMPLETYPE::STEM_DRUMS);
-            mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_BASS, "Stem — Bass")
+            mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_BASS, _("Stem — Bass"))
                 ->Check(_type == AUDIOSAMPLETYPE::STEM_BASS);
-            mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_OTHER, "Stem — Other")
+            mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_OTHER, _("Stem — Other"))
                 ->Check(_type == AUDIOSAMPLETYPE::STEM_OTHER);
-            mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_VOCALS, "Stem — Vocals (ML)")
+            mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_VOCALS, _("Stem — Vocals (ML)"))
                 ->Check(_type == AUDIOSAMPLETYPE::STEM_VOCALS);
         }
 #elif defined(HAVE_OPENVINO) || defined(HAVE_ORT)
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_DRUMS, "Stem — Drums")
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_DRUMS, _("Stem — Drums"))
             ->Check(_type == AUDIOSAMPLETYPE::STEM_DRUMS);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_BASS, "Stem — Bass")
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_BASS, _("Stem — Bass"))
             ->Check(_type == AUDIOSAMPLETYPE::STEM_BASS);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_OTHER, "Stem — Other")
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_OTHER, _("Stem — Other"))
             ->Check(_type == AUDIOSAMPLETYPE::STEM_OTHER);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_VOCALS, "Stem — Vocals (ML)")
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_VOCALS, _("Stem — Vocals (ML)"))
             ->Check(_type == AUDIOSAMPLETYPE::STEM_VOCALS);
 #ifdef HAVE_ORT
         // Guitar/piano come from the 6-stem model; picking either runs it
         // (and downloads it on first use) if the current stems are 4-stem.
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_GUITAR, "Stem — Guitar")
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_GUITAR, _("Stem — Guitar"))
             ->Check(_type == AUDIOSAMPLETYPE::STEM_GUITAR);
-        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_PIANO, "Stem — Piano")
+        mnuWave.AppendRadioItem(ID_WAVE_MNU_STEM_PIANO, _("Stem — Piano"))
             ->Check(_type == AUDIOSAMPLETYPE::STEM_PIANO);
 #endif
 #endif
@@ -316,14 +316,14 @@ void Waveform::rightClick(wxMouseEvent& event)
             ->Check(_type == AUDIOSAMPLETYPE::CLASSIFIED);
 #endif
         mnuWave.AppendSeparator();
-        mnuWave.AppendCheckItem(ID_WAVE_MNU_DOUBLEHEIGHT, "Double height waveform")->Check(_doubleHeight);
-        mnuWave.AppendCheckItem(ID_WAVE_MNU_SHOW_ONSETS, "Show onsets")->Check(_showOnsets);
-        mnuWave.AppendCheckItem(ID_WAVE_MNU_SHOW_PITCH, "Show pitch contour")->Check(_showPitchContour);
-        mnuWave.AppendCheckItem(ID_WAVE_MNU_SHOW_SPECTROGRAM, "View as spectrogram")->Check(_showSpectrogram);
+        mnuWave.AppendCheckItem(ID_WAVE_MNU_DOUBLEHEIGHT, _("Double height waveform"))->Check(_doubleHeight);
+        mnuWave.AppendCheckItem(ID_WAVE_MNU_SHOW_ONSETS, _("Show onsets"))->Check(_showOnsets);
+        mnuWave.AppendCheckItem(ID_WAVE_MNU_SHOW_PITCH, _("Show pitch contour"))->Check(_showPitchContour);
+        mnuWave.AppendCheckItem(ID_WAVE_MNU_SHOW_SPECTROGRAM, _("View as spectrogram"))->Check(_showSpectrogram);
 #ifdef __APPLE__
         if (!_selectedSoundClass.empty()) {
             mnuWave.AppendSeparator();
-            mnuWave.Append(ID_WAVE_MNU_CLASSIFY_CLEAR, "Clear sound-class gating");
+            mnuWave.Append(ID_WAVE_MNU_CLASSIFY_CLEAR, _("Clear sound-class gating"));
         }
 #endif
     }
@@ -352,7 +352,7 @@ void Waveform::rightClick(wxMouseEvent& event)
                 wxString label = wxString(dispName) + "  [" + fn.GetFullName() + "]";
                 trackMenu->AppendRadioItem(_audioTrackIdPool[i + 1], label)->Check(_activeAudioTrackIndex == i + 1);
             }
-            mnuWave.AppendSubMenu(trackMenu, "Audio Track");
+            mnuWave.AppendSubMenu(trackMenu, _("Audio Track"));
         }
     }
     if (mnuWave.GetMenuItemCount() > 0) {

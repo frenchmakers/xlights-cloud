@@ -635,7 +635,7 @@ public:
     virtual wxMenu* CreatePopupMenu() override
     {
         wxMenu* menu = new wxMenu;
-        menu->Append(NEWINSTANCE_ID, "Open New Instance");
+        menu->Append(NEWINSTANCE_ID, _("Open New Instance"));
         return menu;
     }
 
@@ -2150,7 +2150,7 @@ xLightsFrame::xLightsFrame(wxWindow* parent, int ab, wxWindowID id, bool renderO
 
 #ifdef __WXOSX__
     revertToMenu = new wxMenu;
-    revertToMenu->Append(wxID_ANY, "Last Saved");
+    revertToMenu->Append(wxID_ANY, _("Last Saved"));
     revertToMenuItem = MenuFile->Insert(5, ID_MENUITEM_REVERTTO, _("Revert To..."), revertToMenu, wxEmptyString);
     MenuFile->Bind(wxEVT_MENU_OPEN, [&](wxMenuEvent& event) {
         event.Skip();

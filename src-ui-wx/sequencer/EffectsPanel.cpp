@@ -119,7 +119,7 @@ void EffectsPanel::OnRightDownChoice(wxMouseEvent& event)
     }
 
     wxMenu mnu;
-    mnu.Append(wxID_ANY, "Bulk Edit");
+    mnu.Append(wxID_ANY, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&EffectsPanel::OnChoicePopup, nullptr, this);
     PopupMenu(&mnu);
 }

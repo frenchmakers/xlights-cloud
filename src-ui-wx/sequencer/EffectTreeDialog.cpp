@@ -1990,9 +1990,9 @@ void EffectTreeDialog::OnTreeCtrl1ItemRightClick(wxTreeEvent& event)
     SetFocus();
     wxMenu mnuLayer;
 
-    wxMenuItem* menu_sort_asc = mnuLayer.Append(ID_GRID_MNU_SORT_ASC, "Sort Group");
+    wxMenuItem* menu_sort_asc = mnuLayer.Append(ID_GRID_MNU_SORT_ASC, _("Sort Group"));
     menu_sort_asc->Enable(true);
-    wxMenuItem* menu_sort_all_asc = mnuLayer.Append(ID_GRID_MNU_SORT_ALL_ASC, "Sort All");
+    wxMenuItem* menu_sort_all_asc = mnuLayer.Append(ID_GRID_MNU_SORT_ALL_ASC, _("Sort All"));
     menu_sort_all_asc->Enable(true);
 
     mnuLayer.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&EffectTreeDialog::OnGridPopup, nullptr, this);

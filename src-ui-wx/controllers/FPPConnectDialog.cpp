@@ -439,8 +439,8 @@ void FPPConnectDialog::OnIPSortClick(wxCommandEvent& evt) {
 
 void FPPConnectDialog::HostSortMenu(wxContextMenuEvent& event) {
     wxMenu mnu;
-    mnu.Append(ID_POPUP_MNU_SORT_NAME, "Sort by HostName");
-    mnu.Append(ID_POPUP_MNU_SORT_IP, "Sort by IP Address");
+    mnu.Append(ID_POPUP_MNU_SORT_NAME, _("Sort by HostName"));
+    mnu.Append(ID_POPUP_MNU_SORT_IP, _("Sort by IP Address"));
     mnu.Connect(ID_POPUP_MNU_SORT_NAME, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FPPConnectDialog::OnHostSortClick), NULL, this);
     mnu.Connect(ID_POPUP_MNU_SORT_IP, wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FPPConnectDialog::OnIPSortClick), NULL, this);
     PopupMenu(&mnu);
@@ -449,8 +449,8 @@ void FPPConnectDialog::HostSortMenu(wxContextMenuEvent& event) {
 void FPPConnectDialog::CapePopupMenu(wxContextMenuEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(ID_POPUP_MNU_SELECT_ALL, "Select All");
-    mnu.Append(ID_POPUP_MNU_DESELECT_ALL, "Deselect All");
+    mnu.Append(ID_POPUP_MNU_SELECT_ALL, _("Select All"));
+    mnu.Append(ID_POPUP_MNU_DESELECT_ALL, _("Deselect All"));
     mnu.Connect(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FPPConnectDialog::OnCapePopupClick), NULL, this);
     PopupMenu(&mnu);
 }
@@ -476,10 +476,10 @@ void FPPConnectDialog::OnCapePopupClick(wxCommandEvent& event)
 
 void FPPConnectDialog::UploadPopupMenu(wxContextMenuEvent& event) {
     wxMenu mnu;
-    mnu.Append(ID_POPUP_MNU_SELECT_ALL, "Select All");
-    mnu.Append(ID_POPUP_MNU_DESELECT_ALL, "Deselect All");
-    mnu.Append(ID_POPUP_MNU_SORT_UPLOAD, "Sort");
-    mnu.Append(ID_POPUP_MNU_SELECT_SUBNET, "Select Subnet");
+    mnu.Append(ID_POPUP_MNU_SELECT_ALL, _("Select All"));
+    mnu.Append(ID_POPUP_MNU_DESELECT_ALL, _("Deselect All"));
+    mnu.Append(ID_POPUP_MNU_SORT_UPLOAD, _("Sort"));
+    mnu.Append(ID_POPUP_MNU_SELECT_SUBNET, _("Select Subnet"));
     mnu.Connect(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FPPConnectDialog::OnUploadPopupClick), NULL, this);
     PopupMenu(&mnu);
 }
@@ -547,7 +547,7 @@ void FPPConnectDialog::SelectIPsWithSubnet() {
 
 void FPPConnectDialog::MediaPopupMenu(wxContextMenuEvent& event) {
     wxMenu mnu;
-    mnu.Append(ID_POPUP_MNU_DESELECT_ALL, "Deselect All");
+    mnu.Append(ID_POPUP_MNU_DESELECT_ALL, _("Deselect All"));
     mnu.Connect(wxEVT_COMMAND_MENU_SELECTED, wxCommandEventHandler(FPPConnectDialog::OnMediaPopupClick), NULL, this);
     PopupMenu(&mnu);
 }
@@ -2172,12 +2172,12 @@ void FPPConnectDialog::OnCancelButtonClick(wxCommandEvent& event)
 void FPPConnectDialog::SequenceListPopup(wxTreeListEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(ID_POPUP_MNU_SELECT_ALL, "Select All");
-    mnu.Append(ID_POPUP_MNU_DESELECT_ALL, "Clear Selections");
-    mnu.Append(ID_POPUP_MNU_SELECT_HIGH, "Select Highlighted");
-    mnu.Append(ID_POPUP_MNU_DESELECT_HIGH, "Deselect Highlighted");
-    mnu.Append(ID_POPUP_MNU_SELECT_BATCH, "Select Batch Render");
-    mnu.Append(ID_POPUP_MNU_SELECT_FAILED, "Select Failed Uploads");
+    mnu.Append(ID_POPUP_MNU_SELECT_ALL, _("Select All"));
+    mnu.Append(ID_POPUP_MNU_DESELECT_ALL, _("Clear Selections"));
+    mnu.Append(ID_POPUP_MNU_SELECT_HIGH, _("Select Highlighted"));
+    mnu.Append(ID_POPUP_MNU_DESELECT_HIGH, _("Deselect Highlighted"));
+    mnu.Append(ID_POPUP_MNU_SELECT_BATCH, _("Select Batch Render"));
+    mnu.Append(ID_POPUP_MNU_SELECT_FAILED, _("Select Failed Uploads"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&FPPConnectDialog::OnPopup, nullptr, this);
     PopupMenu(&mnu);
 }

@@ -429,22 +429,22 @@ void ImportPreviewsModelsDialog::OnContextMenu(wxTreeListEvent& event)
 {
     _item = event.GetItem();
     wxMenu mnuContext;
-    mnuContext.Append(ID_MNU_IPM_EXPANDALL, "Expand All");
-    mnuContext.Append(ID_MNU_IPM_COLLAPSEALL, "Collapse All");
+    mnuContext.Append(ID_MNU_IPM_EXPANDALL, _("Expand All"));
+    mnuContext.Append(ID_MNU_IPM_COLLAPSEALL, _("Collapse All"));
     mnuContext.AppendSeparator();
-    mnuContext.Append(ID_MNU_IPM_SELECTALL, "Select All");
-    mnuContext.Append(ID_MNU_IPM_DESELECTALL, "Deselect All");
+    mnuContext.Append(ID_MNU_IPM_SELECTALL, _("Select All"));
+    mnuContext.Append(ID_MNU_IPM_DESELECTALL, _("Deselect All"));
     mnuContext.AppendSeparator();
-    mnuContext.Append(ID_MNU_IPM_SELECTHIGH, "Select Highlighted");
-    mnuContext.Append(ID_MNU_IPM_DESELECTHIGH, "Deselect Highlighted");
+    mnuContext.Append(ID_MNU_IPM_SELECTHIGH, _("Select Highlighted"));
+    mnuContext.Append(ID_MNU_IPM_DESELECTHIGH, _("Deselect Highlighted"));
     mnuContext.AppendSeparator();
-    mnuContext.Append(ID_MNU_IPM_SELECTSIBLINGS, "Select Siblings");
-    mnuContext.Append(ID_MNU_IPM_DESELECTSIBLINGS, "Deselect Siblings");
-    mnuContext.Append(ID_MNU_IPM_DESELECTEXISTING, "Deselect Models Already In Layout");
+    mnuContext.Append(ID_MNU_IPM_SELECTSIBLINGS, _("Select Siblings"));
+    mnuContext.Append(ID_MNU_IPM_DESELECTSIBLINGS, _("Deselect Siblings"));
+    mnuContext.Append(ID_MNU_IPM_DESELECTEXISTING, _("Deselect Models Already In Layout"));
     mnuContext.AppendSeparator();
-    mnuContext.Append(ID_MNU_IPM_SELECTALLMODELS, "Select All Models");
-    mnuContext.Append(ID_MNU_IPM_SELECTALLMODELSGROUPS, "Select All Model Groups");
-    mnuContext.Append(ID_MNU_IPM_SELECTALLVIEWPOINTS, "Select All Viewpoints");
+    mnuContext.Append(ID_MNU_IPM_SELECTALLMODELS, _("Select All Models"));
+    mnuContext.Append(ID_MNU_IPM_SELECTALLMODELSGROUPS, _("Select All Model Groups"));
+    mnuContext.Append(ID_MNU_IPM_SELECTALLVIEWPOINTS, _("Select All Viewpoints"));
 
     mnuContext.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)& ImportPreviewsModelsDialog::OnListPopup, nullptr, this);
     PopupMenu(&mnuContext);

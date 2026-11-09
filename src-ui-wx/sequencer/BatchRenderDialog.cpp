@@ -158,11 +158,11 @@ BatchRenderDialog::BatchRenderDialog(wxWindow* parent, OutputManager* outputMana
 void BatchRenderDialog::SequenceListPopup(wxTreeListEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(ID_MNU_SELECTALL, "Select All");
-    mnu.Append(ID_MNU_SELECTNONE, "Select None");
-    mnu.Append(ID_MNU_SELECTHIGH, "Select Highlighted");
-    mnu.Append(ID_MNU_DESELECTHIGH, "Deselect Highlighted");
-    mnu.Append(ID_MNU_SELECTFPP, "Select From FPP Playlist");
+    mnu.Append(ID_MNU_SELECTALL, _("Select All"));
+    mnu.Append(ID_MNU_SELECTNONE, _("Select None"));
+    mnu.Append(ID_MNU_SELECTHIGH, _("Select Highlighted"));
+    mnu.Append(ID_MNU_DESELECTHIGH, _("Deselect Highlighted"));
+    mnu.Append(ID_MNU_SELECTFPP, _("Select From FPP Playlist"));
 
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BatchRenderDialog::OnPopupCommand, nullptr, this);
     PopupMenu(&mnu);

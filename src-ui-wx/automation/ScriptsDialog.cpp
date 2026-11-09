@@ -165,8 +165,8 @@ void ScriptsDialog::OnButton_ClearClick(wxCommandEvent& event)
 void ScriptsDialog::OnListRClick(wxContextMenuEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(ID_MCU_VIEWSCRIPT, "View Script");
-    mnu.Append(ID_MCU_VIEWSCRIPTFOLDER, "Open Folder");
+    mnu.Append(ID_MCU_VIEWSCRIPT, _("View Script"));
+    mnu.Append(ID_MCU_VIEWSCRIPTFOLDER, _("Open Folder"));
 
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&ScriptsDialog::OnPopup, nullptr, this);
     PopupMenu(&mnu);

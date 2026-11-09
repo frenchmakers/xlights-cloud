@@ -1806,35 +1806,35 @@ void ViewsModelsPanel::OnListCtrlModelsItemRClick(wxListEvent& event)
     }
 
     wxMenu mnu;
-    mnu.Append(ID_MODELS_UNDO, "Undo")->Enable(_undo.size() > 0);
-    mnu.Append(ID_MODELS_HIDEALL, "Hide All")->Enable(items > 0);
-    mnu.Append(ID_MODELS_HIDEUNUSED, "Hide Unused")->Enable(items > 0);
-    mnu.Append(ID_MODELS_SHOWALL, "Show All")->Enable(items > 0);
-    mnu.Append(ID_MODELS_REMOVEUNUSED, "Remove Unused")->Enable(items > 0);
-    mnu.Append(ID_MODELS_SELECTUNUSED, "Select Unused")->Enable(items > 0);
-    mnu.Append(ID_MODELS_SELECTUSED, "Select Used")->Enable(items > 0);
-    mnu.Append(ID_MODELS_SELECTALL, "Select All")->Enable(items > 0);
+    mnu.Append(ID_MODELS_UNDO, _("Undo"))->Enable(_undo.size() > 0);
+    mnu.Append(ID_MODELS_HIDEALL, _("Hide All"))->Enable(items > 0);
+    mnu.Append(ID_MODELS_HIDEUNUSED, _("Hide Unused"))->Enable(items > 0);
+    mnu.Append(ID_MODELS_SHOWALL, _("Show All"))->Enable(items > 0);
+    mnu.Append(ID_MODELS_REMOVEUNUSED, _("Remove Unused"))->Enable(items > 0);
+    mnu.Append(ID_MODELS_SELECTUNUSED, _("Select Unused"))->Enable(items > 0);
+    mnu.Append(ID_MODELS_SELECTUSED, _("Select Used"))->Enable(items > 0);
+    mnu.Append(ID_MODELS_SELECTALL, _("Select All"))->Enable(items > 0);
 
     wxMenu* mnuSort = new wxMenu();
 
-    mnuSort->Append(ID_MODELS_SORTBYNAME, "By Name")->Enable(models > 0);
-    mnuSort->Append(ID_MODELS_SORTBYNAMEGM, "By Name But Groups At Top")->Enable(models > 0);
-    mnuSort->Append(ID_MODELS_SORTBYNAMEGMSIZE, "By Name But Groups At Top by Size")->Enable(models > 0);
-    mnuSort->Append(ID_MODELS_SORTBYNAMEGMCOUNT, "By Name But Groups At Top by Node Count")->Enable(models > 0);
-    mnuSort->Append(ID_MODELS_SORTBYCPGM, "By Controller/Port But Groups At Top")->Enable(models > 0);
-    mnuSort->Append(ID_MODELS_SORTBYCPGMSIZE, "By Controller/Port But Groups At Top by Size")->Enable(models > 0);
-    mnuSort->Append(ID_MODELS_SORTBYSCGM, "By Start Channel But Groups At Top")->Enable(models > 0);
-    mnuSort->Append(ID_MODELS_SORTBYSCGMSIZE, "By Start Channel But Groups At Top by Size")->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTBYNAME, _("By Name"))->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTBYNAMEGM, _("By Name But Groups At Top"))->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTBYNAMEGMSIZE, _("By Name But Groups At Top by Size"))->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTBYNAMEGMCOUNT, _("By Name But Groups At Top by Node Count"))->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTBYCPGM, _("By Controller/Port But Groups At Top"))->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTBYCPGMSIZE, _("By Controller/Port But Groups At Top by Size"))->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTBYSCGM, _("By Start Channel But Groups At Top"))->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTBYSCGMSIZE, _("By Start Channel But Groups At Top by Size"))->Enable(models > 0);
     if (_sequenceViewManager->GetSelectedViewIndex() != MASTER_VIEW) {
-        mnuSort->Append(ID_MODELS_SORTBYMASTERVIEW, "The Same as Current Master View")->Enable(models > 0);
+        mnuSort->Append(ID_MODELS_SORTBYMASTERVIEW, _("The Same as Current Master View"))->Enable(models > 0);
     }
-    mnuSort->Append(ID_MODELS_SORTBYTYPE, "By Type")->Enable(models > 0);
-    mnuSort->Append(ID_MODELS_SORTMODELSUNDERTHISGROUP, "Models Under This Group")->Enable(isGroup);
-    mnuSort->Append(ID_MODELS_BUBBLEUPGROUPS, "Bubble Up Groups")->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTBYTYPE, _("By Type"))->Enable(models > 0);
+    mnuSort->Append(ID_MODELS_SORTMODELSUNDERTHISGROUP, _("Models Under This Group"))->Enable(isGroup);
+    mnuSort->Append(ID_MODELS_BUBBLEUPGROUPS, _("Bubble Up Groups"))->Enable(models > 0);
 
     mnuSort->Connect(wxEVT_MENU, (wxObjectEventFunction)&ViewsModelsPanel::OnModelsPopup, nullptr, this);
 
-    mnu.Append(ID_MODELS_SORT, "Sort", mnuSort, "");
+    mnu.Append(ID_MODELS_SORT, _("Sort"), mnuSort, "");
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&ViewsModelsPanel::OnModelsPopup, nullptr, this);
 
     PopupMenu(&mnu);
@@ -3089,8 +3089,8 @@ void ViewsModelsPanel::OnListCtrlModelsItemActivated(wxListEvent& event)
 void ViewsModelsPanel::OnButtonImportClick(wxCommandEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(VIEWSMODELS_IMPORT_RGBEFFECTS, "View From Layout File");
-    mnu.Append(VIEWSMODELS_IMPORT_SEQUENCE, "Master View From Sequence File");
+    mnu.Append(VIEWSMODELS_IMPORT_RGBEFFECTS, _("View From Layout File"));
+    mnu.Append(VIEWSMODELS_IMPORT_SEQUENCE, _("Master View From Sequence File"));
 
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&ViewsModelsPanel::OnImportBtnPopup, nullptr, this);
     PopupMenu(&mnu);

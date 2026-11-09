@@ -334,7 +334,7 @@ void DMXPanel::OnRemapRClick(wxContextMenuEvent& /*event*/) {
     if (alleffects < 1) return;
 
     wxMenu mnu;
-    mnu.Append(wxID_ANY, "Bulk Edit");
+    mnu.Append(wxID_ANY, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&DMXPanel::OnRemapBulkEdit, nullptr, this);
     PopupMenu(&mnu);
 }

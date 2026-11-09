@@ -635,7 +635,7 @@ void RowHeading::rightClick( wxMouseEvent& event)
         if (xLightsApp::GetFrame()->GetMainSequencer() != nullptr &&
             xLightsFrame::CurrentSeqXmlFile != nullptr) {
             wxMenu mnuEmpty;
-            mnuEmpty.Append(ID_ROW_MNU_EDIT_DISPLAY_ELEMENTS, "Edit Display Elements");
+            mnuEmpty.Append(ID_ROW_MNU_EDIT_DISPLAY_ELEMENTS, _("Edit Display Elements"));
             mnuEmpty.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&RowHeading::OnLayerPopup, nullptr, this);
             PopupMenu(&mnuEmpty);
         }
@@ -650,13 +650,13 @@ void RowHeading::rightClick( wxMouseEvent& event)
                 || element->GetType() == ElementType::ELEMENT_TYPE_SUBMODEL
                 || element->GetType() == ElementType::ELEMENT_TYPE_STRAND) {
                 if (ri->nodeIndex < 0) {
-                    mnuLayer.Append(ID_ROW_MNU_INSERT_LAYER_ABOVE, "Insert Layer Above");
-                    mnuLayer.Append(ID_ROW_MNU_INSERT_LAYER_BELOW, "Insert Layer Below");
-                    mnuLayer.Append(ID_ROW_MNU_INSERT_LAYERS_BELOW, "Insert Multiple Layers Below");
+                    mnuLayer.Append(ID_ROW_MNU_INSERT_LAYER_ABOVE, _("Insert Layer Above"));
+                    mnuLayer.Append(ID_ROW_MNU_INSERT_LAYER_BELOW, _("Insert Layer Below"));
+                    mnuLayer.Append(ID_ROW_MNU_INSERT_LAYERS_BELOW, _("Insert Multiple Layers Below"));
 
                     if (element->GetEffectLayerCount() > 1) {
-                        mnuLayer.Append(ID_ROW_MNU_DELETE_LAYER, "Delete Layer");
-                        mnuLayer.Append(ID_ROW_MNU_DELETE_LAYERS, "Delete Multiple Layers");
+                        mnuLayer.Append(ID_ROW_MNU_DELETE_LAYER, _("Delete Layer"));
+                        mnuLayer.Append(ID_ROW_MNU_DELETE_LAYERS, _("Delete Multiple Layers"));
                     }
                     {
                         bool canDeleteUnused = element->GetEffectLayerCount() > 1;
@@ -670,18 +670,18 @@ void RowHeading::rightClick( wxMouseEvent& event)
                             }
                         }
                         if (canDeleteUnused)
-                            mnuLayer.Append(ID_ROW_MNU_DELETE_UNUSEDLAYERS, "Delete Unused Layers");
+                            mnuLayer.Append(ID_ROW_MNU_DELETE_UNUSEDLAYERS, _("Delete Unused Layers"));
                     }
-                    mnuLayer.Append(ID_ROW_MNU_SETLAYERNAME, "Edit Layer Name");
+                    mnuLayer.Append(ID_ROW_MNU_SETLAYERNAME, _("Edit Layer Name"));
                     mnuLayer.AppendSeparator();
                 }
                 if (mSequenceElements->GetHiddenTimingCount() > 0) {
-                    mnuLayer.Append(ID_ROW_MNU_SHOWALLTIMING, "Show All Timing Tracks");
+                    mnuLayer.Append(ID_ROW_MNU_SHOWALLTIMING, _("Show All Timing Tracks"));
                 }
                 if (mSequenceElements->GetHideUnusedSubmodels()) {
-                    mnuLayer.Append(ID_ROW_MNU_SHOW_ALL_SUBMODELS, "Show All Submodels");
+                    mnuLayer.Append(ID_ROW_MNU_SHOW_ALL_SUBMODELS, _("Show All Submodels"));
                 } else {
-                    mnuLayer.Append(ID_ROW_MNU_HIDE_UNUSED_SUBMODELS, "Hide Unused Submodels");
+                    mnuLayer.Append(ID_ROW_MNU_HIDE_UNUSED_SUBMODELS, _("Hide Unused Submodels"));
                 }
                 bool canPromote = false;
                 ModelElement* me = dynamic_cast<ModelElement*>(element);
@@ -692,36 +692,36 @@ void RowHeading::rightClick( wxMouseEvent& event)
                     if (element->GetType() != ElementType::ELEMENT_TYPE_SUBMODEL) {
                         canPromote = true;
                     }
-                    mnuLayer.Append(ID_ROW_MNU_TOGGLE_STRANDS, "Toggle Strands (Shift+DblClick)");
+                    mnuLayer.Append(ID_ROW_MNU_TOGGLE_STRANDS, _("Toggle Strands (Shift+DblClick)"));
                     if (ri->strandIndex >= 0) {
-                        mnuLayer.Append(ID_ROW_MNU_TOGGLE_NODES, "Toggle Nodes");
+                        mnuLayer.Append(ID_ROW_MNU_TOGGLE_NODES, _("Toggle Nodes"));
                     }
                 } else {
-                    mnuLayer.Append(ID_ROW_MNU_TOGGLE_STRANDS, "Toggle Models");
+                    mnuLayer.Append(ID_ROW_MNU_TOGGLE_STRANDS, _("Toggle Models"));
                 }
-                mnuLayer.Append(ID_ROW_MNU_SHOW_EFFECTS, "Show All Effects");
-                mnuLayer.Append(ID_ROW_MNU_COLLAPSEALLMODELS, "Collapse All Models");
-                mnuLayer.Append(ID_ROW_MNU_COLLAPSEALLLAYERS, "Collapse All Layers");
+                mnuLayer.Append(ID_ROW_MNU_SHOW_EFFECTS, _("Show All Effects"));
+                mnuLayer.Append(ID_ROW_MNU_COLLAPSEALLMODELS, _("Collapse All Models"));
+                mnuLayer.Append(ID_ROW_MNU_COLLAPSEALLLAYERS, _("Collapse All Layers"));
                 if (ri->nodeIndex > -1) {
                     StrandElement* se = dynamic_cast<StrandElement*>(element);
                     if (se != nullptr && se->GetNodeLayer(ri->nodeIndex)->GetEffectCount() == 0) {
-                        mnuLayer.Append(ID_ROW_MNU_CONVERT_TO_EFFECTS, "Convert To Effect");
+                        mnuLayer.Append(ID_ROW_MNU_CONVERT_TO_EFFECTS, _("Convert To Effect"));
                     }
                 }
                 else {
                     if (element->GetType() == ElementType::ELEMENT_TYPE_MODEL) {
                         Model* m = xLightsApp::GetFrame()->AllModels[ri->element->GetModelName()];
                         if (m != nullptr && m->GetDisplayAs() != DisplayAsType::ModelGroup) {
-                            mnuLayer.Append(ID_ROW_MNU_CONVERT_TO_EFFECTS, "Convert To Effect");
+                            mnuLayer.Append(ID_ROW_MNU_CONVERT_TO_EFFECTS, _("Convert To Effect"));
                         }
                     }
                     else if (element->GetType() == ElementType::ELEMENT_TYPE_STRAND) {
-                        mnuLayer.Append(ID_ROW_MNU_CONVERT_TO_EFFECTS, "Convert To Effect");
+                        mnuLayer.Append(ID_ROW_MNU_CONVERT_TO_EFFECTS, _("Convert To Effect"));
                     }
                 }
 
                 if (canPromote) {
-                    mnuLayer.Append(ID_ROW_MNU_PROMOTE_EFFECTS, "Promote Node Effects");
+                    mnuLayer.Append(ID_ROW_MNU_PROMOTE_EFFECTS, _("Promote Node Effects"));
                 }
                 mnuLayer.AppendSeparator();
 
@@ -729,9 +729,9 @@ void RowHeading::rightClick( wxMouseEvent& event)
                 wxMenu* rowMenu = new wxMenu();
                 wxMenu* modelMenu = new wxMenu();
                 if (element->IsRenderDisabled()) {
-                    modelMenu->Append(ID_ROW_MNU_RENDERENABLE_MODEL, "Enable Render");
+                    modelMenu->Append(ID_ROW_MNU_RENDERENABLE_MODEL, _("Enable Render"));
                 } else {
-                    modelMenu->Append(ID_ROW_MNU_RENDERDISABLE_MODEL, "Disable Render");
+                    modelMenu->Append(ID_ROW_MNU_RENDERDISABLE_MODEL, _("Disable Render"));
                 }
 
                 bool modelDisabled = false;
@@ -743,95 +743,95 @@ void RowHeading::rightClick( wxMouseEvent& event)
                     }
                 }
                 if (modelDisabled) {
-                    modelMenu->Append(ID_ROW_MNU_RENDERENABLE_ALL, "Enable Render On All Models");
+                    modelMenu->Append(ID_ROW_MNU_RENDERENABLE_ALL, _("Enable Render On All Models"));
                 } 
 
-                modelMenu->Append(ID_ROW_MNU_PLAY_MODEL, "Play");
-                modelMenu->Append(ID_ROW_MNU_EXPORT_MODEL, "Export")->Enable(m != nullptr && m->GetDisplayAs() != DisplayAsType::ModelGroup);
-                modelMenu->Append(ID_ROW_MNU_EXPORT_RENDERED_MODEL, "Render and Export")->Enable(m != nullptr && m->GetDisplayAs() != DisplayAsType::ModelGroup);
-                modelMenu->Append(ID_ROW_MNU_EXPORT_MODEL_SELECTED_EFFECTS, "Export Selected Model Effects")->Enable(m != nullptr && m->GetDisplayAs() != DisplayAsType::ModelGroup && element->GetSelectedEffectCount() > 0);
-                modelMenu->Append(ID_ROW_MNU_EXPORT_RENDERED_MODEL_SELECTED_EFFECTS, "Render and Export Selected Model Effects")->Enable(m != nullptr && m->GetDisplayAs() != DisplayAsType::ModelGroup && element->GetSelectedEffectCount() > 0);
-                rowMenu->Append(ID_ROW_MNU_SELECT_ROW_EFFECTS, "Select Effects");
-                modelMenu->Append(ID_ROW_MNU_SELECT_MODEL_EFFECTS, "Select Effects");
-                modelMenu->Append(ID_ROW_MNU_SELECT_MODEL_EFFECTS_INCL_SUBMODELS, "Select Effects incl SubModels");
-                rowMenu->Append(ID_ROW_MNU_CUT_ROW, "Cut Effects");
-                modelMenu->Append(ID_ROW_MNU_CUT_MODEL, "Cut Effects");
-                rowMenu->Append(ID_ROW_MNU_COPY_ROW, "Copy Effects");
-                modelMenu->Append(ID_ROW_MNU_COPY_MODEL, "Copy Effects");
-                modelMenu->Append(ID_ROW_MNU_COPY_MODEL_INCL_SUBMODELS, "Copy Effects incl SubModels");
-                modelMenu->Append(ID_ROW_MNU_COPY_MODEL_TO_MODELS, "Copy Layers/SubModels to Models");
-                wxMenuItem* menu_paste = rowMenu->Append(ID_ROW_MNU_PASTE_ROW, "Paste Effects");
-                wxMenuItem* menu_pastem = modelMenu->Append(ID_ROW_MNU_PASTE_MODEL, "Paste Effects");
+                modelMenu->Append(ID_ROW_MNU_PLAY_MODEL, _("Play"));
+                modelMenu->Append(ID_ROW_MNU_EXPORT_MODEL, _("Export"))->Enable(m != nullptr && m->GetDisplayAs() != DisplayAsType::ModelGroup);
+                modelMenu->Append(ID_ROW_MNU_EXPORT_RENDERED_MODEL, _("Render and Export"))->Enable(m != nullptr && m->GetDisplayAs() != DisplayAsType::ModelGroup);
+                modelMenu->Append(ID_ROW_MNU_EXPORT_MODEL_SELECTED_EFFECTS, _("Export Selected Model Effects"))->Enable(m != nullptr && m->GetDisplayAs() != DisplayAsType::ModelGroup && element->GetSelectedEffectCount() > 0);
+                modelMenu->Append(ID_ROW_MNU_EXPORT_RENDERED_MODEL_SELECTED_EFFECTS, _("Render and Export Selected Model Effects"))->Enable(m != nullptr && m->GetDisplayAs() != DisplayAsType::ModelGroup && element->GetSelectedEffectCount() > 0);
+                rowMenu->Append(ID_ROW_MNU_SELECT_ROW_EFFECTS, _("Select Effects"));
+                modelMenu->Append(ID_ROW_MNU_SELECT_MODEL_EFFECTS, _("Select Effects"));
+                modelMenu->Append(ID_ROW_MNU_SELECT_MODEL_EFFECTS_INCL_SUBMODELS, _("Select Effects incl SubModels"));
+                rowMenu->Append(ID_ROW_MNU_CUT_ROW, _("Cut Effects"));
+                modelMenu->Append(ID_ROW_MNU_CUT_MODEL, _("Cut Effects"));
+                rowMenu->Append(ID_ROW_MNU_COPY_ROW, _("Copy Effects"));
+                modelMenu->Append(ID_ROW_MNU_COPY_MODEL, _("Copy Effects"));
+                modelMenu->Append(ID_ROW_MNU_COPY_MODEL_INCL_SUBMODELS, _("Copy Effects incl SubModels"));
+                modelMenu->Append(ID_ROW_MNU_COPY_MODEL_TO_MODELS, _("Copy Layers/SubModels to Models"));
+                wxMenuItem* menu_paste = rowMenu->Append(ID_ROW_MNU_PASTE_ROW, _("Paste Effects"));
+                wxMenuItem* menu_pastem = modelMenu->Append(ID_ROW_MNU_PASTE_MODEL, _("Paste Effects"));
                 if (!mCanPaste) {
                     menu_paste->Enable(false);
                     menu_pastem->Enable(false);
                 }
-                rowMenu->Append(ID_ROW_MNU_DELETE_ROW_EFFECTS, "Delete Effects");
-                rowMenu->Append(ID_ROW_MNU_CREATE_TIMING_FROM_EFFECTS, "Create Timing From Effects");
-                modelMenu->Append(ID_ROW_MNU_DELETE_MODEL_EFFECTS, "Delete Effects");
-                modelMenu->Append(ID_ROW_MNU_DELETE_MODEL_SUBMODEL_EFFECTS, "Delete SubModel Effects");
-                modelMenu->Append(ID_ROW_MNU_DELETE_MODEL_STRAND_EFFECTS, "Delete Strand Effects");
-                modelMenu->Append(ID_ROW_MNU_DELETE_MODEL_NODE_EFFECTS, "Delete Node Effects");
+                rowMenu->Append(ID_ROW_MNU_DELETE_ROW_EFFECTS, _("Delete Effects"));
+                rowMenu->Append(ID_ROW_MNU_CREATE_TIMING_FROM_EFFECTS, _("Create Timing From Effects"));
+                modelMenu->Append(ID_ROW_MNU_DELETE_MODEL_EFFECTS, _("Delete Effects"));
+                modelMenu->Append(ID_ROW_MNU_DELETE_MODEL_SUBMODEL_EFFECTS, _("Delete SubModel Effects"));
+                modelMenu->Append(ID_ROW_MNU_DELETE_MODEL_STRAND_EFFECTS, _("Delete Strand Effects"));
+                modelMenu->Append(ID_ROW_MNU_DELETE_MODEL_NODE_EFFECTS, _("Delete Node Effects"));
 
                 if (m != nullptr && m->GetDisplayAs() == DisplayAsType::ModelGroup) {
-                    modelMenu->Append(ID_ROW_MNU_MODEL_CONVERTTOPERMODEL, "Convert Effects to 'Per Model'");
-                    rowMenu->Append(ID_ROW_MNU_ROW_CONVERTTOPERMODEL, "Convert Effects to 'Per Model'");
+                    modelMenu->Append(ID_ROW_MNU_MODEL_CONVERTTOPERMODEL, _("Convert Effects to 'Per Model'"));
+                    rowMenu->Append(ID_ROW_MNU_ROW_CONVERTTOPERMODEL, _("Convert Effects to 'Per Model'"));
                 }
 
-                mnuLayer.AppendSubMenu(modelMenu, "Model");
-                mnuLayer.AppendSubMenu(rowMenu, "Row");
+                mnuLayer.AppendSubMenu(modelMenu, wxGETTEXT_IN_CONTEXT("menu", "Model"));
+                mnuLayer.AppendSubMenu(rowMenu, _("Row"));
                 rowMenu->Connect(wxEVT_MENU, (wxObjectEventFunction)&RowHeading::OnLayerPopup, nullptr, this);
                 modelMenu->Connect(wxEVT_MENU, (wxObjectEventFunction)&RowHeading::OnLayerPopup, nullptr, this);
             } else {
                 EffectLayer* el = element->GetEffectLayer(ri->layerIndex);
                 if (el != nullptr) {
-                    mnuLayer.Append(ID_ROW_MNU_ADD_TIMING_TRACK, "Add Timing Track");
-                    mnuLayer.Append(ID_ROW_MNU_RENAME_TIMING_TRACK, "Rename Timing Track");
-                    mnuLayer.Append(ID_ROW_MNU_DELETE_TIMING_TRACK, "Delete Timing Track");
-                    mnuLayer.Append(ID_ROW_MNU_IMPORT_TIMING_TRACK, "Import Timing Track");
-                    mnuLayer.Append(ID_ROW_MNU_EXPORT_TIMING_TRACK, "Export Timing Track");
-                    mnuLayer.Append(ID_ROW_MNU_UNFIX_TIMING_TRACK, "Make Timing Track Variable")->Enable(el->IsFixedTimingLayer());
+                    mnuLayer.Append(ID_ROW_MNU_ADD_TIMING_TRACK, _("Add Timing Track"));
+                    mnuLayer.Append(ID_ROW_MNU_RENAME_TIMING_TRACK, _("Rename Timing Track"));
+                    mnuLayer.Append(ID_ROW_MNU_DELETE_TIMING_TRACK, _("Delete Timing Track"));
+                    mnuLayer.Append(ID_ROW_MNU_IMPORT_TIMING_TRACK, _("Import Timing Track"));
+                    mnuLayer.Append(ID_ROW_MNU_EXPORT_TIMING_TRACK, _("Export Timing Track"));
+                    mnuLayer.Append(ID_ROW_MNU_UNFIX_TIMING_TRACK, _("Make Timing Track Variable"))->Enable(el->IsFixedTimingLayer());
                     if (mSequenceElements->GetCurrentView() == MASTER_VIEW) {
-                        mnuLayer.Append(ID_ROW_MNU_HIDEALLTIMING, "Hide All Timing Tracks");
+                        mnuLayer.Append(ID_ROW_MNU_HIDEALLTIMING, _("Hide All Timing Tracks"));
                     }
                     if (mSequenceElements->GetHiddenTimingCount() > 0) {
-                        mnuLayer.Append(ID_ROW_MNU_SHOWALLTIMING, "Show All Timing Tracks");
+                        mnuLayer.Append(ID_ROW_MNU_SHOWALLTIMING, _("Show All Timing Tracks"));
                     }
-                    mnuLayer.Append(ID_ROW_MNU_ADD_TIMING_TRACK_ALL_VIEWS, "Add Timing Tracks to All Views");
-                    mnuLayer.Append(ID_ROW_MNU_SELECT_TIMING_EFFECTS, "Select Timing Marks");
-                    mnuLayer.Append(ID_ROW_MNU_GENERATE_SUBDIVIDED_TRACKS, "Generate Subdivided Timing Tracks");
-                    mnuLayer.Append(ID_ROW_MNU_IMPORT_NOTES, "Import Notes");
+                    mnuLayer.Append(ID_ROW_MNU_ADD_TIMING_TRACK_ALL_VIEWS, _("Add Timing Tracks to All Views"));
+                    mnuLayer.Append(ID_ROW_MNU_SELECT_TIMING_EFFECTS, _("Select Timing Marks"));
+                    mnuLayer.Append(ID_ROW_MNU_GENERATE_SUBDIVIDED_TRACKS, _("Generate Subdivided Timing Tracks"));
+                    mnuLayer.Append(ID_ROW_MNU_IMPORT_NOTES, _("Import Notes"));
                     if ( xLightsApp::GetFrame()->GetAIService(aiType::SPEECH2TEXT) != nullptr) {
                         SequenceFile* xml_file = xLightsApp::GetFrame()->CurrentSeqXmlFile;
                         if (xml_file->HasAudioMedia()) {
-                            mnuLayer.Append(ID_ROW_MNU_AI_LYRICS, "AI Speech 2 Lyrics");
+                            mnuLayer.Append(ID_ROW_MNU_AI_LYRICS, _("AI Speech 2 Lyrics"));
                         }
                     }
                     mnuLayer.AppendSeparator();
-                    mnuLayer.Append(ID_ROW_MNU_IMPORT_LYRICS, "Import Lyrics");
-                    mnuLayer.Append(ID_ROW_MNU_CREATE_SONG_REGIONS, "Create Song Regions from Timing Track");
-                    mnuLayer.Append(ID_ROW_MNU_SEARCH_LYRICS_ONLINE, "Search for Lyrics Online...");
+                    mnuLayer.Append(ID_ROW_MNU_IMPORT_LYRICS, _("Import Lyrics"));
+                    mnuLayer.Append(ID_ROW_MNU_CREATE_SONG_REGIONS, _("Create Song Regions from Timing Track"));
+                    mnuLayer.Append(ID_ROW_MNU_SEARCH_LYRICS_ONLINE, _("Search for Lyrics Online..."));
                     TimingElement *te = dynamic_cast<TimingElement*>(element);
                     if (te->GetSubType() == "") {
-                        mnuLayer.Append(ID_ROW_MNU_BREAKDOWN_TIMING_PHRASES, "Breakdown Phrases");
+                        mnuLayer.Append(ID_ROW_MNU_BREAKDOWN_TIMING_PHRASES, _("Breakdown Phrases"));
                         if (element->GetEffectLayerCount() > 1) {
-                            mnuLayer.Append(ID_ROW_MNU_BREAKDOWN_TIMING_WORDS, "Breakdown Words");
+                            mnuLayer.Append(ID_ROW_MNU_BREAKDOWN_TIMING_WORDS, _("Breakdown Words"));
                         }
                         if (element->GetEffectLayerCount() == 2) {
-                            mnuLayer.Append(ID_ROW_MNU_REMOVE_TIMING_WORDS, "Remove Words");
+                            mnuLayer.Append(ID_ROW_MNU_REMOVE_TIMING_WORDS, _("Remove Words"));
                         }
                         else if (element->GetEffectLayerCount() == 3) {
                             if (ri->layerIndex == 2) {
-                                mnuLayer.Append(ID_ROW_MNU_REMOVE_TIMING_PHONEMES, "Remove Phonemes");
+                                mnuLayer.Append(ID_ROW_MNU_REMOVE_TIMING_PHONEMES, _("Remove Phonemes"));
                             }
                             else {
-                                mnuLayer.Append(ID_ROW_MNU_REMOVE_TIMING_WORDS_PHONEMES, "Remove Words and Phonemes");
+                                mnuLayer.Append(ID_ROW_MNU_REMOVE_TIMING_WORDS_PHONEMES, _("Remove Words and Phonemes"));
                             }
                         }
                     }
                     mnuLayer.AppendSeparator();
-                    mnuLayer.Append(ID_ROW_MNU_COPY_ROW, "Copy Row");
-                    wxMenuItem* menu_paste = mnuLayer.Append(ID_ROW_MNU_PASTE_ROW, "Paste Row");
+                    mnuLayer.Append(ID_ROW_MNU_COPY_ROW, _("Copy Row"));
+                    wxMenuItem* menu_paste = mnuLayer.Append(ID_ROW_MNU_PASTE_ROW, _("Paste Row"));
                     if (!mCanPaste) {
                         menu_paste->Enable(false);
                     }
@@ -840,7 +840,7 @@ void RowHeading::rightClick( wxMouseEvent& event)
         }
 
         mnuLayer.AppendSeparator();
-        mnuLayer.Append(ID_ROW_MNU_EDIT_DISPLAY_ELEMENTS, "Edit Display Elements");
+        mnuLayer.Append(ID_ROW_MNU_EDIT_DISPLAY_ELEMENTS, _("Edit Display Elements"));
         mnuLayer.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&RowHeading::OnLayerPopup, nullptr, this);
         Refresh(false);
         Update();

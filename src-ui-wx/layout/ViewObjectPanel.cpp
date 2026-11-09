@@ -569,10 +569,10 @@ void ViewObjectPanel::OnItemContextMenu(wxTreeListEvent& event)
     }
 
     if (mSelectedObject != nullptr ) {
-        mnuContext.Append(ID_MNU_DELETE_OBJECT,"Delete");
-        mnuContext.Append(ID_MNU_UNLINKFROMBASE, "Unlink Models from Base Show Folder")->Enable(mSelectedObject->IsFromBase());
+        mnuContext.Append(ID_MNU_DELETE_OBJECT,_("Delete"));
+        mnuContext.Append(ID_MNU_UNLINKFROMBASE, _("Unlink Models from Base Show Folder"))->Enable(mSelectedObject->IsFromBase());
         if (!layoutPanel->xlights->GetOutputManager()->GetBaseShowDir().empty()) {
-            mnuContext.Append(ID_MNU_PROMOTETOBASE, "Promote to Base Show Folder")->Enable(layoutPanel->xlights->CanPromoteToBaseShowFolder() && !mSelectedObject->IsFromBase());
+            mnuContext.Append(ID_MNU_PROMOTETOBASE, _("Promote to Base Show Folder"))->Enable(layoutPanel->xlights->CanPromoteToBaseShowFolder() && !mSelectedObject->IsFromBase());
         }
     }
 

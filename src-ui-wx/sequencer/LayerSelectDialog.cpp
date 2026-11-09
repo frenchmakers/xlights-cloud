@@ -153,9 +153,9 @@ void LayerSelectDialog::ValidateWindow() {
 
 void LayerSelectDialog::OnListRClick(wxContextMenuEvent& event) {
     wxMenu mnu;
-    mnu.Append(ID_MCU_SELECTALL, "Select All");
-    mnu.Append(ID_MCU_SELECTNONE, "Deselect All");
-    mnu.Append(ID_MCU_SELECTPOPULATED, "Select Layers With Effects");
+    mnu.Append(ID_MCU_SELECTALL, _("Select All"));
+    mnu.Append(ID_MCU_SELECTNONE, _("Deselect All"));
+    mnu.Append(ID_MCU_SELECTPOPULATED, _("Select Layers With Effects"));
 
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&LayerSelectDialog::OnPopup, nullptr, this);
     PopupMenu(&mnu);

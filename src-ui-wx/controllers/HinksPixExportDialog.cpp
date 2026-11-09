@@ -445,13 +445,13 @@ void HinksPixExportDialog::ControllerPopupMenu(wxContextMenuEvent& event) {
     wxStaticText* label = dynamic_cast<wxStaticText*>(event.GetEventObject());
     wxMenu mnu;
 
-    mnu.Append(ID_MNU_SETTIME, "Set Time");
-    mnu.Append(ID_MNU_SETMASTER, "Set Master");
-    mnu.Append(ID_MNU_SETREMOTE, "Set Remote");
+    mnu.Append(ID_MNU_SETTIME, _("Set Time"));
+    mnu.Append(ID_MNU_SETMASTER, _("Set Master"));
+    mnu.Append(ID_MNU_SETREMOTE, _("Set Remote"));
     mnu.AppendSeparator();
-    mnu.Append(ID_MNU_UPLOADSCHEDULE, "Upload Schedules");
-    mnu.Append(ID_MNU_UPLOADFIRM, "Upload Firmware");
-    mnu.Append(ID_MNU_UPLOADFILE, "Upload File");
+    mnu.Append(ID_MNU_UPLOADSCHEDULE, _("Upload Schedules"));
+    mnu.Append(ID_MNU_UPLOADFIRM, _("Upload Firmware"));
+    mnu.Append(ID_MNU_UPLOADFILE, _("Upload File"));
 
     mnu.Bind(wxEVT_COMMAND_MENU_SELECTED, [this, label](wxCommandEvent& e) {
         if (ID_MNU_SETTIME == e.GetId()) {
@@ -1185,19 +1185,19 @@ void HinksPixExportDialog::OnGridScheduleCellChanged(wxGridEvent& event)
 void HinksPixExportDialog::OnGridScheduleCellRightClick(wxGridEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(ID_MNU_SETALL, "Set All");
-    mnu.Append(ID_MNU_SETALLPLAY, "Set All - PlayList");
-    mnu.Append(ID_MNU_SETALLDAYS, "Copy Row to Other Days");
+    mnu.Append(ID_MNU_SETALL, _("Set All"));
+    mnu.Append(ID_MNU_SETALLPLAY, _("Set All - PlayList"));
+    mnu.Append(ID_MNU_SETALLDAYS, _("Copy Row to Other Days"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&HinksPixExportDialog::OnPopupGrid, nullptr, this);
     PopupMenu(&mnu);
 }
 
 void HinksPixExportDialog::SequenceListPopup(wxListEvent& /*event*/) {
     wxMenu mnu;
-    mnu.Append(ID_MNU_SELECTALL, "Select All");
-    mnu.Append(ID_MNU_SELECTNONE, "Clear Selections");
-    mnu.Append(ID_MNU_SELECTHIGH, "Select Highlighted");
-    mnu.Append(ID_MNU_DESELECTHIGH, "Deselect Highlighted");
+    mnu.Append(ID_MNU_SELECTALL, _("Select All"));
+    mnu.Append(ID_MNU_SELECTNONE, _("Clear Selections"));
+    mnu.Append(ID_MNU_SELECTHIGH, _("Select Highlighted"));
+    mnu.Append(ID_MNU_DESELECTHIGH, _("Deselect Highlighted"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&HinksPixExportDialog::OnPopup, nullptr, this);
     PopupMenu(&mnu);
 }

@@ -960,13 +960,13 @@ void NodeSelectGrid::OnGridNodesCellRightClick(wxGridEvent& event)
     wxMenu mnu;
     if (!CheckBox_OrderedSelection->IsChecked()) {
         // Copy / Paste / Delete
-        mnu.Append(NODESELECT_CUT, "Cut");
-        mnu.Append(NODESELECT_COPY, "Copy");
-        mnu.Append(NODESELECT_PASTE, "Paste");
+        mnu.Append(NODESELECT_CUT, _("Cut"));
+        mnu.Append(NODESELECT_COPY, _("Copy"));
+        mnu.Append(NODESELECT_PASTE, _("Paste"));
         mnu.AppendSeparator();
     }
 
-    mnu.Append(NODESELECT_FIND, "Find Node");
+    mnu.Append(NODESELECT_FIND, _("Find Node"));
 
     mnu.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&NodeSelectGrid::OnGridPopup, nullptr, this);
     PopupMenu(&mnu);

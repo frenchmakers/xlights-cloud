@@ -1349,13 +1349,13 @@ void ModelGroupPanel::OnSpinCtrl_YCentreOffsetChange(wxSpinEvent& event)
 void ModelGroupPanel::OnListBoxModelsInGroupItemRClick(wxListEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(ID_MNU_COPY, "Copy From...");
+    mnu.Append(ID_MNU_COPY, _("Copy From..."));
     if(ListBoxModelsInGroup->GetItemCount() != 0) {
         mnu.AppendSeparator();
-        mnu.Append(ID_MNU_SORTBYNAME, "Sort By Name");
-        mnu.Append(ID_MNU_SORTBYLOCATION, "Sort By Location");
+        mnu.Append(ID_MNU_SORTBYNAME, _("Sort By Name"));
+        mnu.Append(ID_MNU_SORTBYLOCATION, _("Sort By Location"));
         mnu.AppendSeparator();
-        mnu.Append(ID_MNU_CLEARALL, "Clear");
+        mnu.Append(ID_MNU_CLEARALL, _("Clear"));
     }
 
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&ModelGroupPanel::OnPopup, nullptr, this);

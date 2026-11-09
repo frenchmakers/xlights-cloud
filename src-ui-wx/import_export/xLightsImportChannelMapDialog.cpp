@@ -983,8 +983,8 @@ xLightsImportChannelMapDialog::xLightsImportChannelMapDialog(xLightsFrame* paren
 void xLightsImportChannelMapDialog::RightClickTimingTracks(wxContextMenuEvent& event)
 {
     wxMenu mnuLayer;
-    mnuLayer.Append(ID_MNU_SELECTALL, "Select All");
-    mnuLayer.Append(ID_MNU_SELECTNONE, "Select None");
+    mnuLayer.Append(ID_MNU_SELECTALL, _("Select All"));
+    mnuLayer.Append(ID_MNU_SELECTNONE, _("Select None"));
     mnuLayer.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&xLightsImportChannelMapDialog::OnPopupTimingTracks, nullptr, this);
     PopupMenu(&mnuLayer);
 }
@@ -994,25 +994,25 @@ void xLightsImportChannelMapDialog::RightClickModels(wxDataViewEvent& event)
     wxDataViewItem item = event.GetItem();
     if (item.IsOk()) {
         wxMenu mnuLayer;
-        mnuLayer.Append(ID_MNU_COLLAPSEALL, "Collapse All");
-        mnuLayer.Append(ID_MNU_EXPANDALL, "Expand All");
-        mnuLayer.Append(ID_MNU_SHOWALLMAPPED, "Show All Mapped Models");
-        mnuLayer.Append(ID_MNU_AUTOMAPSELECTED, "Auto Map Selected");
+        mnuLayer.Append(ID_MNU_COLLAPSEALL, _("Collapse All"));
+        mnuLayer.Append(ID_MNU_EXPANDALL, _("Expand All"));
+        mnuLayer.Append(ID_MNU_SHOWALLMAPPED, _("Show All Mapped Models"));
+        mnuLayer.Append(ID_MNU_AUTOMAPSELECTED, _("Auto Map Selected"));
         mnuLayer.AppendSeparator();
         mnuLayer.AppendRadioItem(ID_MNU_SORT_ALPHABETICAL, _("Sort by Name"))->Check(!_dataModel->GetSortMasterView());
         mnuLayer.AppendRadioItem(ID_MNU_SORT_MASTER_VIEW, _("Sort by Master View"))->Check(_dataModel->GetSortMasterView());
         if (_dataModel->GetSortSubmodelsByName()) {
-            mnuLayer.Append(ID_MNU_SORT_SUBMODELS_BY_NAME, "Reset Submodel Sort");
+            mnuLayer.Append(ID_MNU_SORT_SUBMODELS_BY_NAME, _("Reset Submodel Sort"));
         } else {
-            mnuLayer.Append(ID_MNU_SORT_SUBMODELS_BY_NAME, "Sort Submodels By Name");
+            mnuLayer.Append(ID_MNU_SORT_SUBMODELS_BY_NAME, _("Sort Submodels By Name"));
         }
         mnuLayer.AppendSeparator();
-        mnuLayer.Append(ID_MNU_CLEARALL, "Clear All");
-        mnuLayer.Append(ID_MNU_CLEARSELECTED, "Clear Selected");
+        mnuLayer.Append(ID_MNU_CLEARALL, _("Clear All"));
+        mnuLayer.Append(ID_MNU_CLEARSELECTED, _("Clear Selected"));
         mnuLayer.AppendSeparator();
-        mnuLayer.Append(ID_MNU_ADD_EMPTY_GROUP, "Add Empty Group");
+        mnuLayer.Append(ID_MNU_ADD_EMPTY_GROUP, _("Add Empty Group"));
         mnuLayer.AppendSeparator();
-        mnuLayer.Append(ID_MNU_EDIT_DISPLAY_ELEMENTS, "Edit Display Elements...");
+        mnuLayer.Append(ID_MNU_EDIT_DISPLAY_ELEMENTS, _("Edit Display Elements..."));
         mnuLayer.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&xLightsImportChannelMapDialog::OnPopupModels, nullptr, this);
         TreeListCtrl_Mapping->PopupMenu(&mnuLayer, event.GetPosition());
     }
@@ -1020,7 +1020,7 @@ void xLightsImportChannelMapDialog::RightClickModels(wxDataViewEvent& event)
 
 void xLightsImportChannelMapDialog::RightClickModelsAvail(wxContextMenuEvent& event) {
         wxMenu mnuLayer;
-        mnuLayer.Append(ID_MNU_AUTOMAPSELECTED, "Auto Map Selected");
+        mnuLayer.Append(ID_MNU_AUTOMAPSELECTED, _("Auto Map Selected"));
 
         _contextDonorGroups = DonorGroupsAt(event.GetPosition());
         // For formats with no group concept (e.g. LOR .lms) the entry would

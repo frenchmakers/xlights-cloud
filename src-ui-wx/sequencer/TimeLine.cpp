@@ -212,9 +212,9 @@ void TimeLine::mouseRightDown(wxMouseEvent& event)
 
     wxMenu mnuLayer;
     if (mSelectedPlayMarkerEndMS != mSelectedPlayMarkerStartMS) {
-        mnuLayer.Append(ID_ZOOMSEL, "Zoom to Selection");
+        mnuLayer.Append(ID_ZOOMSEL, _("Zoom to Selection"));
     }
-    mnuLayer.Append(ID_RESETZOOM, "Reset Zoom");
+    mnuLayer.Append(ID_RESETZOOM, _("Reset Zoom"));
     for (int i = 0; i < 10; ++i)
     {
         auto mnu = mnuLayer.AppendCheckItem(i+1, wxString::Format("%i", i));
@@ -232,7 +232,7 @@ void TimeLine::mouseRightDown(wxMouseEvent& event)
 
         if (GetTagCount() > 1)
         {
-            mnuDelete->Append(200, "All");
+            mnuDelete->Append(200, wxGETTEXT_IN_CONTEXT("menu", "All"));
         }
 
         for (int i = 0; i < 10; ++i)
@@ -243,7 +243,7 @@ void TimeLine::mouseRightDown(wxMouseEvent& event)
             }
         }
 
-        mnuLayer.AppendSubMenu(mnuDelete, "Delete");
+        mnuLayer.AppendSubMenu(mnuDelete, _("Delete"));
         mnuDelete->Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&TimeLine::OnPopup, nullptr, this);
     }
 
@@ -252,7 +252,7 @@ void TimeLine::mouseRightDown(wxMouseEvent& event)
         mnuLayer.AppendSeparator();
         SongStructureManager& ssm = _sequenceElements->GetSongStructureManager();
 
-        mnuLayer.Append(ID_SONG_ADD_BOUNDARY, "Add Song Structure Boundary Here");
+        mnuLayer.Append(ID_SONG_ADD_BOUNDARY, _("Add Song Structure Boundary Here"));
         mnuLayer.Connect(ID_SONG_ADD_BOUNDARY, wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&TimeLine::OnSongStructurePopup, nullptr, this);
 
         // Compute boundary hit tolerance in MS
@@ -264,7 +264,7 @@ void TimeLine::mouseRightDown(wxMouseEvent& event)
         int nearBoundary = ssm.FindNearestBoundary(_rightClickPosition, toleranceMS);
 
         if (nearBoundary >= 0) {
-            mnuLayer.Append(ID_SONG_DELETE_BOUNDARY, "Delete Song Structure Boundary");
+            mnuLayer.Append(ID_SONG_DELETE_BOUNDARY, _("Delete Song Structure Boundary"));
             mnuLayer.Connect(ID_SONG_DELETE_BOUNDARY, wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&TimeLine::OnSongStructurePopup, nullptr, this);
         }
 
@@ -286,7 +286,7 @@ void TimeLine::mouseRightDown(wxMouseEvent& event)
                     wxString label = wxString::Format("%s (%s)", wxString::FromUTF8(target.name), timeStr);
                     copySubmenu->Append(ID_SONG_COPY_EFFECTS_BASE + (int)i, label);
                 }
-                mnuLayer.AppendSubMenu(copySubmenu, "Copy Effects to Region");
+                mnuLayer.AppendSubMenu(copySubmenu, _("Copy Effects to Region"));
                 copySubmenu->Connect(wxEVT_COMMAND_MENU_SELECTED,
                     (wxObjectEventFunction)&TimeLine::OnSongStructurePopup, nullptr, this);
             }
@@ -296,22 +296,22 @@ void TimeLine::mouseRightDown(wxMouseEvent& event)
             bool hasSelection = (msCheck && msCheck->PanelEffectGrid &&
                                  msCheck->PanelEffectGrid->GetSelectedEffect() != nullptr);
             wxMenuItem* paletteItem = mnuLayer.Append(ID_SONG_APPLY_PALETTE,
-                "Apply Selected Effect Palette to Region");
+                _("Apply Selected Effect Palette to Region"));
             paletteItem->Enable(hasSelection);
             mnuLayer.Connect(ID_SONG_APPLY_PALETTE, wxEVT_COMMAND_MENU_SELECTED,
                 (wxObjectEventFunction)&TimeLine::OnSongStructurePopup, nullptr, this);
 
             // "Export Song Region as New Sequence"
-            mnuLayer.Append(ID_SONG_EXPORT_REGION, "Export Song Region as New Sequence");
+            mnuLayer.Append(ID_SONG_EXPORT_REGION, _("Export Song Region as New Sequence"));
             mnuLayer.Connect(ID_SONG_EXPORT_REGION, wxEVT_COMMAND_MENU_SELECTED,
                 (wxObjectEventFunction)&TimeLine::OnSongStructurePopup, nullptr, this);
         }
 
         if (ssm.HasRegions()) {
-            mnuLayer.Append(ID_SONG_EXPORT_ALL_REGIONS, "Export All Song Regions as Sequences");
+            mnuLayer.Append(ID_SONG_EXPORT_ALL_REGIONS, _("Export All Song Regions as Sequences"));
             mnuLayer.Connect(ID_SONG_EXPORT_ALL_REGIONS, wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&TimeLine::OnSongStructurePopup, nullptr, this);
             mnuLayer.AppendSeparator();
-            mnuLayer.Append(ID_SONG_CLEAR_STRUCTURE, "Clear Song Structure");
+            mnuLayer.Append(ID_SONG_CLEAR_STRUCTURE, _("Clear Song Structure"));
             mnuLayer.Connect(ID_SONG_CLEAR_STRUCTURE, wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&TimeLine::OnSongStructurePopup, nullptr, this);
         }
 
@@ -331,12 +331,12 @@ void TimeLine::mouseRightDown(wxMouseEvent& event)
                 viewSubmenu->AppendSeparator();
             }
 
-            viewSubmenu->Append(ID_SONG_VIEW_NEW, "New View...");
-            viewSubmenu->Append(ID_SONG_VIEW_DUPLICATE, "Duplicate Current View...");
+            viewSubmenu->Append(ID_SONG_VIEW_NEW, _("New View..."));
+            viewSubmenu->Append(ID_SONG_VIEW_DUPLICATE, _("Duplicate Current View..."));
 
             if (ssm.GetViewCount() > 0) {
-                viewSubmenu->Append(ID_SONG_VIEW_RENAME, "Rename Current View...");
-                wxMenuItem* delItem = viewSubmenu->Append(ID_SONG_VIEW_DELETE, "Delete Current View");
+                viewSubmenu->Append(ID_SONG_VIEW_RENAME, _("Rename Current View..."));
+                wxMenuItem* delItem = viewSubmenu->Append(ID_SONG_VIEW_DELETE, _("Delete Current View"));
                 if (ssm.GetViewCount() <= 1) {
                     delItem->Enable(false);
                 }
@@ -345,7 +345,7 @@ void TimeLine::mouseRightDown(wxMouseEvent& event)
             viewSubmenu->Connect(wxEVT_COMMAND_MENU_SELECTED,
                 (wxObjectEventFunction)&TimeLine::OnSongStructurePopup, nullptr, this);
 
-            mnuLayer.AppendSubMenu(viewSubmenu, "Song Structure Views");
+            mnuLayer.AppendSubMenu(viewSubmenu, _("Song Structure Views"));
         }
     }
 

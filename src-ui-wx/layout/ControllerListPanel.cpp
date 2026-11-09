@@ -813,15 +813,15 @@ void ControllerListPanel::OnContextMenu(wxTreeListEvent& event) {
     bool canUpload = allowed && selected.size() == 1 && selected.front()->SupportsUpload();
 
     mnu.Append(ID_CTRL_MNU_ADDETHERNET, ethernet)->Enable(allowed);
-    mnu.Append(ID_CTRL_MNU_ADDNULL, "Insert NULL")->Enable(allowed);
-    mnu.Append(ID_CTRL_MNU_ADDSERIAL, "Insert DMX/LOR/DLight/Renard")->Enable(allowed);
-    mnu.Append(ID_CTRL_MNU_ACTIVE, "Activate")->Enable(canActivate);
-    mnu.Append(ID_CTRL_MNU_ACTIVEXLIGHTS, "Activate in xLights Only")->Enable(canActivate);
-    mnu.Append(ID_CTRL_MNU_INACTIVE, "Deactivate")->Enable(canActivate);
-    mnu.Append(ID_CTRL_MNU_DELETE, "Delete")->Enable(allowed && !selected.empty());
-    mnu.Append(ID_CTRL_MNU_UNLINKFROMBASE, "Unlink from Base Show Folder")->Enable(allowed && allFromBase);
+    mnu.Append(ID_CTRL_MNU_ADDNULL, _("Insert NULL"))->Enable(allowed);
+    mnu.Append(ID_CTRL_MNU_ADDSERIAL, _("Insert DMX/LOR/DLight/Renard"))->Enable(allowed);
+    mnu.Append(ID_CTRL_MNU_ACTIVE, _("Activate"))->Enable(canActivate);
+    mnu.Append(ID_CTRL_MNU_ACTIVEXLIGHTS, _("Activate in xLights Only"))->Enable(canActivate);
+    mnu.Append(ID_CTRL_MNU_INACTIVE, _("Deactivate"))->Enable(canActivate);
+    mnu.Append(ID_CTRL_MNU_DELETE, _("Delete"))->Enable(allowed && !selected.empty());
+    mnu.Append(ID_CTRL_MNU_UNLINKFROMBASE, _("Unlink from Base Show Folder"))->Enable(allowed && allFromBase);
     if (!_frame->GetOutputManager()->GetBaseShowDir().empty()) {
-        mnu.Append(ID_CTRL_MNU_PROMOTETOBASE, "Promote to Base Show Folder")->Enable(allowed && !allFromBase && !selected.empty() && _frame->CanPromoteToBaseShowFolder());
+        mnu.Append(ID_CTRL_MNU_PROMOTETOBASE, _("Promote to Base Show Folder"))->Enable(allowed && !allFromBase && !selected.empty() && _frame->CanPromoteToBaseShowFolder());
     }
     {
         auto* visMenu = new wxMenu();
@@ -842,7 +842,7 @@ void ControllerListPanel::OnContextMenu(wxTreeListEvent& event) {
             ++idx;
         }
         visMenu->Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&ControllerListPanel::OnPopup, nullptr, this);
-        mnu.Append(wxID_ANY, "Show on Layout", visMenu)->Enable(!selected.empty());
+        mnu.Append(wxID_ANY, _("Show on Layout"), visMenu)->Enable(!selected.empty());
     }
     bool isIpController = false;
     std::string targetIp;
@@ -852,22 +852,22 @@ void ControllerListPanel::OnContextMenu(wxTreeListEvent& event) {
         isIpController = !targetIp.empty() && targetIp != "MULTICAST";
     }
 
-    mnu.Append(ID_CTRL_MNU_UPLOADOUTPUT, "Upload Output")->Enable(canUpload);
-    mnu.Append(ID_CTRL_MNU_FPP_CONNECT, "FPP Connect")->Enable(allowed && isIpController);
+    mnu.Append(ID_CTRL_MNU_UPLOADOUTPUT, _("Upload Output"))->Enable(canUpload);
+    mnu.Append(ID_CTRL_MNU_FPP_CONNECT, _("FPP Connect"))->Enable(allowed && isIpController);
 
     mnu.AppendSeparator();
     wxMenu* sort = new wxMenu();
-    sort->Append(ID_CTRL_MNU_SORT_NAME, "by Name")->Enable(allowed);
-    sort->Append(ID_CTRL_MNU_SORT_ID, "by ID")->Enable(allowed);
-    sort->Append(ID_CTRL_MNU_SORT_IP, "by IP")->Enable(allowed);
-    sort->Append(ID_CTRL_MNU_SORT_FPP_PROXY, "by FPP Proxy")->Enable(allowed);
-    sort->Append(ID_CTRL_MNU_SORT_VENDOR, "by Controller Model")->Enable(allowed);
-    sort->Append(ID_CTRL_MNU_SORT_PROTOCOL, "by Controller Protocol")->Enable(allowed);
-    mnu.AppendSubMenu(sort, "Sort");
+    sort->Append(ID_CTRL_MNU_SORT_NAME, _("by Name"))->Enable(allowed);
+    sort->Append(ID_CTRL_MNU_SORT_ID, _("by ID"))->Enable(allowed);
+    sort->Append(ID_CTRL_MNU_SORT_IP, _("by IP"))->Enable(allowed);
+    sort->Append(ID_CTRL_MNU_SORT_FPP_PROXY, _("by FPP Proxy"))->Enable(allowed);
+    sort->Append(ID_CTRL_MNU_SORT_VENDOR, _("by Controller Model"))->Enable(allowed);
+    sort->Append(ID_CTRL_MNU_SORT_PROTOCOL, _("by Controller Protocol"))->Enable(allowed);
+    mnu.AppendSubMenu(sort, _("Sort"));
 
     mnu.AppendSeparator();
-    mnu.Append(ID_CTRL_MNU_EXPAND_ALL, "Expand All Controllers");
-    mnu.Append(ID_CTRL_MNU_COLLAPSE_ALL, "Collapse All");
+    mnu.Append(ID_CTRL_MNU_EXPAND_ALL, _("Expand All Controllers"));
+    mnu.Append(ID_CTRL_MNU_COLLAPSE_ALL, _("Collapse All"));
 
     mnu.Bind(wxEVT_MENU, &ControllerListPanel::OnPopup, this);
     PopupMenu(&mnu);
@@ -1192,8 +1192,8 @@ wxWindow* ControllerListPanel::CreatePropertiesPanel(wxWindow* parent) {
             ethernet += "xxx";
         }
         mnu.Append(ID_CTRL_MNU_ADDETHERNET, ethernet);
-        mnu.Append(ID_CTRL_MNU_ADDNULL, "Add NULL");
-        mnu.Append(ID_CTRL_MNU_ADDSERIAL, "Add DMX/LOR/DLight/Renard");
+        mnu.Append(ID_CTRL_MNU_ADDNULL, _("Add NULL"));
+        mnu.Append(ID_CTRL_MNU_ADDSERIAL, _("Add DMX/LOR/DLight/Renard"));
         
         mnu.Bind(wxEVT_MENU, &ControllerListPanel::OnPopup, this);
         // On the button, not on this panel: the properties panel is reparented

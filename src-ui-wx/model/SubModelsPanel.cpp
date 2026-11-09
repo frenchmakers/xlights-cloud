@@ -865,16 +865,16 @@ void SubModelsPanel::OnDeleteButtonClick(wxCommandEvent& event)
 void SubModelsPanel::OnButton_EditClick(wxCommandEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(SUBMODEL_DIALOG_GENERATE, "Generate Slices");
-    mnu.Append(SUBMODEL_DIALOG_ALIASES, "Add/Edit Aliases");
+    mnu.Append(SUBMODEL_DIALOG_GENERATE, _("Generate Slices"));
+    mnu.Append(SUBMODEL_DIALOG_ALIASES, _("Add/Edit Aliases"));
     if (ListCtrl_SubModels->GetItemCount() > 0) {
-        mnu.Append(SUBMODEL_DIALOG_FLIP_VER, "Flip All SubModels Vertical");
-        mnu.Append(SUBMODEL_DIALOG_FLIP_HOR, "Flip All SubModels Horizontial");
-        mnu.Append(SUBMODEL_DIALOG_SHIFT, "Shift All Nodes in All SubModels");
-        mnu.Append(SUBMODEL_DIALOG_REVERSE, "Reverse All Nodes in All SubModels");
+        mnu.Append(SUBMODEL_DIALOG_FLIP_VER, _("Flip All SubModels Vertical"));
+        mnu.Append(SUBMODEL_DIALOG_FLIP_HOR, _("Flip All SubModels Horizontial"));
+        mnu.Append(SUBMODEL_DIALOG_SHIFT, _("Shift All Nodes in All SubModels"));
+        mnu.Append(SUBMODEL_DIALOG_REVERSE, _("Reverse All Nodes in All SubModels"));
     }
     if (ListCtrl_SubModels->GetSelectedItemCount() == 1) {
-        mnu.Append(SUBMODEL_DIALOG_SHIFT_SINGLE, "Shift All Nodes in Selected SubModel");
+        mnu.Append(SUBMODEL_DIALOG_SHIFT_SINGLE, _("Shift All Nodes in Selected SubModel"));
     }
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)& SubModelsPanel::OnEditBtnPopup, nullptr, this);
     PopupMenu(&mnu);
@@ -884,16 +884,16 @@ void SubModelsPanel::OnButton_EditClick(wxCommandEvent& event)
 void SubModelsPanel::OnButtonImportClick(wxCommandEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(SUBMODEL_DIALOG_IMPORT_MODEL, "Import SubModels From Model");
-    mnu.Append(SUBMODEL_DIALOG_IMPORT_FILE, "Import SubModels From File");
-    mnu.Append(SUBMODEL_DIALOG_IMPORT_LAYOUT, "Import SubModels From Layout");
-    mnu.Append(SUBMODEL_DIALOG_IMPORT_DOWNLOAD, "Import SubModels From Downloads");
-    mnu.Append(SUBMODEL_DIALOG_IMPORT_STATE, "Import SubModels From State");
-    mnu.Append(SUBMODEL_DIALOG_IMPORT_FACE, "Import SubModels From Face");
+    mnu.Append(SUBMODEL_DIALOG_IMPORT_MODEL, _("Import SubModels From Model"));
+    mnu.Append(SUBMODEL_DIALOG_IMPORT_FILE, _("Import SubModels From File"));
+    mnu.Append(SUBMODEL_DIALOG_IMPORT_LAYOUT, _("Import SubModels From Layout"));
+    mnu.Append(SUBMODEL_DIALOG_IMPORT_DOWNLOAD, _("Import SubModels From Downloads"));
+    mnu.Append(SUBMODEL_DIALOG_IMPORT_STATE, _("Import SubModels From State"));
+    mnu.Append(SUBMODEL_DIALOG_IMPORT_FACE, _("Import SubModels From Face"));
     if (_isMatrix) {
-        mnu.Append(SUBMODEL_DIALOG_IMPORT_CUSTOM, "Import Custom Model Overlay");
+        mnu.Append(SUBMODEL_DIALOG_IMPORT_CUSTOM, _("Import Custom Model Overlay"));
     }
-    mnu.Append(SUBMODEL_DIALOG_IMPORT_CSV, "Import CSV as SubModel");
+    mnu.Append(SUBMODEL_DIALOG_IMPORT_CSV, _("Import CSV as SubModel"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)& SubModelsPanel::OnImportBtnPopup, nullptr, this);
     PopupMenu(&mnu);
     event.Skip();
@@ -902,11 +902,11 @@ void SubModelsPanel::OnButtonImportClick(wxCommandEvent& event)
 void SubModelsPanel::OnButton_ExportClick(wxCommandEvent& event)
 {
     wxMenu mnu;
-    mnu.Append(SUBMODEL_DIALOG_EXPORT_CSV, "Export SubModels As CSV");
+    mnu.Append(SUBMODEL_DIALOG_EXPORT_CSV, _("Export SubModels As CSV"));
     if (ListCtrl_SubModels->GetSelectedItemCount() == 1) {
-        mnu.Append(SUBMODEL_DIALOG_EXPORT_XMODEL, "Export SubModel As xModel");
+        mnu.Append(SUBMODEL_DIALOG_EXPORT_XMODEL, _("Export SubModel As xModel"));
     }
-    mnu.Append(SUBMODEL_DIALOG_EXPORT_TOOTHERS, "Export SubModels To Other Model(s)");
+    mnu.Append(SUBMODEL_DIALOG_EXPORT_TOOTHERS, _("Export SubModels To Other Model(s)"));
 
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)& SubModelsPanel::OnExportBtnPopup, nullptr, this);
     PopupMenu(&mnu);
@@ -1288,24 +1288,24 @@ void SubModelsPanel::OnNodesGridCellRightClick(wxGridEvent& event)
     if (event.GetRow() != -1) {
         //NodesGrid->GoToCell(event.GetRow(), 0);
 
-        mnu.Append(SUBMODEL_DIALOG_REMOVE_DUPLICATE, "Remove Duplicates");
-        mnu.Append(SUBMODEL_DIALOG_SUPPRESS_DUPLICATE, "Suppress Duplicates");
-        mnu.Append(SUBMODEL_DIALOG_SORT_POINTS, "Sort Strand Points Geometrically...");
+        mnu.Append(SUBMODEL_DIALOG_REMOVE_DUPLICATE, _("Remove Duplicates"));
+        mnu.Append(SUBMODEL_DIALOG_SUPPRESS_DUPLICATE, _("Suppress Duplicates"));
+        mnu.Append(SUBMODEL_DIALOG_SORT_POINTS, _("Sort Strand Points Geometrically..."));
         mnu.AppendSeparator();
     }
-    mnu.Append(SUBMODEL_DIALOG_REMOVE_ALL_DUPLICATE_LR, "Remove Duplicates All Left->Right");
-    mnu.Append(SUBMODEL_DIALOG_REMOVE_ALL_DUPLICATE_TB, "Remove Duplicates All Top->Bottom");
-    mnu.Append(SUBMODEL_DIALOG_SUPPRESS_ALL_DUPLICATE_LR, "Suppress Duplicates All Left->Right");
-    mnu.Append(SUBMODEL_DIALOG_SUPPRESS_ALL_DUPLICATE_TB, "Suppress Duplicates All Top->Bottom");
-    mnu.Append(SUBMODEL_DIALOG_EVEN_ROWS, "Uniform Row Length");
-    mnu.Append(SUBMODEL_DIALOG_EVEN_ROWS_FRONT, "Uniform Row Length - Pad Front");
-    mnu.Append(SUBMODEL_DIALOG_EVEN_ROWS_REAR, "Uniform Row Length - Pad Rear");
-    mnu.Append(SUBMODEL_DIALOG_PIVOT_ROWS_COLUMNS, "Pivot Rows / Columns");
-    mnu.Append(SUBMODEL_DIALOG_SORT_POINTS_ALL, "Geometrically Sort Points All Strands...");
+    mnu.Append(SUBMODEL_DIALOG_REMOVE_ALL_DUPLICATE_LR, _("Remove Duplicates All Left->Right"));
+    mnu.Append(SUBMODEL_DIALOG_REMOVE_ALL_DUPLICATE_TB, _("Remove Duplicates All Top->Bottom"));
+    mnu.Append(SUBMODEL_DIALOG_SUPPRESS_ALL_DUPLICATE_LR, _("Suppress Duplicates All Left->Right"));
+    mnu.Append(SUBMODEL_DIALOG_SUPPRESS_ALL_DUPLICATE_TB, _("Suppress Duplicates All Top->Bottom"));
+    mnu.Append(SUBMODEL_DIALOG_EVEN_ROWS, _("Uniform Row Length"));
+    mnu.Append(SUBMODEL_DIALOG_EVEN_ROWS_FRONT, _("Uniform Row Length - Pad Front"));
+    mnu.Append(SUBMODEL_DIALOG_EVEN_ROWS_REAR, _("Uniform Row Length - Pad Rear"));
+    mnu.Append(SUBMODEL_DIALOG_PIVOT_ROWS_COLUMNS, _("Pivot Rows / Columns"));
+    mnu.Append(SUBMODEL_DIALOG_SORT_POINTS_ALL, _("Geometrically Sort Points All Strands..."));
 
     mnu.AppendSeparator();
     if (SubModelSymmetrize::SupportsModel(model)) {
-        mnu.Append(SUBMODEL_DIALOG_SYMMETRIZE, "Symmetrize (Rotational)");
+        mnu.Append(SUBMODEL_DIALOG_SYMMETRIZE, _("Symmetrize (Rotational)"));
         wxString mname = GetSelectedName();
         SubModelInfo* sm = mname.empty() ? nullptr : GetSubModelInfo(mname);
         bool hasNodes = sm != nullptr && !sm->strands.empty() &&
@@ -1314,7 +1314,7 @@ void SubModelsPanel::OnNodesGridCellRightClick(wxGridEvent& event)
         mnu.Enable(SUBMODEL_DIALOG_SYMMETRIZE, hasNodes);
     }
     {
-        mnu.Append(SUBMODEL_DIALOG_COMBINE_STRANDS, "Combine Strands");
+        mnu.Append(SUBMODEL_DIALOG_COMBINE_STRANDS, _("Combine Strands"));
         wxString csname = GetSelectedName();
         SubModelInfo* cssm = csname.empty() ? nullptr : GetSubModelInfo(csname);
         bool hasMultipleStrands = cssm != nullptr && cssm->strands.size() > 1;
@@ -1322,11 +1322,11 @@ void SubModelsPanel::OnNodesGridCellRightClick(wxGridEvent& event)
     }
 
     mnu.AppendSeparator();
-    mnu.Append(SUBMODEL_DIALOG_EXPAND_STRANDS_ALL, "Expand All Strands");
-    mnu.Append(SUBMODEL_DIALOG_COMPRESS_STRANDS_ALL, "Compress All Strands");
-    mnu.Append(SUBMODEL_DIALOG_BLANKS_AS_ZERO, "Convert Blanks To Zeros");
-    mnu.Append(SUBMODEL_DIALOG_BLANKS_AS_EMPTY, "Convert Zeros To Empty");
-    mnu.Append(SUBMODEL_DIALOG_REMOVE_BLANKS_ZEROS, "Remove Blanks/Zeros");
+    mnu.Append(SUBMODEL_DIALOG_EXPAND_STRANDS_ALL, _("Expand All Strands"));
+    mnu.Append(SUBMODEL_DIALOG_COMPRESS_STRANDS_ALL, _("Compress All Strands"));
+    mnu.Append(SUBMODEL_DIALOG_BLANKS_AS_ZERO, _("Convert Blanks To Zeros"));
+    mnu.Append(SUBMODEL_DIALOG_BLANKS_AS_EMPTY, _("Convert Zeros To Empty"));
+    mnu.Append(SUBMODEL_DIALOG_REMOVE_BLANKS_ZEROS, _("Remove Blanks/Zeros"));
 
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&SubModelsPanel::OnNodesGridPopup, nullptr, this);
     PopupMenu(&mnu);
@@ -1381,15 +1381,15 @@ void SubModelsPanel::OnListCtrl_SubModelsItemRClick(wxListEvent& event)
     if (ListCtrl_SubModels->GetItemCount() > 0) {
         wxMenu mnu;
 
-        mnu.Append(SUBMODEL_DIALOG_SORT_BY_NAME, "Sort by Name");
+        mnu.Append(SUBMODEL_DIALOG_SORT_BY_NAME, _("Sort by Name"));
         if (ListCtrl_SubModels->GetSelectedItemCount() > 1) {
             mnu.AppendSeparator();
-            mnu.Append(SUBMODEL_DIALOG_JOIN, "Join");
-            mnu.Append(SUBMODEL_DIALOG_JOIN_SS, "Join Single Strand");
+            mnu.Append(SUBMODEL_DIALOG_JOIN, _("Join"));
+            mnu.Append(SUBMODEL_DIALOG_JOIN_SS, _("Join Single Strand"));
         }
         if (ListCtrl_SubModels->GetSelectedItemCount() == 1) {
             mnu.AppendSeparator();
-            mnu.Append(SUBMODEL_DIALOG_SPLIT, "Split");
+            mnu.Append(SUBMODEL_DIALOG_SPLIT, _("Split"));
         }
 
         mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&SubModelsPanel::OnListPopup, nullptr, this);

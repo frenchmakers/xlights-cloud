@@ -2820,18 +2820,18 @@ void CustomModelDialog::OnGridLabelRightClick(wxGridEvent& event)
         mnu.AppendSeparator();
         if (selRow >= 0)
         {
-            mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMROW, "Create SubModel From Row");
-            mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMROW, "Create Minimal SubModel From Row");
-            mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMALLROWS, "Create SubModel From All Rows");
-            mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMALLROWS, "Create Minimal SubModel From All Rows");
+            mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMROW, _("Create SubModel From Row"));
+            mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMROW, _("Create Minimal SubModel From Row"));
+            mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMALLROWS, _("Create SubModel From All Rows"));
+            mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMALLROWS, _("Create Minimal SubModel From All Rows"));
             _selRow = selRow;
         }
         if (selCol >= 0)
         {
-            mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMCOLUMN, "Create SubModel From Column");
-            mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMCOLUMN, "Create Minimal SubModel From Column");
-            mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMALLCOLUMNS, "Create SubModel From AllColumns");
-            mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMALLCOLUMNS, "Create Minimal SubModel From All Columns");
+            mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMCOLUMN, _("Create SubModel From Column"));
+            mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMCOLUMN, _("Create Minimal SubModel From Column"));
+            mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMALLCOLUMNS, _("Create SubModel From AllColumns"));
+            mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMALLCOLUMNS, _("Create Minimal SubModel From All Columns"));
             _selCol = selCol;
         }
 
@@ -2853,9 +2853,9 @@ void CustomModelDialog::OnGridCustomCellRightClick(wxGridEvent& event)
 
     wxMenu mnu;
     // Copy / Paste / Delete
-    wxMenuItem* menu_cut = mnu.Append(CUSTOMMODELDLGMNU_CUT, "Cut");
-    wxMenuItem* menu_copy = mnu.Append(CUSTOMMODELDLGMNU_COPY, "Copy");
-    wxMenuItem* menu_paste = mnu.Append(CUSTOMMODELDLGMNU_PASTE, "Paste");
+    wxMenuItem* menu_cut = mnu.Append(CUSTOMMODELDLGMNU_CUT, _("Cut"));
+    wxMenuItem* menu_copy = mnu.Append(CUSTOMMODELDLGMNU_COPY, _("Copy"));
+    wxMenuItem* menu_paste = mnu.Append(CUSTOMMODELDLGMNU_PASTE, _("Paste"));
     if (GetActiveGrid()->GetSelectionBlockBottomRight().Count() > 0)
     {
         menu_cut->Enable(true);
@@ -2869,42 +2869,42 @@ void CustomModelDialog::OnGridCustomCellRightClick(wxGridEvent& event)
         menu_paste->Enable(false);
     }
     mnu.AppendSeparator();
-    mnu.Append(CUSTOMMODELDLGMNU_DELETE, "Clear Cells");
+    mnu.Append(CUSTOMMODELDLGMNU_DELETE, _("Clear Cells"));
     mnu.AppendSeparator();
-    mnu.Append(CUSTOMMODELDLGMNU_FIND, "Find Node");
-    mnu.Append(CUSTOMMODELDLGMNU_FINDLAST, "Find Last Node");
+    mnu.Append(CUSTOMMODELDLGMNU_FIND, _("Find Node"));
+    mnu.Append(CUSTOMMODELDLGMNU_FINDLAST, _("Find Last Node"));
     mnu.AppendSeparator();
 
-    mnu.Append(CUSTOMMODELDLGMNU_FLIPH, "Horizontal Flip");
+    mnu.Append(CUSTOMMODELDLGMNU_FLIPH, _("Horizontal Flip"));
     if (GetActiveGrid()->GetSelectionBlockBottomRight().Count() > 0) {
-        mnu.Append(CUSTOMMODELDLGMNU_FLIPHSELECTED, "Horizontal Flip Selected");
+        mnu.Append(CUSTOMMODELDLGMNU_FLIPHSELECTED, _("Horizontal Flip Selected"));
     }
-    mnu.Append(CUSTOMMODELDLGMNU_FLIPV, "Vertical Flip");
+    mnu.Append(CUSTOMMODELDLGMNU_FLIPV, _("Vertical Flip"));
     if (GetActiveGrid()->GetSelectionBlockBottomRight().Count() > 0) {
-        mnu.Append(CUSTOMMODELDLGMNU_FLIPVSELECTED, "Vertical Flip Selected");
+        mnu.Append(CUSTOMMODELDLGMNU_FLIPVSELECTED, _("Vertical Flip Selected"));
     }
-    mnu.Append(CUSTOMMODELDLGMNU_ROTATE90, "Rotate 90");
-    mnu.Append(CUSTOMMODELDLGMNU_ROTATE, "Rotate x");
-    mnu.Append(CUSTOMMODELDLGMNU_REVERSE, "Reverse");
-    mnu.Append(CUSTOMMODELDLGMNU_SHIFT, "Shift");
+    mnu.Append(CUSTOMMODELDLGMNU_ROTATE90, _("Rotate 90"));
+    mnu.Append(CUSTOMMODELDLGMNU_ROTATE, _("Rotate x"));
+    mnu.Append(CUSTOMMODELDLGMNU_REVERSE, _("Reverse"));
+    mnu.Append(CUSTOMMODELDLGMNU_SHIFT, _("Shift"));
     if (GetActiveGrid()->GetSelectionBlockBottomRight().Count() > 0) {
-        mnu.Append(CUSTOMMODELDLGMNU_SHIFTSELECTED, "Shift Selected");
+        mnu.Append(CUSTOMMODELDLGMNU_SHIFTSELECTED, _("Shift Selected"));
     }
-    wxMenuItem* menu_insert = mnu.Append(CUSTOMMODELDLGMNU_INSERT, "Insert Prior");
-    mnu.Append(CUSTOMMODELDLGMNU_COMPRESS, "Compress");
-    mnu.Append(CUSTOMMODELDLGMNU_TRIMUNUSEDSPACE, "Trim Unused Space");
-    mnu.Append(CUSTOMMODELDLGMNU_SHRINKSPACE10, "Shrink Space - Max 10%");
-    mnu.Append(CUSTOMMODELDLGMNU_SHRINKSPACE50, "Shrink Space - Max 50%");
-    mnu.Append(CUSTOMMODELDLGMNU_SHRINKSPACE99, "Shrink Space - Max 99%");
-    mnu.Append(CUSTOMMODELDLGMNU_EXPANDSPACE, "Expand to use Space");
-    mnu.Append(CUSTOMMODELDLGMNU_MAKESINGLENODE, "Convert to Single Node");
+    wxMenuItem* menu_insert = mnu.Append(CUSTOMMODELDLGMNU_INSERT, _("Insert Prior"));
+    mnu.Append(CUSTOMMODELDLGMNU_COMPRESS, _("Compress"));
+    mnu.Append(CUSTOMMODELDLGMNU_TRIMUNUSEDSPACE, _("Trim Unused Space"));
+    mnu.Append(CUSTOMMODELDLGMNU_SHRINKSPACE10, _("Shrink Space - Max 10%"));
+    mnu.Append(CUSTOMMODELDLGMNU_SHRINKSPACE50, _("Shrink Space - Max 50%"));
+    mnu.Append(CUSTOMMODELDLGMNU_SHRINKSPACE99, _("Shrink Space - Max 99%"));
+    mnu.Append(CUSTOMMODELDLGMNU_EXPANDSPACE, _("Expand to use Space"));
+    mnu.Append(CUSTOMMODELDLGMNU_MAKESINGLENODE, _("Convert to Single Node"));
     if (SpinCtrl_Depth->GetValue() > 1)
     {
         mnu.AppendSeparator();
-        mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMLAYER, "Create Submodel From Layer");
-        mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMLAYER, "Create Minimal Submodel From Layer");
-        mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMALLLAYERS, "Create Submodel From All Layers");
-        mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMALLLAYERS, "Create Minimal Submodel From All Layers");
+        mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMLAYER, _("Create Submodel From Layer"));
+        mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMLAYER, _("Create Minimal Submodel From Layer"));
+        mnu.Append(CUSTOMMODELDLGMNU_CREATESUBMODELFROMALLLAYERS, _("Create Submodel From All Layers"));
+        mnu.Append(CUSTOMMODELDLGMNU_CREATEMINIMALSUBMODELFROMALLLAYERS, _("Create Minimal Submodel From All Layers"));
     }
 
     if (selectedCellWithValue)
@@ -2917,28 +2917,28 @@ void CustomModelDialog::OnGridCustomCellRightClick(wxGridEvent& event)
     }
 
     mnu.AppendSeparator();
-    auto m = mnu.Append(CUSTOMMODELDLGMNU_COPYLAYERFWD1, "Copy Layer Forward 1");
+    auto m = mnu.Append(CUSTOMMODELDLGMNU_COPYLAYERFWD1, _("Copy Layer Forward 1"));
     m->Enable(Notebook1->GetSelection() != (int)Notebook1->GetPageCount() - 1);
-    m = mnu.Append(CUSTOMMODELDLGMNU_COPYLAYERFWDALL, "Copy Layer Forward All");
+    m = mnu.Append(CUSTOMMODELDLGMNU_COPYLAYERFWDALL, _("Copy Layer Forward All"));
     m->Enable(Notebook1->GetSelection() != (int)Notebook1->GetPageCount() - 1);
-    m = mnu.Append(CUSTOMMODELDLGMNU_COPYLAYERBKWD1, "Copy Layer Backward 1");
+    m = mnu.Append(CUSTOMMODELDLGMNU_COPYLAYERBKWD1, _("Copy Layer Backward 1"));
     m->Enable(Notebook1->GetSelection() != 0);
-    m = mnu.Append(CUSTOMMODELDLGMNU_COPYLAYERBKWDALL, "Copy Layer Backward All");
+    m = mnu.Append(CUSTOMMODELDLGMNU_COPYLAYERBKWDALL, _("Copy Layer Backward All"));
     m->Enable(Notebook1->GetSelection() != 0);
 
     if (GetActiveGrid()->GetSelectionBlockBottomRight().Count() > 0)
     {
         wxMenu* sub = new wxMenu();
         wxMenu* horz = new wxMenu();
-        horz->Append(CUSTOMMODELDLGMNU_WIREHORIZONTALLEFT, "Left -> Right");
-        horz->Append(CUSTOMMODELDLGMNU_WIREHORIZONTALRIGHT, "Right -> Left");
-        sub->AppendSubMenu(horz, "Horizontial");
+        horz->Append(CUSTOMMODELDLGMNU_WIREHORIZONTALLEFT, _("Left -> Right"));
+        horz->Append(CUSTOMMODELDLGMNU_WIREHORIZONTALRIGHT, _("Right -> Left"));
+        sub->AppendSubMenu(horz, _("Horizontial"));
         wxMenu* vert = new wxMenu();
-        vert->Append(CUSTOMMODELDLGMNU_WIREVERTICALTOP, "Top -> Bottom");
-        vert->Append(CUSTOMMODELDLGMNU_WIREVERTICALBOTTOM, "Bottom -> Top");
-        sub->AppendSubMenu(vert, "Vertical");
+        vert->Append(CUSTOMMODELDLGMNU_WIREVERTICALTOP, _("Top -> Bottom"));
+        vert->Append(CUSTOMMODELDLGMNU_WIREVERTICALBOTTOM, _("Bottom -> Top"));
+        sub->AppendSubMenu(vert, _("Vertical"));
         mnu.AppendSeparator();
-        mnu.AppendSubMenu(sub, "Number Selected");
+        mnu.AppendSubMenu(sub, _("Number Selected"));
     }
 
     mnu.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&CustomModelDialog::OnGridPopup, nullptr, this);

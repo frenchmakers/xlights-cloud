@@ -162,12 +162,12 @@ bool ModelPreview::HitTestPencilIcon(int x, int y) const {
 
 void ModelPreview::ShowPencilSizeMenu() {
     wxMenu pencilMenu;
-    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_OFF, "Off");
-    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_5, "Pencil Size 5 (Extra Large - 12px)");
-    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_4, "Pencil Size 4 (Large - 8px)");
-    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_3, "Pencil Size 3 (Medium - 6px)");
-    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_2, "Pencil Size 2 (Fine - 4px)");
-    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_1, "Pencil Size 1 (Extra Fine - 2px)");
+    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_OFF, wxGETTEXT_IN_CONTEXT("menu", "Off"));
+    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_5, _("Pencil Size 5 (Extra Large - 12px)"));
+    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_4, _("Pencil Size 4 (Large - 8px)"));
+    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_3, _("Pencil Size 3 (Medium - 6px)"));
+    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_2, _("Pencil Size 2 (Fine - 4px)"));
+    pencilMenu.AppendRadioItem(ID_PENCIL_SIZE_1, _("Pencil Size 1 (Extra Fine - 2px)"));
 
     int checkId = (s_pencilSizeIndex == 0) ? ID_PENCIL_SIZE_OFF : (ID_PENCIL_SIZE_1 + s_pencilSizeIndex - 1);
     if (checkId >= ID_PENCIL_SIZE_OFF && checkId <= ID_PENCIL_SIZE_5) {
@@ -1334,7 +1334,7 @@ void ModelPreview::rightClick(wxMouseEvent& event) {
                 wxMenuItem* item = mnu.Append(0x1001, "3D", wxEmptyString, wxITEM_CHECK);
                 item->Check(is3d);
                 mnu.AppendSeparator();
-                mnu.Append(1, "House Preview");
+                mnu.Append(1, _("House Preview"));
                 int index = 2;
                 _popupGroupNames.clear();
                 for (auto& [gname, a] : xlights->LayoutGroups) {
@@ -1355,7 +1355,7 @@ void ModelPreview::rightClick(wxMouseEvent& event) {
                             mnuViewPoint->Append(CAMERA_LOAD_BASE + i, xlights->viewpoint_mgr.GetCamera3D(i)->GetName());
                         }
                         mnuViewPoint->Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)& ModelPreview::OnPopup, nullptr, this);
-                        mnu.Append(ID_VIEWPOINT3D, "Load ViewPoint", mnuViewPoint, "");
+                        mnu.Append(ID_VIEWPOINT3D, _("Load ViewPoint"), mnuViewPoint, "");
                     }
                 } else {
                     if (xlights->viewpoint_mgr.GetNum2DCameras() > 0) {
@@ -1364,7 +1364,7 @@ void ModelPreview::rightClick(wxMouseEvent& event) {
                             mnuViewPoint->Append(CAMERA_LOAD_BASE + i, xlights->viewpoint_mgr.GetCamera2D(i)->GetName());
                         }
                         mnuViewPoint->Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)& ModelPreview::OnPopup, nullptr, this);
-                        mnu.Append(ID_VIEWPOINT2D, "Load ViewPoint", mnuViewPoint, "");
+                        mnu.Append(ID_VIEWPOINT2D, _("Load ViewPoint"), mnuViewPoint, "");
                     }
                 }
             }

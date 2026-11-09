@@ -7715,14 +7715,14 @@ void LayoutPanel::AddSingleModelOptionsToBaseMenu(wxMenu &menu) {
             Model* model = dynamic_cast<Model*>(selectedBaseObject);
             int sel_seg = model->GetSelectedSegment();
             if( sel_seg != -1 ) {
-                menu.Append(ID_PREVIEW_MODEL_SET_SEGMENTS,"Enter Segment Size");
+                menu.Append(ID_PREVIEW_MODEL_SET_SEGMENTS,_("Enter Segment Size"));
                 if( !model->HasCurve(sel_seg) ) {
-                    menu.Append(ID_PREVIEW_MODEL_ADDPOINT,"Add Point");
+                    menu.Append(ID_PREVIEW_MODEL_ADDPOINT,_("Add Point"));
                     if( model->SupportsCurves() ) {
-                        menu.Append(ID_PREVIEW_MODEL_ADDCURVE,"Define Curve");
+                        menu.Append(ID_PREVIEW_MODEL_ADDCURVE,_("Define Curve"));
                     }
                 } else {
-                    menu.Append(ID_PREVIEW_MODEL_DELCURVE,"Remove Curve");
+                    menu.Append(ID_PREVIEW_MODEL_DELCURVE,_("Remove Curve"));
                 }
                 need_sep = true;
             }
@@ -7732,7 +7732,7 @@ void LayoutPanel::AddSingleModelOptionsToBaseMenu(wxMenu &menu) {
             auto selectedId = model->GetSelectedHandleId();
             if (selectedId && selectedId->role == handles::Role::Vertex &&
                 model->GetNumHandles() > 2) {
-                menu.Append(ID_PREVIEW_MODEL_DELETEPOINT, "Delete Point");
+                menu.Append(ID_PREVIEW_MODEL_DELETEPOINT, _("Delete Point"));
                 need_sep = true;
             }
         }
@@ -7741,10 +7741,10 @@ void LayoutPanel::AddSingleModelOptionsToBaseMenu(wxMenu &menu) {
         }
         if( editing_models && (selectedBaseObject->GetDisplayAs() == DisplayAsType::Matrix ))
         {
-            menu.Append(ID_PREVIEW_MODEL_ASPECTRATIO,"Correct Aspect Ratio");
+            menu.Append(ID_PREVIEW_MODEL_ASPECTRATIO,_("Correct Aspect Ratio"));
         }
         if (is_3d && selectedObjectCnt == 1) {
-            menu.Append(ID_PREVIEW_ALIGN_GROUND, "Align With Ground");
+            menu.Append(ID_PREVIEW_ALIGN_GROUND, _("Align With Ground"));
         }
     }
     if (editing_models)
@@ -7767,142 +7767,142 @@ void LayoutPanel::AddSingleModelOptionsToBaseMenu(wxMenu &menu) {
                 anySelectedModelFromBase = true;
         }
 
-        auto lm = menu.Append(ID_PREVIEW_MODEL_LOCK, "Lock");
+        auto lm = menu.Append(ID_PREVIEW_MODEL_LOCK, _("Lock"));
         lm->Enable(anySelectedModelUnlocked && !allSelectedModelsFromBase);
-        auto um = menu.Append(ID_PREVIEW_MODEL_UNLOCK, "Unlock");
+        auto um = menu.Append(ID_PREVIEW_MODEL_UNLOCK, _("Unlock"));
         um->Enable(anySelectedModelLocked && !allSelectedModelsFromBase);
-        auto ul = menu.Append(ID_PREVIEW_MODEL_UNLINKFROMBASE, "Unlink from base show folder");
+        auto ul = menu.Append(ID_PREVIEW_MODEL_UNLINKFROMBASE, _("Unlink from base show folder"));
         ul->Enable(anySelectedModelFromBase);
         if (!xlights->GetOutputManager()->GetBaseShowDir().empty()) {
-            menu.Append(ID_PREVIEW_MODEL_PROMOTETOBASE, "Promote to Base Show Folder")->Enable(xlights->CanPromoteToBaseShowFolder() && !allSelectedModelsFromBase);
+            menu.Append(ID_PREVIEW_MODEL_PROMOTETOBASE, _("Promote to Base Show Folder"))->Enable(xlights->CanPromoteToBaseShowFolder() && !allSelectedModelsFromBase);
         }
         
         Model* model = dynamic_cast<Model*>(selectedBaseObject);
         if (model != nullptr && model->GetDisplayAs() != DisplayAsType::ModelGroup && model->GetDisplayAs() != DisplayAsType::SubModel) {
-            menu.Append(ID_PREVIEW_MODEL_NODELAYOUT, "Node Layout");
+            menu.Append(ID_PREVIEW_MODEL_NODELAYOUT, _("Node Layout"));
         }
         if (model->SupportsWiringView()) {
-            menu.Append(ID_PREVIEW_MODEL_WIRINGVIEW, "Wiring View");
+            menu.Append(ID_PREVIEW_MODEL_WIRINGVIEW, _("Wiring View"));
         }
         if (model != nullptr && !xlights->GetOutputManager()->GetControllers().empty()) {
-            menu.Append(ID_PREVIEW_MODEL_WIRETOCLOSESTCONTROLLER, "Wire to Closest Controller with Open Port");
+            menu.Append(ID_PREVIEW_MODEL_WIRETOCLOSESTCONTROLLER, _("Wire to Closest Controller with Open Port"));
         }
         menu.AppendSeparator();
         if (model->SupportsExportAsCustom())
         {
-            menu.Append(ID_PREVIEW_MODEL_EXPORTASCUSTOM, "Export as Custom xLights Model");
+            menu.Append(ID_PREVIEW_MODEL_EXPORTASCUSTOM, _("Export as Custom xLights Model"));
         }
         if (model->SupportsExportAsCustom3D()) {
-            menu.Append(ID_PREVIEW_MODEL_EXPORTASCUSTOM3D, "Export as 3D Custom xLights Model");
+            menu.Append(ID_PREVIEW_MODEL_EXPORTASCUSTOM3D, _("Export as 3D Custom xLights Model"));
         }
-        menu.Append(ID_PREVIEW_MODEL_EXPORTXLIGHTSMODEL, "Export xLights Model");
+        menu.Append(ID_PREVIEW_MODEL_EXPORTXLIGHTSMODEL, _("Export xLights Model"));
 #ifdef _DEBUG
-        menu.Append(ID_PREVIEW_MODEL_CAD_EXPORT, "Export As DXF/STL/VRML");
+        menu.Append(ID_PREVIEW_MODEL_CAD_EXPORT, _("Export As DXF/STL/VRML"));
 #endif
-        menu.Append(ID_PREVIEW_EXPORT_FACESSTATESSUBMODELS, "Export Faces/States/SubModels");
+        menu.Append(ID_PREVIEW_EXPORT_FACESSTATESSUBMODELS, _("Export Faces/States/SubModels"));
         menu.AppendSeparator();
         for (const auto& it : xlights->AllModels) {
             if (it.second->GetDisplayAs() == DisplayAsType::ModelGroup) {
-                menu.Append(ID_MNU_ADD_TO_EXISTING_GROUPS, "Add to Existing Groups");
+                menu.Append(ID_MNU_ADD_TO_EXISTING_GROUPS, _("Add to Existing Groups"));
                 break;
             }
         }
         if (selectedTreeModels.size() == 1) {
-            menu.Append(ID_MNU_REMOVE_FROM_EXISTING_GROUPS, "Remove from Existing Groups");
+            menu.Append(ID_MNU_REMOVE_FROM_EXISTING_GROUPS, _("Remove from Existing Groups"));
         }
-        menu.Append(ID_PREVIEW_MODEL_CREATEGROUP, "Create Group");
+        menu.Append(ID_PREVIEW_MODEL_CREATEGROUP, _("Create Group"));
         menu.AppendSeparator();
-        menu.Append(ID_PREVIEW_FLIP_HORIZONTAL, "Flip Horizontal")->Enable(!selectedBaseObject->IsFromBase());
-        menu.Append(ID_PREVIEW_FLIP_VERTICAL, "Flip Vertical")->Enable(!selectedBaseObject->IsFromBase());
+        menu.Append(ID_PREVIEW_FLIP_HORIZONTAL, _("Flip Horizontal"))->Enable(!selectedBaseObject->IsFromBase());
+        menu.Append(ID_PREVIEW_FLIP_VERTICAL, _("Flip Vertical"))->Enable(!selectedBaseObject->IsFromBase());
         if (model->SupportsSwapStartEnd()) {
-            menu.Append(ID_PREVIEW_SWAP_START_END, "Swap Start/End")->Enable(!selectedBaseObject->IsFromBase() && !selectedBaseObject->IsLocked());
+            menu.Append(ID_PREVIEW_SWAP_START_END, _("Swap Start/End"))->Enable(!selectedBaseObject->IsFromBase() && !selectedBaseObject->IsLocked());
         }
 
         if ((selectedObjectCnt == 1) && (modelPreview->GetModels().size() > 1) && !selectedBaseObject->IsFromBase()) {
-            menu.Append(ID_PREVIEW_REPLACEMODEL, "Replace Model(s) With This Model...");
+            menu.Append(ID_PREVIEW_REPLACEMODEL, _("Replace Model(s) With This Model..."));
         }
     }
 }
 
 void LayoutPanel::AddBulkEditOptionsToMenu(wxMenu* mnuBulkEdit) {
-    mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SETACTIVE, "Active");
-    mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SETINACTIVE, "Inactive");
+    mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SETACTIVE, _("Active"));
+    mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SETINACTIVE, _("Inactive"));
     if (editing_models) {
         if (xlights->GetOutputManager()->GetAutoLayoutControllerNames().size() > 0)
         {
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERNAME, "Controller Name");
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERNAME, _("Controller Name"));
         }
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_TAGCOLOUR, "Tag Color");
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_PIXELSIZE, "Pixel Size");
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_PIXELSTYLE, "Pixel Style");
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_TRANSPARENCY, "Transparency");
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_BLACKTRANSPARENCY, "Black Transparency");
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SHADOWMODELFOR, "Shadow Model For");
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_TAGCOLOUR, _("Tag Color"));
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_PIXELSIZE, _("Pixel Size"));
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_PIXELSTYLE, _("Pixel Style"));
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_TRANSPARENCY, _("Transparency"));
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_BLACKTRANSPARENCY, _("Black Transparency"));
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SHADOWMODELFOR, _("Shadow Model For"));
         if (IsAllSelectedModelsSameDisplayType()) {
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_MODELPROPERTIES, "Edit Properties...");
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_MODELPROPERTIES, _("Edit Properties..."));
         }
 
         mnuBulkEdit->AppendSeparator();
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_ROTATEX, "Rotate X");
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_ROTATEY, "Rotate Y");
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_ROTATEZ, "Rotate Z");
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_ROTATEX, _("Rotate X"));
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_ROTATEY, _("Rotate Y"));
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_ROTATEZ, _("Rotate Z"));
 
         mnuBulkEdit->AppendSeparator();
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERCONNECTION, "Controller Port");
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERCONNECTIONINCREMENT, "Controller Port and Increment");
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERPROTOCOL, "Controller Protocol");
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERCONNECTION, _("Controller Port"));
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERCONNECTIONINCREMENT, _("Controller Port and Increment"));
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERPROTOCOL, _("Controller Protocol"));
         if (IsAllSelectedModelsArePixelProtocol())
         {
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SMARTREMOTE, "Controller Smart Remote");
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SMARTREMOTETYPE, "Controller Smart Remote Type");
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERDIRECTION, "Controller Direction");
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERBRIGHTNESS, "Controller Brightness");
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERGAMMA, "Controller Gamma");
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERCOLOURORDER, "Controller Colour Order");
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERSTARTNULLNODES, "Controller Start Null Nodes");
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERENDNULLNODES, "Controller End Null Nodes");
-            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERGROUPCOUNT, "Controller Group Count");
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SMARTREMOTE, _("Controller Smart Remote"));
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_SMARTREMOTETYPE, _("Controller Smart Remote Type"));
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERDIRECTION, _("Controller Direction"));
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERBRIGHTNESS, _("Controller Brightness"));
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERGAMMA, _("Controller Gamma"));
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERCOLOURORDER, _("Controller Colour Order"));
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERSTARTNULLNODES, _("Controller Start Null Nodes"));
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERENDNULLNODES, _("Controller End Null Nodes"));
+            mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_CONTROLLERGROUPCOUNT, _("Controller Group Count"));
             mnuBulkEdit->AppendSeparator();
         }
     }
-    mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_PREVIEW, "Preview");
+    mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_PREVIEW, _("Preview"));
     if (editing_models) {
-        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_DIMMINGCURVES, "Dimming Curves");
+        mnuBulkEdit->Append(ID_PREVIEW_BULKEDIT_DIMMINGCURVES, _("Dimming Curves"));
     }
 }
 
 void LayoutPanel::AddAlignOptionsToMenu(wxMenu* mnuAlign) {
-    mnuAlign->Append(ID_PREVIEW_ALIGN_TOP,"Top");
-    mnuAlign->Append(ID_PREVIEW_ALIGN_BOTTOM,"Bottom");
-    mnuAlign->Append(ID_PREVIEW_ALIGN_LEFT,"Left");
-    mnuAlign->Append(ID_PREVIEW_ALIGN_RIGHT, "Right");
+    mnuAlign->Append(ID_PREVIEW_ALIGN_TOP,_("Top"));
+    mnuAlign->Append(ID_PREVIEW_ALIGN_BOTTOM,_("Bottom"));
+    mnuAlign->Append(ID_PREVIEW_ALIGN_LEFT,_("Left"));
+    mnuAlign->Append(ID_PREVIEW_ALIGN_RIGHT, _("Right"));
     if (is_3d) {
-        mnuAlign->Append(ID_PREVIEW_ALIGN_FRONT, "Front");
-        mnuAlign->Append(ID_PREVIEW_ALIGN_BACK, "Back");
-        mnuAlign->Append(ID_PREVIEW_ALIGN_GROUND, "With Ground");
+        mnuAlign->Append(ID_PREVIEW_ALIGN_FRONT, _("Front"));
+        mnuAlign->Append(ID_PREVIEW_ALIGN_BACK, _("Back"));
+        mnuAlign->Append(ID_PREVIEW_ALIGN_GROUND, _("With Ground"));
     }
-    mnuAlign->Append(ID_PREVIEW_ALIGN_H_CENTER,"Horizontal Center");
-    mnuAlign->Append(ID_PREVIEW_ALIGN_V_CENTER,"Vertical Center");
+    mnuAlign->Append(ID_PREVIEW_ALIGN_H_CENTER,_("Horizontal Center"));
+    mnuAlign->Append(ID_PREVIEW_ALIGN_V_CENTER,_("Vertical Center"));
     if (is_3d) {
-        mnuAlign->Append(ID_PREVIEW_ALIGN_D_CENTER, "Depth Center");
+        mnuAlign->Append(ID_PREVIEW_ALIGN_D_CENTER, _("Depth Center"));
     }
 }
 
 void LayoutPanel::AddDistributeOptionsToMenu(wxMenu* mnuDistribute) {
-    mnuDistribute->Append(ID_PREVIEW_H_DISTRIBUTE,"Horizontal");
-    mnuDistribute->Append(ID_PREVIEW_V_DISTRIBUTE,"Vertical");
+    mnuDistribute->Append(ID_PREVIEW_H_DISTRIBUTE,_("Horizontal"));
+    mnuDistribute->Append(ID_PREVIEW_V_DISTRIBUTE,_("Vertical"));
     if (is_3d) {
-        mnuDistribute->Append(ID_PREVIEW_D_DISTRIBUTE, "Depth");
+        mnuDistribute->Append(ID_PREVIEW_D_DISTRIBUTE, _("Depth"));
     }
 }
 
 void LayoutPanel::AddResizeOptionsToMenu(wxMenu* mnuResize) {
-    mnuResize->Append(ID_PREVIEW_RESIZE_SAMEWIDTH, "Match Width");
-    mnuResize->Append(ID_PREVIEW_RESIZE_SAMEHEIGHT, "Match Height");
+    mnuResize->Append(ID_PREVIEW_RESIZE_SAMEWIDTH, _("Match Width"));
+    mnuResize->Append(ID_PREVIEW_RESIZE_SAMEHEIGHT, _("Match Height"));
     if (is_3d) {
-        mnuResize->Append(ID_PREVIEW_RESIZE_SAMEDEPTH, "Match Depth");
+        mnuResize->Append(ID_PREVIEW_RESIZE_SAMEDEPTH, _("Match Depth"));
     }
-    mnuResize->Append(ID_PREVIEW_RESIZE_SAMESIZE, "Match Size");
+    mnuResize->Append(ID_PREVIEW_RESIZE_SAMESIZE, _("Match Size"));
 }
 
 void LayoutPanel::OnPreviewRightDown(wxMouseEvent& event)
@@ -7930,10 +7930,10 @@ void LayoutPanel::OnPreviewRightDown(wxMouseEvent& event)
         AddResizeOptionsToMenu(mnuResize);
         mnuResize->Connect(wxEVT_MENU, (wxObjectEventFunction)&LayoutPanel::OnPreviewModelPopup, nullptr, this);
 
-        mnu.Append(ID_PREVIEW_BULKEDIT, "Bulk Edit", mnuBulkEdit, "");
-        mnu.Append(ID_PREVIEW_ALIGN, "Align", mnuAlign, "");
-        mnu.Append(ID_PREVIEW_DISTRIBUTE, "Distribute", mnuDistribute, "");
-        mnu.Append(ID_PREVIEW_RESIZE, "Resize", mnuResize, "");
+        mnu.Append(ID_PREVIEW_BULKEDIT, _("Bulk Edit"), mnuBulkEdit, "");
+        mnu.Append(ID_PREVIEW_ALIGN, _("Align"), mnuAlign, "");
+        mnu.Append(ID_PREVIEW_DISTRIBUTE, _("Distribute"), mnuDistribute, "");
+        mnu.Append(ID_PREVIEW_RESIZE, _("Resize"), mnuResize, "");
         mnu.AppendSeparator();
     }
     if (!is_3d && selectedTreeGroups.size() == 1 && selectedTreeModels.size() == 0 && selectedTreeSubModels.size() == 0) {
@@ -7958,8 +7958,8 @@ void LayoutPanel::OnPreviewRightDown(wxMouseEvent& event)
         if (selectedObjectCnt > 0) {
             mnu.AppendSeparator();
         }
-        mnu.Append(ID_PREVIEW_DELETE_ACTIVE,"Delete this Preview");
-        mnu.Append(ID_PREVIEW_RENAME_ACTIVE, "Rename this Preview");
+        mnu.Append(ID_PREVIEW_DELETE_ACTIVE,_("Delete this Preview"));
+        mnu.Append(ID_PREVIEW_RENAME_ACTIVE, _("Rename this Preview"));
     }
 
     mnu.Append(ID_PREVIEW_SAVE_LAYOUT_IMAGE, _("Save Layout Image"));
@@ -7970,7 +7970,7 @@ void LayoutPanel::OnPreviewRightDown(wxMouseEvent& event)
 
     // ViewPoint menus
     mnu.AppendSeparator();
-    mnu.Append(ID_PREVIEW_RESET, "Reset");
+    mnu.Append(ID_PREVIEW_RESET, _("Reset"));
     mnu.Append(ID_PREVIEW_VIEWPOINT_DEFAULT, _("Set Current ViewPoint as Default"));
     mnu.Append(ID_PREVIEW_VIEWPOINT_DEFAULT_RESTORE, _("Restore Default ViewPoint"));
     mnu.AppendSeparator();
@@ -7982,7 +7982,7 @@ void LayoutPanel::OnPreviewRightDown(wxMouseEvent& event)
             {
                 mnuViewPoint->Append(ID_PREVIEW_CAMERA_LOAD_BASE + i, xlights->viewpoint_mgr.GetCamera3D(i)->GetName());
             }
-            mnu.Append(ID_PREVIEW_VIEWPOINT3D, "Load ViewPoint", mnuViewPoint, "");
+            mnu.Append(ID_PREVIEW_VIEWPOINT3D, _("Load ViewPoint"), mnuViewPoint, "");
             mnuViewPoint->Connect(wxEVT_MENU, (wxObjectEventFunction)&LayoutPanel::OnPreviewModelPopup, nullptr, this);
 
             mnuViewPoint = new wxMenu();
@@ -7990,7 +7990,7 @@ void LayoutPanel::OnPreviewRightDown(wxMouseEvent& event)
             {
                 mnuViewPoint->Append(ID_PREVIEW_CAMERA_DELETE_BASE + i, xlights->viewpoint_mgr.GetCamera3D(i)->GetName());
             }
-            mnu.Append(ID_PREVIEW_DELETEVIEWPOINT3D, "Delete ViewPoint", mnuViewPoint, "");
+            mnu.Append(ID_PREVIEW_DELETEVIEWPOINT3D, _("Delete ViewPoint"), mnuViewPoint, "");
             mnuViewPoint->Connect(wxEVT_MENU, (wxObjectEventFunction)&LayoutPanel::OnPreviewModelPopup, nullptr, this);
         }
     }
@@ -8001,7 +8001,7 @@ void LayoutPanel::OnPreviewRightDown(wxMouseEvent& event)
             {
                 mnuViewPoint->Append(ID_PREVIEW_CAMERA_LOAD_BASE + i, xlights->viewpoint_mgr.GetCamera2D(i)->GetName());
             }
-            mnu.Append(ID_PREVIEW_VIEWPOINT2D, "Load ViewPoint", mnuViewPoint, "");
+            mnu.Append(ID_PREVIEW_VIEWPOINT2D, _("Load ViewPoint"), mnuViewPoint, "");
             mnuViewPoint->Connect(wxEVT_MENU, (wxObjectEventFunction)&LayoutPanel::OnPreviewModelPopup, nullptr, this);
 
             mnuViewPoint = new wxMenu();
@@ -8009,7 +8009,7 @@ void LayoutPanel::OnPreviewRightDown(wxMouseEvent& event)
             {
                 mnuViewPoint->Append(ID_PREVIEW_CAMERA_DELETE_BASE + i, xlights->viewpoint_mgr.GetCamera2D(i)->GetName());
             }
-            mnu.Append(ID_PREVIEW_DELETEVIEWPOINT2D, "Delete ViewPoint", mnuViewPoint, "");
+            mnu.Append(ID_PREVIEW_DELETEVIEWPOINT2D, _("Delete ViewPoint"), mnuViewPoint, "");
             mnuViewPoint->Connect(wxEVT_MENU, (wxObjectEventFunction)&LayoutPanel::OnPreviewModelPopup, nullptr, this);
         }
     }
@@ -12938,7 +12938,7 @@ void LayoutPanel::OnItemContextMenu(wxTreeListEvent& event)
             if (selectedTreeModels.size() == 1) {
                 auto par = ActiveModelTree()->GetItemParent(selectedTreeModels[0]);
                 if (par != ActiveModelTree()->GetRootItem()) {
-                    mnuContext.Append(ID_MNU_REMOVE_MODEL_FROM_GROUP, "Remove Model From Group");
+                    mnuContext.Append(ID_MNU_REMOVE_MODEL_FROM_GROUP, _("Remove Model From Group"));
                     mnuContext.AppendSeparator();
                 }
             }
@@ -12965,20 +12965,20 @@ void LayoutPanel::OnItemContextMenu(wxTreeListEvent& event)
                         allFromBase = allFromBase && model->IsFromBase();
                     }
                 }
-                auto lm = mnuContext.Append(ID_PREVIEW_MODEL_LOCK, "Lock Models");
+                auto lm = mnuContext.Append(ID_PREVIEW_MODEL_LOCK, _("Lock Models"));
                 lm->Enable(!allLocked);
-                auto um = mnuContext.Append(ID_PREVIEW_MODEL_UNLOCK, "Unlock Models");
+                auto um = mnuContext.Append(ID_PREVIEW_MODEL_UNLOCK, _("Unlock Models"));
                 um->Enable(!allUnlocked);
-                auto ul = mnuContext.Append(ID_PREVIEW_MODEL_UNLINKFROMBASE, "Unlink Models from Base Show Folder");
+                auto ul = mnuContext.Append(ID_PREVIEW_MODEL_UNLINKFROMBASE, _("Unlink Models from Base Show Folder"));
                 ul->Enable(allFromBase);
                 if (!xlights->GetOutputManager()->GetBaseShowDir().empty()) {
-                    mnuContext.Append(ID_PREVIEW_MODEL_PROMOTETOBASE, "Promote Models to Base Show Folder")->Enable(xlights->CanPromoteToBaseShowFolder() && !allFromBase);
+                    mnuContext.Append(ID_PREVIEW_MODEL_PROMOTETOBASE, _("Promote Models to Base Show Folder"))->Enable(xlights->CanPromoteToBaseShowFolder() && !allFromBase);
                 }
 
                 if (allSameParent && parent != ActiveModelTree()->GetRootItem()) {
-                    mnuContext.Append(ID_MNU_REMOVE_MODEL_FROM_GROUP, "Remove Models From Group");
+                    mnuContext.Append(ID_MNU_REMOVE_MODEL_FROM_GROUP, _("Remove Models From Group"));
                 }
-                auto dm = mnuContext.Append(ID_MNU_DELETE_MODEL, "Delete Models");
+                auto dm = mnuContext.Append(ID_MNU_DELETE_MODEL, _("Delete Models"));
                 dm->Enable(!allLocked);
 
                 mnuContext.AppendSeparator();
@@ -12987,13 +12987,13 @@ void LayoutPanel::OnItemContextMenu(wxTreeListEvent& event)
             auto par = ActiveModelTree()->GetItemParent(selectedTreeSubModels[0]);
             if (par != ActiveModelTree()->GetRootItem()) {
                 if ((selectedTreeSubModels.size() + selectedTreeModels.size()) == 1) {
-                    mnuContext.Append(ID_MNU_REMOVE_MODEL_FROM_GROUP, "Remove Model From Group");
+                    mnuContext.Append(ID_MNU_REMOVE_MODEL_FROM_GROUP, _("Remove Model From Group"));
                 } else {
-                    mnuContext.Append(ID_MNU_REMOVE_MODEL_FROM_GROUP, "Remove Models From Group");
+                    mnuContext.Append(ID_MNU_REMOVE_MODEL_FROM_GROUP, _("Remove Models From Group"));
                 }
                 mnuContext.AppendSeparator();
                 if (selectedTreeSubModels.size() == 1) {
-                    mnuContext.Append(ID_MNU_EDIT_SUBMODEL_ALIAS, "Add/Edit SubModel Alias");
+                    mnuContext.Append(ID_MNU_EDIT_SUBMODEL_ALIAS, _("Add/Edit SubModel Alias"));
                     mnuContext.AppendSeparator();
                 }
             }
@@ -13004,7 +13004,7 @@ void LayoutPanel::OnItemContextMenu(wxTreeListEvent& event)
         AddSingleModelOptionsToBaseMenu(mnuContext);
         ModelTreeData* data = (ModelTreeData*)ActiveModelTree()->GetItemData(selectedTreeModels[0]);
         Model* model = ((data != nullptr) ? data->GetModel() : nullptr);
-        auto dm = mnuContext.Append(ID_MNU_DELETE_MODEL, "Delete Model");
+        auto dm = mnuContext.Append(ID_MNU_DELETE_MODEL, _("Delete Model"));
         if (model != nullptr) {
             dm->Enable(!model->IsLocked());
         }
@@ -13050,56 +13050,56 @@ void LayoutPanel::OnItemContextMenu(wxTreeListEvent& event)
         AddResizeOptionsToMenu(mnuResize);
         mnuResize->Connect(wxEVT_MENU, (wxObjectEventFunction)&LayoutPanel::OnModelsPopup, nullptr, this);
 
-        mnuContext.Append(ID_PREVIEW_BULKEDIT, "Bulk Edit", mnuBulkEdit, "");
-        mnuContext.Append(ID_PREVIEW_ALIGN, "Align", mnuAlign, "");
-        mnuContext.Append(ID_PREVIEW_DISTRIBUTE, "Distribute", mnuDistribute, "");
-        mnuContext.Append(ID_PREVIEW_RESIZE, "Resize", mnuResize, "");
+        mnuContext.Append(ID_PREVIEW_BULKEDIT, _("Bulk Edit"), mnuBulkEdit, "");
+        mnuContext.Append(ID_PREVIEW_ALIGN, _("Align"), mnuAlign, "");
+        mnuContext.Append(ID_PREVIEW_DISTRIBUTE, _("Distribute"), mnuDistribute, "");
+        mnuContext.Append(ID_PREVIEW_RESIZE, _("Resize"), mnuResize, "");
 
         mnuContext.AppendSeparator();
     }
 
-    mnuContext.Append(ID_MNU_ADD_MODEL_GROUP, "Add Empty Group");
+    mnuContext.Append(ID_MNU_ADD_MODEL_GROUP, _("Add Empty Group"));
     if ((selectedTreeModels.size() + selectedTreeSubModels.size() + selectedTreeGroups.size()) > 0) {
         for (const auto& m : xlights->AllModels) {
             if (m.second->GetDisplayAs() == DisplayAsType::ModelGroup) {
                 // adjust label for tree
-                mnuContext.Append(ID_MNU_ADD_TO_EXISTING_GROUPS, "Add Selections to Existing Groups");
+                mnuContext.Append(ID_MNU_ADD_TO_EXISTING_GROUPS, _("Add Selections to Existing Groups"));
                 break;
             }
         }
         if (selectedTreeModels.size() == 1) {
-            mnuContext.Append(ID_MNU_REMOVE_FROM_EXISTING_GROUPS, "Remove from Existing Groups");
+            mnuContext.Append(ID_MNU_REMOVE_FROM_EXISTING_GROUPS, _("Remove from Existing Groups"));
         }
-        mnuContext.Append(ID_PREVIEW_MODEL_CREATEGROUP, "Create Group from Selections");
+        mnuContext.Append(ID_PREVIEW_MODEL_CREATEGROUP, _("Create Group from Selections"));
     }
 
     if (selectedTreeModels.size() == 0 && selectedTreeSubModels.size() == 0) {
         if (selectedTreeGroups.size() > 1) {
-            mnuContext.Append(ID_MNU_DELETE_MODEL_GROUP, "Delete Groups");
+            mnuContext.Append(ID_MNU_DELETE_MODEL_GROUP, _("Delete Groups"));
         }
 
         if (selectedTreeGroups.size() == 1) {
             ModelTreeData* data = (ModelTreeData*)ActiveModelTree()->GetItemData(selectedTreeGroups[0]);
             Model* model = ((data != nullptr) ? data->GetModel() : nullptr);
-            mnuContext.Append(ID_MNU_DELETE_MODEL_GROUP, "Delete Group");
-            mnuContext.Append(ID_MNU_RENAME_MODEL_GROUP, "Rename Group")->Enable(!model->IsFromBase());
-            mnuContext.Append(ID_MNU_CLONE_MODEL_GROUP, "Clone Group");
-            auto ul = mnuContext.Append(ID_PREVIEW_MODEL_UNLINKFROMBASE, "Unlink Group from Base Show Folder");
+            mnuContext.Append(ID_MNU_DELETE_MODEL_GROUP, _("Delete Group"));
+            mnuContext.Append(ID_MNU_RENAME_MODEL_GROUP, _("Rename Group"))->Enable(!model->IsFromBase());
+            mnuContext.Append(ID_MNU_CLONE_MODEL_GROUP, _("Clone Group"));
+            auto ul = mnuContext.Append(ID_PREVIEW_MODEL_UNLINKFROMBASE, _("Unlink Group from Base Show Folder"));
             ul->Enable(model->IsFromBase());
             if (!xlights->GetOutputManager()->GetBaseShowDir().empty()) {
-                mnuContext.Append(ID_PREVIEW_MODEL_PROMOTETOBASE, "Promote Group to Base Show Folder")->Enable(xlights->CanPromoteToBaseShowFolder() && !model->IsFromBase());
+                mnuContext.Append(ID_PREVIEW_MODEL_PROMOTETOBASE, _("Promote Group to Base Show Folder"))->Enable(xlights->CanPromoteToBaseShowFolder() && !model->IsFromBase());
             }
         }
     }
 
-    mnuContext.Append(ID_MNU_DELETE_EMPTY_MODEL_GROUPS, "Delete Empty Groups");
+    mnuContext.Append(ID_MNU_DELETE_EMPTY_MODEL_GROUPS, _("Delete Empty Groups"));
 
-    mnuContext.Append(ID_MNU_DELETE_ALL_ALIASES, "Delete All Aliases");
+    mnuContext.Append(ID_MNU_DELETE_ALL_ALIASES, _("Delete All Aliases"));
 
     if (selectedTreeGroups.size() > 1) {
         mnuContext.AppendSeparator();
-        mnuContext.Append(ID_MNU_BULKEDIT_GROUP_TAGCOLOR, "Bulk Edit Tag Color");
-        mnuContext.Append(ID_MNU_BULKEDIT_GROUP_PREVIEW, "Bulk Edit Preview");
+        mnuContext.Append(ID_MNU_BULKEDIT_GROUP_TAGCOLOR, _("Bulk Edit Tag Color"));
+        mnuContext.Append(ID_MNU_BULKEDIT_GROUP_PREVIEW, _("Bulk Edit Preview"));
     }
 
     bool foundInvalid = false;
@@ -13110,12 +13110,12 @@ void LayoutPanel::OnItemContextMenu(wxTreeListEvent& event)
         Model* model = ((data != nullptr) ? data->GetModel() : nullptr);
         if (model) {
             if (!model->CouldComputeStartChannel || !model->IsValidStartChannelString()) {
-                mnuContext.Append(ID_MNU_MAKESCVALID, "Make Start Channel Valid");
+                mnuContext.Append(ID_MNU_MAKESCVALID, _("Make Start Channel Valid"));
                 foundInvalid = true;
             }
             if (xlights->AllModels.IsModelOverlapping(model)) {
                 foundOverlapping = true;
-                mnuContext.Append(ID_MNU_MAKESCVALID, "Make Start Channel Not Overlapping");
+                mnuContext.Append(ID_MNU_MAKESCVALID, _("Make Start Channel Not Overlapping"));
             }
         }
     }
@@ -13136,10 +13136,10 @@ void LayoutPanel::OnItemContextMenu(wxTreeListEvent& event)
     }
 
     if (foundInvalid) {
-        mnuContext.Append(ID_MNU_MAKEALLSCVALID, "Make All Start Channels Valid");
+        mnuContext.Append(ID_MNU_MAKEALLSCVALID, _("Make All Start Channels Valid"));
     }
     if (foundOverlapping) {
-        mnuContext.Append(ID_MNU_MAKEALLSCNOTOVERLAPPING, "Make All Start Channels Not Overlapping");
+        mnuContext.Append(ID_MNU_MAKEALLSCNOTOVERLAPPING, _("Make All Start Channels Not Overlapping"));
     }
 
     // Model Set actions (Link as Set / add / remove / manage), same as the

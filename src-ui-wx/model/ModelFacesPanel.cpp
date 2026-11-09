@@ -1535,12 +1535,12 @@ void ModelFacesPanel::OnNodeRangeGridCellRightClick(wxGridEvent& event)
 {
     wxMenu mnu;
 
-    mnu.Append(FACES_DIALOG_IMPORT_SUB, "Import SubModel");
+    mnu.Append(FACES_DIALOG_IMPORT_SUB, _("Import SubModel"));
 
     if (CustomColorNodeRanges->IsChecked() &&
         NodeRangeGrid->GetSelectedRows().GetCount() >= 2) {
         mnu.AppendSeparator();
-        mnu.Append(FACES_DIALOG_BULK_COLOR_CHANGE, "Bulk Color Change...");
+        mnu.Append(FACES_DIALOG_BULK_COLOR_CHANGE, _("Bulk Color Change..."));
     }
 
     mnu.Bind(wxEVT_COMMAND_MENU_SELECTED, [gridevent = event, this](wxCommandEvent& rightClkEvent) mutable {
@@ -2482,17 +2482,17 @@ void ModelFacesPanel::OnButtonMoreClick(wxCommandEvent& event)
     wxMenu mnu;
     if (NameChoice->GetCount() > 0)
     {
-        mnu.Append(FACES_DIALOG_COPY, "Copy");
-        mnu.Append(FACES_DIALOG_RENAME, "Rename");
-        mnu.Append(FACES_DIALOG_DELETE, "Delete");
+        mnu.Append(FACES_DIALOG_COPY, _("Copy"));
+        mnu.Append(FACES_DIALOG_RENAME, _("Rename"));
+        mnu.Append(FACES_DIALOG_DELETE, _("Delete"));
         mnu.AppendSeparator();
     }
-    mnu.Append(FACES_DIALOG_IMPORT_MODEL, "Import From Model");
-    mnu.Append(FACES_DIALOG_IMPORT_FILE, "Import From File");
-    mnu.Append(FACES_DIALOG_EXPORT_TOOTHERS, "Export Faces To Other Model(s)");
+    mnu.Append(FACES_DIALOG_IMPORT_MODEL, _("Import From Model"));
+    mnu.Append(FACES_DIALOG_IMPORT_FILE, _("Import From File"));
+    mnu.Append(FACES_DIALOG_EXPORT_TOOTHERS, _("Export Faces To Other Model(s)"));
     mnu.AppendSeparator();
-    mnu.Append(FACES_DIALOG_SHIFT, "Shift Nodes");
-    mnu.Append(FACES_DIALOG_REVERSE, "Reverse Nodes");
+    mnu.Append(FACES_DIALOG_SHIFT, _("Shift Nodes"));
+    mnu.Append(FACES_DIALOG_REVERSE, _("Reverse Nodes"));
 
     mnu.Bind(wxEVT_MENU, &ModelFacesPanel::OnAddBtnPopup, this);
     PopupMenu(&mnu);

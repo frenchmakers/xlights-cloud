@@ -804,18 +804,18 @@ void WiringDialog::On3DCheckBoxChanged(wxCommandEvent& event)
 void WiringDialog::RightClick(wxContextMenuEvent& event)
 {
     wxMenu mnuLayer;
-    mnuLayer.Append(ID_MNU_RESET, "Reset");
+    mnuLayer.Append(ID_MNU_RESET, _("Reset"));
     mnuLayer.AppendSeparator();
-    mnuLayer.Append(ID_MNU_EXPORT, "Export");
-    mnuLayer.Append(ID_MNU_EXPORTLARGE, "Export Large");
+    mnuLayer.Append(ID_MNU_EXPORT, _("Export"));
+    mnuLayer.Append(ID_MNU_EXPORTLARGE, _("Export Large"));
 #ifdef _DEBUG
-    mnuLayer.Append(ID_MNU_EXPORTDXF, "Export as DXF");
+    mnuLayer.Append(ID_MNU_EXPORTDXF, _("Export as DXF"));
 #endif
-    mnuLayer.Append(ID_MNU_PRINT, "Print");
+    mnuLayer.Append(ID_MNU_PRINT, _("Print"));
     mnuLayer.AppendSeparator();
-    auto dark = mnuLayer.Append(ID_MNU_DARK, "Dark", "", wxITEM_RADIO);
-    auto gray = mnuLayer.Append(ID_MNU_GRAY, "Gray", "", wxITEM_RADIO);
-    auto light = mnuLayer.Append(ID_MNU_LIGHT, "Light", "", wxITEM_RADIO);
+    auto dark = mnuLayer.Append(ID_MNU_DARK, _("Dark"), "", wxITEM_RADIO);
+    auto gray = mnuLayer.Append(ID_MNU_GRAY, _("Gray"), "", wxITEM_RADIO);
+    auto light = mnuLayer.Append(ID_MNU_LIGHT, _("Light"), "", wxITEM_RADIO);
     
     if (_selectedTheme.type == COLORTHEMETYPE::DARK) {
         dark->Check();
@@ -828,12 +828,12 @@ void WiringDialog::RightClick(wxContextMenuEvent& event)
     }
     
     mnuLayer.AppendSeparator();
-    auto fontSmaller = mnuLayer.Append(ID_MNU_FONTSMALLER, "Smaller Font");
+    auto fontSmaller = mnuLayer.Append(ID_MNU_FONTSMALLER, _("Smaller Font"));
     if (_fontSize <= MINFONTSIZE) fontSmaller->Enable(false);
-    mnuLayer.Append(ID_MNU_FONTLARGER, "Larger Font");
+    mnuLayer.Append(ID_MNU_FONTLARGER, _("Larger Font"));
     mnuLayer.AppendSeparator();
-    auto front = mnuLayer.Append(ID_MNU_FRONT, "Front", "", wxITEM_RADIO);
-    auto rear = mnuLayer.Append(ID_MNU_REAR, "Rear", "", wxITEM_RADIO);
+    auto front = mnuLayer.Append(ID_MNU_FRONT, _("Front"), "", wxITEM_RADIO);
+    auto rear = mnuLayer.Append(ID_MNU_REAR, _("Rear"), "", wxITEM_RADIO);
     if (_rear)
     {
         rear->Check();
@@ -842,7 +842,7 @@ void WiringDialog::RightClick(wxContextMenuEvent& event)
     {
         front->Check();
     }
-    mnuLayer.Append(ID_MNU_ROTATE, "Rotate 90");
+    mnuLayer.Append(ID_MNU_ROTATE, _("Rotate 90"));
     mnuLayer.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&WiringDialog::OnPopup, nullptr, this);
     PopupMenu(&mnuLayer);
 }

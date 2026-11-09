@@ -1377,12 +1377,12 @@ void ManageMediaPanel::OnTreeContextMenu(wxDataViewEvent& event)
     // Reload option for non-embedded items
     auto [isEmbedded, isEmbeddable] = _sequenceMedia->GetMediaEmbedState(path);
     if (!isEmbedded) {
-        wxMenuItem* reloadItem = menu.Append(wxID_ANY, "Reload from Disk");
+        wxMenuItem* reloadItem = menu.Append(wxID_ANY, _("Reload from Disk"));
         menu.Bind(wxEVT_MENU, [this, path](wxCommandEvent&) {
             OnReloadMedia(path);
         }, reloadItem->GetId());
     } else if (!_sequenceMedia->HasImage(path)) {
-        wxMenuItem* reembedItem = menu.Append(wxID_ANY, "Re-embed from Disk");
+        wxMenuItem* reembedItem = menu.Append(wxID_ANY, _("Re-embed from Disk"));
         menu.Bind(wxEVT_MENU, [this, path](wxCommandEvent&) {
             OnReembedMedia(path);
         }, reembedItem->GetId());
@@ -1395,7 +1395,7 @@ void ManageMediaPanel::OnTreeContextMenu(wxDataViewEvent& event)
             if (menu.GetMenuItemCount() > 0)
                 menu.AppendSeparator();
 
-            wxMenuItem* reselectItem = menu.Append(wxID_ANY, "Re-select Image...");
+            wxMenuItem* reselectItem = menu.Append(wxID_ANY, _("Re-select Image..."));
             menu.Bind(wxEVT_MENU, [this, path](wxCommandEvent&) {
                 OnReSelectImage(path);
             }, reselectItem->GetId());
@@ -1416,7 +1416,7 @@ void ManageMediaPanel::OnTreeContextMenu(wxDataViewEvent& event)
         if (externalImageCount > 1) {
             if (menu.GetMenuItemCount() > 0)
                 menu.AppendSeparator();
-            wxMenuItem* bulkItem = menu.Append(wxID_ANY, "Bulk Find Images...");
+            wxMenuItem* bulkItem = menu.Append(wxID_ANY, _("Bulk Find Images..."));
             menu.Bind(wxEVT_MENU, [this](wxCommandEvent&) {
                 OnBulkFindImages();
             }, bulkItem->GetId());
@@ -1437,7 +1437,7 @@ void ManageMediaPanel::OnTreeContextMenu(wxDataViewEvent& event)
         if (outsideImageCount > 0) {
             if (menu.GetMenuItemCount() > 0)
                 menu.AppendSeparator();
-            wxMenuItem* bulkCopyItem = menu.Append(wxID_ANY, "Bulk Copy External Images...");
+            wxMenuItem* bulkCopyItem = menu.Append(wxID_ANY, _("Bulk Copy External Images..."));
             menu.Bind(wxEVT_MENU, [this](wxCommandEvent&) {
                 BulkCopyExternalMediaByType(MediaType::Image);
             }, bulkCopyItem->GetId());

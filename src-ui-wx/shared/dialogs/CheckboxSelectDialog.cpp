@@ -292,10 +292,10 @@ void CheckboxSelectDialog::ValidateWindow()
 void CheckboxSelectDialog::OnListRClick(wxContextMenuEvent& event)
 {
 	wxMenu mnu;
-	mnu.Append(ID_MCU_SELECTALL, "Select All");
-	mnu.Append(ID_MCU_SELECTNONE, "Deselect All");
-    mnu.Append(ID_MCU_SELECT_HIGH, "Select Highlighted");
-    mnu.Append(ID_MCU_DESELECT_HIGH, "Deselect Highlighted");
+	mnu.Append(ID_MCU_SELECTALL, _("Select All"));
+	mnu.Append(ID_MCU_SELECTNONE, _("Deselect All"));
+    mnu.Append(ID_MCU_SELECT_HIGH, _("Select Highlighted"));
+    mnu.Append(ID_MCU_DESELECT_HIGH, _("Deselect Highlighted"));
 
 	mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&CheckboxSelectDialog::OnPopup, nullptr, this);
 	PopupMenu(&mnu);

@@ -473,10 +473,10 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
 
         wxMenu mnuLayer;
         // Copy / Paste / Delete
-        wxMenuItem* menu_cut = mnuLayer.Append(ID_GRID_MNU_CUT, "Cut");
-        wxMenuItem* menu_copy = mnuLayer.Append(ID_GRID_MNU_COPY, "Copy");
-        wxMenuItem* menu_paste = mnuLayer.Append(ID_GRID_MNU_PASTE, "Paste");
-        wxMenuItem* menu_delete = mnuLayer.Append(ID_GRID_MNU_DELETE, "Delete");
+        wxMenuItem* menu_cut = mnuLayer.Append(ID_GRID_MNU_CUT, _("Cut"));
+        wxMenuItem* menu_copy = mnuLayer.Append(ID_GRID_MNU_COPY, _("Copy"));
+        wxMenuItem* menu_paste = mnuLayer.Append(ID_GRID_MNU_PASTE, _("Paste"));
+        wxMenuItem* menu_delete = mnuLayer.Append(ID_GRID_MNU_DELETE, _("Delete"));
         if ((mSelectedEffect == nullptr && !AtLeastOneEffectSelected()) &&
             !(IsACActive() && mCellRangeSelected)) {
             menu_cut->Enable(false);
@@ -488,22 +488,22 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
         }
 
         mRightClickStartTimeMS = mTimeline->GetRawTimeMSfromPosition(event.GetX());
-        wxMenuItem* menu_split = mnuLayer.Append(ID_GRID_MNU_SPLIT_EFFECT, "Split");
+        wxMenuItem* menu_split = mnuLayer.Append(ID_GRID_MNU_SPLIT_EFFECT, _("Split"));
         if (mSelectedEffect == nullptr || (mSelectedEffect->GetEndTimeMS() - mSelectedEffect->GetStartTimeMS() <= mSequenceElements->GetFrameMS())) {
             menu_split->Enable(false);
         }
 
-        wxMenuItem* menu_createTiming = mnuLayer.Append(ID_GRID_MNU_CREATE_TIMING_FROM_EFFECT, "Create Timing");
+        wxMenuItem* menu_createTiming = mnuLayer.Append(ID_GRID_MNU_CREATE_TIMING_FROM_EFFECT, _("Create Timing"));
         if ((mSelectedEffect == nullptr && !MultipleEffectsSelected()) || GetActiveTimingElement() == nullptr) {
             menu_createTiming->Enable(false);
         }
 
-        wxMenuItem* menu_duplicate = mnuLayer.Append(ID_GRID_MNU_DUPLICATE_EFFECT, "Duplicate");
+        wxMenuItem* menu_duplicate = mnuLayer.Append(ID_GRID_MNU_DUPLICATE_EFFECT, _("Duplicate"));
         if (mSelectedEffect == nullptr) {
             menu_duplicate->Enable(false);
         }
 
-        wxMenuItem* menu_fillRegion = mnuLayer.Append(ID_GRID_MNU_FILL_REGION, "Fill Region from Timing Marks");
+        wxMenuItem* menu_fillRegion = mnuLayer.Append(ID_GRID_MNU_FILL_REGION, _("Fill Region from Timing Marks"));
         {
             bool canFillRegion = mSelectedEffect != nullptr
                 && GetActiveTimingElement() != nullptr
@@ -530,17 +530,17 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
         // Alignment
         mnuLayer.AppendSeparator();
         wxMenu* mnuAlignment = new wxMenu();
-        wxMenuItem* menu_align_start_times = mnuAlignment->Append(ID_GRID_MNU_ALIGN_START_TIMES, "Align Start Times");
-        wxMenuItem* menu_align_end_times = mnuAlignment->Append(ID_GRID_MNU_ALIGN_END_TIMES, "Align End Times");
-        wxMenuItem* menu_align_both_times = mnuAlignment->Append(ID_GRID_MNU_ALIGN_BOTH_TIMES, "Align Both Times");
-        wxMenuItem* menu_align_centerpoints = mnuAlignment->Append(ID_GRID_MNU_ALIGN_CENTERPOINTS, "Align Centerpoints");
-        wxMenuItem* menu_align_match_duration = mnuAlignment->Append(ID_GRID_MNU_ALIGN_MATCH_DURATION, "Align Match Duration");
-        wxMenuItem* menu_align_start_times_shift = mnuAlignment->Append(ID_GRID_MNU_ALIGN_START_TIMES_SHIFT, "Shift Align Start Times");
-        wxMenuItem* menu_align_end_times_shift = mnuAlignment->Append(ID_GRID_MNU_ALIGN_END_TIMES_SHIFT, "Shift Align End Times");
-        wxMenuItem* menu_align_to_timing_mark = mnuAlignment->Append(ID_GRID_MNU_ALIGN_TO_TIMING_MARK, "Align To Closest Timing Mark");
-        wxMenuItem* menu_close_gap = mnuAlignment->Append(ID_GRID_MNU_CLOSE_GAP, "Close Gap");
+        wxMenuItem* menu_align_start_times = mnuAlignment->Append(ID_GRID_MNU_ALIGN_START_TIMES, _("Align Start Times"));
+        wxMenuItem* menu_align_end_times = mnuAlignment->Append(ID_GRID_MNU_ALIGN_END_TIMES, _("Align End Times"));
+        wxMenuItem* menu_align_both_times = mnuAlignment->Append(ID_GRID_MNU_ALIGN_BOTH_TIMES, _("Align Both Times"));
+        wxMenuItem* menu_align_centerpoints = mnuAlignment->Append(ID_GRID_MNU_ALIGN_CENTERPOINTS, _("Align Centerpoints"));
+        wxMenuItem* menu_align_match_duration = mnuAlignment->Append(ID_GRID_MNU_ALIGN_MATCH_DURATION, _("Align Match Duration"));
+        wxMenuItem* menu_align_start_times_shift = mnuAlignment->Append(ID_GRID_MNU_ALIGN_START_TIMES_SHIFT, _("Shift Align Start Times"));
+        wxMenuItem* menu_align_end_times_shift = mnuAlignment->Append(ID_GRID_MNU_ALIGN_END_TIMES_SHIFT, _("Shift Align End Times"));
+        wxMenuItem* menu_align_to_timing_mark = mnuAlignment->Append(ID_GRID_MNU_ALIGN_TO_TIMING_MARK, _("Align To Closest Timing Mark"));
+        wxMenuItem* menu_close_gap = mnuAlignment->Append(ID_GRID_MNU_CLOSE_GAP, _("Close Gap"));
         mnuAlignment->Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&EffectsGrid::OnGridPopup, nullptr, this);
-        mnuLayer.AppendSubMenu(mnuAlignment, "Alignment");
+        mnuLayer.AppendSubMenu(mnuAlignment, _("Alignment"));
         if ((mSelectedEffect == nullptr) || !MultipleEffectsSelected()) {
             menu_align_start_times->Enable(false);
             menu_align_end_times->Enable(false);
@@ -558,18 +558,18 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
 
         // Miscellaneous
         mnuLayer.AppendSeparator();
-        mnuLayer.Append(ID_GRID_MNU_PRESETS, "Effect Presets");
-        wxMenuItem* menu_random = mnuLayer.Append(ID_GRID_MNU_RANDOM_EFFECTS, "Create Random Effects");
+        mnuLayer.Append(ID_GRID_MNU_PRESETS, _("Effect Presets"));
+        wxMenuItem* menu_random = mnuLayer.Append(ID_GRID_MNU_RANDOM_EFFECTS, _("Create Random Effects"));
         if (!(mCellRangeSelected || mPartialCellSelected)) {
             menu_random->Enable(false);
         }
 
-        wxMenuItem* menu_effect_reseteffect = mnuLayer.Append(ID_GRID_MNU_RESETEFFECT, "Reset Effect");
-        wxMenuItem* menu_effect_description = mnuLayer.Append(ID_GRID_MNU_DESCRIPTION, "Description");
-        wxMenuItem* menu_effect_lock = mnuLayer.Append(ID_GRID_MNU_LOCK, "Lock");
-        wxMenuItem* menu_effect_unlock = mnuLayer.Append(ID_GRID_MNU_UNLOCK, "Unlock");
-        wxMenuItem* menu_effect_renderdisable = mnuLayer.Append(ID_GRID_MNU_RENDERDISABLE, "Disable Render");
-        wxMenuItem* menu_effect_renderenable = mnuLayer.Append(ID_GRID_MNU_RENDERENABLE, "Enable Render");
+        wxMenuItem* menu_effect_reseteffect = mnuLayer.Append(ID_GRID_MNU_RESETEFFECT, _("Reset Effect"));
+        wxMenuItem* menu_effect_description = mnuLayer.Append(ID_GRID_MNU_DESCRIPTION, _("Description"));
+        wxMenuItem* menu_effect_lock = mnuLayer.Append(ID_GRID_MNU_LOCK, _("Lock"));
+        wxMenuItem* menu_effect_unlock = mnuLayer.Append(ID_GRID_MNU_UNLOCK, _("Unlock"));
+        wxMenuItem* menu_effect_renderdisable = mnuLayer.Append(ID_GRID_MNU_RENDERDISABLE, _("Disable Render"));
+        wxMenuItem* menu_effect_renderenable = mnuLayer.Append(ID_GRID_MNU_RENDERENABLE, _("Enable Render"));
         if (mSelectedEffect == nullptr && !AtLeastOneEffectSelected()) {
             menu_effect_description->Enable(false);
             menu_effect_unlock->Enable(false);
@@ -592,7 +592,7 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
         }
 
         if (ri->nodeIndex >= 0) {
-            mnuLayer.Append(ID_GRID_MNU_FINDEFFECTFORDATA, "Find Possible Source Effects");
+            mnuLayer.Append(ID_GRID_MNU_FINDEFFECTFORDATA, _("Find Possible Source Effects"));
             _findDataRI = ri;
             _findDataMS = mTimeline->GetAbsoluteTimeMSfromPosition(event.GetX());
         }
@@ -619,11 +619,11 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
             }
         }
 
-        wxMenuItem* menu_create_symbol = mnuLayer.Append(ID_GRID_MNU_CREATE_SYMBOL, "Create Symbol from Effect...");
+        wxMenuItem* menu_create_symbol = mnuLayer.Append(ID_GRID_MNU_CREATE_SYMBOL, _("Create Symbol from Effect..."));
         menu_create_symbol->Enable(hasSingleEffectForSymbol);
 
         if (anyEffectLinkedToSymbol) {
-            mnuLayer.Append(ID_GRID_MNU_UNLINK_SYMBOL, "Unlink from Symbol");
+            mnuLayer.Append(ID_GRID_MNU_UNLINK_SYMBOL, _("Unlink from Symbol"));
         }
 
         std::vector<EffectSymbol*> symbols = symbolManager.GetAllSymbols();
@@ -636,11 +636,11 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
                 symbolIndex++;
             }
             mnuLinkSymbol->Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&EffectsGrid::OnGridPopup, nullptr, this);
-            wxMenuItem* linkSubmenu = mnuLayer.AppendSubMenu(mnuLinkSymbol, "Link to Symbol");
+            wxMenuItem* linkSubmenu = mnuLayer.AppendSubMenu(mnuLinkSymbol, _("Link to Symbol"));
             linkSubmenu->Enable(hasEffectForSymbol);
         }
 
-        wxMenuItem* menu_effect_timing = mnuLayer.Append(ID_GRID_MNU_TIMING, "Timing");
+        wxMenuItem* menu_effect_timing = mnuLayer.Append(ID_GRID_MNU_TIMING, _("Timing"));
         if (mSelectedEffect == nullptr ||
             MultipleEffectsSelected() ||
             (mSelectedEffect != nullptr && mSelectedEffect->IsLocked())) {
@@ -658,43 +658,43 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
         Effect* selectedEffect = GetEffectAtRowAndTime(mSelectedRow, startTime, effectIndex, selectionType);
         if (selectedEffect != nullptr && selectedEffect->GetParentEffectLayer()->GetParentElement()->GetType() == ElementType::ELEMENT_TYPE_TIMING) {
             if (ri->layerIndex == 0) {
-                mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_PHRASE, "Breakdown Phrase");
+                mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_PHRASE, _("Breakdown Phrase"));
                 if (selectedEffect->GetParentEffectLayer()->GetSelectedEffectCount() > 1) {
-                    mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_PHRASES, "Breakdown Selected Phrases");
+                    mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_PHRASES, _("Breakdown Selected Phrases"));
                 }
             } else if (ri->layerIndex == 1) {
-                mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_WORD, "Breakdown Word");
+                mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_WORD, _("Breakdown Word"));
                 if (selectedEffect->GetParentEffectLayer()->GetSelectedEffectCount() > 1) {
-                    mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_WORDS, "Breakdown Selected Words");
+                    mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_WORDS, _("Breakdown Selected Words"));
                 }
             }
-            mnuLayer.Append(ID_GRID_MNU_HALVETIMINGS, "Divide Timings")->Enable(!selectedEffect->GetParentEffectLayer()->IsFixedTimingLayer());
+            mnuLayer.Append(ID_GRID_MNU_HALVETIMINGS, _("Divide Timings"))->Enable(!selectedEffect->GetParentEffectLayer()->IsFixedTimingLayer());
             if (ri->layerIndex == 0) {
-                mnuLayer.Append(ID_GRID_MNU_AUTOLABEL, "Auto Label Timings");
+                mnuLayer.Append(ID_GRID_MNU_AUTOLABEL, _("Auto Label Timings"));
             }
             if (ri->layerIndex == 2) {
-                mnuLayer.Append(ID_GRID_MNU_ADD_SHIMMER, "Add \"-shimmer\"");
-                mnuLayer.Append(ID_GRID_MNU_REMOVE_SHIMMER, "Remove \"-shimmer\"");
+                mnuLayer.Append(ID_GRID_MNU_ADD_SHIMMER, _("Add \"-shimmer\""));
+                mnuLayer.Append(ID_GRID_MNU_REMOVE_SHIMMER, _("Remove \"-shimmer\""));
             }
             mSelectedEffect = selectedEffect;
 
             if (mSequenceElements->GetNumberOfTimingElements() > 1) {
-                wxMenuItem* menu_duplicate_to_track = mnuLayer.Append(ID_GRID_MNU_DUPLICATE_TO_TIMING_TRACK, "Duplicate Selection to Timing Track...");
+                wxMenuItem* menu_duplicate_to_track = mnuLayer.Append(ID_GRID_MNU_DUPLICATE_TO_TIMING_TRACK, _("Duplicate Selection to Timing Track..."));
                 menu_duplicate_to_track->Enable(selectedEffect->GetParentEffectLayer()->GetSelectedEffectCount() >= 1);
             }
         }
         mnuLayer.AppendSeparator();
-        wxMenuItem* menu_effect_lock = mnuLayer.Append(ID_GRID_MNU_LOCK, "Lock");
-        wxMenuItem* menu_effect_unlock = mnuLayer.Append(ID_GRID_MNU_UNLOCK, "Unlock");
+        wxMenuItem* menu_effect_lock = mnuLayer.Append(ID_GRID_MNU_LOCK, _("Lock"));
+        wxMenuItem* menu_effect_unlock = mnuLayer.Append(ID_GRID_MNU_UNLOCK, _("Unlock"));
         if (mSelectedEffect == nullptr && !AtLeastOneEffectSelected()) {
             menu_effect_unlock->Enable(false);
             menu_effect_lock->Enable(false);
         }
         mnuLayer.AppendSeparator();
-        wxMenuItem* menu_cut = mnuLayer.Append(ID_GRID_MNU_CUT, "Cut");
-        wxMenuItem* menu_copy = mnuLayer.Append(ID_GRID_MNU_COPY, "Copy");
-        wxMenuItem* menu_paste = mnuLayer.Append(ID_GRID_MNU_PASTE, "Paste");
-        wxMenuItem* menu_delete = mnuLayer.Append(ID_GRID_MNU_DELETE, "Delete");
+        wxMenuItem* menu_cut = mnuLayer.Append(ID_GRID_MNU_CUT, _("Cut"));
+        wxMenuItem* menu_copy = mnuLayer.Append(ID_GRID_MNU_COPY, _("Copy"));
+        wxMenuItem* menu_paste = mnuLayer.Append(ID_GRID_MNU_PASTE, _("Paste"));
+        wxMenuItem* menu_delete = mnuLayer.Append(ID_GRID_MNU_DELETE, _("Delete"));
         if (mSelectedEffect == nullptr && !AtLeastOneEffectSelected()) {
             menu_cut->Enable(false);
             menu_copy->Enable(false);
@@ -704,10 +704,10 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
             menu_paste->Enable(false);
         }
         mnuLayer.AppendSeparator();
-        mnuLayer.Append(ID_GRID_MNU_FIND, "Find...");
-        wxMenuItem* menu_find_next = mnuLayer.Append(ID_GRID_MNU_FIND_NEXT, "Find Next");
-        wxMenuItem* menu_find_prior = mnuLayer.Append(ID_GRID_MNU_FIND_PREVIOUS, "Find Previous");
-        wxMenuItem* menu_replace = mnuLayer.Append(ID_GRID_MNU_REPLACE, "Replace All...");
+        mnuLayer.Append(ID_GRID_MNU_FIND, _("Find..."));
+        wxMenuItem* menu_find_next = mnuLayer.Append(ID_GRID_MNU_FIND_NEXT, _("Find Next"));
+        wxMenuItem* menu_find_prior = mnuLayer.Append(ID_GRID_MNU_FIND_PREVIOUS, _("Find Previous"));
+        wxMenuItem* menu_replace = mnuLayer.Append(ID_GRID_MNU_REPLACE, _("Replace All..."));
         if (mSearchText.empty() || mSearchRow < 0 || mSearchRow >= (int)mSequenceElements->GetVisibleRowInformationSize()) {
             menu_find_next->Enable(false);
             menu_find_prior->Enable(false);

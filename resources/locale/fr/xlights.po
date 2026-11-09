@@ -1362,10 +1362,6 @@ msgstr "Gain"
 msgid "Slow Down Falls"
 msgstr "Ralentir les retombées"
 
-#: resources/effectmetadata/VUMeter.json
-msgid "Audio Track"
-msgstr "Piste audio"
-
 #: resources/effectmetadata/Video.json
 msgid "Sync to audio file"
 msgstr "Synchroniser sur le fichier audio"
@@ -1598,11 +1594,11 @@ msgstr "Type d'effet"
 msgid "Linked Effects"
 msgstr "Effets liés"
 
-#: src-ui-wx/EffectSymbolDialog.cpp:56 src-ui-wx/layout/LayoutPanel.cpp:3086 src-ui-wx/layout/ViewsModelsPanel.cpp:188 src-ui-wx/model/EditAliasesDialog.cpp:56 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:66 ... (+5)
+#: src-ui-wx/EffectSymbolDialog.cpp:56 src-ui-wx/layout/ControllerListPanel.cpp:821 src-ui-wx/layout/LayoutPanel.cpp:3086 src-ui-wx/layout/ViewObjectPanel.cpp:572 src-ui-wx/layout/ViewsModelsPanel.cpp:188 ... (+12)
 msgid "Delete"
 msgstr "Supprimer"
 
-#: src-ui-wx/EffectSymbolDialog.cpp:57 src-ui-wx/layout/ViewsModelsPanel.cpp:190 src-ui-wx/model/ViewpointDialog.cpp:54 src-ui-wx/sequencer/EffectListDialog.cpp:54 src-ui-wx/sequencer/PerspectivesPanel.cpp:54 ... (+2)
+#: src-ui-wx/EffectSymbolDialog.cpp:57 src-ui-wx/layout/ViewsModelsPanel.cpp:190 src-ui-wx/model/ModelFacesPanel.cpp:2486 src-ui-wx/model/ModelStatesPanel.cpp:1094 src-ui-wx/model/ViewpointDialog.cpp:54 ... (+4)
 msgid "Rename"
 msgstr "Renommer"
 
@@ -1945,7 +1941,7 @@ msgstr "Touche"
 msgid "Alt"
 msgstr "Alt"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:236 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:140
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:236 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:140 src-ui-wx/model/CustomModelDialog.cpp:2889
 msgid "Shift"
 msgstr "Maj"
 
@@ -2272,9 +2268,17 @@ msgstr "Pas cette fois"
 msgid "Run"
 msgstr "Exécuter"
 
-#: src-ui-wx/automation/ScriptsDialog.cpp:105 src-ui-wx/effectpanels/MovingHeadPanel.cpp:379 src-ui-wx/setup/ShowDirectoriesDialog.cpp:136
+#: src-ui-wx/automation/ScriptsDialog.cpp:105 src-ui-wx/effectpanels/MovingHeadPanel.cpp:379 src-ui-wx/layout/ModelGroupPanel.cpp:1358 src-ui-wx/setup/ShowDirectoriesDialog.cpp:136
 msgid "Clear"
 msgstr "Effacer"
+
+#: src-ui-wx/automation/ScriptsDialog.cpp:168
+msgid "View Script"
+msgstr "Voir le script"
+
+#: src-ui-wx/automation/ScriptsDialog.cpp:169
+msgid "Open Folder"
+msgstr "Ouvrir le dossier"
 
 #: src-ui-wx/automation/ScriptsDialog.cpp:282
 msgid "Please Select an script before trying to Run it"
@@ -2312,7 +2316,7 @@ msgstr "Inverser les couleurs"
 msgid "Load"
 msgstr "Charger"
 
-#: src-ui-wx/color/ColorCurveDialog.cpp:140 src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:81 src-ui-wx/sequencer/EffectTreeDialog.cpp:150 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:276
+#: src-ui-wx/color/ColorCurveDialog.cpp:140 src-ui-wx/model/WiringDialog.cpp:809 src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:81 src-ui-wx/sequencer/EffectTreeDialog.cpp:150 src-ui-wx/sequencer/RowHeading.cpp:750 ... (+1)
 msgid "Export"
 msgstr "Exporter"
 
@@ -2506,7 +2510,7 @@ msgstr "Nom"
 msgid "This must be unique."
 msgstr "Doit être unique."
 
-#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:192 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1080 src-ui-wx/layout/ControllerTreeUtils.cpp:43 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:435
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:192 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1080 src-ui-wx/layout/ControllerTreeUtils.cpp:43 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:435 src-ui-wx/sequencer/EffectsGrid.cpp:568
 msgid "Description"
 msgstr "Description"
 
@@ -2578,7 +2582,7 @@ msgstr "Gamma par défaut des ports"
 msgid "This option will set the Gamma of all ports to this value unless specifically overriden by a model."
 msgstr "Règle le gamma de tous les ports sur cette valeur, sauf si un modèle le redéfinit."
 
-#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:249 src-ui-wx/layout/ControllerTreeUtils.cpp:40 src-ui-wx/model/CustomModelDialog.cpp:485 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:547 src-ui-wx/modelproperties/ViewObjectPropertyAdapter.cpp:25
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:249 src-ui-wx/layout/ControllerTreeUtils.cpp:40 src-ui-wx/layout/LayoutPanel.cpp:7828 src-ui-wx/model/CustomModelDialog.cpp:485 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:547 ... (+1)
 msgid "Active"
 msgstr "Active"
 
@@ -2988,6 +2992,50 @@ msgstr "Garder ouvert"
 msgid "Upload"
 msgstr "Envoyer"
 
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2176 src-ui-wx/controllers/HinksPixExportDialog.cpp:1198
+msgid "Clear Selections"
+msgstr "Effacer les sélections"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2177 src-ui-wx/controllers/HinksPixExportDialog.cpp:1199 src-ui-wx/model/ImportPreviewsModelsDialog.cpp:438 src-ui-wx/sequencer/BatchRenderDialog.cpp:163 src-ui-wx/setup/PixelTestDialog.cpp:2433 ... (+1)
+msgid "Select Highlighted"
+msgstr "Sélectionner la surbrillance"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2178 src-ui-wx/controllers/HinksPixExportDialog.cpp:1200 src-ui-wx/model/ImportPreviewsModelsDialog.cpp:439 src-ui-wx/sequencer/BatchRenderDialog.cpp:164 src-ui-wx/setup/PixelTestDialog.cpp:2434 ... (+1)
+msgid "Deselect Highlighted"
+msgstr "Désélectionner la surbrillance"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2179
+msgid "Select Batch Render"
+msgstr "Sélectionner pour le rendu par lots"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2180
+msgid "Select Failed Uploads"
+msgstr "Sélectionner les envois échoués"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:442
+msgid "Sort by HostName"
+msgstr "Trier par nom d'hôte"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:443
+msgid "Sort by IP Address"
+msgstr "Trier par adresse IP"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:452 src-ui-wx/controllers/FPPConnectDialog.cpp:479 src-ui-wx/controllers/FPPConnectDialog.cpp:2175 src-ui-wx/controllers/HinksPixExportDialog.cpp:1197 src-ui-wx/diagnostics/SearchPanel.cpp:78 ... (+11)
+msgid "Select All"
+msgstr "Tout sélectionner"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:453 src-ui-wx/controllers/FPPConnectDialog.cpp:480 src-ui-wx/controllers/FPPConnectDialog.cpp:550 src-ui-wx/model/ImportPreviewsModelsDialog.cpp:436 src-ui-wx/sequencer/LayerSelectDialog.cpp:157 ... (+2)
+msgid "Deselect All"
+msgstr "Tout désélectionner"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:481 src-ui-wx/layout/ControllerListPanel.cpp:866 src-ui-wx/layout/ViewsModelsPanel.cpp:1837
+msgid "Sort"
+msgstr "Trier"
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:482
+msgid "Select Subnet"
+msgstr "Sélectionner le sous-réseau"
+
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:673 src-ui-wx/controllers/FPPConnectDialog.cpp:687 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:108
 msgid "V1"
 msgstr ""
@@ -3110,6 +3158,18 @@ msgstr "Progression de l'envoi"
 msgid "Action"
 msgstr "Action"
 
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:1188
+msgid "Set All"
+msgstr "Tout définir"
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:1189
+msgid "Set All - PlayList"
+msgstr "Tout définir - playlist"
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:1190
+msgid "Copy Row to Other Days"
+msgstr "Copier la ligne vers les autres jours"
+
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:1248 src-ui-wx/controllers/HinksPixExportDialog.cpp:1424
 msgid ""
 "No Playlists found\n"
@@ -3201,6 +3261,30 @@ msgstr ""
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:393
 msgid "Don't Set"
 msgstr ""
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:448
+msgid "Set Time"
+msgstr "Définir l'heure"
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:449
+msgid "Set Master"
+msgstr "Définir comme maître"
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:450
+msgid "Set Remote"
+msgstr "Définir comme distant"
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:452
+msgid "Upload Schedules"
+msgstr "Envoyer les plannings"
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:453
+msgid "Upload Firmware"
+msgstr "Envoyer le firmware"
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:454
+msgid "Upload File"
+msgstr "Envoyer un fichier"
 
 #: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:101
 msgid "Brightness:"
@@ -3809,11 +3893,11 @@ msgstr "Avertissements"
 msgid "Show/hide this section"
 msgstr "Afficher/masquer cette section"
 
-#: src-ui-wx/diagnostics/CheckReportTranslation.h:40
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:40 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:998 src-ui-wx/model/ImportPreviewsModelsDialog.cpp:432
 msgid "Expand All"
 msgstr "Tout déplier"
 
-#: src-ui-wx/diagnostics/CheckReportTranslation.h:41 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1739
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:41 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:997 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1739 src-ui-wx/layout/ControllerListPanel.cpp:870 src-ui-wx/model/ImportPreviewsModelsDialog.cpp:433
 msgid "Collapse All"
 msgstr "Tout replier"
 
@@ -4057,10 +4141,6 @@ msgstr "Rechercher :"
 msgid "Find"
 msgstr "Rechercher"
 
-#: src-ui-wx/diagnostics/SearchPanel.cpp:78 src-ui-wx/model/NodeSelectGrid.cpp:249 src-ui-wx/sequencer/SelectPanel.cpp:92 src-ui-wx/sequencer/SelectPanel.cpp:127 src-ui-wx/setup/MultiControllerUploadDialog.cpp:127
-msgid "Select All"
-msgstr "Tout sélectionner"
-
 #: src-ui-wx/diagnostics/SeqElementMismatchDialog.cpp:41
 msgid "Sequence Element Mismatch"
 msgstr "Élément de séquence introuvable"
@@ -4128,6 +4208,10 @@ msgstr "Enregistrer comme état"
 #: src-ui-wx/effectpanels/DMXPanel.cpp:142
 msgid "Load From State"
 msgstr "Charger depuis un état"
+
+#: src-ui-wx/effectpanels/DMXPanel.cpp:337 src-ui-wx/layout/LayoutPanel.cpp:7933 src-ui-wx/layout/LayoutPanel.cpp:13053 src-ui-wx/sequencer/EffectsPanel.cpp:122 src-ui-wx/shared/controls/BulkEditControls.cpp:393 ... (+11)
+msgid "Bulk Edit"
+msgstr "Édition groupée"
 
 #: src-ui-wx/effectpanels/DMXPanel.cpp:444
 msgid "State does not have Force Custom Colors or Single Node Type"
@@ -4206,11 +4290,11 @@ msgstr "Pairs"
 msgid "Odds"
 msgstr "Impairs"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:235 src-ui-wx/sequencer/BufferSizeDialog.cpp:93
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:235 src-ui-wx/layout/LayoutPanel.cpp:7877 src-ui-wx/sequencer/BufferSizeDialog.cpp:93
 msgid "Left"
 msgstr "Gauche"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:237 src-ui-wx/sequencer/BufferSizeDialog.cpp:107
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:237 src-ui-wx/layout/LayoutPanel.cpp:7878 src-ui-wx/sequencer/BufferSizeDialog.cpp:107
 msgid "Right"
 msgstr "Droite"
 
@@ -4558,6 +4642,10 @@ msgstr "Enregistrer le fichier Sketch xLights"
 #: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:416
 msgid "Choose SVG File"
 msgstr "Choisir le fichier SVG"
+
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:575
+msgid "Sort All by Description"
+msgstr "Tout trier par description"
 
 #: src-ui-wx/effectpanels/assist/xlGridCanvasPictures.cpp:419
 msgid "Error creating image!"
@@ -5069,13 +5157,41 @@ msgstr "Calque"
 msgid "Set All Models:"
 msgstr "Pour tous les modèles :"
 
-#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1002 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1046
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1000 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1023
+msgid "Auto Map Selected"
+msgstr "Associer la sélection automatiquement"
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1002 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1046 src-ui-wx/model/SubModelsPanel.cpp:1384
 msgid "Sort by Name"
 msgstr "Trier par nom"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1003 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1047
 msgid "Sort by Master View"
 msgstr "Trier selon la vue principale"
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1005
+msgid "Reset Submodel Sort"
+msgstr "Réinitialiser le tri des sous-modèles"
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1007
+msgid "Sort Submodels By Name"
+msgstr "Trier les sous-modèles par nom"
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1010 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1075
+msgid "Clear All"
+msgstr "Tout effacer"
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1011 src-ui-wx/model/ModelStatesPanel.cpp:1027
+msgid "Clear Selected"
+msgstr "Vider la sélection"
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1013 src-ui-wx/layout/LayoutPanel.cpp:13061
+msgid "Add Empty Group"
+msgstr "Ajouter un groupe vide"
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1015
+msgid "Edit Display Elements..."
+msgstr "Modifier les éléments affichés..."
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1038
 #, c-format
@@ -5089,10 +5205,6 @@ msgstr "Ajouter le groupe à la disposition et l'associer"
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1047
 msgid "Sort in File Order"
 msgstr "Trier dans l'ordre du fichier"
-
-#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1075
-msgid "Clear All"
-msgstr "Tout effacer"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1335
 #, c-format
@@ -5328,6 +5440,14 @@ msgstr "Enregistrer l'association"
 msgid "Load Map"
 msgstr "Charger une association"
 
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:987 src-ui-wx/model/NodeSelectGrid.cpp:251 src-ui-wx/sequencer/BatchRenderDialog.cpp:162
+msgid "Select None"
+msgstr "Ne rien sélectionner"
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:999
+msgid "Show All Mapped Models"
+msgstr "Afficher tous les modèles associés"
+
 #: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:122
 msgid "Webcam node identification (build/fix an existing model's node positions)"
 msgstr "Identification des nœuds par webcam (créer/corriger les positions des nœuds d'un modèle existant)"
@@ -5408,6 +5528,14 @@ msgstr "Aucun contrôleur sélectionné. Choisissez un contrôleur dans la liste
 msgid "Add Controller"
 msgstr "Ajouter un contrôleur"
 
+#: src-ui-wx/layout/ControllerListPanel.cpp:1195
+msgid "Add NULL"
+msgstr "Ajouter NULL"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1196
+msgid "Add DMX/LOR/DLight/Renard"
+msgstr "Ajouter DMX/LOR/DLight/Renard"
+
 #: src-ui-wx/layout/ControllerListPanel.cpp:1213
 msgid "Visualise"
 msgstr "Visualiser"
@@ -5415,10 +5543,6 @@ msgstr "Visualiser"
 #: src-ui-wx/layout/ControllerListPanel.cpp:1214
 msgid "Upload Input"
 msgstr "Envoyer les entrées"
-
-#: src-ui-wx/layout/ControllerListPanel.cpp:1215
-msgid "Upload Output"
-msgstr "Envoyer les sorties"
 
 #: src-ui-wx/layout/ControllerListPanel.cpp:1216
 msgctxt "button"
@@ -5461,7 +5585,7 @@ msgstr "Dernier envoi des entrées"
 msgid "Last Output Upload"
 msgstr "Dernier envoi des sorties"
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:1473
+#: src-ui-wx/layout/ControllerListPanel.cpp:1473 src-ui-wx/layout/ControllerListPanel.cpp:845
 msgid "Show on Layout"
 msgstr "Afficher dans la disposition"
 
@@ -5494,7 +5618,67 @@ msgstr "Taille de l'étiquette (%)"
 msgid "Size of the name label, as a percentage of the size that fits it to the box."
 msgstr "Taille du nom, en pourcentage de la taille qui le fait tenir dans la boîte."
 
-#: src-ui-wx/layout/ControllerTreeUtils.cpp:32
+#: src-ui-wx/layout/ControllerListPanel.cpp:816
+msgid "Insert NULL"
+msgstr "Insérer NULL"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:817
+msgid "Insert DMX/LOR/DLight/Renard"
+msgstr "Insérer DMX/LOR/DLight/Renard"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:818
+msgid "Activate"
+msgstr "Activer"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:819
+msgid "Activate in xLights Only"
+msgstr "Activer dans xLights seulement"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:820
+msgid "Deactivate"
+msgstr "Désactiver"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:822
+msgid "Unlink from Base Show Folder"
+msgstr "Délier du dossier du show de base"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:824 src-ui-wx/layout/LayoutPanel.cpp:7777 src-ui-wx/layout/ViewObjectPanel.cpp:575
+msgid "Promote to Base Show Folder"
+msgstr "Promouvoir vers le dossier du show de base"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:855 src-ui-wx/layout/ControllerListPanel.cpp:1215
+msgid "Upload Output"
+msgstr "Envoyer les sorties"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:860
+msgid "by Name"
+msgstr "par nom"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:861
+msgid "by ID"
+msgstr "par ID"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:862
+msgid "by IP"
+msgstr "par IP"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:863
+msgid "by FPP Proxy"
+msgstr "par proxy FPP"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:864
+msgid "by Controller Model"
+msgstr "par modèle de contrôleur"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:865
+msgid "by Controller Protocol"
+msgstr "par protocole du contrôleur"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:869
+msgid "Expand All Controllers"
+msgstr "Déplier tous les contrôleurs"
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:32 src-ui-wx/layout/LayoutPanel.cpp:7833
 msgid "Controller Name"
 msgstr "Nom du contrôleur"
 
@@ -5614,6 +5798,106 @@ msgstr "Propriétés du modèle"
 #: src-ui-wx/layout/LayoutPanel.cpp:12907
 msgid "Group Settings"
 msgstr "Paramètres du groupe"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12941 src-ui-wx/layout/LayoutPanel.cpp:12990
+msgid "Remove Model From Group"
+msgstr "Retirer le modèle du groupe"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12968
+msgid "Lock Models"
+msgstr "Verrouiller les modèles"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12970
+msgid "Unlock Models"
+msgstr "Déverrouiller les modèles"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12972 src-ui-wx/layout/ViewObjectPanel.cpp:573
+msgid "Unlink Models from Base Show Folder"
+msgstr "Délier les modèles du dossier du show de base"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12975
+msgid "Promote Models to Base Show Folder"
+msgstr "Promouvoir les modèles vers le dossier du show de base"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12979 src-ui-wx/layout/LayoutPanel.cpp:12992
+msgid "Remove Models From Group"
+msgstr "Retirer les modèles du groupe"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12981
+msgid "Delete Models"
+msgstr "Supprimer les modèles"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12996
+msgid "Add/Edit SubModel Alias"
+msgstr "Ajouter/modifier l'alias du sous-modèle"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13007
+msgid "Delete Model"
+msgstr "Supprimer le modèle"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13066
+msgid "Add Selections to Existing Groups"
+msgstr "Ajouter la sélection à des groupes existants"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13073
+msgid "Create Group from Selections"
+msgstr "Créer un groupe depuis la sélection"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13078
+msgid "Delete Groups"
+msgstr "Supprimer les groupes"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13084
+msgid "Delete Group"
+msgstr "Supprimer le groupe"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13085
+msgid "Rename Group"
+msgstr "Renommer le groupe"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13086
+msgid "Clone Group"
+msgstr "Cloner le groupe"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13087
+msgid "Unlink Group from Base Show Folder"
+msgstr "Délier le groupe du dossier du show de base"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13090
+msgid "Promote Group to Base Show Folder"
+msgstr "Promouvoir le groupe vers le dossier du show de base"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13095
+msgid "Delete Empty Groups"
+msgstr "Supprimer les groupes vides"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13097
+msgid "Delete All Aliases"
+msgstr "Supprimer tous les alias"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13101
+msgid "Bulk Edit Tag Color"
+msgstr "Édition groupée de la couleur d'étiquette"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13102
+msgid "Bulk Edit Preview"
+msgstr "Édition groupée de l'aperçu"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13113
+msgid "Make Start Channel Valid"
+msgstr "Rendre le canal de début valide"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13118
+msgid "Make Start Channel Not Overlapping"
+msgstr "Rendre le canal de début sans chevauchement"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13139
+msgid "Make All Start Channels Valid"
+msgstr "Rendre tous les canaux de début valides"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13142
+msgid "Make All Start Channels Not Overlapping"
+msgstr "Rendre tous les canaux de début sans chevauchement"
 
 #: src-ui-wx/layout/LayoutPanel.cpp:2703
 msgid "Models from the base show folder can't be in a Set with this show's own models - the base folder can move its models without moving the rest of the Set."
@@ -5773,7 +6057,7 @@ msgstr "Hauteur"
 msgid "Brightness"
 msgstr "Luminosité"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4256 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:558 src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:53 src-ui-wx/modelproperties/adapters/ImageObjectPropertyAdapter.cpp:30 src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:33 ... (+1)
+#: src-ui-wx/layout/LayoutPanel.cpp:4256 src-ui-wx/layout/LayoutPanel.cpp:7838 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:558 src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:53 src-ui-wx/modelproperties/adapters/ImageObjectPropertyAdapter.cpp:30 ... (+2)
 msgid "Transparency"
 msgstr "Transparence"
 
@@ -5842,9 +6126,285 @@ msgstr "Groupes"
 msgid "Model Set contains a locked or base show model - unlock it (or remove the base model from the Set) to move the Set (Alt-drag moves a single model)."
 msgstr "L'ensemble contient un modèle verrouillé ou du show de base : déverrouillez-le (ou retirez le modèle de base de l'ensemble) pour déplacer l'ensemble (Alt-glisser déplace un seul modèle)."
 
+#: src-ui-wx/layout/LayoutPanel.cpp:7718
+msgid "Enter Segment Size"
+msgstr "Saisir la taille des segments"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7720
+msgid "Add Point"
+msgstr "Ajouter un point"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7722
+msgid "Define Curve"
+msgstr "Définir la courbe"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7725
+msgid "Remove Curve"
+msgstr "Retirer la courbe"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7735
+msgid "Delete Point"
+msgstr "Supprimer le point"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7744
+msgid "Correct Aspect Ratio"
+msgstr "Corriger les proportions"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7747
+msgid "Align With Ground"
+msgstr "Aligner sur le sol"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7770 src-ui-wx/sequencer/EffectsGrid.cpp:569 src-ui-wx/sequencer/EffectsGrid.cpp:687
+msgid "Lock"
+msgstr "Verrouiller"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7772 src-ui-wx/sequencer/EffectsGrid.cpp:570 src-ui-wx/sequencer/EffectsGrid.cpp:688
+msgid "Unlock"
+msgstr "Déverrouiller"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7774
+msgid "Unlink from base show folder"
+msgstr "Délier du dossier du show de base"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7782 src-ui-wx/model/ChannelLayoutDialog.cpp:62
+msgid "Node Layout"
+msgstr "Disposition des nœuds"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7785 src-ui-wx/model/CustomModelDialog.cpp:411
+msgid "Wiring View"
+msgstr "Vue du câblage"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7788
+msgid "Wire to Closest Controller with Open Port"
+msgstr "Relier au contrôleur le plus proche ayant un port libre"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7793
+msgid "Export as Custom xLights Model"
+msgstr "Exporter en modèle personnalisé xLights"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7796
+msgid "Export as 3D Custom xLights Model"
+msgstr "Exporter en modèle personnalisé 3D xLights"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7798
+msgid "Export xLights Model"
+msgstr "Exporter le modèle xLights"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7800
+msgid "Export As DXF/STL/VRML"
+msgstr "Exporter en DXF/STL/VRML"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7802
+msgid "Export Faces/States/SubModels"
+msgstr "Exporter les visages/états/sous-modèles"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7806
+msgid "Add to Existing Groups"
+msgstr "Ajouter à des groupes existants"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7811 src-ui-wx/layout/LayoutPanel.cpp:13071
+msgid "Remove from Existing Groups"
+msgstr "Retirer des groupes existants"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7813
+msgid "Create Group"
+msgstr "Créer un groupe"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7815
+msgid "Flip Horizontal"
+msgstr "Retourner horizontalement"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7816
+msgid "Flip Vertical"
+msgstr "Retourner verticalement"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7818
+msgid "Swap Start/End"
+msgstr "Inverser début/fin"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7822
+msgid "Replace Model(s) With This Model..."
+msgstr "Remplacer des modèles par ce modèle..."
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7829
+msgid "Inactive"
+msgstr "Inactif"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7835 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:568
+msgid "Tag Color"
+msgstr "Couleur d'étiquette"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7836 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:550
+msgid "Pixel Size"
+msgstr "Taille des pixels"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7837 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:556
+msgid "Pixel Style"
+msgstr "Style des pixels"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7839 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:563
+msgid "Black Transparency"
+msgstr "Transparence du noir"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7840 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:425
+msgid "Shadow Model For"
+msgstr "Modèle ombre de"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7842
+msgid "Edit Properties..."
+msgstr "Modifier les propriétés..."
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7846
+msgid "Rotate X"
+msgstr "Pivoter autour de X"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7847
+msgid "Rotate Y"
+msgstr "Pivoter autour de Y"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7848
+msgid "Rotate Z"
+msgstr "Pivoter autour de Z"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7851
+msgid "Controller Port"
+msgstr "Port du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7852
+msgid "Controller Port and Increment"
+msgstr "Port du contrôleur avec incrément"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7853
+msgid "Controller Protocol"
+msgstr "Protocole du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7856
+msgid "Controller Smart Remote"
+msgstr "Smart Remote du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7857
+msgid "Controller Smart Remote Type"
+msgstr "Type de Smart Remote du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7858
+msgid "Controller Direction"
+msgstr "Direction du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7859
+msgid "Controller Brightness"
+msgstr "Luminosité du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7860
+msgid "Controller Gamma"
+msgstr "Gamma du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7861
+msgid "Controller Colour Order"
+msgstr "Ordre des couleurs du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7862
+msgid "Controller Start Null Nodes"
+msgstr "Nœuds nuls de début du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7863
+msgid "Controller End Null Nodes"
+msgstr "Nœuds nuls de fin du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7864
+msgid "Controller Group Count"
+msgstr "Nombre de groupes du contrôleur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7868 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:436
+msgid "Preview"
+msgstr "Aperçu"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7870 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:448
+msgid "Dimming Curves"
+msgstr "Courbes de gradation"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7875 src-ui-wx/sequencer/BufferSizeDialog.cpp:86 resources/effectmetadata/Liquid.json
+msgid "Top"
+msgstr "Haut"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7876 src-ui-wx/sequencer/BufferSizeDialog.cpp:100
+msgid "Bottom"
+msgstr "Bas"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7880 src-ui-wx/model/WiringDialog.cpp:835
+msgid "Front"
+msgstr "Avant"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7881 src-ui-wx/model/GenerateCustomModelDialog.cpp:2624 src-ui-wx/model/GenerateCustomModelDialog.cpp:2646 src-ui-wx/model/GenerateCustomModelDialog.cpp:2687 src-ui-wx/model/GenerateCustomModelDialog.cpp:2770 ... (+1)
+msgid "Back"
+msgstr "Retour"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7882
+msgid "With Ground"
+msgstr "Avec le sol"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7884
+msgid "Horizontal Center"
+msgstr "Centre horizontal"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7885
+msgid "Vertical Center"
+msgstr "Centre vertical"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7887
+msgid "Depth Center"
+msgstr "Centre en profondeur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7892 src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:29 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:27
+msgid "Horizontal"
+msgstr "Horizontal"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7893 src-ui-wx/model/CustomModelDialog.cpp:2939 src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:30 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:28
+msgid "Vertical"
+msgstr "Vertical"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7895 src-ui-wx/model/CustomModelDialog.cpp:401
+msgid "Depth"
+msgstr "Profondeur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7900
+msgid "Match Width"
+msgstr "Même largeur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7901
+msgid "Match Height"
+msgstr "Même hauteur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7903
+msgid "Match Depth"
+msgstr "Même profondeur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7905
+msgid "Match Size"
+msgstr "Même taille"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7934 src-ui-wx/layout/LayoutPanel.cpp:13054
+msgid "Align"
+msgstr "Aligner"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7935 src-ui-wx/layout/LayoutPanel.cpp:13055
+msgid "Distribute"
+msgstr "Répartir"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7936 src-ui-wx/layout/LayoutPanel.cpp:13056
+msgid "Resize"
+msgstr "Redimensionner"
+
 #: src-ui-wx/layout/LayoutPanel.cpp:7942
 msgid "Set Center Offset Here"
 msgstr "Placer le décalage du centre ici"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7961
+msgid "Delete this Preview"
+msgstr "Supprimer cet aperçu"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7962
+msgid "Rename this Preview"
+msgstr "Renommer cet aperçu"
 
 #: src-ui-wx/layout/LayoutPanel.cpp:7965
 msgid "Save Layout Image"
@@ -5866,6 +6426,10 @@ msgstr "Importer des modèles/groupes LOR S5"
 msgid "Export Layout As DXF"
 msgstr "Exporter la disposition en DXF"
 
+#: src-ui-wx/layout/LayoutPanel.cpp:7973 src-ui-wx/model/CustomModelDialog.cpp:475 src-ui-wx/model/WiringDialog.cpp:807 src-ui-wx/sequencer/SelectPanel.cpp:121
+msgid "Reset"
+msgstr "Réinitialiser"
+
 #: src-ui-wx/layout/LayoutPanel.cpp:7974
 msgid "Set Current ViewPoint as Default"
 msgstr "Définir le point de vue actuel par défaut"
@@ -5877,6 +6441,14 @@ msgstr "Rétablir le point de vue par défaut"
 #: src-ui-wx/layout/LayoutPanel.cpp:7977
 msgid "Save Current ViewPoint"
 msgstr "Enregistrer le point de vue actuel"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7985 src-ui-wx/layout/LayoutPanel.cpp:8004 src-ui-wx/layout/ModelPreview.cpp:1358 src-ui-wx/layout/ModelPreview.cpp:1367
+msgid "Load ViewPoint"
+msgstr "Charger un point de vue"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:7993 src-ui-wx/layout/LayoutPanel.cpp:8012
+msgid "Delete ViewPoint"
+msgstr "Supprimer le point de vue"
 
 #: src-ui-wx/layout/LayoutPanel.cpp:8019
 msgid "Show Models Not On Controller"
@@ -5934,6 +6506,18 @@ msgstr "Imprimer..."
 #: src-ui-wx/layout/LayoutPrintPreviewDialog.cpp:563
 msgid "Problem grabbing ModelPreview image for printing"
 msgstr "Impossible de capturer l'image de l'aperçu pour l'impression"
+
+#: src-ui-wx/layout/ModelGroupPanel.cpp:1352
+msgid "Copy From..."
+msgstr "Copier depuis..."
+
+#: src-ui-wx/layout/ModelGroupPanel.cpp:1355
+msgid "Sort By Name"
+msgstr "Trier par nom"
+
+#: src-ui-wx/layout/ModelGroupPanel.cpp:1356
+msgid "Sort By Location"
+msgstr "Trier par position"
 
 #: src-ui-wx/layout/ModelGroupPanel.cpp:160
 msgid "Model Group Name:"
@@ -6063,6 +6647,31 @@ msgstr "Accepte des expressions régulières simples ^?.*$"
 msgid "x"
 msgstr ""
 
+#: src-ui-wx/layout/ModelPreview.cpp:165
+msgctxt "menu"
+msgid "Off"
+msgstr "Désactivé"
+
+#: src-ui-wx/layout/ModelPreview.cpp:166
+msgid "Pencil Size 5 (Extra Large - 12px)"
+msgstr "Crayon taille 5 (très large - 12 px)"
+
+#: src-ui-wx/layout/ModelPreview.cpp:167
+msgid "Pencil Size 4 (Large - 8px)"
+msgstr "Crayon taille 4 (large - 8 px)"
+
+#: src-ui-wx/layout/ModelPreview.cpp:168
+msgid "Pencil Size 3 (Medium - 6px)"
+msgstr "Crayon taille 3 (moyen - 6 px)"
+
+#: src-ui-wx/layout/ModelPreview.cpp:169
+msgid "Pencil Size 2 (Fine - 4px)"
+msgstr "Crayon taille 2 (fin - 4 px)"
+
+#: src-ui-wx/layout/ModelPreview.cpp:170
+msgid "Pencil Size 1 (Extra Fine - 2px)"
+msgstr "Crayon taille 1 (très fin - 2 px)"
+
 #: src-ui-wx/layout/ReplaceModelDialog.h:146
 msgid "Do not change destination models' groups"
 msgstr "Ne pas modifier les groupes des modèles de destination"
@@ -6111,9 +6720,81 @@ msgstr "Placer en haut de la liste"
 msgid "v"
 msgstr ""
 
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1809
+msgid "Undo"
+msgstr "Annuler"
+
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:181 src-ui-wx/sequencer/EffectTreeDialog.cpp:109
 msgid "vv"
 msgstr ""
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1810
+msgid "Hide All"
+msgstr "Tout masquer"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1811
+msgid "Hide Unused"
+msgstr "Masquer les inutilisés"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1813
+msgid "Remove Unused"
+msgstr "Retirer les inutilisés"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1814
+msgid "Select Unused"
+msgstr "Sélectionner les inutilisés"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1815
+msgid "Select Used"
+msgstr "Sélectionner les utilisés"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1820
+msgid "By Name"
+msgstr "Par nom"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1821
+msgid "By Name But Groups At Top"
+msgstr "Par nom, groupes en tête"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1822
+msgid "By Name But Groups At Top by Size"
+msgstr "Par nom, groupes en tête par taille"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1823
+msgid "By Name But Groups At Top by Node Count"
+msgstr "Par nom, groupes en tête par nombre de nœuds"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1824
+msgid "By Controller/Port But Groups At Top"
+msgstr "Par contrôleur/port, groupes en tête"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1825
+msgid "By Controller/Port But Groups At Top by Size"
+msgstr "Par contrôleur/port, groupes en tête par taille"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1826
+msgid "By Start Channel But Groups At Top"
+msgstr "Par canal de début, groupes en tête"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1827
+msgid "By Start Channel But Groups At Top by Size"
+msgstr "Par canal de début, groupes en tête par taille"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1829
+msgid "The Same as Current Master View"
+msgstr "Identique à la vue principale actuelle"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1831
+msgid "By Type"
+msgstr "Par type"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1832
+msgid "Models Under This Group"
+msgstr "Modèles de ce groupe"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:1833
+msgid "Bubble Up Groups"
+msgstr "Faire remonter les groupes"
 
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:192
 msgid "Clone"
@@ -6159,6 +6840,14 @@ msgstr "Résultat précédent"
 msgid "Next match"
 msgstr "Résultat suivant"
 
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:3092
+msgid "View From Layout File"
+msgstr "Vue du fichier de disposition"
+
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:3093
+msgid "Master View From Sequence File"
+msgstr "Vue principale du fichier de séquence"
+
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:3170
 msgid "Choose Sequence File to Open"
 msgstr "Choisir la séquence à ouvrir"
@@ -6166,6 +6855,26 @@ msgstr "Choisir la séquence à ouvrir"
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:570 src-ui-wx/layout/ViewsModelsPanel.cpp:589
 msgid "Timing/Model"
 msgstr "Timing/Modèle"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:1380
+msgid "Reload from Disk"
+msgstr "Recharger depuis le disque"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:1385
+msgid "Re-embed from Disk"
+msgstr "Réintégrer depuis le disque"
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:1398
+msgid "Re-select Image..."
+msgstr "Choisir à nouveau l'image..."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:1419
+msgid "Bulk Find Images..."
+msgstr "Rechercher les images en lot..."
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:1440
+msgid "Bulk Copy External Images..."
+msgstr "Copier les images externes en lot..."
 
 #: src-ui-wx/media/MediaImportOptionsDialog.cpp:101
 msgid "Shaders"
@@ -6243,11 +6952,7 @@ msgstr "Export de la vidéo..."
 msgid "Select alignment point"
 msgstr "Choisir le point d'alignement"
 
-#: src-ui-wx/model/ChannelLayoutDialog.cpp:62
-msgid "Node Layout"
-msgstr "Disposition des nœuds"
-
-#: src-ui-wx/model/ChannelLayoutDialog.cpp:73
+#: src-ui-wx/model/ChannelLayoutDialog.cpp:73 src-ui-wx/model/WiringDialog.cpp:814
 msgid "Print"
 msgstr "Imprimer"
 
@@ -6298,21 +7003,180 @@ msgstr "Horiz. : %.2f"
 msgid "Vert:  %.2f"
 msgstr "Vert. : %.2f"
 
+#: src-ui-wx/model/CustomModelDialog.cpp:2823
+msgid "Create SubModel From Row"
+msgstr "Créer un sous-modèle depuis la ligne"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2824
+msgid "Create Minimal SubModel From Row"
+msgstr "Créer un sous-modèle minimal depuis la ligne"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2825
+msgid "Create SubModel From All Rows"
+msgstr "Créer un sous-modèle depuis toutes les lignes"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2826
+msgid "Create Minimal SubModel From All Rows"
+msgstr "Créer un sous-modèle minimal depuis toutes les lignes"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2831
+msgid "Create SubModel From Column"
+msgstr "Créer un sous-modèle depuis la colonne"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2832
+msgid "Create Minimal SubModel From Column"
+msgstr "Créer un sous-modèle minimal depuis la colonne"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2833
+msgid "Create SubModel From AllColumns"
+msgstr "Créer un sous-modèle depuis toutes les colonnes"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2834
+msgid "Create Minimal SubModel From All Columns"
+msgstr "Créer un sous-modèle minimal depuis toutes les colonnes"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2872
+msgid "Clear Cells"
+msgstr "Vider les cellules"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2874 src-ui-wx/model/NodeSelectGrid.cpp:969
+msgid "Find Node"
+msgstr "Trouver un nœud"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2875
+msgid "Find Last Node"
+msgstr "Trouver le dernier nœud"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2878
+msgid "Horizontal Flip"
+msgstr "Retournement horizontal"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2880
+msgid "Horizontal Flip Selected"
+msgstr "Retourner horizontalement la sélection"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2882
+msgid "Vertical Flip"
+msgstr "Retournement vertical"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2884
+msgid "Vertical Flip Selected"
+msgstr "Retourner verticalement la sélection"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2886 src-ui-wx/model/WiringDialog.cpp:845
+msgid "Rotate 90"
+msgstr "Pivoter de 90°"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2887
+msgid "Rotate x"
+msgstr "Pivoter autour de x"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2888 src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:65 src-ui-wx/setup/ControllerConnectionDialog.cpp:88 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:242 resources/effectmetadata/Fan.json ... (+3)
+msgid "Reverse"
+msgstr "Inverser"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2891
+msgid "Shift Selected"
+msgstr "Décaler la sélection"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2893
+msgid "Insert Prior"
+msgstr "Insérer avant"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2894
+msgid "Compress"
+msgstr "Compresser"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2895
+msgid "Trim Unused Space"
+msgstr "Supprimer l'espace inutilisé"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2896
+#, c-format
+msgid "Shrink Space - Max 10%"
+msgstr "Réduire l'espace - 10 % max"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2897
+#, c-format
+msgid "Shrink Space - Max 50%"
+msgstr "Réduire l'espace - 50 % max"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2898
+#, c-format
+msgid "Shrink Space - Max 99%"
+msgstr "Réduire l'espace - 99 % max"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2899
+msgid "Expand to use Space"
+msgstr "Étendre pour occuper l'espace"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2900
+msgid "Convert to Single Node"
+msgstr "Convertir en nœud unique"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2904
+msgid "Create Submodel From Layer"
+msgstr "Créer un sous-modèle depuis le calque"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2905
+msgid "Create Minimal Submodel From Layer"
+msgstr "Créer un sous-modèle minimal depuis le calque"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2906
+msgid "Create Submodel From All Layers"
+msgstr "Créer un sous-modèle depuis tous les calques"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2907
+msgid "Create Minimal Submodel From All Layers"
+msgstr "Créer un sous-modèle minimal depuis tous les calques"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2920
+msgid "Copy Layer Forward 1"
+msgstr "Copier le calque 1 en avant"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2922
+msgid "Copy Layer Forward All"
+msgstr "Copier le calque tout en avant"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2924
+msgid "Copy Layer Backward 1"
+msgstr "Copier le calque 1 en arrière"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2926
+msgid "Copy Layer Backward All"
+msgstr "Copier le calque tout en arrière"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2933
+msgid "Left -> Right"
+msgstr "Gauche -> droite"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2934
+msgid "Right -> Left"
+msgstr "Droite -> gauche"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2935
+msgid "Horizontial"
+msgstr "Horizontal"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2937
+msgid "Top -> Bottom"
+msgstr "Haut -> bas"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2938
+msgid "Bottom -> Top"
+msgstr "Bas -> haut"
+
+#: src-ui-wx/model/CustomModelDialog.cpp:2941
+msgid "Number Selected"
+msgstr "Numéroter la sélection"
+
 #: src-ui-wx/model/CustomModelDialog.cpp:381 src-ui-wx/model/GenerateCustomModelDialog.cpp:2810
 msgid "Custom Model"
 msgstr "Modèle personnalisé"
 
-#: src-ui-wx/model/CustomModelDialog.cpp:401
-msgid "Depth"
-msgstr "Profondeur"
-
 #: src-ui-wx/model/CustomModelDialog.cpp:408
 msgid "Show wiring in model preview"
 msgstr "Afficher le câblage dans l'aperçu du modèle"
-
-#: src-ui-wx/model/CustomModelDialog.cpp:411
-msgid "Wiring View"
-msgstr "Vue du câblage"
 
 #: src-ui-wx/model/CustomModelDialog.cpp:413
 msgid "Show Duplicate Nodes"
@@ -6322,15 +7186,15 @@ msgstr "Afficher les nœuds en double"
 msgid "Output to Lights"
 msgstr "Sortie vers les lumières"
 
-#: src-ui-wx/model/CustomModelDialog.cpp:422
+#: src-ui-wx/model/CustomModelDialog.cpp:422 src-ui-wx/model/CustomModelDialog.cpp:2856 src-ui-wx/model/NodeSelectGrid.cpp:963 src-ui-wx/sequencer/EffectsGrid.cpp:476 src-ui-wx/sequencer/EffectsGrid.cpp:694
 msgid "Cut"
 msgstr "Couper"
 
-#: src-ui-wx/model/CustomModelDialog.cpp:426 src-ui-wx/model/SubModelsPanel.cpp:193
+#: src-ui-wx/model/CustomModelDialog.cpp:426 src-ui-wx/model/CustomModelDialog.cpp:2857 src-ui-wx/model/ModelFacesPanel.cpp:2485 src-ui-wx/model/ModelStatesPanel.cpp:1093 src-ui-wx/model/NodeSelectGrid.cpp:964 ... (+3)
 msgid "Copy"
 msgstr "Copier"
 
-#: src-ui-wx/model/CustomModelDialog.cpp:430
+#: src-ui-wx/model/CustomModelDialog.cpp:430 src-ui-wx/model/CustomModelDialog.cpp:2858 src-ui-wx/model/NodeSelectGrid.cpp:965 src-ui-wx/sequencer/EffectsGrid.cpp:478 src-ui-wx/sequencer/EffectsGrid.cpp:696
 msgid "Paste"
 msgstr "Coller"
 
@@ -6357,10 +7221,6 @@ msgstr "Déplacer l'image vers le bas"
 #: src-ui-wx/model/CustomModelDialog.cpp:467
 msgid "Move image right"
 msgstr "Déplacer l'image à droite"
-
-#: src-ui-wx/model/CustomModelDialog.cpp:475 src-ui-wx/sequencer/SelectPanel.cpp:121
-msgid "Reset"
-msgstr "Réinitialiser"
 
 #: src-ui-wx/model/CustomModelDialog.cpp:476
 msgid "Reset image offset to zero"
@@ -6534,10 +7394,6 @@ msgstr "La vidéo est stable"
 msgid "Preview video during scan (slower)"
 msgstr "Afficher la vidéo pendant l'analyse (plus lent)"
 
-#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2624 src-ui-wx/model/GenerateCustomModelDialog.cpp:2646 src-ui-wx/model/GenerateCustomModelDialog.cpp:2687 src-ui-wx/model/GenerateCustomModelDialog.cpp:2770 src-ui-wx/model/GenerateCustomModelDialog.cpp:2797
-msgid "Back"
-msgstr "Retour"
-
 #: src-ui-wx/model/GenerateCustomModelDialog.cpp:2636
 msgid ""
 "This is the frame the scan has identified as being the most likely to show all your bulbs. \n"
@@ -6690,6 +7546,30 @@ msgstr "Arrêtez la vidéo."
 msgid "Filter models and viewpoints"
 msgstr "Filtrer les modèles et les points de vue"
 
+#: src-ui-wx/model/ImportPreviewsModelsDialog.cpp:441
+msgid "Select Siblings"
+msgstr "Sélectionner les éléments voisins"
+
+#: src-ui-wx/model/ImportPreviewsModelsDialog.cpp:442
+msgid "Deselect Siblings"
+msgstr "Désélectionner les éléments voisins"
+
+#: src-ui-wx/model/ImportPreviewsModelsDialog.cpp:443
+msgid "Deselect Models Already In Layout"
+msgstr "Désélectionner les modèles déjà dans la disposition"
+
+#: src-ui-wx/model/ImportPreviewsModelsDialog.cpp:445
+msgid "Select All Models"
+msgstr "Sélectionner tous les modèles"
+
+#: src-ui-wx/model/ImportPreviewsModelsDialog.cpp:446
+msgid "Select All Model Groups"
+msgstr "Sélectionner tous les groupes de modèles"
+
+#: src-ui-wx/model/ImportPreviewsModelsDialog.cpp:447
+msgid "Select All Viewpoints"
+msgstr "Sélectionner tous les points de vue"
+
 #: src-ui-wx/model/ImportPreviewsModelsDialog.cpp:64
 msgid "Import Previews, Models and Viewpoints"
 msgstr "Importer des aperçus, modèles et points de vue"
@@ -6754,6 +7634,14 @@ msgstr "Luminosité/gamma RGB"
 #: src-ui-wx/model/ModelDimmingCurveDialog.cpp:209
 msgid "RGB From File"
 msgstr "RGB depuis un fichier"
+
+#: src-ui-wx/model/ModelFacesPanel.cpp:1538 src-ui-wx/model/ModelStatesPanel.cpp:1017
+msgid "Import SubModel"
+msgstr "Importer un sous-modèle"
+
+#: src-ui-wx/model/ModelFacesPanel.cpp:1543 src-ui-wx/model/ModelStatesPanel.cpp:1033
+msgid "Bulk Color Change..."
+msgstr "Changement de couleur groupé..."
 
 #: src-ui-wx/model/ModelFacesPanel.cpp:1610 src-ui-wx/model/ModelStatesPanel.cpp:1328
 msgid "Select SubModel"
@@ -6838,6 +7726,26 @@ msgstr ""
 #: src-ui-wx/model/ModelFacesPanel.cpp:240
 msgid "Use States as Outline:"
 msgstr "Utiliser des états comme contour :"
+
+#: src-ui-wx/model/ModelFacesPanel.cpp:2490 src-ui-wx/model/ModelStatesPanel.cpp:1097
+msgid "Import From Model"
+msgstr "Importer depuis un modèle"
+
+#: src-ui-wx/model/ModelFacesPanel.cpp:2491 src-ui-wx/model/ModelStatesPanel.cpp:1098
+msgid "Import From File"
+msgstr "Importer depuis un fichier"
+
+#: src-ui-wx/model/ModelFacesPanel.cpp:2492
+msgid "Export Faces To Other Model(s)"
+msgstr "Exporter les visages vers d'autres modèles"
+
+#: src-ui-wx/model/ModelFacesPanel.cpp:2494 src-ui-wx/model/ModelStatesPanel.cpp:1103
+msgid "Shift Nodes"
+msgstr "Décaler les nœuds"
+
+#: src-ui-wx/model/ModelFacesPanel.cpp:2495 src-ui-wx/model/ModelStatesPanel.cpp:1104 src-ui-wx/model/SubModelsPanel.cpp:265
+msgid "Reverse Nodes"
+msgstr "Inverser les nœuds"
 
 #: src-ui-wx/model/ModelFacesPanel.cpp:252
 msgid "Outline:"
@@ -7011,6 +7919,50 @@ msgstr ""
 msgid "Matrix"
 msgstr ""
 
+#: src-ui-wx/model/ModelStatesPanel.cpp:1018
+msgid "Import State Definition"
+msgstr "Importer une définition d'état"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1019
+msgid "Sort by State"
+msgstr "Trier par état"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1021
+msgid "Insert Line Before"
+msgstr "Insérer une ligne avant"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1022
+msgid "Insert Line After"
+msgstr "Insérer une ligne après"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1023
+msgid "Move Selected Up"
+msgstr "Monter la sélection"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1024
+msgid "Move Selected Down"
+msgstr "Descendre la sélection"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1026
+msgid "Delete Selected"
+msgstr "Supprimer la sélection"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1028
+msgid "Clear All Rows"
+msgstr "Vider toutes les lignes"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1099
+msgid "Import From SubModels"
+msgstr "Importer depuis les sous-modèles"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1100
+msgid "Import From Downloads"
+msgstr "Importer depuis les téléchargements"
+
+#: src-ui-wx/model/ModelStatesPanel.cpp:1101
+msgid "Export State(s) To Other Model(s)"
+msgstr "Exporter les états vers d'autres modèles"
+
 #: src-ui-wx/model/ModelStatesPanel.cpp:1581
 msgid ""
 "State(s) with the Same Name Already Exist.\n"
@@ -7066,10 +8018,6 @@ msgstr "Sélection"
 #: src-ui-wx/model/NodeSelectGrid.cpp:245
 msgid "Ordered Selection"
 msgstr "Sélection ordonnée"
-
-#: src-ui-wx/model/NodeSelectGrid.cpp:251
-msgid "Select None"
-msgstr "Ne rien sélectionner"
 
 #: src-ui-wx/model/NodeSelectGrid.cpp:253 src-ui-wx/setup/RemapDMXChannelsDialog.cpp:62
 msgid "Invert"
@@ -7251,6 +8199,94 @@ msgstr "Enregistrer le fichier CSV"
 msgid "Save Custom xModel File"
 msgstr "Enregistrer le fichier xModel personnalisé"
 
+#: src-ui-wx/model/SubModelsPanel.cpp:1291
+msgid "Remove Duplicates"
+msgstr "Retirer les doublons"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1292
+msgid "Suppress Duplicates"
+msgstr "Masquer les doublons"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1293
+msgid "Sort Strand Points Geometrically..."
+msgstr "Trier géométriquement les points du brin..."
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1296
+msgid "Remove Duplicates All Left->Right"
+msgstr "Retirer tous les doublons de gauche à droite"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1297
+msgid "Remove Duplicates All Top->Bottom"
+msgstr "Retirer tous les doublons de haut en bas"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1298
+msgid "Suppress Duplicates All Left->Right"
+msgstr "Masquer tous les doublons de gauche à droite"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1299
+msgid "Suppress Duplicates All Top->Bottom"
+msgstr "Masquer tous les doublons de haut en bas"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1300
+msgid "Uniform Row Length"
+msgstr "Longueur de ligne uniforme"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1301
+msgid "Uniform Row Length - Pad Front"
+msgstr "Longueur de ligne uniforme - compléter devant"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1302
+msgid "Uniform Row Length - Pad Rear"
+msgstr "Longueur de ligne uniforme - compléter derrière"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1303
+msgid "Pivot Rows / Columns"
+msgstr "Permuter lignes / colonnes"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1304
+msgid "Geometrically Sort Points All Strands..."
+msgstr "Trier géométriquement les points de tous les brins..."
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1308
+msgid "Symmetrize (Rotational)"
+msgstr "Symétriser (rotation)"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1317
+msgid "Combine Strands"
+msgstr "Combiner les brins"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1325
+msgid "Expand All Strands"
+msgstr "Déplier tous les brins"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1326
+msgid "Compress All Strands"
+msgstr "Compresser tous les brins"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1327
+msgid "Convert Blanks To Zeros"
+msgstr "Convertir les cases vides en zéros"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1328
+msgid "Convert Zeros To Empty"
+msgstr "Convertir les zéros en cases vides"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1329
+msgid "Remove Blanks/Zeros"
+msgstr "Retirer les vides/zéros"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1387
+msgid "Join"
+msgstr "Joindre"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1388
+msgid "Join Single Strand"
+msgstr "Joindre en un seul brin"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1392 src-ui-wx/sequencer/EffectsGrid.cpp:491
+msgid "Split"
+msgstr "Scinder"
+
 #: src-ui-wx/model/SubModelsPanel.cpp:1608
 msgid "Unable to create results file for Symmetrize. Aborted."
 msgstr "Impossible de créer le fichier de résultats de la symétrisation. Opération annulée."
@@ -7323,10 +8359,6 @@ msgstr ""
 msgid "Strand   1"
 msgstr ""
 
-#: src-ui-wx/model/SubModelsPanel.cpp:265
-msgid "Reverse Nodes"
-msgstr "Inverser les nœuds"
-
 #: src-ui-wx/model/SubModelsPanel.cpp:267
 msgid "Reverse Rows"
 msgstr "Inverser les lignes"
@@ -7383,6 +8415,78 @@ msgstr "Remplacer les sous-modèles"
 msgid "Failure loading xModel file or model is not a 2D custom model."
 msgstr "Échec du chargement du fichier xModel, ou le modèle n'est pas un modèle personnalisé 2D."
 
+#: src-ui-wx/model/SubModelsPanel.cpp:868
+msgid "Generate Slices"
+msgstr "Générer des tranches"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:869
+msgid "Add/Edit Aliases"
+msgstr "Ajouter/modifier les alias"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:871
+msgid "Flip All SubModels Vertical"
+msgstr "Retourner tous les sous-modèles verticalement"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:872
+msgid "Flip All SubModels Horizontial"
+msgstr "Retourner tous les sous-modèles horizontalement"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:873
+msgid "Shift All Nodes in All SubModels"
+msgstr "Décaler tous les nœuds de tous les sous-modèles"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:874
+msgid "Reverse All Nodes in All SubModels"
+msgstr "Inverser tous les nœuds de tous les sous-modèles"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:877
+msgid "Shift All Nodes in Selected SubModel"
+msgstr "Décaler tous les nœuds du sous-modèle sélectionné"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:887
+msgid "Import SubModels From Model"
+msgstr "Importer des sous-modèles depuis un modèle"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:888
+msgid "Import SubModels From File"
+msgstr "Importer des sous-modèles depuis un fichier"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:889
+msgid "Import SubModels From Layout"
+msgstr "Importer des sous-modèles depuis la disposition"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:890
+msgid "Import SubModels From Downloads"
+msgstr "Importer des sous-modèles depuis les téléchargements"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:891
+msgid "Import SubModels From State"
+msgstr "Importer des sous-modèles depuis un état"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:892
+msgid "Import SubModels From Face"
+msgstr "Importer des sous-modèles depuis un visage"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:894
+msgid "Import Custom Model Overlay"
+msgstr "Importer une superposition de modèle personnalisé"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:896
+msgid "Import CSV as SubModel"
+msgstr "Importer un CSV en sous-modèle"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:905
+msgid "Export SubModels As CSV"
+msgstr "Exporter les sous-modèles en CSV"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:907
+msgid "Export SubModel As xModel"
+msgstr "Exporter le sous-modèle en xModel"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:909
+msgid "Export SubModels To Other Model(s)"
+msgstr "Exporter les sous-modèles vers d'autres modèles"
+
 #: src-ui-wx/model/ViewpointDialog.cpp:52
 msgid "Apply"
 msgstr "Appliquer"
@@ -7390,6 +8494,38 @@ msgstr "Appliquer"
 #: src-ui-wx/model/WiringDialog.cpp:100
 msgid "3D (drag to rotate)"
 msgstr "3D (glisser pour pivoter)"
+
+#: src-ui-wx/model/WiringDialog.cpp:810
+msgid "Export Large"
+msgstr "Exporter en grand"
+
+#: src-ui-wx/model/WiringDialog.cpp:812
+msgid "Export as DXF"
+msgstr "Exporter en DXF"
+
+#: src-ui-wx/model/WiringDialog.cpp:816
+msgid "Dark"
+msgstr "Sombre"
+
+#: src-ui-wx/model/WiringDialog.cpp:817
+msgid "Gray"
+msgstr "Gris"
+
+#: src-ui-wx/model/WiringDialog.cpp:818
+msgid "Light"
+msgstr "Clair"
+
+#: src-ui-wx/model/WiringDialog.cpp:831
+msgid "Smaller Font"
+msgstr "Police plus petite"
+
+#: src-ui-wx/model/WiringDialog.cpp:833
+msgid "Larger Font"
+msgstr "Police plus grande"
+
+#: src-ui-wx/model/WiringDialog.cpp:836
+msgid "Rear"
+msgstr "Arrière"
 
 #: src-ui-wx/model/WiringDialog.cpp:88
 msgid "Custom Model Wiring"
@@ -7402,6 +8538,10 @@ msgstr "Taille du texte :"
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:1159 src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:126
 msgid "Layers"
 msgstr "Calques"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:1888
+msgid "Insert"
+msgstr "Insérer"
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:247
 msgid "Default"
@@ -7474,18 +8614,6 @@ msgstr "Chaînage du modèle"
 msgid "Beginning"
 msgstr ""
 
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:425
-msgid "Shadow Model For"
-msgstr "Modèle ombre de"
-
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:436
-msgid "Preview"
-msgstr "Aperçu"
-
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:448
-msgid "Dimming Curves"
-msgstr "Courbes de gradation"
-
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:465
 msgid "Aliases are used in mapping to provide alternate names for this model which might match a model in a sequence you are importing from. To use it use the Auto Map button."
 msgstr "Les alias donnent d'autres noms à ce modèle, utilisés à l'import pour reconnaître un modèle de la séquence source. Ils servent avec le bouton Association auto."
@@ -7536,17 +8664,9 @@ msgstr "Apparence"
 msgid "If unchecked the model will not be shown in the layout screen."
 msgstr "Décoché, le modèle n'est pas affiché dans l'écran de disposition."
 
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:550
-msgid "Pixel Size"
-msgstr "Taille des pixels"
-
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:554
 msgid "By increasing the pixel size, the appearance of the element can be made to display a bigger size."
 msgstr "Augmenter la taille des pixels fait paraître l'élément plus grand."
-
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:556
-msgid "Pixel Style"
-msgstr "Style des pixels"
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:557
 msgid "A visual representation of a pixel."
@@ -7556,17 +8676,9 @@ msgstr "Représentation visuelle d'un pixel."
 msgid "Adjust how opaque the element is on the display."
 msgstr "Règle l'opacité de l'élément à l'affichage."
 
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:563
-msgid "Black Transparency"
-msgstr "Transparence du noir"
-
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:564
 msgid "Adjust how transparent the element is on the display."
 msgstr "Règle la transparence de l'élément à l'affichage."
-
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:568
-msgid "Tag Color"
-msgstr "Couleur d'étiquette"
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:569
 msgid "A visual color assigned to the model in the model list."
@@ -7836,10 +8948,6 @@ msgstr "Nœuds par sucre d'orge"
 #: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:60
 msgid "Cane Rotation"
 msgstr "Rotation des sucres d'orge"
-
-#: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:65 src-ui-wx/setup/ControllerConnectionDialog.cpp:88 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:242 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json ... (+2)
-msgid "Reverse"
-msgstr ""
 
 #: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:69
 msgid "Sticks"
@@ -8189,14 +9297,6 @@ msgstr "En bas à gauche"
 #: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:24 src-ui-wx/modelproperties/adapters/WindowFramePropertyAdapter.cpp:23
 msgid "Bottom Right"
 msgstr "En bas à droite"
-
-#: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:29 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:27
-msgid "Horizontal"
-msgstr "Horizontal"
-
-#: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:30 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:28
-msgid "Vertical"
-msgstr "Vertical"
 
 #: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:43 src-ui-wx/modelproperties/adapters/SpherePropertyAdapter.cpp:41 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:79
 msgid "Don't Zig Zag"
@@ -9710,6 +10810,10 @@ msgstr "  Date de modification  "
 msgid "Last Render Date"
 msgstr "Date du dernier rendu"
 
+#: src-ui-wx/sequencer/BatchRenderDialog.cpp:165
+msgid "Select From FPP Playlist"
+msgstr "Sélectionner depuis la playlist FPP"
+
 #: src-ui-wx/sequencer/BatchRenderDialog.cpp:91
 msgid "Only Show Directory"
 msgstr "Dossier du show uniquement"
@@ -9787,10 +10891,6 @@ msgstr "Arrête maintenant. La séquence en cours de rendu est abandonnée et so
 msgid "Copy Results"
 msgstr "Copier les résultats"
 
-#: src-ui-wx/sequencer/BufferSizeDialog.cpp:100
-msgid "Bottom"
-msgstr "Bas"
-
 #: src-ui-wx/sequencer/BufferSizeDialog.cpp:114 resources/effectmetadata/Circles.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
 msgid "X Center"
 msgstr "Centre X"
@@ -9810,10 +10910,6 @@ msgstr "Supprimer le préréglage de grille"
 #: src-ui-wx/sequencer/BufferSizeDialog.cpp:79
 msgid "Buffer Size"
 msgstr "Taille de la grille de rendu"
-
-#: src-ui-wx/sequencer/BufferSizeDialog.cpp:86 resources/effectmetadata/Liquid.json
-msgid "Top"
-msgstr "Haut"
 
 #: src-ui-wx/sequencer/BulkEditColourPickerDialog.cpp:36
 msgid "Bulk Edit Colour"
@@ -9971,6 +11067,14 @@ msgstr "&Renommer"
 msgid "Rename currently selected effect preset."
 msgstr "Renomme le préréglage d'effet sélectionné."
 
+#: src-ui-wx/sequencer/EffectTreeDialog.cpp:1993
+msgid "Sort Group"
+msgstr "Trier le groupe"
+
+#: src-ui-wx/sequencer/EffectTreeDialog.cpp:1995
+msgid "Sort All"
+msgstr "Tout trier"
+
 #: src-ui-wx/sequencer/EffectTreeDialog.cpp:353
 msgid "No effect selected."
 msgstr "Aucun effet sélectionné."
@@ -10003,6 +11107,78 @@ msgstr "Impossible de supprimer cet élément"
 msgid "A group cannot be added at the currently selected location"
 msgstr "Impossible d'ajouter un groupe à l'emplacement sélectionné"
 
+#: src-ui-wx/sequencer/EffectsGrid.cpp:496
+msgid "Create Timing"
+msgstr "Créer un timing"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:501
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:506
+msgid "Fill Region from Timing Marks"
+msgstr "Remplir la région depuis les repères de timing"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:533
+msgid "Align Start Times"
+msgstr "Aligner les débuts"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:534
+msgid "Align End Times"
+msgstr "Aligner les fins"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:535
+msgid "Align Both Times"
+msgstr "Aligner le début et la fin"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:536
+msgid "Align Centerpoints"
+msgstr "Aligner les centres"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:537
+msgid "Align Match Duration"
+msgstr "Aligner en gardant la même durée"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:538
+msgid "Shift Align Start Times"
+msgstr "Décaler pour aligner les débuts"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:539
+msgid "Shift Align End Times"
+msgstr "Décaler pour aligner les fins"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:540
+msgid "Align To Closest Timing Mark"
+msgstr "Aligner sur le repère de timing le plus proche"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:541
+msgid "Close Gap"
+msgstr "Combler l'écart"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:543
+msgid "Alignment"
+msgstr "Alignement"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:562
+msgid "Create Random Effects"
+msgstr "Créer des effets aléatoires"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:567
+msgid "Reset Effect"
+msgstr "Réinitialiser l'effet"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:571 src-ui-wx/sequencer/RowHeading.cpp:734
+msgid "Disable Render"
+msgstr "Désactiver le rendu"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:572 src-ui-wx/sequencer/RowHeading.cpp:732
+msgid "Enable Render"
+msgstr "Activer le rendu"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:595
+msgid "Find Possible Source Effects"
+msgstr "Trouver les effets sources possibles"
+
 #: src-ui-wx/sequencer/EffectsGrid.cpp:6151
 msgid "Cannot paste AC data in non-AC mode"
 msgstr "Impossible de coller des données AC hors du mode AC"
@@ -10027,6 +11203,14 @@ msgstr "Coller par cellule nécessite une piste de timing active."
 msgid "Number of timing rows does not match how many existed when copied."
 msgstr "Le nombre de lignes de timing ne correspond pas à celui présent lors de la copie."
 
+#: src-ui-wx/sequencer/EffectsGrid.cpp:622
+msgid "Create Symbol from Effect..."
+msgstr "Créer un symbole depuis l'effet..."
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:626
+msgid "Unlink from Symbol"
+msgstr "Délier du symbole"
+
 #: src-ui-wx/sequencer/EffectsGrid.cpp:6260
 msgid "Not enough timing rows to paste timing effects starting on this row."
 msgstr "Pas assez de lignes de timing pour coller les effets de timing à partir de cette ligne."
@@ -10039,9 +11223,69 @@ msgstr "Impossible de coller des effets de modèle dans des pistes de timing."
 msgid "Unable to find a selected timing start location for Paste By Cell."
 msgstr "Impossible de trouver le début de timing sélectionné pour coller par cellule."
 
+#: src-ui-wx/sequencer/EffectsGrid.cpp:639
+msgid "Link to Symbol"
+msgstr "Lier au symbole"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:643 src-ui-wx/sequencer/VAMPPluginDialog.cpp:62
+msgid "Timing"
+msgstr "Timing"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:661
+msgid "Breakdown Phrase"
+msgstr "Découper la phrase"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:663
+msgid "Breakdown Selected Phrases"
+msgstr "Découper les phrases sélectionnées"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:666
+msgid "Breakdown Word"
+msgstr "Découper le mot"
+
 #: src-ui-wx/sequencer/EffectsGrid.cpp:6668
 msgid "Cannot paste model effect into timing track."
 msgstr "Impossible de coller un effet de modèle dans une piste de timing."
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:668
+msgid "Breakdown Selected Words"
+msgstr "Découper les mots sélectionnés"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:671
+msgid "Divide Timings"
+msgstr "Diviser les timings"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:673
+msgid "Auto Label Timings"
+msgstr "Nommer les timings automatiquement"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:676
+msgid "Add \"-shimmer\""
+msgstr "Ajouter « -shimmer »"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:677
+msgid "Remove \"-shimmer\""
+msgstr "Retirer « -shimmer »"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:682
+msgid "Duplicate Selection to Timing Track..."
+msgstr "Dupliquer la sélection vers une piste de timing..."
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:707
+msgid "Find..."
+msgstr "Rechercher..."
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:708
+msgid "Find Next"
+msgstr "Rechercher le suivant"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:709
+msgid "Find Previous"
+msgstr "Rechercher le précédent"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:710
+msgid "Replace All..."
+msgstr "Tout remplacer..."
 
 #: src-ui-wx/sequencer/EffectsGrid.cpp:9168
 msgid "Copying layers/submodels from: "
@@ -10084,6 +11328,10 @@ msgstr "Premier canal (absolu) :"
 #: src-ui-wx/sequencer/GenerateLyricsDialog.cpp:97
 msgid "Node Offsets From First Channel"
 msgstr ""
+
+#: src-ui-wx/sequencer/LayerSelectDialog.cpp:158
+msgid "Select Layers With Effects"
+msgstr "Sélectionner les calques avec des effets"
 
 #: src-ui-wx/sequencer/LayerSelectDialog.cpp:42
 msgid "Choose canvas layers ..."
@@ -10596,6 +11844,243 @@ msgstr "Aucun fichier audio chargé : impossible de détecter le tempo."
 msgid "Could not detect a tempo in the current audio."
 msgstr "Impossible de détecter un tempo dans l'audio actuel."
 
+#: src-ui-wx/sequencer/RowHeading.cpp:638 src-ui-wx/sequencer/RowHeading.cpp:843
+msgid "Edit Display Elements"
+msgstr "Modifier les éléments affichés"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:653
+msgid "Insert Layer Above"
+msgstr "Insérer un calque au-dessus"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:654
+msgid "Insert Layer Below"
+msgstr "Insérer un calque en dessous"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:655
+msgid "Insert Multiple Layers Below"
+msgstr "Insérer plusieurs calques en dessous"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:658
+msgid "Delete Layer"
+msgstr "Supprimer le calque"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:659
+msgid "Delete Multiple Layers"
+msgstr "Supprimer plusieurs calques"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:673
+msgid "Delete Unused Layers"
+msgstr "Supprimer les calques inutilisés"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:675
+msgid "Edit Layer Name"
+msgstr "Modifier le nom du calque"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:679 src-ui-wx/sequencer/RowHeading.cpp:798
+msgid "Show All Timing Tracks"
+msgstr "Afficher toutes les pistes de timing"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:682
+msgid "Show All Submodels"
+msgstr "Afficher tous les sous-modèles"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:684
+msgid "Hide Unused Submodels"
+msgstr "Masquer les sous-modèles inutilisés"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:695
+msgid "Toggle Strands (Shift+DblClick)"
+msgstr "Basculer les brins (Maj+double-clic)"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:697
+msgid "Toggle Nodes"
+msgstr "Basculer les nœuds"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:700
+msgid "Toggle Models"
+msgstr "Basculer les modèles"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:702
+msgid "Show All Effects"
+msgstr "Afficher tous les effets"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:703
+msgid "Collapse All Models"
+msgstr "Replier tous les modèles"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:704
+msgid "Collapse All Layers"
+msgstr "Replier tous les calques"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:708 src-ui-wx/sequencer/RowHeading.cpp:715 src-ui-wx/sequencer/RowHeading.cpp:719
+msgid "Convert To Effect"
+msgstr "Convertir en effet"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:724
+msgid "Promote Node Effects"
+msgstr "Promouvoir les effets des nœuds"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:746
+msgid "Enable Render On All Models"
+msgstr "Activer le rendu sur tous les modèles"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:751
+msgid "Render and Export"
+msgstr "Rendre et exporter"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:752
+msgid "Export Selected Model Effects"
+msgstr "Exporter les effets du modèle sélectionné"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:753
+msgid "Render and Export Selected Model Effects"
+msgstr "Rendre et exporter les effets du modèle sélectionné"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:756
+msgid "Select Effects incl SubModels"
+msgstr "Sélectionner les effets avec les sous-modèles"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:757 src-ui-wx/sequencer/RowHeading.cpp:758
+msgid "Cut Effects"
+msgstr "Couper les effets"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:759 src-ui-wx/sequencer/RowHeading.cpp:760
+msgid "Copy Effects"
+msgstr "Copier les effets"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:761
+msgid "Copy Effects incl SubModels"
+msgstr "Copier les effets avec les sous-modèles"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:762
+msgid "Copy Layers/SubModels to Models"
+msgstr "Copier les calques/sous-modèles vers les modèles"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:763 src-ui-wx/sequencer/RowHeading.cpp:764
+msgid "Paste Effects"
+msgstr "Coller les effets"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:769 src-ui-wx/sequencer/RowHeading.cpp:771
+msgid "Delete Effects"
+msgstr "Supprimer les effets"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:770
+msgid "Create Timing From Effects"
+msgstr "Créer un timing depuis les effets"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:772
+msgid "Delete SubModel Effects"
+msgstr "Supprimer les effets du sous-modèle"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:773
+msgid "Delete Strand Effects"
+msgstr "Supprimer les effets du brin"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:774
+msgid "Delete Node Effects"
+msgstr "Supprimer les effets du nœud"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:777 src-ui-wx/sequencer/RowHeading.cpp:778
+msgid "Convert Effects to 'Per Model'"
+msgstr "Convertir les effets en « Per Model »"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:781
+msgctxt "menu"
+msgid "Model"
+msgstr "Modèle"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:782
+msgid "Row"
+msgstr "Ligne"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:788
+msgid "Add Timing Track"
+msgstr "Ajouter une piste de timing"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:789
+msgid "Rename Timing Track"
+msgstr "Renommer la piste de timing"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:790
+msgid "Delete Timing Track"
+msgstr "Supprimer la piste de timing"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:791
+msgid "Import Timing Track"
+msgstr "Importer une piste de timing"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:792
+msgid "Export Timing Track"
+msgstr "Exporter la piste de timing"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:793
+msgid "Make Timing Track Variable"
+msgstr "Rendre la piste de timing variable"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:795
+msgid "Hide All Timing Tracks"
+msgstr "Masquer toutes les pistes de timing"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:800
+msgid "Add Timing Tracks to All Views"
+msgstr "Ajouter les pistes de timing à toutes les vues"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:801
+msgid "Select Timing Marks"
+msgstr "Sélectionner les repères de timing"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:802
+msgid "Generate Subdivided Timing Tracks"
+msgstr "Générer des pistes de timing subdivisées"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:803
+msgid "Import Notes"
+msgstr "Importer des notes"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:807
+msgid "AI Speech 2 Lyrics"
+msgstr "Paroles depuis la voix (IA)"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:811
+msgid "Import Lyrics"
+msgstr "Importer des paroles"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:812
+msgid "Create Song Regions from Timing Track"
+msgstr "Créer les régions du morceau depuis la piste de timing"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:813
+msgid "Search for Lyrics Online..."
+msgstr "Rechercher les paroles en ligne..."
+
+#: src-ui-wx/sequencer/RowHeading.cpp:816
+msgid "Breakdown Phrases"
+msgstr "Découper les phrases"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:818
+msgid "Breakdown Words"
+msgstr "Découper les mots"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:821
+msgid "Remove Words"
+msgstr "Retirer les mots"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:825
+msgid "Remove Phonemes"
+msgstr "Retirer les phonèmes"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:828
+msgid "Remove Words and Phonemes"
+msgstr "Retirer les mots et les phonèmes"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:833
+msgid "Copy Row"
+msgstr "Copier la ligne"
+
+#: src-ui-wx/sequencer/RowHeading.cpp:834
+msgid "Paste Row"
+msgstr "Coller la ligne"
+
 #: src-ui-wx/sequencer/RowHeading.cpp:885
 msgid "No phrases found."
 msgstr "Aucune phrase trouvée."
@@ -10936,6 +12421,67 @@ msgstr "Visage :"
 msgid "Import from Model"
 msgstr "Importer depuis le modèle"
 
+#: src-ui-wx/sequencer/TimeLine.cpp:215
+msgid "Zoom to Selection"
+msgstr "Zoomer sur la sélection"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:217
+msgid "Reset Zoom"
+msgstr "Réinitialiser le zoom"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:235
+msgctxt "menu"
+msgid "All"
+msgstr "Tout"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:255
+msgid "Add Song Structure Boundary Here"
+msgstr "Ajouter une limite de structure du morceau ici"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:267
+msgid "Delete Song Structure Boundary"
+msgstr "Supprimer la limite de structure du morceau"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:289
+msgid "Copy Effects to Region"
+msgstr "Copier les effets dans la région"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:299
+msgid "Apply Selected Effect Palette to Region"
+msgstr "Appliquer la palette de l'effet sélectionné à la région"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:305
+msgid "Export Song Region as New Sequence"
+msgstr "Exporter la région du morceau en nouvelle séquence"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:311
+msgid "Export All Song Regions as Sequences"
+msgstr "Exporter toutes les régions du morceau en séquences"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:314
+msgid "Clear Song Structure"
+msgstr "Effacer la structure du morceau"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:334
+msgid "New View..."
+msgstr "Nouvelle vue..."
+
+#: src-ui-wx/sequencer/TimeLine.cpp:335
+msgid "Duplicate Current View..."
+msgstr "Dupliquer la vue actuelle..."
+
+#: src-ui-wx/sequencer/TimeLine.cpp:338
+msgid "Rename Current View..."
+msgstr "Renommer la vue actuelle..."
+
+#: src-ui-wx/sequencer/TimeLine.cpp:339
+msgid "Delete Current View"
+msgstr "Supprimer la vue actuelle"
+
+#: src-ui-wx/sequencer/TimeLine.cpp:348
+msgid "Song Structure Views"
+msgstr "Vues de la structure du morceau"
+
 #: src-ui-wx/sequencer/TopEffectsPanel.cpp:57
 msgid "Randomize color and effect settings without a Lock"
 msgstr "Rend aléatoires les couleurs et paramètres d'effet non verrouillés"
@@ -10943,10 +12489,6 @@ msgstr "Rend aléatoires les couleurs et paramètres d'effet non verrouillés"
 #: src-ui-wx/sequencer/TopEffectsPanel.cpp:59 src-ui-wx/setup/ShowDirectoriesDialog.cpp:143
 msgid "Update"
 msgstr "Mettre à jour"
-
-#: src-ui-wx/sequencer/VAMPPluginDialog.cpp:62
-msgid "Timing"
-msgstr "Timing"
 
 #: src-ui-wx/sequencer/VAMPPluginDialog.cpp:69
 msgid "Plugin Settings"
@@ -10963,6 +12505,90 @@ msgstr "Impossible d'ouvrir le zip téléchargé."
 #: src-ui-wx/sequencer/Waveform.cpp:1241
 msgid "Stem separation failed. See log for details."
 msgstr "La séparation des pistes a échoué. Consultez le journal pour plus de détails."
+
+#: src-ui-wx/sequencer/Waveform.cpp:258
+msgid "Render Selected Region"
+msgstr "Rendre la région sélectionnée"
+
+#: src-ui-wx/sequencer/Waveform.cpp:265
+msgid "Raw waveform"
+msgstr "Forme d'onde brute"
+
+#: src-ui-wx/sequencer/Waveform.cpp:266
+msgid "Bass waveform"
+msgstr "Forme d'onde des basses"
+
+#: src-ui-wx/sequencer/Waveform.cpp:267
+msgid "Treble waveform"
+msgstr "Forme d'onde des aigus"
+
+#: src-ui-wx/sequencer/Waveform.cpp:268
+msgid "Alto waveform"
+msgstr "Forme d'onde alto"
+
+#: src-ui-wx/sequencer/Waveform.cpp:269
+msgid "Custom filtered waveform"
+msgstr "Forme d'onde filtrée personnalisée"
+
+#: src-ui-wx/sequencer/Waveform.cpp:270
+msgid "Non Vocals waveform"
+msgstr "Forme d'onde sans les voix"
+
+#: src-ui-wx/sequencer/Waveform.cpp:271
+msgid "Vocals waveform (center extract)"
+msgstr "Forme d'onde des voix (extraction centrale)"
+
+#: src-ui-wx/sequencer/Waveform.cpp:272
+msgid "Perceptual (LUFS)"
+msgstr "Perceptif (LUFS)"
+
+#: src-ui-wx/sequencer/Waveform.cpp:280 src-ui-wx/sequencer/Waveform.cpp:290
+msgid "Stem — Drums"
+msgstr "Piste séparée — batterie"
+
+#: src-ui-wx/sequencer/Waveform.cpp:282 src-ui-wx/sequencer/Waveform.cpp:292
+msgid "Stem — Bass"
+msgstr "Piste séparée — basse"
+
+#: src-ui-wx/sequencer/Waveform.cpp:284 src-ui-wx/sequencer/Waveform.cpp:294
+msgid "Stem — Other"
+msgstr "Piste séparée — autres"
+
+#: src-ui-wx/sequencer/Waveform.cpp:286 src-ui-wx/sequencer/Waveform.cpp:296
+msgid "Stem — Vocals (ML)"
+msgstr "Piste séparée — voix (ML)"
+
+#: src-ui-wx/sequencer/Waveform.cpp:301
+msgid "Stem — Guitar"
+msgstr "Piste séparée — guitare"
+
+#: src-ui-wx/sequencer/Waveform.cpp:303
+msgid "Stem — Piano"
+msgstr "Piste séparée — piano"
+
+#: src-ui-wx/sequencer/Waveform.cpp:319
+msgid "Double height waveform"
+msgstr "Forme d'onde en double hauteur"
+
+#: src-ui-wx/sequencer/Waveform.cpp:320
+msgid "Show onsets"
+msgstr "Afficher les attaques"
+
+#: src-ui-wx/sequencer/Waveform.cpp:321
+msgid "Show pitch contour"
+msgstr "Afficher le contour de hauteur"
+
+#: src-ui-wx/sequencer/Waveform.cpp:322
+msgid "View as spectrogram"
+msgstr "Afficher en spectrogramme"
+
+#: src-ui-wx/sequencer/Waveform.cpp:326
+msgid "Clear sound-class gating"
+msgstr "Retirer le filtrage par classe de son"
+
+#: src-ui-wx/sequencer/Waveform.cpp:355 resources/effectmetadata/VUMeter.json
+msgid "Audio Track"
+msgstr "Piste audio"
 
 #: src-ui-wx/sequencer/Waveform.cpp:461
 msgid "The stem-separation model didn't produce guitar/piano stems. Check the log for details."
@@ -11302,6 +12928,18 @@ msgstr "Cycle RGB"
 msgid "Filter by name..."
 msgstr "Filtrer par nom..."
 
+#: src-ui-wx/setup/PixelTestDialog.cpp:2435
+msgid "Select Many"
+msgstr "Sélectionner plusieurs"
+
+#: src-ui-wx/setup/PixelTestDialog.cpp:2436
+msgid "Deselect Many"
+msgstr "Désélectionner plusieurs"
+
+#: src-ui-wx/setup/PixelTestDialog.cpp:2438
+msgid "Number"
+msgstr "Numéroter"
+
 #: src-ui-wx/setup/PixelTestDialog.cpp:2867
 msgid "No test configurations found"
 msgstr "Aucune configuration de test trouvée"
@@ -11445,6 +13083,26 @@ msgstr ""
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:91 src-ui-wx/setup/ShowDirectoriesDialog.cpp:116
 msgid "Double-click to open in file manager"
 msgstr "Double-cliquez pour ouvrir dans le gestionnaire de fichiers"
+
+#: src-ui-wx/shared/controls/BulkEditControls.cpp:459
+msgid "Bulk Edit Filename"
+msgstr "Édition groupée du nom de fichier"
+
+#: src-ui-wx/shared/controls/BulkEditControls.cpp:460
+msgid "Bulk Edit Path"
+msgstr "Édition groupée du chemin"
+
+#: src-ui-wx/shared/controls/BulkEditControls.cpp:461
+msgid "Bulk Edit Show Folder"
+msgstr "Édition groupée du dossier du show"
+
+#: src-ui-wx/shared/controls/BulkEditControls.cpp:531
+msgid "Checked"
+msgstr "Coché"
+
+#: src-ui-wx/shared/controls/BulkEditControls.cpp:532
+msgid "Unchecked"
+msgstr "Décoché"
 
 #: src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:104 resources/effectmetadata/Ripple.json resources/effectmetadata/Shockwave.json
 msgid "Filter"
@@ -11938,7 +13596,7 @@ msgstr "Pipette de couleur"
 msgid "Effect Assist"
 msgstr "Assistant d'effet"
 
-#: src-ui-wx/xLightsMain.cpp:1167 src-ui-wx/sequencer/tabSequencer.cpp:212
+#: src-ui-wx/xLightsMain.cpp:1167 src-ui-wx/sequencer/EffectsGrid.cpp:561 src-ui-wx/sequencer/tabSequencer.cpp:212
 msgid "Effect Presets"
 msgstr "Préréglages d'effets"
 
@@ -12146,6 +13804,10 @@ msgstr "Rendre et enregistrer"
 msgid "Render and Save As"
 msgstr "Rendre et enregistrer sous"
 
+#: src-ui-wx/xLightsMain.cpp:2153
+msgid "Last Saved"
+msgstr "Dernier enregistrement"
+
 #: src-ui-wx/xLightsMain.cpp:2154
 msgid "Revert To..."
 msgstr "Revenir à..."
@@ -12225,7 +13887,7 @@ msgstr "Désactiver l'enregistrement du FSEQ est vraiment déconseillé. Il faud
 msgid "Previews"
 msgstr "Aperçus"
 
-#: src-ui-wx/xLightsMain.cpp:5145
+#: src-ui-wx/xLightsMain.cpp:5145 src-ui-wx/layout/ViewsModelsPanel.cpp:1812
 msgid "Show All"
 msgstr "Tout afficher"
 
@@ -12296,6 +13958,10 @@ msgstr ""
 "Remarque : la valeur sera arrondie à l'intervalle de temps le plus proche.\n"
 "      Cette opération ne peut pas être annulée.\n"
 "      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés."
+
+#: src-ui-wx/xLightsMain.cpp:638
+msgid "Open New Instance"
+msgstr "Ouvrir une nouvelle instance"
 
 #: src-ui-wx/xLightsMain.cpp:6532
 msgid "Please open a sequence first."
@@ -12385,7 +14051,7 @@ msgstr "Tout rendre"
 msgid "Main Tool Bar"
 msgstr "Barre d'outils principale"
 
-#: src-ui-wx/xLightsMain.cpp:833 src-ui-wx/xLightsMain.cpp:833 src-ui-wx/model/ModelStatesPanel.cpp:248 src-ui-wx/model/ModelStatesPanel.cpp:2237 src-ui-wx/model/SubModelsPanel.cpp:307 ... (+1)
+#: src-ui-wx/xLightsMain.cpp:833 src-ui-wx/xLightsMain.cpp:833 src-ui-wx/model/ModelStatesPanel.cpp:248 src-ui-wx/model/ModelStatesPanel.cpp:2237 src-ui-wx/model/SubModelsPanel.cpp:307 ... (+2)
 msgid "Play"
 msgstr "Lire"
 
@@ -12441,7 +14107,7 @@ msgstr "Fusion des calques"
 msgid "Model Preview"
 msgstr "Aperçu du modèle"
 
-#: src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:1149 src-ui-wx/xLightsMain.cpp:1181 src-ui-wx/sequencer/tabSequencer.cpp:122
+#: src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:1149 src-ui-wx/xLightsMain.cpp:1181 src-ui-wx/layout/ModelPreview.cpp:1337 ... (+1)
 msgid "House Preview"
 msgstr "Aperçu de la maison"
 
@@ -12465,7 +14131,7 @@ msgstr "Effets"
 msgid "Effects Assistant"
 msgstr "Assistant d'effets"
 
-#: src-ui-wx/xLightsMain.cpp:852 src-ui-wx/xLightsMain.cpp:852 src-ui-wx/sequencer/tabSequencer.cpp:197
+#: src-ui-wx/xLightsMain.cpp:852 src-ui-wx/xLightsMain.cpp:852 src-ui-wx/sequencer/RowHeading.cpp:754 src-ui-wx/sequencer/RowHeading.cpp:755 src-ui-wx/sequencer/tabSequencer.cpp:197
 msgid "Select Effects"
 msgstr "Sélectionner des effets"
 
@@ -12653,7 +14319,7 @@ msgstr "Empaqueter la séquence"
 msgid "Batch Render"
 msgstr "Rendu par lots"
 
-#: src-ui-wx/xLightsMain.cpp:929 src-ui-wx/xLightsMain.cpp:929
+#: src-ui-wx/xLightsMain.cpp:929 src-ui-wx/xLightsMain.cpp:929 src-ui-wx/layout/ControllerListPanel.cpp:856
 msgid "FPP Connect"
 msgstr ""
 

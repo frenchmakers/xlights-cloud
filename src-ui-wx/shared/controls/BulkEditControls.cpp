@@ -390,7 +390,7 @@ void BulkEditSlider::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_SLIDER_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_SLIDER_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditSlider::OnSliderPopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -401,7 +401,7 @@ void BulkEditFontPicker::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_FONTPICKER_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_FONTPICKER_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)& BulkEditFontPicker::OnFontPickerPopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -412,7 +412,7 @@ void BulkEditColourPickerCtrl::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_COLOURPICKER_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_COLOURPICKER_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditColourPickerCtrl::OnColourPickerPopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -423,7 +423,7 @@ void BulkEditValueCurveButton::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_VALUECURVE_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_VALUECURVE_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditValueCurveButton::OnValueCurvePopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -434,7 +434,7 @@ void BulkEditButton::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_BUTTON_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_BUTTON_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditButton::OnButtonPopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -445,7 +445,7 @@ void BulkEditTextCtrl::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_TEXTCTRL_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_TEXTCTRL_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditTextCtrl::OnTextCtrlPopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -456,9 +456,9 @@ void BulkEditFilePickerCtrl::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_FILEPICKERCTRL_BULKEDIT_FN, "Bulk Edit Filename");
-    mnu.Append(ID_FILEPICKERCTRL_BULKEDIT_PN, "Bulk Edit Path");
-    mnu.Append(ID_FILEPICKERCTRL_BULKEDIT_SF, "Bulk Edit Show Folder");
+    mnu.Append(ID_FILEPICKERCTRL_BULKEDIT_FN, _("Bulk Edit Filename"));
+    mnu.Append(ID_FILEPICKERCTRL_BULKEDIT_PN, _("Bulk Edit Path"));
+    mnu.Append(ID_FILEPICKERCTRL_BULKEDIT_SF, _("Bulk Edit Show Folder"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditFilePickerCtrl::OnFilePickerCtrlPopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -469,7 +469,7 @@ void BulkEditSpinCtrl::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_SPINCTRL_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_SPINCTRL_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditSpinCtrl::OnSpinCtrlPopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -482,7 +482,7 @@ void BulkEditComboBox::OnRightDown(wxMouseEvent& event)
         return;
 
     wxMenu mnu;
-    mnu.Append(ID_COMBOBOX_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_COMBOBOX_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditComboBox::OnComboBoxPopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -493,7 +493,7 @@ void BulkEditChoice::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_CHOICE_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_CHOICE_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditChoice::OnChoicePopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -504,7 +504,7 @@ void BulkEditFaceChoice::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), true)) return;
 
     wxMenu mnu;
-    mnu.Append(ID_CHOICE_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_CHOICE_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditChoice::OnChoicePopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -517,7 +517,7 @@ void BulkEditStateChoice::OnRightDown(wxMouseEvent& event)
         return;
 
     wxMenu mnu;
-    mnu.Append(ID_CHOICE_BULKEDIT, "Bulk Edit");
+    mnu.Append(ID_CHOICE_BULKEDIT, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditChoice::OnChoicePopup, nullptr, this);
     PopupMenu(&mnu);
 }
@@ -528,11 +528,11 @@ void BulkEditCheckBox::OnRightDown(wxMouseEvent& event)
     if (!IsBulkEditAvailable(GetParent(), false)) return;
 
     wxMenu* cc = new wxMenu();
-    cc->Append(ID_CHECKBOX_BULKEDIT_CHECKED, "Checked");
-    cc->Append(ID_CHECKBOX_BULKEDIT_UNCHECKED, "Unchecked");
+    cc->Append(ID_CHECKBOX_BULKEDIT_CHECKED, _("Checked"));
+    cc->Append(ID_CHECKBOX_BULKEDIT_UNCHECKED, _("Unchecked"));
     cc->Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&BulkEditCheckBox::OnCheckBoxPopup, nullptr, this);
     wxMenu mnu;
-    mnu.AppendSubMenu(cc, "Bulk Edit");
+    mnu.AppendSubMenu(cc, _("Bulk Edit"));
     mnu.Connect(wxEVT_MENU, (wxObjectEventFunction)&BulkEditCheckBox::OnCheckBoxPopup, nullptr, this);
     PopupMenu(&mnu);
 }

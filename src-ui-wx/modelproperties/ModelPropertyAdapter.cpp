@@ -1883,9 +1883,9 @@ void ModelPropertyAdapter::HandlePropertyGridRightClick(wxPropertyGridEvent& eve
     if (name.StartsWith("Layers.")) {
         _model.layerSizeMenu = wxAtoi(event.GetPropertyName().AfterLast('r'));
         if (_model.GetLayerSizeCount() != 1) {
-            mnu.Append(Model::ID_LAYERSIZE_DELETE, "Delete");
+            mnu.Append(Model::ID_LAYERSIZE_DELETE, _("Delete"));
         }
-        mnu.Append(Model::ID_LAYERSIZE_INSERT, "Insert");
+        mnu.Append(Model::ID_LAYERSIZE_INSERT, _("Insert"));
     }
 }
 

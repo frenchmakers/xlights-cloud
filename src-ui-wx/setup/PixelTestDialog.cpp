@@ -2428,14 +2428,14 @@ void PixelTestDialog::OnContextMenu(wxTreeListEvent& event)
     _rcItem = event.GetItem();
     _rcTree = (wxTreeListCtrl*)event.GetEventObject();
     wxMenu mnuContext;
-    mnuContext.Append(ID_MNU_TEST_SELECTALL, "Select All");
-    mnuContext.Append(ID_MNU_TEST_DESELECTALL, "Deselect All");
-    mnuContext.Append(ID_MNU_SELECTHIGH, "Select Highlighted");
-    mnuContext.Append(ID_MNU_DESELECTHIGH, "Deselect Highlighted");
-    mnuContext.Append(ID_MNU_TEST_SELECTN, "Select Many");
-    mnuContext.Append(ID_MNU_TEST_DESELECTN, "Deselect Many");
+    mnuContext.Append(ID_MNU_TEST_SELECTALL, _("Select All"));
+    mnuContext.Append(ID_MNU_TEST_DESELECTALL, _("Deselect All"));
+    mnuContext.Append(ID_MNU_SELECTHIGH, _("Select Highlighted"));
+    mnuContext.Append(ID_MNU_DESELECTHIGH, _("Deselect Highlighted"));
+    mnuContext.Append(ID_MNU_TEST_SELECTN, _("Select Many"));
+    mnuContext.Append(ID_MNU_TEST_DESELECTN, _("Deselect Many"));
     if (_rcTree == TreeListCtrl_Controllers)
-        mnuContext.Append(ID_MNU_TEST_NUMBER, "Number");
+        mnuContext.Append(ID_MNU_TEST_NUMBER, _("Number"));
 
     mnuContext.Connect(wxEVT_COMMAND_MENU_SELECTED, (wxObjectEventFunction)&PixelTestDialog::OnListPopup, nullptr, this);
     PopupMenu(&mnuContext);

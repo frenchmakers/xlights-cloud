@@ -1014,23 +1014,23 @@ void ModelStatesPanel::OnNodeRangeGridCellRightClick(wxGridEvent& event)
 
     wxMenu mnu;
 
-    mnu.Append(STATE_DIALOG_IMPORT_SUB, "Import SubModel");
-    mnu.Append(STATE_DIALOG_COPY_STATES, "Import State Definition");
-    mnu.Append(ID_MNU_SORT, "Sort by State");
+    mnu.Append(STATE_DIALOG_IMPORT_SUB, _("Import SubModel"));
+    mnu.Append(STATE_DIALOG_COPY_STATES, _("Import State Definition"));
+    mnu.Append(ID_MNU_SORT, _("Sort by State"));
     mnu.AppendSeparator();
-    mnu.Append(ID_MNU_ADD_STATE_BEFORE, "Insert Line Before");
-    mnu.Append(ID_MNU_ADD_STATE_AFTER, "Insert Line After");
-    mnu.Append(ID_MNU_MOVE_STATE_UP, "Move Selected Up");
-    mnu.Append(ID_MNU_MOVE_STATE_DOWN, "Move Selected Down");
+    mnu.Append(ID_MNU_ADD_STATE_BEFORE, _("Insert Line Before"));
+    mnu.Append(ID_MNU_ADD_STATE_AFTER, _("Insert Line After"));
+    mnu.Append(ID_MNU_MOVE_STATE_UP, _("Move Selected Up"));
+    mnu.Append(ID_MNU_MOVE_STATE_DOWN, _("Move Selected Down"));
     mnu.AppendSeparator();
-    mnu.Append(ID_MNU_DELETE_STATE, "Delete Selected");
-    mnu.Append(STATE_DIALOG_CLEAR_SELECTED_ROWS, "Clear Selected");
-    mnu.Append(STATE_DIALOG_CLEAR_STATES, "Clear All Rows");
+    mnu.Append(ID_MNU_DELETE_STATE, _("Delete Selected"));
+    mnu.Append(STATE_DIALOG_CLEAR_SELECTED_ROWS, _("Clear Selected"));
+    mnu.Append(STATE_DIALOG_CLEAR_STATES, _("Clear All Rows"));
 
     if (CustomColorNodeRanges->IsChecked() &&
         NodeRangeGrid->GetSelectedRows().GetCount() >= 2) {
         mnu.AppendSeparator();
-        mnu.Append(STATE_DIALOG_BULK_COLOR_CHANGE, "Bulk Color Change...");
+        mnu.Append(STATE_DIALOG_BULK_COLOR_CHANGE, _("Bulk Color Change..."));
     }
 
     mnu.Bind(wxEVT_COMMAND_MENU_SELECTED, [gridevent = event, this](wxCommandEvent& rightClkEvent) mutable {
@@ -1090,18 +1090,18 @@ void ModelStatesPanel::OnButton_ImportClick(wxCommandEvent& event)
 {
     wxMenu mnu;
     if (DeleteButton->IsEnabled()) {
-        mnu.Append(STATE_DIALOG_COPY, "Copy");
-        mnu.Append(STATE_DIALOG_RENAME, "Rename");
+        mnu.Append(STATE_DIALOG_COPY, _("Copy"));
+        mnu.Append(STATE_DIALOG_RENAME, _("Rename"));
         mnu.AppendSeparator();
     }
-    mnu.Append(STATE_DIALOG_IMPORT_MODEL, "Import From Model");
-    mnu.Append(STATE_DIALOG_IMPORT_FILE, "Import From File");
-    mnu.Append(STATE_DIALOG_IMPORT_ALL_SUB, "Import From SubModels");
-    mnu.Append(STATE_DIALOG_IMPORT_DOWNLOAD, "Import From Downloads");
-    mnu.Append(STATE_DIALOG_EXPORT_TOOTHERS, "Export State(s) To Other Model(s)");
+    mnu.Append(STATE_DIALOG_IMPORT_MODEL, _("Import From Model"));
+    mnu.Append(STATE_DIALOG_IMPORT_FILE, _("Import From File"));
+    mnu.Append(STATE_DIALOG_IMPORT_ALL_SUB, _("Import From SubModels"));
+    mnu.Append(STATE_DIALOG_IMPORT_DOWNLOAD, _("Import From Downloads"));
+    mnu.Append(STATE_DIALOG_EXPORT_TOOTHERS, _("Export State(s) To Other Model(s)"));
     mnu.AppendSeparator();
-    mnu.Append(STATE_DIALOG_SHIFT, "Shift Nodes");
-    mnu.Append(STATE_DIALOG_REVERSE, "Reverse Nodes");
+    mnu.Append(STATE_DIALOG_SHIFT, _("Shift Nodes"));
+    mnu.Append(STATE_DIALOG_REVERSE, _("Reverse Nodes"));
 
     mnu.Bind(wxEVT_MENU, &ModelStatesPanel::OnAddBtnPopup, this);
     PopupMenu(&mnu);
