@@ -2202,8 +2202,76 @@ msgstr ""
 msgid "Choose color curve file"
 msgstr ""
 
+#: src-ui-wx/color/ColorPanel.cpp:1051
+msgid "Update Palette"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1052
+msgid "Update Only Colors"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1053
+msgid "Save Palette"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1054
+msgid "Save Palette As"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1055
+msgid "Delete Palette"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1056
+msgid "Import Palette"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1058
+msgid "Generate Palette"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1152
+#, c-format
+msgid "Import Palette Text String (e.g. #000000,#454545,#565657) %s"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1153
+msgid ""
+"\n"
+"Invalid input: Please correct your entry."
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1154
+msgid "Palette Text String"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1179 src-ui-wx/color/ColorPanel.cpp:1179
+msgid "Set Palette Name"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1183
+#, c-format
+msgid "%s File Already Exists. Override?"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:1184
+msgid "Override"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:161
+msgid "You cannot drag a colour curve onto this colour picker."
+msgstr ""
+
 #: src-ui-wx/color/ColorPanel.cpp:358 src-ui-wx/sequencer/BlendingPanel.cpp:149 src-ui-wx/sequencer/BufferPanel.cpp:96
 msgid "Reset panel when changing effects"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:979
+msgid "Are you sure you want to change the colours on all selected effects?"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:979
+msgid "Update all"
 msgstr ""
 
 #: src-ui-wx/color/ColourReplaceDialog.cpp:101

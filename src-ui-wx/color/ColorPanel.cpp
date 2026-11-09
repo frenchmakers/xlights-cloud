@@ -158,7 +158,7 @@ bool ColourText2DropTarget::OnDropText(wxCoord x, wxCoord y, const wxString& dat
     if (data == "") return false;
     if (!_owner->IsEnabled()) return false;
     if (ColorCurve::IsColorCurve(data)) {
-        wxMessageBox("You cannot drag a colour curve onto this colour picker.");
+        wxMessageBox(_("You cannot drag a colour curve onto this colour picker."));
     } else {
         _owner->SetColour(data);
     }
@@ -976,7 +976,7 @@ void ColorPanel::UpdateColor(bool colorsOnly) {
     int alleffects = xLightsApp::GetFrame()->GetMainSequencer()->GetSelectedEffectCount("");
     if (alleffects > 1) {
         if (!xLightsApp::GetFrame()->IsSuppressColorWarn()) {
-            if (wxMessageBox("Are you sure you want to change the colours on all selected effects?", "Update all", wxYES_NO | wxCENTRE, this) == wxNO) return;
+            if (wxMessageBox(_("Are you sure you want to change the colours on all selected effects?"), _("Update all"), wxYES_NO | wxCENTRE, this) == wxNO) return;
         }
     }
     wxCommandEvent eventEffectUpdated(EVT_EFFECT_PALETTE_UPDATED);
@@ -1048,14 +1048,14 @@ wxString ColorPanel::RemoveNonAlphanumeric(wxString const& str) const {
 
 void ColorPanel::OnBitmapButton_MenuPaletteClick(wxCommandEvent& /*event*/) {
     wxMenu mnuLayer;
-    wxMenuItem* updateItem = mnuLayer.Append(ID_MNU_UPDATE, "Update Palette");
-    wxMenuItem* updateColorsItem = mnuLayer.Append(ID_MNU_UPDATE_COLORS, "Update Only Colors");
-    wxMenuItem* saveItem = mnuLayer.Append(ID_MNU_SAVE, "Save Palette");
-    wxMenuItem* saveAsItem = mnuLayer.Append(ID_MNU_SAVE_AS, "Save Palette As");
-    wxMenuItem* deleteItem = mnuLayer.Append(ID_MNU_DELETE, "Delete Palette");
-    mnuLayer.Append(ID_MNU_IMPORT, "Import Palette");
+    wxMenuItem* updateItem = mnuLayer.Append(ID_MNU_UPDATE, _("Update Palette"));
+    wxMenuItem* updateColorsItem = mnuLayer.Append(ID_MNU_UPDATE_COLORS, _("Update Only Colors"));
+    wxMenuItem* saveItem = mnuLayer.Append(ID_MNU_SAVE, _("Save Palette"));
+    wxMenuItem* saveAsItem = mnuLayer.Append(ID_MNU_SAVE_AS, _("Save Palette As"));
+    wxMenuItem* deleteItem = mnuLayer.Append(ID_MNU_DELETE, _("Delete Palette"));
+    mnuLayer.Append(ID_MNU_IMPORT, _("Import Palette"));
     if (xLightsApp::GetFrame()->GetAIService(aiType::COLORPALETTES) != nullptr) {
-        mnuLayer.Append(ID_MNU_GENERATE, "Generate Palette");
+        mnuLayer.Append(ID_MNU_GENERATE, _("Generate Palette"));
     }
     mnuLayer.Connect(wxEVT_COMMAND_MENU_SELECTED,
                      (wxObjectEventFunction)&ColorPanel::OnListPopup, nullptr, this);
@@ -1149,9 +1149,9 @@ void ColorPanel::ImportPalette() {
     bool validInput = false;
     while (!validInput) {
         wxTextEntryDialog dialog(this,
-                                 wxString::Format("Import Palette Text String (e.g. #000000,#454545,#565657) %s",
-                                                  lastInput.IsEmpty() ? "" : "\nInvalid input: Please correct your entry."),
-                                 "Palette Text String");
+                                 wxString::Format(_("Import Palette Text String (e.g. #000000,#454545,#565657) %s"),
+                                                  lastInput.IsEmpty() ? wxString() : _("\nInvalid input: Please correct your entry.")),
+                                 _("Palette Text String"));
         dialog.SetValue(lastInput);
         if (dialog.ShowModal() == wxID_CANCEL) return;
         lastInput = dialog.GetValue();
@@ -1176,12 +1176,12 @@ void ColorPanel::SavePalette(bool saveAs) {
     int i = 1;
     wxString fn = "PAL001.xpalette";
     if (saveAs) {
-        wxTextEntryDialog dialog(this, "Set Palette Name", "Set Palette Name");
+        wxTextEntryDialog dialog(this, _("Set Palette Name"), _("Set Palette Name"));
         if (dialog.ShowModal() == wxID_OK) {
             fn = wxString::Format("%s.xpalette", RemoveNonAlphanumeric(dialog.GetValue()));
             if (FileExists(xLightsFrame::CurrentDir + "/Palettes/" + fn)) {
-                wxString msg = fn + " File Already Exists. Override?";
-                if (wxMessageBox(msg, "Override", wxYES_NO, this) != wxYES) return;
+                wxString msg = wxString::Format(_("%s File Already Exists. Override?"), fn);
+                if (wxMessageBox(msg, _("Override"), wxYES_NO, this) != wxYES) return;
             }
         }
     } else {
