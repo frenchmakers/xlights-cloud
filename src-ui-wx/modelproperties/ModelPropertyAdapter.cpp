@@ -244,7 +244,7 @@ protected:
 namespace {
 // Built-in entries at the start of the preview and controller lists
 // (Model::GetLayoutGroups(), Model.h), translated when shown.
-const char* BUILTIN_LAYOUT_GROUPS[] = { wxTRANSLATE("Default"), wxTRANSLATE("All Previews"), wxTRANSLATE("Unassigned") };
+const char* BUILTIN_LAYOUT_GROUPS[] = { wxTRANSLATE("Default"), wxTRANSLATE("All Previews"), wxTRANSLATE_IN_CONTEXT("model property", "Unassigned") };
 const char* BUILTIN_CONTROLLER_CHOICES[] = { wxTRANSLATE("Use Start Channel"), wxTRANSLATE("No Controller") };
 
 wxString FormatStrandNodeNamesLabel(const Model& m) {

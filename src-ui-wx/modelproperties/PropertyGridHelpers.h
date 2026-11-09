@@ -40,7 +40,9 @@ extern const std::string CLICK_TO_EDIT;
 // are the indexes: the selection is still read by index, and the shared choices
 // stay in English for the code that compares their text. Only the first
 // translateCount labels are translated, e.g. the built-in entries of a list
-// that ends with names chosen by the user.
+// that ends with names chosen by the user. A label marked with
+// wxTRANSLATE_IN_CONTEXT("model property", ...) uses that translation first,
+// for words translated differently where the code reads them back as English.
 wxArrayString TranslatedChoices(const wxPGChoices& choices, size_t translateCount = (size_t)-1);
 wxArrayString TranslatedChoices(const wxArrayString& labels, size_t translateCount = (size_t)-1);
 

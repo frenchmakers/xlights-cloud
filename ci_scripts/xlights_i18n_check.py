@@ -83,12 +83,14 @@ def find_label_keys(root=SRC):
 def main():
     lang, previous, report = sys.argv[1], sys.argv[2], sys.argv[3]
     po_path = os.path.join(X.LOCALE_DIR, lang, X.DOMAIN + ".po")
-    before = {e.msgid for e in X.parse_po(previous) if e.msgid}
+    before = {e.key for e in X.parse_po(previous) if e.msgid}
     entries = X.parse_po(po_path)
     keys = find_label_keys()
 
-    new = [e for e in entries if e.msgid and not e.obsolete and not e.msgstr and e.msgid not in before]
-    risky = [e for e in entries if e.msgid and not e.obsolete and e.msgstr
+    new = [e for e in entries if e.msgid and not e.obsolete and not e.msgstr and e.key not in before]
+    # A text with a context (wxTRANSLATE_IN_CONTEXT) is only shown where it is
+    # marked, so the English key used elsewhere doesn't apply to it.
+    risky = [e for e in entries if e.msgid and not e.obsolete and e.msgstr and e.msgctxt is None
              and e.msgid in keys and e.msgid not in KNOWN_SAFE]
     for e in risky:
         e.msgstr = ""

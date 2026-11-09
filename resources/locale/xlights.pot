@@ -2174,7 +2174,7 @@ msgstr ""
 msgid "Blend Mode"
 msgstr ""
 
-#: src-ui-wx/color/ColorCurveDialog.cpp:126 src-ui-wx/controllers/FPPConnectDialog.cpp:731 src-ui-wx/controllers/FPPConnectDialog.cpp:742 src-ui-wx/effectpanels/MovingHeadPanel.cpp:229 src-ui-wx/import_export/SuperStarImportDialog.cpp:94 ... (+4)
+#: src-ui-wx/color/ColorCurveDialog.cpp:126 src-ui-wx/controllers/FPPConnectDialog.cpp:731 src-ui-wx/controllers/FPPConnectDialog.cpp:742 src-ui-wx/effectpanels/MovingHeadPanel.cpp:229 src-ui-wx/import_export/SuperStarImportDialog.cpp:94 ... (+3)
 msgid "None"
 msgstr ""
 
@@ -7100,7 +7100,8 @@ msgstr ""
 msgid "All Previews"
 msgstr ""
 
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:247 src-ui-wx/preferences/OtherSettingsPanel.cpp:228
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:247
+msgctxt "model property"
 msgid "Unassigned"
 msgstr ""
 
@@ -7637,6 +7638,11 @@ msgstr ""
 
 #: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:50
 msgid "Cylinder"
+msgstr ""
+
+#: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:55
+msgctxt "model property"
+msgid "None"
 msgstr ""
 
 #: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:56
@@ -8204,7 +8210,8 @@ msgstr ""
 msgid "Round"
 msgstr ""
 
-#: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:21 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:182
+#: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:21
+msgctxt "model property"
 msgid "Flat"
 msgstr ""
 
@@ -8995,6 +9002,10 @@ msgstr ""
 
 #: src-ui-wx/preferences/OtherSettingsPanel.cpp:227
 msgid "Faces/States/Submodels"
+msgstr ""
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:228
+msgid "Unassigned"
 msgstr ""
 
 #: src-ui-wx/preferences/OtherSettingsPanel.cpp:264
@@ -11089,6 +11100,10 @@ msgstr ""
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:154
 msgid "Value Curve"
+msgstr ""
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:182
+msgid "Flat"
 msgstr ""
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:183

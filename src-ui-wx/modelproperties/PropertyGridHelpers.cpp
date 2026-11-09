@@ -52,7 +52,15 @@ wxArrayString TranslatedChoices(const wxPGChoices& choices, size_t translateCoun
 wxArrayString TranslatedChoices(const wxArrayString& labels, size_t translateCount) {
     wxArrayString result;
     for (size_t i = 0; i < labels.GetCount(); i++) {
-        result.Add(i < translateCount ? wxGetTranslation(labels[i]) : labels[i]);
+        if (i >= translateCount) {
+            result.Add(labels[i]);
+            continue;
+        }
+        wxString tr = wxGetTranslation(labels[i], wxString(), "model property");
+        if (tr == labels[i]) {
+            tr = wxGetTranslation(labels[i]);
+        }
+        result.Add(tr);
     }
     return result;
 }

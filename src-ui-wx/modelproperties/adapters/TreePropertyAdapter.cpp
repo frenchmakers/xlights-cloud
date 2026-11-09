@@ -18,7 +18,7 @@
 
 static const char* TREE_STYLES_VALUES[] = {
     wxTRANSLATE("Round"),
-    wxTRANSLATE("Flat"),
+    wxTRANSLATE_IN_CONTEXT("model property", "Flat"),
     wxTRANSLATE("Ribbon")
 };
 static wxPGChoices TREE_STYLES(wxArrayString(3, TREE_STYLES_VALUES));

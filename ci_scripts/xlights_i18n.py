@@ -24,6 +24,23 @@ C_STR = r'"(?:[^"\\\n]|\\.)*"'
 # _("...") and wxTRANSLATE("..."); adjacent literals are concatenated. _T("...") is not matched.
 KEYWORD_RE = re.compile(r'(?<![\w.>])(?:_|wxTRANSLATE)\(\s*(' + C_STR + r'(?:\s*' + C_STR + r')*)\s*\)')
 LITERAL_RE = re.compile(C_STR)
+# wxTRANSLATE_IN_CONTEXT("context", "text") and wxGETTEXT_IN_CONTEXT(...): the
+# same English text with another meaning gets its own translation (msgctxt).
+CONTEXT_RE = re.compile(r'(?<![\w.>])(?:wxTRANSLATE_IN_CONTEXT|wxGETTEXT_IN_CONTEXT)\(\s*(' + C_STR + r')\s*,\s*('
+                        + C_STR + r'(?:\s*' + C_STR + r')*)\s*\)')
+# Catalog key of a text with a context, as in the .mo file.
+CTX_SEP = "\x04"
+
+
+def make_key(msgctxt, msgid):
+    return msgid if msgctxt is None else msgctxt + CTX_SEP + msgid
+
+
+def split_key(key):
+    if CTX_SEP in key:
+        ctx, msgid = key.split(CTX_SEP, 1)
+        return ctx, msgid
+    return None, key
 # new wxXxxProperty("Label", ...), new wxPropertyCategory("Label", ...), ->SetHelpString("Help text") and AUI pane
 # .Caption("Title") / .Caption(wxT("Title")), translated when drawn
 # (xlPropertyGrid, TranslatedCaptionDockArt).
@@ -110,16 +127,26 @@ def extract():
                         continue
                     line = text.count("\n", 0, m.start()) + 1
                     found.setdefault(msgid, []).append(f"{rel}:{line}")
+                for m in CONTEXT_RE.finditer(text):
+                    ctx = c_unescape(m.group(1)[1:-1])
+                    msgid = "".join(c_unescape(lit[1:-1]) for lit in LITERAL_RE.findall(m.group(2)))
+                    if not msgid.strip():
+                        continue
+                    line = text.count("\n", 0, m.start()) + 1
+                    found.setdefault(make_key(ctx, msgid), []).append(f"{rel}:{line}")
     extract_effect_metadata(found)
     os.makedirs(LOCALE_DIR, exist_ok=True)
     with open(POT, "w", encoding="utf-8", newline="\n") as f:
         f.write(header_block("", "") + "\n")
-        for msgid in sorted(found, key=lambda k: found[k][0]):
-            refs = found[msgid]
+        for key in sorted(found, key=lambda k: found[k][0]):
+            refs = found[key]
+            ctx, msgid = split_key(key)
             shown = refs[:5] + ([f"... (+{len(refs) - 5})"] if len(refs) > 5 else [])
             f.write("#: " + " ".join(shown) + "\n")
             if "%" in msgid:
                 f.write("#, c-format\n")
+            if ctx is not None:
+                f.write("msgctxt " + po_quote(ctx) + "\n")
             f.write("msgid " + po_quote(msgid) + "\nmsgstr \"\"\n\n")
     print(f"{len(found)} strings -> {os.path.relpath(POT, ROOT)}")
 
@@ -184,9 +211,19 @@ class Entry:
         self.comments = []   # translator comments ("# ...")
         self.refs = []
         self.flags = set()
+        self.msgctxt = None
         self.msgid = None
         self.msgstr = ""
         self.obsolete = False
+
+    @property
+    def key(self):
+        return make_key(self.msgctxt, self.msgid)
+
+    def ctx_line(self, prefix=""):
+        if self.msgctxt is None:
+            return ""
+        return prefix + "msgctxt " + po_quote(self.msgctxt).replace("\n", "\n" + prefix) + "\n"
 
 
 def po_unescape(s):
@@ -220,6 +257,12 @@ def parse_po(path):
                 pass
             elif line.startswith("#"):
                 cur.comments.append(line)
+            elif line.startswith("msgctxt "):
+                if cur.msgid is not None:
+                    flush()
+                cur.obsolete = obsolete
+                cur.msgctxt = po_unescape(line[8:].strip()[1:-1])
+                field = "msgctxt"
             elif line.startswith("msgid "):
                 if cur.msgid is not None:
                     flush()
@@ -231,7 +274,9 @@ def parse_po(path):
                 field = "msgstr"
             elif line.startswith('"'):
                 val = po_unescape(line.strip()[1:-1])
-                if field == "msgid":
+                if field == "msgctxt":
+                    cur.msgctxt += val
+                elif field == "msgid":
                     cur.msgid += val
                 elif field == "msgstr":
                     cur.msgstr += val
@@ -244,6 +289,7 @@ def write_po(path, entries):
     with open(path, "w", encoding="utf-8", newline="\n") as f:
         for e in entries:
             if e.obsolete:
+                f.write(e.ctx_line("#~ "))
                 f.write("#~ msgid " + po_quote(e.msgid).replace("\n", "\n#~ ") + "\n")
                 f.write("#~ msgstr " + po_quote(e.msgstr).replace("\n", "\n#~ ") + "\n\n")
                 continue
@@ -256,6 +302,7 @@ def write_po(path, entries):
                 f.write("#: " + r + "\n")
             if e.flags:
                 f.write("#, " + ", ".join(sorted(e.flags)) + "\n")
+            f.write(e.ctx_line())
             f.write("msgid " + po_quote(e.msgid) + "\nmsgstr " + po_quote(e.msgstr) + "\n\n")
 
 
@@ -274,14 +321,14 @@ def update():
         path = os.path.join(LOCALE_DIR, lang, DOMAIN + ".po")
         old = parse_po(path)
         header = next((e for e in old if e.msgid == ""), None)
-        known = {e.msgid: e for e in old if e.msgid}
+        known = {e.key: e for e in old if e.msgid}
         done = 0
         with open(path, "w", encoding="utf-8", newline="\n") as f:
             if header is not None:
                 f.write("\n".join(header.comments) + ("\n" if header.comments else ""))
                 f.write('msgid ""\nmsgstr ' + po_quote(header.msgstr) + "\n\n")
             for t in template:
-                prev = known.pop(t.msgid, None)
+                prev = known.pop(t.key, None)
                 if prev is not None:
                     for c in prev.comments:
                         f.write(c + "\n")
@@ -292,9 +339,11 @@ def update():
                     f.write("#, " + ", ".join(sorted(flags)) + "\n")
                 msgstr = prev.msgstr if prev is not None else ""
                 done += 1 if msgstr and "fuzzy" not in flags else 0
+                f.write(t.ctx_line())
                 f.write("msgid " + po_quote(t.msgid) + "\nmsgstr " + po_quote(msgstr) + "\n\n")
             for e in known.values():
                 if e.msgstr:
+                    f.write(e.ctx_line("#~ "))
                     f.write("#~ msgid " + po_quote(e.msgid).replace("\n", "\n#~ ") + "\n")
                     f.write("#~ msgstr " + po_quote(e.msgstr).replace("\n", "\n#~ ") + "\n\n")
         print(f"{lang}: {done}/{len(template)} translated")
@@ -310,7 +359,7 @@ def compile_mo():
             if e.obsolete or "fuzzy" in e.flags:
                 continue
             if e.msgid == "" or e.msgstr:
-                pairs[e.msgid] = e.msgstr
+                pairs[e.key] = e.msgstr
         keys = sorted(pairs, key=lambda k: k.encode("utf-8"))
         ids = [k.encode("utf-8") for k in keys]
         strs = [pairs[k].encode("utf-8") for k in keys]

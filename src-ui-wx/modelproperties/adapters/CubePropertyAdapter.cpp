@@ -52,7 +52,7 @@ static const char* CUBE_SHAPE_VALUES[] = {
 static wxPGChoices CUBE_SHAPES(wxArrayString(2, CUBE_SHAPE_VALUES));
 
 static const char* ROW_OFFSET_VALUES[] = {
-    wxTRANSLATE("None"),
+    wxTRANSLATE_IN_CONTEXT("model property", "None"),
     wxTRANSLATE("Positive"),
     wxTRANSLATE("Negative")
 };

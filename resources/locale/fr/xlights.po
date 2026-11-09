@@ -2215,7 +2215,7 @@ msgstr "Courbe de couleur"
 msgid "Blend Mode"
 msgstr "Mode de fusion"
 
-#: src-ui-wx/color/ColorCurveDialog.cpp:126 src-ui-wx/controllers/FPPConnectDialog.cpp:731 src-ui-wx/controllers/FPPConnectDialog.cpp:742 src-ui-wx/effectpanels/MovingHeadPanel.cpp:229 src-ui-wx/import_export/SuperStarImportDialog.cpp:94 ... (+4)
+#: src-ui-wx/color/ColorCurveDialog.cpp:126 src-ui-wx/controllers/FPPConnectDialog.cpp:731 src-ui-wx/controllers/FPPConnectDialog.cpp:742 src-ui-wx/effectpanels/MovingHeadPanel.cpp:229 src-ui-wx/import_export/SuperStarImportDialog.cpp:94 ... (+3)
 msgid "None"
 msgstr ""
 
@@ -7247,9 +7247,10 @@ msgstr "Par défaut"
 msgid "All Previews"
 msgstr "Tous les aperçus"
 
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:247 src-ui-wx/preferences/OtherSettingsPanel.cpp:228
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:247
+msgctxt "model property"
 msgid "Unassigned"
-msgstr ""
+msgstr "Non attribué"
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:248
 msgid "Use Start Channel"
@@ -7788,6 +7789,11 @@ msgstr "Cube"
 #: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:50
 msgid "Cylinder"
 msgstr "Cylindre"
+
+#: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:55
+msgctxt "model property"
+msgid "None"
+msgstr "Aucun"
 
 #: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:56
 msgid "Positive"
@@ -8362,9 +8368,10 @@ msgstr "Espacement du terrain"
 msgid "Round"
 msgstr "Rond"
 
-#: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:21 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:182
+#: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:21
+msgctxt "model property"
 msgid "Flat"
-msgstr ""
+msgstr "Plat"
 
 #: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:22
 msgid "Ribbon"
@@ -9165,6 +9172,10 @@ msgstr "Le double-clic dans la disposition ouvre :"
 
 #: src-ui-wx/preferences/OtherSettingsPanel.cpp:227
 msgid "Faces/States/Submodels"
+msgstr ""
+
+#: src-ui-wx/preferences/OtherSettingsPanel.cpp:228
+msgid "Unassigned"
 msgstr ""
 
 #: src-ui-wx/preferences/OtherSettingsPanel.cpp:264
@@ -11286,6 +11297,10 @@ msgstr "Choisir des options :"
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:154
 msgid "Value Curve"
 msgstr "Courbe de valeur"
+
+#: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:182
+msgid "Flat"
+msgstr ""
 
 #: src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:183
 msgid "Ramp"
