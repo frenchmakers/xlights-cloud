@@ -8,6 +8,1568 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: resources/effectmetadata/Adjust.json resources/effectmetadata/shared/Blending.json resources/effectmetadata/shared/Color.json
+msgid "Adjustment"
+msgstr "Ajustement"
+
+#: resources/effectmetadata/Adjust.json
+msgid "Value 1"
+msgstr "Valeur 1"
+
+#: resources/effectmetadata/Adjust.json
+msgid "Value 2"
+msgstr "Valeur 2"
+
+#: resources/effectmetadata/Adjust.json
+msgid "Nth Channel"
+msgstr "Nième canal"
+
+#: resources/effectmetadata/Adjust.json
+msgid "Starting At"
+msgstr "À partir de"
+
+#: resources/effectmetadata/Bars.json resources/effectmetadata/Spirals.json
+msgid "Palette Rep"
+msgstr "Répét. palette"
+
+#: resources/effectmetadata/Bars.json resources/effectmetadata/Garlands.json resources/effectmetadata/MovingHead.json resources/effectmetadata/Shockwave.json resources/effectmetadata/SingleStrand.json
+msgid "Cycles"
+msgstr "Cycles"
+
+#: resources/effectmetadata/Bars.json resources/effectmetadata/Butterfly.json resources/effectmetadata/Fill.json resources/effectmetadata/Lightning.json resources/effectmetadata/Liquid.json ... (+3)
+msgid "Direction"
+msgstr "Direction"
+
+#: resources/effectmetadata/Bars.json resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json
+msgid "Angle"
+msgstr "Angle"
+
+#: resources/effectmetadata/Bars.json
+msgid "Center Point"
+msgstr "Point central"
+
+#: resources/effectmetadata/Bars.json
+msgid "Highlight"
+msgstr "Surbrillance"
+
+#: resources/effectmetadata/Bars.json
+msgid "Use First Color for Highlight"
+msgstr "1re couleur pour la surbrillance"
+
+#: resources/effectmetadata/Butterfly.json resources/effectmetadata/Fire.json resources/effectmetadata/Off.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/Twinkle.json
+msgid "Style"
+msgstr "Style"
+
+#: resources/effectmetadata/Butterfly.json
+msgid "Bkgrd Chunks"
+msgstr "Blocs de fond"
+
+#: resources/effectmetadata/Butterfly.json
+msgid "Bkgrd Skip"
+msgstr "Saut de fond"
+
+#: resources/effectmetadata/Candle.json
+msgid "Flame Agility"
+msgstr "Agilité de la flamme"
+
+#: resources/effectmetadata/Candle.json
+msgid "Wind Baseline"
+msgstr "Vent de base"
+
+#: resources/effectmetadata/Candle.json
+msgid "Wind Variability"
+msgstr "Variabilité du vent"
+
+#: resources/effectmetadata/Candle.json
+msgid "Wind Calmness"
+msgstr "Calme du vent"
+
+#: resources/effectmetadata/Candle.json
+msgid "Per node"
+msgstr "Par nœud"
+
+#: resources/effectmetadata/Candle.json
+msgid "Use Palette"
+msgstr "Utiliser la palette"
+
+#: resources/effectmetadata/Circles.json
+msgid "Number of Circles"
+msgstr "Nombre de cercles"
+
+#: resources/effectmetadata/Circles.json
+msgid "Bounce"
+msgstr "Rebond"
+
+#: resources/effectmetadata/Circles.json
+msgid "Radial"
+msgstr "Radial"
+
+#: resources/effectmetadata/Circles.json
+msgid "Plasma"
+msgstr "Plasma"
+
+#: resources/effectmetadata/Circles.json
+msgid "Radial 3D"
+msgstr "Radial 3D"
+
+#: resources/effectmetadata/Circles.json
+msgid "Bubbles"
+msgstr "Bulles"
+
+#: resources/effectmetadata/Circles.json
+msgid "Linear Fade"
+msgstr "Fondu linéaire"
+
+#: resources/effectmetadata/ColorWash.json
+msgid "Vertical Fade"
+msgstr "Fondu vertical"
+
+#: resources/effectmetadata/ColorWash.json
+msgid "Horizontal Fade"
+msgstr "Fondu horizontal"
+
+#: resources/effectmetadata/ColorWash.json
+msgid "Reverse Fades"
+msgstr "Inverser les fondus"
+
+#: resources/effectmetadata/ColorWash.json
+msgid "Circular Palette"
+msgstr "Palette circulaire"
+
+#: resources/effectmetadata/Curtain.json
+msgid "Curtain Edge"
+msgstr "Bord du rideau"
+
+#: resources/effectmetadata/Curtain.json
+msgid "Swag Width"
+msgstr "Largeur du drapé"
+
+#: resources/effectmetadata/Curtain.json
+msgid "Swag Speed"
+msgstr "Vitesse du drapé"
+
+#: resources/effectmetadata/Curtain.json
+msgid "Repeat"
+msgstr "Répéter"
+
+#: resources/effectmetadata/Duplicate.json
+msgid "Override duplicated Palette"
+msgstr "Remplacer la palette dupliquée"
+
+#: resources/effectmetadata/Duplicate.json
+msgid "Override duplicated Color settings"
+msgstr "Remplacer les réglages de couleur dupliqués"
+
+#: resources/effectmetadata/Duplicate.json
+msgid "Override duplicated Layer Blending settings"
+msgstr "Remplacer les réglages de fusion dupliqués"
+
+#: resources/effectmetadata/Duplicate.json
+msgid "Override duplicated Layer settings"
+msgstr "Remplacer les réglages de calque dupliqués"
+
+#: resources/effectmetadata/Duplicate.json
+msgid "Include Submodels"
+msgstr "Inclure les sous-modèles"
+
+#: resources/effectmetadata/Faces.json
+msgid "Face Definition"
+msgstr "Définition du visage"
+
+#: resources/effectmetadata/Faces.json
+msgid "When Auto, blink occurs during rest or (off)."
+msgstr "En automatique, le clignement a lieu pendant les silences (rest ou off)."
+
+#: resources/effectmetadata/Faces.json
+msgid "Blink Frequency"
+msgstr "Fréquence du clignement"
+
+#: resources/effectmetadata/Faces.json
+msgid "How often the blink happens."
+msgstr "Fréquence à laquelle les yeux clignent."
+
+#: resources/effectmetadata/Faces.json
+msgid "Blink Duration"
+msgstr "Durée du clignement"
+
+#: resources/effectmetadata/Faces.json
+msgid "Show outline"
+msgstr "Afficher le contour"
+
+#: resources/effectmetadata/Faces.json
+msgid "Suppress shimmer"
+msgstr "Supprimer le shimmer"
+
+#: resources/effectmetadata/Faces.json
+msgid "Use State as outline"
+msgstr "Utiliser un état comme contour"
+
+#: resources/effectmetadata/Faces.json
+msgid "Suppress when not singing"
+msgstr "Masquer hors du chant"
+
+#: resources/effectmetadata/Faces.json
+msgid "Lead In/Out Frames"
+msgstr "Images d'entrée/sortie"
+
+#: resources/effectmetadata/Faces.json
+msgid "Fade during lead in/out"
+msgstr "Fondu pendant l'entrée/sortie"
+
+#: resources/effectmetadata/Faces.json resources/effectmetadata/Pictures.json resources/effectmetadata/Ripple.json resources/effectmetadata/Spirals.json resources/effectmetadata/Tendril.json ... (+1)
+msgid "Movement"
+msgstr "Mouvement"
+
+#: resources/effectmetadata/Faces.json resources/effectmetadata/Pictures.json
+msgid "Movement Speed"
+msgstr "Vitesse du mouvement"
+
+#: resources/effectmetadata/Faces.json resources/effectmetadata/Pictures.json
+msgid "Frame Rate Adj"
+msgstr "Ajust. de la cadence"
+
+#: resources/effectmetadata/Faces.json resources/effectmetadata/Marquee.json resources/effectmetadata/Pictures.json resources/effectmetadata/Text.json
+msgid "Offsets In Pixels"
+msgstr "Décalages en pixels"
+
+#: resources/effectmetadata/Faces.json resources/effectmetadata/Pictures.json
+msgid "Scaling"
+msgstr "Mise à l'échelle"
+
+#: resources/effectmetadata/Faces.json
+msgid "Scale Start"
+msgstr "Échelle de départ"
+
+#: resources/effectmetadata/Faces.json
+msgid "Scale End"
+msgstr "Échelle de fin"
+
+#: resources/effectmetadata/Faces.json
+msgid "Mouth Movements"
+msgstr "Mouvements de la bouche"
+
+#: resources/effectmetadata/Faces.json
+msgid "Eyes"
+msgstr "Yeux"
+
+#: resources/effectmetadata/Faces.json resources/effectmetadata/Pictures.json resources/effectmetadata/Text.json
+msgid "Start Position"
+msgstr "Position de départ"
+
+#: resources/effectmetadata/Faces.json resources/effectmetadata/Pictures.json resources/effectmetadata/Text.json
+msgid "End Position"
+msgstr "Position de fin"
+
+#: resources/effectmetadata/Faces.json resources/effectmetadata/Pictures.json
+msgid "Start Scale"
+msgstr "Échelle de départ"
+
+#: resources/effectmetadata/Faces.json resources/effectmetadata/Pictures.json
+msgid "End Scale"
+msgstr "Échelle de fin"
+
+#: resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Kaleidoscope.json resources/effectmetadata/Shockwave.json
+msgid "Center X"
+msgstr "Centre X"
+
+#: resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Kaleidoscope.json resources/effectmetadata/Shockwave.json
+msgid "Center Y"
+msgstr "Centre Y"
+
+#: resources/effectmetadata/Fan.json resources/effectmetadata/Shockwave.json
+msgid "Radius1"
+msgstr "Rayon 1"
+
+#: resources/effectmetadata/Fan.json resources/effectmetadata/Shockwave.json
+msgid "Radius2"
+msgstr "Rayon 2"
+
+#: resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json
+msgid "Rev's"
+msgstr "Tours"
+
+#: resources/effectmetadata/Fan.json
+msgid "# Blades"
+msgstr "Nb de pales"
+
+#: resources/effectmetadata/Fan.json
+msgid "# Elements"
+msgstr "Nb d'éléments"
+
+#: resources/effectmetadata/Fan.json
+msgid "Duration"
+msgstr "Durée"
+
+#: resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json resources/effectmetadata/Shockwave.json
+msgid "Acceleration"
+msgstr "Accélération"
+
+#: resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Shockwave.json
+msgid "Blend Edges"
+msgstr "Fondre les bords"
+
+#: resources/effectmetadata/Fan.json resources/effectmetadata/Shockwave.json
+msgid "Scale to Buffer"
+msgstr "Adapter à la grille"
+
+#: resources/effectmetadata/Fan.json
+msgid "Blades"
+msgstr "Pales"
+
+#: resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json resources/effectmetadata/Shockwave.json
+msgid "Options"
+msgstr "Options"
+
+#: resources/effectmetadata/Fill.json resources/effectmetadata/Marquee.json
+msgid "Band Size"
+msgstr "Taille de bande"
+
+#: resources/effectmetadata/Fill.json resources/effectmetadata/Marquee.json
+msgid "Skip Size"
+msgstr "Taille de saut"
+
+#: resources/effectmetadata/Fill.json
+msgid "Offset in Pixels"
+msgstr "Décalage en pixels"
+
+#: resources/effectmetadata/Fill.json
+msgid "Change Color based on Time"
+msgstr "Changer de couleur selon le temps"
+
+#: resources/effectmetadata/Fill.json
+msgid "Wrap"
+msgstr "Boucler"
+
+#: resources/effectmetadata/Fire.json
+msgid "Hue Shift"
+msgstr "Décalage de teinte"
+
+#: resources/effectmetadata/Fire.json
+msgid "Growth Cycles"
+msgstr "Cycles de croissance"
+
+#: resources/effectmetadata/Fire.json
+msgid "Grow with music"
+msgstr "Croître avec la musique"
+
+#: resources/effectmetadata/Fire.json
+msgid "Location"
+msgstr "Emplacement"
+
+#: resources/effectmetadata/Fireworks.json
+msgid "Number of Explosions"
+msgstr "Nombre d'explosions"
+
+#: resources/effectmetadata/Fireworks.json
+msgid "Particles in Explosion"
+msgstr "Particules par explosion"
+
+#: resources/effectmetadata/Fireworks.json
+msgid "Velocity of Particles"
+msgstr "Vitesse des particules"
+
+#: resources/effectmetadata/Fireworks.json
+msgid "X Velocity"
+msgstr "Vitesse X"
+
+#: resources/effectmetadata/Fireworks.json
+msgid "Y Velocity"
+msgstr "Vitesse Y"
+
+#: resources/effectmetadata/Fireworks.json
+msgid "X Location"
+msgstr "Position X"
+
+#: resources/effectmetadata/Fireworks.json
+msgid "Y Location"
+msgstr "Position Y"
+
+#: resources/effectmetadata/Fireworks.json
+msgid "Hold color"
+msgstr "Garder la couleur"
+
+#: resources/effectmetadata/Fireworks.json resources/effectmetadata/Liquid.json
+msgid "Gravity"
+msgstr "Gravité"
+
+#: resources/effectmetadata/Fireworks.json
+msgid "Particle Fade"
+msgstr "Fondu des particules"
+
+#: resources/effectmetadata/Fireworks.json resources/effectmetadata/Shape.json
+msgid "Fire with music"
+msgstr "Tirer avec la musique"
+
+#: resources/effectmetadata/Fireworks.json resources/effectmetadata/Shape.json
+msgid "Trigger level"
+msgstr "Seuil de déclenchement"
+
+#: resources/effectmetadata/Fireworks.json resources/effectmetadata/Shape.json
+msgid "Fire with timing track"
+msgstr "Tirer sur une piste de timing"
+
+#: resources/effectmetadata/Galaxy.json
+msgid "Radius"
+msgstr "Rayon"
+
+#: resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json
+msgid "Head Duration"
+msgstr "Durée de la tête"
+
+#: resources/effectmetadata/Galaxy.json
+msgid "Inward"
+msgstr "Vers l'intérieur"
+
+#: resources/effectmetadata/Galaxy.json
+msgid "Scale To Buffer"
+msgstr "Adapter à la grille"
+
+#: resources/effectmetadata/Garlands.json
+msgid "Garland Type"
+msgstr "Type de guirlande"
+
+#: resources/effectmetadata/Garlands.json
+msgid "Stack Direction"
+msgstr "Sens d'empilement"
+
+#: resources/effectmetadata/Glediator.json
+msgid "Glediator File"
+msgstr "Fichier Glediator"
+
+#: resources/effectmetadata/Glediator.json
+msgid "Select a glediator file"
+msgstr "Choisir un fichier Glediator"
+
+#: resources/effectmetadata/Glediator.json resources/effectmetadata/Video.json
+msgid "Duration Treatment"
+msgstr "Gestion de la durée"
+
+#: resources/effectmetadata/Guitar.json
+msgid "String Appearance"
+msgstr "Aspect des cordes"
+
+#: resources/effectmetadata/Guitar.json
+msgid "Fret Count"
+msgstr "Nombre de frettes"
+
+#: resources/effectmetadata/Guitar.json
+msgid "Base Wavelength"
+msgstr "Longueur d'onde de base"
+
+#: resources/effectmetadata/Guitar.json
+msgid "Vary Wavelength By String"
+msgstr "Varier la longueur d'onde par corde"
+
+#: resources/effectmetadata/Guitar.json resources/effectmetadata/MusicEffect.json resources/effectmetadata/SingleStrand.json
+msgid "Fade"
+msgstr "Fondu"
+
+#: resources/effectmetadata/Guitar.json
+msgid "Collapse"
+msgstr "Replier"
+
+#: resources/effectmetadata/Guitar.json
+msgid "Show Strings"
+msgstr "Afficher les cordes"
+
+#: resources/effectmetadata/Guitar.json
+msgid "Vary Wavelength By Fret"
+msgstr "Varier la longueur d'onde par frette"
+
+#: resources/effectmetadata/Kaleidoscope.json
+msgid "The Kaleidoscope effect distorts the pixels in the layers below it. The Canvas option in Layer Blending must be enabled for it to work."
+msgstr "L'effet Kaleidoscope déforme les pixels des calques situés en dessous. L'option Canvas de la fusion des calques doit être activée pour qu'il fonctionne."
+
+#: resources/effectmetadata/Kaleidoscope.json
+msgid "Kaleidoscope Type"
+msgstr "Type de kaléidoscope"
+
+#: resources/effectmetadata/Kaleidoscope.json resources/effectmetadata/MovingHead.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
+msgid "Rotation"
+msgstr "Rotation"
+
+#: resources/effectmetadata/Life.json
+msgid "Cells to start"
+msgstr "Cellules de départ"
+
+#: resources/effectmetadata/Lightning.json
+msgid "Number of Segments"
+msgstr "Nombre de segments"
+
+#: resources/effectmetadata/Lightning.json
+msgid "Width of Bolt"
+msgstr "Largeur de l'éclair"
+
+#: resources/effectmetadata/Lightning.json
+msgid "Forked Lightning"
+msgstr "Éclair fourchu"
+
+#: resources/effectmetadata/Lightning.json resources/effectmetadata/Shimmer.json
+msgid "Yes"
+msgstr "Oui"
+
+#: resources/effectmetadata/Lightning.json
+msgid "Top X Location"
+msgstr "Position X du haut"
+
+#: resources/effectmetadata/Lightning.json
+msgid "Top Y Location"
+msgstr "Position Y du haut"
+
+#: resources/effectmetadata/Lightning.json
+msgid "X Movement"
+msgstr "Mouvement X"
+
+#: resources/effectmetadata/Lines.json
+msgid "Lines"
+msgstr "Lignes"
+
+#: resources/effectmetadata/Lines.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
+msgid "Points"
+msgstr "Points"
+
+#: resources/effectmetadata/Lines.json resources/effectmetadata/Marquee.json resources/effectmetadata/Shape.json resources/effectmetadata/Sketch.json resources/effectmetadata/Spirals.json ... (+1)
+msgid "Thickness"
+msgstr "Épaisseur"
+
+#: resources/effectmetadata/Lines.json resources/effectmetadata/Tendril.json
+msgid "Trails"
+msgstr "Traînées"
+
+#: resources/effectmetadata/Lines.json
+msgid "Fade Trails"
+msgstr "Estomper les traînées"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Top Barrier"
+msgstr "Barrière haute"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Bottom Barrier"
+msgstr "Barrière basse"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Left Barrier"
+msgstr "Barrière gauche"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Right Barrier"
+msgstr "Barrière droite"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Hold Particle Color"
+msgstr "Garder la couleur des particules"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Mix Colors"
+msgstr "Mélanger les couleurs"
+
+#: resources/effectmetadata/Liquid.json resources/effectmetadata/Shape.json
+msgid "Lifetime"
+msgstr "Durée de vie"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Warm Up Time"
+msgstr "Temps de préchauffage"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Despeckle Threshold"
+msgstr "Seuil d'antiparasite"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Gravity Angle"
+msgstr "Angle de gravité"
+
+#: resources/effectmetadata/Liquid.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
+msgid "Velocity"
+msgstr "Vitesse"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Flow"
+msgstr "Débit"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Source Size"
+msgstr "Taille de la source"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Flow Matches Music"
+msgstr "Débit selon la musique"
+
+#: resources/effectmetadata/Liquid.json
+msgid "Lef"
+msgstr ""
+
+#: resources/effectmetadata/Liquid.json
+msgid "Bot"
+msgstr ""
+
+#: resources/effectmetadata/Liquid.json
+msgid "Rig"
+msgstr ""
+
+#: resources/effectmetadata/Marquee.json resources/effectmetadata/Morph.json
+msgid "Stagger"
+msgstr "Décalage"
+
+#: resources/effectmetadata/Marquee.json
+msgid "Start Pos"
+msgstr "Pos. de départ"
+
+#: resources/effectmetadata/Marquee.json
+msgid "Scale X"
+msgstr "Échelle X"
+
+#: resources/effectmetadata/Marquee.json
+msgid "Scale Y"
+msgstr "Échelle Y"
+
+#: resources/effectmetadata/Meteors.json resources/effectmetadata/Snowstorm.json
+msgid "Trail Length"
+msgstr "Longueur de traînée"
+
+#: resources/effectmetadata/Meteors.json
+msgid "Swirl Intensity"
+msgstr "Intensité du tourbillon"
+
+#: resources/effectmetadata/Meteors.json resources/effectmetadata/Snowflakes.json
+msgid "Warm up frames"
+msgstr "Images de préchauffage"
+
+#: resources/effectmetadata/Meteors.json resources/effectmetadata/Piano.json resources/effectmetadata/Tendril.json resources/effectmetadata/VUMeter.json
+msgid "Horizontal Offset"
+msgstr "Décalage horizontal"
+
+#: resources/effectmetadata/Meteors.json resources/effectmetadata/Tendril.json resources/effectmetadata/VUMeter.json
+msgid "Vertical Offset"
+msgstr "Décalage vertical"
+
+#: resources/effectmetadata/Meteors.json
+msgid "Adjust count based on music"
+msgstr "Ajuster le nombre selon la musique"
+
+#: resources/effectmetadata/Meteors.json
+msgid "Starfield simulation"
+msgstr "Simulation de champ d'étoiles"
+
+#: resources/effectmetadata/Morph.json
+msgid "X1a"
+msgstr ""
+
+#: resources/effectmetadata/Morph.json
+msgid "Y1a"
+msgstr ""
+
+#: resources/effectmetadata/Morph.json
+msgid "X1b"
+msgstr ""
+
+#: resources/effectmetadata/Morph.json
+msgid "Y1b"
+msgstr ""
+
+#: resources/effectmetadata/Morph.json
+msgid "Head Length"
+msgstr "Longueur de la tête"
+
+#: resources/effectmetadata/Morph.json
+msgid "Link Points"
+msgstr "Lier les points"
+
+#: resources/effectmetadata/Morph.json
+msgid "X2a"
+msgstr ""
+
+#: resources/effectmetadata/Morph.json
+msgid "Y2a"
+msgstr ""
+
+#: resources/effectmetadata/Morph.json
+msgid "X2b"
+msgstr ""
+
+#: resources/effectmetadata/Morph.json
+msgid "Y2b"
+msgstr ""
+
+#: resources/effectmetadata/Morph.json
+msgid "Repeat Count"
+msgstr "Nombre de répétitions"
+
+#: resources/effectmetadata/Morph.json
+msgid "Repeat Skip"
+msgstr "Saut de répétition"
+
+#: resources/effectmetadata/Morph.json
+msgid "Show Head at Start"
+msgstr "Afficher la tête au début"
+
+#: resources/effectmetadata/Morph.json
+msgid "Auto Repeat"
+msgstr "Répétition auto"
+
+#: resources/effectmetadata/Morph.json
+msgid "Quick Set"
+msgstr "Réglage rapide"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Pan (deg)"
+msgstr "Pan (degrés)"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Tilt (deg)"
+msgstr "Tilt (degrés)"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Fan Pan"
+msgstr "Éventail pan"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Fan Tilt"
+msgstr "Éventail tilt"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Groupings"
+msgstr "Regroupements"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "MHPathDef"
+msgstr ""
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Time Offset"
+msgstr "Décalage temporel"
+
+#: resources/effectmetadata/MovingHead.json resources/effectmetadata/Shape.json resources/effectmetadata/VUMeter.json
+msgid "Shape"
+msgstr "Forme"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "X Offset"
+msgstr "Décalage X"
+
+#: resources/effectmetadata/MovingHead.json resources/effectmetadata/Wave.json
+msgid "Y Offset"
+msgstr "Décalage Y"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Start Offset"
+msgstr "Décalage de début"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Head Spread"
+msgstr "Écart entre lyres"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "X Frequency"
+msgstr "Fréquence X"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Y Frequency"
+msgstr "Fréquence Y"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "X Phase"
+msgstr "Phase X"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Y Phase"
+msgstr "Phase Y"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "Link end position to next Moving Head effect"
+msgstr "Lier la position finale à l'effet Moving Head suivant"
+
+#: resources/effectmetadata/MovingHead.json
+msgid "MH1_Settings"
+msgstr ""
+
+#: resources/effectmetadata/MovingHead.json
+msgid "MH2_Settings"
+msgstr ""
+
+#: resources/effectmetadata/MovingHead.json
+msgid "MH3_Settings"
+msgstr ""
+
+#: resources/effectmetadata/MovingHead.json
+msgid "MH4_Settings"
+msgstr ""
+
+#: resources/effectmetadata/MovingHead.json
+msgid "MH5_Settings"
+msgstr ""
+
+#: resources/effectmetadata/MovingHead.json
+msgid "MH6_Settings"
+msgstr ""
+
+#: resources/effectmetadata/MovingHead.json
+msgid "MH7_Settings"
+msgstr ""
+
+#: resources/effectmetadata/MovingHead.json
+msgid "MH8_Settings"
+msgstr ""
+
+#: resources/effectmetadata/MusicEffect.json resources/effectmetadata/VUMeter.json
+msgid "Bars"
+msgstr ""
+
+#: resources/effectmetadata/MusicEffect.json resources/effectmetadata/VUMeter.json
+msgid "Start Note"
+msgstr "Note de début"
+
+#: resources/effectmetadata/MusicEffect.json resources/effectmetadata/VUMeter.json
+msgid "End Note"
+msgstr "Note de fin"
+
+#: resources/effectmetadata/MusicEffect.json
+msgid "Scale Bars"
+msgstr "Mettre les barres à l'échelle"
+
+#: resources/effectmetadata/MusicEffect.json
+msgid "Notes Scaling"
+msgstr "Échelle des notes"
+
+#: resources/effectmetadata/MusicEffect.json resources/effectmetadata/VUMeter.json
+msgid "Logarithmic X axis"
+msgstr "Axe X logarithmique"
+
+#: resources/effectmetadata/Off.json
+msgid ""
+"This Effect simply turns every pixel off on this model.\n"
+"\n"
+"If set to be transparent it does not change any pixels."
+msgstr ""
+"Cet effet éteint simplement tous les pixels de ce modèle.\n"
+"\n"
+"S'il est réglé transparent, il ne modifie aucun pixel."
+
+#: resources/effectmetadata/On.json
+msgid "Start Intensity"
+msgstr "Intensité de départ"
+
+#: resources/effectmetadata/On.json
+msgid "End Intensity"
+msgstr "Intensité de fin"
+
+#: resources/effectmetadata/On.json
+msgid "Transparency"
+msgstr "Transparence"
+
+#: resources/effectmetadata/On.json resources/effectmetadata/Shimmer.json resources/effectmetadata/Warp.json
+msgid "Cycle Count"
+msgstr "Nombre de cycles"
+
+#: resources/effectmetadata/Piano.json
+msgid "Start MIDI Channel [0-127]"
+msgstr "Canal MIDI de début [0-127]"
+
+#: resources/effectmetadata/Piano.json
+msgid "End MIDI Channel"
+msgstr "Canal MIDI de fin"
+
+#: resources/effectmetadata/Piano.json
+msgid "Show Sharps and Flats"
+msgstr "Afficher dièses et bémols"
+
+#: resources/effectmetadata/Piano.json
+msgid "Fade notes"
+msgstr "Fondu des notes"
+
+#: resources/effectmetadata/Piano.json
+msgid "Vertical Scale"
+msgstr "Échelle verticale"
+
+#: resources/effectmetadata/Pictures.json
+msgid "Loop Animated GIF"
+msgstr "Boucler le GIF animé"
+
+#: resources/effectmetadata/Pictures.json
+msgid "Suppress GIF Background"
+msgstr "Supprimer le fond du GIF"
+
+#: resources/effectmetadata/Pinwheel.json
+msgid "#Arms"
+msgstr "Nb de bras"
+
+#: resources/effectmetadata/Pinwheel.json resources/effectmetadata/Ripple.json
+msgid "Twist"
+msgstr "Torsion"
+
+#: resources/effectmetadata/Pinwheel.json
+msgid "Thick"
+msgstr "Épaisseur"
+
+#: resources/effectmetadata/Pinwheel.json
+msgid "CCW"
+msgstr "Sens antihoraire"
+
+#: resources/effectmetadata/Pinwheel.json
+msgid "Y-axis center"
+msgstr "Centre axe Y"
+
+#: resources/effectmetadata/Plasma.json
+msgid "Color Choice"
+msgstr "Choix des couleurs"
+
+#: resources/effectmetadata/Plasma.json
+msgid "Add Twist to Effect"
+msgstr "Ajouter une torsion"
+
+#: resources/effectmetadata/Plasma.json
+msgid "Line Density"
+msgstr "Densité des lignes"
+
+#: resources/effectmetadata/Ripple.json
+msgid "Draw Style"
+msgstr "Style de tracé"
+
+#: resources/effectmetadata/Ripple.json
+msgid "Object"
+msgstr "Objet"
+
+#: resources/effectmetadata/Ripple.json
+msgid "SVG"
+msgstr ""
+
+#: resources/effectmetadata/Ripple.json
+msgid "Choose a SIMPLE svg file"
+msgstr "Choisir un fichier SVG SIMPLE"
+
+#: resources/effectmetadata/Ripple.json
+msgid "Ripples"
+msgstr "Ondulations"
+
+#: resources/effectmetadata/Ripple.json
+msgid "Cycle Cnt"
+msgstr "Nb de cycles"
+
+#: resources/effectmetadata/Ripple.json resources/effectmetadata/Shockwave.json
+msgid "Duration (ms)"
+msgstr "Durée (ms)"
+
+#: resources/effectmetadata/Servo.json
+msgid "Base Channel"
+msgstr "Canal de base"
+
+#: resources/effectmetadata/Servo.json
+msgid "16 bit"
+msgstr "16 bits"
+
+#: resources/effectmetadata/Servo.json
+msgid "Use Timing Track"
+msgstr "Utiliser une piste de timing"
+
+#: resources/effectmetadata/Shader.json
+msgid "Lead in frames"
+msgstr "Images d'entrée"
+
+#: resources/effectmetadata/Shader.json
+msgid "Offset X"
+msgstr "Décalage X"
+
+#: resources/effectmetadata/Shader.json
+msgid "Offset Y"
+msgstr "Décalage Y"
+
+#: resources/effectmetadata/Shape.json resources/effectmetadata/Sketch.json
+msgid "Motion"
+msgstr "Mouvement"
+
+#: resources/effectmetadata/Shape.json
+msgid "Triggers"
+msgstr "Déclencheurs"
+
+#: resources/effectmetadata/Shape.json
+msgid "Object to Draw"
+msgstr "Objet à dessiner"
+
+#: resources/effectmetadata/Shape.json
+msgid "Character"
+msgstr "Caractère"
+
+#: resources/effectmetadata/Shape.json
+msgid "Character Code"
+msgstr "Code du caractère"
+
+#: resources/effectmetadata/Shape.json
+msgid "Skin Tone"
+msgstr "Couleur de peau"
+
+#: resources/effectmetadata/Shape.json resources/effectmetadata/VUMeter.json
+msgid "SVG File"
+msgstr "Fichier SVG"
+
+#: resources/effectmetadata/Shape.json
+msgid "Start Size"
+msgstr "Taille de départ"
+
+#: resources/effectmetadata/Shape.json
+msgid "Random initial shape sizes"
+msgstr "Tailles initiales aléatoires"
+
+#: resources/effectmetadata/Shape.json
+msgid "Growth"
+msgstr "Croissance"
+
+#: resources/effectmetadata/Shape.json
+msgid "Random Location"
+msgstr "Position aléatoire"
+
+#: resources/effectmetadata/Shape.json
+msgid "Random movement"
+msgstr "Mouvement aléatoire"
+
+#: resources/effectmetadata/Shape.json
+msgid "Fade Away"
+msgstr "Disparaître en fondu"
+
+#: resources/effectmetadata/Shape.json
+msgid "Hold Color"
+msgstr "Garder la couleur"
+
+#: resources/effectmetadata/Shape.json resources/effectmetadata/VUMeter.json
+msgid "Filter Label"
+msgstr "Filtre d'étiquette"
+
+#: resources/effectmetadata/Shape.json
+msgid "Reg"
+msgstr ""
+
+#: resources/effectmetadata/Shimmer.json
+msgid "Duty Factor"
+msgstr "Rapport cyclique"
+
+#: resources/effectmetadata/Shimmer.json
+msgid "Use All Colors"
+msgstr "Utiliser toutes les couleurs"
+
+#: resources/effectmetadata/Shimmer.json
+msgid "Pre v2017.7 Shimmer"
+msgstr "Shimmer d'avant la v2017.7"
+
+#: resources/effectmetadata/Shockwave.json
+msgid "Width1"
+msgstr "Largeur 1"
+
+#: resources/effectmetadata/Shockwave.json
+msgid "Width2"
+msgstr "Largeur 2"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Number Chases"
+msgstr "Nombre de chenillards"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Number of chases within the string, may overlap if chase size is greater than can fit."
+msgstr "Nombre de chenillards sur la chaîne ; ils peuvent se chevaucher si leur taille dépasse la place disponible."
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Chase Size"
+msgstr "Taille du chenillard"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Size of the effect in percentage of the string, will overlap if the number of chases are larger than can fit.  3 chases + > 33.3 percent = overlap"
+msgstr "Taille de l'effet en pourcentage de la chaîne ; chevauchement si les chenillards ne tiennent pas. 3 chenillards + > 33,3 pour cent = chevauchement"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Offset by the percentage of the string, will loop > +/- 100"
+msgstr "Décalage en pourcentage de la chaîne ; boucle au-delà de +/- 100"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Chase Types"
+msgstr "Types de chenillard"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "From Head - Brightest at the start, From Tail - Brightest and the end, Head and Tail - Brightest at both ends, Middle - Brightest in the middle"
+msgstr "From Head : plus lumineux au début, From Tail : plus lumineux à la fin, Head and Tail : plus lumineux aux deux bouts, Middle : plus lumineux au milieu"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Group All Strands"
+msgstr "Regrouper tous les brins"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Band size"
+msgstr "Taille de bande"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Skip size"
+msgstr "Taille de saut"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Starting Position"
+msgstr "Position de départ"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Number of Advances"
+msgstr "Nombre d'avancées"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "FX"
+msgstr ""
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Palette"
+msgstr "Palette"
+
+#: resources/effectmetadata/SingleStrand.json
+msgid "Skips"
+msgstr "Sauts"
+
+#: resources/effectmetadata/Sketch.json
+msgid "Opacity"
+msgstr "Opacité"
+
+#: resources/effectmetadata/Sketch.json
+msgid "Draw Percentage"
+msgstr "Pourcentage tracé"
+
+#: resources/effectmetadata/Sketch.json
+msgid "Motion Percentage"
+msgstr "Pourcentage de mouvement"
+
+#: resources/effectmetadata/Snowflakes.json resources/effectmetadata/Snowstorm.json
+msgid "Max flakes"
+msgstr "Flocons max"
+
+#: resources/effectmetadata/Snowflakes.json
+msgid "Falling"
+msgstr "Chute"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Number of times the color palette repeats around the model"
+msgstr "Nombre de répétitions de la palette autour du modèle"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Spiral Wraps"
+msgstr "Tours de spirale"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Number of times a band wraps around the matrix"
+msgstr "Nombre de tours d'une bande autour de la matrice"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Width of each spiral band as a percentage of the available space"
+msgstr "Largeur de chaque bande en pourcentage de l'espace disponible"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Speed and direction the spirals travel; negative reverses direction"
+msgstr "Vitesse et sens de déplacement des spirales ; une valeur négative inverse le sens"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Blend"
+msgstr "Fondu"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Blend palette colors from bottom to top instead of one color per band"
+msgstr "Fond les couleurs de la palette de bas en haut au lieu d'une couleur par bande"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Fade each band from a solid edge to a faded edge for a 3D look"
+msgstr "Estompe chaque bande d'un bord plein à un bord pâle pour un effet 3D"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Reverse 3D"
+msgstr "3D inversée"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Swap the solid and faded edges of the 3D shading"
+msgstr "Inverse les bords plein et pâle de l'ombrage 3D"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Grow"
+msgstr "Grossir"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Bands get thicker over the duration of the effect"
+msgstr "Les bandes s'épaississent au fil de l'effet"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Shrink"
+msgstr "Rétrécir"
+
+#: resources/effectmetadata/Spirals.json
+msgid "Bands get thinner over the duration of the effect; with Grow, they grow then shrink"
+msgstr "Les bandes s'amincissent au fil de l'effet ; avec Grossir, elles grossissent puis rétrécissent"
+
+#: resources/effectmetadata/Spirograph.json
+msgid "Note: r should be <= R"
+msgstr "Remarque : r doit être <= R"
+
+#: resources/effectmetadata/Spirograph.json
+msgid "R - Radius of outer circle"
+msgstr "R - Rayon du cercle extérieur"
+
+#: resources/effectmetadata/Spirograph.json
+msgid "r - Radius of inner circle"
+msgstr "r - Rayon du cercle intérieur"
+
+#: resources/effectmetadata/Spirograph.json
+msgid "d - Distance"
+msgstr "d - Distance"
+
+#: resources/effectmetadata/Spirograph.json
+msgid "a - Animation"
+msgstr "a - Animation"
+
+#: resources/effectmetadata/Spirograph.json resources/effectmetadata/Tendril.json
+msgid "Length"
+msgstr "Longueur"
+
+#: resources/effectmetadata/State.json
+msgid "State Definition"
+msgstr "Définition de l'état"
+
+#: resources/effectmetadata/State.json
+msgid "Mode"
+msgstr "Mode"
+
+#: resources/effectmetadata/State.json
+msgid "Fade(ms)"
+msgstr "Fondu (ms)"
+
+#: resources/effectmetadata/State.json
+msgid "States"
+msgstr "États"
+
+#: resources/effectmetadata/Strobe.json
+msgid "Number Strobes"
+msgstr "Nombre de flashs"
+
+#: resources/effectmetadata/Strobe.json
+msgid "Strobe Duration"
+msgstr "Durée du flash"
+
+#: resources/effectmetadata/Strobe.json
+msgid "Strobe Type"
+msgstr "Type de flash"
+
+#: resources/effectmetadata/Strobe.json
+msgid "Reacts to music"
+msgstr "Réagit à la musique"
+
+#: resources/effectmetadata/Tendril.json
+msgid "Tune Movement"
+msgstr "Régler le mouvement"
+
+#: resources/effectmetadata/Tendril.json
+msgid "Friction"
+msgstr "Friction"
+
+#: resources/effectmetadata/Tendril.json
+msgid "Dampening"
+msgstr "Amortissement"
+
+#: resources/effectmetadata/Tendril.json
+msgid "Tension"
+msgstr "Tension"
+
+#: resources/effectmetadata/Tendril.json
+msgid "Manual X"
+msgstr "X manuel"
+
+#: resources/effectmetadata/Tendril.json
+msgid "Manual Y"
+msgstr "Y manuel"
+
+#: resources/effectmetadata/Text.json
+msgid "From File"
+msgstr "Depuis un fichier"
+
+#: resources/effectmetadata/Text.json
+msgid "From Lyrics"
+msgstr "Depuis les paroles"
+
+#: resources/effectmetadata/Text.json
+msgid "Font"
+msgstr "Police"
+
+#: resources/effectmetadata/Text.json
+msgid "XL Font"
+msgstr "Police XL"
+
+#: resources/effectmetadata/Text.json
+msgid "Move to center"
+msgstr "Aller au centre"
+
+#: resources/effectmetadata/Text.json
+msgid "Move to center and stop"
+msgstr "Aller au centre et s'arrêter"
+
+#: resources/effectmetadata/Text.json
+msgid "Do not repeat"
+msgstr "Ne pas répéter"
+
+#: resources/effectmetadata/Text.json
+msgid "Do not cycle the text."
+msgstr "Ne pas faire défiler le texte en boucle."
+
+#: resources/effectmetadata/Text.json
+msgid "Count down"
+msgstr "Compte à rebours"
+
+#: resources/effectmetadata/Text.json
+#, c-format
+msgid ""
+"seconds: enter time in seconds\n"
+"minutes seconds: enter time as mm:ss. To prepend or append text to the counter, delimit the time with / (The next show begins in /15:30/! Stay Tuned.)\n"
+"\n"
+"to date 'd h m s'\n"
+"to date 'h:m:s'\n"
+"to date 'm' or 's'\n"
+"to date 's'\n"
+"\n"
+"These options count down to given date based on system date and time. Enter Date in on of the following formats: \n"
+"Fri, 25 Dec 2015 00:00:00 +0100\n"
+"Fri, 25 Dec 2015 00:00:00 CST\n"
+"Fri, 25 Dec 2015 00:00:00 MST\n"
+"\n"
+"\n"
+"!to date!%fmt\n"
+"\n"
+"This option allows you to choose the output format. i.e. days only.\n"
+"Enter Date in the following format to display days only:\n"
+"/Fri, 25 Dec 2015 00:00:00 +0100/ %D"
+msgstr ""
+
+#: resources/effectmetadata/Text.json
+msgid "Color Per Word"
+msgstr "Couleur par mot"
+
+#: resources/effectmetadata/Text.json
+msgid "Change color after each word if checked"
+msgstr "Change de couleur après chaque mot si coché"
+
+#: resources/effectmetadata/Text.json
+msgid "X-axis Start"
+msgstr "Début axe X"
+
+#: resources/effectmetadata/Text.json
+msgid "Y-axis Start"
+msgstr "Début axe Y"
+
+#: resources/effectmetadata/Text.json
+msgid "X-axis End"
+msgstr "Fin axe X"
+
+#: resources/effectmetadata/Text.json
+msgid "Y-axis End"
+msgstr "Fin axe Y"
+
+#: resources/effectmetadata/Tree.json
+msgid "Number Branches"
+msgstr "Nombre de branches"
+
+#: resources/effectmetadata/Tree.json
+msgid "Show Tree Lights"
+msgstr "Afficher les lumières du sapin"
+
+#: resources/effectmetadata/Twinkle.json
+msgid "Percent of Lights"
+msgstr "Pourcentage de lumières"
+
+#: resources/effectmetadata/Twinkle.json
+msgid "Twinkle Steps"
+msgstr "Étapes de scintillement"
+
+#: resources/effectmetadata/Twinkle.json
+msgid "Strobe"
+msgstr "Flash"
+
+#: resources/effectmetadata/Twinkle.json
+msgid "Re-Randomize after twinkle"
+msgstr "Nouveau tirage après scintillement"
+
+#: resources/effectmetadata/VUMeter.json
+msgid "Gain"
+msgstr "Gain"
+
+#: resources/effectmetadata/VUMeter.json
+msgid "Slow Down Falls"
+msgstr "Ralentir les retombées"
+
+#: resources/effectmetadata/VUMeter.json
+msgid "Audio Track"
+msgstr "Piste audio"
+
+#: resources/effectmetadata/Video.json
+msgid "Sync to audio file"
+msgstr "Synchroniser sur le fichier audio"
+
+#: resources/effectmetadata/Video.json
+msgid "Use sequence audio file as the video source and synchronise to the audio timeline."
+msgstr "Utilise le fichier audio de la séquence comme source vidéo et se synchronise sur la ligne de temps audio."
+
+#: resources/effectmetadata/Video.json
+msgid "Start Time"
+msgstr "Heure de début"
+
+#: resources/effectmetadata/Video.json
+msgid "Maintain Aspect Ratio"
+msgstr "Conserver les proportions"
+
+#: resources/effectmetadata/Video.json
+msgid "Crop Left"
+msgstr "Rogner à gauche"
+
+#: resources/effectmetadata/Video.json
+msgid "Crop Right"
+msgstr "Rogner à droite"
+
+#: resources/effectmetadata/Video.json
+msgid "Crop Top"
+msgstr "Rogner en haut"
+
+#: resources/effectmetadata/Video.json
+msgid "Crop Bottom"
+msgstr "Rogner en bas"
+
+#: resources/effectmetadata/Video.json
+msgid "Sample spacing"
+msgstr "Espacement d'échantillonnage"
+
+#: resources/effectmetadata/Video.json
+msgid "Use 0 to scale image. >0 to sample image."
+msgstr "0 pour mettre l'image à l'échelle, >0 pour l'échantillonner."
+
+#: resources/effectmetadata/Warp.json
+msgid "The warp effect distorts the pixels in the layers below it. The Canvas option in Layer Blending must be enabled for it to work."
+msgstr "L'effet Warp déforme les pixels des calques situés en dessous. L'option Canvas de la fusion des calques doit être activée pour qu'il fonctionne."
+
+#: resources/effectmetadata/Warp.json
+msgid "Warp Type"
+msgstr "Type de déformation"
+
+#: resources/effectmetadata/Warp.json
+msgid "Treatment"
+msgstr "Traitement"
+
+#: resources/effectmetadata/Warp.json
+msgid "Frequency"
+msgstr "Fréquence"
+
+#: resources/effectmetadata/Wave.json
+msgid "Wave Type"
+msgstr "Type d'onde"
+
+#: resources/effectmetadata/Wave.json
+msgid "Fill Colors"
+msgstr "Remplir de couleurs"
+
+#: resources/effectmetadata/Wave.json
+msgid "Mirror Wave"
+msgstr "Onde en miroir"
+
+#: resources/effectmetadata/Wave.json
+msgid "Number of Waves"
+msgstr "Nombre d'ondes"
+
+#: resources/effectmetadata/Wave.json
+msgid "Thickness of Wave"
+msgstr "Épaisseur de l'onde"
+
+#: resources/effectmetadata/Wave.json
+msgid "Scale Height of Wave"
+msgstr "Hauteur de l'onde"
+
+#: resources/effectmetadata/Wave.json
+msgid "Wave Direction"
+msgstr "Sens de l'onde"
+
+#: resources/effectmetadata/_schema.json
+msgid "Cross-platform description of an effect's configurable properties and UI layout"
+msgstr ""
+
+#: resources/effectmetadata/shared/Blending.json
+msgid "Suppress Effect Until Frame"
+msgstr "Masquer l'effet jusqu'à l'image"
+
+#: resources/effectmetadata/shared/Blending.json
+msgid "Freeze Effect At Frame"
+msgstr "Figer l'effet à l'image"
+
+#: resources/effectmetadata/shared/Blending.json
+msgid "In Transition"
+msgstr "Transition d'entrée"
+
+#: resources/effectmetadata/shared/Blending.json
+msgid "Out Transition"
+msgstr "Transition de sortie"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Render Style"
+msgstr "Style de rendu"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Buffer Stagger"
+msgstr "Décalage de grille"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Camera"
+msgstr "Caméra"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Transformation"
+msgstr "Transformation"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Persistent"
+msgstr "Persistant"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Z Rotation"
+msgstr "Rotation Z"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Z Rotations"
+msgstr "Rotations Z"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Z Pivot Point X"
+msgstr "Pivot Z X"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Z Pivot Point Y"
+msgstr "Pivot Z Y"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Zoom Quality"
+msgstr "Qualité du zoom"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "X Rotation"
+msgstr "Rotation X"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "X Pivot Point"
+msgstr "Pivot X"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Y Rotation"
+msgstr "Rotation Y"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Y Pivot Point"
+msgstr "Pivot Y"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Application Order"
+msgstr "Ordre d'application"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Buffer"
+msgstr "Grille"
+
+#: resources/effectmetadata/shared/Buffer.json
+msgid "Roto-Zoom"
+msgstr "Roto-zoom"
+
+#: resources/effectmetadata/shared/Color.json
+msgid "Hue"
+msgstr "Teinte"
+
 #: src-ui-wx/app-shell/AboutDialog.cpp:34
 msgid "About xLights"
 msgstr "À propos de xLights"
@@ -52,7 +1614,7 @@ msgstr "Sauvegarde annulée"
 msgid "Backup failed"
 msgstr "Échec de la sauvegarde"
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:91 src-ui-wx/app-shell/TipOfTheDayDialog.cpp:161 ... (+12)
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:91 src-ui-wx/app-shell/TipOfTheDayDialog.cpp:180 ... (+12)
 msgid "Close"
 msgstr "Fermer"
 
@@ -104,7 +1666,7 @@ msgstr "Sauvegardes"
 msgid "Date"
 msgstr "Date"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:141
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:141 resources/effectmetadata/Circles.json resources/effectmetadata/Kaleidoscope.json resources/effectmetadata/Liquid.json resources/effectmetadata/Pinwheel.json ... (+1)
 msgid "Size"
 msgstr "Taille"
 
@@ -322,7 +1884,7 @@ msgstr "OK"
 msgid "No Thanks"
 msgstr "Non merci"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:409 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:410 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:411 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:412 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:132 ... (+1)
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:409 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:410 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:411 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:412 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:132 ... (+3)
 msgid "Y"
 msgstr ""
 
@@ -529,19 +2091,19 @@ msgstr "Le dossier du show « "
 msgid "Unable to save network definition file"
 msgstr "Impossible d'enregistrer le fichier de définition du réseau"
 
-#: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:144
+#: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:163
 msgid "Tip of the day"
 msgstr "Astuce du jour"
 
-#: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:152
+#: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:171
 msgid "<html><body><p>Loading...</p></body></html>"
 msgstr "<html><body><p>Chargement...</p></body></html>"
 
-#: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:156
+#: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:175
 msgid "Show Tips on Startup"
 msgstr "Afficher les astuces au démarrage"
 
-#: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:159
+#: src-ui-wx/app-shell/TipOfTheDayDialog.cpp:178
 msgid "Give me another one"
 msgstr "Une autre"
 
@@ -597,7 +2159,7 @@ msgstr "Mode de fusion"
 msgid "None"
 msgstr ""
 
-#: src-ui-wx/color/ColorCurveDialog.cpp:127
+#: src-ui-wx/color/ColorCurveDialog.cpp:127 resources/effectmetadata/Bars.json
 msgid "Gradient"
 msgstr ""
 
@@ -1029,7 +2591,7 @@ msgstr ""
 msgid "End Min"
 msgstr ""
 
-#: src-ui-wx/controllers/HinksPixExportDialog.cpp:286 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:84 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:90
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:286 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:84 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:90 resources/effectmetadata/Liquid.json
 msgid "Enabled"
 msgstr ""
 
@@ -1111,7 +2673,7 @@ msgstr "Molette : zoom. Glisser avec le bouton du milieu ou droit : se déplacer
 msgid "Node"
 msgstr "Nœud"
 
-#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:130 src-ui-wx/effectpanels/MovingHeadPanel.cpp:636 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:61
+#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:130 src-ui-wx/effectpanels/MovingHeadPanel.cpp:636 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:61 resources/effectmetadata/MovingHead.json
 msgid "Status"
 msgstr ""
 
@@ -1120,7 +2682,7 @@ msgstr ""
 msgid "All %u nodes of '%s' on. Aim and focus the camera so the whole prop is in frame, then Start Mapping."
 msgstr "Les %u nœuds de « %s » sont allumés. Orientez et réglez la caméra pour cadrer tout le décor, puis cliquez sur Démarrer le relevé."
 
-#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:131 src-ui-wx/effectpanels/WarpPanel.cpp:53 src-ui-wx/layout/ModelGroupPanel.cpp:200
+#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:131 src-ui-wx/effectpanels/WarpPanel.cpp:53 src-ui-wx/layout/ModelGroupPanel.cpp:200 resources/effectmetadata/Liquid.json resources/effectmetadata/Warp.json
 msgid "X"
 msgstr ""
 
@@ -1304,7 +2866,7 @@ msgstr "Modèle :"
 msgid "Rendering Progress"
 msgstr "Progression du rendu"
 
-#: src-ui-wx/diagnostics/SearchPanel.cpp:66 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:264
+#: src-ui-wx/diagnostics/SearchPanel.cpp:66 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:264 resources/effectmetadata/Ripple.json resources/effectmetadata/Shockwave.json resources/effectmetadata/VUMeter.json
 msgid "Regex"
 msgstr "Regex"
 
@@ -1388,9 +2950,29 @@ msgstr "Noir transparent"
 msgid "Phoneme"
 msgstr "Phonème"
 
-#: src-ui-wx/effectpanels/FacesPanel.cpp:79 src-ui-wx/effectpanels/StatePanel.cpp:78
+#: src-ui-wx/effectpanels/FacesPanel.cpp:79 src-ui-wx/effectpanels/StatePanel.cpp:78 resources/effectmetadata/Fireworks.json resources/effectmetadata/Ripple.json resources/effectmetadata/Servo.json ... (+4)
 msgid "Timing Track"
 msgstr "Piste de timing"
+
+#: src-ui-wx/effectpanels/JsonEffectPanel.cpp:1330 src-ui-wx/import_export/ModelRemap.cpp:42 src-ui-wx/import_export/ModelRemap.cpp:46
+msgid "Select a file"
+msgstr "Choisir un fichier"
+
+#: src-ui-wx/effectpanels/JsonEffectPanel.cpp:677 resources/effectmetadata/Faces.json resources/effectmetadata/Marquee.json resources/effectmetadata/Pictures.json resources/effectmetadata/Pinwheel.json
+msgid "X-axis Center"
+msgstr "Centre axe X"
+
+#: src-ui-wx/effectpanels/JsonEffectPanel.cpp:731 resources/effectmetadata/Faces.json resources/effectmetadata/Marquee.json resources/effectmetadata/Pictures.json
+msgid "Wrap X"
+msgstr "Boucler en X"
+
+#: src-ui-wx/effectpanels/JsonEffectPanel.cpp:757 resources/effectmetadata/Faces.json resources/effectmetadata/Marquee.json resources/effectmetadata/Pictures.json
+msgid "Y-axis Center"
+msgstr "Centre axe Y"
+
+#: src-ui-wx/effectpanels/JsonEffectPanel.cpp:801 resources/effectmetadata/Marquee.json
+msgid "Wrap Y"
+msgstr "Boucler en Y"
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:1070 src-ui-wx/effectpanels/MovingHeadPanel.cpp:1083
 msgid "Delete Preset"
@@ -1525,15 +3107,15 @@ msgstr "Échelle :"
 msgid "Time Offset:"
 msgstr "Décalage temporel :"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:410
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:410 resources/effectmetadata/MovingHead.json
 msgid "Ignore Pan"
 msgstr "Ignorer le pan"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:413
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:413 resources/effectmetadata/MovingHead.json
 msgid "Ignore Tilt"
 msgstr "Ignorer le tilt"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:427
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:427 resources/effectmetadata/MovingHead.json
 msgid "Enable Pattern"
 msgstr "Activer le motif"
 
@@ -1633,19 +3215,19 @@ msgstr "Phase X :"
 msgid "Y Phase:"
 msgstr "Phase Y :"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:593
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:593 resources/effectmetadata/MovingHead.json
 msgid "Auto Shutter"
 msgstr "Obturateur auto"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:599 src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:98 src-ui-wx/model/ModelFacesPanel.cpp:189 src-ui-wx/model/ModelFacesPanel.cpp:313 src-ui-wx/model/ModelStatesPanel.cpp:187 ... (+1)
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:599 src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:98 src-ui-wx/model/ModelFacesPanel.cpp:189 src-ui-wx/model/ModelFacesPanel.cpp:313 src-ui-wx/model/ModelStatesPanel.cpp:187 ... (+4)
 msgid "Color"
 msgstr ""
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:600 src-ui-wx/effectpanels/MovingHeadPanel.cpp:1927
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:600 src-ui-wx/effectpanels/MovingHeadPanel.cpp:1927 resources/effectmetadata/MovingHead.json
 msgid "ColorWheel"
 msgstr ""
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:602
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:602 resources/effectmetadata/MovingHead.json
 msgid "Enable Shutter"
 msgstr "Activer l'obturateur"
 
@@ -1661,27 +3243,27 @@ msgstr ""
 msgid "Reset to Default"
 msgstr "Valeurs par défaut"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:630
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:630 resources/effectmetadata/Fan.json resources/effectmetadata/Fill.json resources/effectmetadata/Marquee.json resources/effectmetadata/MovingHead.json ... (+1)
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:631 src-ui-wx/effectpanels/MovingHeadPanel.cpp:2238
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:631 src-ui-wx/effectpanels/MovingHeadPanel.cpp:2238 resources/effectmetadata/MovingHead.json
 msgid "Dimmer"
 msgstr ""
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:632 src-ui-wx/effectpanels/MovingHeadPanel.cpp:2228
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:632 src-ui-wx/effectpanels/MovingHeadPanel.cpp:2228 resources/effectmetadata/MovingHead.json
 msgid "Pathing"
 msgstr ""
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:633 src-ui-wx/effectpanels/MovingHeadPanel.cpp:2233
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:633 src-ui-wx/effectpanels/MovingHeadPanel.cpp:2233 resources/effectmetadata/MovingHead.json
 msgid "Pattern"
 msgstr ""
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:634
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:634 resources/effectmetadata/MovingHead.json
 msgid "Control"
 msgstr ""
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:635
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:635 resources/effectmetadata/MovingHead.json
 msgid "Link"
 msgstr ""
 
@@ -1713,7 +3295,7 @@ msgstr "Début :"
 msgid "1.00"
 msgstr ""
 
-#: src-ui-wx/effectpanels/StatePanel.cpp:63 src-ui-wx/model/ModelStatesPanel.cpp:185 src-ui-wx/model/ModelStatesPanel.cpp:266
+#: src-ui-wx/effectpanels/StatePanel.cpp:63 src-ui-wx/model/ModelStatesPanel.cpp:185 src-ui-wx/model/ModelStatesPanel.cpp:266 resources/effectmetadata/Faces.json
 msgid "State"
 msgstr ""
 
@@ -1996,7 +3578,7 @@ msgstr "Décalage temporel (ms)"
 msgid "Map by Strand/CCR"
 msgstr "Associer par brin/CCR"
 
-#: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:94 src-ui-wx/import_export/VsaImportDialog.cpp:87 src-ui-wx/setup/PixelTestDialog.cpp:1177
+#: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:94 src-ui-wx/import_export/VsaImportDialog.cpp:87 src-ui-wx/setup/PixelTestDialog.cpp:1177 resources/effectmetadata/Duplicate.json
 msgid "Model"
 msgstr ""
 
@@ -2019,10 +3601,6 @@ msgstr ""
 #: src-ui-wx/import_export/ModelRemap.cpp:40
 msgid "Custom xModel File With the faces/states/submodels:"
 msgstr "Fichier xModel personnalisé avec les visages/états/sous-modèles :"
-
-#: src-ui-wx/import_export/ModelRemap.cpp:42 src-ui-wx/import_export/ModelRemap.cpp:46
-msgid "Select a file"
-msgstr "Choisir un fichier"
 
 #: src-ui-wx/import_export/ModelRemap.cpp:44
 msgid "Custom xModel File with the correct wiring layout:"
@@ -2256,11 +3834,11 @@ msgstr "Rechercher"
 msgid "Assign VSA Tracks to xLights Models/Layers"
 msgstr "Associer les pistes VSA aux modèles/calques xLights"
 
-#: src-ui-wx/import_export/VsaImportDialog.cpp:86 src-ui-wx/sequencer/NoteImportDialog.cpp:98 src-ui-wx/sequencer/SeqSettingsDialog.cpp:553
+#: src-ui-wx/import_export/VsaImportDialog.cpp:86 src-ui-wx/sequencer/NoteImportDialog.cpp:98 src-ui-wx/sequencer/SeqSettingsDialog.cpp:553 resources/effectmetadata/Guitar.json resources/effectmetadata/Piano.json
 msgid "Track"
 msgstr "Piste"
 
-#: src-ui-wx/import_export/VsaImportDialog.cpp:89
+#: src-ui-wx/import_export/VsaImportDialog.cpp:89 resources/effectmetadata/Duplicate.json
 msgid "Layer"
 msgstr "Calque"
 
@@ -2809,7 +4387,7 @@ msgstr "L'ensemble « %s » contient un modèle verrouillé ou du show de base :
 msgid "3D Objects"
 msgstr "Objets 3D"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:686
+#: src-ui-wx/layout/LayoutPanel.cpp:686 resources/effectmetadata/Bars.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/Ripple.json resources/effectmetadata/Spirals.json
 msgid "3D"
 msgstr ""
 
@@ -3194,11 +4772,11 @@ msgstr ""
 msgid "Images"
 msgstr "Images"
 
-#: src-ui-wx/media/ResizeImageDialog.cpp:45 src-ui-wx/model/CustomModelDialog.cpp:391
+#: src-ui-wx/media/ResizeImageDialog.cpp:45 src-ui-wx/model/CustomModelDialog.cpp:391 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Lightning.json ... (+2)
 msgid "Width"
 msgstr "Largeur"
 
-#: src-ui-wx/media/ResizeImageDialog.cpp:50 src-ui-wx/model/CustomModelDialog.cpp:396
+#: src-ui-wx/media/ResizeImageDialog.cpp:50 src-ui-wx/model/CustomModelDialog.cpp:396 resources/effectmetadata/Fire.json resources/effectmetadata/MovingHead.json
 msgid "Height"
 msgstr "Hauteur"
 
@@ -3409,7 +4987,7 @@ msgstr "La mire de test doit commencer dans les 30 premières secondes de la vid
 msgid "Model details:"
 msgstr "Détails du modèle :"
 
-#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2522 src-ui-wx/model/SubModelGenerateDialog.cpp:51
+#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2522 src-ui-wx/model/SubModelGenerateDialog.cpp:51 resources/effectmetadata/Guitar.json resources/effectmetadata/Life.json resources/effectmetadata/Liquid.json ... (+4)
 msgid "Type"
 msgstr "Type"
 
@@ -3525,11 +5103,11 @@ msgstr ""
 msgid "Advanced Controls"
 msgstr "Réglages avancés"
 
-#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2707
+#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2707 resources/effectmetadata/shared/Blending.json resources/effectmetadata/shared/Buffer.json
 msgid "Blur"
 msgstr "Flou"
 
-#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2713
+#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2713 resources/effectmetadata/MusicEffect.json resources/effectmetadata/VUMeter.json
 msgid "Sensitivity"
 msgstr "Sensibilité"
 
@@ -3545,7 +5123,7 @@ msgstr "Écart minimal"
 msgid "Despeckle"
 msgstr "Antiparasite"
 
-#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2731
+#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2731 resources/effectmetadata/shared/Color.json
 msgid "Contrast"
 msgstr "Contraste"
 
@@ -3557,7 +5135,7 @@ msgstr "Gamma"
 msgid "1.0"
 msgstr ""
 
-#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2743
+#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2743 resources/effectmetadata/shared/Color.json
 msgid "Saturation"
 msgstr "Saturation"
 
@@ -3642,7 +5220,7 @@ msgstr "Définitions du modèle - %s"
 msgid "Model Definitions"
 msgstr "Définitions du modèle"
 
-#: src-ui-wx/model/ModelDimmingCurveDialog.cpp:112 src-ui-wx/model/ModelDimmingCurveDialog.cpp:142 src-ui-wx/model/ModelDimmingCurveDialog.cpp:159 src-ui-wx/model/ModelDimmingCurveDialog.cpp:176
+#: src-ui-wx/model/ModelDimmingCurveDialog.cpp:112 src-ui-wx/model/ModelDimmingCurveDialog.cpp:142 src-ui-wx/model/ModelDimmingCurveDialog.cpp:159 src-ui-wx/model/ModelDimmingCurveDialog.cpp:176 resources/effectmetadata/shared/Color.json
 msgid "Brightness"
 msgstr "Luminosité"
 
@@ -3762,7 +5340,7 @@ msgstr "Utiliser des états comme contour :"
 msgid "Outline:"
 msgstr "Contour :"
 
-#: src-ui-wx/model/ModelFacesPanel.cpp:257 src-ui-wx/model/ModelFacesPanel.cpp:2304 src-ui-wx/model/ModelFacesPanel.cpp:2307
+#: src-ui-wx/model/ModelFacesPanel.cpp:257 src-ui-wx/model/ModelFacesPanel.cpp:2304 src-ui-wx/model/ModelFacesPanel.cpp:2307 resources/effectmetadata/Ripple.json
 msgid "Outline"
 msgstr ""
 
@@ -3994,7 +5572,7 @@ msgstr "Inverser"
 msgid "From Model"
 msgstr "Depuis le modèle"
 
-#: src-ui-wx/model/NodeSelectGrid.cpp:260
+#: src-ui-wx/model/NodeSelectGrid.cpp:260 resources/effectmetadata/Shader.json resources/effectmetadata/shared/Buffer.json
 msgid "Zoom"
 msgstr "Zoom"
 
@@ -4106,7 +5684,7 @@ msgstr "Nom de base"
 msgid "SubModel"
 msgstr "Sous-modèle"
 
-#: src-ui-wx/model/SubModelGenerateDialog.cpp:55
+#: src-ui-wx/model/SubModelGenerateDialog.cpp:55 resources/effectmetadata/Adjust.json resources/effectmetadata/ColorWash.json resources/effectmetadata/Meteors.json resources/effectmetadata/Shape.json
 msgid "Count"
 msgstr "Nombre"
 
@@ -4324,7 +5902,7 @@ msgstr ""
 msgid "Tilt Max"
 msgstr ""
 
-#: src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:49 src-ui-wx/shared/utils/wxCheckedListCtrl.cpp:20
+#: src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:49 src-ui-wx/shared/utils/wxCheckedListCtrl.cpp:20 resources/effectmetadata/shared/Color.json
 msgid "Value"
 msgstr "Valeur"
 
@@ -4689,7 +6267,7 @@ msgstr "Calques"
 msgid "Relative: paste effects at the selected position. As Layers: paste preserving layer structure from copied effects."
 msgstr "Relatif : colle les effets à la position sélectionnée. Calques : colle en conservant la structure des calques des effets copiés."
 
-#: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:56
+#: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:56 resources/effectmetadata/Garlands.json resources/effectmetadata/Ripple.json
 msgid "Spacing"
 msgstr "Espacement"
 
@@ -5169,7 +6747,7 @@ msgstr "Choisissez les effets affichés dans la barre d'outils, et leur ordre :"
 msgid "Visible"
 msgstr "Visible"
 
-#: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269
+#: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269 resources/effectmetadata/Curtain.json resources/effectmetadata/Meteors.json resources/effectmetadata/Text.json
 msgid "Effect"
 msgstr ""
 
@@ -5329,7 +6907,7 @@ msgstr "Dossier du show uniquement"
 msgid "Selected:"
 msgstr "Sélectionnées :"
 
-#: src-ui-wx/sequencer/BatchRenderDialog.cpp:99
+#: src-ui-wx/sequencer/BatchRenderDialog.cpp:99 resources/effectmetadata/Text.json
 msgid "Text"
 msgstr "Texte"
 
@@ -5406,11 +6984,11 @@ msgstr "Copier les résultats"
 msgid "Bottom"
 msgstr "Bas"
 
-#: src-ui-wx/sequencer/BufferSizeDialog.cpp:114
+#: src-ui-wx/sequencer/BufferSizeDialog.cpp:114 resources/effectmetadata/Circles.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
 msgid "X Center"
 msgstr "Centre X"
 
-#: src-ui-wx/sequencer/BufferSizeDialog.cpp:121
+#: src-ui-wx/sequencer/BufferSizeDialog.cpp:121 resources/effectmetadata/Circles.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
 msgid "Y Center"
 msgstr "Centre Y"
 
@@ -5426,7 +7004,7 @@ msgstr "Supprimer le préréglage de grille"
 msgid "Buffer Size"
 msgstr "Taille de la grille de rendu"
 
-#: src-ui-wx/sequencer/BufferSizeDialog.cpp:86
+#: src-ui-wx/sequencer/BufferSizeDialog.cpp:86 resources/effectmetadata/Liquid.json
 msgid "Top"
 msgstr "Haut"
 
@@ -6117,7 +7695,7 @@ msgstr "Double-clic pour charger"
 msgid "Modify Text then hit OK"
 msgstr "Modifiez le texte puis cliquez sur OK"
 
-#: src-ui-wx/sequencer/SelectPanel.cpp:103
+#: src-ui-wx/sequencer/SelectPanel.cpp:103 resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json
 msgid "End"
 msgstr "Fin"
 
@@ -6149,7 +7727,7 @@ msgstr "Style de rendu :"
 msgid "Any"
 msgstr ""
 
-#: src-ui-wx/sequencer/SelectPanel.cpp:97
+#: src-ui-wx/sequencer/SelectPanel.cpp:97 resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json
 msgid "Start"
 msgstr "Début"
 
@@ -6565,7 +8143,7 @@ msgstr "Définir le sens"
 msgid "Forward"
 msgstr ""
 
-#: src-ui-wx/setup/ControllerConnectionDialog.cpp:88 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:242
+#: src-ui-wx/setup/ControllerConnectionDialog.cpp:88 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:242 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Marquee.json ... (+1)
 msgid "Reverse"
 msgstr ""
 
@@ -6686,7 +8264,7 @@ msgstr "Ne pas envoyer de données aux sorties inutilisées"
 msgid "Function"
 msgstr "Fonction"
 
-#: src-ui-wx/setup/PixelTestDialog.cpp:1204 src-ui-wx/setup/PixelTestDialog.cpp:1258
+#: src-ui-wx/setup/PixelTestDialog.cpp:1204 src-ui-wx/setup/PixelTestDialog.cpp:1258 resources/effectmetadata/SingleStrand.json
 msgid "Chase"
 msgstr "Chenillard"
 
@@ -6799,7 +8377,7 @@ msgstr "Standard"
 msgid "RGB Cycle"
 msgstr "Cycle RGB"
 
-#: src-ui-wx/setup/PixelTestDialog.cpp:1353
+#: src-ui-wx/setup/PixelTestDialog.cpp:1353 resources/effectmetadata/Butterfly.json resources/effectmetadata/Circles.json resources/effectmetadata/Life.json resources/effectmetadata/Lines.json ... (+14)
 msgid "Speed"
 msgstr "Vitesse"
 
@@ -6843,11 +8421,11 @@ msgstr "Depuis"
 msgid "Map To"
 msgstr "Vers"
 
-#: src-ui-wx/setup/RemapDMXChannelsDialog.cpp:60
+#: src-ui-wx/setup/RemapDMXChannelsDialog.cpp:60 resources/effectmetadata/MovingHead.json resources/effectmetadata/Ripple.json
 msgid "Scale"
 msgstr "Échelle"
 
-#: src-ui-wx/setup/RemapDMXChannelsDialog.cpp:61
+#: src-ui-wx/setup/RemapDMXChannelsDialog.cpp:61 resources/effectmetadata/Fill.json resources/effectmetadata/MusicEffect.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/SingleStrand.json
 msgid "Offset"
 msgstr "Décalage"
 
@@ -6943,7 +8521,7 @@ msgstr ""
 msgid "Double-click to open in file manager"
 msgstr "Double-cliquez pour ouvrir dans le gestionnaire de fichiers"
 
-#: src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:104
+#: src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:104 resources/effectmetadata/Ripple.json resources/effectmetadata/Shockwave.json
 msgid "Filter"
 msgstr "Filtrer"
 
@@ -7395,7 +8973,7 @@ msgstr "Conserve la perspective actuelle d'une session à l'autre, quel que soit
 msgid "Perspectives"
 msgstr "Perspectives"
 
-#: src-ui-wx/xLightsMain.cpp:1151 src-ui-wx/preferences/xLightsPreferences.cpp:229
+#: src-ui-wx/xLightsMain.cpp:1151 src-ui-wx/preferences/xLightsPreferences.cpp:229 resources/effectmetadata/Butterfly.json resources/effectmetadata/Meteors.json resources/effectmetadata/SingleStrand.json
 msgid "Colors"
 msgstr "Couleurs"
 
@@ -7842,7 +9420,7 @@ msgstr ""
 msgid "On - O"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:896 src-ui-wx/setup/PixelTestDialog.cpp:1222 src-ui-wx/setup/PixelTestDialog.cpp:1276
+#: src-ui-wx/xLightsMain.cpp:896 src-ui-wx/setup/PixelTestDialog.cpp:1222 src-ui-wx/setup/PixelTestDialog.cpp:1276 resources/effectmetadata/ColorWash.json resources/effectmetadata/On.json ... (+1)
 msgid "Shimmer"
 msgstr ""
 
@@ -7858,7 +9436,7 @@ msgstr ""
 msgid "Twinkle - K"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:899 src-ui-wx/model/GenerateCustomModelDialog.cpp:2543
+#: src-ui-wx/xLightsMain.cpp:899 src-ui-wx/model/GenerateCustomModelDialog.cpp:2543 resources/effectmetadata/SingleStrand.json
 msgid "Intensity"
 msgstr "Intensité"
 
@@ -7946,7 +9524,7 @@ msgstr "Zoom arrière"
 msgid "Sequence Settings"
 msgstr "Paramètres de la séquence"
 
-#: src-ui-wx/xLightsMain.cpp:916
+#: src-ui-wx/xLightsMain.cpp:916 resources/effectmetadata/Marquee.json
 msgid "Settings"
 msgstr "Paramètres"
 

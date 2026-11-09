@@ -89,6 +89,7 @@ def extract():
                         continue
                     line = text.count("\n", 0, m.start()) + 1
                     found.setdefault(msgid, []).append(f"{rel}:{line}")
+    extract_effect_metadata(found)
     os.makedirs(LOCALE_DIR, exist_ok=True)
     with open(POT, "w", encoding="utf-8", newline="\n") as f:
         f.write(header_block("", "") + "\n")
@@ -100,6 +101,47 @@ def extract():
                 f.write("#, c-format\n")
             f.write("msgid " + po_quote(msgid) + "\nmsgstr \"\"\n\n")
     print(f"{len(found)} strings -> {os.path.relpath(POT, ROOT)}")
+
+
+# Keys of resources/effectmetadata/*.json shown by JsonEffectPanel on desktop.
+# Property "description" texts are not shown on desktop (iPad / AI help), and
+# "options" are values saved in the sequences, so neither is extracted.
+EFFECT_TEXT_KEYS = ("label", "tooltip", "checkboxLabel", "fileMessage")
+
+
+def extract_effect_metadata(found):
+    import json
+    base = os.path.join(ROOT, "resources", "effectmetadata")
+    for dirpath, _, files in os.walk(base):
+        for name in sorted(files):
+            if not name.endswith(".json"):
+                continue
+            path = os.path.join(dirpath, name)
+            rel = os.path.relpath(path, ROOT).replace("\\", "/")
+            with open(path, encoding="utf-8") as f:
+                try:
+                    data = json.load(f)
+                except ValueError:
+                    continue
+            texts = []
+            if isinstance(data, dict) and isinstance(data.get("description"), str):
+                texts.append(data["description"])  # panel-level text shown at the top
+
+            def walk(node):
+                if isinstance(node, dict):
+                    for key, value in node.items():
+                        if key in EFFECT_TEXT_KEYS and isinstance(value, str):
+                            texts.append(value)
+                        elif key != "options":
+                            walk(value)
+                elif isinstance(node, list):
+                    for item in node:
+                        walk(item)
+
+            walk(data)
+            for text in texts:
+                if text.strip() and rel not in found.get(text, []):
+                    found.setdefault(text, []).append(rel)
 
 
 def header_block(lang, plural):
