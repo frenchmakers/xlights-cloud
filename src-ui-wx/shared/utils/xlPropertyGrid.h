@@ -13,6 +13,7 @@
 #include <wx/propgrid/propgrid.h>
 #include <wx/propgrid/propgridiface.h>
 #include <wx/combo.h>
+#include <wx/translation.h>
 
 // This is to workaround a crash in wxPropertyGrid where doing
 // the DeletePendingObjects() during the OnIdle handling could
@@ -44,7 +45,18 @@ public:
     }
     virtual ~xlPropertyGrid() {
     }
-    
+
+    // Show labels, categories and help texts through the UI translation
+    // catalogs, just before each paint so rows added later are covered too.
+    // Only what is drawn changes: property names, which the code uses as keys,
+    // and choice values stay as they are.
+    void EnableLabelTranslation() {
+        if (!m_translateLabels) {
+            m_translateLabels = true;
+            Bind(wxEVT_PAINT, &xlPropertyGrid::OnPaintTranslateLabels, this);
+        }
+    }
+
     void HideDeletingComboPopups() {
         // HidePopup() pumps events (the popup's focus-loss drives an
         // OnMeasureItem/OnComboItemPaint repaint, and an idle/clear can re-enter
@@ -87,6 +99,26 @@ public:
     }
 
 private:
+    void OnPaintTranslateLabels(wxPaintEvent& event) {
+        event.Skip();
+        for (wxPropertyGridIterator it = GetIterator(wxPG_ITERATE_ALL); !it.AtEnd(); ++it) {
+            wxPGProperty* p = *it;
+            const wxString label = p->GetLabel();
+            if (!label.empty()) {
+                const wxString& tr = wxGetTranslation(label);
+                if (tr != label) {
+                    p->SetLabel(tr);
+                }
+            }
+            const wxString help = p->GetHelpString();
+            if (!help.empty()) {
+                const wxString& tr = wxGetTranslation(help);
+                if (tr != help) {
+                    p->SetHelpString(tr);
+                }
+            }
+        }
+    }
     void OnPropertySelected(wxPropertyGridEvent& event) {
         event.Skip();
         if (wxWindow* ed = GetEditorControl()) {
@@ -164,4 +196,5 @@ private:
     }
 
     bool m_hidingComboPopups = false;
+    bool m_translateLabels = false;
 };

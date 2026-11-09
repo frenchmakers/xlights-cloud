@@ -36,10 +36,6 @@ msgstr "Répét. palette"
 msgid "Cycles"
 msgstr "Cycles"
 
-#: resources/effectmetadata/Bars.json resources/effectmetadata/Butterfly.json resources/effectmetadata/Fill.json resources/effectmetadata/Lightning.json resources/effectmetadata/Liquid.json ... (+3)
-msgid "Direction"
-msgstr "Direction"
-
 #: resources/effectmetadata/Bars.json resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json
 msgid "Angle"
 msgstr "Angle"
@@ -484,10 +480,6 @@ msgstr "L'effet Kaleidoscope déforme les pixels des calques situés en dessous.
 msgid "Kaleidoscope Type"
 msgstr "Type de kaléidoscope"
 
-#: resources/effectmetadata/Kaleidoscope.json resources/effectmetadata/MovingHead.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/Ripple.json resources/effectmetadata/Shape.json
-msgid "Rotation"
-msgstr "Rotation"
-
 #: resources/effectmetadata/Life.json
 msgid "Cells to start"
 msgstr "Cellules de départ"
@@ -740,10 +732,6 @@ msgstr ""
 msgid "Time Offset"
 msgstr "Décalage temporel"
 
-#: resources/effectmetadata/MovingHead.json resources/effectmetadata/Shape.json resources/effectmetadata/VUMeter.json
-msgid "Shape"
-msgstr "Forme"
-
 #: resources/effectmetadata/MovingHead.json
 msgid "X Offset"
 msgstr "Décalage X"
@@ -854,10 +842,6 @@ msgstr "Intensité de départ"
 msgid "End Intensity"
 msgstr "Intensité de fin"
 
-#: resources/effectmetadata/On.json
-msgid "Transparency"
-msgstr "Transparence"
-
 #: resources/effectmetadata/On.json resources/effectmetadata/Shimmer.json resources/effectmetadata/Warp.json
 msgid "Cycle Count"
 msgstr "Nombre de cycles"
@@ -965,14 +949,6 @@ msgstr "Utiliser une piste de timing"
 #: resources/effectmetadata/Shader.json
 msgid "Lead in frames"
 msgstr "Images d'entrée"
-
-#: resources/effectmetadata/Shader.json
-msgid "Offset X"
-msgstr "Décalage X"
-
-#: resources/effectmetadata/Shader.json
-msgid "Offset Y"
-msgstr "Décalage Y"
 
 #: resources/effectmetadata/Shape.json resources/effectmetadata/Sketch.json
 msgid "Motion"
@@ -1141,10 +1117,6 @@ msgstr "Chute"
 #: resources/effectmetadata/Spirals.json
 msgid "Number of times the color palette repeats around the model"
 msgstr "Nombre de répétitions de la palette autour du modèle"
-
-#: resources/effectmetadata/Spirals.json
-msgid "Spiral Wraps"
-msgstr "Tours de spirale"
 
 #: resources/effectmetadata/Spirals.json
 msgid "Number of times a band wraps around the matrix"
@@ -1884,7 +1856,43 @@ msgstr "OK"
 msgid "No Thanks"
 msgstr "Non merci"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:409 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:410 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:411 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:412 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:132 ... (+3)
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:204 src-ui-wx/model/GenerateCustomModelDialog.cpp:2522 src-ui-wx/model/SubModelGenerateDialog.cpp:51 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:35 resources/effectmetadata/Guitar.json ... (+6)
+msgid "Type"
+msgstr "Type"
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:218
+msgid "Key"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:220 src-ui-wx/effectpanels/MovingHeadPanel.cpp:634 resources/effectmetadata/MovingHead.json
+msgid "Control"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:223
+msgid "Alt"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:226
+msgid "Shift"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:229
+msgid "RawControl"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:242 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269 resources/effectmetadata/Curtain.json resources/effectmetadata/Meteors.json ... (+1)
+msgid "Effect"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:247
+msgid "Effect Setting"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:259
+msgid "Preset"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:409 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:410 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:411 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:412 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:132 ... (+4)
 msgid "Y"
 msgstr ""
 
@@ -2235,9 +2243,345 @@ msgstr ""
 msgid "R:"
 msgstr ""
 
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:281 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:167
+msgid "This must be unique across all controllers."
+msgstr "Doit être unique parmi tous les contrôleurs."
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:283
+msgid "This should ideally be unique across all controllers."
+msgstr "Devrait idéalement être unique parmi tous les contrôleurs."
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:302
+msgid "This controller cannot be made managed until all other controllers with the same IP address are removed."
+msgstr "Ce contrôleur ne peut pas être géré tant que les autres contrôleurs ayant la même adresse IP ne sont pas supprimés."
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:366
+msgid "Multicast"
+msgstr "Multicast"
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:369 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:116
+msgid "IP Address"
+msgstr "Adresse IP"
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:371 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:119
+msgid "FPP Proxy IP/Hostname"
+msgstr "IP/nom du proxy FPP"
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:372 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:120
+msgid "This is typically the WIFI IP of a FPP instance that bridges two networks."
+msgstr "En général l'IP Wi-Fi d'un FPP qui relie deux réseaux."
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:375 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:135 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:170 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:759 src-ui-wx/setup/ControllerConnectionDialog.cpp:69
+msgid "Protocol"
+msgstr "Protocole"
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:383 src-ui-wx/preferences/OutputSettingsPanel.cpp:51
+msgid "Force Local IP"
+msgstr "Forcer l'IP locale"
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:385
+msgid "Priority"
+msgstr "Priorité"
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:389
+msgid "Some controllers can receive data from more than one source and will ignore one of the sources where this priority is lower."
+msgstr "Certains contrôleurs peuvent recevoir des données de plusieurs sources et ignorent celle dont la priorité est la plus basse."
+
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:395
+msgid "Managed"
+msgstr "Géré"
+
+#: src-ui-wx/controllerproperties/ControllerNullPropertyAdapter.cpp:35 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:188 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:469 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:687 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:765
+msgid "Channels"
+msgstr "Canaux"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:189 src-ui-wx/layout/LayoutPanel.cpp:4341 src-ui-wx/layout/LayoutPanel.cpp:4348 src-ui-wx/sequencer/EffectTreeDialog.cpp:393 src-ui-wx/setup/ShowDirectoriesDialog.cpp:162
+msgid "Name"
+msgstr "Nom"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:190
+msgid "This must be unique."
+msgstr "Doit être unique."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:192 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1080 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:430
+msgid "Description"
+msgstr "Description"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:203 src-ui-wx/import_export/VendorModelDialog.cpp:253 src-ui-wx/import_export/VendorMusicDialog.cpp:149
+msgid "Vendor"
+msgstr ""
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:204
+msgid "Model/Category"
+msgstr "Modèle/catégorie"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:205
+msgid "Variant"
+msgstr "Variante"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:210
+msgid "Id"
+msgstr "Id"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:214
+msgid "For controllers that don't support universes the Id can be used with some start channel addressing modes."
+msgstr "Pour les contrôleurs sans univers, l'Id peut servir avec certains modes d'adressage du canal de début."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:216
+msgid "Auto Layout Models"
+msgstr "Disposition auto des modèles"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:218
+msgid "Auto layout models causes xLights to move models around in the controllers channel range to optimise them. It also needs to be set to allow you to move modes in the visualiser between controllers."
+msgstr "xLights déplace les modèles dans la plage de canaux du contrôleur pour l'optimiser. Doit aussi être activé pour déplacer des modèles entre contrôleurs dans le visualiseur."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:220
+msgid "Auto Upload Configuration"
+msgstr "Envoi auto de la configuration"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:222
+msgid "This option will send your controller configuration to the controller when you turn on output to lights. This is known to cause delays in turning on output to lights when controllers are not reachable."
+msgstr "Envoie la configuration au contrôleur quand vous activez la sortie vers les lumières. Peut retarder cette activation si des contrôleurs sont injoignables."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:224
+msgid "Auto Size"
+msgstr "Taille auto"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:226
+msgid "This option will cause xLights to dynamically resize the number of channels on the controller to ensure there are exactly enough for the models on the controller."
+msgstr "xLights ajuste le nombre de canaux du contrôleur pour qu'il y en ait exactement assez pour ses modèles."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:228
+msgid "Full xLights Control"
+msgstr "Contrôle complet par xLights"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:230
+msgid "This option will when uploading erase the configuration of all unused ports on the controller per the configuration in xLights."
+msgstr "À l'envoi, efface la configuration de tous les ports inutilisés du contrôleur, selon la configuration de xLights."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:232
+msgid "Default Port Brightness"
+msgstr "Luminosité par défaut des ports"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:236
+msgid "This option will set the brightness of all ports to this value unless specifically overriden by a model."
+msgstr "Règle la luminosité de tous les ports sur cette valeur, sauf si un modèle la redéfinit."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:238
+msgid "Default Port Gamma"
+msgstr "Gamma par défaut des ports"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:242
+msgid "This option will set the Gamma of all ports to this value unless specifically overriden by a model."
+msgstr "Règle le gamma de tous les ports sur cette valeur, sauf si un modèle le redéfinit."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:249 src-ui-wx/model/CustomModelDialog.cpp:485 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:542 src-ui-wx/modelproperties/ViewObjectPropertyAdapter.cpp:25
+msgid "Active"
+msgstr "Active"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:250
+msgid "When inactive no data is output and any upload to FPP or xSchedule will also not output to the lights. When xLights only it will output when played in xLights but again FPP and xSchedule will not output to the lights."
+msgstr "Inactif : aucune donnée n'est envoyée, ni depuis xLights ni après envoi vers FPP ou xSchedule. xLights only : envoi seulement pendant la lecture dans xLights, pas depuis FPP ni xSchedule."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:252
+msgid "Monitor"
+msgstr "Surveiller"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:254
+msgid "When selected, the show player will monitor the connectivity to the controller via ping packets or other network traffic to make sure the controller is up and running.  Disabling can reduce network traffic as well as reduce load on the controller."
+msgstr "Le lecteur du show surveille la connexion au contrôleur (ping ou autre trafic réseau) pour vérifier qu'il fonctionne. Désactiver réduit le trafic réseau et la charge du contrôleur."
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:256
+msgid "Suppress Duplicate Frames"
+msgstr "Ne pas renvoyer les trames identiques"
+
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:258
+msgid "When selected if a data packet is the same in a subsequent frame then xLights will not send the duplicate frame trusting that the controller will just reuse the previously sent data. This can reduce unnecessary network traffic."
+msgstr "Si une trame est identique à la précédente, xLights ne la renvoie pas et compte sur le contrôleur pour réutiliser les données déjà reçues. Réduit le trafic réseau inutile."
+
+#: src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:117
+msgid "FPP IP address or host name."
+msgstr "Adresse IP ou nom d'hôte du FPP."
+
+#: src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:137 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:166 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:674 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:676 src-ui-wx/setup/ControllerConnectionDialog.cpp:74
+msgid "Port"
+msgstr "Port"
+
+#: src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:149 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:173 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:796 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:810 src-ui-wx/setup/PixelTestDialog.cpp:1353 ... (+18)
+msgid "Speed"
+msgstr "Vitesse"
+
+#: src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:158
+msgid "I2C Device"
+msgstr "Périphérique I2C"
+
+#: src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:160
+msgid "Speed (kHz)"
+msgstr "Vitesse (kHz)"
+
+#: src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:178
+msgid "Speed is fixed for this protocol."
+msgstr "La vitesse est fixe pour ce protocole."
+
+#: src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:184
+msgid "Prefix"
+msgstr "Préfixe"
+
+#: src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:185
+msgid "Postfix"
+msgstr "Suffixe"
+
+#: src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:200 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:218 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:367 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:446 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:593 ... (+4)
+msgid "Channels cannot be changed when an output is set to Auto Size."
+msgstr "Les canaux ne peuvent pas être modifiés quand une sortie est en taille auto."
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1024
+msgid "Devices"
+msgstr "Appareils"
+
 #: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1053
 msgid "Delete this device"
 msgstr "Supprimer cet appareil"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1056
+msgid "Device Type"
+msgstr "Type d'appareil"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1067 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:768
+msgid "Unit ID"
+msgstr "ID d'unité"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1072
+msgid "Unit ID - Hex"
+msgstr "ID d'unité - hex"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1077
+msgid "Address Mode"
+msgstr "Mode d'adressage"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:139 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:288 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:523
+msgid "Universes Count cannot be changed when an output is set to Auto Size."
+msgstr "Le nombre d'univers ne peut pas être modifié quand une sortie est en taille auto."
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:170 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:319 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:545 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:876
+msgid "Individual Sizes cannot be changed when an output is set to Auto Size."
+msgstr "Les tailles individuelles ne peuvent pas être modifiées quand une sortie est en taille auto."
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:234 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:387
+msgid "Start Universe"
+msgstr "Univers de début"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:239 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:392
+msgid "Universe Count"
+msgstr "Nombre d'univers"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:243 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:396
+msgid "Universe Per String"
+msgstr "Un univers par chaîne"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:246 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:399
+msgid "Universes"
+msgstr "Univers"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:250 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:403 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:628 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:953
+msgid "Individual Sizes"
+msgstr "Tailles individuelles"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:253 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:406
+msgid "Channels per Universe"
+msgstr "Canaux par univers"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:383
+msgid "Force source port"
+msgstr "Forcer le port source"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:385
+msgid "You should only set this option if your ArtNet device is not seeing the ArtNet packets because it strictly requires that packets come from port 0x1936."
+msgstr "À n'activer que si votre appareil ArtNet ne voit pas les paquets ArtNet parce qu'il exige qu'ils viennent du port 0x1936."
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:457
+msgid "Channels Per Packet"
+msgstr "Canaux par paquet"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:461
+msgid "It would be very rare that you would ever want to change this from the default."
+msgstr "Il est très rare de devoir changer la valeur par défaut."
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:464
+msgid "Keep Channel Numbers"
+msgstr "Garder les numéros de canaux"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:466
+msgid "When not selected DDP data arrives at each controller looking like it starts at channel 1. When selected it arrives with the xLights channel number."
+msgstr "Décoché, les données DDP arrivent à chaque contrôleur comme si elles commençaient au canal 1. Coché, elles arrivent avec le numéro de canal de xLights."
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:609
+msgid "Version"
+msgstr "Version"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:613
+msgid "Kinet protocol version."
+msgstr "Version du protocole KiNet."
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:615 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:940
+msgid "Start Port"
+msgstr "Port de début"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:620 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:945
+msgid "Port Count"
+msgstr "Nombre de ports"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:624 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:949
+msgid "Ports"
+msgstr "Ports"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:631 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:956
+msgid "Channels per Port"
+msgstr "Canaux par port"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:671
+msgid "Multicast Address"
+msgstr "Adresse multicast"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:675
+msgid "Supports Virtual Strings"
+msgstr "Gère les chaînes virtuelles"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:678
+msgid "Supports Smart Remotes"
+msgstr "Gère les smart remotes"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:681
+msgid "Send Data Multicast"
+msgstr "Envoyer les données en multicast"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:684
+msgid "Suppress Sending Configuration"
+msgstr "Ne pas envoyer la configuration"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:759
+msgid "HTTP Port"
+msgstr "Port HTTP"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:763
+msgid "Twinkly normally listens on port 80 but you may want to change the port if using Artnet To Twinkly."
+msgstr "Twinkly écoute normalement le port 80, mais vous pouvez le changer si vous utilisez Artnet To Twinkly."
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:819
+msgid "OPC Channel"
+msgstr "Canal OPC"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:824
+msgid "Message Data Size"
+msgstr "Taille des données du message"
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:854
+msgid "Port Count cannot be changed when an output is set to Auto Size."
+msgstr "Le nombre de ports ne peut pas être modifié quand une sortie est en taille auto."
+
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:993
+msgid "Device Channels"
+msgstr "Canaux de l'appareil"
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:1337
 msgid "Checking models"
@@ -2682,7 +3026,7 @@ msgstr ""
 msgid "All %u nodes of '%s' on. Aim and focus the camera so the whole prop is in frame, then Start Mapping."
 msgstr "Les %u nœuds de « %s » sont allumés. Orientez et réglez la caméra pour cadrer tout le décor, puis cliquez sur Démarrer le relevé."
 
-#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:131 src-ui-wx/effectpanels/WarpPanel.cpp:53 src-ui-wx/layout/ModelGroupPanel.cpp:200 resources/effectmetadata/Liquid.json resources/effectmetadata/Warp.json
+#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:131 src-ui-wx/effectpanels/WarpPanel.cpp:53 src-ui-wx/layout/ModelGroupPanel.cpp:200 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:33 resources/effectmetadata/Liquid.json ... (+1)
 msgid "X"
 msgstr ""
 
@@ -3219,7 +3563,7 @@ msgstr "Phase Y :"
 msgid "Auto Shutter"
 msgstr "Obturateur auto"
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:599 src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:98 src-ui-wx/model/ModelFacesPanel.cpp:189 src-ui-wx/model/ModelFacesPanel.cpp:313 src-ui-wx/model/ModelStatesPanel.cpp:187 ... (+4)
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:599 src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:98 src-ui-wx/model/ModelFacesPanel.cpp:189 src-ui-wx/model/ModelFacesPanel.cpp:313 src-ui-wx/model/ModelStatesPanel.cpp:187 ... (+6)
 msgid "Color"
 msgstr ""
 
@@ -3257,10 +3601,6 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:633 src-ui-wx/effectpanels/MovingHeadPanel.cpp:2233 resources/effectmetadata/MovingHead.json
 msgid "Pattern"
-msgstr ""
-
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:634 resources/effectmetadata/MovingHead.json
-msgid "Control"
 msgstr ""
 
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:635 resources/effectmetadata/MovingHead.json
@@ -3586,7 +3926,7 @@ msgstr ""
 msgid "Strand"
 msgstr "Brin"
 
-#: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:97 src-ui-wx/import_export/VsaImportDialog.cpp:88 src-ui-wx/model/CustomModelDialog.cpp:493 src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:48
+#: src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:97 src-ui-wx/import_export/VsaImportDialog.cpp:88 src-ui-wx/model/CustomModelDialog.cpp:493 src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:48 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:40
 msgid "Channel"
 msgstr "Canal"
 
@@ -3802,10 +4142,6 @@ msgstr "Lien web :"
 msgid "Insert Model"
 msgstr "Insérer le modèle"
 
-#: src-ui-wx/import_export/VendorModelDialog.cpp:253 src-ui-wx/import_export/VendorMusicDialog.cpp:149
-msgid "Vendor"
-msgstr ""
-
 #: src-ui-wx/import_export/VendorModelDialog.cpp:254 src-ui-wx/import_export/VendorMusicDialog.cpp:150 src-ui-wx/shared/utils/wxCheckedListCtrl.cpp:19
 msgid "Item"
 msgstr "Article"
@@ -3906,7 +4242,7 @@ msgstr "%d groupes sont ajoutés à cet écran et associés. Ils ne seront valid
 msgid "Not added: "
 msgstr "Non ajoutés : "
 
-#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1725 src-ui-wx/layout/LayoutPanel.cpp:3277
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1725 src-ui-wx/layout/LayoutPanel.cpp:3278
 msgid "Filter models"
 msgstr "Filtrer les modèles"
 
@@ -4181,6 +4517,63 @@ msgstr "Identifiant :"
 msgid "Password:"
 msgstr "Mot de passe :"
 
+#: src-ui-wx/layout/ControllerListPanel.cpp:1349
+msgid "Controller Sync"
+msgstr "Synchro des contrôleurs"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1351
+msgid "Sends a sync packet at the end of each frame for controllers to synchronise light change to. Supported by E1.31, ArtNET and ZCPP. Controller support varies."
+msgstr "Envoie un paquet de synchro à la fin de chaque trame pour que les contrôleurs changent les lumières ensemble. Géré par E1.31, ArtNET et ZCPP ; la prise en charge varie selon les contrôleurs."
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1354
+msgid "E1.31 Sync Universe"
+msgstr "Univers de synchro E1.31"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1359
+msgid "Max Duplicate Frames To Suppress"
+msgstr "Trames identiques max à ne pas renvoyer"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1372
+msgid "Global Force Local IP"
+msgstr "IP locale forcée (globale)"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1373
+msgid "Global FPP Proxy"
+msgstr "Proxy FPP global"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1439
+msgid "Last Input Upload"
+msgstr "Dernier envoi des entrées"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1449
+msgid "Last Output Upload"
+msgstr "Dernier envoi des sorties"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1468
+msgid "Show on Layout"
+msgstr "Afficher dans la disposition"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1469
+msgid "Shows this controller as a movable box in the layout preview so you can place it where it physically sits. Controller Tab Only shows it while this tab is selected; Layout Panel shows it anywhere in the layout editor but not during playback; Always shows it everywhere."
+msgstr "Affiche ce contrôleur comme une boîte déplaçable dans l'aperçu de la disposition, pour le placer à son emplacement réel. Controller Tab Only : seulement dans cet onglet ; Layout Panel : partout dans l'éditeur de disposition, mais pas pendant la lecture ; Always : partout."
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:593
+msgid "Show Label"
+msgstr "Afficher l'étiquette"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:595
+msgid "Draws the controller name under its box in the preview."
+msgstr "Affiche le nom du contrôleur sous sa boîte dans l'aperçu."
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:596
+#, c-format
+msgid "Label Size (%)"
+msgstr "Taille de l'étiquette (%)"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:600
+msgid "Size of the name label, as a percentage of the size that fits it to the box."
+msgstr "Taille du nom, en pourcentage de la taille qui le fait tenir dans la boîte."
+
 #: src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:102
 msgid ""
 "The export is rendered at the chosen resolution, independent of the House\n"
@@ -4220,125 +4613,125 @@ msgstr ""
 msgid "Choose LOR S5 Preview File to Import"
 msgstr "Choisir le fichier d'aperçu LOR S5 à importer"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12060
+#: src-ui-wx/layout/LayoutPanel.cpp:12061
 msgid "Error capturing preview image"
 msgstr "Erreur lors de la capture de l'image d'aperçu"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12060
+#: src-ui-wx/layout/LayoutPanel.cpp:12061
 msgid "Image Capture Error"
 msgstr "Erreur de capture d'image"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12066
+#: src-ui-wx/layout/LayoutPanel.cpp:12067
 msgid "Save Image"
 msgstr "Enregistrer l'image"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12205 src-ui-wx/layout/ViewsModelsPanel.cpp:3118 src-ui-wx/model/SubModelsPanel.cpp:4054
+#: src-ui-wx/layout/LayoutPanel.cpp:12206 src-ui-wx/layout/ViewsModelsPanel.cpp:3118 src-ui-wx/model/SubModelsPanel.cpp:4054
 msgid "Choose RGB Effects file to import from"
 msgstr "Choisir le fichier RGB Effects à importer"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:2693
+#: src-ui-wx/layout/LayoutPanel.cpp:2694
 msgid "Models from the base show folder can't be in a Set with this show's own models - the base folder can move its models without moving the rest of the Set."
 msgstr "Les modèles du dossier de show de base ne peuvent pas faire partie d'un ensemble avec les modèles propres à ce show : le dossier de base peut déplacer ses modèles sans déplacer le reste de l'ensemble."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:2943
+#: src-ui-wx/layout/LayoutPanel.cpp:2944
 #, c-format
 msgid "Set %s was not rotated because it contains a locked or base show model."
 msgstr "L'ensemble %s n'a pas été pivoté car il contient un modèle verrouillé ou du show de base."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:2944
+#: src-ui-wx/layout/LayoutPanel.cpp:2945
 msgid "Bulk Edit Rotate"
 msgstr "Rotation groupée"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3034
+#: src-ui-wx/layout/LayoutPanel.cpp:3035
 #, c-format
 msgid "Set %s was not moved because it contains a locked or base show model."
 msgstr "L'ensemble %s n'a pas été déplacé car il contient un modèle verrouillé ou du show de base."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3035
+#: src-ui-wx/layout/LayoutPanel.cpp:3036
 #, c-format
 msgid "Sets %s were not moved because they contain a locked or base show model."
 msgstr "Les ensembles %s n'ont pas été déplacés car ils contiennent un modèle verrouillé ou du show de base."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3062
+#: src-ui-wx/layout/LayoutPanel.cpp:3063
 msgid "Link as Set..."
 msgstr "Lier en ensemble..."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3071
+#: src-ui-wx/layout/LayoutPanel.cpp:3072
 msgid "Add Selected to Set"
 msgstr "Ajouter la sélection à l'ensemble"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3073
+#: src-ui-wx/layout/LayoutPanel.cpp:3074
 msgid "Remove from Set"
 msgstr "Retirer de l'ensemble"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3074
+#: src-ui-wx/layout/LayoutPanel.cpp:3075
 msgid "Rename..."
 msgstr "Renommer..."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3075
+#: src-ui-wx/layout/LayoutPanel.cpp:3076
 msgid "Manage..."
 msgstr "Gérer..."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3076 src-ui-wx/layout/ViewsModelsPanel.cpp:188 src-ui-wx/model/EditAliasesDialog.cpp:56 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:66 src-ui-wx/model/ModelStatesPanel.cpp:151 ... (+4)
+#: src-ui-wx/layout/LayoutPanel.cpp:3077 src-ui-wx/layout/ViewsModelsPanel.cpp:188 src-ui-wx/model/EditAliasesDialog.cpp:56 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:66 src-ui-wx/model/ModelStatesPanel.cpp:151 ... (+4)
 msgid "Delete"
 msgstr "Supprimer"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3079
+#: src-ui-wx/layout/LayoutPanel.cpp:3080
 msgid "Set"
 msgstr "Ensemble"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3102 src-ui-wx/layout/LayoutPanel.cpp:3112
+#: src-ui-wx/layout/LayoutPanel.cpp:3103 src-ui-wx/layout/LayoutPanel.cpp:3113
 msgid "Link as Set"
 msgstr "Lier en ensemble"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3109
+#: src-ui-wx/layout/LayoutPanel.cpp:3110
 msgid "Name for the new Set:"
 msgstr "Nom du nouvel ensemble :"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3120 src-ui-wx/layout/LayoutPanel.cpp:3241
+#: src-ui-wx/layout/LayoutPanel.cpp:3121 src-ui-wx/layout/LayoutPanel.cpp:3242
 #, c-format
 msgid "A Set named '%s' already exists. Choose another name:"
 msgstr "Un ensemble nommé « %s » existe déjà. Choisissez un autre nom :"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3144
+#: src-ui-wx/layout/LayoutPanel.cpp:3145
 msgid "Add to Set"
 msgstr "Ajouter à l'ensemble"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3154 src-ui-wx/layout/LayoutPanel.cpp:3459
+#: src-ui-wx/layout/LayoutPanel.cpp:3155 src-ui-wx/layout/LayoutPanel.cpp:3460
 #, c-format
 msgid "'%s' is already in Set '%s'. Move it to Set '%s'?"
 msgstr "« %s » fait déjà partie de l'ensemble « %s ». Le déplacer dans l'ensemble « %s » ?"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3156 src-ui-wx/layout/LayoutPanel.cpp:3461
+#: src-ui-wx/layout/LayoutPanel.cpp:3157 src-ui-wx/layout/LayoutPanel.cpp:3462
 msgid "Confirm Move"
 msgstr "Confirmer le déplacement"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3200
+#: src-ui-wx/layout/LayoutPanel.cpp:3201
 #, c-format
 msgid "Delete Set '%s'? Member models will not be affected."
 msgstr "Supprimer l'ensemble « %s » ? Les modèles qui en font partie ne sont pas modifiés."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3201
+#: src-ui-wx/layout/LayoutPanel.cpp:3202
 msgid "Confirm Delete"
 msgstr "Confirmer la suppression"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3225
+#: src-ui-wx/layout/LayoutPanel.cpp:3226
 msgid "New Set name:"
 msgstr "Nouveau nom de l'ensemble :"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3229
+#: src-ui-wx/layout/LayoutPanel.cpp:3230
 msgid "Rename Set"
 msgstr "Renommer l'ensemble"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3258 src-ui-wx/layout/LayoutPanel.cpp:3304 src-ui-wx/layout/LayoutPanel.cpp:3426 src-ui-wx/layout/LayoutPanel.cpp:3448
+#: src-ui-wx/layout/LayoutPanel.cpp:3259 src-ui-wx/layout/LayoutPanel.cpp:3305 src-ui-wx/layout/LayoutPanel.cpp:3427 src-ui-wx/layout/LayoutPanel.cpp:3449
 msgid "Manage Set"
 msgstr "Gérer l'ensemble"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3268 src-ui-wx/model/ModelFacesPanel.cpp:145 src-ui-wx/model/ModelStatesPanel.cpp:137 src-ui-wx/model/SubModelsPanel.cpp:226
+#: src-ui-wx/layout/LayoutPanel.cpp:3269 src-ui-wx/model/ModelFacesPanel.cpp:145 src-ui-wx/model/ModelStatesPanel.cpp:137 src-ui-wx/model/SubModelsPanel.cpp:226
 msgid "Name:"
 msgstr "Nom :"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3273
+#: src-ui-wx/layout/LayoutPanel.cpp:3274
 msgid ""
 "Checked models are members of this Set.\n"
 "Check to add, uncheck to remove."
@@ -4346,44 +4739,80 @@ msgstr ""
 "Les modèles cochés font partie de cet ensemble.\n"
 "Cochez pour ajouter, décochez pour retirer."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3303
+#: src-ui-wx/layout/LayoutPanel.cpp:3304
 #, c-format
 msgid "A Set named '%s' already exists. Choose another name."
 msgstr "Un ensemble nommé « %s » existe déjà. Choisissez un autre nom."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3403
+#: src-ui-wx/layout/LayoutPanel.cpp:3404
 #, c-format
 msgid " (in Set '%s')"
 msgstr " (dans l'ensemble « %s »)"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3425
+#: src-ui-wx/layout/LayoutPanel.cpp:3426
 #, c-format
 msgid "A Set needs at least 2 members. Delete Set '%s' instead?"
 msgstr "Un ensemble doit compter au moins 2 modèles. Supprimer plutôt l'ensemble « %s » ?"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3447
+#: src-ui-wx/layout/LayoutPanel.cpp:3448
 #, c-format
 msgid "A Set named '%s' already exists. Name unchanged."
 msgstr "Un ensemble nommé « %s » existe déjà. Nom inchangé."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3841
+#: src-ui-wx/layout/LayoutPanel.cpp:3842
 msgid "Select existing groups to add selections to"
 msgstr "Choisissez les groupes existants où ajouter la sélection"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3906
+#: src-ui-wx/layout/LayoutPanel.cpp:3907
 msgid "Select groups to remove model from"
 msgstr "Choisissez les groupes d'où retirer le modèle"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4651
+#: src-ui-wx/layout/LayoutPanel.cpp:4233 src-ui-wx/media/ResizeImageDialog.cpp:45 src-ui-wx/model/CustomModelDialog.cpp:391 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json ... (+3)
+msgid "Width"
+msgstr "Largeur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4237 src-ui-wx/media/ResizeImageDialog.cpp:50 src-ui-wx/model/CustomModelDialog.cpp:396 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:388 src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:55 ... (+5)
+msgid "Height"
+msgstr "Hauteur"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4242 src-ui-wx/model/ModelDimmingCurveDialog.cpp:112 src-ui-wx/model/ModelDimmingCurveDialog.cpp:142 src-ui-wx/model/ModelDimmingCurveDialog.cpp:159 src-ui-wx/model/ModelDimmingCurveDialog.cpp:176 ... (+8)
+msgid "Brightness"
+msgstr "Luminosité"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4247 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:553 src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:53 src-ui-wx/modelproperties/adapters/ImageObjectPropertyAdapter.cpp:30 src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:33 ... (+1)
+msgid "Transparency"
+msgstr "Transparence"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4252
+msgid "2D Bounding Box"
+msgstr "Cadre englobant 2D"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4255
+msgid "2D Grid"
+msgstr "Grille 2D"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4258
+msgid "2D Grid Spacing"
+msgstr "Espacement de la grille 2D"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4263
+msgid "X0 Is Center"
+msgstr "X0 au centre"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4345
+msgid "SubModel names cannot be changed here."
+msgstr "Le nom d'un sous-modèle ne peut pas être modifié ici."
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4652
 msgid "Preview layout saved"
 msgstr "Disposition de l'aperçu enregistrée"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:5223
+#: src-ui-wx/layout/LayoutPanel.cpp:5224
 #, c-format
 msgid "Set '%s' contains a locked or base show model - unlock it (or remove the base model from the Set) to move the Set."
 msgstr "L'ensemble « %s » contient un modèle verrouillé ou du show de base : déverrouillez-le (ou retirez le modèle de base de l'ensemble) pour déplacer l'ensemble."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:679 src-ui-wx/layout/LayoutPanel.cpp:13483
+#: src-ui-wx/layout/LayoutPanel.cpp:679 src-ui-wx/layout/LayoutPanel.cpp:13484
 msgid "3D Objects"
 msgstr "Objets 3D"
 
@@ -4399,55 +4828,55 @@ msgstr "Vérification des chevauchements activée"
 msgid "Preview:"
 msgstr "Aperçu :"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:738 src-ui-wx/layout/LayoutPanel.cpp:851
+#: src-ui-wx/layout/LayoutPanel.cpp:738 src-ui-wx/layout/LayoutPanel.cpp:852
 msgid "Groups"
 msgstr "Groupes"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7615
+#: src-ui-wx/layout/LayoutPanel.cpp:7616
 msgid "Model Set contains a locked or base show model - unlock it (or remove the base model from the Set) to move the Set (Alt-drag moves a single model)."
 msgstr "L'ensemble contient un modèle verrouillé ou du show de base : déverrouillez-le (ou retirez le modèle de base de l'ensemble) pour déplacer l'ensemble (Alt-glisser déplace un seul modèle)."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7932
+#: src-ui-wx/layout/LayoutPanel.cpp:7933
 msgid "Set Center Offset Here"
 msgstr "Placer le décalage du centre ici"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7955
+#: src-ui-wx/layout/LayoutPanel.cpp:7956
 msgid "Save Layout Image"
 msgstr "Enregistrer l'image de la disposition"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7956
+#: src-ui-wx/layout/LayoutPanel.cpp:7957
 msgid "Print Layout Image..."
 msgstr "Imprimer l'image de la disposition..."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7957
+#: src-ui-wx/layout/LayoutPanel.cpp:7958
 msgid "Import Previews/Models/Groups/Viewpoints"
 msgstr "Importer des aperçus/modèles/groupes/points de vue"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7958
+#: src-ui-wx/layout/LayoutPanel.cpp:7959
 msgid "Import LOR S5 Models/Groups"
 msgstr "Importer des modèles/groupes LOR S5"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7959
+#: src-ui-wx/layout/LayoutPanel.cpp:7960
 msgid "Export Layout As DXF"
 msgstr "Exporter la disposition en DXF"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7964
+#: src-ui-wx/layout/LayoutPanel.cpp:7965
 msgid "Set Current ViewPoint as Default"
 msgstr "Définir le point de vue actuel par défaut"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7965 src-ui-wx/layout/ModelPreview.cpp:1349
+#: src-ui-wx/layout/LayoutPanel.cpp:7966 src-ui-wx/layout/ModelPreview.cpp:1349
 msgid "Restore Default ViewPoint"
 msgstr "Rétablir le point de vue par défaut"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7967
+#: src-ui-wx/layout/LayoutPanel.cpp:7968
 msgid "Save Current ViewPoint"
 msgstr "Enregistrer le point de vue actuel"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:8009
+#: src-ui-wx/layout/LayoutPanel.cpp:8010
 msgid "Show Models Not On Controller"
 msgstr "Afficher les modèles sans contrôleur"
 
-#: src-ui-wx/layout/LayoutPanel.cpp:8727
+#: src-ui-wx/layout/LayoutPanel.cpp:8728
 msgid "Choose Output File"
 msgstr "Choisir le fichier de sortie"
 
@@ -4772,14 +5201,6 @@ msgstr ""
 msgid "Images"
 msgstr "Images"
 
-#: src-ui-wx/media/ResizeImageDialog.cpp:45 src-ui-wx/model/CustomModelDialog.cpp:391 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Lightning.json ... (+2)
-msgid "Width"
-msgstr "Largeur"
-
-#: src-ui-wx/media/ResizeImageDialog.cpp:50 src-ui-wx/model/CustomModelDialog.cpp:396 resources/effectmetadata/Fire.json resources/effectmetadata/MovingHead.json
-msgid "Height"
-msgstr "Hauteur"
-
 #: src-ui-wx/media/ResizeImageDialog.cpp:55
 msgid "Scaling Type"
 msgstr "Type de mise à l'échelle"
@@ -4907,7 +5328,7 @@ msgstr "Copier"
 msgid "Paste"
 msgstr "Coller"
 
-#: src-ui-wx/model/CustomModelDialog.cpp:441 src-ui-wx/model/NodeSelectGrid.cpp:266
+#: src-ui-wx/model/CustomModelDialog.cpp:441 src-ui-wx/model/NodeSelectGrid.cpp:266 src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:133
 msgid "Background Image"
 msgstr "Image de fond"
 
@@ -4943,10 +5364,6 @@ msgstr "Remet le décalage de l'image à zéro"
 msgid "Auto Numbering"
 msgstr "Numérotation automatique"
 
-#: src-ui-wx/model/CustomModelDialog.cpp:485
-msgid "Active"
-msgstr "Active"
-
 #: src-ui-wx/model/CustomModelDialog.cpp:488
 msgid "Auto Increment"
 msgstr "Incrément automatique"
@@ -4963,7 +5380,7 @@ msgstr "Alias du modèle"
 msgid "Edit"
 msgstr "Modifier"
 
-#: src-ui-wx/model/EditSubmodelAliasesDialog.cpp:51
+#: src-ui-wx/model/EditSubmodelAliasesDialog.cpp:51 src-ui-wx/modelproperties/adapters/SubModelPropertyAdapter.cpp:74
 msgid "SubModel Aliases"
 msgstr "Alias du sous-modèle"
 
@@ -4986,10 +5403,6 @@ msgstr "La mire de test doit commencer dans les 30 premières secondes de la vid
 #: src-ui-wx/model/GenerateCustomModelDialog.cpp:2517
 msgid "Model details:"
 msgstr "Détails du modèle :"
-
-#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2522 src-ui-wx/model/SubModelGenerateDialog.cpp:51 resources/effectmetadata/Guitar.json resources/effectmetadata/Life.json resources/effectmetadata/Liquid.json ... (+4)
-msgid "Type"
-msgstr "Type"
 
 #: src-ui-wx/model/GenerateCustomModelDialog.cpp:2524 src-ui-wx/model/GenerateCustomModelDialog.cpp:2574
 msgid "Nodes - Automatic"
@@ -5127,7 +5540,7 @@ msgstr "Antiparasite"
 msgid "Contrast"
 msgstr "Contraste"
 
-#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2737 src-ui-wx/model/ModelDimmingCurveDialog.cpp:107 src-ui-wx/model/ModelDimmingCurveDialog.cpp:137 src-ui-wx/model/ModelDimmingCurveDialog.cpp:154 src-ui-wx/model/ModelDimmingCurveDialog.cpp:171
+#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2737 src-ui-wx/model/ModelDimmingCurveDialog.cpp:107 src-ui-wx/model/ModelDimmingCurveDialog.cpp:137 src-ui-wx/model/ModelDimmingCurveDialog.cpp:154 src-ui-wx/model/ModelDimmingCurveDialog.cpp:171 ... (+2)
 msgid "Gamma"
 msgstr "Gamma"
 
@@ -5220,10 +5633,6 @@ msgstr "Définitions du modèle - %s"
 msgid "Model Definitions"
 msgstr "Définitions du modèle"
 
-#: src-ui-wx/model/ModelDimmingCurveDialog.cpp:112 src-ui-wx/model/ModelDimmingCurveDialog.cpp:142 src-ui-wx/model/ModelDimmingCurveDialog.cpp:159 src-ui-wx/model/ModelDimmingCurveDialog.cpp:176 resources/effectmetadata/shared/Color.json
-msgid "Brightness"
-msgstr "Luminosité"
-
 #: src-ui-wx/model/ModelDimmingCurveDialog.cpp:134 src-ui-wx/model/ModelDimmingCurveDialog.cpp:191 src-ui-wx/model/ModelDimmingCurveDialog.cpp:216
 msgid "Red"
 msgstr "Rouge"
@@ -5276,7 +5685,7 @@ msgstr ""
 msgid "Override Faces"
 msgstr "Remplacer les visages"
 
-#: src-ui-wx/model/ModelFacesPanel.cpp:188 src-ui-wx/model/ModelFacesPanel.cpp:312 src-ui-wx/model/ModelStatesPanel.cpp:186 src-ui-wx/model/ModelStatesPanel.cpp:267 src-ui-wx/model/SubModelGenerateDialog.cpp:80
+#: src-ui-wx/model/ModelFacesPanel.cpp:188 src-ui-wx/model/ModelFacesPanel.cpp:312 src-ui-wx/model/ModelStatesPanel.cpp:186 src-ui-wx/model/ModelStatesPanel.cpp:267 src-ui-wx/model/SubModelGenerateDialog.cpp:80 ... (+1)
 msgid "Nodes"
 msgstr ""
 
@@ -5640,7 +6049,7 @@ msgstr "Unités"
 msgid "Start of Model"
 msgstr "Début du modèle"
 
-#: src-ui-wx/model/StartChannelDialog.cpp:103 src-ui-wx/setup/PixelTestDialog.cpp:1349
+#: src-ui-wx/model/StartChannelDialog.cpp:103 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:356 src-ui-wx/setup/PixelTestDialog.cpp:1349
 msgid "Controller"
 msgstr "Contrôleur"
 
@@ -5680,7 +6089,7 @@ msgstr "Générer les noms des nœuds"
 msgid "Base Name"
 msgstr "Nom de base"
 
-#: src-ui-wx/model/SubModelGenerateDialog.cpp:49 src-ui-wx/model/SubModelsPanel.cpp:375
+#: src-ui-wx/model/SubModelGenerateDialog.cpp:49 src-ui-wx/model/SubModelsPanel.cpp:375 src-ui-wx/modelproperties/adapters/SubModelPropertyAdapter.cpp:41
 msgid "SubModel"
 msgstr "Sous-modèle"
 
@@ -5864,9 +6273,41 @@ msgstr "Câblage du modèle personnalisé"
 msgid "Text Size:"
 msgstr "Taille du texte :"
 
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:1154 src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:126
+msgid "Layers"
+msgstr "Calques"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:333
+msgid "Low Definition Factor"
+msgstr "Facteur basse définition"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:365
+msgid "Indiv Start Chans"
+msgstr "Canaux de début indiv."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:369 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:606
+msgid "Individual start channels cannot be set if you have assigned a model to a controller rather than using start channels."
+msgstr "Les canaux de début individuels ne peuvent pas être réglés si le modèle est affecté à un contrôleur au lieu d'utiliser des canaux de début."
+
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:402
 msgid "Beginning"
 msgstr ""
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:420
+msgid "Shadow Model For"
+msgstr "Modèle ombre de"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:431
+msgid "Preview"
+msgstr "Aperçu"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:460
+msgid "Aliases are used in mapping to provide alternate names for this model which might match a model in a sequence you are importing from. To use it use the Auto Map button."
+msgstr "Les alias donnent d'autres noms à ce modèle, utilisés à l'import pour reconnaître un modèle de la séquence source. Ils servent avec le bouton Association auto."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:474 src-ui-wx/modelproperties/adapters/SubModelPropertyAdapter.cpp:57
+msgid "In Model Groups"
+msgstr "Dans les groupes"
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:482
 msgid "In Model Set"
@@ -5881,6 +6322,599 @@ msgstr ""
 "Ce modèle fait partie d'un ensemble de modèles. Faire glisser un membre de l'ensemble les déplace tous.\n"
 "Maintenez Alt/Option en le faisant glisser pour ne déplacer que ce modèle dans l'ensemble.\n"
 "Gérez les ensembles avec le clic droit dans l'onglet Disposition."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:497
+msgid "String Type"
+msgstr "Type de chaîne"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:516 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:629
+msgid "This represents a string of single color LEDS which are individually controlled. These are very uncommon."
+msgstr "Une chaîne de LEDs d'une seule couleur, commandées individuellement. Très rare."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:524
+msgid "Colours"
+msgstr "Couleurs"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:536
+msgid "RGBW Color Handling"
+msgstr "Gestion des couleurs RGBW"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:543
+msgid "If unchecked the model will not be shown in the layout screen."
+msgstr "Décoché, le modèle n'est pas affiché dans l'écran de disposition."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:545
+msgid "Pixel Size"
+msgstr "Taille des pixels"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:549
+msgid "By increasing the pixel size, the appearance of the element can be made to display a bigger size."
+msgstr "Augmenter la taille des pixels fait paraître l'élément plus grand."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:551
+msgid "Pixel Style"
+msgstr "Style des pixels"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:552
+msgid "A visual representation of a pixel."
+msgstr "Représentation visuelle d'un pixel."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:554
+msgid "Adjust how opaque the element is on the display."
+msgstr "Règle l'opacité de l'élément à l'affichage."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:558
+msgid "Black Transparency"
+msgstr "Transparence du noir"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:559
+msgid "Adjust how transparent the element is on the display."
+msgstr "Règle la transparence de l'élément à l'affichage."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:563
+msgid "Tag Color"
+msgstr "Couleur d'étiquette"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:564
+msgid "A visual color assigned to the model in the model list."
+msgstr "Couleur attribuée au modèle dans la liste des modèles."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:716
+msgid "Use Smart Remote"
+msgstr "Utiliser un smart remote"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:718
+msgid "Enable Smart Remote for this Model."
+msgstr "Active le smart remote pour ce modèle."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:728 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:731
+msgid "Smart Remote Type"
+msgstr "Type de smart remote"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:739 src-ui-wx/setup/ControllerConnectionDialog.cpp:79
+msgid "Smart Remote"
+msgstr "Smart Remote"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:742
+msgid "Max Cascade Remotes"
+msgstr "Nombre max de remotes en cascade"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:745
+msgid "This is the number of smart remotes on a chain to use so if start is B and this is 2 then B and C remotes will be used."
+msgstr "Nombre de smart remotes de la chaîne à utiliser : si le départ est B et ce nombre 2, les remotes B et C sont utilisés."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:748
+msgid "Cascade On Port"
+msgstr "Cascade sur le port"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:750
+msgid "When selected order is 1A 1B 1C etc. When not selected order is 1A 2A 3A 4A 1B etc."
+msgstr "Coché, l'ordre est 1A 1B 1C, etc. Décoché, l'ordre est 1A 2A 3A 4A 1B, etc."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:772
+msgid "The LOR unit ID the model starts on. A string with more pixels than the rest of the unit carries on into the next unit ID, and each further string of the model starts on the next port's unit ID."
+msgstr "ID d'unité LOR où commence le modèle. Une chaîne qui dépasse le reste de l'unité continue sur l'ID suivant, et chaque chaîne suivante du modèle commence sur l'ID d'unité du port suivant."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:773
+msgid "Start Pixel"
+msgstr "Pixel de début"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:777
+msgid "The pixel on the LOR unit where the model starts."
+msgstr "Pixel de l'unité LOR où commence le modèle."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:778
+msgid "340 Pixels Per Port"
+msgstr "340 pixels par port"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:780
+msgid "The controller's ports are set for 340 pixels, so each port answers to two unit IDs and each string of the model starts two unit IDs after the one before."
+msgstr "Les ports du contrôleur sont réglés sur 340 pixels : chaque port répond à deux ID d'unité, et chaque chaîne du modèle commence deux ID après la précédente."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:790
+msgid "String Unit IDs"
+msgstr "ID d'unité des chaînes"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:792
+msgid "The unit ID each string of the model is on, in string order. A string that carries on into another unit ID shows it after a +."
+msgstr "ID d'unité de chaque chaîne du modèle, dans l'ordre. Une chaîne qui continue sur un autre ID l'affiche après un +."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:832
+msgid "Set Start Null Pixels"
+msgstr "Définir les pixels nuls de début"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:834
+msgid "Start Null Pixels"
+msgstr "Pixels nuls de début"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:845
+msgid "Set End Null Pixels"
+msgstr "Définir les pixels nuls de fin"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:847
+msgid "End Null Pixels"
+msgstr "Pixels nuls de fin"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:858 src-ui-wx/setup/ControllerConnectionDialog.cpp:129
+msgid "Set Brightness"
+msgstr "Définir la luminosité"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:871 src-ui-wx/setup/ControllerConnectionDialog.cpp:136
+msgid "Set Gamma"
+msgstr "Définir le gamma"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:886 src-ui-wx/setup/ControllerConnectionDialog.cpp:91
+msgid "Set Color Order"
+msgstr "Définir l'ordre des couleurs"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:891
+msgid "Color Order"
+msgstr "Ordre des couleurs"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:899
+msgid "Set Pixel Direction"
+msgstr "Définir le sens des pixels"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:901 src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:66 src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:37 src-ui-wx/modelproperties/adapters/WindowFramePropertyAdapter.cpp:54 resources/effectmetadata/Bars.json ... (+7)
+msgid "Direction"
+msgstr "Direction"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:909
+msgid "Set Group Count"
+msgstr "Définir le regroupement"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:911 src-ui-wx/setup/ControllerConnectionDialog.cpp:142
+msgid "Group Count"
+msgstr "Nombre de groupes"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:922
+msgid "Set Zig Zag"
+msgstr "Définir le zigzag"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:924
+msgid "Zig Zag"
+msgstr "Zigzag"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:935
+msgid "Set Smart Ts"
+msgstr "Définir les Smart Ts"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:937
+msgid "Smart Ts"
+msgstr "Smart Ts"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:958
+msgid "When using controller name instead of start channels then port must be specified if the controller has ports."
+msgstr "Avec un nom de contrôleur au lieu de canaux de début, le port doit être indiqué si le contrôleur a des ports."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:970
+msgid "When using controller name instead of start channels then protocol must be specified."
+msgstr "Avec un nom de contrôleur au lieu de canaux de début, le protocole doit être indiqué."
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:218
+msgid "WorldX"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:222
+msgid "WorldY"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:226
+msgid "WorldZ"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:232 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:462
+msgid "X1"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:237 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:467
+msgid "Y1"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:242 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:472
+msgid "Z1"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:248
+msgid "X2"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:253
+msgid "Y2"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:258
+msgid "Z2"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:31 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:216 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:458
+msgid "Locked"
+msgstr "Verrouillé"
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:393
+msgid "Shear"
+msgstr "Cisaillement"
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:43
+msgid "Z"
+msgstr ""
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:48 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:360 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:534
+msgid "ScaleX"
+msgstr "Échelle X"
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:52 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:364 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:538
+msgid "ScaleY"
+msgstr "Échelle Y"
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:56 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:368 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:542
+msgid "ScaleZ"
+msgstr "Échelle Z"
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:60 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:398 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:372 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:546
+msgid "RotateX"
+msgstr "Rotation X"
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:66 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:378 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:552
+msgid "RotateY"
+msgstr "Rotation Y"
+
+#: src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:72 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:384 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:558
+msgid "RotateZ"
+msgstr "Rotation Z"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:38
+msgid "Layered Arches"
+msgstr "Arches superposées"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:42
+msgid "# Arches"
+msgstr "Nb d'arches"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:47
+msgid "Nodes Per Arch"
+msgstr "Nœuds par arche"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:59 src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:90 src-ui-wx/modelproperties/adapters/SpinnerPropertyAdapter.cpp:48
+#, c-format
+msgid "Hollow %"
+msgstr "Creux %"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:64
+msgid "Zig-Zag Layers"
+msgstr "Couches en zigzag"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:68 src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:47
+msgid "Lights Per Node"
+msgstr "Lumières par nœud"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:73
+msgid "Arc Degrees"
+msgstr "Degrés de l'arc"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:78
+msgid "Arch Tilt"
+msgstr "Inclinaison des arches"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:84
+msgid "Gap Between Arches"
+msgstr "Écart entre les arches"
+
+#: src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:91 src-ui-wx/modelproperties/adapters/ArchesPropertyAdapter.cpp:94 src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:78 src-ui-wx/modelproperties/adapters/CirclePropertyAdapter.cpp:67 src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:65 ... (+8)
+msgid "Starting Location"
+msgstr "Point de départ"
+
+#: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:30
+msgid "# Canes"
+msgstr "Nb de sucres d'orge"
+
+#: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:36
+msgid "Lights Per Cane"
+msgstr "Lumières par sucre d'orge"
+
+#: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:41
+msgid "Nodes Per Cane"
+msgstr "Nœuds par sucre d'orge"
+
+#: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:60
+msgid "Cane Rotation"
+msgstr "Rotation des sucres d'orge"
+
+#: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:65 src-ui-wx/setup/ControllerConnectionDialog.cpp:88 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:242 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json ... (+2)
+msgid "Reverse"
+msgstr ""
+
+#: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:69
+msgid "Sticks"
+msgstr "Bâtons"
+
+#: src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:72 src-ui-wx/modelproperties/adapters/IciclesPropertyAdapter.cpp:48 src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:38 src-ui-wx/modelproperties/adapters/SpherePropertyAdapter.cpp:37 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:74
+msgid "Alternate Nodes"
+msgstr "Nœuds alternés"
+
+#: src-ui-wx/modelproperties/adapters/ChannelBlockPropertyAdapter.cpp:26 src-ui-wx/modelproperties/adapters/DmxFloodlightPropertyAdapter.cpp:24 src-ui-wx/modelproperties/adapters/DmxGeneralPropertyAdapter.cpp:24 src-ui-wx/modelproperties/adapters/DmxMovingHeadAdvPropertyAdapter.cpp:91 src-ui-wx/modelproperties/adapters/DmxMovingHeadPropertyAdapter.cpp:68 ... (+4)
+msgid "# Channels"
+msgstr "Nb de canaux"
+
+#: src-ui-wx/modelproperties/adapters/ChannelBlockPropertyAdapter.cpp:31
+msgid "Indiv Colors"
+msgstr "Couleurs indiv."
+
+#: src-ui-wx/modelproperties/adapters/CirclePropertyAdapter.cpp:34 src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:99 src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:97 src-ui-wx/modelproperties/adapters/IciclesPropertyAdapter.cpp:29 src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:50 ... (+4)
+msgid "# Strings"
+msgstr "Nb de chaînes"
+
+#: src-ui-wx/modelproperties/adapters/CirclePropertyAdapter.cpp:38 src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:103 src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:101 src-ui-wx/modelproperties/adapters/IciclesPropertyAdapter.cpp:33 src-ui-wx/modelproperties/adapters/MultiPointPropertyAdapter.cpp:41 ... (+5)
+msgid "This is typically the number of connections from the prop to your controller."
+msgstr "En général le nombre de connexions entre le décor et votre contrôleur."
+
+#: src-ui-wx/modelproperties/adapters/CirclePropertyAdapter.cpp:41 src-ui-wx/modelproperties/adapters/IciclesPropertyAdapter.cpp:36 src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:57 src-ui-wx/modelproperties/adapters/SingleLinePropertyAdapter.cpp:32 src-ui-wx/modelproperties/adapters/StarPropertyAdapter.cpp:46 ... (+1)
+msgid "Lights/String"
+msgstr "Lumières/chaîne"
+
+#: src-ui-wx/modelproperties/adapters/CirclePropertyAdapter.cpp:46 src-ui-wx/modelproperties/adapters/IciclesPropertyAdapter.cpp:41 src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:62 src-ui-wx/modelproperties/adapters/SingleLinePropertyAdapter.cpp:37 src-ui-wx/modelproperties/adapters/StarPropertyAdapter.cpp:51 ... (+1)
+msgid "Nodes/String"
+msgstr "Nœuds/chaîne"
+
+#: src-ui-wx/modelproperties/adapters/CirclePropertyAdapter.cpp:50 src-ui-wx/modelproperties/adapters/IciclesPropertyAdapter.cpp:45 src-ui-wx/modelproperties/adapters/SingleLinePropertyAdapter.cpp:41 src-ui-wx/modelproperties/adapters/StarPropertyAdapter.cpp:55 src-ui-wx/modelproperties/adapters/WreathPropertyAdapter.cpp:41
+msgid "This is typically the total number of pixels per #String."
+msgstr "En général le nombre total de pixels par chaîne."
+
+#: src-ui-wx/modelproperties/adapters/CirclePropertyAdapter.cpp:53
+#, c-format
+msgid "Center %"
+msgstr "Centre %"
+
+#: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:64 resources/effectmetadata/MovingHead.json resources/effectmetadata/Shape.json resources/effectmetadata/VUMeter.json
+msgid "Shape"
+msgstr "Forme"
+
+#: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:67
+msgid "Strand Style"
+msgstr "Style des brins"
+
+#: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:68
+msgid "Layers All Start in Same Place"
+msgstr "Toutes les couches commencent au même endroit"
+
+#: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:94
+msgid "Inner hollow radius as a percentage of outer radius (0=solid, 99=thin shell)."
+msgstr "Rayon du creux intérieur en pourcentage du rayon extérieur (0 = plein, 99 = coque fine)."
+
+#: src-ui-wx/modelproperties/adapters/CubePropertyAdapter.cpp:96
+msgid "Row Offset"
+msgstr "Décalage des rangées"
+
+#: src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:108 src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:62
+msgid "Start Nodes"
+msgstr "Nœuds de début"
+
+#: src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:142
+#, c-format
+msgid "Background Image Scale %"
+msgstr "Échelle de l'image de fond %"
+
+#: src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:146
+msgid "Scale of the background image as a percentage of the model size (100 = fit model bounds)."
+msgstr "Échelle de l'image de fond en pourcentage de la taille du modèle (100 = ajustée au modèle)."
+
+#: src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:148
+#, c-format
+msgid "Background Image Brightness %"
+msgstr "Luminosité de l'image de fond %"
+
+#: src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:152
+msgid "Brightness of the background image (0 = black, 100 = full brightness)."
+msgstr "Luminosité de l'image de fond (0 = noir, 100 = pleine luminosité)."
+
+#: src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:154
+#, c-format
+msgid "Background Image Transparency %"
+msgstr "Transparence de l'image de fond %"
+
+#: src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:158
+msgid "Transparency of the background image (0 = fully opaque, 100 = fully invisible). Increase this so props/pixels positioned behind the image show through it."
+msgstr "Transparence de l'image de fond (0 = opaque, 100 = invisible). Augmentez-la pour voir les décors et pixels placés derrière l'image."
+
+#: src-ui-wx/modelproperties/adapters/DmxMovingHeadAdvPropertyAdapter.cpp:109 src-ui-wx/modelproperties/adapters/DmxMovingHeadPropertyAdapter.cpp:89
+msgid "Color Type"
+msgstr "Type de couleur"
+
+#: src-ui-wx/modelproperties/adapters/DmxMovingHeadAdvPropertyAdapter.cpp:88 src-ui-wx/modelproperties/adapters/DmxMovingHeadPropertyAdapter.cpp:65
+msgid "Fixture"
+msgstr "Projecteur"
+
+#: src-ui-wx/modelproperties/adapters/DmxMovingHeadPropertyAdapter.cpp:56
+msgid "DMX Style"
+msgstr "Style DMX"
+
+#: src-ui-wx/modelproperties/adapters/DmxMovingHeadPropertyAdapter.cpp:77
+msgid "Hide Body"
+msgstr "Masquer le corps"
+
+#: src-ui-wx/modelproperties/adapters/DmxServo3dPropertyAdapter.cpp:139
+msgid "Show Pivot Axes"
+msgstr "Afficher les axes de pivot"
+
+#: src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:40
+msgid "Num Servos"
+msgstr "Nb de servos"
+
+#: src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:45
+msgid "16 Bit"
+msgstr "16 bits"
+
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:155 src-ui-wx/modelproperties/adapters/MeshObjectPropertyAdapter.cpp:36 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:342
+msgid "Mesh Only"
+msgstr "Maillage seul"
+
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:183
+msgid "Jaw Orientation"
+msgstr "Orientation de la mâchoire"
+
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:190
+msgid "Pan Orientation"
+msgstr "Orientation pan"
+
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:197
+msgid "Tilt Orientation"
+msgstr "Orientation tilt"
+
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:204
+msgid "Nod Orientation"
+msgstr "Orientation du hochement"
+
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:211
+msgid "Eye Up/Down Orientation"
+msgstr "Orientation yeux haut/bas"
+
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:218
+msgid "Eye Left/Right Orientation"
+msgstr "Orientation yeux gauche/droite"
+
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:227
+msgid "Eye Brightness Channel"
+msgstr "Canal de luminosité des yeux"
+
+#: src-ui-wx/modelproperties/adapters/GridlinesObjectPropertyAdapter.cpp:24 src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:43
+msgid "Line Spacing"
+msgstr "Espacement des lignes"
+
+#: src-ui-wx/modelproperties/adapters/GridlinesObjectPropertyAdapter.cpp:29
+msgid "Grid Width"
+msgstr "Largeur de la grille"
+
+#: src-ui-wx/modelproperties/adapters/GridlinesObjectPropertyAdapter.cpp:34
+msgid "Grid Height"
+msgstr "Hauteur de la grille"
+
+#: src-ui-wx/modelproperties/adapters/GridlinesObjectPropertyAdapter.cpp:39 src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:58
+msgid "Grid Color"
+msgstr "Couleur de la grille"
+
+#: src-ui-wx/modelproperties/adapters/GridlinesObjectPropertyAdapter.cpp:41
+msgid "Axis Lines"
+msgstr "Lignes des axes"
+
+#: src-ui-wx/modelproperties/adapters/GridlinesObjectPropertyAdapter.cpp:44
+msgid "Point To Front"
+msgstr "Indiquer l'avant"
+
+#: src-ui-wx/modelproperties/adapters/GridlinesObjectPropertyAdapter.cpp:48
+msgid "Grid Spacing"
+msgstr "Espacement de la grille"
+
+#: src-ui-wx/modelproperties/adapters/IciclesPropertyAdapter.cpp:51 src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:95
+msgid "Drop Pattern"
+msgstr "Motif des stalactites"
+
+#: src-ui-wx/modelproperties/adapters/ImageObjectPropertyAdapter.cpp:23 src-ui-wx/modelproperties/adapters/ImagePropertyAdapter.cpp:24 src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:26 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:517
+msgid "Image"
+msgstr "Image"
+
+#: src-ui-wx/modelproperties/adapters/ImagePropertyAdapter.cpp:31
+msgid "Off Brightness"
+msgstr "Luminosité éteinte"
+
+#: src-ui-wx/modelproperties/adapters/ImagePropertyAdapter.cpp:36
+msgid "Read White As Alpha"
+msgstr "Lire le blanc comme transparence"
+
+#: src-ui-wx/modelproperties/adapters/LabelPropertyAdapter.cpp:23
+msgid "Label Text"
+msgstr "Texte de l'étiquette"
+
+#: src-ui-wx/modelproperties/adapters/LabelPropertyAdapter.cpp:25 src-ui-wx/setup/ControllerModelDialog.cpp:2179
+msgid "Font Size"
+msgstr "Taille de police"
+
+#: src-ui-wx/modelproperties/adapters/LabelPropertyAdapter.cpp:32
+msgid "Text Color"
+msgstr "Couleur du texte"
+
+#: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:42 src-ui-wx/modelproperties/adapters/SpherePropertyAdapter.cpp:41 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:78
+msgid "Don't Zig Zag"
+msgstr "Pas de zigzag"
+
+#: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:54
+msgid "This is typically the number of connections from the prop to your controller. *This would also be the 'Height' of a Horizontal Virtual Matrix."
+msgstr "En général le nombre de connexions entre le décor et votre contrôleur. *C'est aussi la hauteur d'une matrice virtuelle horizontale."
+
+#: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:66
+msgid ""
+"This is typically the total number of pixels per #String. \n"
+" *This would also be the 'Width' of a Horizontal Virtual Matrix."
+msgstr ""
+"En général le nombre total de pixels par chaîne. \n"
+" *C'est aussi la largeur d'une matrice virtuelle horizontale."
+
+#: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:69
+msgid "Strands/String"
+msgstr "Brins/chaîne"
+
+#: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:73
+msgid "This is typically how many times the #String ZigZags."
+msgstr "En général le nombre de zigzags de chaque chaîne."
+
+#: src-ui-wx/modelproperties/adapters/MatrixPropertyAdapter.cpp:76
+msgid "Strands/String must divide into Nodes/String evenly."
+msgstr "Nœuds/chaîne doit être un multiple de Brins/chaîne."
+
+#: src-ui-wx/modelproperties/adapters/MeshObjectPropertyAdapter.cpp:26 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:339
+msgid "ObjFile"
+msgstr "Fichier OBJ"
+
+#: src-ui-wx/modelproperties/adapters/MultiPointPropertyAdapter.cpp:24 src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:37
+msgid "# Lights"
+msgstr ""
+
+#: src-ui-wx/modelproperties/adapters/MultiPointPropertyAdapter.cpp:30 src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:42
+msgid "# Nodes"
+msgstr ""
+
+#: src-ui-wx/modelproperties/adapters/MultiPointPropertyAdapter.cpp:37 src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:53
+msgid "Strings"
+msgstr "Chaînes"
+
+#: src-ui-wx/modelproperties/adapters/MultiPointPropertyAdapter.cpp:48
+msgid "Indiv Start Nodes"
+msgstr "Nœuds de début indiv."
+
+#: src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:109
+msgid "Segments"
+msgstr "Segments"
+
+#: src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:116
+msgid "Corner Settings"
+msgstr "Réglages des angles"
+
+#: src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:47 src-ui-wx/modelproperties/adapters/SingleLinePropertyAdapter.cpp:43
+msgid "Lights/Node"
+msgstr "Lumières/nœud"
+
+#: src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:97
+msgid "Alternate Drop Nodes"
+msgstr "Nœuds de descente alternés"
 
 #: src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:35
 msgid "Position Zones"
@@ -5939,6 +6973,14 @@ msgstr ""
 "  %s  Canal : numéro du canal DMX à régler quand la lyre est dans la zone\n"
 "  %s  Valeur : valeur DMX (0-255) à envoyer sur ce canal"
 
+#: src-ui-wx/modelproperties/adapters/RulerObjectPropertyAdapter.cpp:26
+msgid "Units"
+msgstr "Unités"
+
+#: src-ui-wx/modelproperties/adapters/RulerObjectPropertyAdapter.cpp:28
+msgid "Real Length"
+msgstr "Longueur réelle"
+
 #: src-ui-wx/modelproperties/adapters/ServoConfigDialog.cpp:46
 msgid "Number of Servos"
 msgstr "Nombre de servos"
@@ -5986,6 +7028,340 @@ msgstr "Canaux de couleur"
 #: src-ui-wx/modelproperties/adapters/SkullConfigDialog.cpp:72
 msgid "Skulltronix"
 msgstr ""
+
+#: src-ui-wx/modelproperties/adapters/SpherePropertyAdapter.cpp:22 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:37
+msgid "Degrees"
+msgstr "Degrés"
+
+#: src-ui-wx/modelproperties/adapters/SpherePropertyAdapter.cpp:27
+msgid "Southern Latitude"
+msgstr "Latitude sud"
+
+#: src-ui-wx/modelproperties/adapters/SpherePropertyAdapter.cpp:32
+msgid "Northern Latitude"
+msgstr "Latitude nord"
+
+#: src-ui-wx/modelproperties/adapters/SpinnerPropertyAdapter.cpp:38
+msgid "Arms/String"
+msgstr "Bras/chaîne"
+
+#: src-ui-wx/modelproperties/adapters/SpinnerPropertyAdapter.cpp:43
+msgid "Lights/Arm"
+msgstr "Lumières/bras"
+
+#: src-ui-wx/modelproperties/adapters/SpinnerPropertyAdapter.cpp:53
+msgid "Start Angle"
+msgstr "Angle de départ"
+
+#: src-ui-wx/modelproperties/adapters/SpinnerPropertyAdapter.cpp:58
+msgid "Arc"
+msgstr "Arc"
+
+#: src-ui-wx/modelproperties/adapters/SpinnerPropertyAdapter.cpp:65
+msgid "Zig-Zag Start"
+msgstr "Départ en zigzag"
+
+#: src-ui-wx/modelproperties/adapters/StarPropertyAdapter.cpp:58
+msgid "# Points"
+msgstr "Nb de pointes"
+
+#: src-ui-wx/modelproperties/adapters/StarPropertyAdapter.cpp:75
+msgid "Outer to Inner Ratio"
+msgstr "Rapport extérieur/intérieur"
+
+#: src-ui-wx/modelproperties/adapters/StarPropertyAdapter.cpp:81
+#, c-format
+msgid "Inner Layer %"
+msgstr "Couche intérieure %"
+
+#: src-ui-wx/modelproperties/adapters/SubModelPropertyAdapter.cpp:29
+msgid "SubModel Type"
+msgstr "Type de sous-modèle"
+
+#: src-ui-wx/modelproperties/adapters/SubModelPropertyAdapter.cpp:33
+msgid "SubModel Layout"
+msgstr "Disposition du sous-modèle"
+
+#: src-ui-wx/modelproperties/adapters/SubModelPropertyAdapter.cpp:37
+msgid "SubModel Buffer Style"
+msgstr "Style de grille du sous-modèle"
+
+#: src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:48
+msgid "Terrain Width"
+msgstr "Largeur du terrain"
+
+#: src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:53
+msgid "Terrain depth"
+msgstr "Profondeur du terrain"
+
+#: src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:60
+msgid "Hide Grid"
+msgstr "Masquer la grille"
+
+#: src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:63
+msgid "Hide Image"
+msgstr "Masquer l'image"
+
+#: src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:66
+msgid "Brush Size"
+msgstr "Taille du pinceau"
+
+#: src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:71
+msgid "Edit Terrain"
+msgstr "Modifier le terrain"
+
+#: src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:75
+msgid "Terrain Spacing"
+msgstr "Espacement du terrain"
+
+#: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:43 resources/effectmetadata/Kaleidoscope.json resources/effectmetadata/MovingHead.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/Ripple.json ... (+1)
+msgid "Rotation"
+msgstr "Rotation"
+
+#: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:51 resources/effectmetadata/Spirals.json
+msgid "Spiral Wraps"
+msgstr "Tours de spirale"
+
+#: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:58
+msgid "Bottom/Top Ratio"
+msgstr "Rapport bas/haut"
+
+#: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:66
+msgid "Perspective"
+msgstr "Perspective"
+
+#: src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:82
+msgid "Strand Direction"
+msgstr "Sens des brins"
+
+#: src-ui-wx/modelproperties/adapters/WindowFramePropertyAdapter.cpp:36
+msgid "# Lights Top"
+msgstr "Nb de lumières en haut"
+
+#: src-ui-wx/modelproperties/adapters/WindowFramePropertyAdapter.cpp:41
+msgid "# Lights Left/Right"
+msgstr "Nb de lumières gauche/droite"
+
+#: src-ui-wx/modelproperties/adapters/WindowFramePropertyAdapter.cpp:46
+msgid "# Lights Bottom"
+msgstr "Nb de lumières en bas"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:105 src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:413
+msgid "Dimmer Channel"
+msgstr "Canal du gradateur"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:125
+msgid "Beam Display Length"
+msgstr "Longueur affichée du faisceau"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:132
+msgid "Beam Display Width"
+msgstr "Largeur affichée du faisceau"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:140
+msgid "Beam Orientation"
+msgstr "Orientation du faisceau"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:147
+msgid "Beam Y Offset"
+msgstr "Décalage Y du faisceau"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:186
+msgid "Number of Fixed Channels"
+msgstr "Nombre de canaux fixes"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:268
+msgid "Red Channel"
+msgstr "Canal rouge"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:273
+msgid "   PWM Red Brightness"
+msgstr "   Luminosité PWM rouge"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:277
+msgid "   PWM Red Gamma"
+msgstr "   Gamma PWM rouge"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:283
+msgid "Green Channel"
+msgstr "Canal vert"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:288
+msgid "   PWM Green Brightness"
+msgstr "   Luminosité PWM vert"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:292
+msgid "   PWM Green Gamma"
+msgstr "   Gamma PWM vert"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:298
+msgid "Blue Channel"
+msgstr "Canal bleu"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:303
+msgid "   PWM Blue Brightness"
+msgstr "   Luminosité PWM bleu"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:307
+msgid "   PWM Blue Gamma"
+msgstr "   Gamma PWM bleu"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:313 src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:381
+msgid "White Channel"
+msgstr "Canal blanc"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:318
+msgid "   PWM White Brightness"
+msgstr "   Luminosité PWM blanc"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:322
+msgid "   PWM White Gamma"
+msgstr "   Gamma PWM blanc"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:366
+msgid "Cyan Channel"
+msgstr "Canal cyan"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:371
+msgid "Magenta Channel"
+msgstr "Canal magenta"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:376
+msgid "Yellow Channel"
+msgstr "Canal jaune"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:408
+msgid "Color Wheel Channel"
+msgstr "Canal de la roue de couleurs"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:417
+msgid "Optional DMX channel that when set will enable the dimmer when a color is selected on the color wheel. Set to 0 if dimmer is set directly."
+msgstr "Canal DMX facultatif qui active le gradateur quand une couleur est choisie sur la roue. Mettez 0 si le gradateur est réglé directement."
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:419
+msgid "Color Wheel Delay(ms)"
+msgstr "Délai de la roue de couleurs (ms)"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:424
+msgid "Color Wheel Size"
+msgstr "Taille de la roue de couleurs"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:67
+msgid "Shutter Channel"
+msgstr "Canal de l'obturateur"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:72
+msgid "Shutter Open Threshold"
+msgstr "Seuil d'ouverture de l'obturateur"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:77
+msgid "Shutter On Value"
+msgstr "Valeur d'ouverture de l'obturateur"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:100
+msgid "Pivot Offset Z"
+msgstr "Décalage du pivot Z"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:107
+msgid "Contoller Min Limit"
+msgstr "Limite min du contrôleur"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:112
+msgid "Controller Max Limit"
+msgstr "Limite max du contrôleur"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:117
+msgid "Controller Reverse"
+msgstr "Inversion côté contrôleur"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:121
+msgid "Controller Zero Behavior"
+msgstr "Comportement du zéro (contrôleur)"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:122
+msgid "Controller DataType"
+msgstr "Type de données (contrôleur)"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:195
+msgid "Channel (Coarse)"
+msgstr "Canal (grossier)"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:200
+msgid "Channel (Fine)"
+msgstr "Canal (fin)"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:205
+msgid "Min Limit (deg)"
+msgstr "Limite min (degrés)"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:210
+msgid "Max Limit (deg)"
+msgstr "Limite max (degrés)"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:215
+msgid "Range of Motion (deg)"
+msgstr "Amplitude (degrés)"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:222
+msgid "Orient to Zero (deg)"
+msgstr "Orientation à zéro (degrés)"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:236
+msgid "Slew Limit (deg/sec)"
+msgstr "Vitesse max (degrés/s)"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:243
+msgid "Speed Channel"
+msgstr "Canal de vitesse"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:247
+#, c-format
+msgid "Optional DMX channel that scales the Slew Limit (0-255 -> 0-100% of the Slew Limit). Leave at 0 to always move at the full Slew Limit."
+msgstr "Canal DMX facultatif qui module la vitesse max (0-255 -> 0-100 pour cent de la vitesse max). Laissez 0 pour toujours bouger à la vitesse max."
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:249
+msgid "Reverse Rotation"
+msgstr "Rotation inversée"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:252
+msgid "Upside Down"
+msgstr "À l'envers"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:348 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:522 resources/effectmetadata/Shader.json
+msgid "Offset X"
+msgstr "Décalage X"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:352 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:526 resources/effectmetadata/Shader.json
+msgid "Offset Y"
+msgstr "Décalage Y"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:356 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:530
+msgid "Offset Z"
+msgstr "Décalage Z"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:45
+msgid "Min Limit"
+msgstr "Limite min"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:50
+msgid "Max Limit"
+msgstr "Limite max"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:55
+msgid "Range of Motion"
+msgstr "Amplitude"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:86
+msgid "Servo Style"
+msgstr "Style de servo"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:89
+msgid "Pivot Offset X"
+msgstr "Décalage du pivot X"
+
+#: src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:94
+msgid "Pivot Offset Y"
+msgstr "Décalage du pivot Y"
 
 #: src-ui-wx/preferences/BackupSettingsPanel.cpp:54
 msgid "Backup On Save"
@@ -6258,10 +7634,6 @@ msgstr "Coller en"
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:125 src-ui-wx/sequencer/EffectTreeDialog.cpp:120
 msgid "Relative"
 msgstr "Relatif"
-
-#: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:126
-msgid "Layers"
-msgstr "Calques"
 
 #: src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:127
 msgid "Relative: paste effects at the selected position. As Layers: paste preserving layer structure from copied effects."
@@ -6551,10 +7923,6 @@ msgstr "Décodage vidéo matériel"
 msgid "Use Frame Sync"
 msgstr "Utiliser la synchro de trame"
 
-#: src-ui-wx/preferences/OutputSettingsPanel.cpp:51
-msgid "Force Local IP"
-msgstr "Forcer l'IP locale"
-
 #: src-ui-wx/preferences/OutputSettingsPanel.cpp:53
 msgid "Duplicate Frames to Suppress"
 msgstr "Trames en double à supprimer"
@@ -6746,10 +8114,6 @@ msgstr "Choisissez les effets affichés dans la barre d'outils, et leur ordre :"
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:53
 msgid "Visible"
 msgstr "Visible"
-
-#: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269 resources/effectmetadata/Curtain.json resources/effectmetadata/Meteors.json resources/effectmetadata/Text.json
-msgid "Effect"
-msgstr ""
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:64 src-ui-wx/sequencer/SeqSettingsDialog.cpp:440
 msgid "Move Up"
@@ -7171,10 +8535,6 @@ msgstr "Aucun effet sélectionné."
 #: src-ui-wx/sequencer/EffectTreeDialog.cpp:363
 msgid "An effect group can not be applied."
 msgstr "Un groupe d'effets ne peut pas être appliqué."
-
-#: src-ui-wx/sequencer/EffectTreeDialog.cpp:393 src-ui-wx/setup/ShowDirectoriesDialog.cpp:162
-msgid "Name"
-msgstr "Nom"
 
 #: src-ui-wx/sequencer/EffectTreeDialog.cpp:447
 msgid "A preset cannot be added at the currently selected location"
@@ -8111,30 +9471,6 @@ msgstr "Définir les nœuds nuls de début"
 msgid "Set End Null Nodes"
 msgstr "Définir les nœuds nuls de fin"
 
-#: src-ui-wx/setup/ControllerConnectionDialog.cpp:129
-msgid "Set Brightness"
-msgstr "Définir la luminosité"
-
-#: src-ui-wx/setup/ControllerConnectionDialog.cpp:136
-msgid "Set Gamma"
-msgstr "Définir le gamma"
-
-#: src-ui-wx/setup/ControllerConnectionDialog.cpp:142
-msgid "Group Count"
-msgstr "Nombre de groupes"
-
-#: src-ui-wx/setup/ControllerConnectionDialog.cpp:69
-msgid "Protocol"
-msgstr "Protocole"
-
-#: src-ui-wx/setup/ControllerConnectionDialog.cpp:74
-msgid "Port"
-msgstr "Port"
-
-#: src-ui-wx/setup/ControllerConnectionDialog.cpp:79
-msgid "Smart Remote"
-msgstr "Smart Remote"
-
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:83
 msgid "Set Direction"
 msgstr "Définir le sens"
@@ -8142,14 +9478,6 @@ msgstr "Définir le sens"
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:87
 msgid "Forward"
 msgstr ""
-
-#: src-ui-wx/setup/ControllerConnectionDialog.cpp:88 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:242 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json resources/effectmetadata/Marquee.json ... (+1)
-msgid "Reverse"
-msgstr ""
-
-#: src-ui-wx/setup/ControllerConnectionDialog.cpp:91
-msgid "Set Color Order"
-msgstr "Définir l'ordre des couleurs"
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:95 src-ui-wx/setup/PixelTestDialog.cpp:1347
 msgid "RGB"
@@ -8186,10 +9514,6 @@ msgstr "Taille des cases"
 #: src-ui-wx/setup/ControllerModelDialog.cpp:2175
 msgid "Font Size:"
 msgstr "Taille de police :"
-
-#: src-ui-wx/setup/ControllerModelDialog.cpp:2179
-msgid "Font Size"
-msgstr "Taille de police"
 
 #: src-ui-wx/setup/ControllerModelDialog.cpp:2191
 msgid "Hide models assigned to other controllers"
@@ -8376,10 +9700,6 @@ msgstr "Standard"
 #: src-ui-wx/setup/PixelTestDialog.cpp:1348
 msgid "RGB Cycle"
 msgstr "Cycle RGB"
-
-#: src-ui-wx/setup/PixelTestDialog.cpp:1353 resources/effectmetadata/Butterfly.json resources/effectmetadata/Circles.json resources/effectmetadata/Life.json resources/effectmetadata/Lines.json ... (+14)
-msgid "Speed"
-msgstr "Vitesse"
 
 #: src-ui-wx/setup/PixelTestDialog.cpp:1422 src-ui-wx/setup/PixelTestDialog.cpp:2111
 msgid "Filter by name..."
@@ -9352,7 +10672,7 @@ msgstr "Aperçu du modèle"
 msgid "House Preview"
 msgstr "Aperçu de la maison"
 
-#: src-ui-wx/xLightsMain.cpp:847 src-ui-wx/controllers/FPPConnectDialog.cpp:1381 src-ui-wx/controllers/FPPConnectDialog.cpp:1396 src-ui-wx/controllers/FPPConnectDialog.cpp:1405 src-ui-wx/layout/LayoutPanel.cpp:678 ... (+2)
+#: src-ui-wx/xLightsMain.cpp:847 src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:391 src-ui-wx/controllerproperties/ControllerNullPropertyAdapter.cpp:31 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:206 src-ui-wx/controllers/FPPConnectDialog.cpp:1381 ... (+5)
 msgid "Models"
 msgstr "Modèles"
 
@@ -9476,7 +10796,7 @@ msgstr ""
 msgid "Parm2"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:906
+#: src-ui-wx/xLightsMain.cpp:906 src-ui-wx/layout/LayoutPanel.cpp:4231
 msgid "Fill"
 msgstr "Remplir"
 

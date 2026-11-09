@@ -780,6 +780,7 @@ LayoutPanel::LayoutPanel(wxWindow* parent, xLightsFrame *xl, wxPanel* sequencer)
                                         wxPG_SPLITTER_AUTO_CENTER | // Automatically center splitter until user manually adjusts it
                                         // Default style
                                         wxPG_DEFAULT_STYLE);
+    propertyEditor->EnableLabelTranslation();
     propertyEditor->SetExtraStyle(wxWS_EX_PROCESS_IDLE | wxPG_EX_HELP_AS_TOOLTIPS);
     LayoutUtils::CreateImageList(m_imageList);
 

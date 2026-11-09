@@ -41,6 +41,7 @@ BulkEditModelPropertiesDialog::BulkEditModelPropertiesDialog(wxWindow* parent, x
     }
 
     _grid = new xlPropertyGrid(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxPG_SPLITTER_AUTO_CENTER | wxPG_DEFAULT_STYLE);
+    _grid->EnableLabelTranslation();
     sizer->Add(_grid, 1, wxEXPAND | wxLEFT | wxRIGHT, 8);
 
     if (_primary != nullptr) {

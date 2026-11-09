@@ -24,6 +24,8 @@ C_STR = r'"(?:[^"\\\n]|\\.)*"'
 # _("...") and wxTRANSLATE("..."); adjacent literals are concatenated. _T("...") is not matched.
 KEYWORD_RE = re.compile(r'(?<![\w.>])(?:_|wxTRANSLATE)\(\s*(' + C_STR + r'(?:\s*' + C_STR + r')*)\s*\)')
 LITERAL_RE = re.compile(C_STR)
+# new wxXxxProperty("Label", ...) and ->SetHelpString("Help text")
+PROPERTY_TEXT_RE = re.compile(r'(?:new\s+wx\w*Property\s*\(|SetHelpString\s*\()\s*(' + C_STR + r'(?:\s*' + C_STR + r')*)\s*[,)]')
 
 C_ESCAPES = {"n": "\n", "t": "\t", "r": "\r", '"': '"', "'": "'", "\\": "\\", "a": "\a", "b": "\b", "f": "\f", "v": "\v", "?": "?"}
 
@@ -83,6 +85,13 @@ def extract():
                 rel = os.path.relpath(path, ROOT).replace("\\", "/")
                 with open(path, encoding="utf-8", errors="replace") as f:
                     text = f.read()
+                # Property grid labels and help texts are plain literals that
+                # xlPropertyGrid translates when it paints (EnableLabelTranslation).
+                for m in PROPERTY_TEXT_RE.finditer(text):
+                    msgid = "".join(c_unescape(lit[1:-1]) for lit in LITERAL_RE.findall(m.group(1)))
+                    if msgid.strip():
+                        line = text.count("\n", 0, m.start()) + 1
+                        found.setdefault(msgid, []).append(f"{rel}:{line}")
                 for m in KEYWORD_RE.finditer(text):
                     msgid = "".join(c_unescape(lit[1:-1]) for lit in LITERAL_RE.findall(m.group(1)))
                     if not msgid.strip():

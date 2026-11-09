@@ -1227,6 +1227,7 @@ wxWindow* ControllerListPanel::CreatePropertiesPanel(wxWindow* parent) {
 
     _propGrid = new xlPropertyGrid(_propsPanel, wxID_ANY, wxDefaultPosition, wxDefaultSize,
                                    wxPG_SPLITTER_AUTO_CENTER | wxPG_DEFAULT_STYLE);
+    _propGrid->EnableLabelTranslation();
     _propGrid->SetExtraStyle(wxWS_EX_PROCESS_IDLE | wxPG_EX_HELP_AS_TOOLTIPS);
     _propGrid->SetValidationFailureBehavior(wxPGVFBFlags::MarkCell | wxPGVFBFlags::Beep);
     _propGrid->AddActionTrigger(wxPGKeyboardAction::NextProperty, WXK_RETURN);
