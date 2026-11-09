@@ -167,8 +167,34 @@ jobs:
               --body "$(printf 'Applying `%s` (%s) onto the official tag `%s` conflicts on:\n\n%s\n\nRun the workflow again once the branch is fixed.' "$GITHUB_REF_NAME" "${GITHUB_SHA::9}" "$version" "$files")" || true
             exit 1
           fi
+          # Bring the French catalog in line with this version's sources: list
+          # the new texts, and clear translations the new code reads back as
+          # English (they would break a feature) before they reach the build.
+          cp resources/locale/fr/xlights.po "$RUNNER_TEMP/previous.po"
+          python3 ci_scripts/xlights_i18n.py extract
+          python3 ci_scripts/xlights_i18n.py update
+          python3 ci_scripts/xlights_i18n_check.py fr "$RUNNER_TEMP/previous.po" "$RUNNER_TEMP/i18n-report.md"
+          python3 ci_scripts/xlights_i18n.py compile
+          git add -A resources/locale
           git diff --cached --binary "refs/upstream-tags/$version" > "$RUNNER_TEMP/release.patch"
           git diff --cached --stat "refs/upstream-tags/$version" | tail -1
+
+      # One issue collects, release after release, the new interface texts to
+      # translate and the translations turned off because the code now reads
+      # them as English. GitHub notifies whoever watches the repository.
+      - name: Report interface texts to translate
+        if: steps.pick.outputs.build == 'true'
+        run: |
+          report="$RUNNER_TEMP/i18n-report.md"
+          [ -s "$report" ] || { echo "Nothing to translate in this version."; exit 0; }
+          title="Textes de l'interface à traduire"
+          body=$(printf '## xLights %s\n\n%s' "${{ steps.pick.outputs.version }}" "$(cat "$report")")
+          open=$(gh issue list --state open --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -1)
+          if [ -z "$open" ]; then
+            gh issue create --title "$title" --body "$body"
+          else
+            gh issue comment "$open" --body "$body"
+          fi
 
       - name: Keep the release patch
         if: steps.pick.outputs.build == 'true'

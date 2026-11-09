@@ -218,6 +218,26 @@ def parse_po(path):
     return entries
 
 
+def write_po(path, entries):
+    """Write parsed entries back in the same layout update() produces."""
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        for e in entries:
+            if e.obsolete:
+                f.write("#~ msgid " + po_quote(e.msgid).replace("\n", "\n#~ ") + "\n")
+                f.write("#~ msgstr " + po_quote(e.msgstr).replace("\n", "\n#~ ") + "\n\n")
+                continue
+            for c in e.comments:
+                f.write(c + "\n")
+            if e.msgid == "":
+                f.write('msgid ""\nmsgstr ' + po_quote(e.msgstr) + "\n\n")
+                continue
+            for r in e.refs:
+                f.write("#: " + r + "\n")
+            if e.flags:
+                f.write("#, " + ", ".join(sorted(e.flags)) + "\n")
+            f.write("msgid " + po_quote(e.msgid) + "\nmsgstr " + po_quote(e.msgstr) + "\n\n")
+
+
 # ---------------------------------------------------------------- update
 
 def languages():

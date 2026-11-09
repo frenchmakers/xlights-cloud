@@ -33,6 +33,13 @@ To add a language: create `<lang>/xlights.po` with a header (copy the one in
 `fr/xlights.po`), run `update` and `compile`, and add the language to
 `UILanguage::Available()` in `src-ui-wx/settings/UILanguage.cpp`.
 
+## Release check (xLights Cloud)
+
+For each official release, the xLights Cloud workflow runs `extract` and `update` on that
+release's sources, then `ci_scripts/xlights_i18n_check.py`. It lists the new texts to translate
+and clears any translation the code now reads back or compares as English (those would break a
+feature silently), then reports both in the issue "Textes de l'interface à traduire".
+
 ## wxWidgets catalog
 
 `wxstd.po` comes from the xLightsSequencer/wxWidgets fork (`locale/fr.po`, wxWidgets 3.3).
