@@ -128,7 +128,7 @@ wxWindow* BufferPanel::BuildRotoZoomPresetRow(wxWindow* parentWin, wxSizer* size
     auto* row = new wxFlexGridSizer(0, 2, 0, 0);
     row->AddGrowableCol(1);
 
-    auto* label = new wxStaticText(parentWin, wxID_ANY, "Preset");
+    auto* label = new wxStaticText(parentWin, wxID_ANY, _("Preset"));
     row->Add(label, 0, wxALL | wxALIGN_LEFT | wxALIGN_CENTER_VERTICAL, 2);
 
     _rotoZoomPresetChoice = new BulkEditChoice(parentWin, wxNewId(),

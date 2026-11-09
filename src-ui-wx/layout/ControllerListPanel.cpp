@@ -240,7 +240,7 @@ ControllerListPanel::ControllerListPanel(wxWindow* parent, xLightsFrame* frame, 
     wxBoxSizer* filterSizer = new wxBoxSizer(wxHORIZONTAL);
     _controllerFilterCtrl = new wxSearchCtrl(this, ID_TEXTCTRL_CONTROLLER_FILTER,
         wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
-    _controllerFilterCtrl->SetDescriptiveText("Filter controllers...");
+    _controllerFilterCtrl->SetDescriptiveText(_("Filter controllers..."));
     _controllerFilterCtrl->SetToolTip(wxFilterQuery::Hint());
     _controllerFilterCtrl->ShowCancelButton(true);
     _controllerFilterCtrl->Bind(wxEVT_TEXT_ENTER, &ControllerListPanel::OnControllerFilterTextChanged, this);
@@ -255,7 +255,7 @@ ControllerListPanel::ControllerListPanel(wxWindow* parent, xLightsFrame* frame, 
         });
     filterSizer->Add(_controllerFilterCtrl, 1, wxEXPAND | wxTOP, 2);
 
-    _btnFullColumns = new wxButton(this, wxID_ANY, "Show All Info", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
+    _btnFullColumns = new wxButton(this, wxID_ANY, _("Show All Info"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
     _btnFullColumns->SetToolTip("Show every controller column for every controller in a larger window");
     _btnFullColumns->Bind(wxEVT_BUTTON, &ControllerListPanel::OnFullColumnsClick, this);
     filterSizer->Add(_btnFullColumns, 0, wxEXPAND | wxLEFT | wxTOP, 2);
@@ -285,7 +285,12 @@ void ControllerListPanel::CreateTree() {
     // Column 0 (Name) is fixed; the rest are appended in saved order because
     // wxTreeListCtrl cannot programmatically reorder columns after creation.
     // With no saved order, columns default to CTRL_COLS' (alphabetical) order.
-    _tree->AppendColumn(CTRL_COLS[0].title, wxCOL_WIDTH_AUTOSIZE, wxALIGN_LEFT, wxCOL_RESIZABLE);
+    std::vector<const char*> englishTitles;
+    for (size_t i = 0; i < CTRL_COL_COUNT; i++) {
+        englishTitles.push_back(CTRL_COLS[i].title);
+    }
+    RegisterTranslatedColumnTitles(englishTitles);
+    _tree->AppendColumn(TranslatedColumnTitle(CTRL_COLS[0].title), wxCOL_WIDTH_AUTOSIZE, wxALIGN_LEFT, wxCOL_RESIZABLE);
     wxArrayString saved = wxSplit(GetXLightsConfig()->Read("LayoutControllerListCols", ""), ',');
     wxArrayString order;
     for (const auto& t : saved) {
@@ -301,7 +306,7 @@ void ControllerListPanel::CreateTree() {
         }
     }
     for (const auto& t : order) {
-        _tree->AppendColumn(t, wxCOL_WIDTH_AUTOSIZE, wxALIGN_LEFT,
+        _tree->AppendColumn(TranslatedColumnTitle(t), wxCOL_WIDTH_AUTOSIZE, wxALIGN_LEFT,
                             wxCOL_RESIZABLE | wxCOL_REORDERABLE);
     }
     _colIdx.assign(CTRL_COL_COUNT, 0);
@@ -351,7 +356,7 @@ void ControllerListPanel::CreateTree() {
 
 int ControllerListPanel::ColIndex(const wxString& title) const {
     for (unsigned i = 0; i < _tree->GetColumnCount(); i++) {
-        if (_tree->GetDataView()->GetColumn(i)->GetTitle() == title) {
+        if (ColumnTitleKey(_tree->GetDataView()->GetColumn(i)->GetTitle()) == title) {
             return (int)i;
         }
     }
@@ -365,9 +370,9 @@ void ControllerListPanel::SaveColumnOrder() {
         for (unsigned j = 0; j < _tree->GetColumnCount(); j++) {
             auto* col = _tree->GetDataView()->GetColumn(j);
             auto p = _tree->GetDataView()->GetColumnPosition(col);
-            if (p == (int)i && col->GetTitle() != CTRL_COLS[0].title) {
+            if (p == (int)i && ColumnTitleKey(col->GetTitle()) != CTRL_COLS[0].title) {
                 if (!colOrder.empty()) colOrder += ",";
-                colOrder += col->GetTitle();
+                colOrder += ColumnTitleKey(col->GetTitle());
             }
         }
     }
@@ -1150,8 +1155,8 @@ void ControllerListPanel::OnCharHook(wxKeyEvent& event) {
 }
 
 static const char* const NO_CONTROLLER_HINT =
-    "No controller selected. Pick a controller in the list to see its properties, "
-    "channel range and assigned models. The settings below apply to all controllers.";
+    wxTRANSLATE("No controller selected. Pick a controller in the list to see its properties, "
+                "channel range and assigned models. The settings below apply to all controllers.");
 
 wxWindow* ControllerListPanel::CreatePropertiesPanel(wxWindow* parent) {
     _propsPanel = new wxPanel(parent, wxID_ANY);
@@ -1161,7 +1166,7 @@ wxWindow* ControllerListPanel::CreatePropertiesPanel(wxWindow* parent) {
     _noSelectionHint->SetForegroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
     _propsPanel->Bind(wxEVT_SIZE, [this](wxSizeEvent& e) {
         if (_noSelectionHint->IsShown()) {
-            _noSelectionHint->SetLabel(NO_CONTROLLER_HINT);
+            _noSelectionHint->SetLabel(wxGetTranslation(NO_CONTROLLER_HINT));
             _noSelectionHint->Wrap(std::max(120, e.GetSize().GetWidth() - 12));
             _noSelectionHint->InvalidateBestSize();
         }
@@ -1177,8 +1182,8 @@ wxWindow* ControllerListPanel::CreatePropertiesPanel(wxWindow* parent) {
     _ledPing->Disable();
     leftColSizer->Add(_ledPing, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
 
-    _btnAddController = new wxButton(_propsPanel, wxID_ANY, "Add");
-    _btnAddController->SetToolTip("Add Controller");
+    _btnAddController = new wxButton(_propsPanel, wxID_ANY, _("Add"));
+    _btnAddController->SetToolTip(_("Add Controller"));
     _btnAddController->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) {
         if (!NetworkChangesAllowed()) return;
         wxMenu mnu;
@@ -1205,18 +1210,18 @@ wxWindow* ControllerListPanel::CreatePropertiesPanel(wxWindow* parent) {
     // flags include wxEXTEND_LAST_ON_EACH_LINE, which would stretch the last
     // button on each row to fill the leftover width
     wxWrapSizer* buttonSizer = new wxWrapSizer(wxHORIZONTAL, wxWRAPSIZER_DEFAULT_FLAGS & ~wxEXTEND_LAST_ON_EACH_LINE);
-    _btnVisualise = new wxButton(_propsPanel, wxID_ANY, "Visualise");
-    _btnUploadInput = new wxButton(_propsPanel, wxID_ANY, "Upload Input");
-    _btnUploadOutput = new wxButton(_propsPanel, wxID_ANY, "Upload Output");
-    _btnOpen = new wxButton(_propsPanel, wxID_ANY, "Open");
-    _btnOpenProxy = new wxButton(_propsPanel, wxID_ANY, "Open Proxy");
+    _btnVisualise = new wxButton(_propsPanel, wxID_ANY, _("Visualise"));
+    _btnUploadInput = new wxButton(_propsPanel, wxID_ANY, _("Upload Input"));
+    _btnUploadOutput = new wxButton(_propsPanel, wxID_ANY, _("Upload Output"));
+    _btnOpen = new wxButton(_propsPanel, wxID_ANY, wxGETTEXT_IN_CONTEXT("button", "Open"));
+    _btnOpenProxy = new wxButton(_propsPanel, wxID_ANY, _("Open Proxy"));
     for (wxButton* b : { _btnVisualise, _btnUploadInput, _btnUploadOutput, _btnOpen, _btnOpenProxy }) {
         buttonSizer->Add(b, 0, wxALL, 2);
         b->Enable(false);
     }
     // global actions — not tied to the selected controller
     _btnFPPConnect = new wxButton(_propsPanel, wxID_ANY, "FPP Connect");
-    _btnDiscover = new wxButton(_propsPanel, wxID_ANY, "Discover");
+    _btnDiscover = new wxButton(_propsPanel, wxID_ANY, _("Discover"));
     for (wxButton* b : { _btnFPPConnect, _btnDiscover }) {
         buttonSizer->Add(b, 0, wxALL, 2);
     }
@@ -1322,7 +1327,7 @@ void ControllerListPanel::UpdateControllerProperties() {
     bool haveController = selections.size() == 1 && om->GetController(selections.front()) != nullptr;
     wxSizer* sizer = _propsPanel->GetSizer();
     if (!haveController) {
-        _noSelectionHint->SetLabel(NO_CONTROLLER_HINT);
+        _noSelectionHint->SetLabel(wxGetTranslation(NO_CONTROLLER_HINT));
         _noSelectionHint->Wrap(std::max(120, _propsPanel->GetClientSize().GetWidth() - 12));
         _noSelectionHint->InvalidateBestSize();
         sizer->Show(_noSelectionHint, true);

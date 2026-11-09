@@ -15,8 +15,30 @@
 #include <wx/treelist.h>
 
 #include <algorithm>
+#include <map>
 
 #include "../../settings/XLightsConfigAdapter.h"
+
+static std::map<wxString, wxString>& TranslatedTitles() {
+    static std::map<wxString, wxString> titles; // shown title -> English key
+    return titles;
+}
+
+wxString TranslatedColumnTitle(const wxString& englishTitle) {
+    const wxString& tr = wxGetTranslation(englishTitle, wxString(), "column");
+    return tr != englishTitle ? tr : wxGetTranslation(englishTitle);
+}
+
+void RegisterTranslatedColumnTitles(const std::vector<const char*>& englishTitles) {
+    for (const char* title : englishTitles) {
+        TranslatedTitles()[TranslatedColumnTitle(title)] = title;
+    }
+}
+
+wxString ColumnTitleKey(const wxString& shownTitle) {
+    auto it = TranslatedTitles().find(shownTitle);
+    return it != TranslatedTitles().end() ? it->second : shownTitle;
+}
 
 static void SaveHiddenColumns(wxTreeListCtrl* tree, const std::string& configKey) {
     wxString hidden;
@@ -24,7 +46,7 @@ static void SaveHiddenColumns(wxTreeListCtrl* tree, const std::string& configKey
         auto* col = tree->GetDataView()->GetColumn(i);
         if (col->IsHidden()) {
             if (!hidden.empty()) hidden += ",";
-            hidden += col->GetTitle();
+            hidden += ColumnTitleKey(col->GetTitle());
         }
     }
     GetXLightsConfig()->Write(configKey, hidden);
@@ -41,7 +63,7 @@ static void ApplyHiddenColumns(wxTreeListCtrl* tree, const std::string& configKe
 
     for (unsigned i = 1; i < tree->GetColumnCount(); i++) {
         auto* col = tree->GetDataView()->GetColumn(i);
-        wxString title = col->GetTitle();
+        wxString title = ColumnTitleKey(col->GetTitle());
         bool alreadySeen = seenTitles.Index(title) != wxNOT_FOUND;
         if (!alreadySeen) {
             seenTitles.push_back(title);

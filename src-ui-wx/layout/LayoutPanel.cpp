@@ -385,12 +385,7 @@ public:
 // order setting and compared in English.
 static wxString ModelColumnKey(const wxString& title)
 {
-    for (const char* key : { STARTCHANCOLNAME, ENDCHANCOLNAME, CONTCONNCOLNAME }) {
-        if (title == wxGetTranslation(key)) {
-            return key;
-        }
-    }
-    return title;
+    return ColumnTitleKey(title);
 }
 
 wxTreeListItem lastFoundItem = nullptr;
@@ -1181,6 +1176,7 @@ wxTreeListCtrl* LayoutPanel::CreateTreeListCtrl(long style, wxPanel* panel, long
         colNames.push_back(CONTCONNCOLNAME);
     }
 
+    RegisterTranslatedColumnTitles({ STARTCHANCOLNAME, ENDCHANCOLNAME, CONTCONNCOLNAME });
     int i = 1;
     for (const auto& c : colNames) {
         if (c == STARTCHANCOLNAME) {

@@ -128,13 +128,13 @@ BatchRenderDialog::BatchRenderDialog(wxWindow* parent, OutputManager* outputMana
                                                 wxTL_CHECKBOX | wxTL_MULTIPLE, "ID_TREELISTVIEW_SEQUENCES");
     Connect(CheckListBox_Sequences->GetId(), wxEVT_TREELIST_ITEM_CHECKED, (wxObjectEventFunction)&BatchRenderDialog::OnSequenceListToggled);
     CheckListBox_Sequences->SetMinSize(wxSize(-1, 100));
-    CheckListBox_Sequences->AppendColumn("Sequence", wxCOL_WIDTH_AUTOSIZE,
+    CheckListBox_Sequences->AppendColumn(_("Sequence"), wxCOL_WIDTH_AUTOSIZE,
                                          wxALIGN_LEFT,
                                          wxCOL_RESIZABLE | wxCOL_SORTABLE);
-    CheckListBox_Sequences->AppendColumn("  Modified Date  ", wxCOL_WIDTH_AUTOSIZE,
+    CheckListBox_Sequences->AppendColumn(_("  Modified Date  "), wxCOL_WIDTH_AUTOSIZE,
                                          wxALIGN_CENTER,
                                          wxCOL_RESIZABLE | wxCOL_SORTABLE);
-    CheckListBox_Sequences->AppendColumn("Last Render Date", wxCOL_WIDTH_AUTOSIZE,
+    CheckListBox_Sequences->AppendColumn(_("Last Render Date"), wxCOL_WIDTH_AUTOSIZE,
                                          wxALIGN_LEFT,
                                          wxCOL_RESIZABLE | wxCOL_SORTABLE);
 

@@ -1861,7 +1861,7 @@ msgstr ""
 msgid "Effect Setting"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:259
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:259 src-ui-wx/sequencer/BufferPanel.cpp:131
 msgid "Preset"
 msgstr ""
 
@@ -2354,7 +2354,7 @@ msgstr ""
 msgid "This is typically the WIFI IP of a FPP instance that bridges two networks."
 msgstr ""
 
-#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:375 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:135 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:170 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:764 src-ui-wx/setup/ControllerConnectionDialog.cpp:69
+#: src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:375 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:135 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:170 src-ui-wx/layout/ControllerTreeUtils.cpp:33 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:764 ... (+1)
 msgid "Protocol"
 msgstr ""
 
@@ -2374,11 +2374,11 @@ msgstr ""
 msgid "Managed"
 msgstr ""
 
-#: src-ui-wx/controllerproperties/ControllerNullPropertyAdapter.cpp:35 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:188 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:469 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:687 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:765
+#: src-ui-wx/controllerproperties/ControllerNullPropertyAdapter.cpp:35 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:188 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:469 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:687 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:765 ... (+1)
 msgid "Channels"
 msgstr ""
 
-#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:189 src-ui-wx/layout/LayoutPanel.cpp:4354 src-ui-wx/layout/LayoutPanel.cpp:4361 src-ui-wx/sequencer/EffectTreeDialog.cpp:393 src-ui-wx/setup/ShowDirectoriesDialog.cpp:162
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:189 src-ui-wx/layout/LayoutPanel.cpp:4350 src-ui-wx/layout/LayoutPanel.cpp:4357 src-ui-wx/sequencer/EffectTreeDialog.cpp:393 src-ui-wx/setup/ShowDirectoriesDialog.cpp:162
 msgid "Name"
 msgstr ""
 
@@ -2386,7 +2386,7 @@ msgstr ""
 msgid "This must be unique."
 msgstr ""
 
-#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:192 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1080 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:435
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:192 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:1080 src-ui-wx/layout/ControllerTreeUtils.cpp:43 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:435
 msgid "Description"
 msgstr ""
 
@@ -2398,7 +2398,7 @@ msgstr ""
 msgid "Model/Category"
 msgstr ""
 
-#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:205
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:205 src-ui-wx/layout/ControllerTreeUtils.cpp:39
 msgid "Variant"
 msgstr ""
 
@@ -2426,7 +2426,7 @@ msgstr ""
 msgid "This option will send your controller configuration to the controller when you turn on output to lights. This is known to cause delays in turning on output to lights when controllers are not reachable."
 msgstr ""
 
-#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:224
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:224 src-ui-wx/layout/ControllerTreeUtils.cpp:42
 msgid "Auto Size"
 msgstr ""
 
@@ -2434,7 +2434,7 @@ msgstr ""
 msgid "This option will cause xLights to dynamically resize the number of channels on the controller to ensure there are exactly enough for the models on the controller."
 msgstr ""
 
-#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:228
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:228 src-ui-wx/layout/ControllerTreeUtils.cpp:49
 msgid "Full xLights Control"
 msgstr ""
 
@@ -2458,7 +2458,7 @@ msgstr ""
 msgid "This option will set the Gamma of all ports to this value unless specifically overriden by a model."
 msgstr ""
 
-#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:249 src-ui-wx/model/CustomModelDialog.cpp:485 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:547 src-ui-wx/modelproperties/ViewObjectPropertyAdapter.cpp:25
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:249 src-ui-wx/layout/ControllerTreeUtils.cpp:40 src-ui-wx/model/CustomModelDialog.cpp:485 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:547 src-ui-wx/modelproperties/ViewObjectPropertyAdapter.cpp:25
 msgid "Active"
 msgstr ""
 
@@ -3012,7 +3012,7 @@ msgstr ""
 msgid "Playlist:"
 msgstr ""
 
-#: src-ui-wx/controllers/HinksPixExportDialog.cpp:246 src-ui-wx/layout/ViewsModelsPanel.cpp:186 src-ui-wx/model/EditAliasesDialog.cpp:52 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:64 src-ui-wx/model/ModelFacesPanel.cpp:152 ... (+7)
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:246 src-ui-wx/layout/ControllerListPanel.cpp:1185 src-ui-wx/layout/ViewsModelsPanel.cpp:186 src-ui-wx/model/EditAliasesDialog.cpp:52 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:64 ... (+8)
 msgid "Add"
 msgstr ""
 
@@ -3044,7 +3044,7 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: src-ui-wx/controllers/HinksPixExportDialog.cpp:291 src-ui-wx/layout/LayoutPanel.cpp:753 src-ui-wx/setup/PixelTestDialog.cpp:1178
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:291 src-ui-wx/layout/LayoutPanel.cpp:748 src-ui-wx/setup/PixelTestDialog.cpp:1178
 msgid "Controllers"
 msgstr ""
 
@@ -3642,7 +3642,7 @@ msgstr ""
 msgid "xLights Show Status Report"
 msgstr ""
 
-#: src-ui-wx/diagnostics/CheckReportTranslation.h:31 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:60
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:31 src-ui-wx/sequencer/BatchRenderDialog.cpp:131 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:60
 msgid "Sequence"
 msgstr ""
 
@@ -4964,7 +4964,7 @@ msgstr ""
 msgid "Not added: "
 msgstr ""
 
-#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1725 src-ui-wx/layout/LayoutPanel.cpp:3291
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1725 src-ui-wx/layout/LayoutPanel.cpp:3287
 msgid "Filter models"
 msgstr ""
 
@@ -5211,7 +5211,7 @@ msgstr ""
 msgid "(enter URL manually below)"
 msgstr ""
 
-#: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:85
+#: src-ui-wx/klightmapper/CustomModelMethodPickerDialog.cpp:85 src-ui-wx/layout/ControllerListPanel.cpp:1224
 msgid "Discover"
 msgstr ""
 
@@ -5227,61 +5227,144 @@ msgstr ""
 msgid "Password:"
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:1349
-msgid "Controller Sync"
+#: src-ui-wx/layout/ControllerListPanel.cpp:1158
+msgid "No controller selected. Pick a controller in the list to see its properties, channel range and assigned models. The settings below apply to all controllers."
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:1351
-msgid "Sends a sync packet at the end of each frame for controllers to synchronise light change to. Supported by E1.31, ArtNET and ZCPP. Controller support varies."
+#: src-ui-wx/layout/ControllerListPanel.cpp:1186
+msgid "Add Controller"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1213
+msgid "Visualise"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1214
+msgid "Upload Input"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1215
+msgid "Upload Output"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1216
+msgctxt "button"
+msgid "Open"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1217
+msgid "Open Proxy"
 msgstr ""
 
 #: src-ui-wx/layout/ControllerListPanel.cpp:1354
-msgid "E1.31 Sync Universe"
+msgid "Controller Sync"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1356
+msgid "Sends a sync packet at the end of each frame for controllers to synchronise light change to. Supported by E1.31, ArtNET and ZCPP. Controller support varies."
 msgstr ""
 
 #: src-ui-wx/layout/ControllerListPanel.cpp:1359
+msgid "E1.31 Sync Universe"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:1364
 msgid "Max Duplicate Frames To Suppress"
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:1372
+#: src-ui-wx/layout/ControllerListPanel.cpp:1377
 msgid "Global Force Local IP"
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:1373
+#: src-ui-wx/layout/ControllerListPanel.cpp:1378
 msgid "Global FPP Proxy"
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:1439
+#: src-ui-wx/layout/ControllerListPanel.cpp:1444
 msgid "Last Input Upload"
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:1449
+#: src-ui-wx/layout/ControllerListPanel.cpp:1454
 msgid "Last Output Upload"
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:1468
+#: src-ui-wx/layout/ControllerListPanel.cpp:1473
 msgid "Show on Layout"
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:1469
+#: src-ui-wx/layout/ControllerListPanel.cpp:1474
 msgid "Shows this controller as a movable box in the layout preview so you can place it where it physically sits. Controller Tab Only shows it while this tab is selected; Layout Panel shows it anywhere in the layout editor but not during playback; Always shows it everywhere."
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:593
+#: src-ui-wx/layout/ControllerListPanel.cpp:243
+msgid "Filter controllers..."
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:258
+msgid "Show All Info"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:598
 msgid "Show Label"
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:595
+#: src-ui-wx/layout/ControllerListPanel.cpp:600
 msgid "Draws the controller name under its box in the preview."
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:596
+#: src-ui-wx/layout/ControllerListPanel.cpp:601
 #, c-format
 msgid "Label Size (%)"
 msgstr ""
 
-#: src-ui-wx/layout/ControllerListPanel.cpp:600
+#: src-ui-wx/layout/ControllerListPanel.cpp:605
 msgid "Size of the name label, as a percentage of the size that fits it to the box."
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:32
+msgid "Controller Name"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:34
+msgid "Address"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:35
+msgid "Universe/ID"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:37
+msgctxt "column"
+msgid "Vendor"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:38
+msgctxt "column"
+msgid "Model"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:41
+msgid "Auto Layout"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:44
+msgid "Auto Upload"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:45
+msgid "Port Brightness"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:46
+msgid "Port Gamma"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:47
+msgid "Proxy"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerTreeUtils.cpp:48
+msgid "Keep Channels"
 msgstr ""
 
 #: src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:102
@@ -5320,166 +5403,166 @@ msgstr ""
 msgid "Choose LOR S5 Preview File to Import"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:1060 src-ui-wx/layout/LayoutPanel.cpp:1080 src-ui-wx/layout/LayoutPanel.cpp:4199 src-ui-wx/layout/LayoutPanel.cpp:12580
+#: src-ui-wx/layout/LayoutPanel.cpp:1055 src-ui-wx/layout/LayoutPanel.cpp:1075 src-ui-wx/layout/LayoutPanel.cpp:4195 src-ui-wx/layout/LayoutPanel.cpp:12576
 msgid "Background Properties"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:10943 src-ui-wx/model/CustomModelDialog.cpp:1023 src-ui-wx/model/NodeSelectGrid.cpp:1085 src-ui-wx/sequencer/MainSequencer.cpp:1713 src-ui-wx/sequencer/MainSequencer.cpp:1727
+#: src-ui-wx/layout/LayoutPanel.cpp:10939 src-ui-wx/model/CustomModelDialog.cpp:1023 src-ui-wx/model/NodeSelectGrid.cpp:1085 src-ui-wx/sequencer/MainSequencer.cpp:1713 src-ui-wx/sequencer/MainSequencer.cpp:1727
 msgid "Unable to copy data to clipboard."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12074
+#: src-ui-wx/layout/LayoutPanel.cpp:12070
 msgid "Error capturing preview image"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12074
+#: src-ui-wx/layout/LayoutPanel.cpp:12070
 msgid "Image Capture Error"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12080
+#: src-ui-wx/layout/LayoutPanel.cpp:12076
 msgid "Save Image"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12219 src-ui-wx/layout/ViewsModelsPanel.cpp:3118 src-ui-wx/model/SubModelsPanel.cpp:4054
+#: src-ui-wx/layout/LayoutPanel.cpp:12215 src-ui-wx/layout/ViewsModelsPanel.cpp:3118 src-ui-wx/model/SubModelsPanel.cpp:4054
 msgid "Choose RGB Effects file to import from"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12862
+#: src-ui-wx/layout/LayoutPanel.cpp:12858
 msgid "Controller Properties"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12899
+#: src-ui-wx/layout/LayoutPanel.cpp:12895
 msgid "Model Properties"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12911
+#: src-ui-wx/layout/LayoutPanel.cpp:12907
 msgid "Group Settings"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:2707
+#: src-ui-wx/layout/LayoutPanel.cpp:2703
 msgid "Models from the base show folder can't be in a Set with this show's own models - the base folder can move its models without moving the rest of the Set."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:2957
+#: src-ui-wx/layout/LayoutPanel.cpp:2953
 #, c-format
 msgid "Set %s was not rotated because it contains a locked or base show model."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:2958
+#: src-ui-wx/layout/LayoutPanel.cpp:2954
 msgid "Bulk Edit Rotate"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3048
+#: src-ui-wx/layout/LayoutPanel.cpp:3044
 #, c-format
 msgid "Set %s was not moved because it contains a locked or base show model."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3049
+#: src-ui-wx/layout/LayoutPanel.cpp:3045
 #, c-format
 msgid "Sets %s were not moved because they contain a locked or base show model."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3076
+#: src-ui-wx/layout/LayoutPanel.cpp:3072
 msgid "Link as Set..."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3085
+#: src-ui-wx/layout/LayoutPanel.cpp:3081
 msgid "Add Selected to Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3087
+#: src-ui-wx/layout/LayoutPanel.cpp:3083
 msgid "Remove from Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3088
+#: src-ui-wx/layout/LayoutPanel.cpp:3084
 msgid "Rename..."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3089
+#: src-ui-wx/layout/LayoutPanel.cpp:3085
 msgid "Manage..."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3090 src-ui-wx/layout/ViewsModelsPanel.cpp:188 src-ui-wx/model/EditAliasesDialog.cpp:56 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:66 src-ui-wx/model/ModelStatesPanel.cpp:151 ... (+4)
+#: src-ui-wx/layout/LayoutPanel.cpp:3086 src-ui-wx/layout/ViewsModelsPanel.cpp:188 src-ui-wx/model/EditAliasesDialog.cpp:56 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:66 src-ui-wx/model/ModelStatesPanel.cpp:151 ... (+4)
 msgid "Delete"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3093
+#: src-ui-wx/layout/LayoutPanel.cpp:3089
 msgid "Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3116 src-ui-wx/layout/LayoutPanel.cpp:3126
+#: src-ui-wx/layout/LayoutPanel.cpp:3112 src-ui-wx/layout/LayoutPanel.cpp:3122
 msgid "Link as Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3123
+#: src-ui-wx/layout/LayoutPanel.cpp:3119
 msgid "Name for the new Set:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3134 src-ui-wx/layout/LayoutPanel.cpp:3255
+#: src-ui-wx/layout/LayoutPanel.cpp:3130 src-ui-wx/layout/LayoutPanel.cpp:3251
 #, c-format
 msgid "A Set named '%s' already exists. Choose another name:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3158
+#: src-ui-wx/layout/LayoutPanel.cpp:3154
 msgid "Add to Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3168 src-ui-wx/layout/LayoutPanel.cpp:3473
+#: src-ui-wx/layout/LayoutPanel.cpp:3164 src-ui-wx/layout/LayoutPanel.cpp:3469
 #, c-format
 msgid "'%s' is already in Set '%s'. Move it to Set '%s'?"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3170 src-ui-wx/layout/LayoutPanel.cpp:3475
+#: src-ui-wx/layout/LayoutPanel.cpp:3166 src-ui-wx/layout/LayoutPanel.cpp:3471
 msgid "Confirm Move"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3214
+#: src-ui-wx/layout/LayoutPanel.cpp:3210
 #, c-format
 msgid "Delete Set '%s'? Member models will not be affected."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3215
+#: src-ui-wx/layout/LayoutPanel.cpp:3211
 msgid "Confirm Delete"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3239
+#: src-ui-wx/layout/LayoutPanel.cpp:3235
 msgid "New Set name:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3243
+#: src-ui-wx/layout/LayoutPanel.cpp:3239
 msgid "Rename Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3272 src-ui-wx/layout/LayoutPanel.cpp:3318 src-ui-wx/layout/LayoutPanel.cpp:3440 src-ui-wx/layout/LayoutPanel.cpp:3462
+#: src-ui-wx/layout/LayoutPanel.cpp:3268 src-ui-wx/layout/LayoutPanel.cpp:3314 src-ui-wx/layout/LayoutPanel.cpp:3436 src-ui-wx/layout/LayoutPanel.cpp:3458
 msgid "Manage Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3282 src-ui-wx/model/ModelFacesPanel.cpp:145 src-ui-wx/model/ModelStatesPanel.cpp:137 src-ui-wx/model/SubModelsPanel.cpp:226
+#: src-ui-wx/layout/LayoutPanel.cpp:3278 src-ui-wx/model/ModelFacesPanel.cpp:145 src-ui-wx/model/ModelStatesPanel.cpp:137 src-ui-wx/model/SubModelsPanel.cpp:226
 msgid "Name:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3287
+#: src-ui-wx/layout/LayoutPanel.cpp:3283
 msgid ""
 "Checked models are members of this Set.\n"
 "Check to add, uncheck to remove."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3317
+#: src-ui-wx/layout/LayoutPanel.cpp:3313
 #, c-format
 msgid "A Set named '%s' already exists. Choose another name."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3417
+#: src-ui-wx/layout/LayoutPanel.cpp:3413
 #, c-format
 msgid " (in Set '%s')"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3439
+#: src-ui-wx/layout/LayoutPanel.cpp:3435
 #, c-format
 msgid "A Set needs at least 2 members. Delete Set '%s' instead?"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3461
+#: src-ui-wx/layout/LayoutPanel.cpp:3457
 #, c-format
 msgid "A Set named '%s' already exists. Name unchanged."
 msgstr ""
@@ -5496,136 +5579,136 @@ msgstr ""
 msgid "Ctrlr Conn"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3855
+#: src-ui-wx/layout/LayoutPanel.cpp:3851
 msgid "Select existing groups to add selections to"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3920
+#: src-ui-wx/layout/LayoutPanel.cpp:3916
 msgid "Select groups to remove model from"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4246 src-ui-wx/media/ResizeImageDialog.cpp:45 src-ui-wx/model/CustomModelDialog.cpp:391 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json ... (+3)
+#: src-ui-wx/layout/LayoutPanel.cpp:4242 src-ui-wx/media/ResizeImageDialog.cpp:45 src-ui-wx/model/CustomModelDialog.cpp:391 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json ... (+3)
 msgid "Width"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4250 src-ui-wx/media/ResizeImageDialog.cpp:50 src-ui-wx/model/CustomModelDialog.cpp:396 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:388 src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:55 ... (+5)
+#: src-ui-wx/layout/LayoutPanel.cpp:4246 src-ui-wx/media/ResizeImageDialog.cpp:50 src-ui-wx/model/CustomModelDialog.cpp:396 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:388 src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:55 ... (+5)
 msgid "Height"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4255 src-ui-wx/model/ModelDimmingCurveDialog.cpp:112 src-ui-wx/model/ModelDimmingCurveDialog.cpp:142 src-ui-wx/model/ModelDimmingCurveDialog.cpp:159 src-ui-wx/model/ModelDimmingCurveDialog.cpp:176 ... (+8)
+#: src-ui-wx/layout/LayoutPanel.cpp:4251 src-ui-wx/model/ModelDimmingCurveDialog.cpp:112 src-ui-wx/model/ModelDimmingCurveDialog.cpp:142 src-ui-wx/model/ModelDimmingCurveDialog.cpp:159 src-ui-wx/model/ModelDimmingCurveDialog.cpp:176 ... (+8)
 msgid "Brightness"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4260 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:558 src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:53 src-ui-wx/modelproperties/adapters/ImageObjectPropertyAdapter.cpp:30 src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:33 ... (+1)
+#: src-ui-wx/layout/LayoutPanel.cpp:4256 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:558 src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:53 src-ui-wx/modelproperties/adapters/ImageObjectPropertyAdapter.cpp:30 src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:33 ... (+1)
 msgid "Transparency"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4265
+#: src-ui-wx/layout/LayoutPanel.cpp:4261
 msgid "2D Bounding Box"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4268
+#: src-ui-wx/layout/LayoutPanel.cpp:4264
 msgid "2D Grid"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4271
+#: src-ui-wx/layout/LayoutPanel.cpp:4267
 msgid "2D Grid Spacing"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4276
+#: src-ui-wx/layout/LayoutPanel.cpp:4272
 msgid "X0 Is Center"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4358
+#: src-ui-wx/layout/LayoutPanel.cpp:4354
 msgid "SubModel names cannot be changed here."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4374
+#: src-ui-wx/layout/LayoutPanel.cpp:4370
 msgid "Dimensions"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4390
+#: src-ui-wx/layout/LayoutPanel.cpp:4386
 msgid "Size/Location"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4665
+#: src-ui-wx/layout/LayoutPanel.cpp:4661
 msgid "Preview layout saved"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:5237
+#: src-ui-wx/layout/LayoutPanel.cpp:5233
 #, c-format
 msgid "Set '%s' contains a locked or base show model - unlock it (or remove the base model from the Set) to move the Set."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:5978
+#: src-ui-wx/layout/LayoutPanel.cpp:5974
 msgid "Failed to download model file."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:692 src-ui-wx/layout/LayoutPanel.cpp:13497
+#: src-ui-wx/layout/LayoutPanel.cpp:687 src-ui-wx/layout/LayoutPanel.cpp:13493
 msgid "3D Objects"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:699 resources/effectmetadata/Bars.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/Ripple.json resources/effectmetadata/Spirals.json
+#: src-ui-wx/layout/LayoutPanel.cpp:694 resources/effectmetadata/Bars.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/Ripple.json resources/effectmetadata/Spirals.json
 msgid "3D"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:702
+#: src-ui-wx/layout/LayoutPanel.cpp:697
 msgid "Overlap checks enabled"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:717 src-ui-wx/layout/LayoutPrintPreviewDialog.cpp:264 src-ui-wx/layout/ModelGroupPanel.cpp:193
+#: src-ui-wx/layout/LayoutPanel.cpp:712 src-ui-wx/layout/LayoutPrintPreviewDialog.cpp:264 src-ui-wx/layout/ModelGroupPanel.cpp:193
 msgid "Preview:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:751 src-ui-wx/layout/LayoutPanel.cpp:865
+#: src-ui-wx/layout/LayoutPanel.cpp:746 src-ui-wx/layout/LayoutPanel.cpp:860
 msgid "Groups"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7629
+#: src-ui-wx/layout/LayoutPanel.cpp:7625
 msgid "Model Set contains a locked or base show model - unlock it (or remove the base model from the Set) to move the Set (Alt-drag moves a single model)."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7946
+#: src-ui-wx/layout/LayoutPanel.cpp:7942
 msgid "Set Center Offset Here"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7969
+#: src-ui-wx/layout/LayoutPanel.cpp:7965
 msgid "Save Layout Image"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7970
+#: src-ui-wx/layout/LayoutPanel.cpp:7966
 msgid "Print Layout Image..."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7971
+#: src-ui-wx/layout/LayoutPanel.cpp:7967
 msgid "Import Previews/Models/Groups/Viewpoints"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7972
+#: src-ui-wx/layout/LayoutPanel.cpp:7968
 msgid "Import LOR S5 Models/Groups"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7973
+#: src-ui-wx/layout/LayoutPanel.cpp:7969
 msgid "Export Layout As DXF"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7978
+#: src-ui-wx/layout/LayoutPanel.cpp:7974
 msgid "Set Current ViewPoint as Default"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7979 src-ui-wx/layout/ModelPreview.cpp:1349
+#: src-ui-wx/layout/LayoutPanel.cpp:7975 src-ui-wx/layout/ModelPreview.cpp:1349
 msgid "Restore Default ViewPoint"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7981
+#: src-ui-wx/layout/LayoutPanel.cpp:7977
 msgid "Save Current ViewPoint"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:8023
+#: src-ui-wx/layout/LayoutPanel.cpp:8019
 msgid "Show Models Not On Controller"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:8741
+#: src-ui-wx/layout/LayoutPanel.cpp:8737
 msgid "Choose Output File"
 msgstr ""
 
@@ -9368,6 +9451,14 @@ msgstr ""
 msgid "Force High Definition"
 msgstr ""
 
+#: src-ui-wx/sequencer/BatchRenderDialog.cpp:134
+msgid "  Modified Date  "
+msgstr ""
+
+#: src-ui-wx/sequencer/BatchRenderDialog.cpp:137
+msgid "Last Render Date"
+msgstr ""
+
 #: src-ui-wx/sequencer/BatchRenderDialog.cpp:91
 msgid "Only Show Directory"
 msgstr ""
@@ -11928,7 +12019,7 @@ msgstr ""
 msgid "Open Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:827 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:89 src-ui-wx/layout/LayoutPanel.cpp:706 src-ui-wx/model/GenerateCustomModelDialog.cpp:2799 ... (+3)
+#: src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:827 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:89 src-ui-wx/layout/LayoutPanel.cpp:701 src-ui-wx/model/GenerateCustomModelDialog.cpp:2799 ... (+3)
 msgid "Save"
 msgstr ""
 
@@ -12140,7 +12231,7 @@ msgstr ""
 msgid "Parm2"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:908 src-ui-wx/layout/LayoutPanel.cpp:4244
+#: src-ui-wx/xLightsMain.cpp:908 src-ui-wx/layout/LayoutPanel.cpp:4240
 msgid "Fill"
 msgstr ""
 

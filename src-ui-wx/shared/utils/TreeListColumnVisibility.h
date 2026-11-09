@@ -13,6 +13,8 @@
 #include <string>
 #include <vector>
 
+#include <wx/string.h>
+
 class wxTreeListCtrl;
 
 // Adds a right-click menu on the tree's column headers to show/hide columns.
@@ -27,3 +29,11 @@ class wxTreeListCtrl;
 // "<configKey>Seen" config entry.
 void InstallTreeListColumnVisibility(wxTreeListCtrl* tree, const std::string& configKey,
                                       const std::vector<std::string>& defaultHiddenTitles = {});
+
+// Column titles shown translated keep their English text as the key saved in
+// the config (column order, hidden columns). Register the English titles,
+// show TranslatedColumnTitle(title), and map a shown title back with ColumnTitleKey().
+// A title marked wxTRANSLATE_IN_CONTEXT("column", ...) uses that translation.
+wxString TranslatedColumnTitle(const wxString& englishTitle);
+void RegisterTranslatedColumnTitles(const std::vector<const char*>& englishTitles);
+wxString ColumnTitleKey(const wxString& shownTitle);

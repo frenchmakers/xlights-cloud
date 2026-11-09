@@ -22,6 +22,7 @@
 #include "layout/LayoutUtils.h"
 #include "outputs/Controller.h"
 #include "outputs/OutputManager.h"
+#include "shared/utils/TreeListColumnVisibility.h"
 
 using namespace ControllerTree;
 
@@ -84,7 +85,7 @@ void ControllerFullColumnsDialog::CreateTree() {
     // beyond that array.
     for (size_t i = 0; i < CTRL_FULL_COLUMN_ORDER_COUNT; i++) {
         const char* title = ControllerColumnTitle(CTRL_FULL_COLUMN_ORDER[i]);
-        _tree->AppendColumn(title, wxCOL_WIDTH_AUTOSIZE, wxALIGN_LEFT, wxCOL_RESIZABLE);
+        _tree->AppendColumn(TranslatedColumnTitle(title), wxCOL_WIDTH_AUTOSIZE, wxALIGN_LEFT, wxCOL_RESIZABLE);
     }
 
     _tree->Bind(wxEVT_TREELIST_ITEM_EXPANDING, &ControllerFullColumnsDialog::OnItemExpanding, this);
