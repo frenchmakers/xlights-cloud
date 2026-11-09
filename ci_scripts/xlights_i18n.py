@@ -24,11 +24,16 @@ C_STR = r'"(?:[^"\\\n]|\\.)*"'
 # _("...") and wxTRANSLATE("..."); adjacent literals are concatenated. _T("...") is not matched.
 KEYWORD_RE = re.compile(r'(?<![\w.>])(?:_|wxTRANSLATE)\(\s*(' + C_STR + r'(?:\s*' + C_STR + r')*)\s*\)')
 LITERAL_RE = re.compile(C_STR)
-# new wxXxxProperty("Label", ...), ->SetHelpString("Help text") and AUI pane
+# new wxXxxProperty("Label", ...), new wxPropertyCategory("Label", ...), ->SetHelpString("Help text") and AUI pane
 # .Caption("Title") / .Caption(wxT("Title")), translated when drawn
 # (xlPropertyGrid, TranslatedCaptionDockArt).
-PROPERTY_TEXT_RE = re.compile(r'(?:new\s+wx\w*Property\s*\(|SetHelpString\s*\(|\.Caption\s*\(\s*(?:wxT|_T)?\s*\(?)\s*('
+PROPERTY_TEXT_RE = re.compile(r'(?:new\s+wx\w*Property(?:Category)?\s*\(|SetHelpString\s*\(|\.Caption\s*\(\s*(?:wxT|_T)?\s*\(?)\s*('
                               + C_STR + r'(?:\s*' + C_STR + r')*)\s*\)?\s*[,)]')
+
+# xLights' own property classes take other arguments before the label, e.g.
+# new PopupDialogProperty(&_model, outputManager, "Dimming Curves", ...): the
+# label is the first literal, as long as no call comes before it.
+CUSTOM_PROPERTY_RE = re.compile(r'new\s+[A-Z]\w*Property\s*\([^;"()]*?(' + C_STR + r')')
 
 # DisplayError("Message") and friends (wxUtilities.cpp), translated when shown.
 DISPLAY_TEXT_RE = re.compile(r'(?<![\w.>])Display(?:Error|Warning|Info|Crit)\s*\(\s*('
@@ -94,7 +99,7 @@ def extract():
                     text = f.read()
                 # Property grid labels and help texts are plain literals that
                 # xlPropertyGrid translates when it paints (EnableLabelTranslation).
-                for m in list(PROPERTY_TEXT_RE.finditer(text)) + list(DISPLAY_TEXT_RE.finditer(text)):
+                for m in list(PROPERTY_TEXT_RE.finditer(text)) + list(CUSTOM_PROPERTY_RE.finditer(text)) + list(DISPLAY_TEXT_RE.finditer(text)):
                     msgid = "".join(c_unescape(lit[1:-1]) for lit in LITERAL_RE.findall(m.group(1)))
                     if msgid.strip():
                         line = text.count("\n", 0, m.start()) + 1

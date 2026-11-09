@@ -2593,6 +2593,10 @@ msgstr "Le nombre d'univers ne peut pas être modifié quand une sortie est en t
 msgid "Individual Sizes cannot be changed when an output is set to Auto Size."
 msgstr "Les tailles individuelles ne peuvent pas être modifiées quand une sortie est en taille auto."
 
+#: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:186 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:335 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:561 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:892
+msgid "Sizes"
+msgstr "Tailles"
+
 #: src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:234 src-ui-wx/controllerproperties/OutputPropertyAdapters.cpp:387
 msgid "Start Universe"
 msgstr "Univers de début"
@@ -5613,6 +5617,14 @@ msgstr "X0 au centre"
 msgid "SubModel names cannot be changed here."
 msgstr "Le nom d'un sous-modèle ne peut pas être modifié ici."
 
+#: src-ui-wx/layout/LayoutPanel.cpp:4362
+msgid "Dimensions"
+msgstr "Dimensions"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:4378
+msgid "Size/Location"
+msgstr "Taille/Position"
+
 #: src-ui-wx/layout/LayoutPanel.cpp:4653
 msgid "Preview layout saved"
 msgstr "Disposition de l'aperçu enregistrée"
@@ -6314,7 +6326,7 @@ msgstr "Canal unique"
 msgid "Node/Channel Count"
 msgstr "Nombre de nœuds/canaux"
 
-#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2538 src-ui-wx/model/StartChannelDialog.cpp:68
+#: src-ui-wx/model/GenerateCustomModelDialog.cpp:2538 src-ui-wx/model/StartChannelDialog.cpp:68 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:361 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:373
 msgid "Start Channel"
 msgstr "Canal de début"
 
@@ -7215,6 +7227,36 @@ msgstr "Taille du texte :"
 msgid "Layers"
 msgstr "Calques"
 
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:247
+#, c-format
+msgid "Strand/Node Names (%u node)"
+msgstr "Noms des brins/nœuds (%u nœud)"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:247
+#, c-format
+msgid "Strand/Node Names (%u nodes)"
+msgstr "Noms des brins/nœuds (%u nœuds)"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:251
+#, c-format
+msgid "Faces (%zu)"
+msgstr "Visages (%zu)"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:254
+#, c-format
+msgid "States (%zu)"
+msgstr "États (%zu)"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:257
+#, c-format
+msgid "SubModels (%d)"
+msgstr "Sous-modèles (%d)"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:260
+#, c-format
+msgid "Aliases (%zu)"
+msgstr "Alias (%zu)"
+
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:333
 msgid "Low Definition Factor"
 msgstr "Facteur basse définition"
@@ -7227,6 +7269,10 @@ msgstr "Canaux de début indiv."
 msgid "Individual start channels cannot be set if you have assigned a model to a controller rather than using start channels."
 msgstr "Les canaux de début individuels ne peuvent pas être réglés si le modèle est affecté à un contrôleur au lieu d'utiliser des canaux de début."
 
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:401
+msgid "Model Chain"
+msgstr "Chaînage du modèle"
+
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:402
 msgid "Beginning"
 msgstr ""
@@ -7238,6 +7284,10 @@ msgstr "Modèle ombre de"
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:431
 msgid "Preview"
 msgstr "Aperçu"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:443
+msgid "Dimming Curves"
+msgstr "Courbes de gradation"
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:460
 msgid "Aliases are used in mapping to provide alternate names for this model which might match a model in a sequence you are importing from. To use it use the Auto Map button."
@@ -7261,6 +7311,10 @@ msgstr ""
 "Maintenez Alt/Option en le faisant glisser pour ne déplacer que ce modèle dans l'ensemble.\n"
 "Gérez les ensembles avec le clic droit dans l'onglet Disposition."
 
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:492
+msgid "String Properties"
+msgstr "Propriétés de la chaîne"
+
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:497
 msgid "String Type"
 msgstr "Type de chaîne"
@@ -7276,6 +7330,10 @@ msgstr "Couleurs"
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:536
 msgid "RGBW Color Handling"
 msgstr "Gestion des couleurs RGBW"
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:541
+msgid "Appearance"
+msgstr "Apparence"
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:543
 msgid "If unchecked the model will not be shown in the layout screen."
@@ -7316,6 +7374,10 @@ msgstr "Couleur d'étiquette"
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:564
 msgid "A visual color assigned to the model in the model list."
 msgstr "Couleur attribuée au modèle dans la liste des modèles."
+
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:656
+msgid "Controller Connection"
+msgstr "Connexion au contrôleur"
 
 #: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:716
 msgid "Use Smart Remote"
@@ -7674,9 +7736,29 @@ msgstr "Transparence de l'image de fond %"
 msgid "Transparency of the background image (0 = fully opaque, 100 = fully invisible). Increase this so props/pixels positioned behind the image show through it."
 msgstr "Transparence de l'image de fond (0 = opaque, 100 = invisible). Augmentez-la pour voir les décors et pixels placés derrière l'image."
 
+#: src-ui-wx/modelproperties/adapters/CustomPropertyAdapter.cpp:94
+msgid "Model Data"
+msgstr "Données du modèle"
+
+#: src-ui-wx/modelproperties/adapters/DmxFloodlightPropertyAdapter.cpp:46 src-ui-wx/modelproperties/adapters/DmxMovingHeadAdvPropertyAdapter.cpp:131 src-ui-wx/modelproperties/adapters/DmxMovingHeadPropertyAdapter.cpp:103 src-ui-wx/modelproperties/adapters/DmxServo3dPropertyAdapter.cpp:182 src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:71 ... (+1)
+msgid "Common Properties"
+msgstr "Propriétés communes"
+
+#: src-ui-wx/modelproperties/adapters/DmxMovingHeadAdvPropertyAdapter.cpp:103 src-ui-wx/modelproperties/adapters/DmxMovingHeadPropertyAdapter.cpp:83 src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:225
+msgid "Color Properties"
+msgstr "Propriétés de couleur"
+
 #: src-ui-wx/modelproperties/adapters/DmxMovingHeadAdvPropertyAdapter.cpp:109 src-ui-wx/modelproperties/adapters/DmxMovingHeadPropertyAdapter.cpp:89
 msgid "Color Type"
 msgstr "Type de couleur"
+
+#: src-ui-wx/modelproperties/adapters/DmxMovingHeadAdvPropertyAdapter.cpp:127 src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:35
+msgid "Position Zones"
+msgstr "Zones de position"
+
+#: src-ui-wx/modelproperties/adapters/DmxMovingHeadAdvPropertyAdapter.cpp:128
+msgid "Zones"
+msgstr "Zones"
 
 #: src-ui-wx/modelproperties/adapters/DmxMovingHeadAdvPropertyAdapter.cpp:88 src-ui-wx/modelproperties/adapters/DmxMovingHeadPropertyAdapter.cpp:65
 msgid "Fixture"
@@ -7690,9 +7772,21 @@ msgstr "Style DMX"
 msgid "Hide Body"
 msgstr "Masquer le corps"
 
+#: src-ui-wx/modelproperties/adapters/DmxServo3dPropertyAdapter.cpp:136
+msgid "Servo Config"
+msgstr "Configuration des servos"
+
 #: src-ui-wx/modelproperties/adapters/DmxServo3dPropertyAdapter.cpp:139
 msgid "Show Pivot Axes"
 msgstr "Afficher les axes de pivot"
+
+#: src-ui-wx/modelproperties/adapters/DmxServo3dPropertyAdapter.cpp:166
+msgid "Servo Linkage"
+msgstr "Liaison des servos"
+
+#: src-ui-wx/modelproperties/adapters/DmxServo3dPropertyAdapter.cpp:174
+msgid "Mesh Linkage"
+msgstr "Liaison des maillages"
 
 #: src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:40
 msgid "Num Servos"
@@ -7702,9 +7796,17 @@ msgstr "Nb de servos"
 msgid "16 Bit"
 msgstr "16 bits"
 
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:152
+msgid "Skull Config"
+msgstr "Configuration du crâne"
+
 #: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:155 src-ui-wx/modelproperties/adapters/MeshObjectPropertyAdapter.cpp:36 src-ui-wx/modelproperties/helpers/DmxComponentPropertyHelpers.cpp:342
 msgid "Mesh Only"
 msgstr "Maillage seul"
+
+#: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:180
+msgid "Orientation Properties"
+msgstr "Propriétés d'orientation"
 
 #: src-ui-wx/modelproperties/adapters/DmxSkullPropertyAdapter.cpp:183
 msgid "Jaw Orientation"
@@ -7853,10 +7955,6 @@ msgstr "Lumières/nœud"
 #: src-ui-wx/modelproperties/adapters/PolyLinePropertyAdapter.cpp:97
 msgid "Alternate Drop Nodes"
 msgstr "Nœuds de descente alternés"
-
-#: src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:35
-msgid "Position Zones"
-msgstr "Zones de position"
 
 #: src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:44
 msgid "Pan Min"
@@ -8084,9 +8182,17 @@ msgstr "Nb de lumières gauche/droite"
 msgid "# Lights Bottom"
 msgstr "Nb de lumières en bas"
 
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:103
+msgid "Dimmer Properties"
+msgstr "Propriétés du gradateur"
+
 #: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:105 src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:413
 msgid "Dimmer Channel"
 msgstr "Canal du gradateur"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:123
+msgid "Beam Properties"
+msgstr "Propriétés du faisceau"
 
 #: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:125
 msgid "Beam Display Length"
@@ -8183,6 +8289,10 @@ msgstr "Délai de la roue de couleurs (ms)"
 #: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:424
 msgid "Color Wheel Size"
 msgstr "Taille de la roue de couleurs"
+
+#: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:65
+msgid "Shutter Properties"
+msgstr "Propriétés de l'obturateur"
 
 #: src-ui-wx/modelproperties/helpers/DmxAbilityPropertyHelpers.cpp:67
 msgid "Shutter Channel"
@@ -11088,6 +11198,10 @@ msgstr "CRITIQUE"
 #: src-ui-wx/shared/utils/xlLockButton.cpp:35
 msgid "Lock/Unlock. If Locked then a \"Create Random Effects\" will NOT change this value."
 msgstr "Verrouiller/déverrouiller. Si verrouillée, « Create Random Effects » ne modifiera PAS cette valeur."
+
+#: src-ui-wx/shared/utils/xlPropertyGrid.h:116
+msgid "--Click To Edit--"
+msgstr "--Cliquer pour modifier--"
 
 #: src-ui-wx/xLightsApp.cpp:1278
 msgid "Wiping settings\n"

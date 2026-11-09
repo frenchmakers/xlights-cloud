@@ -110,6 +110,15 @@ private:
                     p->SetLabel(tr);
                 }
             }
+            // Placeholder shown by the properties that open an editor dialog;
+            // the value is only displayed, never read back.
+            if (!p->IsCategory() && p->GetValue().GetType() == "string" &&
+                p->GetValue().GetString() == wxTRANSLATE("--Click To Edit--")) {
+                const wxString& tr = wxGetTranslation("--Click To Edit--");
+                if (tr != "--Click To Edit--") {
+                    p->SetValue(wxVariant(tr));
+                }
+            }
             const wxString help = p->GetHelpString();
             if (!help.empty()) {
                 const wxString& tr = wxGetTranslation(help);

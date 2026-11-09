@@ -244,20 +244,20 @@ protected:
 namespace {
 wxString FormatStrandNodeNamesLabel(const Model& m) {
     const auto nodes = m.GetNodeCount();
-    return wxString::Format("Strand/Node Names (%u %s)",
-                            nodes, nodes == 1 ? "node" : "nodes");
+    return wxString::Format(nodes == 1 ? _("Strand/Node Names (%u node)") : _("Strand/Node Names (%u nodes)"),
+                            nodes);
 }
 wxString FormatFacesLabel(const Model& m) {
-    return wxString::Format("Faces (%zu)", m.GetFaceInfo().size());
+    return wxString::Format(_("Faces (%zu)"), m.GetFaceInfo().size());
 }
 wxString FormatStatesLabel(const Model& m) {
-    return wxString::Format("States (%zu)", m.GetStateInfo().size());
+    return wxString::Format(_("States (%zu)"), m.GetStateInfo().size());
 }
 wxString FormatSubModelsLabel(const Model& m) {
-    return wxString::Format("SubModels (%d)", m.GetNumSubModels());
+    return wxString::Format(_("SubModels (%d)"), m.GetNumSubModels());
 }
 wxString FormatAliasesLabel(const Model& m) {
-    return wxString::Format("Aliases (%zu)", m.GetAliases().size());
+    return wxString::Format(_("Aliases (%zu)"), m.GetAliases().size());
 }
 // Choice index for an enum property: the changed property's index comes from
 // the event (the grid can still hold the old value, or not have the property at
