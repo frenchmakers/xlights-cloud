@@ -1542,6 +1542,74 @@ msgstr "Roto-zoom"
 msgid "Hue"
 msgstr "Teinte"
 
+#: src-ui-wx/EffectSymbolDialog.cpp:128
+#, c-format
+msgid ""
+"Are you sure you want to delete the symbol '%s'?\n"
+"\n"
+"This symbol has %zu linked effect(s). These effects will be converted to regular effects with their current settings preserved."
+msgstr ""
+"Voulez-vous vraiment supprimer le symbole « %s » ?\n"
+"\n"
+"Ce symbole a %zu effet(s) lié(s). Ces effets seront convertis en effets ordinaires, avec leurs réglages actuels."
+
+#: src-ui-wx/EffectSymbolDialog.cpp:134
+#, c-format
+msgid "Are you sure you want to delete the symbol '%s'?"
+msgstr "Voulez-vous vraiment supprimer le symbole « %s » ?"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:138
+msgid "Confirm Delete Symbol"
+msgstr "Confirmer la suppression du symbole"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:174
+msgid "Enter new name for the symbol:"
+msgstr "Nouveau nom du symbole :"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:175
+msgid "Rename Symbol"
+msgstr "Renommer le symbole"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:181
+msgid "Symbol name cannot be empty."
+msgstr "Le nom du symbole ne peut pas être vide."
+
+#: src-ui-wx/EffectSymbolDialog.cpp:181 src-ui-wx/EffectSymbolDialog.cpp:190 src-ui-wx/xLightsMain.cpp:9955 src-ui-wx/shared/utils/wxUtilities.cpp:142
+msgid "Error"
+msgstr "Erreur"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:189
+msgid "A symbol with this name already exists. Please choose a different name."
+msgstr "Un symbole porte déjà ce nom. Choisissez-en un autre."
+
+#: src-ui-wx/EffectSymbolDialog.cpp:38
+msgid "Effect Symbol Library"
+msgstr "Bibliothèque de symboles d'effets"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:47
+msgid "Symbol Name"
+msgstr "Nom du symbole"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:48
+msgid "Effect Type"
+msgstr "Type d'effet"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:49
+msgid "Linked Effects"
+msgstr "Effets liés"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:56 src-ui-wx/layout/LayoutPanel.cpp:3086 src-ui-wx/layout/ViewsModelsPanel.cpp:188 src-ui-wx/model/EditAliasesDialog.cpp:56 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:66 ... (+5)
+msgid "Delete"
+msgstr "Supprimer"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:57 src-ui-wx/layout/ViewsModelsPanel.cpp:190 src-ui-wx/model/ViewpointDialog.cpp:54 src-ui-wx/sequencer/EffectListDialog.cpp:54 src-ui-wx/sequencer/PerspectivesPanel.cpp:54 ... (+2)
+msgid "Rename"
+msgstr "Renommer"
+
+#: src-ui-wx/EffectSymbolDialog.cpp:58 src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:99 ... (+13)
+msgid "Close"
+msgstr "Fermer"
+
 #: src-ui-wx/app-shell/AboutDialog.cpp:34
 msgid "About xLights"
 msgstr "À propos de xLights"
@@ -1585,10 +1653,6 @@ msgstr "Sauvegarde annulée"
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:337
 msgid "Backup failed"
 msgstr "Échec de la sauvegarde"
-
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:91 src-ui-wx/app-shell/TipOfTheDayDialog.cpp:180 ... (+12)
-msgid "Close"
-msgstr "Fermer"
 
 #: src-ui-wx/app-shell/CloudBackupDialog.cpp:371
 msgid "Waiting for your answer..."
@@ -1856,67 +1920,80 @@ msgstr "OK"
 msgid "No Thanks"
 msgstr "Non merci"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:204 src-ui-wx/model/GenerateCustomModelDialog.cpp:2522 src-ui-wx/model/SubModelGenerateDialog.cpp:51 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:36 resources/effectmetadata/Guitar.json ... (+6)
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:138 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:230
+msgctxt "key"
+msgid "Control"
+msgstr "Ctrl"
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:141
+msgid "macOS Ctrl"
+msgstr "Ctrl macOS"
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:143
+msgid "Details"
+msgstr "Détails"
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:214 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:130 src-ui-wx/model/GenerateCustomModelDialog.cpp:2522 src-ui-wx/model/SubModelGenerateDialog.cpp:51 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:36 ... (+7)
 msgid "Type"
 msgstr "Type"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:218
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:228 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:131
 msgid "Key"
-msgstr ""
+msgstr "Touche"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:220 src-ui-wx/effectpanels/MovingHeadPanel.cpp:634 resources/effectmetadata/MovingHead.json
-msgid "Control"
-msgstr ""
-
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:223
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:233 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:139
 msgid "Alt"
-msgstr ""
+msgstr "Alt"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:226
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:236 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:140
 msgid "Shift"
-msgstr ""
+msgstr "Maj"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:229
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:239
 msgid "RawControl"
-msgstr ""
+msgstr "Ctrl brut"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:242 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269 resources/effectmetadata/Curtain.json resources/effectmetadata/Meteors.json ... (+1)
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:252 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269 resources/effectmetadata/Curtain.json resources/effectmetadata/Meteors.json ... (+1)
 msgid "Effect"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:247
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:257
 msgid "Effect Setting"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:259 src-ui-wx/sequencer/BufferPanel.cpp:131
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:269 src-ui-wx/sequencer/BufferPanel.cpp:131
 msgid "Preset"
 msgstr "Préréglage"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:409 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:410 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:411 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:412 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:132 ... (+4)
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:419 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:420 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:421 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:422 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:132 ... (+4)
 msgid "Y"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:530 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:538
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:48
+msgid "All tabs"
+msgstr "Tous les onglets"
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:540 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:548
 msgid "2020.15"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:58
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:66
 msgid "Edit Keybindings"
 msgstr "Modifier les raccourcis clavier"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:66
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:74
 msgid "Scope:"
 msgstr "Portée :"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:83
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:91
 msgid "Add Effect"
 msgstr "Ajouter un effet"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:85
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:93
 msgid "Add Preset"
 msgstr "Ajouter un préréglage"
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:87
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:95
 msgid "Add Apply Setting"
 msgstr "Ajouter un réglage à appliquer"
 
@@ -4373,6 +4450,10 @@ msgstr ""
 msgid "Pattern"
 msgstr ""
 
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:634 resources/effectmetadata/MovingHead.json
+msgid "Control"
+msgstr ""
+
 #: src-ui-wx/effectpanels/MovingHeadPanel.cpp:635 resources/effectmetadata/MovingHead.json
 msgid "Link"
 msgstr ""
@@ -5577,10 +5658,6 @@ msgstr "Renommer..."
 msgid "Manage..."
 msgstr "Gérer..."
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3086 src-ui-wx/layout/ViewsModelsPanel.cpp:188 src-ui-wx/model/EditAliasesDialog.cpp:56 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:66 src-ui-wx/model/ModelStatesPanel.cpp:151 ... (+4)
-msgid "Delete"
-msgstr "Supprimer"
-
 #: src-ui-wx/layout/LayoutPanel.cpp:3089
 msgid "Set"
 msgstr "Ensemble"
@@ -6037,10 +6114,6 @@ msgstr ""
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:181 src-ui-wx/sequencer/EffectTreeDialog.cpp:109
 msgid "vv"
 msgstr ""
-
-#: src-ui-wx/layout/ViewsModelsPanel.cpp:190 src-ui-wx/model/ViewpointDialog.cpp:54 src-ui-wx/sequencer/EffectListDialog.cpp:54 src-ui-wx/sequencer/PerspectivesPanel.cpp:54 src-ui-wx/sequencer/SequenceFacesPanel.cpp:59 ... (+1)
-msgid "Rename"
-msgstr "Renommer"
 
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:192
 msgid "Clone"
@@ -12081,6 +12154,10 @@ msgstr "Revenir à..."
 msgid "Open New xLights Instance"
 msgstr "Ouvrir une nouvelle instance de xLights"
 
+#: src-ui-wx/xLightsMain.cpp:2219
+msgid "Save Setup\tCTRL-s"
+msgstr "Enregistrer la configuration\tCTRL-s"
+
 #: src-ui-wx/xLightsMain.cpp:2782
 #, c-format
 msgid ""
@@ -12111,6 +12188,14 @@ msgstr "Onglet Séquenceur"
 #: src-ui-wx/xLightsMain.cpp:2861
 msgid "The Sequencer tab can be used to create RGB sequences. First, create a model of your RGB display element(s) by clicking on the Models button. Then try the different effects and settings until you create something you like. You can save the settings as a preset by clicking the New Preset button. From then on, that preset will be available in the presets drop-down list. You can combine effects by creating a second effect in the Effect 2 area, then choosing a Layering Method. To create a series of effects that will be used in a sequence, click the open file icon to open an xLights sequence. Choose which display elements/models you will use in this sequence. Then click the insert rows icon and type in the start time in seconds when that effect should begin. Rows will automatically sort by start time. To add an effect to the sequence, click on the grid cell in the desired display model column and the desired start time row, then click the Update button. When you are done creating effects for the sequence, click the save icon and the xLights sequence will be updated with the effects you stored in the grid."
 msgstr "L'onglet Séquenceur permet de créer des séquences RGB. Créez d'abord un modèle de vos éléments RGB en cliquant sur le bouton Modèles. Essayez ensuite les différents effets et réglages jusqu'à obtenir un résultat qui vous plaît. Vous pouvez enregistrer les réglages comme préréglage avec le bouton New Preset : ce préréglage sera ensuite disponible dans la liste des préréglages. Vous pouvez combiner des effets en créant un second effet dans la zone Effect 2, puis en choisissant une méthode de superposition. Pour créer une série d'effets à utiliser dans une séquence, cliquez sur l'icône d'ouverture pour ouvrir une séquence xLights. Choisissez les éléments ou modèles utilisés dans cette séquence. Cliquez ensuite sur l'icône d'insertion de lignes et saisissez l'heure de début, en secondes, de l'effet. Les lignes se trient automatiquement par heure de début. Pour ajouter un effet à la séquence, cliquez sur la cellule de la grille à l'intersection de la colonne du modèle et de la ligne de l'heure de début, puis sur le bouton Update. Une fois les effets de la séquence créés, cliquez sur l'icône d'enregistrement : la séquence xLights sera mise à jour avec les effets de la grille."
+
+#: src-ui-wx/xLightsMain.cpp:3068
+msgid "Save Layout\tCTRL-s"
+msgstr "Enregistrer la disposition\tCTRL-s"
+
+#: src-ui-wx/xLightsMain.cpp:3078
+msgid "Save Sequence\tCTRL-s"
+msgstr "Enregistrer la séquence\tCTRL-s"
 
 #: src-ui-wx/xLightsMain.cpp:3154 src-ui-wx/setup/PixelTestDialog.cpp:1496 src-ui-wx/setup/PixelTestDialog.cpp:3222
 msgid "Another process seems to be outputting to lights right now. This may not generate the result expected."
@@ -12212,6 +12297,14 @@ msgstr ""
 "      Cette opération ne peut pas être annulée.\n"
 "      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés."
 
+#: src-ui-wx/xLightsMain.cpp:6532
+msgid "Please open a sequence first."
+msgstr "Ouvrez d'abord une séquence."
+
+#: src-ui-wx/xLightsMain.cpp:6532
+msgid "No Sequence"
+msgstr "Aucune séquence"
+
 #: src-ui-wx/xLightsMain.cpp:6540
 msgid "There are no effect symbols in this sequence."
 msgstr "Cette séquence ne contient aucun symbole d'effet."
@@ -12276,7 +12369,7 @@ msgstr "Nouvelle séquence"
 msgid "Open Sequence"
 msgstr "Ouvrir une séquence"
 
-#: src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:827 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:89 src-ui-wx/layout/LayoutPanel.cpp:701 src-ui-wx/model/GenerateCustomModelDialog.cpp:2799 ... (+3)
+#: src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:3081 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:97 src-ui-wx/layout/LayoutPanel.cpp:701 ... (+4)
 msgid "Save"
 msgstr "Enregistrer"
 
@@ -12424,7 +12517,7 @@ msgstr ""
 msgid "Off - DELETE"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:897 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:530 src-ui-wx/effectpanels/MovingHeadPanel.cpp:357
+#: src-ui-wx/xLightsMain.cpp:897 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:540 src-ui-wx/effectpanels/MovingHeadPanel.cpp:357
 msgid "On"
 msgstr ""
 
@@ -12576,11 +12669,11 @@ msgstr "Voir le journal"
 msgid "Tools Toolbar"
 msgstr "Barre des outils"
 
-#: src-ui-wx/xLightsMain.cpp:942
+#: src-ui-wx/xLightsMain.cpp:942 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:48
 msgid "Layout"
 msgstr "Disposition"
 
-#: src-ui-wx/xLightsMain.cpp:943
+#: src-ui-wx/xLightsMain.cpp:943 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:48
 msgid "Sequencer"
 msgstr "Séquenceur"
 
@@ -12643,10 +12736,6 @@ msgstr "Exporter la vidéo de l'aperçu maison"
 #: src-ui-wx/xLightsMain.cpp:9955
 msgid "No AI Services Registered for creating images"
 msgstr "Aucun service d'IA n'est configuré pour créer des images"
-
-#: src-ui-wx/xLightsMain.cpp:9955 src-ui-wx/shared/utils/wxUtilities.cpp:142
-msgid "Error"
-msgstr "Erreur"
 
 #: src-ui-wx/xLightsMain.cpp:997
 msgid "Select Show Folder"

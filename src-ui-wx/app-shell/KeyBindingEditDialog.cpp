@@ -44,6 +44,14 @@ BEGIN_EVENT_TABLE(KeyBindingEditDialog,wxDialog)
 	//*)
 END_EVENT_TABLE()
 
+// Scope choice entries, in order; EncodeScope() takes the English name.
+static const char* const SCOPE_NAMES[] = { wxTRANSLATE("Layout"), wxTRANSLATE("Sequencer"), wxTRANSLATE("All tabs") };
+
+static std::string ScopeName(int index)
+{
+    return index >= 0 && index < (int)WXSIZEOF(SCOPE_NAMES) ? SCOPE_NAMES[index] : SCOPE_NAMES[1];
+}
+
 KeyBindingEditDialog::KeyBindingEditDialog(xLightsFrame* parent, KeyBindingMap* keyBindings, EffectManager* effectManager, wxWindowID id,const wxPoint& pos,const wxSize& size)
 {
 	_xLights = parent;
@@ -112,26 +120,27 @@ KeyBindingEditDialog::KeyBindingEditDialog(xLightsFrame* parent, KeyBindingMap* 
 	Layout();
 
 	//Choice_Scope->AppendString("Controller");
-	Choice_Scope->AppendString("Layout");
-	Choice_Scope->AppendString("Sequencer");
-	Choice_Scope->AppendString("All tabs");
+	// Shown translated; the selection is read back by index (see ScopeName()).
+	for (const char* scope : SCOPE_NAMES) {
+		Choice_Scope->AppendString(wxGetTranslation(scope));
+	}
 
-	Choice_Scope->SetStringSelection("Sequencer");
+	Choice_Scope->SetSelection(1); // Sequencer
 
-	ListCtrl_Bindings->AppendColumn("Type");
-	ListCtrl_Bindings->AppendColumn("Key", wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
+	ListCtrl_Bindings->AppendColumn(_("Type"));
+	ListCtrl_Bindings->AppendColumn(_("Key"), wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
 #ifdef __WXOSX__
     ListCtrl_Bindings->AppendColumn("Command \u2318", wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
     ListCtrl_Bindings->AppendColumn("Option \u2325", wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
     ListCtrl_Bindings->AppendColumn("Shift \u21E7", wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
     ListCtrl_Bindings->AppendColumn("Control \u2303", wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
 #else
-    ListCtrl_Bindings->AppendColumn("Control", wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
-    ListCtrl_Bindings->AppendColumn("Alt", wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
-    ListCtrl_Bindings->AppendColumn("Shift", wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
-    ListCtrl_Bindings->AppendColumn("macOS Ctrl", wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
+    ListCtrl_Bindings->AppendColumn(wxGETTEXT_IN_CONTEXT("key", "Control"), wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
+    ListCtrl_Bindings->AppendColumn(_("Alt"), wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
+    ListCtrl_Bindings->AppendColumn(_("Shift"), wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
+    ListCtrl_Bindings->AppendColumn(_("macOS Ctrl"), wxLIST_FORMAT_CENTRE, wxLIST_AUTOSIZE_USEHEADER);
 #endif
-    ListCtrl_Bindings->AppendColumn("Details");
+    ListCtrl_Bindings->AppendColumn(_("Details"));
 
     LoadList();
 
@@ -146,6 +155,7 @@ KeyBindingEditDialog::KeyBindingEditDialog(xLightsFrame* parent, KeyBindingMap* 
 		// Default style
 		wxPG_DEFAULT_STYLE);
 	_propertyGrid->SetExtraStyle(wxWS_EX_PROCESS_IDLE | wxPG_EX_HELP_AS_TOOLTIPS);
+	static_cast<xlPropertyGrid*>(_propertyGrid)->EnableLabelTranslation();
 	FlexGridSizer3->Add(_propertyGrid, 1, wxALL | wxEXPAND, 5);
 	_propertyGrid->Connect(wxEVT_PG_CHANGED, (wxObjectEventFunction)&KeyBindingEditDialog::OnControllerPropertyGridChange, 0, this);
     _propertyGrid->SetValidationFailureBehavior(wxPGVFBFlags::MarkCell | wxPGVFBFlags::Beep);
@@ -217,7 +227,7 @@ void KeyBindingEditDialog::SetKeyBindingProperties() {
 	}
 	_propertyGrid->Append(new wxEnumProperty("Key", "KBKey", choices, val));
 
-	p = _propertyGrid->Append(new wxBoolProperty("Control", "KBControl", b.RequiresControl()));
+	p = _propertyGrid->Append(new wxBoolProperty(wxGETTEXT_IN_CONTEXT("key", "Control"), "KBControl", b.RequiresControl()));
 	p->SetEditor("CheckBox");
 
 	p = _propertyGrid->Append(new wxBoolProperty("Alt", "KBAlt", b.RequiresAlt()));
@@ -384,7 +394,7 @@ void KeyBindingEditDialog::LoadList()
 
 	std::vector<const KeyBinding*> bindings;
 	for (const auto& it : _keyBindings->GetBindings()) {
-		if (it.InScope(EncodeScope(Choice_Scope->GetStringSelection()))) {
+		if (it.InScope(EncodeScope(ScopeName(Choice_Scope->GetSelection())))) {
 			bindings.push_back(&it);
 		}
 	}

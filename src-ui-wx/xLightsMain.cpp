@@ -2216,7 +2216,7 @@ xLightsFrame::xLightsFrame(wxWindow* parent, int ab, wxWindowID id, bool renderO
     RegisterPlatformTextDrawingContext();
 
     MenuItem_File_Save->Enable(true);
-    MenuItem_File_Save->SetItemLabel("Save Setup\tCTRL-s");
+    MenuItem_File_Save->SetItemLabel(_("Save Setup\tCTRL-s"));
 
     splash.Hide();
 
@@ -3065,7 +3065,7 @@ void xLightsFrame::OnNotebook1PageChanged1(wxAuiNotebookEvent& event)
         GetOutputModelManager()->AddASAPWork(OutputModelManager::WORK_REDRAW_LAYOUTPREVIEW, "OnNotebook1PageChanged");
         SetStatusText(_(""));
         MenuItem_File_Save->Enable(!readOnlyMode);
-        MenuItem_File_Save->SetItemLabel("Save Layout\tCTRL-s");
+        MenuItem_File_Save->SetItemLabel(_("Save Layout\tCTRL-s"));
         layoutPanel->RestoreFloatingPanes();
     } else if (pagenum == NEWSEQUENCER) {
         InitSequencer();
@@ -3075,10 +3075,10 @@ void xLightsFrame::OnNotebook1PageChanged1(wxAuiNotebookEvent& event)
             _effectPresetsInitialized = true;
         }
         EffectSettingsTimer.Start(50, wxTIMER_ONE_SHOT);
-        MenuItem_File_Save->SetItemLabel("Save Sequence\tCTRL-s");
+        MenuItem_File_Save->SetItemLabel(_("Save Sequence\tCTRL-s"));
         MenuItem_File_Save->Enable(MenuItem_File_SaveAs_Sequence->IsEnabled());
     } else {
-        MenuItem_File_Save->SetItemLabel("Save");
+        MenuItem_File_Save->SetItemLabel(_("Save"));
         SetStatusText(_(""));
     }
     SetAudioControls();
@@ -6529,7 +6529,7 @@ void xLightsFrame::OnMenuItem_EffectSymbolsSelected(wxCommandEvent& event)
 void xLightsFrame::OnMenuItem_ConvertSymbolsSelected(wxCommandEvent& event)
 {
     if (CurrentSeqXmlFile == nullptr) {
-        wxMessageBox("Please open a sequence first.", "No Sequence", wxOK | wxICON_INFORMATION, this);
+        wxMessageBox(_("Please open a sequence first."), _("No Sequence"), wxOK | wxICON_INFORMATION, this);
         return;
     }
 

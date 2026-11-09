@@ -35,7 +35,7 @@ BEGIN_EVENT_TABLE(EffectSymbolDialog, wxDialog)
 END_EVENT_TABLE()
 
 EffectSymbolDialog::EffectSymbolDialog(wxWindow* parent, SequenceElements* sequenceElements)
-    : wxDialog(parent, wxID_ANY, "Effect Symbol Library", wxDefaultPosition, wxSize(500, 400),
+    : wxDialog(parent, wxID_ANY, _("Effect Symbol Library"), wxDefaultPosition, wxSize(500, 400),
                wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER)
     , m_sequenceElements(sequenceElements)
 {
@@ -44,18 +44,18 @@ EffectSymbolDialog::EffectSymbolDialog(wxWindow* parent, SequenceElements* seque
     // Create list control
     m_symbolList = new wxListCtrl(this, ID_SYMBOL_LIST, wxDefaultPosition, wxDefaultSize,
                                    wxLC_REPORT | wxLC_SINGLE_SEL);
-    m_symbolList->InsertColumn(0, "Symbol Name", wxLIST_FORMAT_LEFT, 180);
-    m_symbolList->InsertColumn(1, "Effect Type", wxLIST_FORMAT_LEFT, 120);
-    m_symbolList->InsertColumn(2, "Linked Effects", wxLIST_FORMAT_CENTER, 100);
+    m_symbolList->InsertColumn(0, _("Symbol Name"), wxLIST_FORMAT_LEFT, 180);
+    m_symbolList->InsertColumn(1, _("Effect Type"), wxLIST_FORMAT_LEFT, 120);
+    m_symbolList->InsertColumn(2, _("Linked Effects"), wxLIST_FORMAT_CENTER, 100);
 
     mainSizer->Add(m_symbolList, 1, wxEXPAND | wxALL, 10);
 
     // Button sizer
     wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
 
-    m_deleteButton = new wxButton(this, ID_DELETE_BUTTON, "Delete");
-    m_renameButton = new wxButton(this, ID_RENAME_BUTTON, "Rename");
-    m_closeButton = new wxButton(this, ID_CLOSE_BUTTON, "Close");
+    m_deleteButton = new wxButton(this, ID_DELETE_BUTTON, _("Delete"));
+    m_renameButton = new wxButton(this, ID_RENAME_BUTTON, _("Rename"));
+    m_closeButton = new wxButton(this, ID_CLOSE_BUTTON, _("Close"));
 
     buttonSizer->Add(m_deleteButton, 0, wxRIGHT, 5);
     buttonSizer->Add(m_renameButton, 0, wxRIGHT, 5);
@@ -125,17 +125,17 @@ void EffectSymbolDialog::OnDeleteClick(wxCommandEvent& event)
     wxString message;
     if (linkedCount > 0) {
         message = wxString::Format(
-            "Are you sure you want to delete the symbol '%s'?\n\n"
-            "This symbol has %zu linked effect(s). These effects will be "
-            "converted to regular effects with their current settings preserved.",
+            _("Are you sure you want to delete the symbol '%s'?\n\n"
+              "This symbol has %zu linked effect(s). These effects will be "
+              "converted to regular effects with their current settings preserved."),
             symbolName.c_str(), linkedCount);
     } else {
         message = wxString::Format(
-            "Are you sure you want to delete the symbol '%s'?",
+            _("Are you sure you want to delete the symbol '%s'?"),
             symbolName.c_str());
     }
 
-    if (wxMessageBox(message, "Confirm Delete Symbol",
+    if (wxMessageBox(message, _("Confirm Delete Symbol"),
                      wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION, this) != wxYES) {
         return;
     }
@@ -171,14 +171,14 @@ void EffectSymbolDialog::OnRenameClick(wxCommandEvent& event)
     EffectSymbol* symbol = symbols[dataIndex];
     if (symbol == nullptr) return;
 
-    wxTextEntryDialog dlg(this, "Enter new name for the symbol:",
-                          "Rename Symbol", symbol->GetName());
+    wxTextEntryDialog dlg(this, _("Enter new name for the symbol:"),
+                          _("Rename Symbol"), symbol->GetName());
 
     if (dlg.ShowModal() != wxID_OK) return;
 
     std::string newName = dlg.GetValue().ToStdString();
     if (newName.empty()) {
-        wxMessageBox("Symbol name cannot be empty.", "Error", wxOK | wxICON_ERROR, this);
+        wxMessageBox(_("Symbol name cannot be empty."), _("Error"), wxOK | wxICON_ERROR, this);
         return;
     }
 
@@ -186,8 +186,8 @@ void EffectSymbolDialog::OnRenameClick(wxCommandEvent& event)
 
     // Check if name already exists
     if (symbolMgr.SymbolNameExists(newName)) {
-        wxMessageBox("A symbol with this name already exists. Please choose a different name.",
-                     "Error", wxOK | wxICON_ERROR, this);
+        wxMessageBox(_("A symbol with this name already exists. Please choose a different name."),
+                     _("Error"), wxOK | wxICON_ERROR, this);
         return;
     }
 
