@@ -159,12 +159,25 @@ jobs:
           version="${{ steps.pick.outputs.version }}"
           base=$(git merge-base HEAD upstream/master)
           git diff --binary "$base" HEAD > "$RUNNER_TEMP/feature.patch"
+          # Changes to files this version does not have yet (features the
+          # xLights team added after the tag) are left out.
+          excludes=()
+          skipped=""
+          for f in $(git diff --name-only --diff-filter=M "$base" HEAD); do
+            if ! git cat-file -e "refs/upstream-tags/$version:$f" 2> /dev/null; then
+              excludes+=("--exclude=$f")
+              skipped="$skipped $f"
+            fi
+          done
+          [ -n "$skipped" ] && echo "::notice::Not in $version, left out:$skipped"
           git checkout -q --detach "refs/upstream-tags/$version"
-          if ! git apply --3way --index "$RUNNER_TEMP/feature.patch"; then
+          if ! git apply --3way --index "${excludes[@]}" "$RUNNER_TEMP/feature.patch" 2> "$RUNNER_TEMP/apply.log"; then
+            cat "$RUNNER_TEMP/apply.log"
             title="xLights Cloud does not apply onto $version"
             files=$(git diff --name-only --diff-filter=U | sed 's/^/- `/; s/$/`/')
+            errors=$(grep -E '^error:' "$RUNNER_TEMP/apply.log" | head -20)
             gh issue create --title "$title" \
-              --body "$(printf 'Applying `%s` (%s) onto the official tag `%s` conflicts on:\n\n%s\n\nRun the workflow again once the branch is fixed.' "$GITHUB_REF_NAME" "${GITHUB_SHA::9}" "$version" "$files")" || true
+              --body "$(printf 'Applying `%s` (%s) onto the official tag `%s` failed.\n\nConflicts:\n\n%s\n\nErrors:\n\n```\n%s\n```\n\nRun the workflow again once the branch is fixed.' "$GITHUB_REF_NAME" "${GITHUB_SHA::9}" "$version" "$files" "$errors")" || true
             exit 1
           fi
           # Bring the French catalog in line with this version's sources: list
