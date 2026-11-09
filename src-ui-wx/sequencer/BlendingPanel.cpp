@@ -146,7 +146,7 @@ wxWindow* BlendingPanel::CreateCustomControl(wxWindow* parentWin, wxSizer* sizer
     std::string id = prop.value("id", "");
     if (id == "ResetPanelRow") {
         _resetBlendingPanelCheck = new wxCheckBox(parentWin, wxNewId(),
-                                                 "Reset panel when changing effects",
+                                                 _("Reset panel when changing effects"),
                                                  wxDefaultPosition, wxDefaultSize, 0,
                                                  wxDefaultValidator,
                                                  _T("IDD_CHECKBOX_ResetBlendingPanel"));

@@ -103,7 +103,7 @@ public:
     TimeDisplayControl(wxPanel* parent, wxWindowID id, const wxPoint &pos=wxDefaultPosition,
                        const wxSize &size=wxDefaultSize, long style=0)
     : GRAPHICS_BASE_CLASS(parent, id, pos, size, style, "TimeDisplay") {
-        _time = "Time: 00:00:00";
+        _time = _("Time: 00:00:00").ToStdString();
         _selected = "";
         _fps = "";
         newFontSize = 14;
@@ -414,10 +414,10 @@ bool MainSequencer::UpdateTimeDisplay(int time_ms, const std::vector<float> &fps
     int seconds = time / 1000;
     int minutes = seconds / 60;
     seconds = seconds % 60;
-    wxString play_time = wxString::Format("Time: %d:%02d.%02d", minutes, seconds, msec);
+    wxString play_time = wxString::Format(_("Time: %d:%02d.%02d"), minutes, seconds, msec);
     if(mShowAlternateTimingFormat) {
         int totalSeconds = (minutes * 60) + seconds;
-        play_time = wxString::Format("Time: %d.%02ds", totalSeconds, msec);
+        play_time = wxString::Format(_("Time: %d.%02ds"), totalSeconds, msec);
     }
     wxString fpsStr;
     if (!fps.empty()) {

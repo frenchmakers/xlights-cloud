@@ -24,8 +24,15 @@ C_STR = r'"(?:[^"\\\n]|\\.)*"'
 # _("...") and wxTRANSLATE("..."); adjacent literals are concatenated. _T("...") is not matched.
 KEYWORD_RE = re.compile(r'(?<![\w.>])(?:_|wxTRANSLATE)\(\s*(' + C_STR + r'(?:\s*' + C_STR + r')*)\s*\)')
 LITERAL_RE = re.compile(C_STR)
-# new wxXxxProperty("Label", ...) and ->SetHelpString("Help text")
-PROPERTY_TEXT_RE = re.compile(r'(?:new\s+wx\w*Property\s*\(|SetHelpString\s*\()\s*(' + C_STR + r'(?:\s*' + C_STR + r')*)\s*[,)]')
+# new wxXxxProperty("Label", ...), ->SetHelpString("Help text") and AUI pane
+# .Caption("Title") / .Caption(wxT("Title")), translated when drawn
+# (xlPropertyGrid, TranslatedCaptionDockArt).
+PROPERTY_TEXT_RE = re.compile(r'(?:new\s+wx\w*Property\s*\(|SetHelpString\s*\(|\.Caption\s*\(\s*(?:wxT|_T)?\s*\(?)\s*('
+                              + C_STR + r'(?:\s*' + C_STR + r')*)\s*\)?\s*[,)]')
+
+# DisplayError("Message") and friends (wxUtilities.cpp), translated when shown.
+DISPLAY_TEXT_RE = re.compile(r'(?<![\w.>])Display(?:Error|Warning|Info|Crit)\s*\(\s*('
+                             + C_STR + r'(?:\s*' + C_STR + r')*)\s*[,)]')
 
 C_ESCAPES = {"n": "\n", "t": "\t", "r": "\r", '"': '"', "'": "'", "\\": "\\", "a": "\a", "b": "\b", "f": "\f", "v": "\v", "?": "?"}
 
@@ -87,7 +94,7 @@ def extract():
                     text = f.read()
                 # Property grid labels and help texts are plain literals that
                 # xlPropertyGrid translates when it paints (EnableLabelTranslation).
-                for m in PROPERTY_TEXT_RE.finditer(text):
+                for m in list(PROPERTY_TEXT_RE.finditer(text)) + list(DISPLAY_TEXT_RE.finditer(text)):
                     msgid = "".join(c_unescape(lit[1:-1]) for lit in LITERAL_RE.findall(m.group(1)))
                     if msgid.strip():
                         line = text.count("\n", 0, m.start()) + 1

@@ -69,6 +69,8 @@
 #include "app-shell/EmailDialog.h"
 #include "import_export/ExportSettings.h"
 #include "shared/utils/BitmapCache.h"
+#include "shared/utils/TranslatedDockArt.h"
+#include "diagnostics/CheckReportTranslation.h"
 #include "shared/utils/ExternalHooksUI.h"
 #include "diagnostics/FindDataPanel.h"
 #include "render/GPURenderUtils.h"
@@ -1449,6 +1451,8 @@ xLightsFrame::xLightsFrame(wxWindow* parent, int ab, wxWindowID id, bool renderO
     MainAuiManager->Update();
 
     Notebook1->SetArtProvider(new wxAuiGenericTabArt());
+    MainAuiManager->SetArtProvider(new TranslatedCaptionDockArt<>());
+    m_mgr->SetArtProvider(new TranslatedCaptionDockArt<>());
 
     auto* config = GetXLightsConfig();
     if (config == nullptr) {
@@ -5869,6 +5873,9 @@ std::string xLightsFrame::CheckSequence(bool displayInEditor, bool writeToFile)
         TempFileManager::GetTempFileManager().AddTempFile(ToStdString(destCss));
 
         std::string html = report.GenerateHTML(IsDarkMode());
+        if (wxTranslations* tr = wxTranslations::Get()) {
+            html = CheckReportTranslation::TranslateHTML(html, tr->GetBestTranslation("xlights", wxLANGUAGE_ENGLISH_US));
+        }
         f.Write(html.c_str(), html.length());
         f.Close();
 

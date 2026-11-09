@@ -1939,6 +1939,14 @@ msgstr ""
 msgid "&Cancel"
 msgstr ""
 
+#: src-ui-wx/app-shell/TabConvert.cpp:427
+msgid "Cannot export to LOR unless the sequence timing is evenly divisible by 10ms"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabConvert.cpp:628
+msgid "Cannot export to ESEQ unless the sequence timing is 50ms, Use newer Compressed Format instead"
+msgstr ""
+
 #: src-ui-wx/app-shell/TabConvert.cpp:750
 msgid "Export Model Video"
 msgstr ""
@@ -1996,6 +2004,18 @@ msgstr ""
 msgid "%s     Updated in %7.3f seconds"
 msgstr ""
 
+#: src-ui-wx/app-shell/TabSequence.cpp:1741 src-ui-wx/app-shell/TabSequence.cpp:2011
+msgid "You must open a sequence first!"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1747 src-ui-wx/app-shell/TabSequence.cpp:2006
+msgid "Sequences cannot be saved in read only mode!"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1793 src-ui-wx/app-shell/TabSequence.cpp:2043
+msgid "File name cannot be empty"
+msgstr ""
+
 #: src-ui-wx/app-shell/TabSequence.cpp:1848
 msgid " ... Saving xsq."
 msgstr ""
@@ -2009,9 +2029,33 @@ msgstr ""
 msgid "Rendered in %7.3f seconds"
 msgstr ""
 
+#: src-ui-wx/app-shell/TabSequence.cpp:2665 src-ui-wx/app-shell/TabSequence.cpp:2700
+msgid "No sequence is open."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:2706
+msgid "No song structure regions defined."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:2717
+msgid "No named song regions to export."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:279
+msgid "Invalid RGB effects file ... creating a default one."
+msgstr ""
+
 #: src-ui-wx/app-shell/TabSequence.cpp:758
 #, c-format
 msgid "'%s' loaded in %4.3f sec."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:923 src-ui-wx/app-shell/TabSequence.cpp:934
+msgid "Unable to save RGB effects file"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:963
+msgid "Unable to save effect presets file"
 msgstr ""
 
 #: src-ui-wx/app-shell/TabSetup.cpp:1525
@@ -2054,6 +2098,14 @@ msgstr ""
 
 #: src-ui-wx/app-shell/TabSetup.cpp:404
 msgid "The show directory '"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:667
+msgid "WARNING: Opening a show folder inside a backup folder. This is ok but please make sure you change back to your proper show folder and dont make changes in this folder."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:672
+msgid "ERROR: Show folder inside your Program Files folder either just wont work or will cause you security issues ... so please choose again."
 msgstr ""
 
 #: src-ui-wx/app-shell/TabSetup.cpp:875
@@ -2148,6 +2200,10 @@ msgstr ""
 
 #: src-ui-wx/color/ColorCurveDialog.cpp:786
 msgid "Choose color curve file"
+msgstr ""
+
+#: src-ui-wx/color/ColorPanel.cpp:358 src-ui-wx/sequencer/BlendingPanel.cpp:149 src-ui-wx/sequencer/BufferPanel.cpp:96
+msgid "Reset panel when changing effects"
 msgstr ""
 
 #: src-ui-wx/color/ColourReplaceDialog.cpp:101
@@ -2254,7 +2310,7 @@ msgstr ""
 msgid "Channels"
 msgstr ""
 
-#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:189 src-ui-wx/layout/LayoutPanel.cpp:4341 src-ui-wx/layout/LayoutPanel.cpp:4348 src-ui-wx/sequencer/EffectTreeDialog.cpp:393 src-ui-wx/setup/ShowDirectoriesDialog.cpp:162
+#: src-ui-wx/controllerproperties/ControllerPropertyAdapter.cpp:189 src-ui-wx/layout/LayoutPanel.cpp:4342 src-ui-wx/layout/LayoutPanel.cpp:4349 src-ui-wx/sequencer/EffectTreeDialog.cpp:393 src-ui-wx/setup/ShowDirectoriesDialog.cpp:162
 msgid "Name"
 msgstr ""
 
@@ -2862,6 +2918,24 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:1248 src-ui-wx/controllers/HinksPixExportDialog.cpp:1424
+msgid ""
+"No Playlists found\n"
+"Please Add a Playlist"
+msgstr ""
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:1641
+msgid "Playlist Name Cannot be Empty"
+msgstr ""
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:1645
+msgid "Playlist Name Already Exists"
+msgstr ""
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:2367
+msgid "No Schedule with Playlists are Checked, nothing will be Played!"
+msgstr ""
+
 #: src-ui-wx/controllers/HinksPixExportDialog.cpp:242
 msgid "Playlist:"
 msgstr ""
@@ -2898,7 +2972,7 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: src-ui-wx/controllers/HinksPixExportDialog.cpp:291 src-ui-wx/layout/LayoutPanel.cpp:740 src-ui-wx/setup/PixelTestDialog.cpp:1178
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:291 src-ui-wx/layout/LayoutPanel.cpp:741 src-ui-wx/setup/PixelTestDialog.cpp:1178
 msgid "Controllers"
 msgstr ""
 
@@ -3005,6 +3079,10 @@ msgstr ""
 msgid "Retry All Missing"
 msgstr ""
 
+#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:1391
+msgid "Not enough located nodes to build a model - map at least 2 nodes first."
+msgstr ""
+
 #: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:140
 msgid "Guess Missing"
 msgstr ""
@@ -3073,6 +3151,21 @@ msgstr ""
 #: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:348
 #, c-format
 msgid "Start channel %u, %u nodes, %u channels/node"
+msgstr ""
+
+#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:391
+msgid "Select a model to map first."
+msgstr ""
+
+#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:395
+msgid "No live camera image. Select a working camera first."
+msgstr ""
+
+#: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:419
+msgid ""
+"Could not start light output - nothing will light.\n"
+"\n"
+"Check the controller is powered/reachable and that no other program (or a second copy of xLights) is outputting to it."
 msgstr ""
 
 #: src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:476
@@ -3159,6 +3252,592 @@ msgstr ""
 msgid "Model:"
 msgstr ""
 
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:100
+msgid "Transition Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:101
+msgid "Effects Extending Beyond Sequence End"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:102
+msgid "Node Level Effect Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:103
+msgid "Effect Settings Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:104
+msgid "Corrupt Numeric Settings"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:105
+msgid "If you are planning on importing this sequence be aware the sequence relies on the following items that will not be imported."
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:106
+msgid "General Notes"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:107
+msgid "File Access Performance"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:108
+msgid "File Path Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:110
+msgid "Socket Creation Failed"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:111
+msgid "Models not configured for controller:"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:112
+msgid "Models with configuration warnings:"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:113
+msgid "Models in your sequence do not exist in the layout. These will need to be deleted or remapped to another model next time you load this sequence."
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:114
+msgid "The following effects are marked as random. This should never happen and may cause issues."
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:115
+msgid "The following effects have no nodes and won't do anything:"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:116
+msgid "The following effect overlaps should not be possible:"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:117
+msgid "Model Faces Used"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:118
+msgid "Model States Used"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:119
+msgid "Viewpoints Used"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:121
+msgid "No socket issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:122
+msgid "No IP addresses found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:123
+msgid "No backup directory issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:124
+msgid "No problematic settings found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:125
+msgid "No inactive controller issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:126
+msgid "No multiple output issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:127
+msgid "No issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:128
+msgid "No other issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:129
+msgid "No unconfigured models found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:130
+msgid "No model configuration issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:131
+msgid "No universe configuration issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:132
+msgid "No empty model/group issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:133
+msgid "No channel configuration issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:134
+msgid "No channel overlap issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:135
+msgid "No channel gap issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:136
+msgid "No model layer allocation issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:137
+msgid "No missing face images found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:138
+msgid "No model group issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:139
+msgid "No model group reference issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:140
+msgid "No preview mismatch issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:141
+msgid "No duplicate name issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:142
+msgid "No structure errors found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:143
+msgid "No DMX compatibility issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:144
+msgid "No MH groups with all default fixture names found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:145
+msgid "No submodel with no issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:146
+msgid "No submodel with duplicate nodes issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:147
+msgid "No submodel with nodes not in parent model issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:148
+msgid "No model settings issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:149
+msgid "No uncommon or undesirable settings found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:150
+msgid "No autosave issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:151
+msgid "No missing model issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:152
+msgid "No hidden effect issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:153
+msgid "No random effect issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:154
+msgid "No effects with no nodes found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:155
+msgid "No impossible effect overlaps found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:156
+msgid "No uncached video effects found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:157
+msgid "No per model buffer issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:158
+msgid "No old value curve issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:159
+msgid "No canvas mode issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:160
+msgid "No transition issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:161
+msgid "No effects extending beyond sequence end found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:162
+msgid "No node level effect issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:163
+msgid "No effect settings issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:164
+msgid "No corrupt numeric setting issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:165
+msgid "No general notes found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:166
+msgid "No file access performance issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:167
+msgid "No file path issues found"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:169
+msgid "models not configured for controller"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:170
+msgid "models have configuration warnings"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:171
+msgid "models have channel overlaps"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:172
+msgid "controller outputs have channel gaps"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:173
+msgid "models have missing face images"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:174
+msgid "model groups have reference issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:175
+msgid "model groups have preview mismatches"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:176
+msgid "Model groups have DMX compatibility issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:177
+msgid "model groups have overlapping nodes"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:184
+msgid "Show folder"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:220
+#, c-format
+msgid "Jump to %s"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:231
+#, c-format
+msgid "Controller IP '%s', Output Connection '%s':"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:29
+msgid "xLights Show Status Report"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:31 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:60
+msgid "Sequence"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:32
+msgid "No sequence was loaded when the report ran"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:33
+msgid "Report Generated"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:34
+msgid "Total Errors"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:35
+msgid "Total Warnings"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:36
+msgid "Search report..."
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:37
+msgid "Errors"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:38
+msgid "Warnings"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:39
+msgid "Show/hide this section"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:40
+msgid "Expand All"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:41 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1739
+msgid "Collapse All"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:42
+msgid "Reset All"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:43
+msgid "Toggle theme"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:44
+msgid "Previous issue"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:45
+msgid "Previous issue (Shift+N)"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:46
+msgid "Next issue"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:47
+msgid "Next issue (N)"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:49
+msgid "Network Configuration"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:50
+msgid "Network connectivity and configuration issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:51
+msgid "Preference Settings"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:52
+msgid "Configuration and settings validation"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:53
+msgid "Controller Checks"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:54
+msgid "Controller configuration and connectivity"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:55
+msgid "Model Checks"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:56
+msgid "Model configuration and channel validation"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:57
+msgid "Sequence Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:58
+msgid "Problems with sequence effects and media"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:59
+msgid "System Checks"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:60
+msgid "File system and performance issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:62
+msgid "Socket Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:63
+msgid "Available IP Addresses"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:64
+msgid "Backup Directory Check"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:65
+msgid "Potentially Problematic Settings"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:66
+msgid "Inactive Controllers"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:67
+msgid "Multiple Outputs to Same Destination"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:68
+msgid "Controller-Specific Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:69
+msgid "Other Controller Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:70
+msgid "Unconfigured Models"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:71
+msgid "Model Configuration Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:72
+msgid "Universe Configuration Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:73
+msgid "Empty Models and Groups"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:74
+msgid "Channel Overlap Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:75
+msgid "Model Channel Gap Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:76
+msgid "Model Layer Allocation Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:77
+msgid "Missing Face Images"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:78
+msgid "Model Groups containing duplicate nodes"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:79
+msgid "Model Group Reference Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:80
+msgid "Model Group Preview Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:81
+msgid "Group Name Uniqueness Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:82
+msgid "Model Group Structure Errors"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:83
+msgid "Model Group DMX Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:84
+msgid "Moving Head Model Groups with all heads with default fixture name"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:85
+msgid "SubModels with no nodes"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:86
+msgid "SubModels with duplicate nodes (These may not render as expected)"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:87
+msgid "SubModels with nodes not in parent model"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:88
+msgid "Model Settings Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:89
+msgid "Uncommon and often undesirable Settings"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:90
+msgid "Autosave"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:91
+msgid "Models Not Found in Layout"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:92
+msgid "Hidden Model Effects"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:93 src-ui-wx/preferences/xLightsPreferences.cpp:225
+msgid "Random Effects"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:94
+msgid "Effects With No Nodes"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:95
+msgid "Impossible Effect Overlaps"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:96
+msgid "Uncached Video Effects"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:97
+msgid "Per Model Buffer Issues"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:98
+msgid "Old Value Curves"
+msgstr ""
+
+#: src-ui-wx/diagnostics/CheckReportTranslation.h:99
+msgid "Canvas Mode Issues"
+msgstr ""
+
 #: src-ui-wx/diagnostics/RenderProgressDialog.cpp:39
 msgid "Rendering Progress"
 msgstr ""
@@ -3237,6 +3916,10 @@ msgstr ""
 
 #: src-ui-wx/effectpanels/DMXPanel.cpp:142
 msgid "Load From State"
+msgstr ""
+
+#: src-ui-wx/effectpanels/DMXPanel.cpp:444
+msgid "State does not have Force Custom Colors or Single Node Type"
 msgstr ""
 
 #: src-ui-wx/effectpanels/FacesPanel.cpp:114
@@ -3514,7 +4197,7 @@ msgstr ""
 msgid "Auto Shutter"
 msgstr ""
 
-#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:599 src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:98 src-ui-wx/model/ModelFacesPanel.cpp:189 src-ui-wx/model/ModelFacesPanel.cpp:313 src-ui-wx/model/ModelStatesPanel.cpp:187 ... (+6)
+#: src-ui-wx/effectpanels/MovingHeadPanel.cpp:599 src-ui-wx/import_export/LMSImportChannelMapDialog.cpp:98 src-ui-wx/model/ModelFacesPanel.cpp:189 src-ui-wx/model/ModelFacesPanel.cpp:313 src-ui-wx/model/ModelStatesPanel.cpp:187 ... (+7)
 msgid "Color"
 msgstr ""
 
@@ -3647,6 +4330,18 @@ msgstr ""
 msgid "Choose SVG File"
 msgstr ""
 
+#: src-ui-wx/effectpanels/assist/xlGridCanvasPictures.cpp:419
+msgid "Error creating image!"
+msgstr ""
+
+#: src-ui-wx/effectpanels/assist/xlGridCanvasPictures.cpp:432
+msgid "Error creating new image file.  Image Directory is not defined."
+msgstr ""
+
+#: src-ui-wx/effectpanels/assist/xlGridCanvasPictures.cpp:447
+msgid "Error creating image file!"
+msgstr ""
+
 #: src-ui-wx/effects/CharMapDialog.cpp:103
 msgid ">"
 msgstr ""
@@ -3673,6 +4368,10 @@ msgstr ""
 
 #: src-ui-wx/effects/ShaderDownloadDialog.cpp:309 src-ui-wx/import_export/VendorModelDialog.cpp:210 src-ui-wx/import_export/VendorModelDialog.cpp:214 src-ui-wx/import_export/VendorModelDialog.cpp:247 src-ui-wx/import_export/VendorMusicDialog.cpp:117 ... (+4)
 msgid "https://xlights.org"
+msgstr ""
+
+#: src-ui-wx/effects/ShaderDownloadDialog.cpp:423
+msgid "Unable to retrieve any shader information"
 msgstr ""
 
 #: src-ui-wx/import_export/ConvertDialog.cpp:104
@@ -3780,6 +4479,14 @@ msgid ""
 "\t\t\tHLS hlsIdata Sequences(*.hlsIdata)|*.hlsIdata"
 msgstr ""
 
+#: src-ui-wx/import_export/ConvertDialog.cpp:243
+msgid "Please select one or more sequence files"
+msgstr ""
+
+#: src-ui-wx/import_export/ConvertDialog.cpp:247
+msgid "Please select an output format"
+msgstr ""
+
 #: src-ui-wx/import_export/ConvertDialog.cpp:84
 msgid "xLights File Conversion"
 msgstr ""
@@ -3804,6 +4511,10 @@ msgstr ""
 msgid "Conversion Log"
 msgstr ""
 
+#: src-ui-wx/import_export/ExportEffects.cpp:44
+msgid "Unable to create Spreadsheet. Usually a permissions error."
+msgstr ""
+
 #: src-ui-wx/import_export/ExportEffects.cpp:62
 msgid "Effect Name,StartTime,EndTime,Duration,Description,Element,ElementType,Files\n"
 msgstr ""
@@ -3822,6 +4533,10 @@ msgstr ""
 
 #: src-ui-wx/import_export/ExportModelSelect.cpp:39
 msgid "Model to Export"
+msgstr ""
+
+#: src-ui-wx/import_export/ImportEffects.cpp:1393
+msgid "Please select the target model!"
 msgstr ""
 
 #: src-ui-wx/import_export/ImportEffects.cpp:257
@@ -4085,6 +4800,10 @@ msgstr ""
 msgid "Filter models..."
 msgstr ""
 
+#: src-ui-wx/import_export/VendorModelDialog.cpp:426 src-ui-wx/import_export/VendorMusicDialog.cpp:281
+msgid "Unable to retrieve any vendor information"
+msgstr ""
+
 #: src-ui-wx/import_export/VendorMusicDialog.cpp:133
 msgid "Video:"
 msgstr ""
@@ -4173,7 +4892,7 @@ msgstr ""
 msgid "Not added: "
 msgstr ""
 
-#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1725 src-ui-wx/layout/LayoutPanel.cpp:3278
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1725 src-ui-wx/layout/LayoutPanel.cpp:3279
 msgid "Filter models"
 msgstr ""
 
@@ -4186,10 +4905,6 @@ msgstr ""
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1737
 msgid "Hide Unmapped"
-msgstr ""
-
-#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1739
-msgid "Collapse All"
 msgstr ""
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:1754
@@ -4533,268 +5248,292 @@ msgstr ""
 msgid "Choose LOR S5 Preview File to Import"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12061
+#: src-ui-wx/layout/LayoutPanel.cpp:1048 src-ui-wx/layout/LayoutPanel.cpp:1068 src-ui-wx/layout/LayoutPanel.cpp:4187 src-ui-wx/layout/LayoutPanel.cpp:12568
+msgid "Background Properties"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:10931 src-ui-wx/model/CustomModelDialog.cpp:1023 src-ui-wx/model/NodeSelectGrid.cpp:1085 src-ui-wx/sequencer/MainSequencer.cpp:1713 src-ui-wx/sequencer/MainSequencer.cpp:1727
+msgid "Unable to copy data to clipboard."
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12062
 msgid "Error capturing preview image"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12061
+#: src-ui-wx/layout/LayoutPanel.cpp:12062
 msgid "Image Capture Error"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12067
+#: src-ui-wx/layout/LayoutPanel.cpp:12068
 msgid "Save Image"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:12206 src-ui-wx/layout/ViewsModelsPanel.cpp:3118 src-ui-wx/model/SubModelsPanel.cpp:4054
+#: src-ui-wx/layout/LayoutPanel.cpp:12207 src-ui-wx/layout/ViewsModelsPanel.cpp:3118 src-ui-wx/model/SubModelsPanel.cpp:4054
 msgid "Choose RGB Effects file to import from"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:2694
+#: src-ui-wx/layout/LayoutPanel.cpp:12850
+msgid "Controller Properties"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12887
+msgid "Model Properties"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:12899
+msgid "Group Settings"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:2695
 msgid "Models from the base show folder can't be in a Set with this show's own models - the base folder can move its models without moving the rest of the Set."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:2944
+#: src-ui-wx/layout/LayoutPanel.cpp:2945
 #, c-format
 msgid "Set %s was not rotated because it contains a locked or base show model."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:2945
+#: src-ui-wx/layout/LayoutPanel.cpp:2946
 msgid "Bulk Edit Rotate"
-msgstr ""
-
-#: src-ui-wx/layout/LayoutPanel.cpp:3035
-#, c-format
-msgid "Set %s was not moved because it contains a locked or base show model."
 msgstr ""
 
 #: src-ui-wx/layout/LayoutPanel.cpp:3036
 #, c-format
+msgid "Set %s was not moved because it contains a locked or base show model."
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:3037
+#, c-format
 msgid "Sets %s were not moved because they contain a locked or base show model."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3063
+#: src-ui-wx/layout/LayoutPanel.cpp:3064
 msgid "Link as Set..."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3072
+#: src-ui-wx/layout/LayoutPanel.cpp:3073
 msgid "Add Selected to Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3074
+#: src-ui-wx/layout/LayoutPanel.cpp:3075
 msgid "Remove from Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3075
+#: src-ui-wx/layout/LayoutPanel.cpp:3076
 msgid "Rename..."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3076
+#: src-ui-wx/layout/LayoutPanel.cpp:3077
 msgid "Manage..."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3077 src-ui-wx/layout/ViewsModelsPanel.cpp:188 src-ui-wx/model/EditAliasesDialog.cpp:56 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:66 src-ui-wx/model/ModelStatesPanel.cpp:151 ... (+4)
+#: src-ui-wx/layout/LayoutPanel.cpp:3078 src-ui-wx/layout/ViewsModelsPanel.cpp:188 src-ui-wx/model/EditAliasesDialog.cpp:56 src-ui-wx/model/EditSubmodelAliasesDialog.cpp:66 src-ui-wx/model/ModelStatesPanel.cpp:151 ... (+4)
 msgid "Delete"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3080
+#: src-ui-wx/layout/LayoutPanel.cpp:3081
 msgid "Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3103 src-ui-wx/layout/LayoutPanel.cpp:3113
+#: src-ui-wx/layout/LayoutPanel.cpp:3104 src-ui-wx/layout/LayoutPanel.cpp:3114
 msgid "Link as Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3110
+#: src-ui-wx/layout/LayoutPanel.cpp:3111
 msgid "Name for the new Set:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3121 src-ui-wx/layout/LayoutPanel.cpp:3242
+#: src-ui-wx/layout/LayoutPanel.cpp:3122 src-ui-wx/layout/LayoutPanel.cpp:3243
 #, c-format
 msgid "A Set named '%s' already exists. Choose another name:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3145
+#: src-ui-wx/layout/LayoutPanel.cpp:3146
 msgid "Add to Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3155 src-ui-wx/layout/LayoutPanel.cpp:3460
+#: src-ui-wx/layout/LayoutPanel.cpp:3156 src-ui-wx/layout/LayoutPanel.cpp:3461
 #, c-format
 msgid "'%s' is already in Set '%s'. Move it to Set '%s'?"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3157 src-ui-wx/layout/LayoutPanel.cpp:3462
+#: src-ui-wx/layout/LayoutPanel.cpp:3158 src-ui-wx/layout/LayoutPanel.cpp:3463
 msgid "Confirm Move"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3201
+#: src-ui-wx/layout/LayoutPanel.cpp:3202
 #, c-format
 msgid "Delete Set '%s'? Member models will not be affected."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3202
+#: src-ui-wx/layout/LayoutPanel.cpp:3203
 msgid "Confirm Delete"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3226
+#: src-ui-wx/layout/LayoutPanel.cpp:3227
 msgid "New Set name:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3230
+#: src-ui-wx/layout/LayoutPanel.cpp:3231
 msgid "Rename Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3259 src-ui-wx/layout/LayoutPanel.cpp:3305 src-ui-wx/layout/LayoutPanel.cpp:3427 src-ui-wx/layout/LayoutPanel.cpp:3449
+#: src-ui-wx/layout/LayoutPanel.cpp:3260 src-ui-wx/layout/LayoutPanel.cpp:3306 src-ui-wx/layout/LayoutPanel.cpp:3428 src-ui-wx/layout/LayoutPanel.cpp:3450
 msgid "Manage Set"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3269 src-ui-wx/model/ModelFacesPanel.cpp:145 src-ui-wx/model/ModelStatesPanel.cpp:137 src-ui-wx/model/SubModelsPanel.cpp:226
+#: src-ui-wx/layout/LayoutPanel.cpp:3270 src-ui-wx/model/ModelFacesPanel.cpp:145 src-ui-wx/model/ModelStatesPanel.cpp:137 src-ui-wx/model/SubModelsPanel.cpp:226
 msgid "Name:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3274
+#: src-ui-wx/layout/LayoutPanel.cpp:3275
 msgid ""
 "Checked models are members of this Set.\n"
 "Check to add, uncheck to remove."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3304
+#: src-ui-wx/layout/LayoutPanel.cpp:3305
 #, c-format
 msgid "A Set named '%s' already exists. Choose another name."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3404
+#: src-ui-wx/layout/LayoutPanel.cpp:3405
 #, c-format
 msgid " (in Set '%s')"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3426
+#: src-ui-wx/layout/LayoutPanel.cpp:3427
 #, c-format
 msgid "A Set needs at least 2 members. Delete Set '%s' instead?"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3448
+#: src-ui-wx/layout/LayoutPanel.cpp:3449
 #, c-format
 msgid "A Set named '%s' already exists. Name unchanged."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3842
+#: src-ui-wx/layout/LayoutPanel.cpp:3843
 msgid "Select existing groups to add selections to"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:3907
+#: src-ui-wx/layout/LayoutPanel.cpp:3908
 msgid "Select groups to remove model from"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4233 src-ui-wx/media/ResizeImageDialog.cpp:45 src-ui-wx/model/CustomModelDialog.cpp:391 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json ... (+3)
+#: src-ui-wx/layout/LayoutPanel.cpp:4234 src-ui-wx/media/ResizeImageDialog.cpp:45 src-ui-wx/model/CustomModelDialog.cpp:391 resources/effectmetadata/Fan.json resources/effectmetadata/Galaxy.json ... (+3)
 msgid "Width"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4237 src-ui-wx/media/ResizeImageDialog.cpp:50 src-ui-wx/model/CustomModelDialog.cpp:396 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:388 src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:55 ... (+5)
+#: src-ui-wx/layout/LayoutPanel.cpp:4238 src-ui-wx/media/ResizeImageDialog.cpp:50 src-ui-wx/model/CustomModelDialog.cpp:396 src-ui-wx/modelproperties/ScreenLocationPropertyHelper.cpp:388 src-ui-wx/modelproperties/adapters/CandyCanePropertyAdapter.cpp:55 ... (+5)
 msgid "Height"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4242 src-ui-wx/model/ModelDimmingCurveDialog.cpp:112 src-ui-wx/model/ModelDimmingCurveDialog.cpp:142 src-ui-wx/model/ModelDimmingCurveDialog.cpp:159 src-ui-wx/model/ModelDimmingCurveDialog.cpp:176 ... (+8)
+#: src-ui-wx/layout/LayoutPanel.cpp:4243 src-ui-wx/model/ModelDimmingCurveDialog.cpp:112 src-ui-wx/model/ModelDimmingCurveDialog.cpp:142 src-ui-wx/model/ModelDimmingCurveDialog.cpp:159 src-ui-wx/model/ModelDimmingCurveDialog.cpp:176 ... (+8)
 msgid "Brightness"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4247 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:553 src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:53 src-ui-wx/modelproperties/adapters/ImageObjectPropertyAdapter.cpp:30 src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:33 ... (+1)
+#: src-ui-wx/layout/LayoutPanel.cpp:4248 src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:553 src-ui-wx/modelproperties/adapters/DmxServoPropertyAdapter.cpp:53 src-ui-wx/modelproperties/adapters/ImageObjectPropertyAdapter.cpp:30 src-ui-wx/modelproperties/adapters/TerrainObjectPropertyAdapter.cpp:33 ... (+1)
 msgid "Transparency"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4252
+#: src-ui-wx/layout/LayoutPanel.cpp:4253
 msgid "2D Bounding Box"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4255
+#: src-ui-wx/layout/LayoutPanel.cpp:4256
 msgid "2D Grid"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4258
+#: src-ui-wx/layout/LayoutPanel.cpp:4259
 msgid "2D Grid Spacing"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4263
+#: src-ui-wx/layout/LayoutPanel.cpp:4264
 msgid "X0 Is Center"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4345
+#: src-ui-wx/layout/LayoutPanel.cpp:4346
 msgid "SubModel names cannot be changed here."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:4652
+#: src-ui-wx/layout/LayoutPanel.cpp:4653
 msgid "Preview layout saved"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:5224
+#: src-ui-wx/layout/LayoutPanel.cpp:5225
 #, c-format
 msgid "Set '%s' contains a locked or base show model - unlock it (or remove the base model from the Set) to move the Set."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:679 src-ui-wx/layout/LayoutPanel.cpp:13484
+#: src-ui-wx/layout/LayoutPanel.cpp:5966
+msgid "Failed to download model file."
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:680 src-ui-wx/layout/LayoutPanel.cpp:13485
 msgid "3D Objects"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:686 resources/effectmetadata/Bars.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/Ripple.json resources/effectmetadata/Spirals.json
+#: src-ui-wx/layout/LayoutPanel.cpp:687 resources/effectmetadata/Bars.json resources/effectmetadata/Pinwheel.json resources/effectmetadata/Ripple.json resources/effectmetadata/Spirals.json
 msgid "3D"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:689
+#: src-ui-wx/layout/LayoutPanel.cpp:690
 msgid "Overlap checks enabled"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:704 src-ui-wx/layout/LayoutPrintPreviewDialog.cpp:264 src-ui-wx/layout/ModelGroupPanel.cpp:193
+#: src-ui-wx/layout/LayoutPanel.cpp:705 src-ui-wx/layout/LayoutPrintPreviewDialog.cpp:264 src-ui-wx/layout/ModelGroupPanel.cpp:193
 msgid "Preview:"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:738 src-ui-wx/layout/LayoutPanel.cpp:852
+#: src-ui-wx/layout/LayoutPanel.cpp:739 src-ui-wx/layout/LayoutPanel.cpp:853
 msgid "Groups"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7616
+#: src-ui-wx/layout/LayoutPanel.cpp:7617
 msgid "Model Set contains a locked or base show model - unlock it (or remove the base model from the Set) to move the Set (Alt-drag moves a single model)."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7933
+#: src-ui-wx/layout/LayoutPanel.cpp:7934
 msgid "Set Center Offset Here"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7956
+#: src-ui-wx/layout/LayoutPanel.cpp:7957
 msgid "Save Layout Image"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7957
+#: src-ui-wx/layout/LayoutPanel.cpp:7958
 msgid "Print Layout Image..."
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7958
+#: src-ui-wx/layout/LayoutPanel.cpp:7959
 msgid "Import Previews/Models/Groups/Viewpoints"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7959
+#: src-ui-wx/layout/LayoutPanel.cpp:7960
 msgid "Import LOR S5 Models/Groups"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7960
+#: src-ui-wx/layout/LayoutPanel.cpp:7961
 msgid "Export Layout As DXF"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7965
+#: src-ui-wx/layout/LayoutPanel.cpp:7966
 msgid "Set Current ViewPoint as Default"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7966 src-ui-wx/layout/ModelPreview.cpp:1349
+#: src-ui-wx/layout/LayoutPanel.cpp:7967 src-ui-wx/layout/ModelPreview.cpp:1349
 msgid "Restore Default ViewPoint"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:7968
+#: src-ui-wx/layout/LayoutPanel.cpp:7969
 msgid "Save Current ViewPoint"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:8010
+#: src-ui-wx/layout/LayoutPanel.cpp:8011
 msgid "Show Models Not On Controller"
 msgstr ""
 
-#: src-ui-wx/layout/LayoutPanel.cpp:8728
+#: src-ui-wx/layout/LayoutPanel.cpp:8729
 msgid "Choose Output File"
 msgstr ""
 
@@ -4839,6 +5578,10 @@ msgstr ""
 
 #: src-ui-wx/layout/LayoutPrintPreviewDialog.cpp:368
 msgid "Print..."
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPrintPreviewDialog.cpp:563
+msgid "Problem grabbing ModelPreview image for printing"
 msgstr ""
 
 #: src-ui-wx/layout/ModelGroupPanel.cpp:160
@@ -5057,6 +5800,10 @@ msgstr ""
 msgid "Find model..."
 msgstr ""
 
+#: src-ui-wx/layout/ViewsModelsPanel.cpp:3009
+msgid "One or more models had effects on them so they were not removed."
+msgstr ""
+
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:301
 msgid "Previous match"
 msgstr ""
@@ -5174,10 +5921,6 @@ msgstr ""
 msgid "100%"
 msgstr ""
 
-#: src-ui-wx/model/CustomModelDialog.cpp:1023 src-ui-wx/model/NodeSelectGrid.cpp:1085
-msgid "Unable to copy data to clipboard."
-msgstr ""
-
 #: src-ui-wx/model/CustomModelDialog.cpp:1029 src-ui-wx/model/CustomModelDialog.cpp:1065 src-ui-wx/model/NodeSelectGrid.cpp:1089 src-ui-wx/model/NodeSelectGrid.cpp:1116
 msgid "Error opening clipboard."
 msgstr ""
@@ -5284,6 +6027,44 @@ msgstr ""
 msgid "Import From Controller"
 msgstr ""
 
+#: src-ui-wx/model/CustomModelDialog.cpp:915
+msgid ""
+"To create a custom model, set 'Display As' to 'Custom';\n"
+"then set the model width and model height values.\n"
+"\n"
+"A custom model allows you to represent almost any display element \n"
+"created from RGB lights. If your element has 12 RGB nodes in it, then \n"
+"you will need to place the numbers 1 through 12 in the grid. \n"
+"Place the numbers so that they are in the shape of your display \n"
+"element. If you enter a number and then need to erase it, enter a 0.\n"
+"\n"
+"Node 1 will be assigned:\n"
+"  StartChannel\n"
+"  StartChannel+1\n"
+"  StartChannel+2\n"
+"Node 2 will be assigned:\n"
+"  StartChannel+3\n"
+"  StartChannel+4\n"
+"  StartChannel+5\n"
+"etc.\n"
+"\n"
+"For example, to model a candy cane with 12 nodes, you could \n"
+"start with a grid 4 columns wide and 10 rows high. You would place the \n"
+"numbers 1-9 up the right-hand side, 10 and 11 would go in the middle \n"
+"cells in the top row, and then 12 would go in column A, row 2.\n"
+"\n"
+"     11 10\n"
+"12           9\n"
+"               8\n"
+"               7\n"
+"               6\n"
+"               5\n"
+"               4\n"
+"               3\n"
+"               2\n"
+"               1"
+msgstr ""
+
 #: src-ui-wx/model/EditAliasesDialog.cpp:39
 msgid "Model Aliases"
 msgstr ""
@@ -5294,6 +6075,10 @@ msgstr ""
 
 #: src-ui-wx/model/EditSubmodelAliasesDialog.cpp:51 src-ui-wx/modelproperties/adapters/SubModelPropertyAdapter.cpp:74
 msgid "SubModel Aliases"
+msgstr ""
+
+#: src-ui-wx/model/FaceMatrixHelpers.cpp:280
+msgid "One or more images could not be mapped to the model due to issues with the names of files within the zip file. See log for details."
 msgstr ""
 
 #: src-ui-wx/model/GenerateCustomModelDialog.cpp:2499
@@ -5496,6 +6281,14 @@ msgstr ""
 msgid "Process"
 msgstr ""
 
+#: src-ui-wx/model/GenerateCustomModelDialog.cpp:3103
+msgid "Please prepare to video the model ... press ok when ready to start."
+msgstr ""
+
+#: src-ui-wx/model/GenerateCustomModelDialog.cpp:3147
+msgid "Please stop the video."
+msgstr ""
+
 #: src-ui-wx/model/ImportPreviewsModelsDialog.cpp:107
 msgid "Filter models and viewpoints"
 msgstr ""
@@ -5518,6 +6311,10 @@ msgstr ""
 
 #: src-ui-wx/model/MatrixFaceDownloadDialog.cpp:402
 msgid "Insert Face"
+msgstr ""
+
+#: src-ui-wx/model/MatrixFaceDownloadDialog.cpp:522
+msgid "Unable to retrieve any faces"
 msgstr ""
 
 #: src-ui-wx/model/ModelChainDialog.cpp:50
@@ -5825,6 +6622,10 @@ msgstr ""
 msgid "Override States"
 msgstr ""
 
+#: src-ui-wx/model/ModelStatesPanel.cpp:1631
+msgid "No State Definitions Found."
+msgstr ""
+
 #: src-ui-wx/model/ModelStatesPanel.cpp:1635
 msgid "Select States"
 msgstr ""
@@ -5879,6 +6680,18 @@ msgstr ""
 
 #: src-ui-wx/model/NodeSelectGrid.cpp:260 resources/effectmetadata/Shader.json resources/effectmetadata/shared/Buffer.json
 msgid "Zoom"
+msgstr ""
+
+#: src-ui-wx/model/NodeSelectGrid.cpp:905 src-ui-wx/model/SubModelsPanel.cpp:2974
+msgid "Failure loading xModel file."
+msgstr ""
+
+#: src-ui-wx/model/NodeSelectGrid.cpp:915 src-ui-wx/model/NodeSelectGrid.cpp:919
+msgid "xModel file not a Custom Model."
+msgstr ""
+
+#: src-ui-wx/model/NodeSelectGrid.cpp:931 src-ui-wx/model/NodeSelectGrid.cpp:935
+msgid "xModel file dimensions are too big."
 msgstr ""
 
 #: src-ui-wx/model/PathGenerationDialog.cpp:138 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:1509
@@ -6037,6 +6850,18 @@ msgstr ""
 msgid "Save Custom xModel File"
 msgstr ""
 
+#: src-ui-wx/model/SubModelsPanel.cpp:1608
+msgid "Unable to create results file for Symmetrize. Aborted."
+msgstr ""
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1623 src-ui-wx/model/SubModelsPanel.cpp:1752
+msgid "Model doesn't have precisely one location per node"
+msgstr ""
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1685
+msgid "Symmetrize encountered errors.  See log for details."
+msgstr ""
+
 #: src-ui-wx/model/SubModelsPanel.cpp:180
 msgid "SubModels:"
 msgstr ""
@@ -6151,6 +6976,10 @@ msgstr ""
 msgid "Override SubModels"
 msgstr ""
 
+#: src-ui-wx/model/SubModelsPanel.cpp:3224 src-ui-wx/model/SubModelsPanel.cpp:3233 src-ui-wx/model/SubModelsPanel.cpp:3251
+msgid "Failure loading xModel file or model is not a 2D custom model."
+msgstr ""
+
 #: src-ui-wx/model/ViewpointDialog.cpp:52
 msgid "Apply"
 msgstr ""
@@ -6222,7 +7051,7 @@ msgstr ""
 msgid "This represents a string of single color LEDS which are individually controlled. These are very uncommon."
 msgstr ""
 
-#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:524
+#: src-ui-wx/modelproperties/ModelPropertyAdapter.cpp:524 src-ui-wx/sequencer/tabSequencer.cpp:206
 msgid "Colours"
 msgstr ""
 
@@ -8090,10 +8919,6 @@ msgstr ""
 msgid "Output"
 msgstr ""
 
-#: src-ui-wx/preferences/xLightsPreferences.cpp:225
-msgid "Random Effects"
-msgstr ""
-
 #: src-ui-wx/preferences/xLightsPreferences.cpp:233
 msgid "Other"
 msgstr ""
@@ -8193,10 +9018,6 @@ msgstr ""
 
 #: src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:239
 msgid "Stopping..."
-msgstr ""
-
-#: src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:60
-msgid "Sequence"
 msgstr ""
 
 #: src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:62
@@ -8431,6 +9252,44 @@ msgstr ""
 msgid "A group cannot be added at the currently selected location"
 msgstr ""
 
+#: src-ui-wx/sequencer/EffectsGrid.cpp:6151
+msgid "Cannot paste AC data in non-AC mode"
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:6156
+msgid "Only AC data may be pasted in AC mode"
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:6166
+msgid ""
+"Paste By Cell information missing.\n"
+"You can only Paste By Time with this data."
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:6170
+msgid "Paste By Cell requires an active timing track."
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:6187
+msgid "Number of timing rows does not match how many existed when copied."
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:6260
+msgid "Not enough timing rows to paste timing effects starting on this row."
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:6266
+msgid "Cannot paste model effects into timing tracks."
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:6277
+msgid "Unable to find a selected timing start location for Paste By Cell."
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:6668
+msgid "Cannot paste model effect into timing track."
+msgstr ""
+
 #: src-ui-wx/sequencer/EffectsGrid.cpp:9168
 msgid "Copying layers/submodels from: "
 msgstr ""
@@ -8552,12 +9411,34 @@ msgstr ""
 msgid "Caution:  All timings/labels on this track will be replaced."
 msgstr ""
 
+#: src-ui-wx/sequencer/MainSequencer.cpp:106
+msgid "Time: 00:00:00"
+msgstr ""
+
+#: src-ui-wx/sequencer/MainSequencer.cpp:1912
+msgid "Timing placement error: Timing exists already in the selected region"
+msgstr ""
+
+#: src-ui-wx/sequencer/MainSequencer.cpp:2022
+msgid "Timing placement error: Timing cannot be split across timing marks."
+msgstr ""
+
 #: src-ui-wx/sequencer/MainSequencer.cpp:262
 msgid "Show sequencer prop filter"
 msgstr ""
 
 #: src-ui-wx/sequencer/MainSequencer.cpp:291
 msgid "Suspend Render"
+msgstr ""
+
+#: src-ui-wx/sequencer/MainSequencer.cpp:417
+#, c-format
+msgid "Time: %d:%02d.%02d"
+msgstr ""
+
+#: src-ui-wx/sequencer/MainSequencer.cpp:420
+#, c-format
+msgid "Time: %d.%02ds"
 msgstr ""
 
 #: src-ui-wx/sequencer/MetronomeLabelDialog.cpp:50
@@ -8830,6 +9711,10 @@ msgstr ""
 msgid "Text Files|*.txt"
 msgstr ""
 
+#: src-ui-wx/sequencer/NoteImportDialog.cpp:167
+msgid "Polyphonic transcription is known to be unstable and can cause xLights to crash."
+msgstr ""
+
 #: src-ui-wx/sequencer/NoteImportDialog.cpp:399
 msgid "The file should be a MIDI file ... typically with a .MID extension."
 msgstr ""
@@ -8910,6 +9795,46 @@ msgstr ""
 msgid "Modify Text then hit OK"
 msgstr ""
 
+#: src-ui-wx/sequencer/RowHeading.cpp:1033
+msgid "No lyrics lines found."
+msgstr ""
+
+#: src-ui-wx/sequencer/RowHeading.cpp:1466
+msgid "Timing name already exists in sequence as a model or another timing."
+msgstr ""
+
+#: src-ui-wx/sequencer/RowHeading.cpp:1604
+msgid "No audio media loaded — cannot detect onsets."
+msgstr ""
+
+#: src-ui-wx/sequencer/RowHeading.cpp:1612
+msgid "No onsets detected in the current audio."
+msgstr ""
+
+#: src-ui-wx/sequencer/RowHeading.cpp:1651
+msgid "No audio media loaded — cannot detect chords."
+msgstr ""
+
+#: src-ui-wx/sequencer/RowHeading.cpp:1659
+msgid "Could not detect chords in the current audio."
+msgstr ""
+
+#: src-ui-wx/sequencer/RowHeading.cpp:1716
+msgid "No audio media loaded — cannot detect tempo."
+msgstr ""
+
+#: src-ui-wx/sequencer/RowHeading.cpp:1724
+msgid "Could not detect a tempo in the current audio."
+msgstr ""
+
+#: src-ui-wx/sequencer/RowHeading.cpp:885
+msgid "No phrases found."
+msgstr ""
+
+#: src-ui-wx/sequencer/RowHeading.cpp:974
+msgid "No synced lyrics lines found."
+msgstr ""
+
 #: src-ui-wx/sequencer/SelectPanel.cpp:103 resources/effectmetadata/Galaxy.json resources/effectmetadata/Morph.json
 msgid "End"
 msgstr ""
@@ -8946,6 +9871,10 @@ msgstr ""
 
 #: src-ui-wx/sequencer/SelectTimingsDialog.cpp:34
 msgid "Select Timings"
+msgstr ""
+
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2133
+msgid "Nothing available for this song."
 msgstr ""
 
 #: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2433
@@ -9252,6 +10181,46 @@ msgstr ""
 msgid "Plugin Settings"
 msgstr ""
 
+#: src-ui-wx/sequencer/Waveform.cpp:1028
+msgid "Stem separation requires macOS 12 or newer."
+msgstr ""
+
+#: src-ui-wx/sequencer/Waveform.cpp:1164
+msgid "Couldn't open downloaded zip."
+msgstr ""
+
+#: src-ui-wx/sequencer/Waveform.cpp:1241
+msgid "Stem separation failed. See log for details."
+msgstr ""
+
+#: src-ui-wx/sequencer/Waveform.cpp:461
+msgid "The stem-separation model didn't produce guitar/piano stems. Check the log for details."
+msgstr ""
+
+#: src-ui-wx/sequencer/Waveform.cpp:879 src-ui-wx/sequencer/Waveform.cpp:1124
+msgid "No show or media folders configured — cannot install the stem-separation model."
+msgstr ""
+
+#: src-ui-wx/sequencer/Waveform.cpp:932 src-ui-wx/sequencer/Waveform.cpp:1151
+msgid "Download failed. Check your internet connection and try again."
+msgstr ""
+
+#: src-ui-wx/sequencer/Waveform.cpp:998
+msgid "Stem separation failed. Check the log for details."
+msgstr ""
+
+#: src-ui-wx/sequencer/tabSequencer.cpp:202
+msgid "Search Panel"
+msgstr ""
+
+#: src-ui-wx/sequencer/tabSequencer.cpp:208
+msgid "Find Data"
+msgstr ""
+
+#: src-ui-wx/sequencer/tabSequencer.cpp:227
+msgid "Sequence Video"
+msgstr ""
+
 #: src-ui-wx/sequencer/tabSequencer.cpp:229
 msgid "Main Sequencer"
 msgstr ""
@@ -9262,6 +10231,10 @@ msgstr ""
 
 #: src-ui-wx/sequencer/tabSequencer.cpp:3636
 msgid "Confirm"
+msgstr ""
+
+#: src-ui-wx/sequencer/tabSequencer.cpp:950
+msgid "Media File must be specified"
 msgstr ""
 
 #: src-ui-wx/setup/ControllerConnectionDialog.cpp:100
@@ -9552,6 +10525,10 @@ msgstr ""
 msgid "Filter by name..."
 msgstr ""
 
+#: src-ui-wx/setup/PixelTestDialog.cpp:2867
+msgid "No test configurations found"
+msgstr ""
+
 #: src-ui-wx/setup/PixelTestDialog.cpp:2877
 msgid "Select test configuration"
 msgstr ""
@@ -9568,11 +10545,19 @@ msgstr ""
 msgid "Save Test Settings"
 msgstr ""
 
+#: src-ui-wx/setup/PixelTestDialog.cpp:2912
+msgid "Name cannot be empty"
+msgstr ""
+
+#: src-ui-wx/setup/PixelTestDialog.cpp:2915
+msgid "Name is too long"
+msgstr ""
+
 #: src-ui-wx/setup/PixelTestDialog.cpp:2918
 msgid "Name already exists. Do you want to overwrite it?"
 msgstr ""
 
-#: src-ui-wx/setup/PixelTestDialog.cpp:2918
+#: src-ui-wx/setup/PixelTestDialog.cpp:2918 src-ui-wx/shared/utils/wxUtilities.cpp:147
 msgid "Warning"
 msgstr ""
 
@@ -9820,8 +10805,24 @@ msgstr ""
 msgid "(Main Track)"
 msgstr ""
 
+#: src-ui-wx/shared/utils/TranslatedDockArt.h:32
+msgid "Color Panel"
+msgstr ""
+
 #: src-ui-wx/shared/utils/wxFilterQuery.h:61
 msgid "Words may be in any order and separators are optional. * and ? are wildcards. /pattern/ is a regular expression."
+msgstr ""
+
+#: src-ui-wx/shared/utils/wxUtilities.cpp:142
+msgid "Error"
+msgstr ""
+
+#: src-ui-wx/shared/utils/wxUtilities.cpp:152
+msgid "Information"
+msgstr ""
+
+#: src-ui-wx/shared/utils/wxUtilities.cpp:157
+msgid "CRITICAL"
 msgstr ""
 
 #: src-ui-wx/shared/utils/xlLockButton.cpp:35
@@ -9861,936 +10862,1008 @@ msgid "Unrecognized command line parameters"
 msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:1001
+msgid "RECENTFOLDER1"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:1003
 msgid "Recent Show Folders"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1003 src-ui-wx/setup/ShowDirectoriesDialog.cpp:159
+#: src-ui-wx/xLightsMain.cpp:1005 src-ui-wx/setup/ShowDirectoriesDialog.cpp:159
 msgid "Favorite Show Folders"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1004
+#: src-ui-wx/xLightsMain.cpp:1006
 msgid "Backup\tF10"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1007
+#: src-ui-wx/xLightsMain.cpp:1009
 msgid "Restore Backup"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1009
+#: src-ui-wx/xLightsMain.cpp:1011
 msgid "Alternate Backup\tF11"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1011 src-ui-wx/app-shell/CloudBackupDialog.cpp:123 src-ui-wx/app-shell/CloudBackupDialog.cpp:197 src-ui-wx/app-shell/CloudBackupDialog.cpp:426 src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:88
+#: src-ui-wx/xLightsMain.cpp:1013 src-ui-wx/app-shell/CloudBackupDialog.cpp:123 src-ui-wx/app-shell/CloudBackupDialog.cpp:197 src-ui-wx/app-shell/CloudBackupDialog.cpp:426 src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:88
 msgid "Backup to Cloud"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1013 src-ui-wx/app-shell/CloudRestoreDialog.cpp:116 src-ui-wx/app-shell/CloudRestoreDialog.cpp:669 src-ui-wx/app-shell/CloudRestoreDialog.cpp:719
+#: src-ui-wx/xLightsMain.cpp:1015 src-ui-wx/app-shell/CloudRestoreDialog.cpp:116 src-ui-wx/app-shell/CloudRestoreDialog.cpp:669 src-ui-wx/app-shell/CloudRestoreDialog.cpp:719
 msgid "Restore from Cloud"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1015
+#: src-ui-wx/xLightsMain.cpp:1017
 msgid "Quit\tAlt-F4"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1015
+#: src-ui-wx/xLightsMain.cpp:1017
 msgid "Quit the application"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1018
+#: src-ui-wx/xLightsMain.cpp:1020
 msgid "&File"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1020
+#: src-ui-wx/xLightsMain.cpp:1022
 msgid "Undo\tCtrl-z"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1023
+#: src-ui-wx/xLightsMain.cpp:1025
 msgid "Redo\tCtrl-y"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1027
+#: src-ui-wx/xLightsMain.cpp:1029
 msgid "Cut\tCTRL-x"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1030
+#: src-ui-wx/xLightsMain.cpp:1032
 msgid "Copy\tCTRL-c"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1033
+#: src-ui-wx/xLightsMain.cpp:1035
 msgid "Paste\tCTRL-v"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1037
+#: src-ui-wx/xLightsMain.cpp:1039
 msgid "Shift Effects And Timing"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1037
+#: src-ui-wx/xLightsMain.cpp:1039
 msgid "Use this options to shift all timing and effects in the sequence."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1039
+#: src-ui-wx/xLightsMain.cpp:1041
 msgid "Shift Effects"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1039
+#: src-ui-wx/xLightsMain.cpp:1041
 msgid "Use this options to shift all effects in the sequence."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1041
+#: src-ui-wx/xLightsMain.cpp:1043
 msgid "Shift Selected Effects"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1044
+#: src-ui-wx/xLightsMain.cpp:1046
 msgid "Color Replace"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1047
+#: src-ui-wx/xLightsMain.cpp:1049
 msgid "Effect Symbol Library..."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1047
+#: src-ui-wx/xLightsMain.cpp:1049
 msgid "Manage reusable effect symbols"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1049
+#: src-ui-wx/xLightsMain.cpp:1051
 msgid "Convert All Symbols to Effects"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1049
+#: src-ui-wx/xLightsMain.cpp:1051
 msgid "Unlink all effects from symbols for compatibility with older xLights versions"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1051
+#: src-ui-wx/xLightsMain.cpp:1053
 msgid "&Edit"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1053
+#: src-ui-wx/xLightsMain.cpp:1055
 msgid "&Test"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1056
+#: src-ui-wx/xLightsMain.cpp:1058
 msgid "C&heck Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1058
+#: src-ui-wx/xLightsMain.cpp:1060
 msgid "Cleanup File Locations"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1058
+#: src-ui-wx/xLightsMain.cpp:1060
 msgid "Moves all files into or under the show folder."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1060
+#: src-ui-wx/xLightsMain.cpp:1062
 msgid "Package &Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1062
+#: src-ui-wx/xLightsMain.cpp:1064
 msgid "Download Sequences/Lyrics"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1065
+#: src-ui-wx/xLightsMain.cpp:1067
 msgid "&Batch Render"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1067
+#: src-ui-wx/xLightsMain.cpp:1069
 msgid "&FPP Connect"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1071 src-ui-wx/controllers/HinksPixExportDialog.cpp:226
+#: src-ui-wx/xLightsMain.cpp:1073 src-ui-wx/controllers/HinksPixExportDialog.cpp:226
 msgid "HinksPix Export"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1073 src-ui-wx/automation/ScriptsDialog.cpp:74
+#: src-ui-wx/xLightsMain.cpp:1075 src-ui-wx/automation/ScriptsDialog.cpp:74
 msgid "Run Scripts"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1076
+#: src-ui-wx/xLightsMain.cpp:1078
 msgid "E&xport Models"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1078
+#: src-ui-wx/xLightsMain.cpp:1080
 msgid "Export &Effects"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1080
+#: src-ui-wx/xLightsMain.cpp:1082
 msgid "Export Controller Connections"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1083
+#: src-ui-wx/xLightsMain.cpp:1085
 msgid "&View Log"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1085
+#: src-ui-wx/xLightsMain.cpp:1087
 msgid "&Package Log Files"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1085
+#: src-ui-wx/xLightsMain.cpp:1087
 msgid "Packages up current configuration, logs and sequence for reporting a problem to development team."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1087
+#: src-ui-wx/xLightsMain.cpp:1089
 msgid "Purge Download Cache"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1089
+#: src-ui-wx/xLightsMain.cpp:1091
 msgid "Purge Render Cache"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1091
+#: src-ui-wx/xLightsMain.cpp:1093
 msgid "Crash xLights"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1093
+#: src-ui-wx/xLightsMain.cpp:1095
 msgid "Log Render State"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1096
+#: src-ui-wx/xLightsMain.cpp:1098
 msgid "Generate 2D Path"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1098
+#: src-ui-wx/xLightsMain.cpp:1100
 msgid "&Generate Custom Model"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1100
+#: src-ui-wx/xLightsMain.cpp:1102
 msgid "Remap Custom Model"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1102
+#: src-ui-wx/xLightsMain.cpp:1104
 msgid "Generate AI Image"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1102
+#: src-ui-wx/xLightsMain.cpp:1104
 msgid "Create images using AI - if configured."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1104
+#: src-ui-wx/xLightsMain.cpp:1106
 msgid "Generate &Lyrics From Data"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1104
+#: src-ui-wx/xLightsMain.cpp:1106
 msgid "Generate lyric phenomes from data"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1106
+#: src-ui-wx/xLightsMain.cpp:1108
 msgid "Generate &Moving Head Effects"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1106
+#: src-ui-wx/xLightsMain.cpp:1108
 msgid "Add moving head effects driven by bars and sections timing tracks"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1108
+#: src-ui-wx/xLightsMain.cpp:1110
 msgid "&Convert"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1110
+#: src-ui-wx/xLightsMain.cpp:1112
 msgid "Prepare Audio"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1112
+#: src-ui-wx/xLightsMain.cpp:1114
 msgid "User Lyric Dictionary"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1114
+#: src-ui-wx/xLightsMain.cpp:1116
 msgid "Search for Show Folders"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1116
+#: src-ui-wx/xLightsMain.cpp:1118
 msgid "&Tools"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1124
+#: src-ui-wx/xLightsMain.cpp:1126
 msgid "Show AC Ramps"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1124
+#: src-ui-wx/xLightsMain.cpp:1126
 msgid "Show on effects and twinkle effects as ramps."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1127
+#: src-ui-wx/xLightsMain.cpp:1129
 msgid "Reset Toolbars"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1129 src-ui-wx/preferences/xLightsPreferences.cpp:237
+#: src-ui-wx/xLightsMain.cpp:1131 src-ui-wx/preferences/xLightsPreferences.cpp:237
 msgid "Toolbars"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1132
+#: src-ui-wx/xLightsMain.cpp:1134
 msgid "Save Current"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1134
+#: src-ui-wx/xLightsMain.cpp:1136
 msgid "Save As New"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1136
+#: src-ui-wx/xLightsMain.cpp:1138
 msgid "Edit/Load"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1138
+#: src-ui-wx/xLightsMain.cpp:1140
 msgid "Auto Save"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1138
+#: src-ui-wx/xLightsMain.cpp:1140
 msgid "Save the current perspective between sessions independent of the show directory."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1141 src-ui-wx/xLightsMain.cpp:1184
+#: src-ui-wx/xLightsMain.cpp:1143 src-ui-wx/xLightsMain.cpp:1186 src-ui-wx/sequencer/tabSequencer.cpp:191
 msgid "Perspectives"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1151 src-ui-wx/preferences/xLightsPreferences.cpp:229 resources/effectmetadata/Butterfly.json resources/effectmetadata/Meteors.json resources/effectmetadata/SingleStrand.json
+#: src-ui-wx/xLightsMain.cpp:1153 src-ui-wx/preferences/xLightsPreferences.cpp:229 resources/effectmetadata/Butterfly.json resources/effectmetadata/Meteors.json resources/effectmetadata/SingleStrand.json
 msgid "Colors"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1157
+#: src-ui-wx/xLightsMain.cpp:1159
 msgid "Effect Dropper"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1159
+#: src-ui-wx/xLightsMain.cpp:1161 src-ui-wx/sequencer/tabSequencer.cpp:205
 msgid "Value Curves"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1161
+#: src-ui-wx/xLightsMain.cpp:1163
 msgid "Color Dropper"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1163
+#: src-ui-wx/xLightsMain.cpp:1165 src-ui-wx/sequencer/tabSequencer.cpp:139
 msgid "Effect Assist"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1165
+#: src-ui-wx/xLightsMain.cpp:1167 src-ui-wx/sequencer/tabSequencer.cpp:212
 msgid "Effect Presets"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1167
+#: src-ui-wx/xLightsMain.cpp:1169
 msgid "Select Effect"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1169
+#: src-ui-wx/xLightsMain.cpp:1171
 msgid "Search Effects"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1171
+#: src-ui-wx/xLightsMain.cpp:1173
 msgid "Video Preview"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1173
+#: src-ui-wx/xLightsMain.cpp:1175 src-ui-wx/sequencer/tabSequencer.cpp:207
 msgid "Jukebox"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1175
+#: src-ui-wx/xLightsMain.cpp:1177
 msgid "Find Effect Data"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1183
+#: src-ui-wx/xLightsMain.cpp:1185
 msgid "Suppress Dock"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1186
+#: src-ui-wx/xLightsMain.cpp:1188
 msgid "Dock All"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1188 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:72
+#: src-ui-wx/xLightsMain.cpp:1190 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:72
 msgid "Reset to Defaults"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1190
+#: src-ui-wx/xLightsMain.cpp:1192
 msgid "Windows"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1191
+#: src-ui-wx/xLightsMain.cpp:1193
 msgid "&View"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1193
+#: src-ui-wx/xLightsMain.cpp:1195
 msgid "Play Full Speed"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1195
+#: src-ui-wx/xLightsMain.cpp:1197
 msgid "Play 1.5x Speed"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1197
+#: src-ui-wx/xLightsMain.cpp:1199
 msgid "Play 2x Speed"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1199
+#: src-ui-wx/xLightsMain.cpp:1201
 msgid "Play 3x Speed"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1201
+#: src-ui-wx/xLightsMain.cpp:1203
 msgid "Play 4x Speed"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1203
+#: src-ui-wx/xLightsMain.cpp:1205
 msgid "Play 3/4 Speed"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1205
+#: src-ui-wx/xLightsMain.cpp:1207
 msgid "Play 1/2 Speed"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1207
+#: src-ui-wx/xLightsMain.cpp:1209
 msgid "Play 1/4 Speed"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1210
+#: src-ui-wx/xLightsMain.cpp:1212
 msgid "Loud"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1212 src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:61 src-ui-wx/preferences/ViewSettingsPanel.cpp:64
+#: src-ui-wx/xLightsMain.cpp:1214 src-ui-wx/preferences/EffectsGridSettingsPanel.cpp:61 src-ui-wx/preferences/ViewSettingsPanel.cpp:64
 msgid "Medium"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1214
+#: src-ui-wx/xLightsMain.cpp:1216
 msgid "Quiet"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1216
+#: src-ui-wx/xLightsMain.cpp:1218
 msgid "Very Quiet"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1218
+#: src-ui-wx/xLightsMain.cpp:1220
 msgid "Silent"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1220
+#: src-ui-wx/xLightsMain.cpp:1222
 msgid "&Audio"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1222
+#: src-ui-wx/xLightsMain.cpp:1224
 msgid "Import Effects"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1225
+#: src-ui-wx/xLightsMain.cpp:1227
 msgid "Open Original File"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1226 src-ui-wx/sequencer/EffectTreeDialog.cpp:144
+#: src-ui-wx/xLightsMain.cpp:1228 src-ui-wx/sequencer/EffectTreeDialog.cpp:144
 msgid "&Import"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1228
+#: src-ui-wx/xLightsMain.cpp:1230
 msgid "Tip of the Day"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1230
+#: src-ui-wx/xLightsMain.cpp:1232
 msgid "User Manual"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1232
+#: src-ui-wx/xLightsMain.cpp:1234
 msgid "Zoom Room Help"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1232
+#: src-ui-wx/xLightsMain.cpp:1234
 msgid "Access the free Zoom Room for Help"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1234
+#: src-ui-wx/xLightsMain.cpp:1236
 msgid "Key Bindings"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1236
+#: src-ui-wx/xLightsMain.cpp:1238
 msgid "Content\tF1"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1238
+#: src-ui-wx/xLightsMain.cpp:1240
 msgid "Forum"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1240
+#: src-ui-wx/xLightsMain.cpp:1242
 msgid "Video Tutorials"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1242 src-ui-wx/automation/ScriptsDialog.cpp:107 src-ui-wx/effects/ShaderDownloadDialog.cpp:312 src-ui-wx/import_export/VendorMusicDialog.cpp:146
+#: src-ui-wx/xLightsMain.cpp:1244 src-ui-wx/automation/ScriptsDialog.cpp:107 src-ui-wx/effects/ShaderDownloadDialog.cpp:312 src-ui-wx/import_export/VendorMusicDialog.cpp:146
 msgid "Download"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1244
+#: src-ui-wx/xLightsMain.cpp:1246
 msgid "Release Notes"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1246
+#: src-ui-wx/xLightsMain.cpp:1248
 msgid "Issue Tracker"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1248
+#: src-ui-wx/xLightsMain.cpp:1250
 msgid "Facebook"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1250
+#: src-ui-wx/xLightsMain.cpp:1252
 msgid "Donate"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1250
+#: src-ui-wx/xLightsMain.cpp:1252
 msgid "Donate to the xLights project."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1252
+#: src-ui-wx/xLightsMain.cpp:1254
 msgid "Check for Updates"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1252
+#: src-ui-wx/xLightsMain.cpp:1254
 msgid "Check for newer xLights updates"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1255
+#: src-ui-wx/xLightsMain.cpp:1257
 msgid "About"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1255
+#: src-ui-wx/xLightsMain.cpp:1257
 msgid "Show info about this application"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1257
+#: src-ui-wx/xLightsMain.cpp:1259
 msgid "&Help"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1857
+#: src-ui-wx/xLightsMain.cpp:1861
 msgid "Locked Only"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:2142
+#: src-ui-wx/xLightsMain.cpp:2026
+msgid "WARNING: Opening a show folder inside a backup folder. This is generally a very very bad idea."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:2030
+msgid "ERROR: Show folder inside your Program Files folder either just wont work or will cause you security issues."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:2146
 msgid "Render and Save"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:2143
+#: src-ui-wx/xLightsMain.cpp:2147
 msgid "Render and Save As"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:2150
+#: src-ui-wx/xLightsMain.cpp:2154
 msgid "Revert To..."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:2187 src-ui-wx/xLightsMain.cpp:5980
+#: src-ui-wx/xLightsMain.cpp:2191 src-ui-wx/xLightsMain.cpp:5987
 msgid "Open New xLights Instance"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:2778
+#: src-ui-wx/xLightsMain.cpp:2782
 #, c-format
 msgid ""
 "Version: %s\n"
 "%s"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:2852 src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:69
+#: src-ui-wx/xLightsMain.cpp:2856 src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:69
 msgid "Layout Tab"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:2853
+#: src-ui-wx/xLightsMain.cpp:2857
 msgid ""
 "Create display elements by clicking on the Models buttons. You can drag your cursor across the preview area to move the element. Don't forget to click the Save button to save your preview!\n"
 "\n"
 "Click the Open button to select an xLights sequence to be previewed. Note that any xLights sequence can be previewed, not just those created on the Sequencer tab. Click Play to start preview playback. Use the Pause button to stop play, and then the Play button to resume. You can drag the slider that appears across the top of the preview area to move playback to any spot in your sequence. The Stop Now button in the upper left will also stop playback."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:2856
+#: src-ui-wx/xLightsMain.cpp:2860
 msgid "Sequencer Tab"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:2857
+#: src-ui-wx/xLightsMain.cpp:2861
 msgid "The Sequencer tab can be used to create RGB sequences. First, create a model of your RGB display element(s) by clicking on the Models button. Then try the different effects and settings until you create something you like. You can save the settings as a preset by clicking the New Preset button. From then on, that preset will be available in the presets drop-down list. You can combine effects by creating a second effect in the Effect 2 area, then choosing a Layering Method. To create a series of effects that will be used in a sequence, click the open file icon to open an xLights sequence. Choose which display elements/models you will use in this sequence. Then click the insert rows icon and type in the start time in seconds when that effect should begin. Rows will automatically sort by start time. To add an effect to the sequence, click on the grid cell in the desired display model column and the desired start time row, then click the Update button. When you are done creating effects for the sequence, click the save icon and the xLights sequence will be updated with the effects you stored in the grid."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:5135
+#: src-ui-wx/xLightsMain.cpp:3154 src-ui-wx/setup/PixelTestDialog.cpp:1496 src-ui-wx/setup/PixelTestDialog.cpp:3222
+msgid "Another process seems to be outputting to lights right now. This may not generate the result expected."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:3402
+msgid "Unable to find a unique name for backup directory! Backup failed."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:3462
+msgid "No show folder is open."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:3892 src-ui-wx/xLightsMain.cpp:8587 src-ui-wx/app-shell/TabSequence.cpp:165
+msgid "Sequences cannot be opened in read only mode!"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:4120
+msgid "Toolbar locations will reset to defaults upon restart."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:4259
+msgid "Turning off save of the FSEQ is really not recommended. This will often require you to re-render a sequence every time you load it ... all to save yourself a couple of seconds save time."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:5139
 msgid "Previews"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:5141
+#: src-ui-wx/xLightsMain.cpp:5145
 msgid "Show All"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:5374
+#: src-ui-wx/xLightsMain.cpp:5378
 msgid "Select alternate backup directory"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:5398 src-ui-wx/xLightsMain.cpp:6162 src-ui-wx/xLightsMain.cpp:9410 src-ui-wx/color/ColorCurveDialog.cpp:828 src-ui-wx/import_export/SeqExportDialog.cpp:272 ... (+14)
+#: src-ui-wx/xLightsMain.cpp:5402 src-ui-wx/xLightsMain.cpp:6169 src-ui-wx/xLightsMain.cpp:9417 src-ui-wx/color/ColorCurveDialog.cpp:828 src-ui-wx/import_export/SeqExportDialog.cpp:272 ... (+14)
 msgid "Choose output file"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:5978
+#: src-ui-wx/xLightsMain.cpp:5532
+msgid "Unable to create results file for Check Sequence. Aborted."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:5985
 msgid "Could not locate the xLights application bundle. A new instance can only be launched when xLights is run from a .app bundle."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:7919
+#: src-ui-wx/xLightsMain.cpp:6164 src-ui-wx/xLightsMain.cpp:6581
+msgid "No sequence open"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:6588
+msgid "Your sequence has unsaved changes. These changes will not be packaged but any new referenced files will be. We suggest you consider saving and trying this again."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:7926
 msgid "A batch render is already running."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:818
+#: src-ui-wx/xLightsMain.cpp:7965
+msgid "This xLights was installed from the Microsoft Store / App Installer, which keeps it up to date automatically."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:8141
+msgid "Update check complete: No update found"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:8166
+msgid "Layout cannot be saved in read only mode!"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:820
 msgid "<use variables in xLightsMain.h>"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:822
+#: src-ui-wx/xLightsMain.cpp:824
 msgid "Open Show Directory"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:822 src-ui-wx/app-shell/TabSetup.cpp:657
+#: src-ui-wx/xLightsMain.cpp:824 src-ui-wx/app-shell/TabSetup.cpp:657
 msgid "Select Show Directory"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:823 src-ui-wx/xLightsMain.cpp:823
+#: src-ui-wx/xLightsMain.cpp:825 src-ui-wx/xLightsMain.cpp:825
 msgid "New Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:824 src-ui-wx/xLightsMain.cpp:824
+#: src-ui-wx/xLightsMain.cpp:826 src-ui-wx/xLightsMain.cpp:826
 msgid "Open Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:825 src-ui-wx/xLightsMain.cpp:825 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:89 src-ui-wx/layout/LayoutPanel.cpp:693 src-ui-wx/model/GenerateCustomModelDialog.cpp:2799 ... (+3)
+#: src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:827 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:89 src-ui-wx/layout/LayoutPanel.cpp:694 src-ui-wx/model/GenerateCustomModelDialog.cpp:2799 ... (+3)
 msgid "Save"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:826 src-ui-wx/xLightsMain.cpp:826 src-ui-wx/preferences/xLightsPreferences.cpp:273
+#: src-ui-wx/xLightsMain.cpp:828 src-ui-wx/xLightsMain.cpp:828 src-ui-wx/preferences/xLightsPreferences.cpp:273
 msgid "Save As"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:827
+#: src-ui-wx/xLightsMain.cpp:829 src-ui-wx/xLightsMain.cpp:829
 msgid "Render All"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:829
+#: src-ui-wx/xLightsMain.cpp:831
 msgid "Main Tool Bar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:831 src-ui-wx/xLightsMain.cpp:831 src-ui-wx/model/ModelStatesPanel.cpp:248 src-ui-wx/model/ModelStatesPanel.cpp:2237 src-ui-wx/model/SubModelsPanel.cpp:307 ... (+1)
+#: src-ui-wx/xLightsMain.cpp:833 src-ui-wx/xLightsMain.cpp:833 src-ui-wx/model/ModelStatesPanel.cpp:248 src-ui-wx/model/ModelStatesPanel.cpp:2237 src-ui-wx/model/SubModelsPanel.cpp:307 ... (+1)
 msgid "Play"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:832 src-ui-wx/xLightsMain.cpp:832 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:157
+#: src-ui-wx/xLightsMain.cpp:834 src-ui-wx/xLightsMain.cpp:834 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:157
 msgid "Pause"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:833 src-ui-wx/xLightsMain.cpp:833 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:159 src-ui-wx/model/ModelStatesPanel.cpp:2253 src-ui-wx/model/SubModelsPanel.cpp:4204 ... (+1)
+#: src-ui-wx/xLightsMain.cpp:835 src-ui-wx/xLightsMain.cpp:835 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:159 src-ui-wx/model/ModelStatesPanel.cpp:2253 src-ui-wx/model/SubModelsPanel.cpp:4204 ... (+1)
 msgid "Stop"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:834 src-ui-wx/xLightsMain.cpp:835 src-ui-wx/xLightsMain.cpp:836
+#: src-ui-wx/xLightsMain.cpp:836 src-ui-wx/xLightsMain.cpp:837 src-ui-wx/xLightsMain.cpp:838
 msgid "Item label"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:834
+#: src-ui-wx/xLightsMain.cpp:836
 msgid "First Frame"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:835
+#: src-ui-wx/xLightsMain.cpp:837
 msgid "Last Frame"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:836
+#: src-ui-wx/xLightsMain.cpp:838
 msgid "Replay Section"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:837 src-ui-wx/xLightsMain.cpp:837
+#: src-ui-wx/xLightsMain.cpp:839 src-ui-wx/xLightsMain.cpp:839
 msgid "Output To Lights"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:839
+#: src-ui-wx/xLightsMain.cpp:841
 msgid "Play Tool Bar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:841 src-ui-wx/xLightsMain.cpp:841 src-ui-wx/xLightsMain.cpp:1149
+#: src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:1151 src-ui-wx/sequencer/tabSequencer.cpp:192 src-ui-wx/shared/utils/TranslatedDockArt.h:28
 msgid "Effect Settings"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:842 src-ui-wx/xLightsMain.cpp:842
+#: src-ui-wx/xLightsMain.cpp:844 src-ui-wx/xLightsMain.cpp:844
 msgid "Effect Colors"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:1155
+#: src-ui-wx/xLightsMain.cpp:845 src-ui-wx/xLightsMain.cpp:845 src-ui-wx/xLightsMain.cpp:1157 src-ui-wx/sequencer/tabSequencer.cpp:223 src-ui-wx/sequencer/tabSequencer.cpp:3537
 msgid "Layer Settings"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:844 src-ui-wx/xLightsMain.cpp:844 src-ui-wx/xLightsMain.cpp:1153
+#: src-ui-wx/xLightsMain.cpp:846 src-ui-wx/xLightsMain.cpp:846 src-ui-wx/xLightsMain.cpp:1155 src-ui-wx/sequencer/tabSequencer.cpp:222 src-ui-wx/sequencer/tabSequencer.cpp:3534
 msgid "Layer Blending"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:845 src-ui-wx/xLightsMain.cpp:845 src-ui-wx/xLightsMain.cpp:1145 src-ui-wx/xLightsMain.cpp:1181
+#: src-ui-wx/xLightsMain.cpp:847 src-ui-wx/xLightsMain.cpp:847 src-ui-wx/xLightsMain.cpp:1147 src-ui-wx/xLightsMain.cpp:1183 src-ui-wx/sequencer/tabSequencer.cpp:117
 msgid "Model Preview"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:846 src-ui-wx/xLightsMain.cpp:846 src-ui-wx/xLightsMain.cpp:1147 src-ui-wx/xLightsMain.cpp:1179
+#: src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:1149 src-ui-wx/xLightsMain.cpp:1181 src-ui-wx/sequencer/tabSequencer.cpp:122
 msgid "House Preview"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:847 src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:391 src-ui-wx/controllerproperties/ControllerNullPropertyAdapter.cpp:31 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:206 src-ui-wx/controllers/FPPConnectDialog.cpp:1381 ... (+5)
+#: src-ui-wx/xLightsMain.cpp:8484
+msgid "Unable to access online repositories."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:849 src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:391 src-ui-wx/controllerproperties/ControllerNullPropertyAdapter.cpp:31 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:206 src-ui-wx/controllers/FPPConnectDialog.cpp:1381 ... (+5)
 msgid "Models"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:847 src-ui-wx/xLightsMain.cpp:1143
+#: src-ui-wx/xLightsMain.cpp:849 src-ui-wx/xLightsMain.cpp:1145 src-ui-wx/sequencer/tabSequencer.cpp:181
 msgid "Display Elements"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:848 src-ui-wx/xLightsMain.cpp:921
+#: src-ui-wx/xLightsMain.cpp:850 src-ui-wx/xLightsMain.cpp:850 src-ui-wx/xLightsMain.cpp:923 src-ui-wx/sequencer/tabSequencer.cpp:204
 msgid "Effects"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:849 src-ui-wx/xLightsMain.cpp:849
+#: src-ui-wx/xLightsMain.cpp:851 src-ui-wx/xLightsMain.cpp:851
 msgid "Effects Assistant"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:850 src-ui-wx/xLightsMain.cpp:850
+#: src-ui-wx/xLightsMain.cpp:852 src-ui-wx/xLightsMain.cpp:852 src-ui-wx/sequencer/tabSequencer.cpp:197
 msgid "Select Effects"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:8513
+#: src-ui-wx/xLightsMain.cpp:8520
 msgid "Loading dictionaries ..."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:852
+#: src-ui-wx/xLightsMain.cpp:854
 msgid "Windows Tool Bar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:854 src-ui-wx/xLightsMain.cpp:854
+#: src-ui-wx/xLightsMain.cpp:856 src-ui-wx/xLightsMain.cpp:856
 msgid "Paste By Time"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:855 src-ui-wx/xLightsMain.cpp:855
+#: src-ui-wx/xLightsMain.cpp:857 src-ui-wx/xLightsMain.cpp:857
 msgid "Paste By Cell"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:857
+#: src-ui-wx/xLightsMain.cpp:859
 msgid "Paste Toolbar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:891
-msgid "Disable"
+#: src-ui-wx/xLightsMain.cpp:8594 src-ui-wx/import_export/SeqFileUtilities.cpp:128
+msgid "Sequences cannot be created in read only mode!"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:893 src-ui-wx/media/MediaImportOptionsDialog.cpp:79 src-ui-wx/media/MediaImportOptionsDialog.cpp:88 src-ui-wx/media/MediaImportOptionsDialog.cpp:97 src-ui-wx/media/MediaImportOptionsDialog.cpp:106 ... (+1)
-msgid "Select"
+#: src-ui-wx/xLightsMain.cpp:8640
+msgid "Show folder cannot be changed in read only mode! Close and restart xLights."
 msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:893
-msgid "Select - SHIFT L"
+msgid "Disable"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:894 src-ui-wx/effectpanels/MovingHeadPanel.cpp:359 src-ui-wx/preferences/OtherSettingsPanel.cpp:155 src-ui-wx/setup/PixelTestDialog.cpp:1202 src-ui-wx/setup/PixelTestDialog.cpp:1256 ... (+2)
-msgid "Off"
-msgstr ""
-
-#: src-ui-wx/xLightsMain.cpp:894
-msgid "Off - DELETE"
-msgstr ""
-
-#: src-ui-wx/xLightsMain.cpp:895 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:530 src-ui-wx/effectpanels/MovingHeadPanel.cpp:357
-msgid "On"
+#: src-ui-wx/xLightsMain.cpp:895 src-ui-wx/media/MediaImportOptionsDialog.cpp:79 src-ui-wx/media/MediaImportOptionsDialog.cpp:88 src-ui-wx/media/MediaImportOptionsDialog.cpp:97 src-ui-wx/media/MediaImportOptionsDialog.cpp:106 ... (+1)
+msgid "Select"
 msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:895
-msgid "On - O"
+msgid "Select - SHIFT L"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:896 src-ui-wx/setup/PixelTestDialog.cpp:1222 src-ui-wx/setup/PixelTestDialog.cpp:1276 resources/effectmetadata/ColorWash.json resources/effectmetadata/On.json ... (+1)
-msgid "Shimmer"
+#: src-ui-wx/xLightsMain.cpp:896 src-ui-wx/effectpanels/MovingHeadPanel.cpp:359 src-ui-wx/preferences/OtherSettingsPanel.cpp:155 src-ui-wx/setup/PixelTestDialog.cpp:1202 src-ui-wx/setup/PixelTestDialog.cpp:1256 ... (+2)
+msgid "Off"
 msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:896
+msgid "Off - DELETE"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:897 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:530 src-ui-wx/effectpanels/MovingHeadPanel.cpp:357
+msgid "On"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:897
+msgid "On - O"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:898 src-ui-wx/setup/PixelTestDialog.cpp:1222 src-ui-wx/setup/PixelTestDialog.cpp:1276 resources/effectmetadata/ColorWash.json resources/effectmetadata/On.json ... (+1)
+msgid "Shimmer"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:898
 msgid "Shimmer - S"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:897
+#: src-ui-wx/xLightsMain.cpp:899
 msgid "Twinkle"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:897
+#: src-ui-wx/xLightsMain.cpp:899
 msgid "Twinkle - K"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:899 src-ui-wx/model/GenerateCustomModelDialog.cpp:2543 resources/effectmetadata/SingleStrand.json
+#: src-ui-wx/xLightsMain.cpp:901 src-ui-wx/model/GenerateCustomModelDialog.cpp:2543 resources/effectmetadata/SingleStrand.json
 msgid "Intensity"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:899
+#: src-ui-wx/xLightsMain.cpp:901
 msgid "Intensity - I"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:900
+#: src-ui-wx/xLightsMain.cpp:902
 msgid "Ramp Up"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:900
+#: src-ui-wx/xLightsMain.cpp:902
 msgid "Ramp Up - U"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:901
+#: src-ui-wx/xLightsMain.cpp:903
 msgid "Ramp Down"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:901
+#: src-ui-wx/xLightsMain.cpp:903
 msgid "Ramp Down - D"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:902 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:184
+#: src-ui-wx/xLightsMain.cpp:904 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:184
 msgid "Ramp Up/Down"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:902
+#: src-ui-wx/xLightsMain.cpp:904
 msgid "Ramp Up/Down - A"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:903
+#: src-ui-wx/xLightsMain.cpp:905
 msgid "Parm1"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:904
+#: src-ui-wx/xLightsMain.cpp:906
 msgid "Parm2"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:906 src-ui-wx/layout/LayoutPanel.cpp:4231
+#: src-ui-wx/xLightsMain.cpp:908 src-ui-wx/layout/LayoutPanel.cpp:4232
 msgid "Fill"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:906
+#: src-ui-wx/xLightsMain.cpp:908
 msgid "Fill - F"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:907
+#: src-ui-wx/xLightsMain.cpp:909
 msgid "Cascade"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:907
+#: src-ui-wx/xLightsMain.cpp:909
 msgid "Cascade - H"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:909
+#: src-ui-wx/xLightsMain.cpp:911
 msgid "Foreground"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:909
+#: src-ui-wx/xLightsMain.cpp:911
 msgid "Foreground - G"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:910
+#: src-ui-wx/xLightsMain.cpp:912
 msgid "Background"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:910
+#: src-ui-wx/xLightsMain.cpp:912
 msgid "Background - B"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:912
+#: src-ui-wx/xLightsMain.cpp:914
 msgid "AC Toolbar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:914 src-ui-wx/xLightsMain.cpp:914 src-ui-wx/xLightsMain.cpp:1118 src-ui-wx/model/CustomModelDialog.cpp:434
+#: src-ui-wx/xLightsMain.cpp:916 src-ui-wx/xLightsMain.cpp:916 src-ui-wx/xLightsMain.cpp:1120 src-ui-wx/model/CustomModelDialog.cpp:434
 msgid "Zoom In"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:915 src-ui-wx/xLightsMain.cpp:915 src-ui-wx/xLightsMain.cpp:1120 src-ui-wx/model/CustomModelDialog.cpp:438
+#: src-ui-wx/xLightsMain.cpp:917 src-ui-wx/xLightsMain.cpp:917 src-ui-wx/xLightsMain.cpp:1122 src-ui-wx/model/CustomModelDialog.cpp:438
 msgid "Zoom Out"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:916 src-ui-wx/xLightsMain.cpp:987 src-ui-wx/sequencer/SeqSettingsDialog.cpp:240
+#: src-ui-wx/xLightsMain.cpp:918 src-ui-wx/xLightsMain.cpp:989 src-ui-wx/sequencer/SeqSettingsDialog.cpp:240
 msgid "Sequence Settings"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:916 resources/effectmetadata/Marquee.json
+#: src-ui-wx/xLightsMain.cpp:918 resources/effectmetadata/Marquee.json
 msgid "Settings"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:918
+#: src-ui-wx/xLightsMain.cpp:920
 msgid "View Toolbar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:923 src-ui-wx/xLightsMain.cpp:923 src-ui-wx/preferences/ServicesPanel.cpp:131
+#: src-ui-wx/xLightsMain.cpp:925 src-ui-wx/xLightsMain.cpp:925 src-ui-wx/preferences/ServicesPanel.cpp:131
 msgid "Test"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:924 src-ui-wx/xLightsMain.cpp:924 src-ui-wx/preferences/xLightsPreferences.cpp:221
+#: src-ui-wx/xLightsMain.cpp:926 src-ui-wx/xLightsMain.cpp:926 src-ui-wx/preferences/xLightsPreferences.cpp:221
 msgid "Check Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:925 src-ui-wx/xLightsMain.cpp:925
+#: src-ui-wx/xLightsMain.cpp:927 src-ui-wx/xLightsMain.cpp:927
 msgid "Package Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:926 src-ui-wx/xLightsMain.cpp:926 src-ui-wx/xLightsMain.cpp:7919 src-ui-wx/sequencer/BatchRenderDialog.cpp:81 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:41
+#: src-ui-wx/xLightsMain.cpp:928 src-ui-wx/xLightsMain.cpp:928 src-ui-wx/xLightsMain.cpp:7926 src-ui-wx/sequencer/BatchRenderDialog.cpp:81 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:41
 msgid "Batch Render"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:927 src-ui-wx/xLightsMain.cpp:927
+#: src-ui-wx/xLightsMain.cpp:929 src-ui-wx/xLightsMain.cpp:929
 msgid "FPP Connect"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:928 src-ui-wx/xLightsMain.cpp:928 src-ui-wx/xLightsMain.cpp:1069
+#: src-ui-wx/xLightsMain.cpp:930 src-ui-wx/xLightsMain.cpp:930 src-ui-wx/xLightsMain.cpp:1071
 msgid "Bulk Controller Upload"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:929 src-ui-wx/xLightsMain.cpp:929
+#: src-ui-wx/xLightsMain.cpp:931 src-ui-wx/xLightsMain.cpp:931
 msgid "View Log"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:931
+#: src-ui-wx/xLightsMain.cpp:933
 msgid "Tools Toolbar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:940
+#: src-ui-wx/xLightsMain.cpp:942
 msgid "Layout"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:941
+#: src-ui-wx/xLightsMain.cpp:943
 msgid "Sequencer"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:942
+#: src-ui-wx/xLightsMain.cpp:944
 msgid "Pane caption"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:946 src-ui-wx/xLightsMain.cpp:956 src-ui-wx/app-shell/RestoreBackupDialog.cpp:156 src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:43 src-ui-wx/sequencer/BulkEditComboDialog.cpp:32 ... (+5)
+#: src-ui-wx/xLightsMain.cpp:948 src-ui-wx/xLightsMain.cpp:958 src-ui-wx/app-shell/RestoreBackupDialog.cpp:156 src-ui-wx/modelproperties/adapters/PositionZoneDialog.cpp:43 src-ui-wx/sequencer/BulkEditComboDialog.cpp:32 ... (+5)
 msgid "Label"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:960
+#: src-ui-wx/xLightsMain.cpp:962
 msgid "Status bar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:964
+#: src-ui-wx/xLightsMain.cpp:966
 msgid "New Sequence\tCtrl-n"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:967
+#: src-ui-wx/xLightsMain.cpp:969
 msgid "Open Sequence\tCTRL-o"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:971
+#: src-ui-wx/xLightsMain.cpp:973
 msgid "RECENT1"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:973
+#: src-ui-wx/xLightsMain.cpp:975
 msgid "Open Recent Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:974
+#: src-ui-wx/xLightsMain.cpp:976
 msgid "Save\tCTRL-S"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:978
+#: src-ui-wx/xLightsMain.cpp:9788
+msgid "A render is still running. Try updating from the base show folder again in a moment."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:980
 msgid "Save Sequence As"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:981
+#: src-ui-wx/xLightsMain.cpp:983
 msgid "Close Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:985
+#: src-ui-wx/xLightsMain.cpp:987
 msgid "Preferences...\tCTRL-,"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:989
+#: src-ui-wx/xLightsMain.cpp:991
 msgid "Key bindings"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:992 src-ui-wx/xLightsMain.cpp:3932 src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:32
+#: src-ui-wx/xLightsMain.cpp:994 src-ui-wx/xLightsMain.cpp:3936 src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:32
 msgid "Export House Preview Video"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:995
+#: src-ui-wx/xLightsMain.cpp:997
 msgid "Select Show Folder"
-msgstr ""
-
-#: src-ui-wx/xLightsMain.cpp:999
-msgid "RECENTFOLDER1"
 msgstr ""
 

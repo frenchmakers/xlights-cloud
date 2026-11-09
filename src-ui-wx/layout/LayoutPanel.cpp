@@ -82,6 +82,7 @@
 #include "UtilFunctions.h"
 #include "shared/dialogs/CheckboxSelectDialog.h"
 #include "shared/utils/ExternalHooksUI.h"
+#include "shared/utils/TranslatedDockArt.h"
 #include "color/ColorManager.h"
 #include "utils/VectorMath.h"
 #include "utils/FloatChecks.h"
@@ -162,7 +163,7 @@ static inline handles::Modifier ModsFromEvent(const wxKeyboardState& event) {
 // 18% of the splitter width (floor kMinPaneWidth) so it scales with screen resolution.
 
 // Custom AUI dock art to draw a modern, clean, subtle gripper instead of cluttered dots.
-class LayoutDockArt : public wxAuiDefaultDockArt {
+class LayoutDockArt : public TranslatedCaptionDockArt<> {
 public:
     void DrawGripper(wxDC& dc, wxWindow* window, const wxRect& rect, wxAuiPaneInfo& pane) override {
         // Draw background using the standard 3D face color

@@ -126,24 +126,35 @@ std::vector<xlImage> wxImagesToXlImages(const std::vector<wxImage>& images) {
     return result;
 }
 
+// Messages are often passed as plain literals; look them up in the UI
+// catalogs here so they show translated. Built messages have no entry and
+// show unchanged.
+static wxString TranslatedMessage(const std::string& msg) {
+    wxString text = wxString::FromUTF8(msg);
+    if (text.empty() && !msg.empty()) {
+        text = wxString(msg);
+    }
+    return wxGetTranslation(text);
+}
+
 void DisplayError(const std::string& err, wxWindow* win) {
     spdlog::error("DisplayError: {}", err);
-    wxMessageBox(err, "Error", wxICON_ERROR | wxOK, win);
+    wxMessageBox(TranslatedMessage(err), _("Error"), wxICON_ERROR | wxOK, win);
 }
 
 void DisplayWarning(const std::string& warn, wxWindow* win) {
     spdlog::warn("DisplayWarning: {}", warn);
-    wxMessageBox(warn, "Warning", wxICON_WARNING | wxOK, win);
+    wxMessageBox(TranslatedMessage(warn), _("Warning"), wxICON_WARNING | wxOK, win);
 }
 
 void DisplayInfo(const std::string& info, wxWindow* win) {
     spdlog::info("DisplayInfo: {}", info);
-    wxMessageBox(info, "Information", wxICON_INFORMATION | wxOK, win);
+    wxMessageBox(TranslatedMessage(info), _("Information"), wxICON_INFORMATION | wxOK, win);
 }
 
 void DisplayCrit(const std::string& crit, wxWindow* win) {
     spdlog::critical("DisplayCrit: {}", crit);
-    wxMessageBox(crit, "CRITICAL", wxICON_ERROR | wxOK, win);
+    wxMessageBox(TranslatedMessage(crit), _("CRITICAL"), wxICON_ERROR | wxOK, win);
 }
 
 std::string DecodeIPError(int err) {

@@ -93,7 +93,7 @@ wxWindow* BufferPanel::CreateCustomControl(wxWindow* parentWin, wxSizer* sizer,
 
 wxWindow* BufferPanel::BuildResetPanelRow(wxWindow* parentWin, wxSizer* sizer) {
     _resetBufferPanelCheck = new wxCheckBox(parentWin, wxNewId(),
-                                             "Reset panel when changing effects",
+                                             _("Reset panel when changing effects"),
                                              wxDefaultPosition, wxDefaultSize, 0,
                                              wxDefaultValidator,
                                              _T("IDD_CHECKBOX_ResetBufferPanel"));
