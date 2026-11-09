@@ -11,6 +11,40 @@ commands in the File menu:
 
 Set it up in **Preferences > Cloud Storage**. Cloudflare R2 is free up to 10 GB of storage.
 
+xLights Cloud also includes a **French translation** of the interface (see below, in French).
+
+## Version française intégrée
+
+xLights Cloud contient une traduction française de l'interface : menus, menus contextuels (clic
+droit), fenêtres, panneaux, propriétés des modèles et des contrôleurs, messages et préférences.
+
+**Pour l'activer :**
+
+1. Ouvrez **File > Preferences...** (ou `Ctrl+,`).
+2. Dans la page **Other**, choisissez **Français** dans la liste **Language (restart required)**.
+3. Cliquez sur **OK**, puis fermez et relancez xLights Cloud.
+
+Pour revenir à l'anglais, choisissez **English** au même endroit (en français : **Fichier >
+Préférences... > Autres > Langue**). Tant qu'aucune langue n'est choisie, l'interface reste en
+anglais. Le réglage ne change rien à vos fichiers : séquences, show et préférences restent
+compatibles avec le xLights officiel.
+
+**Ce qui reste en anglais, volontairement :**
+
+- les noms des effets (Bars, Butterfly, Shimmer…) et des types de modèles, connus sous ces noms
+  dans la communauté ;
+- les valeurs enregistrées dans les séquences (options des effets, styles de rendu…) ;
+- les noms que vous avez donnés vous-même (modèles, vues, perspectives) ;
+- quelques messages produits par le cœur commun à xLights et à l'application iPad (test des pixels,
+  description des sorties).
+
+Un texte en anglais qui devrait être traduit, ou une traduction maladroite ? Signalez-le dans les
+[issues](../../issues), avec une capture d'écran si possible.
+
+Les détails techniques de la traduction (fichiers du catalogue, outils, règles pour le code) sont
+dans [`resources/locale/README.md`](../resources/locale/README.md), et les choix de vocabulaire
+dans le [glossaire français](../resources/locale/fr/GLOSSARY.md).
+
 ## Download (Windows 64-bit)
 
 Get the installer from the [Releases](../../releases) page. There is one xLights Cloud release for
@@ -39,6 +73,7 @@ same license, and its source is this repository.
 ---
 
 *En français :* xLights Cloud est le xLights officiel avec en plus la sauvegarde et la restauration
-du dossier de show vers Cloudflare R2 ou tout stockage compatible S3. Une version Windows est
-publiée pour chaque version officielle. Ce n'est pas un produit de l'équipe xLights : signalez les
+du dossier de show vers Cloudflare R2 ou tout stockage compatible S3, et une interface en français
+(voir [Version française intégrée](#version-française-intégrée)). Une version Windows est publiée
+pour chaque version officielle. Ce n'est pas un produit de l'équipe xLights : signalez les
 problèmes ici.
