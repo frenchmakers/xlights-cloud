@@ -227,6 +227,20 @@ jobs:
           install_runtime: false
           cache: true
 
+      # Release downloads from GitHub sometimes answer 504. fetch_dependencies
+      # skips what is already staged, so retrying here leaves Build All with
+      # nothing left to download.
+      - name: Fetch dependencies (with retries)
+        shell: pwsh
+        run: |
+          for ($i = 1; $i -le 5; $i++) {
+            powershell -NoProfile -ExecutionPolicy Bypass -File ci_scripts\fetch_dependencies.ps1
+            if ($LASTEXITCODE -eq 0) { exit 0 }
+            Write-Host "::warning::Dependency download failed (attempt $i of 5), retrying in $(30 * $i) s"
+            Start-Sleep -Seconds (30 * $i)
+          }
+          exit 1
+
       - name: Build All
         shell: cmd
         working-directory: build_scripts\msw
