@@ -11,6 +11,7 @@ translation is never switched on by itself.
 | `xlights.pot` | Template with every marked string (generated) |
 | `<lang>/xlights.po` | Translations for one language (edit this) |
 | `<lang>/xlights.mo` | Compiled catalog loaded by the app (generated, committed so builds need no tool) |
+| `<lang>/wxstd.po` / `wxstd.mo` | wxWidgets' own strings (stock buttons, progress and print dialogs...), copied unchanged from `locale/<lang>.po` of the wxWidgets build xLights uses |
 
 ## Workflow
 
@@ -31,6 +32,18 @@ empty fall back to English.
 To add a language: create `<lang>/xlights.po` with a header (copy the one in
 `fr/xlights.po`), run `update` and `compile`, and add the language to
 `UILanguage::Available()` in `src-ui-wx/settings/UILanguage.cpp`.
+
+## wxWidgets catalog
+
+`wxstd.po` comes from the xLightsSequencer/wxWidgets fork (`locale/fr.po`, wxWidgets 3.3).
+It is loaded before `xlights`, so a string both catalogs know uses the xLights
+translation. When xLights moves to a new wxWidgets version, copy that version's
+`locale/<lang>.po` over `wxstd.po` and rebuild `wxstd.mo` with a gettext tool that
+handles plurals and contexts (`msgfmt`, Poedit, or Python `polib`):
+
+```bash
+python -c "import polib; polib.pofile('resources/locale/fr/wxstd.po').save_as_mofile('resources/locale/fr/wxstd.mo')"
+```
 
 ## Rules for code
 
@@ -58,6 +71,5 @@ To add a language: create `<lang>/xlights.po` with a header (copy the one in
 - Most dialogs, message boxes (many `wxMessageBox("...")` calls are not marked)
   and property grids (model/object properties).
 - Effect panels built from `resources/effectmetadata/*.json`.
-- wxWidgets' own strings (stock buttons, standard dialogs): ship the matching
-  `wxstd.mo` in `locale/<lang>/` to translate them.
+
 - The iPad app (it would use an Xcode String Catalog).

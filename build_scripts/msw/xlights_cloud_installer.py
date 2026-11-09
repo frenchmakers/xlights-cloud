@@ -46,7 +46,28 @@ def main():
     # flag that would delete the settings shared with the official xLights.
     text = replace_once(text, r"^\[Registry\]\n(?:(?!^\[).*\n?)*", "", "[Registry] section")
 
-    with open(DST, "w", encoding="utf-8") as f:
+    # English and French setup: Inno picks the Windows language and only asks
+    # when it has no match. The three hard-coded English texts become messages.
+    text = replace_once(text, r"^\[Setup\]$", "[Setup]\nShowLanguageDialog=auto", "[Setup] header")
+    text = replace_once(text, r'GroupDescription: "Do you want to create desktop icon\?"',
+                        'GroupDescription: "{cm:DesktopIconGroup}"', "desktop icon question")
+    text = replace_once(text, r'StatusMsg: "Installing VC\+\+ Redistributables\.\.\."',
+                        'StatusMsg: "{cm:InstallingVCRedist}"', "VC++ status message")
+    text = replace_once(text, r'Description: "Launch application"',
+                        f'Description: "{{cm:LaunchProgram,{NAME}}}"', "launch checkbox")
+    text += (
+        "\n[Languages]\n"
+        'Name: "en"; MessagesFile: "compiler:Default.isl"\n'
+        'Name: "fr"; MessagesFile: "compiler:Languages\\French.isl"\n'
+        "\n[CustomMessages]\n"
+        "en.DesktopIconGroup=Do you want to create a desktop icon?\n"
+        "fr.DesktopIconGroup=Voulez-vous créer une icône sur le bureau ?\n"
+        "en.InstallingVCRedist=Installing VC++ Redistributables...\n"
+        "fr.InstallingVCRedist=Installation des composants Visual C++...\n"
+    )
+
+    # utf-8-sig: Inno Setup needs the BOM to read the accented French text.
+    with open(DST, "w", encoding="utf-8-sig") as f:
         f.write(text)
     print(f"Wrote {DST} for {NAME} {version}")
 
