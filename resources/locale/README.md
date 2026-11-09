@@ -68,7 +68,13 @@ python -c "import polib; polib.pofile('resources/locale/fr/wxstd.po').save_as_mo
   id, or compare with `wxGetTranslation(englishName)`, as
   `xLightsPreferences.cpp` does for the initial page.
 - A msgid is shared by every place that uses the same English text, so a
-  translation applies to all of them at once.
+  translation applies to all of them at once. When one of those places reads
+  the text back as English (the release check then clears the translation),
+  mark the places where it is only displayed with
+  `wxTRANSLATE_IN_CONTEXT("context", "text")` and look it up with
+  `wxGetTranslation(text, wxString(), "context")`: they get their own entry
+  (`msgctxt`) in the `.po`. The model property choices use the context
+  `model property` (`TranslatedChoices()` in `PropertyGridHelpers.cpp`).
 - `src-core/` cannot use wx and has no translation hook yet. Messages that
   come from the core stay in English.
 - The C runtime locale is not changed, so number parsing keeps using `.`.
