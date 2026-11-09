@@ -4028,6 +4028,14 @@ msgstr "Changer définitivement"
 msgid "Open in Explorer"
 msgstr "Ouvrir dans l'explorateur"
 
+#: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:76 src-ui-wx/setup/ShowDirectoriesDialog.cpp:163
+msgid "Folder"
+msgstr "Dossier"
+
+#: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:78
+msgid "Opens"
+msgstr "Ouvertures"
+
 #: src-ui-wx/effectpanels/DMXPanel.cpp:120
 msgid "Inv"
 msgstr ""
@@ -11305,10 +11313,6 @@ msgstr "Ouvre le dossier de show de base"
 msgid "Auto Update On Load"
 msgstr "Mise à jour auto au chargement"
 
-#: src-ui-wx/setup/ShowDirectoriesDialog.cpp:163
-msgid "Folder"
-msgstr "Dossier"
-
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:167
 msgid "Add Current"
 msgstr "Ajouter l'actuel"
@@ -11509,10 +11513,6 @@ msgstr "Couleur"
 msgid "Words may be in any order and separators are optional. * and ? are wildcards. /pattern/ is a regular expression."
 msgstr "Les mots peuvent être dans n'importe quel ordre et les séparateurs sont facultatifs. * et ? sont des jokers. /motif/ est une expression régulière."
 
-#: src-ui-wx/shared/utils/wxUtilities.cpp:142
-msgid "Error"
-msgstr "Erreur"
-
 #: src-ui-wx/shared/utils/wxUtilities.cpp:152
 msgid "Information"
 msgstr "Information"
@@ -11633,7 +11633,7 @@ msgstr "Décaler les effets et le timing"
 msgid "Use this options to shift all timing and effects in the sequence."
 msgstr "Décale tout le timing et tous les effets de la séquence."
 
-#: src-ui-wx/xLightsMain.cpp:1041
+#: src-ui-wx/xLightsMain.cpp:1041 src-ui-wx/xLightsMain.cpp:6281
 msgid "Shift Effects"
 msgstr "Décaler les effets"
 
@@ -11641,7 +11641,7 @@ msgstr "Décaler les effets"
 msgid "Use this options to shift all effects in the sequence."
 msgstr "Décale tous les effets de la séquence."
 
-#: src-ui-wx/xLightsMain.cpp:1043
+#: src-ui-wx/xLightsMain.cpp:1043 src-ui-wx/xLightsMain.cpp:6233
 msgid "Shift Selected Effects"
 msgstr "Décaler les effets sélectionnés"
 
@@ -12164,6 +12164,62 @@ msgstr "Impossible de trouver le paquet d'application xLights. Une nouvelle inst
 msgid "No sequence open"
 msgstr "Aucune séquence ouverte"
 
+#: src-ui-wx/xLightsMain.cpp:6182
+msgid ""
+"Enter the number of milliseconds to shift all effects and timing marks:\n"
+"\n"
+"Note: Will be rounded to the nearest timing interval.\n"
+"      This operation cannot be reversed with Undo.\n"
+"      Effects shifted left may be truncated or deleted."
+msgstr ""
+"Nombre de millisecondes de décalage de tous les effets et repères de temps :\n"
+"\n"
+"Remarque : la valeur sera arrondie à l'intervalle de temps le plus proche.\n"
+"      Cette opération ne peut pas être annulée.\n"
+"      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés."
+
+#: src-ui-wx/xLightsMain.cpp:6186
+msgid "Shift Effects And Timings"
+msgstr "Décaler les effets et les repères de temps"
+
+#: src-ui-wx/xLightsMain.cpp:6228
+msgid ""
+"Enter the number of milliseconds to shift the selected effects:\n"
+"\n"
+"Note: Will be rounded to the nearest timing interval.\n"
+"      This operation cannot be reversed with Undo.\n"
+"      Effects shifted left may be truncated or deleted.\n"
+"      Effects that would overlap unselected effects wont be moved."
+msgstr ""
+"Nombre de millisecondes de décalage des effets sélectionnés :\n"
+"\n"
+"Remarque : la valeur sera arrondie à l'intervalle de temps le plus proche.\n"
+"      Cette opération ne peut pas être annulée.\n"
+"      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés.\n"
+"      Les effets qui chevaucheraient des effets non sélectionnés ne seront pas déplacés."
+
+#: src-ui-wx/xLightsMain.cpp:6277
+msgid ""
+"Enter the number of milliseconds to shift all effects:\n"
+"\n"
+"Note: Will be rounded to the nearest timing interval.\n"
+"      This operation cannot be reversed with Undo.\n"
+"      Effects shifted left may be truncated or deleted."
+msgstr ""
+"Nombre de millisecondes de décalage de tous les effets :\n"
+"\n"
+"Remarque : la valeur sera arrondie à l'intervalle de temps le plus proche.\n"
+"      Cette opération ne peut pas être annulée.\n"
+"      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés."
+
+#: src-ui-wx/xLightsMain.cpp:6540
+msgid "There are no effect symbols in this sequence."
+msgstr "Cette séquence ne contient aucun symbole d'effet."
+
+#: src-ui-wx/xLightsMain.cpp:6540
+msgid "No Symbols"
+msgstr "Aucun symbole"
+
 #: src-ui-wx/xLightsMain.cpp:6588
 msgid "Your sequence has unsaved changes. These changes will not be packaged but any new referenced files will be. We suggest you consider saving and trying this again."
 msgstr "Votre séquence a des modifications non enregistrées. Elles ne seront pas empaquetées, contrairement aux nouveaux fichiers référencés. Nous vous conseillons d'enregistrer puis de recommencer."
@@ -12583,6 +12639,14 @@ msgstr "Raccourcis clavier"
 #: src-ui-wx/xLightsMain.cpp:994 src-ui-wx/xLightsMain.cpp:3936 src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:32
 msgid "Export House Preview Video"
 msgstr "Exporter la vidéo de l'aperçu maison"
+
+#: src-ui-wx/xLightsMain.cpp:9955
+msgid "No AI Services Registered for creating images"
+msgstr "Aucun service d'IA n'est configuré pour créer des images"
+
+#: src-ui-wx/xLightsMain.cpp:9955 src-ui-wx/shared/utils/wxUtilities.cpp:142
+msgid "Error"
+msgstr "Erreur"
 
 #: src-ui-wx/xLightsMain.cpp:997
 msgid "Select Show Folder"

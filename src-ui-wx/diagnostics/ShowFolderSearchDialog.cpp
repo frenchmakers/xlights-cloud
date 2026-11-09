@@ -73,9 +73,9 @@ ShowFolderSearchDialog::ShowFolderSearchDialog(xLightsFrame* parent)
 	Connect(ID_BUTTON_OPEN, wxEVT_COMMAND_BUTTON_CLICKED, (wxObjectEventFunction)&ShowFolderSearchDialog::OnButtonOpenClick);
 	//*)
 
-    ListCtrl_Folders->AppendColumn("Folder", wxLIST_FORMAT_LEFT,
+    ListCtrl_Folders->AppendColumn(_("Folder"), wxLIST_FORMAT_LEFT,
                                    wxLIST_AUTOSIZE);
-    ListCtrl_Folders->AppendColumn("Opens", wxLIST_FORMAT_CENTRE);
+    ListCtrl_Folders->AppendColumn(_("Opens"), wxLIST_FORMAT_CENTRE);
 
     _xLights = parent;
     auto const& folder =  FindLogFolder();

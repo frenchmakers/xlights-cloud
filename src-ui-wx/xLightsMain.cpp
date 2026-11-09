@@ -6179,11 +6179,11 @@ void xLightsFrame::OnMenuItemShiftEffectsAndTimingSelected(wxCommandEvent& event
 {
     if (CurrentSeqXmlFile == nullptr)
         return;
-    wxTextEntryDialog ted(this, "Enter the number of milliseconds to shift all effects and timing marks:\n\n"
+    wxTextEntryDialog ted(this, _("Enter the number of milliseconds to shift all effects and timing marks:\n\n"
         "Note: Will be rounded to the nearest timing interval.\n"
         "      This operation cannot be reversed with Undo.\n"
-        "      Effects shifted left may be truncated or deleted.",
-        "Shift Effects And Timings", "", wxOK | wxCANCEL | wxCENTER);
+        "      Effects shifted left may be truncated or deleted."),
+        _("Shift Effects And Timings"), "", wxOK | wxCANCEL | wxCENTER);
     if (ted.ShowModal() == wxID_OK) {
         int milliseconds = wxAtoi(ted.GetValue());
         if (CurrentSeqXmlFile->GetSequenceLoaded()) {
@@ -6225,12 +6225,12 @@ void xLightsFrame::OnMenuItemShiftEffectsAndTimingSelected(wxCommandEvent& event
 
 void xLightsFrame::OnMenuItemShiftSelectedEffectsSelected(wxCommandEvent& event)
 {
-    wxTextEntryDialog ted(this, "Enter the number of milliseconds to shift the selected effects:\n\n"
+    wxTextEntryDialog ted(this, _("Enter the number of milliseconds to shift the selected effects:\n\n"
                                 "Note: Will be rounded to the nearest timing interval.\n"
                                 "      This operation cannot be reversed with Undo.\n"
                                 "      Effects shifted left may be truncated or deleted.\n"
-                                "      Effects that would overlap unselected effects wont be moved.",
-                          "Shift Selected Effects", "", wxOK | wxCANCEL | wxCENTER);
+                                "      Effects that would overlap unselected effects wont be moved."),
+                          _("Shift Selected Effects"), "", wxOK | wxCANCEL | wxCENTER);
     if (ted.ShowModal() == wxID_OK) {
         int milliseconds = wxAtoi(ted.GetValue());
         if (CurrentSeqXmlFile->GetSequenceLoaded()) {
@@ -6274,11 +6274,11 @@ void xLightsFrame::OnMenuItemShiftEffectsSelected(wxCommandEvent& event)
 {
     if (CurrentSeqXmlFile == nullptr)
         return;
-    wxTextEntryDialog ted(this, "Enter the number of milliseconds to shift all effects:\n\n"
+    wxTextEntryDialog ted(this, _("Enter the number of milliseconds to shift all effects:\n\n"
                                 "Note: Will be rounded to the nearest timing interval.\n"
                                 "      This operation cannot be reversed with Undo.\n"
-                                "      Effects shifted left may be truncated or deleted.",
-                          "Shift Effects", "", wxOK | wxCANCEL | wxCENTER);
+                                "      Effects shifted left may be truncated or deleted."),
+                          _("Shift Effects"), "", wxOK | wxCANCEL | wxCENTER);
     if (ted.ShowModal() == wxID_OK) {
         int milliseconds = wxAtoi(ted.GetValue());
         if (CurrentSeqXmlFile->GetSequenceLoaded()) {
@@ -6537,7 +6537,7 @@ void xLightsFrame::OnMenuItem_ConvertSymbolsSelected(wxCommandEvent& event)
     std::vector<EffectSymbol*> symbols = symbolMgr.GetAllSymbols();
 
     if (symbols.empty()) {
-        wxMessageBox("There are no effect symbols in this sequence.", "No Symbols", wxOK | wxICON_INFORMATION, this);
+        wxMessageBox(_("There are no effect symbols in this sequence."), _("No Symbols"), wxOK | wxICON_INFORMATION, this);
         return;
     }
 
@@ -9952,7 +9952,7 @@ std::vector<aiBase*> xLightsFrame::GetAIServices(aiType::TYPE serviceType) {
 void xLightsFrame::OnMenuItem_GenerateAIImageSelected(wxCommandEvent& event) {
     auto services = _serviceManager->findServices(aiType::TYPE::IMAGES);
     if (services.empty()) {
-        wxMessageBox("No AI Services Registered for creating images", "Error", wxICON_ERROR);
+        wxMessageBox(_("No AI Services Registered for creating images"), _("Error"), wxICON_ERROR);
         return;
     }
     auto serv = services[0];

@@ -3974,6 +3974,14 @@ msgstr ""
 msgid "Open in Explorer"
 msgstr ""
 
+#: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:76 src-ui-wx/setup/ShowDirectoriesDialog.cpp:163
+msgid "Folder"
+msgstr ""
+
+#: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:78
+msgid "Opens"
+msgstr ""
+
 #: src-ui-wx/effectpanels/DMXPanel.cpp:120
 msgid "Inv"
 msgstr ""
@@ -11109,10 +11117,6 @@ msgstr ""
 msgid "Auto Update On Load"
 msgstr ""
 
-#: src-ui-wx/setup/ShowDirectoriesDialog.cpp:163
-msgid "Folder"
-msgstr ""
-
 #: src-ui-wx/setup/ShowDirectoriesDialog.cpp:167
 msgid "Add Current"
 msgstr ""
@@ -11313,10 +11317,6 @@ msgstr ""
 msgid "Words may be in any order and separators are optional. * and ? are wildcards. /pattern/ is a regular expression."
 msgstr ""
 
-#: src-ui-wx/shared/utils/wxUtilities.cpp:142
-msgid "Error"
-msgstr ""
-
 #: src-ui-wx/shared/utils/wxUtilities.cpp:152
 msgid "Information"
 msgstr ""
@@ -11437,7 +11437,7 @@ msgstr ""
 msgid "Use this options to shift all timing and effects in the sequence."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1041
+#: src-ui-wx/xLightsMain.cpp:1041 src-ui-wx/xLightsMain.cpp:6281
 msgid "Shift Effects"
 msgstr ""
 
@@ -11445,7 +11445,7 @@ msgstr ""
 msgid "Use this options to shift all effects in the sequence."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1043
+#: src-ui-wx/xLightsMain.cpp:1043 src-ui-wx/xLightsMain.cpp:6233
 msgid "Shift Selected Effects"
 msgstr ""
 
@@ -11963,6 +11963,46 @@ msgstr ""
 msgid "No sequence open"
 msgstr ""
 
+#: src-ui-wx/xLightsMain.cpp:6182
+msgid ""
+"Enter the number of milliseconds to shift all effects and timing marks:\n"
+"\n"
+"Note: Will be rounded to the nearest timing interval.\n"
+"      This operation cannot be reversed with Undo.\n"
+"      Effects shifted left may be truncated or deleted."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:6186
+msgid "Shift Effects And Timings"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:6228
+msgid ""
+"Enter the number of milliseconds to shift the selected effects:\n"
+"\n"
+"Note: Will be rounded to the nearest timing interval.\n"
+"      This operation cannot be reversed with Undo.\n"
+"      Effects shifted left may be truncated or deleted.\n"
+"      Effects that would overlap unselected effects wont be moved."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:6277
+msgid ""
+"Enter the number of milliseconds to shift all effects:\n"
+"\n"
+"Note: Will be rounded to the nearest timing interval.\n"
+"      This operation cannot be reversed with Undo.\n"
+"      Effects shifted left may be truncated or deleted."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:6540
+msgid "There are no effect symbols in this sequence."
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:6540
+msgid "No Symbols"
+msgstr ""
+
 #: src-ui-wx/xLightsMain.cpp:6588
 msgid "Your sequence has unsaved changes. These changes will not be packaged but any new referenced files will be. We suggest you consider saving and trying this again."
 msgstr ""
@@ -12381,6 +12421,14 @@ msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:994 src-ui-wx/xLightsMain.cpp:3936 src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:32
 msgid "Export House Preview Video"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:9955
+msgid "No AI Services Registered for creating images"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:9955 src-ui-wx/shared/utils/wxUtilities.cpp:142
+msgid "Error"
 msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:997
