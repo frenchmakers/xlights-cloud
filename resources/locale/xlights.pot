@@ -8871,10 +8871,6 @@ msgstr ""
 msgid "Select Service"
 msgstr ""
 
-#: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:48
-msgid "Effects Toolbar"
-msgstr ""
-
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:49
 msgid "Choose which effects appear in the toolbar, and their order:"
 msgstr ""
@@ -11531,6 +11527,22 @@ msgstr ""
 msgid "Your sequence has unsaved changes. These changes will not be packaged but any new referenced files will be. We suggest you consider saving and trying this again."
 msgstr ""
 
+#: src-ui-wx/xLightsMain.cpp:7007
+msgid "Main Toolbar"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:7008
+msgid "Play Toolbar"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:7009
+msgid "Windows Toolbar"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:7012 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:48
+msgid "Effects Toolbar"
+msgstr ""
+
 #: src-ui-wx/xLightsMain.cpp:7926
 msgid "A batch render is already running."
 msgstr ""
@@ -11683,7 +11695,7 @@ msgstr ""
 msgid "Paste By Cell"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:859
+#: src-ui-wx/xLightsMain.cpp:859 src-ui-wx/xLightsMain.cpp:7010
 msgid "Paste Toolbar"
 msgstr ""
 
@@ -11811,7 +11823,7 @@ msgstr ""
 msgid "Background - B"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:914
+#: src-ui-wx/xLightsMain.cpp:914 src-ui-wx/xLightsMain.cpp:7028
 msgid "AC Toolbar"
 msgstr ""
 
@@ -11831,7 +11843,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:920
+#: src-ui-wx/xLightsMain.cpp:920 src-ui-wx/xLightsMain.cpp:7011
 msgid "View Toolbar"
 msgstr ""
 
@@ -11863,7 +11875,7 @@ msgstr ""
 msgid "View Log"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:933
+#: src-ui-wx/xLightsMain.cpp:933 src-ui-wx/xLightsMain.cpp:7013
 msgid "Tools Toolbar"
 msgstr ""
 

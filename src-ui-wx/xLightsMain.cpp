@@ -7004,18 +7004,18 @@ void xLightsFrame::PlayerError(const wxString& msg)
 void xLightsFrame::BuildToolbarsMenu()
 {
     static const std::pair<wxString, wxString> entries[] = {
-        { "Main Tool Bar", "Main Toolbar" },
-        { "Play Tool Bar", "Play Toolbar" },
-        { "Windows Tool Bar", "Windows Toolbar" },
-        { "Edit Tool Bar", "Paste Toolbar" },
-        { "View Tool Bar", "View Toolbar" },
-        { "EffectsToolBar", "Effects Toolbar" },
-        { "Tools Tool Bar", "Tools Toolbar" },
+        { "Main Tool Bar", wxTRANSLATE("Main Toolbar") },
+        { "Play Tool Bar", wxTRANSLATE("Play Toolbar") },
+        { "Windows Tool Bar", wxTRANSLATE("Windows Toolbar") },
+        { "Edit Tool Bar", wxTRANSLATE("Paste Toolbar") },
+        { "View Tool Bar", wxTRANSLATE("View Toolbar") },
+        { "EffectsToolBar", wxTRANSLATE("Effects Toolbar") },
+        { "Tools Tool Bar", wxTRANSLATE("Tools Toolbar") },
     };
 
     int pos = 0;
     for (const auto& [paneName, label] : entries) {
-        wxMenuItem* item = new wxMenuItem(MenuItemToolbars, wxID_ANY, label, wxEmptyString, wxITEM_CHECK);
+        wxMenuItem* item = new wxMenuItem(MenuItemToolbars, wxID_ANY, wxGetTranslation(label), wxEmptyString, wxITEM_CHECK);
         MenuItemToolbars->Insert(pos++, item);
         wxString pane = paneName;
         Bind(wxEVT_MENU, [this, pane](wxCommandEvent&) { ToggleToolbarPane(pane); }, item->GetId());
@@ -7025,7 +7025,7 @@ void xLightsFrame::BuildToolbarsMenu()
 
     // Grouped with "Show AC Ramps" (immediately below) rather than in the
     // generic list above, since both toggle AC-editing-related UI.
-    wxMenuItem* acToolbarItem = new wxMenuItem(MenuItemToolbars, wxID_ANY, "AC Toolbar", wxEmptyString, wxITEM_CHECK);
+    wxMenuItem* acToolbarItem = new wxMenuItem(MenuItemToolbars, wxID_ANY, _("AC Toolbar"), wxEmptyString, wxITEM_CHECK);
     MenuItemToolbars->Insert(pos, acToolbarItem);
     Bind(wxEVT_MENU, [this](wxCommandEvent&) { ToggleToolbarPane("ACToolbar"); }, acToolbarItem->GetId());
     _toolbarMenuItems.emplace_back("ACToolbar", acToolbarItem);

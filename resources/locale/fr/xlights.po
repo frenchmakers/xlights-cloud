@@ -9041,10 +9041,6 @@ msgstr "5 minutes"
 msgid "Select Service"
 msgstr "Choisir un service"
 
-#: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:48
-msgid "Effects Toolbar"
-msgstr "Barre d'outils des effets"
-
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:49
 msgid "Choose which effects appear in the toolbar, and their order:"
 msgstr "Choisissez les effets affichés dans la barre d'outils, et leur ordre :"
@@ -11732,6 +11728,22 @@ msgstr "Aucune séquence ouverte"
 msgid "Your sequence has unsaved changes. These changes will not be packaged but any new referenced files will be. We suggest you consider saving and trying this again."
 msgstr "Votre séquence a des modifications non enregistrées. Elles ne seront pas empaquetées, contrairement aux nouveaux fichiers référencés. Nous vous conseillons d'enregistrer puis de recommencer."
 
+#: src-ui-wx/xLightsMain.cpp:7007
+msgid "Main Toolbar"
+msgstr "Barre principale"
+
+#: src-ui-wx/xLightsMain.cpp:7008
+msgid "Play Toolbar"
+msgstr "Barre de lecture"
+
+#: src-ui-wx/xLightsMain.cpp:7009
+msgid "Windows Toolbar"
+msgstr "Barre des fenêtres"
+
+#: src-ui-wx/xLightsMain.cpp:7012 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:48
+msgid "Effects Toolbar"
+msgstr "Barre d'outils des effets"
+
 #: src-ui-wx/xLightsMain.cpp:7926
 msgid "A batch render is already running."
 msgstr "Un rendu par lots est déjà en cours."
@@ -11884,7 +11896,7 @@ msgstr "Coller par temps"
 msgid "Paste By Cell"
 msgstr "Coller par cellule"
 
-#: src-ui-wx/xLightsMain.cpp:859
+#: src-ui-wx/xLightsMain.cpp:859 src-ui-wx/xLightsMain.cpp:7010
 msgid "Paste Toolbar"
 msgstr "Barre de collage"
 
@@ -12012,7 +12024,7 @@ msgstr "Arrière-plan"
 msgid "Background - B"
 msgstr "Arrière-plan - B"
 
-#: src-ui-wx/xLightsMain.cpp:914
+#: src-ui-wx/xLightsMain.cpp:914 src-ui-wx/xLightsMain.cpp:7028
 msgid "AC Toolbar"
 msgstr "Barre d'outils AC"
 
@@ -12032,7 +12044,7 @@ msgstr "Paramètres de la séquence"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src-ui-wx/xLightsMain.cpp:920
+#: src-ui-wx/xLightsMain.cpp:920 src-ui-wx/xLightsMain.cpp:7011
 msgid "View Toolbar"
 msgstr "Barre d'affichage"
 
@@ -12064,7 +12076,7 @@ msgstr "Envoi groupé vers les contrôleurs"
 msgid "View Log"
 msgstr "Voir le journal"
 
-#: src-ui-wx/xLightsMain.cpp:933
+#: src-ui-wx/xLightsMain.cpp:933 src-ui-wx/xLightsMain.cpp:7013
 msgid "Tools Toolbar"
 msgstr "Barre des outils"
 
