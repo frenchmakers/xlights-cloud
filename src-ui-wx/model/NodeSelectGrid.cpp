@@ -1017,11 +1017,11 @@ void NodeSelectGrid::Find()
     GetMinMaxNode(minNode, maxNode);
 
     if (minNode == 0) {
-        wxMessageBox("No nodes present.");
+        wxMessageBox(_("No nodes present."));
         return;
     }
 
-    wxNumberEntryDialog dlg(this, "Node to find.", "Node to find", "Node", 0, minNode, maxNode);
+    wxNumberEntryDialog dlg(this, _("Node to find."), "Node to find", "Node", 0, minNode, maxNode);
     if (dlg.ShowModal() == wxID_OK) {
         auto find = dlg.GetValue();
 

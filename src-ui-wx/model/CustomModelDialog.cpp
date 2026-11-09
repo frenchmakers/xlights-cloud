@@ -1249,7 +1249,7 @@ void CustomModelDialog::OnCheckBox_RearViewClick(wxCommandEvent& event)
 void CustomModelDialog::OnButtonCancelClick(wxCommandEvent& event)
 {
     if (_changed) {
-        if (wxMessageBox("Are you sure you want to discard your current custom model changes?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+        if (wxMessageBox(_("Are you sure you want to discard your current custom model changes?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
             return;
         }
     }
@@ -1284,7 +1284,7 @@ void CustomModelDialog::OnButtonWiringClick(wxCommandEvent& event)
     }
     else
     {
-        wxMessageBox("Wiring view cannot be displayed for 3D models.");
+        wxMessageBox(_("Wiring view cannot be displayed for 3D models."));
     }
 }
 
@@ -1436,7 +1436,7 @@ void CustomModelDialog::CentreModel()
 
 void CustomModelDialog::Rotate()
 {
-    wxNumberEntryDialog dlg(this, "Degrees to rotate.", "Rotate by", "Rotate", 0, -180, 180);
+    wxNumberEntryDialog dlg(this, _("Degrees to rotate."), "Rotate by", "Rotate", 0, -180, 180);
     if (dlg.ShowModal() == wxID_OK)
     {
         auto degrees = -1 * dlg.GetValue();
@@ -1772,7 +1772,7 @@ void CustomModelDialog::Reverse()
             }
         }
     }
-    if (wxMessageBox("Do you want to also reverse the submodels?\nThere is no way to undo it - other than to reverse again", "Are you sure?", wxYES_NO | wxCENTER, this) == wxYES) {
+    if (wxMessageBox(_("Do you want to also reverse the submodels?\nThere is no way to undo it - other than to reverse again"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxYES) {
         ReverseSubmodels();
     }
 
@@ -2084,7 +2084,7 @@ void CustomModelDialog::Shift()
         }
     }
 
-    wxNumberEntryDialog dlg(this, "Enter Increase/Decrease Value", "", "Increment/Decrement Value", 0, -(max - 1), max - 1);
+    wxNumberEntryDialog dlg(this, _("Enter Increase/Decrease Value"), "", "Increment/Decrement Value", 0, -(max - 1), max - 1);
     if (dlg.ShowModal() == wxID_OK)
     {
         auto scaleFactor = dlg.GetValue();
@@ -2135,7 +2135,7 @@ void CustomModelDialog::ShiftSelected()
 {
     //I think not "wrapping around" is better when shifting selected nodes.
     //I see this being used when a Node is missed and only half need to be shifted by one.
-    wxNumberEntryDialog dlg(this, "Enter Increase/Decrease Value", "", "Increment/Decrement Value", 0, -1000000, 1000000);
+    wxNumberEntryDialog dlg(this, _("Enter Increase/Decrease Value"), "", "Increment/Decrement Value", 0, -1000000, 1000000);
     if (dlg.ShowModal() == wxID_OK) {
         auto scaleFactor = dlg.GetValue();
         if (scaleFactor != 0) {
@@ -3258,11 +3258,11 @@ void CustomModelDialog::Find()
     GetMinMaxNode(minNode, maxNode);
 
     if (minNode == 0) {
-        wxMessageBox("No nodes present.");
+        wxMessageBox(_("No nodes present."));
         return;
     }
 
-    wxNumberEntryDialog dlg(this, "Node to find.", "Node to find", "Node", 0, minNode, maxNode);
+    wxNumberEntryDialog dlg(this, _("Node to find."), "Node to find", "Node", 0, minNode, maxNode);
     if (dlg.ShowModal() == wxID_OK) {
         auto find = dlg.GetValue();
 
@@ -3297,7 +3297,7 @@ void CustomModelDialog::FindLast()
     GetMinMaxNode(minNode, maxNode);
 
     if (minNode == 0) {
-        wxMessageBox("No nodes present.");
+        wxMessageBox(_("No nodes present."));
         return;
     }
 
@@ -3407,7 +3407,7 @@ void CustomModelDialog::OnButton_ImportFromControllerClick(wxCommandEvent& event
               });
 
 #ifndef TEST_TWINKLY_FORMAT
-    wxSingleChoiceDialog dlg(this, "Select controller to load from", "Download from controller", choices);
+    wxSingleChoiceDialog dlg(this, _("Select controller to load from"), _("Download from controller"), choices);
 
     if (dlg.ShowModal() == wxID_OK) {
         ControllerEthernet* downloadFrom = nullptr;

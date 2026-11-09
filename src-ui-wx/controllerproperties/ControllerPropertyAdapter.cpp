@@ -329,8 +329,8 @@ bool ControllerPropertyAdapter::HandlePropertyEvent(wxPropertyGridEvent& event, 
             int universeSize = _controller.GetFirstOutput()->GetChannels();
             if (universeSize != 170 && universeSize != 510 && universeSize != 512) {
                 wxMessageBox(
-                    wxString::Format("The current Universe Size is %d.\n\nFor Auto Size to work correctly, you may need to update the Universe Size to a common value such as 510 or 512.", universeSize),
-                    "Universe Size Warning",
+                    wxString::Format(_("The current Universe Size is %d.\n\nFor Auto Size to work correctly, you may need to update the Universe Size to a common value such as 510 or 512."), universeSize),
+                    _("Universe Size Warning"),
                     wxOK | wxICON_WARNING);
             }
         }

@@ -801,7 +801,7 @@ void ColorCurveDialog::OnButtonPresetClick(wxCommandEvent& event)
 {
     if (_ccp->IsDirty())
     {
-        if (wxMessageBox("Are you sure you want to discard your current color curve?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO)
+        if (wxMessageBox(_("Are you sure you want to discard your current color curve?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO)
         {
             return;
         }

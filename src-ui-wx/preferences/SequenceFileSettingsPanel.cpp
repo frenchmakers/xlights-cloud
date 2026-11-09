@@ -486,7 +486,7 @@ void SequenceFileSettingsPanel::OnDirPickerCtrl_FSEQDirChanged(wxFileDirPickerEv
 
 void SequenceFileSettingsPanel::OnAddMediaButtonClick(wxCommandEvent& event)
 {
-    wxDirDialog dlg(NULL, "Choose media directory", "",
+    wxDirDialog dlg(NULL, _("Choose media directory"), "",
                     wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST | wxDD_NEW_DIR_BUTTON );
     if (dlg.ShowModal() == wxID_OK) {
         wxString d = dlg.GetPath();

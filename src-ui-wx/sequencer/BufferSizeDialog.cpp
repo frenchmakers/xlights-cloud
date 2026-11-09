@@ -454,7 +454,7 @@ void BufferSizeDialog::LoadBufferPreset(wxString const& name)
         }
     }
     spdlog::warn("buffer file load failed.");
-    wxMessageBox("Unable to load buffer file.");
+    wxMessageBox(_("Unable to load buffer file."));
 }
 
 void BufferSizeDialog::OnBitmapButtonSaveClick(wxCommandEvent& event)
@@ -463,7 +463,7 @@ void BufferSizeDialog::OnBitmapButtonSaveClick(wxCommandEvent& event)
     wxString name = ComboBoxBufferPresets->GetString(sel);
 
     if (name == "(New)") {
-        name = wxGetTextFromUser("What is the New Buffer Preset Name?", "New Buffer Preset Name");
+        name = wxGetTextFromUser(_("What is the New Buffer Preset Name?"), "New Buffer Preset Name");
     }
     if (name.IsEmpty())
         return;
@@ -559,7 +559,7 @@ void BufferSizeDialog::OnBuffer_PresetsSelect(wxCommandEvent& event)
     wxString name = ComboBoxBufferPresets->GetString(sel);
     //wxString name = event.GetString();
     if (name == "(New)") {
-        name = wxGetTextFromUser("What is the New Buffer Name?", "New Buffer Name");
+        name = wxGetTextFromUser(_("What is the New Buffer Name?"), "New Buffer Name");
         if (name.IsEmpty()) {
             BitmapButtonDelete->Disable();
             return;

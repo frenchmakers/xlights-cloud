@@ -134,7 +134,7 @@ void RemapDMXChannelsDialog::OnButton_CancelClick(wxCommandEvent& event)
 
 void RemapDMXChannelsDialog::OnButton_SaveMappingClick(wxCommandEvent& event)
 {
-	wxFileDialog dlg(this, "Save mapping", wxEmptyString, "DMXMapping", "Mapping Files (*.xdmxmap)|*.xdmxmap|All Files (*.)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	wxFileDialog dlg(this, _("Save mapping"), wxEmptyString, "DMXMapping", "Mapping Files (*.xdmxmap)|*.xdmxmap|All Files (*.)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	if (dlg.ShowModal() == wxID_OK) {
 		wxFileOutputStream output(dlg.GetPath());
 		if (output.IsOk()) {
@@ -191,7 +191,7 @@ int RemapDMXChannelsDialog::GetToChannel(int idx)
 
 void RemapDMXChannelsDialog::OnButton_LoadMappingClick(wxCommandEvent& event)
 {
-	wxFileDialog dlg(this, "Load mapping", wxEmptyString, wxEmptyString, "Mapping Files (*.xdmxmap)|*.xdmxmap|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+	wxFileDialog dlg(this, _("Load mapping"), wxEmptyString, wxEmptyString, "Mapping Files (*.xdmxmap)|*.xdmxmap|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 	if (dlg.ShowModal() == wxID_OK) {
 		wxFileInputStream input(dlg.GetPath());
 		if (input.IsOk()) {

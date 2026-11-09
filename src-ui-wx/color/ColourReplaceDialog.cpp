@@ -182,7 +182,7 @@ void ColourReplaceDialog::OnButton_ReplaceClick(wxCommandEvent& event)
 
     int replaced = _frame->GetSequenceElements().ReplaceColours(_frame, BitmapButton_ExistingColour->GetString(BitmapButton_ExistingColour->GetSelection()), to, CheckBox_SelectedEffectsOnly->GetValue());
 
-    wxMessageBox(wxString::Format("%d colors replaced.", replaced), "Replaced");
+    wxMessageBox(wxString::Format(_("%d colors replaced."), replaced), _("Replaced"));
 
     UpdateExistingColours();
 }

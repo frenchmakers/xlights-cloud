@@ -114,7 +114,7 @@ void EditAliasesDialog::ValidateWindow()
 
 void EditAliasesDialog::OnButtonAddClick(wxCommandEvent& event)
 {
-    wxTextEntryDialog te(this, "Alias to add", "Add an alias");
+    wxTextEntryDialog te(this, _("Alias to add"), _("Add an alias"));
 
     if (te.ShowModal() == wxID_OK) {
         auto add = te.GetValue().Lower();
@@ -145,7 +145,7 @@ void EditAliasesDialog::OnButtonEditClick(wxCommandEvent& event)
     int sel = ListBoxAliases->GetSelection();
     if (sel < 0) return;
 
-    wxTextEntryDialog te(this, "Alias", "Edit alias", ListBoxAliases->GetString(sel));
+    wxTextEntryDialog te(this, _("Alias"), _("Edit alias"), ListBoxAliases->GetString(sel));
 
     if (te.ShowModal() == wxID_OK) {
         auto edited = te.GetValue().Lower();

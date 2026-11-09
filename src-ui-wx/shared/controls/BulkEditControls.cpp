@@ -204,7 +204,7 @@ void BulkEditFilePickerCtrl::OnFilePickerCtrl_FileChanged(wxFileDirPickerEvent& 
                     if (canEmbed)
                         choices.Add("Embed in sequence");
 
-                    wxSingleChoiceDialog dlg(this, msg, "File Outside Show Directory", choices);
+                    wxSingleChoiceDialog dlg(this, msg, _("File Outside Show Directory"), choices);
                     dlg.SetSelection(0);
                     if (dlg.ShowModal() == wxID_OK) {
                         wxString chosen = dlg.GetStringSelection();

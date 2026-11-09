@@ -287,7 +287,7 @@ void ModelPreview::RestoreDefaultCameraPosition()
 
 void ModelPreview::SaveCurrentCameraPosition()
 {
-    wxTextEntryDialog dlg(this, "Enter a name for this ViewPoint", "ViewPoint Name", "");
+    wxTextEntryDialog dlg(this, _("Enter a name for this ViewPoint"), _("ViewPoint Name"), "");
     bool name_ok = false;
     while (!name_ok) {
         if (dlg.ShowModal() == wxID_OK) {
@@ -297,7 +297,7 @@ void ModelPreview::SaveCurrentCameraPosition()
                 xlights->viewpoint_mgr.AddCamera( name, current_camera, is3d );
                 name_ok = true;
             } else {
-                wxMessageDialog msgDlg(this, "Error: ViewPoint name is a duplicate or blank.", "Error", wxOK | wxCENTRE);
+                wxMessageDialog msgDlg(this, _("Error: ViewPoint name is a duplicate or blank."), _("Error"), wxOK | wxCENTRE);
                 msgDlg.ShowModal();
             }
         } else {

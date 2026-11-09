@@ -459,7 +459,7 @@ void HinksPixExportDialog::ControllerPopupMenu(wxContextMenuEvent& event) {
             auto contrl = std::find_if(m_hixControllers.begin(), m_hixControllers.end(), [&name](auto po) { return po->GetName() == name; });
             if (contrl != m_hixControllers.end()) {
                 wxProgressDialog prgs(
-                    "Connecting to HinksPix", "Connecting to HinksPix...", 100, this, wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+                    _("Connecting to HinksPix"), _("Connecting to HinksPix..."), 100, this, wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
                 prgs.Show();
                 wxSafeYield();
                 std::unique_ptr<HinksPix> hixpix = std::make_unique<HinksPix>((*contrl)->GetIP(), (*contrl)->GetFPPProxy());
@@ -531,10 +531,10 @@ void HinksPixExportDialog::ControllerPopupMenu(wxContextMenuEvent& event) {
 
 void HinksPixExportDialog::ExtractFirmware(ControllerEthernet* controller) {
 
-    wxFileDialog file(this, "Select Firmware File", "", "", "Firmware Package (*.zip)|*.zip");
+    wxFileDialog file(this, _("Select Firmware File"), "", "", "Firmware Package (*.zip)|*.zip");
 
     if (file.ShowModal() == wxID_OK) {
-        wxProgressDialog prgs("Connecting to HinksPix", "Connecting to HinksPix", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+        wxProgressDialog prgs(_("Connecting to HinksPix"), _("Connecting to HinksPix"), 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
         prgs.Show();
 
         std::unique_ptr<HinksPix> hixpix = std::make_unique<HinksPix>(controller->GetIP(), controller->GetFPPProxy());
@@ -640,10 +640,10 @@ void HinksPixExportDialog::ExtractFirmware(ControllerEthernet* controller) {
 }
 
 void HinksPixExportDialog::UploadFile(ControllerEthernet* controller) {
-    wxFileDialog file(this, "Select File", "", "", "All Files (*.*)|*.*");
+    wxFileDialog file(this, _("Select File"), "", "", "All Files (*.*)|*.*");
 
     if (file.ShowModal() == wxID_OK) {
-        wxProgressDialog prgs("Connecting to HinksPix", "Connecting to HinksPix", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+        wxProgressDialog prgs(_("Connecting to HinksPix"), _("Connecting to HinksPix"), 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
         prgs.Show();
 
         std::unique_ptr<HinksPix> hixpix = std::make_unique<HinksPix>(controller->GetIP(), controller->GetFPPProxy());
@@ -673,7 +673,7 @@ void HinksPixExportDialog::UploadFile(ControllerEthernet* controller) {
 
 void HinksPixExportDialog::UploadSchedules(ControllerEthernet* controller) {
    
-    wxProgressDialog prgs("Connecting to HinksPix", "Connecting to HinksPix", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+    wxProgressDialog prgs(_("Connecting to HinksPix"), _("Connecting to HinksPix"), 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
     prgs.Show();
 
     std::unique_ptr<HinksPix> hixpix = std::make_unique<HinksPix>(controller->GetIP(), controller->GetFPPProxy());
@@ -854,7 +854,7 @@ void HinksPixExportDialog::OnPopupGrid(wxCommandEvent& event)
         wxArrayString days;
         std::transform(DAYS.begin(), DAYS.end(), std::back_inserter(days), [](auto const& s) { return s; });
 
-        wxMultiChoiceDialog dlg(this, "Select Days to Apply Changes", "Select Days", days);
+        wxMultiChoiceDialog dlg(this, _("Select Days to Apply Changes"), _("Select Days"), days);
         if (dlg.ShowModal() == wxID_OK) {
             wxArrayInt selections = dlg.GetSelections();
 
@@ -1254,7 +1254,7 @@ void HinksPixExportDialog::OnButton_ExportClick(wxCommandEvent& /*event*/) {
     totalProgress += 2;
 
     wxProgressDialog prgs(
-        "Generating HinksPix Files", "Generating HinksPix Files", totalProgress, this, wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+        _("Generating HinksPix Files"), _("Generating HinksPix Files"), totalProgress, this, wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
     prgs.Show();
 
     std::map<std::string, std::string> shortNames;
@@ -1409,7 +1409,7 @@ void HinksPixExportDialog::OnButton_ExportClick(wxCommandEvent& /*event*/) {
     if (error) {
         DisplayError("HinksPix File Generation Error\n" + errorMsg);
     } else {
-        wxMessageBox("HinksPix File Generation Complete");
+        wxMessageBox(_("HinksPix File Generation Complete"));
     }
 }
 
@@ -1430,7 +1430,7 @@ void HinksPixExportDialog::OnButtonUploadClick(wxCommandEvent& /*event*/) {
     //totalProgress += 2;
 
     wxProgressDialog prgs(
-        "Generating HinksPix Files", "Generating HinksPix Files", 100, this, wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+        _("Generating HinksPix Files"), _("Generating HinksPix Files"), 100, this, wxPD_CAN_ABORT | wxPD_APP_MODAL | wxPD_AUTO_HIDE);
     prgs.Show();
 
     std::map<std::string, std::string> shortNames;
@@ -1606,7 +1606,7 @@ void HinksPixExportDialog::OnButtonUploadClick(wxCommandEvent& /*event*/) {
     if (error) {
         DisplayError("HinksPix File Generation Error\n" + errorMsg);
     } else {
-        wxMessageBox("HinksPix File Generation Complete");
+        wxMessageBox(_("HinksPix File Generation Complete"));
     }
 }
 
@@ -1634,7 +1634,7 @@ void HinksPixExportDialog::OnBitmapButtonMoveUpClick(wxCommandEvent& /*event*/) 
 
 void HinksPixExportDialog::OnButtonAddPlaylistClick(wxCommandEvent& event)
 {
-    wxTextEntryDialog dlg(this, "Playlist Name", "Enter Playlist Name", "MAIN");
+    wxTextEntryDialog dlg(this, _("Playlist Name"), _("Enter Playlist Name"), "MAIN");
     if (dlg.ShowModal() == wxID_OK) {
         wxString n = dlg.GetValue().Trim().Trim(false);
         if (n.IsEmpty()) {

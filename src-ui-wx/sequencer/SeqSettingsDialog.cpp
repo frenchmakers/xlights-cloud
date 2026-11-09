@@ -1125,7 +1125,7 @@ bool SeqSettingsDialog::UpdateSequenceTiming()
     bool cont = true;
     if ((long)(duration * 1000.0) != xml_file->GetSequenceDurationMS()) {
         if (duration > 3600) {
-            if (wxMessageBox("Are you sure you want a sequence longer than an hour. This will consume a large amount of memory and is likely to crash xLights.", "Excessively long sequence detected.", wxYES_NO, this) == wxNO) {
+            if (wxMessageBox(_("Are you sure you want a sequence longer than an hour. This will consume a large amount of memory and is likely to crash xLights."), _("Excessively long sequence detected."), wxYES_NO, this) == wxNO) {
                 cont = false;
             }
         }
@@ -1230,7 +1230,7 @@ void SeqSettingsDialog::OnButton_Xml_New_TimingClick(wxCommandEvent& event)
             }
             else if (selected_timing == "Empty") {
                 bool first = true;
-                wxTextEntryDialog te(this, "Enter a name for the timing track", wxGetTextFromUserPromptStr, selected_timing);
+                wxTextEntryDialog te(this, _("Enter a name for the timing track"), wxGetTextFromUserPromptStr, selected_timing);
 
                 OptimiseDialogPosition(&te);
                 while (first || xml_file->TimingAlreadyExists(selected_timing, xLightsParent) || selected_timing == "") {
@@ -1264,7 +1264,7 @@ void SeqSettingsDialog::OnButton_Xml_New_TimingClick(wxCommandEvent& event)
                 if (selected_timing == "Metronome")
                 {
                     int base_timing = xml_file->GetFrameMS();
-                    wxNumberEntryDialog dlg(this, "Enter metronome timing", "Milliseconds", "Metronome timing", base_timing, base_timing, 60000);
+                    wxNumberEntryDialog dlg(this, _("Enter metronome timing"), "Milliseconds", "Metronome timing", base_timing, base_timing, 60000);
                     if (dlg.ShowModal() == wxID_OK)
                     {
                         int ms = (dlg.GetValue() + base_timing / 2) / base_timing * base_timing;
@@ -1283,7 +1283,7 @@ void SeqSettingsDialog::OnButton_Xml_New_TimingClick(wxCommandEvent& event)
                                 ttn = wxString::Format("%s_%d", base_ttn, suffix++);
                             } while (xml_file->TimingAlreadyExists(ttn.ToStdString(), xLightsParent));
                         }
-                        wxTextEntryDialog te(this, "Enter a name for the timing track", wxGetTextFromUserPromptStr, ttn);
+                        wxTextEntryDialog te(this, _("Enter a name for the timing track"), wxGetTextFromUserPromptStr, ttn);
                         if (te.ShowModal() == wxID_OK)
                         {
                             ttn = RemoveUnsafeXmlChars(te.GetValue().ToStdString());
@@ -1315,7 +1315,7 @@ void SeqSettingsDialog::OnButton_Xml_New_TimingClick(wxCommandEvent& event)
                             ttn = new_ttn;
                         }
 
-                        wxTextEntryDialog te(this, "Enter a name for the timing track", wxGetTextFromUserPromptStr, ttn);
+                        wxTextEntryDialog te(this, _("Enter a name for the timing track"), wxGetTextFromUserPromptStr, ttn);
                         if (te.ShowModal() == wxID_OK) {
                             ttn = RemoveUnsafeXmlChars(te.GetValue().ToStdString());
                             if (!ttn.empty() && !xml_file->TimingAlreadyExists(ttn.ToStdString(), xLightsParent)) {
@@ -1418,7 +1418,7 @@ void SeqSettingsDialog::OnButton_Layer_ImportClick(wxCommandEvent& event)
 bool SeqSettingsDialog::ImportDataLayer(const wxString& filetypes, ConvertLogDialog* plog)
 {
     bool return_val = false;
-    wxFileDialog* ImportDialog = new wxFileDialog( this, "Choose file to import as data layer", wxEmptyString, wxEmptyString, filetypes, wxFD_OPEN, wxDefaultPosition);
+    wxFileDialog* ImportDialog = new wxFileDialog( this, _("Choose file to import as data layer"), wxEmptyString, wxEmptyString, filetypes, wxFD_OPEN, wxDefaultPosition);
     Button_Close->Enable(false);
     Button_Layer_Import->Enable(false);
     if (ImportDialog->ShowModal() == wxID_OK)
@@ -1484,25 +1484,25 @@ bool SeqSettingsDialog::ImportDataLayer(const wxString& filetypes, ConvertLogDia
         }
         else if( full_name.GetExt() == "hlsIdata" )
         {
-            conv_params.channels_off_at_end = (wxYES == wxMessageBox("Turn off all channels at the end?", "Conversion Options", wxICON_QUESTION | wxYES_NO));
+            conv_params.channels_off_at_end = (wxYES == wxMessageBox(_("Turn off all channels at the end?"), _("Conversion Options"), wxICON_QUESTION | wxYES_NO));
             new_data_layer->SetLORConvertParams((int)conv_params.channels_off_at_end);
             FileConverter::ReadHLSFile(conv_params);
         }
         else if( full_name.GetExt() == "vix" )
         {
-            conv_params.channels_off_at_end = (wxYES == wxMessageBox("Turn off all channels at the end?", "Conversion Options", wxICON_QUESTION | wxYES_NO));
+            conv_params.channels_off_at_end = (wxYES == wxMessageBox(_("Turn off all channels at the end?"), _("Conversion Options"), wxICON_QUESTION | wxYES_NO));
             new_data_layer->SetLORConvertParams((int)conv_params.channels_off_at_end);
             FileConverter::ReadVixFile(conv_params);
         }
         else if( full_name.GetExt() == "gled" )
         {
-            conv_params.channels_off_at_end = (wxYES == wxMessageBox("Turn off all channels at the end?", "Conversion Options", wxICON_QUESTION | wxYES_NO));
+            conv_params.channels_off_at_end = (wxYES == wxMessageBox(_("Turn off all channels at the end?"), _("Conversion Options"), wxICON_QUESTION | wxYES_NO));
             new_data_layer->SetLORConvertParams((int)conv_params.channels_off_at_end);
             FileConverter::ReadGlediatorFile(conv_params);
         }
         else if( full_name.GetExt() == "seq" )
         {
-            conv_params.channels_off_at_end = (wxYES == wxMessageBox("Turn off all channels at the end?", "Conversion Options", wxICON_QUESTION | wxYES_NO));
+            conv_params.channels_off_at_end = (wxYES == wxMessageBox(_("Turn off all channels at the end?"), _("Conversion Options"), wxICON_QUESTION | wxYES_NO));
             new_data_layer->SetLORConvertParams((int)conv_params.channels_off_at_end);
             FileConverter::ReadConductorFile(conv_params);
         }
@@ -1801,7 +1801,7 @@ void SeqSettingsDialog::MediaLoad(const wxString& filename)
 
 void SeqSettingsDialog::MediaChooser()
 {
-    wxFileDialog OpenDialog(this, "Choose Audio file", wxEmptyString, wxEmptyString,
+    wxFileDialog OpenDialog(this, _("Choose Audio file"), wxEmptyString, wxEmptyString,
         "FPP Audio Files|*.mp3;*.ogg;*.m4p;*.mp4;*.m4a;*.aac;*.wav;*.flac;*.wma;*.au;*.mkv;*.mov|"
         "xLights Audio Files|*.mp3;*.ogg;*.m4p;*.mp4;*.avi;*.wma;*.au;*.wav;*.m4a;*.mid;*.mkv;*.mov;*.mpg;*.asf;*.flv;*.mpeg;*.wmv;*.flac|"
         "xLights Sequence Package (*.zip;*.piz;*.xsqz)|*.zip;*.piz;*.xsqz",
@@ -1860,7 +1860,7 @@ void SeqSettingsDialog::MediaChooser()
             std::filesystem::path audioFile = pkg.FindAndCopyAudio(importDir);
             SetCursor(wxCURSOR_DEFAULT);
             if (audioFile.empty()) {
-                wxMessageBox("No audio file found in the selected package.", "No Audio Found", wxICON_WARNING | wxOK);
+                wxMessageBox(_("No audio file found in the selected package."), _("No Audio Found"), wxICON_WARNING | wxOK);
                 return;
             }
             ObtainAccessToURL(std::string(fsPathToWxString(audioFile).utf8_string()));
@@ -2080,7 +2080,7 @@ void SeqSettingsDialog::OnCheckBox1Click(wxCommandEvent& event)
 
 void SeqSettingsDialog::OnBitmapButton_ModifyTimingClick(wxCommandEvent& event)
 {
-    if (wxMessageBox("Are you sure?  Modifying the timing interval will cause the sequence to be Saved, Closed, then Re-Opened.  Effects will be moved to the nearest interval", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO)
+    if (wxMessageBox(_("Are you sure?  Modifying the timing interval will cause the sequence to be Saved, Closed, then Re-Opened.  Effects will be moved to the nearest interval"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO)
     {
         return;
     }
@@ -2093,7 +2093,7 @@ void SeqSettingsDialog::OnBitmapButton_ModifyTimingClick(wxCommandEvent& event)
     {
         if( start_ms < dialog.GetValue() )
         {
-            if (wxMessageBox("Are you sure? Moving to a larger timing interval may truncate small effects?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO)
+            if (wxMessageBox(_("Are you sure? Moving to a larger timing interval may truncate small effects?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO)
             {
                 return;
             }
@@ -2113,7 +2113,7 @@ void SeqSettingsDialog::OnBitmapButton_ModifyTimingClick(wxCommandEvent& event)
 void SeqSettingsDialog::OnButton_DownloadClick(wxCommandEvent& event)
 {
     if (xLightsParent->CurrentDir == "") {
-        wxMessageBox("Show folder invalid. Download aborted.");
+        wxMessageBox(_("Show folder invalid. Download aborted."));
     }
 
     wxString downloadDir = xLightsParent->CurrentDir + wxFileName::GetPathSeparator() + "Downloads";
@@ -2199,16 +2199,16 @@ void SeqSettingsDialog::OnButton_AddMillisecondsClick(wxCommandEvent& event) {
     const std::string post = TextCtrl_Postmilliseconds->GetValue().Trim(true).Trim(false);
 
     if (pre.empty() || post.empty()) {
-        wxMessageBox("Invalid Pre/Post value(s). Neither can be blank, 0 is okay.");
+        wxMessageBox(_("Invalid Pre/Post value(s). Neither can be blank, 0 is okay."));
         return;
     }
     auto const f_mp3dur = std::strtof(mp3dur.c_str(), nullptr);
     if (fp_equal(0.0F, std::strtof(pre.c_str(), nullptr)) && fp_equal(0.0F, std::strtof(post.c_str(), nullptr))) {
-        wxMessageBox("Pre and Post value(s) are both zero. Nothing to do here.");
+        wxMessageBox(_("Pre and Post value(s) are both zero. Nothing to do here."));
         return;
     }
     if (fp_equal(0.0F, f_mp3dur)) {
-        wxMessageBox("Audio duration is invalid.");
+        wxMessageBox(_("Audio duration is invalid."));
         return;
     }
 
@@ -2410,7 +2410,7 @@ void SeqSettingsDialog::OnButton_AddMillisecondsClick(wxCommandEvent& event) {
                                     sampleRate,
                                     targetFile.GetFullPath(),
                                     firstAudio)) {
-        wxMessageBox("Error creating audio file. See log for details.");
+        wxMessageBox(_("Error creating audio file. See log for details."));
     } else {
         wxMessageBox("Audio file created successfully, " + targetFile.GetFullPath() + " Please choose the new media file for your sequence.");
     }

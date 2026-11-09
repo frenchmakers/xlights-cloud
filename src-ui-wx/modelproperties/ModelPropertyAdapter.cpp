@@ -1775,11 +1775,11 @@ int ModelPropertyAdapter::OnPropertyGridChange(wxPropertyGridInterface* grid, wx
                         auto caps = _model.GetControllerCaps();
                         if (caps != nullptr && caps->SupportsPixelPortColourOrder()) {
                             wxMessageBox(
-                                "Your controller supports setting color order as a controller property.\n\n"
+                                _("Your controller supports setting color order as a controller property.\n\n"
                                 "Consider using the 'Set Color Order' setting in the Controller Connections section\n"
                                 "instead of changing the String Type. This keeps your sequence data in standard\n"
-                                "RGB format and lets the controller hardware handle the reordering.",
-                                "Consider Using Controller Color Order",
+                                "RGB format and lets the controller hardware handle the reordering."),
+                                _("Consider Using Controller Color Order"),
                                 wxICON_INFORMATION | wxOK
                             );
                         }

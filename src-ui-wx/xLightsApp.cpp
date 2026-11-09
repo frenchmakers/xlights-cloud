@@ -914,7 +914,7 @@ static void DoMacOpenFile(xLightsFrame* frame, const wxString& showDir, const wx
         if (showDir != "" && showDir != frame->showDirectory) {
             wxString nsd = showDir;
             if (!ObtainAccessToURL(nsd)) {
-                wxDirDialog dlg(frame, "Select Show Directory", nsd,  wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
+                wxDirDialog dlg(frame, _("Select Show Directory"), nsd,  wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
                 if (dlg.ShowModal() == wxID_OK) {
                     nsd = dlg.GetPath();
                 }
@@ -1377,7 +1377,7 @@ bool xLightsApp::OnInit()
             if (parser.Found("q")) {
                 spdlog::info("Command line notices (dialog suppressed by -q):\n{}", (const char*)info.c_str());
             } else {
-                wxMessageBox(info, "Information", wxICON_INFORMATION | wxOK); // pre-frame: callback not yet registered
+                wxMessageBox(info, _("Information"), wxICON_INFORMATION | wxOK); // pre-frame: callback not yet registered
             }
         }
         break;
@@ -1388,7 +1388,7 @@ bool xLightsApp::OnInit()
         if (headlessArg) {
             spdlog::error("--headless: unrecognized command line parameters");
         } else {
-            wxMessageBox(_("Unrecognized command line parameters"), "Error", wxICON_ERROR | wxOK); // pre-frame: callback not yet registered
+            wxMessageBox(_("Unrecognized command line parameters"), _("Error"), wxICON_ERROR | wxOK); // pre-frame: callback not yet registered
         }
         return false;
     }

@@ -245,7 +245,7 @@ void SequenceFacesPanel::OnButtonAddClick(wxCommandEvent& event)
     if (_seqElements == nullptr) {
         return;
     }
-    wxTextEntryDialog dlg(this, "New Face", "Enter name for new face definition");
+    wxTextEntryDialog dlg(this, _("New Face"), _("Enter name for new face definition"));
     if (dlg.ShowModal() != wxID_OK) {
         return;
     }
@@ -254,7 +254,7 @@ void SequenceFacesPanel::OnButtonAddClick(wxCommandEvent& event)
         return;
     }
     if (_seqElements->GetSequenceFaces().GetFace(name) != nullptr) {
-        wxMessageBox("A sequence face with that name already exists.", "Duplicate name", wxICON_WARNING | wxOK, this);
+        wxMessageBox(_("A sequence face with that name already exists."), _("Duplicate name"), wxICON_WARNING | wxOK, this);
         return;
     }
     SequenceFaces::FaceDefinition def;
@@ -285,7 +285,7 @@ void SequenceFacesPanel::OnButtonRenameClick(wxCommandEvent& event)
     if (name.empty() || _seqElements == nullptr) {
         return;
     }
-    wxTextEntryDialog dlg(this, "Rename Face", "Enter new name for " + name, name);
+    wxTextEntryDialog dlg(this, _("Rename Face"), "Enter new name for " + name, name);
     if (dlg.ShowModal() != wxID_OK) {
         return;
     }
@@ -294,7 +294,7 @@ void SequenceFacesPanel::OnButtonRenameClick(wxCommandEvent& event)
         return;
     }
     if (!_seqElements->GetSequenceFaces().RenameFace(name, newName)) {
-        wxMessageBox("A sequence face with that name already exists.", "Duplicate name", wxICON_WARNING | wxOK, this);
+        wxMessageBox(_("A sequence face with that name already exists."), _("Duplicate name"), wxICON_WARNING | wxOK, this);
         return;
     }
     RenameFaceReferences(name, newName);
@@ -382,11 +382,11 @@ void SequenceFacesPanel::OnButtonImportFromModelClick(wxCommandEvent& event)
     }
 
     if (choices.IsEmpty()) {
-        wxMessageBox("No models have Matrix (image) face definitions.", "Nothing to import", wxICON_INFORMATION | wxOK, this);
+        wxMessageBox(_("No models have Matrix (image) face definitions."), _("Nothing to import"), wxICON_INFORMATION | wxOK, this);
         return;
     }
 
-    wxMultiChoiceDialog dlg(this, "Select the model face definitions to copy into this sequence", "Import Faces from Models", choices);
+    wxMultiChoiceDialog dlg(this, _("Select the model face definitions to copy into this sequence"), _("Import Faces from Models"), choices);
     if (dlg.ShowModal() != wxID_OK) {
         return;
     }

@@ -218,7 +218,7 @@ void LyricUserDictDialog::OnButtonDeleteRowClick(wxCommandEvent& event)
 {
     wxArrayInt indexs = GridUserLyricDict->GetSelectedRows();
     const wxString& msg = "Delete Select Phonemes";
-    const int answer = wxMessageBox(msg, "Delete Phonemes", wxYES_NO, this);
+    const int answer = wxMessageBox(msg, _("Delete Phonemes"), wxYES_NO, this);
 
     if (answer == wxNO) {
         return;

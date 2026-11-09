@@ -475,10 +475,10 @@ bool ControllerEthernetPropertyAdapter::HandlePropertyEvent(wxPropertyGridEvent&
         auto protocols = GetEthernetProtocols(_ethernet);
         auto newProtocol = DecodeChoices(protocols, event.GetValue().GetLong());
         if (newProtocol == OUTPUT_ZCPP && _ethernet.GetProtocol() != OUTPUT_ZCPP) {
-            if (wxMessageBox("ZCPP is deprecated and will be removed in a future version.\n\n"
+            if (wxMessageBox(_("ZCPP is deprecated and will be removed in a future version.\n\n"
                              "Please use DDP (preferred) or E1.31 instead.\n\n"
-                             "Are you sure you want to use ZCPP?",
-                             "ZCPP Deprecated", wxICON_WARNING | wxYES_NO | wxNO_DEFAULT) != wxYES) {
+                             "Are you sure you want to use ZCPP?"),
+                             _("ZCPP Deprecated"), wxICON_WARNING | wxYES_NO | wxNO_DEFAULT) != wxYES) {
                 int revert = EncodeChoices(protocols, _ethernet.GetProtocol());
                 if (revert >= 0) {
                     event.GetProperty()->SetValue(wxVariant((long)revert));
@@ -520,7 +520,7 @@ bool ControllerEthernetPropertyAdapter::HandlePropertyEvent(wxPropertyGridEvent&
 
         // Let user stop this if they didnt understand the implications
         if (!forceSizes && !_ethernet.AllSameSize()) {
-            if (wxMessageBox(wxString::Format("Are you sure you want to set all universes to %ld channels?", (long)_ethernet.GetFirstOutput()->GetChannels()), "Confirm resize?", wxICON_QUESTION | wxYES_NO) != wxYES) {
+            if (wxMessageBox(wxString::Format(_("Are you sure you want to set all universes to %ld channels?"), (long)_ethernet.GetFirstOutput()->GetChannels()), _("Confirm resize?"), wxICON_QUESTION | wxYES_NO) != wxYES) {
                 event.GetProperty()->SetValue(wxVariant(true));
                 return true;
             }

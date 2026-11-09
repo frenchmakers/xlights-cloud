@@ -360,11 +360,11 @@ void ScriptsDialog::OnButton_DownloadClick(wxCommandEvent& event)
     std::transform(scripts.begin(), scripts.end(),
                            std::back_inserter(itemList), [](auto const& str) { return str.first; });
 
-    wxMultiChoiceDialog dlg(this, "Select Scripts", "Download Scripts", itemList);
+    wxMultiChoiceDialog dlg(this, _("Select Scripts"), _("Download Scripts"), itemList);
     //OptimiseDialogPosition(&dlg);
     wxString scriptFolder = _runner->GetUserScriptFolder();
     if (dlg.ShowModal() == wxID_OK ) {
-        wxProgressDialog prog = wxProgressDialog("Script download", "Downloading Script ...", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+        wxProgressDialog prog = wxProgressDialog(_("Script download"), _("Downloading Script ..."), 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
         prog.Show();
         prog.CenterOnParent();
 

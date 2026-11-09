@@ -516,7 +516,7 @@ void xlGLCanvas::SetCurrentGLContext()
             if (!errorDisplayed) {
                 errorDisplayed = true;
                 m_logger->error("Could not create GL context ... aborting.");
-                wxMessageBox("Critical error preparing context to draw on. Likely you need to update your video drivers.");
+                wxMessageBox(_("Critical error preparing context to draw on. Likely you need to update your video drivers."));
             }
             return;
         }
@@ -601,8 +601,8 @@ void xlGLCanvas::CreateGLContext() {
                 if (!hasWarned) {
                     hasWarned = true;
                     CallAfter([]() {
-                        wxMessageBox("OpenGL 1.x/2.x are no longer supported.  Please update your video drivers.",
-                                     "OpenGL Version",
+                        wxMessageBox(_("OpenGL 1.x/2.x are no longer supported.  Please update your video drivers."),
+                                     _("OpenGL Version"),
                                       wxICON_INFORMATION | wxCENTER | wxOK);
                     });
                 }

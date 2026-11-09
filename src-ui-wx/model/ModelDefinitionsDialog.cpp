@@ -239,8 +239,8 @@ void ModelDefinitionsDialog::OnNotebookPageChanged(wxBookCtrlEvent& event)
 void ModelDefinitionsDialog::OnOK(wxCommandEvent&)
 {
     if (_statesPanel->HasInvalidRows()) {
-        wxMessageBox("One or more state rows have a name without a channel or a channel without a name. Please fix the highlighted rows before saving.",
-                     "Invalid State Data", wxOK | wxICON_WARNING, this);
+        wxMessageBox(_("One or more state rows have a name without a channel or a channel without a name. Please fix the highlighted rows before saving."),
+                     _("Invalid State Data"), wxOK | wxICON_WARNING, this);
         _notebook->SetSelection(TAB_STATES);
         return;
     }
@@ -251,8 +251,8 @@ void ModelDefinitionsDialog::OnOK(wxCommandEvent&)
 void ModelDefinitionsDialog::ConfirmClose()
 {
     if (_isDirty &&
-        wxMessageBox("Are you sure you want to close?",
-                     "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+        wxMessageBox(_("Are you sure you want to close?"),
+                     _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
         return;
     }
     EndModal(wxID_CANCEL);

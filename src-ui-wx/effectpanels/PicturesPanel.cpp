@@ -259,9 +259,9 @@ void PicturesPanel::OnAIGenerateClick(wxCommandEvent& /*event*/) {
 
     auto services = xl->GetAIServices(aiType::TYPE::IMAGES);
     if (services.empty()) {
-        wxMessageBox("No AI image generation services are registered.\n"
-                     "Configure an AI service in the Settings menu.",
-                     "AI Generate", wxICON_INFORMATION | wxOK, this);
+        wxMessageBox(_("No AI image generation services are registered.\n"
+                     "Configure an AI service in the Settings menu."),
+                     _("AI Generate"), wxICON_INFORMATION | wxOK, this);
         return;
     }
 
@@ -271,8 +271,8 @@ void PicturesPanel::OnAIGenerateClick(wxCommandEvent& /*event*/) {
         for (auto* s : services) {
             choices.push_back(s->GetLLMName());
         }
-        wxSingleChoiceDialog pick(this, "Choose AI Image Generator",
-                                  "AI Image Generator", choices);
+        wxSingleChoiceDialog pick(this, _("Choose AI Image Generator"),
+                                  _("AI Image Generator"), choices);
         if (pick.ShowModal() == wxID_CANCEL) return;
         serv = services[pick.GetSelection()];
     }

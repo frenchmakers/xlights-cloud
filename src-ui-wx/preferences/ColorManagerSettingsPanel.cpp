@@ -201,7 +201,7 @@ void ColorManagerSettingsPanel::RefreshColors()
 }
 
 void ColorManagerSettingsPanel::OnButtonImportClick(wxCommandEvent& event) {
-    wxFileDialog dlg(this, "Import Theme", wxEmptyString, "Colors", "Theme Files (*.xtheme)|*.xtheme|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+    wxFileDialog dlg(this, _("Import Theme"), wxEmptyString, "Colors", "Theme Files (*.xtheme)|*.xtheme|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (dlg.ShowModal() == wxID_OK) {
         pugi::xml_document themeXml;
         pugi::xml_parse_result result = themeXml.load_file(ToStdString(dlg.GetPath()).c_str());
@@ -220,7 +220,7 @@ void ColorManagerSettingsPanel::OnButtonImportClick(wxCommandEvent& event) {
     }
 }
 void ColorManagerSettingsPanel::OnButtonExportClick(wxCommandEvent& event) {
-    wxFileDialog dlg(this, "Export Theme", wxEmptyString, "Colors", "Theme Files (*.xtheme)|*.xtheme|All Files (*.)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+    wxFileDialog dlg(this, _("Export Theme"), wxEmptyString, "Colors", "Theme Files (*.xtheme)|*.xtheme|All Files (*.)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
     if (dlg.ShowModal() == wxID_OK) {
         pugi::xml_document themeXml;
         pugi::xml_node root = themeXml.append_child("theme");
@@ -230,7 +230,7 @@ void ColorManagerSettingsPanel::OnButtonExportClick(wxCommandEvent& event) {
     }
 }
 void ColorManagerSettingsPanel::OnButton_ResetClick(wxCommandEvent& event) {
-    if (wxMessageBox("Are you sure you want to reset all colors to the defaults?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+    if (wxMessageBox(_("Are you sure you want to reset all colors to the defaults?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
         return;
     }
     frame->color_mgr.ResetDefaults();

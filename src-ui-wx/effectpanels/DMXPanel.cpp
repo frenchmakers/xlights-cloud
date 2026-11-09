@@ -367,7 +367,7 @@ void DMXPanel::OnSaveAsStateClick(wxCommandEvent& /*event*/) {
     auto models = GetActiveModels();
     std::string stateName;
     while (stateName.empty()) {
-        wxTextEntryDialog dlg(this, "Enter name for the state", "State Name");
+        wxTextEntryDialog dlg(this, _("Enter name for the state"), _("State Name"));
         if (dlg.ShowModal() != wxID_OK) return;
 
         stateName = dlg.GetValue().ToStdString();
@@ -377,8 +377,8 @@ void DMXPanel::OnSaveAsStateClick(wxCommandEvent& /*event*/) {
         for (const auto& it : models) {
             if (it->GetChanCount() > maxChannels) maxChannels = it->GetChanCount();
             if (it->HasState(stateName)) {
-                if (wxMessageBox("A State With Same Name Already Exists\nOverride it?",
-                                 "Override State", wxYES_NO | wxICON_QUESTION, this) == wxNO) {
+                if (wxMessageBox(_("A State With Same Name Already Exists\nOverride it?"),
+                                 _("Override State"), wxYES_NO | wxICON_QUESTION, this) == wxNO) {
                     stateName = "";
                 }
                 break;
@@ -434,7 +434,7 @@ void DMXPanel::OnLoadFromStateClick(wxCommandEvent& /*event*/) {
     for (const auto& key : m->GetStateInfo()) {
         choices.push_back(key.first);
     }
-    wxSingleChoiceDialog dlg(this, "Select State", "Select State", choices);
+    wxSingleChoiceDialog dlg(this, _("Select State"), _("Select State"), choices);
     if (dlg.ShowModal() != wxID_OK) return;
 
     std::string stateName = dlg.GetStringSelection().ToStdString();

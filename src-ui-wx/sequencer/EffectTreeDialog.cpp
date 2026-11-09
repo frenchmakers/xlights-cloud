@@ -255,7 +255,7 @@ void EffectTreeDialog::InitItems(EffectPresetManager& manager)
     _effectsFixed = _presetManager->FixRgbEffects();
 
     if (_effectsFixed) {
-        wxMessageBox("Preset and Group names have been auto corrected to avoid naming collissions and illegal characters in the group/preset name. You will need to Save on the Layout Tab to persist these changes.", "Presets and Groups Updated", wxICON_INFORMATION);
+        wxMessageBox(_("Preset and Group names have been auto corrected to avoid naming collissions and illegal characters in the group/preset name. You will need to Save on the Layout Tab to persist these changes."), _("Presets and Groups Updated"), wxICON_INFORMATION);
         EffectsFileDirty();
     }
 
@@ -333,7 +333,7 @@ void EffectTreeDialog::PromptAndSaveBasePresets()
     if (baseDir.empty())
         return;
 
-    if (wxMessageBox("Save changes to base show folder presets?", "Base Show Folder Presets",
+    if (wxMessageBox(_("Save changes to base show folder presets?"), _("Base Show Folder Presets"),
                      wxYES_NO | wxICON_QUESTION, this) != wxYES)
         return;
 
@@ -942,7 +942,7 @@ void EffectTreeDialog::AddGroup(pugi::xml_node ele, wxTreeItemId curGroupID)
 
 void EffectTreeDialog::OnbtImportClick(wxCommandEvent& event)
 {
-    wxFileDialog* OpenDialog = new wxFileDialog( this, "Choose file to Import", wxEmptyString, wxEmptyString,
+    wxFileDialog* OpenDialog = new wxFileDialog( this, _("Choose file to Import"), wxEmptyString, wxEmptyString,
                                                 "Preset files (*.xpreset)|*.xpreset|"
 #ifdef __WXOSX__
                                                 "Show files (*.xml)|*.xml",   //cannot filter by full name, only extension

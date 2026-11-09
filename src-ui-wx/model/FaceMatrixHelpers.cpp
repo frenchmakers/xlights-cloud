@@ -195,7 +195,7 @@ bool DownloadFaceImages(wxWindow* parent, const std::string& showDir, int buffer
                         const std::function<void(const std::string& key, int row, int col, const std::string& value)>& setter)
 {
     if (showDir == "") {
-        wxMessageBox("Show folder is not valid. Face image download aborted.");
+        wxMessageBox(_("Show folder is not valid. Face image download aborted."));
         return false;
     }
 

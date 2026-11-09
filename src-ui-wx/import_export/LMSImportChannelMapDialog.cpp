@@ -380,13 +380,13 @@ void LMSImportChannelMapDialog::LoadMapping(wxCommandEvent& event)
     bool modelwarning = false;
     if (_dirty)
     {
-        if (wxMessageBox("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO)
+        if (wxMessageBox(_("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO)
         {
             return;
         }
     }
 
-    wxFileDialog dlg(this, "Load mapping", wxEmptyString, wxEmptyString, "Mapping Files (*.xmap)|*.xmap|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+    wxFileDialog dlg(this, _("Load mapping"), wxEmptyString, wxEmptyString, "Mapping Files (*.xmap)|*.xmap|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (dlg.ShowModal() == wxID_OK) {
         for (size_t x = 0; x <  modelNames.size(); x++) {
             ModelsChoice->Append(modelNames[x]);
@@ -465,7 +465,7 @@ void LMSImportChannelMapDialog::LoadMapping(wxCommandEvent& event)
 
 void LMSImportChannelMapDialog::SaveMapping(wxCommandEvent& event)
 {
-    wxFileDialog dlg(this, "Save mapping", wxEmptyString, "mapping", "Mapping Files (*.xmap)|*.xmap|All Files (*.)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+    wxFileDialog dlg(this, _("Save mapping"), wxEmptyString, "mapping", "Mapping Files (*.xmap)|*.xmap|All Files (*.)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
     if (dlg.ShowModal() == wxID_OK) {
         wxFileOutputStream output(dlg.GetPath());
         wxTextOutputStream text(output);
@@ -511,7 +511,7 @@ void LMSImportChannelMapDialog::OnButton_OkClick(wxCommandEvent& event)
 {
     if (_dirty)
     {
-        if (wxMessageBox("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxYES)
+        if (wxMessageBox(_("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxYES)
         {
             EndDialog(wxID_OK);
         }
@@ -527,7 +527,7 @@ void LMSImportChannelMapDialog::OnButton_CancelClick(wxCommandEvent& event)
 {
     if (_dirty)
     {
-        if (wxMessageBox("Are you sure you want to cancel WITHOUT saving your mapping changes for future imports?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxYES)
+        if (wxMessageBox(_("Are you sure you want to cancel WITHOUT saving your mapping changes for future imports?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxYES)
         {
             EndDialog(wxID_CANCEL);
         }

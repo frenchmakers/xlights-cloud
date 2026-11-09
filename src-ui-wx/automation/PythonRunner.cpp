@@ -129,7 +129,7 @@ bool PythonRunner::Run_Script(std::string const& filepath, std::function<void (s
         spdlog::info("PythonRunner: Throw Running Script: {}.", (const char*)filepath.c_str());
         spdlog::info("PythonRunner: Error: {}.", e.what());
         SendResponse(e.what());
-        wxMessageBox(e.what(), "Error", wxOK);
+        wxMessageBox(e.what(), _("Error"), wxOK);
         return false;
     }
     #endif

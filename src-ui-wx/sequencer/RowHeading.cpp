@@ -1088,7 +1088,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
         wxCommandEvent eventRowHeaderChanged(EVT_ROW_HEADINGS_CHANGED);
         wxPostEvent(GetParent(), eventRowHeaderChanged);
     } else if (id == ID_ROW_MNU_INSERT_LAYERS_BELOW) {
-        int numtoinsert = wxGetNumberFromUser("Enter number of layers to insert", "Layers", "Insert multiple layers", 2, 1, 100, this, wxGetMousePosition());
+        int numtoinsert = wxGetNumberFromUser(_("Enter number of layers to insert"), "Layers", "Insert multiple layers", 2, 1, 100, this, wxGetMousePosition());
 
         if (numtoinsert > 0) {
             if (layer_index < (int)element->GetEffectLayerCount() - 1) {
@@ -1132,7 +1132,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
             int layerIndex = mSequenceElements->GetVisibleRowInformation(mSelectedRow)->layerIndex;
             int bottomLayer = element->GetEffectLayerCount();
 
-            int numtoDelete = wxGetNumberFromUser("Enter number of layers to delete", "Layers", "Delete multiple layers", bottomLayer - layerIndex, 1, bottomLayer - layerIndex, this);
+            int numtoDelete = wxGetNumberFromUser(_("Enter number of layers to delete"), "Layers", "Delete multiple layers", bottomLayer - layerIndex, 1, bottomLayer - layerIndex, this);
 
             if (numtoDelete > 0) {
                 int startDeleteLayer = layerIndex + (numtoDelete - 1);
@@ -1198,7 +1198,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
     } else if (id == ID_ROW_MNU_SETLAYERNAME) {
         if (mSequenceElements->GetVisibleRowInformation(mSelectedRow) != nullptr) {
             std::string layerName = mSequenceElements->GetVisibleRowInformation(mSelectedRow)->layerName;
-            std::string name = wxGetTextFromUser("What is the new name of the layer?", "Layer Name", layerName).ToStdString();
+            std::string name = wxGetTextFromUser(_("What is the new name of the layer?"), "Layer Name", layerName).ToStdString();
             name = RemoveUnsafeXmlChars(name);
             if (name != layerName) {
                 element->GetEffectLayer(mSequenceElements->GetVisibleRowInformation(mSelectedRow)->layerIndex)->SetLayerName(name);
@@ -1339,7 +1339,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
                     
                 } else if (selected_timing == "Empty") {
                     bool first = true;
-                    wxTextEntryDialog te(this, "Enter a name for the timing track", wxGetTextFromUserPromptStr, selected_timing);
+                    wxTextEntryDialog te(this, _("Enter a name for the timing track"), wxGetTextFromUserPromptStr, selected_timing);
                     selected_timing = RemoveUnsafeXmlChars(selected_timing);
                     OptimiseDialogPosition(&te);
                     while (first || 
@@ -1374,7 +1374,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
                     name = selected_timing;
                     if (selected_timing == "Metronome") {
                         int base_timing = xml_file->GetFrameMS();
-                        wxNumberEntryDialog dlg(this, "Enter metronome timing", "Milliseconds", "Metronome timing", 10 * base_timing, base_timing, 60000);
+                        wxNumberEntryDialog dlg(this, _("Enter metronome timing"), "Milliseconds", "Metronome timing", 10 * base_timing, base_timing, 60000);
                         OptimiseDialogPosition(&dlg);
                         if (dlg.ShowModal() == wxID_OK) {
                             int ms = (dlg.GetValue() + base_timing / 2) / base_timing * base_timing;
@@ -1391,7 +1391,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
                                     ttn = wxString::Format("%dms Metronome_%d", ms, suffix++);
                                 }
                             }
-                            wxTextEntryDialog te(this, "Enter a name for the timing track", wxGetTextFromUserPromptStr, ttn);
+                            wxTextEntryDialog te(this, _("Enter a name for the timing track"), wxGetTextFromUserPromptStr, ttn);
                             OptimiseDialogPosition(&te);
                             if (te.ShowModal() == wxID_OK) {
                                 ttn = RemoveUnsafeXmlChars(te.GetValue().ToStdString());
@@ -1422,7 +1422,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
                                 ttn = new_ttn;
                             }
 
-                            wxTextEntryDialog te(this, "Enter a name for the timing track", wxGetTextFromUserPromptStr, ttn);
+                            wxTextEntryDialog te(this, _("Enter a name for the timing track"), wxGetTextFromUserPromptStr, ttn);
                             OptimiseDialogPosition(&te);
                             if (te.ShowModal() == wxID_OK) {
                                 ttn = RemoveUnsafeXmlChars(te.GetValue().ToStdString());
@@ -1460,7 +1460,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
             wxPostEvent(GetParent(), eventRowHeaderChanged);
         }
     } else if (id == ID_ROW_MNU_RENAME_TIMING_TRACK) {
-        std::string name = wxGetTextFromUser("What is the new name of the timing track?", "Timing Track Name", element->GetName()).ToStdString();
+        std::string name = wxGetTextFromUser(_("What is the new name of the timing track?"), "Timing Track Name", element->GetName()).ToStdString();
         name = RemoveUnsafeXmlChars(name);
         if (mSequenceElements->ElementExists(name)) {
             DisplayError("Timing name already exists in sequence as a model or another timing.");
@@ -1476,7 +1476,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
         EffectLayer* sourceLayer = element->GetEffectLayer(0);
 
         if (sourceLayer == nullptr || sourceLayer->GetEffectCount() == 0) {
-            wxMessageBox("The selected timing track has no timing marks to subdivide.", "No Timing Marks", wxOK | wxICON_WARNING);
+            wxMessageBox(_("The selected timing track has no timing marks to subdivide."), _("No Timing Marks"), wxOK | wxICON_WARNING);
             return;
         }
 
@@ -1525,7 +1525,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
 
         // If no options selected, nothing to do
         if (divisors.empty()) {
-            wxMessageBox("No subdivision options selected.", "No Selection", wxOK | wxICON_INFORMATION);
+            wxMessageBox(_("No subdivision options selected."), _("No Selection"), wxOK | wxICON_INFORMATION);
             return;
         }
 
@@ -1671,7 +1671,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
             "Create a timing track with chord-labelled marks?",
             harmony.key.empty() ? "(unknown)" : harmony.key,
             int(harmony.chords.size()), preview);
-        if (wxMessageBox(prompt, "Detected Chords", wxYES_NO | wxICON_INFORMATION) != wxYES) {
+        if (wxMessageBox(prompt, _("Detected Chords"), wxYES_NO | wxICON_INFORMATION) != wxYES) {
             return;
         }
 
@@ -1728,7 +1728,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
         wxString prompt = wxString::Format(
             "Detected tempo: %.1f BPM\nConfidence: %.0f%%\nBeats: %d\n\nCreate a timing track with one mark per beat?",
             tempo.bpm, tempo.confidence * 100.0f, int(tempo.beatMS.size()));
-        if (wxMessageBox(prompt, "Detected Tempo", wxYES_NO | wxICON_INFORMATION) != wxYES) {
+        if (wxMessageBox(prompt, _("Detected Tempo"), wxYES_NO | wxICON_INFORMATION) != wxYES) {
             return;
         }
 
@@ -1862,7 +1862,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
     } else if (id == ID_ROW_MNU_BREAKDOWN_TIMING_PHRASES) {
         int result = wxOK;
         if (element->GetEffectLayerCount() > 1) {
-            result = wxMessageBox("Breakdown phrases? Any existing words and phonemes will be deleted.", "Confirm Action", wxOK | wxCANCEL | wxCENTER);
+            result = wxMessageBox(_("Breakdown phrases? Any existing words and phonemes will be deleted."), _("Confirm Action"), wxOK | wxCANCEL | wxCENTER);
         }
         if (result == wxOK) {
             BreakdownTimingPhrases(dynamic_cast<TimingElement*>(element));
@@ -1870,7 +1870,7 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
     } else if (id == ID_ROW_MNU_BREAKDOWN_TIMING_WORDS) {
         int result = wxOK;
         if (element->GetEffectLayerCount() > 2) {
-            result = wxMessageBox("Breakdown words? Any existing phonemes will be deleted.", "Confirm Action", wxOK | wxCANCEL | wxCENTER);
+            result = wxMessageBox(_("Breakdown words? Any existing phonemes will be deleted."), _("Confirm Action"), wxOK | wxCANCEL | wxCENTER);
         }
         if (result == wxOK) {
             BreakdownTimingWords(dynamic_cast<TimingElement*>(element));
@@ -1918,8 +1918,8 @@ void RowHeading::OnLayerPopup(wxCommandEvent& event)
 
                 if (ssm.GetViewCount() > 0 || ssm.AnyViewHasRegions()) {
                     int result = wxMessageBox(
-                        "This will replace existing song structure views and regions. Continue?",
-                        "Create Song Regions", wxYES_NO | wxICON_QUESTION, this);
+                        _("This will replace existing song structure views and regions. Continue?"),
+                        _("Create Song Regions"), wxYES_NO | wxICON_QUESTION, this);
                     if (result != wxYES) {
                         return;
                     }
@@ -2487,7 +2487,7 @@ void RowHeading::BreakdownTimingPhrases(TimingElement* element)
                 }
             }
             if (found_locked) {
-                wxMessageBox("Locked words/phonemes in the way - Can not break down phrases", "Error", wxOK);
+                wxMessageBox(_("Locked words/phonemes in the way - Can not break down phrases"), _("Error"), wxOK);
                 return;
             }
         }
@@ -2522,7 +2522,7 @@ void RowHeading::BreakdownTimingWords(TimingElement* element)
             }
         }
         if (found_locked) {
-            wxMessageBox("Locked phonemes in the way - Can not break down words", "Error", wxOK);
+            wxMessageBox(_("Locked phonemes in the way - Can not break down words"), _("Error"), wxOK);
             return;
         }
 

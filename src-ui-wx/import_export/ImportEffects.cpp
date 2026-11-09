@@ -107,7 +107,7 @@ void xLightsFrame::OnMenuItemImportEffects(wxCommandEvent& event)
         config->Read("xLightsLastImportDir", &ldir, "");
     }
 
-    wxFileDialog file(this, "Choose file to import", ldir, "", filter);
+    wxFileDialog file(this, _("Choose file to import"), ldir, "", filter);
     if (lit != "") {
         int index = 0;
 
@@ -277,7 +277,7 @@ bool xLightsFrame::ImportXLights(const wxFileName& filename, std::string const& 
         if (automation != nullptr) {
             automation->error = msg;
         } else {
-            wxMessageBox(msg, "Invalid Sequence Package", wxICON_ERROR | wxOK);
+            wxMessageBox(msg, _("Invalid Sequence Package"), wxICON_ERROR | wxOK);
         }
         return false;
     }
@@ -1408,8 +1408,8 @@ void xLightsFrame::ImportSuperStar(const wxFileName& filename)
     auto prompt = [this, defGroup = filename.GetName()](std::string& prefix) -> bool {
         wxString defaultPrompt = defGroup.IsEmpty() ? wxString("SuperStar") : defGroup;
         wxTextEntryDialog d(this,
-            "Enter a group name / prefix for embedded images:",
-            "Embedded Image Group", defaultPrompt);
+            _("Enter a group name / prefix for embedded images:"),
+            _("Embedded Image Group"), defaultPrompt);
         if (d.ShowModal() == wxID_CANCEL) return false;
         prefix = d.GetValue().ToStdString();
         return true;
@@ -3343,7 +3343,7 @@ AT THIS POINT IT JUST BRINGS IN THE EFFECTS. WE MAKE NO EFFORT TO GET THE SETTIN
     Vixen3 vixen(ToStdString(filename.GetFullPath()));
 
     if (!vixen.IsSystemFound()) {
-        wxMessageBox("SystemConfig.xml could not be found. Import impossible.");
+        wxMessageBox(_("SystemConfig.xml could not be found. Import impossible."));
         return false;
     }
 

@@ -180,7 +180,7 @@ void PositionZoneDialog::OnButton_ExportZonesClick(wxCommandEvent& event)
     spdlog::debug("PositionZoneDialog::OnButton_ExportZonesClick - {} zone(s) defined on '{}'", _zones.size(), _model.GetName());
 
     if (_zones.empty()) {
-        wxMessageBox("There are no zones to export.", "Export Zones", wxOK | wxICON_INFORMATION, this);
+        wxMessageBox(_("There are no zones to export."), _("Export Zones"), wxOK | wxICON_INFORMATION, this);
         return;
     }
 
@@ -218,7 +218,7 @@ void PositionZoneDialog::OnButton_ExportZonesClick(wxCommandEvent& event)
     }
 
     if (otherHeads.empty()) {
-        wxMessageBox("There are no other moving head props to export zones to.", "Export Zones", wxOK | wxICON_INFORMATION, this);
+        wxMessageBox(_("There are no other moving head props to export zones to."), _("Export Zones"), wxOK | wxICON_INFORMATION, this);
         return;
     }
 
@@ -249,8 +249,8 @@ void PositionZoneDialog::OnButton_ExportZonesClick(wxCommandEvent& event)
     spdlog::debug("PositionZoneDialog::OnButton_ExportZonesClick - exported {} zone(s) to {} prop(s), notifications deferred until dialog close",
                   (int)zonesToExport.size(), propCount);
 
-    wxMessageBox(wxString::Format("Exported %d zone(s) to %d prop(s).", (int)zonesToExport.size(), propCount),
-                 "Export Zones", wxOK | wxICON_INFORMATION, this);
+    wxMessageBox(wxString::Format(_("Exported %d zone(s) to %d prop(s)."), (int)zonesToExport.size(), propCount),
+                 _("Export Zones"), wxOK | wxICON_INFORMATION, this);
 }
 
 void PositionZoneDialog::OnButton_ImportZonesClick(wxCommandEvent& event)
@@ -270,7 +270,7 @@ void PositionZoneDialog::OnButton_ImportZonesClick(wxCommandEvent& event)
     }
 
     if (otherHeads.empty()) {
-        wxMessageBox("There are no other moving head props with zones to import from.", "Import Zones", wxOK | wxICON_INFORMATION, this);
+        wxMessageBox(_("There are no other moving head props with zones to import from."), _("Import Zones"), wxOK | wxICON_INFORMATION, this);
         return;
     }
 
@@ -305,8 +305,8 @@ void PositionZoneDialog::OnButton_ImportZonesClick(wxCommandEvent& event)
     FlexGridSizer1->Fit(this);
     FlexGridSizer1->SetSizeHints(this);
 
-    wxMessageBox(wxString::Format("Imported %d zone(s) from '%s'.", importCount, propItems[propIndex]),
-                 "Import Zones", wxOK | wxICON_INFORMATION, this);
+    wxMessageBox(wxString::Format(_("Imported %d zone(s) from '%s'."), importCount, propItems[propIndex]),
+                 _("Import Zones"), wxOK | wxICON_INFORMATION, this);
 }
 
 void PositionZoneDialog::OnButton_DeleteZoneClick(wxCommandEvent& event)
@@ -315,7 +315,7 @@ void PositionZoneDialog::OnButton_DeleteZoneClick(wxCommandEvent& event)
     if (row < 0 || row >= (int)_zones.size())
         return;
 
-    if (wxMessageBox("Are you sure you want to delete this zone?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO)
+    if (wxMessageBox(_("Are you sure you want to delete this zone?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO)
         return;
 
     // The confirmation pumps the event loop, so the row captured before it can
@@ -394,7 +394,7 @@ void PositionZoneDialog::OnGrid_ZonesCellChanged(wxGridEvent& event)
     }
 
     if (!errMsg.empty()) {
-        wxMessageBox(errMsg, "Invalid Value", wxOK | wxICON_WARNING, this);
+        wxMessageBox(errMsg, _("Invalid Value"), wxOK | wxICON_WARNING, this);
         // revert the cell to the current stored value
         switch (col) {
         case 1: Grid_Zones->SetCellValue(row, col, wxString::Format("%d", _zones[row].pan_min)); break;

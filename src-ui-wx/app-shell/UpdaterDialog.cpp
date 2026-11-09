@@ -107,7 +107,7 @@ void UpdaterDialog::OnButtonDownloadNewRelease(wxCommandEvent& event)
     // Download on a worker thread and poll progress on the UI thread so the
     // dialog stays responsive/cancellable (mirrors Waveform.cpp's model
     // download). The CurlManager progress callback reports per-mille (0..1000).
-    wxProgressDialog prog("Downloading update",
+    wxProgressDialog prog(_("Downloading update"),
         "Downloading xLights " + urlVersion + " ...", 1000, this,
         wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT | wxPD_ELAPSED_TIME | wxPD_REMAINING_TIME);
 
@@ -145,8 +145,8 @@ void UpdaterDialog::OnButtonDownloadNewRelease(wxCommandEvent& event)
 
     if (!dlOk.load() || !FileExists(out)) {
         spdlog::warn("Update download failed; opening the download page in a browser instead.");
-        wxMessageBox("Download failed. Opening the download page in your browser instead.",
-            "Update", wxOK | wxICON_WARNING, this);
+        wxMessageBox(_("Download failed. Opening the download page in your browser instead."),
+            _("Update"), wxOK | wxICON_WARNING, this);
         ::wxLaunchDefaultBrowser(downloadUrl);
         GetXLightsConfig()->Write("SkipVersion", "");
         EndDialog(wxID_OK);
@@ -157,8 +157,8 @@ void UpdaterDialog::OnButtonDownloadNewRelease(wxCommandEvent& event)
 
 #ifdef __WXMSW__
     if (wxMessageBox(
-            "Download complete.\n\nxLights will now close and the installer will launch to finish the update.",
-            "Update ready", wxOK | wxCANCEL | wxICON_INFORMATION, this) == wxOK) {
+            _("Download complete.\n\nxLights will now close and the installer will launch to finish the update."),
+            _("Update ready"), wxOK | wxCANCEL | wxICON_INFORMATION, this) == wxOK) {
         // Launch the installer detached, then ask xLights to close so the
         // installer can replace the running files (normal save prompts apply).
         if (::wxExecute("\"" + localPath + "\"", wxEXEC_ASYNC) == 0) {

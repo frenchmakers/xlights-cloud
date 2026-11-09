@@ -586,7 +586,7 @@ void ModelStatesPanel::OnMatrixNameChoiceSelect(wxCommandEvent& event)
 
 void ModelStatesPanel::OnButtonMatrixAddClicked(wxCommandEvent& event)
 {
-    wxTextEntryDialog dlg(this, "New State Model", "Enter name for new state model definition");
+    wxTextEntryDialog dlg(this, _("New State Model"), _("Enter name for new state model definition"));
     if (dlg.ShowModal() == wxID_OK) {
         std::string n = Model::SafeModelName(dlg.GetValue().ToStdString(), true);
         if (!n.empty() && NameChoice->FindString(n) == wxNOT_FOUND) {
@@ -620,7 +620,7 @@ void ModelStatesPanel::OnButtonMatrixAddClicked(wxCommandEvent& event)
 void ModelStatesPanel::OnButtonMatrixDeleteClick(wxCommandEvent& event)
 {
     std::string name = NameChoice->GetString(NameChoice->GetSelection()).ToStdString();
-    int i = wxMessageBox("Delete state model definition?", "Are you sure you want to delete " + name + "?",
+    int i = wxMessageBox(_("Delete state model definition?"), "Are you sure you want to delete " + name + "?",
                          wxICON_WARNING | wxOK | wxCANCEL, this);
     if (i == wxOK) {
         stateData[name].clear();
@@ -1320,7 +1320,7 @@ void ModelStatesPanel::ImportSubmodel(wxGridEvent& event)
     }
 
     if (choices.GetCount() == 0) {
-        wxMessageBox("No SubModels Found.");
+        wxMessageBox(_("No SubModels Found."));
         return;
     }
 
@@ -1516,10 +1516,10 @@ void ModelStatesPanel::ImportStatesFromSubModels()
     }
 
     if (subNames.empty()) {
-        wxMessageBox("No SubModels Found.");
+        wxMessageBox(_("No SubModels Found."));
         return;
     }
-    wxTextEntryDialog dlg(this, "New State Model", "Enter name for new state model definition");
+    wxTextEntryDialog dlg(this, _("New State Model"), _("Enter name for new state model definition"));
     if (dlg.ShowModal() == wxID_OK) {
         std::string name = Model::SafeModelName(dlg.GetValue().ToStdString(), true);
         if (!name.empty() && NameChoice->FindString(name) == wxNOT_FOUND) {
@@ -1973,7 +1973,7 @@ void ModelStatesPanel::CopyStateData()
     if (index == -1)
         return;
     auto const& currentName = NameChoice->GetString(index);
-    wxTextEntryDialog dlg(this, "Copy State", "Enter name for copied state definition", currentName);
+    wxTextEntryDialog dlg(this, _("Copy State"), _("Enter name for copied state definition"), currentName);
     if (dlg.ShowModal() == wxID_OK) {
         std::string n = Model::SafeModelName(dlg.GetValue().ToStdString(), true);
         if (!n.empty() && NameChoice->FindString(n) == wxNOT_FOUND) {
@@ -1996,7 +1996,7 @@ void ModelStatesPanel::RenameState()
     if (index == -1)
         return;
     auto const& currentName = NameChoice->GetString(index);
-    wxTextEntryDialog dlg(this, "Rename State", "Enter new name for state definition", currentName);
+    wxTextEntryDialog dlg(this, _("Rename State"), _("Enter new name for state definition"), currentName);
     if (dlg.ShowModal() == wxID_OK) {
         std::string n = Model::SafeModelName(dlg.GetValue().ToStdString(), true);
         if (!n.empty() && NameChoice->FindString(n) == wxNOT_FOUND) {
@@ -2029,7 +2029,7 @@ void ModelStatesPanel::ShiftStateNodes()
     long min = 0;
     long max = model->GetNodeCount();
 
-    wxNumberEntryDialog dlg(this, "Enter Increase/Decrease Value", "", "Increment/Decrement Value", 0, -(max - 1), max - 1);
+    wxNumberEntryDialog dlg(this, _("Enter Increase/Decrease Value"), "", "Increment/Decrement Value", 0, -(max - 1), max - 1);
     if (dlg.ShowModal() == wxID_OK) {
         auto scaleFactor = dlg.GetValue();
         if (scaleFactor != 0) {
@@ -2725,7 +2725,7 @@ void ModelStatesPanel::SortState(wxGridEvent& event)
 
 wxString ModelStatesPanel::GetDownloadStates()
 {
-    wxProgressDialog* prog = new wxProgressDialog("Model download", "Downloading models ...", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+    wxProgressDialog* prog = new wxProgressDialog(_("Model download"), _("Downloading models ..."), 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
     prog->Show();
     prog->CenterOnParent();
     xLightsFrame* xlights = xLightsApp::GetFrame();
@@ -2746,7 +2746,7 @@ wxString ModelStatesPanel::GetDownloadStates()
 
 void ModelStatesPanel::ExportStatesToOtherModels()
 {
-    if (wxMessageBox("Are you sure you want to Export this model's States to other models?\nThis will override all the other model's existing states and there is no way to undo it.", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+    if (wxMessageBox(_("Are you sure you want to Export this model's States to other models?\nThis will override all the other model's existing states and there is no way to undo it."), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
         return;
     }
 

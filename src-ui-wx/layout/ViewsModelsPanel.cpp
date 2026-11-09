@@ -870,7 +870,7 @@ void ViewsModelsPanel::RemoveSelectedModels()
             }
         }
 
-        if (!hasEffects || wxMessageBox("Delete all effects and layers for the selected model(s)?", "Confirm Delete?", wxICON_QUESTION | wxYES_NO) == wxYES) {
+        if (!hasEffects || wxMessageBox(_("Delete all effects and layers for the selected model(s)?"), _("Confirm Delete?"), wxICON_QUESTION | wxYES_NO) == wxYES) {
 
             // we need to unselect the current effect because we may be about to delete it
             wxCommandEvent eventUnSelected(EVT_UNSELECTED_EFFECT);
@@ -1535,7 +1535,7 @@ void ViewsModelsPanel::DeleteSelectedView()
 {
     if (_seqData == nullptr || _seqData->NumFrames() == 0) return;
 
-    int result = wxMessageBox("Are you sure you want to delete this View?", "Confirm Deletion", wxOK | wxCANCEL | wxCENTER);
+    int result = wxMessageBox(_("Are you sure you want to delete this View?"), _("Confirm Deletion"), wxOK | wxCANCEL | wxCENTER);
     if (result != wxOK) return;
 
     ListCtrlViews->Freeze();
@@ -3146,7 +3146,7 @@ void ViewsModelsPanel::ImportRGBEffectsView()
                 viewList.emplace_back(view_name);
             }
 
-            wxMultiChoiceDialog dlg(GetParent(), "Select View(s) to Import", "Select View(s)", viewList);
+            wxMultiChoiceDialog dlg(GetParent(), _("Select View(s) to Import"), _("Select View(s)"), viewList);
 
             if (dlg.ShowModal() == wxID_OK) {
                 std::map<wxString, wxArrayString> viewToAddMap;

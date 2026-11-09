@@ -113,7 +113,7 @@ void TopEffectsPanel::OnButtonUpdateEffectClick(wxCommandEvent& event)
 {
     int alleffects = xLightsApp::GetFrame()->GetMainSequencer()->GetSelectedEffectCount("");
 	if (alleffects > 1) {
-        if (wxMessageBox("Are you sure you want to change the settings on all selected effects?", "Update all", wxYES_NO | wxCENTRE, this) == wxNO)
+        if (wxMessageBox(_("Are you sure you want to change the settings on all selected effects?"), _("Update all"), wxYES_NO | wxCENTRE, this) == wxNO)
             return;
     }
 
@@ -127,7 +127,7 @@ void TopEffectsPanel::OnButtonRandomizeEffectClick(wxCommandEvent& event)
 {
     int alleffects = xLightsApp::GetFrame()->GetMainSequencer()->GetSelectedEffectCount("");
     if (alleffects > 1) {
-        if (wxMessageBox("Are you sure you want to randomise the settings on all selected effects?", "Update all", wxYES_NO | wxCENTRE, this) == wxNO)
+        if (wxMessageBox(_("Are you sure you want to randomise the settings on all selected effects?"), _("Update all"), wxYES_NO | wxCENTRE, this) == wxNO)
             return;
     }
 

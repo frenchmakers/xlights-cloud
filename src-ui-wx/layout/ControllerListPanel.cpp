@@ -960,7 +960,7 @@ void ControllerListPanel::OnPopup(wxCommandEvent& event) {
                     _frame->RecalcModels();
 
                     if (_frame->mSavedChangeCount != _frame->_sequenceElements.GetChangeCount()) {
-                        if (wxMessageBox("Open sequence has not been saved. If you plan on uploading it to FPP then it needs to be saved. Do you want to save it now?", "Save Sequence", wxYES_NO | wxCENTRE, _frame) == wxYES) {
+                        if (wxMessageBox(_("Open sequence has not been saved. If you plan on uploading it to FPP then it needs to be saved. Do you want to save it now?"), _("Save Sequence"), wxYES_NO | wxCENTRE, _frame) == wxYES) {
                             _frame->SaveSequence();
                         }
                     }
@@ -1031,7 +1031,7 @@ void ControllerListPanel::DeleteSelectedControllers() {
     auto todel = GetSelectedControllerNames();
     if (todel.empty()) return;
     auto msg = wxString::Format("Are you sure you want to delete %d controllers.", (int)todel.size());
-    if (wxMessageBox(msg, "Delete controller(s)", wxYES_NO) != wxYES) return;
+    if (wxMessageBox(msg, _("Delete controller(s)"), wxYES_NO) != wxYES) return;
     _frame->waitForPingsToComplete();
     _frame->AbortRender();
     for (const auto& it : todel) {

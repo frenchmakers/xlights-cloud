@@ -636,7 +636,7 @@ void AIImageDialog::OnSaveButtonClicked(wxCommandEvent& event)
     }
     wxImage img = RemoveBlackBackground(_currentImage);
     if (img.IsOk()) {
-        wxFileDialog dlg(this, "Save Image", wxEmptyString, "Image.png", "*.png", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+        wxFileDialog dlg(this, _("Save Image"), wxEmptyString, "Image.png", "*.png", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
         if (dlg.ShowModal() == wxID_OK) {
             img.SaveFile(dlg.GetPath());
         }

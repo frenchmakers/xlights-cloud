@@ -175,7 +175,7 @@ void xLightsFrame::OnEffectsToolBarContextMenu(wxContextMenuEvent& event)
 void xLightsFrame::ShowPreferencesDialog(const wxString& initialPage)
 {
     if (readOnlyMode) {
-        wxMessageBox("Preferences are not available in read only mode", "Read Only Mode", wxICON_INFORMATION | wxOK);
+        wxMessageBox(_("Preferences are not available in read only mode"), _("Read Only Mode"), wxICON_INFORMATION | wxOK);
         return;
     }
 

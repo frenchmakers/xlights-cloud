@@ -2593,7 +2593,7 @@ void LayoutPanel::BulkEditControllerName()
         cn.push_back(it);
         i++;
     }
-    wxSingleChoiceDialog dlg(this, "Choose the controller name", "Controller Name", cn);
+    wxSingleChoiceDialog dlg(this, _("Choose the controller name"), _("Controller Name"), cn);
     dlg.SetSelection(sel);
     OptimiseDialogPosition(&dlg);
 
@@ -2629,7 +2629,7 @@ void LayoutPanel::BulkEditPixelSize() {
             size = std::max(model->GetPixelSize(), size);
         }
     }
-    wxNumberEntryDialog dlg(this, "Choose the pixel size",  "Pixel Size:", "Pixel Size", size, 1, 500);
+    wxNumberEntryDialog dlg(this, _("Choose the pixel size"),  "Pixel Size:", "Pixel Size", size, 1, 500);
     OptimiseDialogPosition(&dlg);
     if (dlg.ShowModal() == wxID_OK) {
         size = dlg.GetValue();
@@ -2758,12 +2758,12 @@ void LayoutPanel::BulkEditRotateAxis(char axis) {
         if (!unsupportedModels.empty()) {
             wxMessageBox(
                 wxString::Format(
-                    "None of the selected models support rotation on the %c axis.\n\n"
+                    _("None of the selected models support rotation on the %c axis.\n\n"
                     "Skipped:\n%s\n"
-                    "Arches/CandyCane/Icicles only support X; Lines/PolyLines derive orientation from their endpoints.",
+                    "Arches/CandyCane/Icicles only support X; Lines/PolyLines derive orientation from their endpoints."),
                     axis,
                     formatSkippedNames(unsupportedModels)),
-                "Bulk Edit Rotate", wxOK | wxICON_INFORMATION, this);
+                _("Bulk Edit Rotate"), wxOK | wxICON_INFORMATION, this);
         }
         return;
     }
@@ -2802,8 +2802,8 @@ void LayoutPanel::BulkEditRotateAxis(char axis) {
     // change without warning.
     if (angle < -180.0 || angle > 180.0) {
         wxMessageBox(
-            wxString::Format("Rotation angle must be between -180 and 180 degrees (got %g).", angle),
-            "Invalid rotation angle", wxOK | wxICON_WARNING, this);
+            wxString::Format(_("Rotation angle must be between -180 and 180 degrees (got %g)."), angle),
+            _("Invalid rotation angle"), wxOK | wxICON_WARNING, this);
         return;
     }
     float newAngle = static_cast<float>(angle);
@@ -2956,14 +2956,14 @@ void LayoutPanel::BulkEditRotateAxis(char axis) {
     if (!unsupportedModels.empty()) {
         wxMessageBox(
             wxString::Format(
-                "Rotated %zu of %zu selected models.\n\n"
+                _("Rotated %zu of %zu selected models.\n\n"
                 "Skipped because their model type does not support rotation on the %c axis:\n%s\n"
-                "Arches/CandyCane/Icicles only support X; Lines/PolyLines derive orientation from their endpoints.",
+                "Arches/CandyCane/Icicles only support X; Lines/PolyLines derive orientation from their endpoints."),
                 editableModels.size(),
                 editableModels.size() + unsupportedModels.size(),
                 axis,
                 formatSkippedNames(unsupportedModels)),
-            "Bulk Edit Rotate", wxOK | wxICON_INFORMATION, this);
+            _("Bulk Edit Rotate"), wxOK | wxICON_INFORMATION, this);
     }
 }
 
@@ -3511,7 +3511,7 @@ void LayoutPanel::BulkEditPixelStyle() {
 
     static const char *PIXEL_STYLES_VALUES[] = {"Square", "Smooth", "Solid Circle", "Blended Circle"};
     static wxArrayString PIXEL_STYLES(4, PIXEL_STYLES_VALUES);
-    wxSingleChoiceDialog dlg(this, "Choose the Pixel Style",  "Pixel Style", PIXEL_STYLES);
+    wxSingleChoiceDialog dlg(this, _("Choose the Pixel Style"),  _("Pixel Style"), PIXEL_STYLES);
     dlg.SetSelection(style);
     OptimiseDialogPosition(&dlg);
     if (dlg.ShowModal() == wxID_OK) {
@@ -3539,7 +3539,7 @@ void LayoutPanel::BulkEditTransparency() {
             trans = std::min(model->GetTransparency(), trans);
         }
     }
-    wxNumberEntryDialog dlg(this, "Choose the transparency",  "Transparency:", "Transparency", trans, 0, 100);
+    wxNumberEntryDialog dlg(this, _("Choose the transparency"),  "Transparency:", "Transparency", trans, 0, 100);
     OptimiseDialogPosition(&dlg);
     if (dlg.ShowModal() == wxID_OK) {
         trans = dlg.GetValue();
@@ -3566,7 +3566,7 @@ void LayoutPanel::BulkEditBlackTranparency() {
             trans = std::min(model->GetBlackTransparency(), trans);
         }
     }
-    wxNumberEntryDialog dlg(this, "Choose the black transparency",  "Black Transparency:", "Black Transparency", trans, 0, 100);
+    wxNumberEntryDialog dlg(this, _("Choose the black transparency"),  "Black Transparency:", "Black Transparency", trans, 0, 100);
     OptimiseDialogPosition(&dlg);
     if (dlg.ShowModal() == wxID_OK) {
         trans = dlg.GetValue();
@@ -3689,7 +3689,7 @@ void LayoutPanel::BulkEditControllerPreview()
         }
         j++;
     }
-    wxSingleChoiceDialog dlg(this, "Preview", "Preview", choices);
+    wxSingleChoiceDialog dlg(this, _("Preview"), _("Preview"), choices);
     dlg.SetSelection(sel);
     OptimiseDialogPosition(&dlg);
     if (dlg.ShowModal() == wxID_OK)
@@ -3716,7 +3716,7 @@ void LayoutPanel::BulkEditGroupControllerPreview() {
     wxArrayString choices;
     for (const auto& g : groupList) choices.push_back(g);
     int sel = 0;
-    wxSingleChoiceDialog dlg(this, "Preview", "Preview", choices);
+    wxSingleChoiceDialog dlg(this, _("Preview"), _("Preview"), choices);
     dlg.SetSelection(sel);
     OptimiseDialogPosition(&dlg);
     if (dlg.ShowModal() == wxID_OK) {
@@ -3732,7 +3732,7 @@ void LayoutPanel::BulkEditGroupControllerPreview() {
 
 void LayoutPanel::CreateModelGroupFromSelected()
 {
-    wxTextEntryDialog dlg(this, "Enter name for new group", "Enter name for new group");
+    wxTextEntryDialog dlg(this, _("Enter name for new group"), _("Enter name for new group"));
     OptimiseDialogPosition(&dlg);
     if (dlg.ShowModal() == wxID_OK) {
         wxString name = wxString(Model::SafeModelName(dlg.GetValue().ToStdString()));
@@ -3840,7 +3840,7 @@ void LayoutPanel::AddSelectedToExistingGroups() {
     // User has selected all available groups, let them know and bail
     if (choices.size() == 0) {
         std::string userMsg = "You have selected all available groups, there must be at least one group that is not selected and available to add selections to.";
-        wxMessageDialog msgDlg(this, userMsg, "No Available Groups To Add To", wxOK | wxCENTRE);
+        wxMessageDialog msgDlg(this, userMsg, _("No Available Groups To Add To"), wxOK | wxCENTRE);
         msgDlg.ShowModal();
         return;
     }
@@ -6361,7 +6361,7 @@ void LayoutPanel::FinalizeModel()
             wxProgressDialog* prog = nullptr;
             if (b->GetModelType() == "Download")
             {
-                prog = new wxProgressDialog("Model download", "Downloading models ...", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+                prog = new wxProgressDialog(_("Model download"), _("Downloading models ..."), 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
                 prog->Show();
                 prog->CenterOnParent();
             }
@@ -8396,7 +8396,7 @@ void LayoutPanel::OnPreviewModelPopup(wxCommandEvent& event)
             return;
         int seg = md->GetSelectedSegment();
         CreateUndoPoint("SingleModel", md->name, std::to_string(seg + 0x2000));
-        wxTextEntryDialog dlg(this, "Enter New Segment Size:");
+        wxTextEntryDialog dlg(this, _("Enter New Segment Size:"));
         OptimiseDialogPosition(&dlg);
         if (dlg.ShowModal() == wxID_OK) {
             int size = (int)std::strtol(dlg.GetValue().ToStdString().c_str(), nullptr, 10);
@@ -8442,7 +8442,7 @@ void LayoutPanel::OnPreviewModelPopup(wxCommandEvent& event)
         } else if (deleteIdx >= 0 && deleteIdx < xlights->viewpoint_mgr.GetNum3DCameras()) {
             std::string viewpointName = xlights->viewpoint_mgr.GetCamera3D(deleteIdx)->GetName();
             wxString message = wxString::Format("Are you sure you want to delete the 3D viewpoint '%s'?\n\nThis action cannot be undone.", viewpointName);
-            if (wxMessageBox(message, "Confirm Delete Viewpoint", wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION, this) == wxYES) {
+            if (wxMessageBox(message, _("Confirm Delete Viewpoint"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION, this) == wxYES) {
                 xlights->viewpoint_mgr.DeleteCamera3D(deleteIdx);
             }
         }
@@ -8455,7 +8455,7 @@ void LayoutPanel::OnPreviewModelPopup(wxCommandEvent& event)
         } else if (deleteIdx >= 0 && deleteIdx < xlights->viewpoint_mgr.GetNum2DCameras()) {
             std::string viewpointName = xlights->viewpoint_mgr.GetCamera2D(deleteIdx)->GetName();
             wxString message = wxString::Format("Are you sure you want to delete the 2D viewpoint '%s'?\n\nThis action cannot be undone.", viewpointName);
-            if (wxMessageBox(message, "Confirm Delete Viewpoint", wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION, this) == wxYES) {
+            if (wxMessageBox(message, _("Confirm Delete Viewpoint"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION, this) == wxYES) {
                 xlights->viewpoint_mgr.DeleteCamera2D(deleteIdx);
             }
         }
@@ -8764,7 +8764,7 @@ void LayoutPanel::ExportFacesStatesSubModels() {
     if (selectedModel == nullptr || selectedModel->GetDisplayAs() == DisplayAsType::ModelGroup || selectedModel->GetDisplayAs() == DisplayAsType::SubModel)
         return;
 
-    if (wxMessageBox("Are you sure you want to Export this model's Face/States/SubModels definitions to other models?\nThis will override all the other model's existing properties and there is no way to undo it.","Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+    if (wxMessageBox(_("Are you sure you want to Export this model's Face/States/SubModels definitions to other models?\nThis will override all the other model's existing properties and there is no way to undo it."),_("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
         return;
     }
     wxArrayString choices;
@@ -10519,7 +10519,7 @@ void LayoutPanel::DeleteSelectedModels()
 
             if (!allDeleted) {
                 wxBell();
-                wxMessageBox("One or more models cannot be deleted. They may have effects on them.", "Delete failed", 5L, this);
+                wxMessageBox(_("One or more models cannot be deleted. They may have effects on them."), _("Delete failed"), 5L, this);
             }
 
             selectedBaseObject = nullptr;
@@ -10636,8 +10636,8 @@ void LayoutPanel::ReplaceModel()
         }
     }
     if (candidates.empty()) {
-        wxMessageBox("There are no other models in the layout to replace.",
-                     "Replace Model", wxOK | wxICON_INFORMATION, this);
+        wxMessageBox(_("There are no other models in the layout to replace."),
+                     _("Replace Model"), wxOK | wxICON_INFORMATION, this);
         return;
     }
     std::sort(candidates.begin(), candidates.end());
@@ -10682,8 +10682,8 @@ void LayoutPanel::ReplaceModel()
     CopyPasteBaseObject sourceXml;
     sourceXml.SetBaseObject(sourceModel);
     if (!sourceXml.IsOk()) {
-        wxMessageBox("Failed to serialize the source model; aborting.",
-                     "Replace Model", wxOK | wxICON_ERROR, this);
+        wxMessageBox(_("Failed to serialize the source model; aborting."),
+                     _("Replace Model"), wxOK | wxICON_ERROR, this);
         return; // aliasGuard destructor restores the behaviour
     }
 
@@ -10852,10 +10852,10 @@ void LayoutPanel::ReplaceModel()
     // obvious at a glance (info / warning / error).
     if (successCount == static_cast<int>(targetNames.size()) && failures.empty()) {
         wxMessageBox(
-            wxString::Format("Successfully replaced %d model%s.%s",
+            wxString::Format(_("Successfully replaced %d model%s.%s"),
                              successCount, successCount == 1 ? "" : "s",
                              sourceDeleted ? wxString::Format(" Source model '%s' was deleted.", sourceName) : ""),
-            "Replace Model", wxOK | wxICON_INFORMATION, this);
+            _("Replace Model"), wxOK | wxICON_INFORMATION, this);
     } else if (successCount == 0) {
         wxString msg = "No models were replaced.";
         if (!failures.empty()) {
@@ -10865,7 +10865,7 @@ void LayoutPanel::ReplaceModel()
                 msg += failures[i];
             }
         }
-        wxMessageBox(msg, "Replace Model", wxOK | wxICON_ERROR, this);
+        wxMessageBox(msg, _("Replace Model"), wxOK | wxICON_ERROR, this);
     } else {
         wxString msg = wxString::Format("Replaced %d of %zu model(s).",
                                         successCount, targetNames.size());
@@ -10879,7 +10879,7 @@ void LayoutPanel::ReplaceModel()
                 msg += failures[i];
             }
         }
-        wxMessageBox(msg, "Replace Model", wxOK | wxICON_WARNING, this);
+        wxMessageBox(msg, _("Replace Model"), wxOK | wxICON_WARNING, this);
     }
 
     // aliasGuard goes out of scope here and restores the user's preference
@@ -11077,7 +11077,7 @@ void LayoutPanel::DoPaste(wxCommandEvent& event) {
                     if (sourceModel != nullptr) {
                         auto inModelGroups = sourceModel->GetModelManager().GetGroupsContainingModel(sourceModel);
                         if (!inModelGroups.empty()) {
-                            if (wxMessageBox("Should I add model to the same group(s) as the original?", "Add to groups?", wxICON_QUESTION | wxYES_NO) == wxYES) {
+                            if (wxMessageBox(_("Should I add model to the same group(s) as the original?"), _("Add to groups?"), wxICON_QUESTION | wxYES_NO) == wxYES) {
                                 for (const auto& grp : inModelGroups) {
                                     Model* addToGroup = xlights->GetModel(grp);
                                     ModelGroup *g = dynamic_cast<ModelGroup *>(addToGroup);
@@ -11768,7 +11768,7 @@ void LayoutPanel::OnModelsPopup(wxCommandEvent& event) {
         DeleteSelectedGroups();
     } else if (id == ID_MNU_DELETE_ALL_ALIASES) {
         spdlog::debug("LayoutPanel::Popup DELETE_ALL_ALIASES");
-        if (wxMessageBox("This will remove aliases from *all* models, groups and submodels.\n Do you wish to continue?", "Delete all Aliases...", wxYES_NO, this) == wxYES) {
+        if (wxMessageBox(_("This will remove aliases from *all* models, groups and submodels.\n Do you wish to continue?"), _("Delete all Aliases..."), wxYES_NO, this) == wxYES) {
             bool deleted = false;
             bool rc = false;
             for (const auto& m : xlights->AllModels) {
@@ -11826,7 +11826,7 @@ void LayoutPanel::OnModelsPopup(wxCommandEvent& event) {
                                                       OutputModelManager::WORK_RGBEFFECTS_CHANGE |
                                                       OutputModelManager::WORK_RELOAD_PROPERTYGRID, "LayoutPanel::OnModelsPopup::ID_MNU_DELETE_EMPTY_MODEL_GROUPS");
     } else if (id == ID_MNU_MAKEALLSCVALID) {
-        if (wxMessageBox("While this will make all your start channels valid it will not magically make your start channel right for your show. It will however solve strange nodes lighting up in the sequencer.\nAre you ok with this?", "WARNING", wxYES_NO | wxCENTRE) == wxYES) {
+        if (wxMessageBox(_("While this will make all your start channels valid it will not magically make your start channel right for your show. It will however solve strange nodes lighting up in the sequencer.\nAre you ok with this?"), "WARNING", wxYES_NO | wxCENTRE) == wxYES) {
             for (const auto& it : xlights->AllModels) {
                 if (it.second->GetDisplayAs() != DisplayAsType::ModelGroup && (!it.second->CouldComputeStartChannel || !it.second->IsValidStartChannelString())) {
                     it.second->SetControllerName(NO_CONTROLLER);
@@ -11839,7 +11839,7 @@ void LayoutPanel::OnModelsPopup(wxCommandEvent& event) {
                                                           OutputModelManager::WORK_MODELS_REWORK_STARTCHANNELS, "LayoutPanel::OnModelsPopup::ID_MNU_MAKEALLSCVALID");
         }
     } else if (id == ID_MNU_MAKEALLSCNOTOVERLAPPING) {
-        if (wxMessageBox("While this will make all your start channels not overlapping it will not magically make your start channel right for your show. It will however solve strange nodes lighting up in the sequencer.\nAre you ok with this?", "WARNING", wxYES_NO | wxCENTRE) == wxYES) {
+        if (wxMessageBox(_("While this will make all your start channels not overlapping it will not magically make your start channel right for your show. It will however solve strange nodes lighting up in the sequencer.\nAre you ok with this?"), "WARNING", wxYES_NO | wxCENTRE) == wxYES) {
             for (const auto& it : xlights->AllModels) {
                 if (it.second->GetDisplayAs() != DisplayAsType::ModelGroup && xlights->AllModels.IsModelOverlapping(it.second)) {
                     it.second->SetControllerName(NO_CONTROLLER);
@@ -11852,7 +11852,7 @@ void LayoutPanel::OnModelsPopup(wxCommandEvent& event) {
                                                           OutputModelManager::WORK_MODELS_REWORK_STARTCHANNELS, "LayoutPanel::OnModelsPopup::ID_MNU_MAKEALLSCNOTOVERLAPPING");
         }
     } else if (id == ID_MNU_MAKESCVALID) {
-        if (wxMessageBox("While this will make your start channel valid and not overlapping it will not magically make your start channel right for your show. It will however solve strange nodes lighting up in the sequencer.\nAre you ok with this?", "WARNING", wxYES_NO | wxCENTRE) == wxYES) {
+        if (wxMessageBox(_("While this will make your start channel valid and not overlapping it will not magically make your start channel right for your show. It will however solve strange nodes lighting up in the sequencer.\nAre you ok with this?"), "WARNING", wxYES_NO | wxCENTRE) == wxYES) {
             if (selectedBaseObject != nullptr) {
                 Model* selectedModel = dynamic_cast<Model*>(selectedBaseObject);
                 selectedModel->SetControllerName(NO_CONTROLLER);
@@ -11894,7 +11894,7 @@ void LayoutPanel::OnModelsPopup(wxCommandEvent& event) {
         CreateModelGroupFromSelected();
     } else if (id == ID_MNU_ADD_MODEL_GROUP) {
         spdlog::debug("LayoutPanel::OnModelsPopup ADD_MODEL_GROUP");
-        wxTextEntryDialog dlg(this, "Enter name for new group", "Enter name for new group");
+        wxTextEntryDialog dlg(this, _("Enter name for new group"), _("Enter name for new group"));
         OptimiseDialogPosition(&dlg);
         if (dlg.ShowModal() == wxID_OK) {
             wxString name = wxString(Model::SafeModelName(dlg.GetValue().ToStdString()));
@@ -12005,7 +12005,7 @@ void LayoutPanel::OnChoiceLayoutGroupsSelect(wxCommandEvent& event)
 
     std::string choice_layout = std::string(ChoiceLayoutGroups->GetStringSelection().c_str());
     if( choice_layout == "<Create New Preview>" ) {
-        wxTextEntryDialog dlg(this, "Enter name for new preview", "Create New Preview");
+        wxTextEntryDialog dlg(this, _("Enter name for new preview"), _("Create New Preview"));
         OptimiseDialogPosition(&dlg);
         if (dlg.ShowModal() == wxID_OK) {
             wxString name = dlg.GetValue();
@@ -12420,7 +12420,7 @@ void LayoutPanel::DeleteCurrentPreview() {
 
 void LayoutPanel::RenameCurrentPreview()
 {
-    wxTextEntryDialog dlg(this, "Change preview name", "Enter the new preview name:", currentLayoutGroup);
+    wxTextEntryDialog dlg(this, _("Change preview name"), _("Enter the new preview name:"), currentLayoutGroup);
     do {
         if (dlg.ShowModal() == wxCANCEL)
             return;

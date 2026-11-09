@@ -321,7 +321,7 @@ wxString VAMPPluginDialog::ProcessPlugin(SequenceFile* xml_file, xLightsFrame *x
         pdata[0] =media->GetFilteredLeftDataPtr(0);
         pdata[1] = media->GetFilteredRightDataPtr(0);
         
-        wxProgressDialog progress("Processing Audio", "");
+        wxProgressDialog progress(_("Processing Audio"), "");
         long totalLen = media->GetTrackSize();
         long len = media->GetTrackSize();
 		int percent = 0;

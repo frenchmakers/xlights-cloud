@@ -429,7 +429,7 @@ static void HandleChoices(xLightsFrame *frame,
     else {
         bool ok = false;
         wxSingleChoiceDialog dlg(frame, msg,
-            "Warning", choices);
+            _("Warning"), choices);
         while (!ok) {
             ok = true;
             if (dlg.ShowModal() == wxID_OK) {
@@ -605,7 +605,7 @@ void xLightsFrame::CheckForValidModels()
             }
         }
         auto msg = wxString::Format("The sequence you are opening '%s' contains %d models which are not in your layout (%s). We suggest you import this sequence instead. Do you want to continue to open it?", seqName, (int)missingModels.size(), missings.c_str());
-        if (wxMessageBox(msg, "Many missing models in this sequence", wxYES_NO) == wxNO) {
+        if (wxMessageBox(msg, _("Many missing models in this sequence"), wxYES_NO) == wxNO) {
             mapall = true;
         }
     }
@@ -1636,7 +1636,7 @@ void xLightsFrame::EffectFileDroppedOnGrid(wxCommandEvent& event)
                     newPath = dest.ToStdString();
             }
             if (newPath.empty()) {
-                wxMessageBox("Failed to copy file to the selected folder.", "Error", wxICON_ERROR | wxOK, this);
+                wxMessageBox(_("Failed to copy file to the selected folder."), _("Error"), wxICON_ERROR | wxOK, this);
                 return;
             }
             filename = newPath;
@@ -3649,13 +3649,13 @@ void xLightsFrame::OnMenuItemViewSavePerspectiveSelected(wxCommandEvent& event)
 
 void xLightsFrame::OnMenuItemViewSaveAsPerspectiveSelected(wxCommandEvent& event)
 {
-    wxString name = wxGetTextFromUser("Enter name of perspective", "Perspective Name");
+    wxString name = wxGetTextFromUser(_("Enter name of perspective"), "Perspective Name");
     if (name.size() > 0) {
         for (const auto& p : _perspectives)
         {
             if (p.name == name.ToStdString())
             {
-                int answer = wxMessageBox("Enter new name?", "Duplicate Name", wxYES_NO);
+                int answer = wxMessageBox(_("Enter new name?"), _("Duplicate Name"), wxYES_NO);
                 if (answer == wxYES) {
                     OnMenuItemViewSaveAsPerspectiveSelected(event);
                 }
@@ -4233,7 +4233,7 @@ void xLightsFrame::ExecuteImportTimingElement(wxCommandEvent& command)
 
 void xLightsFrame::ImportTimingElement()
 {
-    wxFileDialog* OpenDialog = new wxFileDialog(this, "Choose Timing file(s)", wxEmptyString, wxEmptyString,
+    wxFileDialog* OpenDialog = new wxFileDialog(this, _("Choose Timing file(s)"), wxEmptyString, wxEmptyString,
                                                 "Timing files (*.xtiming)|*.xtiming|Papagayo files (*.pgo)|*.pgo|Subrip Subtitle File (*.srt)|*.srt|Text files (*.txt)|*.txt|Vixen 3 (*.tim)|*.tim|LOR (*.lms)|*.lms|LOR (*.las)|*.las|LSP (*.msq)|*.msq|xLights (*.xsq)|*.xsq|Old xLights (*.xml)|*.xml|Eleven Labs (*.json)|*.json",
                                                 wxFD_OPEN | wxFD_MULTIPLE, wxDefaultPosition);
     if (OpenDialog->ShowModal() == wxID_OK) {
@@ -4259,7 +4259,7 @@ void xLightsFrame::ImportTimingElement()
                     if (trackNames.empty()) continue;
                     wxArrayString choices;
                     for (const auto& n : trackNames) choices.Add(wxString(n));
-                    wxMultiChoiceDialog dlg(this, "Select timing tracks to import", "Import Timing Tracks", choices);
+                    wxMultiChoiceDialog dlg(this, _("Select timing tracks to import"), _("Import Timing Tracks"), choices);
                     if (dlg.ShowModal() == wxID_OK) {
                         wxArrayInt sel = dlg.GetSelections();
                         std::vector<int> indices;
@@ -4273,7 +4273,7 @@ void xLightsFrame::ImportTimingElement()
                     if (trackNames.empty()) continue;
                     wxArrayString choices;
                     for (const auto& n : trackNames) choices.Add(wxString(n));
-                    wxMultiChoiceDialog dlg(this, "Select timing tracks to import", "Import Timing Tracks", choices);
+                    wxMultiChoiceDialog dlg(this, _("Select timing tracks to import"), _("Import Timing Tracks"), choices);
                     if (dlg.ShowModal() == wxID_OK) {
                         wxArrayInt sel = dlg.GetSelections();
                         std::vector<int> indices;
@@ -4699,8 +4699,8 @@ void xLightsFrame::GenerateAILyrics(wxCommandEvent& /* command*/) {
     if (CurrentSeqXmlFile->GetMedia() != nullptr) {
         auto services = GetAIServices(aiType::SPEECH2TEXT);
         if (services.empty()) {
-            wxMessageBox("No speech-to-text AI service is configured. Configure one under Preferences → Services.",
-                         "Error", wxICON_ERROR);
+            wxMessageBox(_("No speech-to-text AI service is configured. Configure one under Preferences → Services."),
+                         _("Error"), wxICON_ERROR);
             return;
         }
 
@@ -4713,8 +4713,8 @@ void xLightsFrame::GenerateAILyrics(wxCommandEvent& /* command*/) {
             for (auto* s : services) {
                 choices.push_back(s->GetLLMName());
             }
-            wxSingleChoiceDialog pick(this, "Choose Speech-to-Text Service",
-                                       "Generate Lyrics from Audio", choices);
+            wxSingleChoiceDialog pick(this, _("Choose Speech-to-Text Service"),
+                                       _("Generate Lyrics from Audio"), choices);
             if (pick.ShowModal() == wxID_CANCEL) return;
             service = services[pick.GetSelection()];
         }
@@ -4763,8 +4763,8 @@ void xLightsFrame::GenerateAILyrics(wxCommandEvent& /* command*/) {
         // the wait loop is what lets those callbacks reach the
         // framework — blocking main directly here deadlocks against
         // SFSpeechRecognizer's prompt UI.
-        wxProgressDialog dlg("Generating Lyrics",
-                              "Transcribing audio with on-device speech recognition. This can take a minute…",
+        wxProgressDialog dlg(_("Generating Lyrics"),
+                              _("Transcribing audio with on-device speech recognition. This can take a minute…"),
                               100, this,
                               wxPD_APP_MODAL | wxPD_AUTO_HIDE);
         dlg.Show();
@@ -4787,7 +4787,7 @@ void xLightsFrame::GenerateAILyrics(wxCommandEvent& /* command*/) {
         cleanupTemp();
 
         if (!lyrics.error.empty()) {
-            wxMessageBox("Failed to generate lyrics. Please check the media file and try again.", "Error", wxICON_ERROR);
+            wxMessageBox(_("Failed to generate lyrics. Please check the media file and try again."), _("Error"), wxICON_ERROR);
             return;
         }
 
@@ -4821,7 +4821,7 @@ void xLightsFrame::GenerateAILyrics(wxCommandEvent& /* command*/) {
         wxCommandEvent eventRowHeaderChanged(EVT_ROW_HEADINGS_CHANGED);
         wxPostEvent(this, eventRowHeaderChanged);
     } else {
-        wxMessageBox("No media file associated with this sequence. Please add a media file and try again.", "Error", wxICON_ERROR);
+        wxMessageBox(_("No media file associated with this sequence. Please add a media file and try again."), _("Error"), wxICON_ERROR);
     }
 
 }

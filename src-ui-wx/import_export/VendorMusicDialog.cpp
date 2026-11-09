@@ -383,7 +383,7 @@ void VendorMusicDialog::OnButton_InsertModelClick(wxCommandEvent& event)
                 }
                 wxMessageBox("File downloaded: " + filename);
             } else {
-                wxMessageBox("File failed to download.");
+                wxMessageBox(_("File failed to download."));
             }
         }
     }

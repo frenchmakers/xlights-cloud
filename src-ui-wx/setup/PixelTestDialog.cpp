@@ -2534,7 +2534,7 @@ void PixelTestDialog::OnListPopup(wxCommandEvent& event)
         _checkChannelList = true;
     } else if (id == ID_MNU_TEST_SELECTN) {
         if (selected.IsOk()) {
-            wxNumberEntryDialog dlg(this, "Number to select", "", "", 2, 1, 1000);
+            wxNumberEntryDialog dlg(this, _("Number to select"), "", "", 2, 1, 1000);
             if (dlg.ShowModal() == wxID_OK) {
                 int count = dlg.GetValue();
                 selected = _rcItem; // invalidated if the tree was rebuilt while the dialog was up
@@ -2562,7 +2562,7 @@ void PixelTestDialog::OnListPopup(wxCommandEvent& event)
         }
     } else if (id == ID_MNU_TEST_DESELECTN) {
         if (selected.IsOk()) {
-            wxNumberEntryDialog dlg(this, "Number to deselect", "", "", 2, 1, 1000);
+            wxNumberEntryDialog dlg(this, _("Number to deselect"), "", "", 2, 1, 1000);
             if (dlg.ShowModal() == wxID_OK) {
                 int count = dlg.GetValue();
                 selected = _rcItem; // invalidated if the tree was rebuilt while the dialog was up

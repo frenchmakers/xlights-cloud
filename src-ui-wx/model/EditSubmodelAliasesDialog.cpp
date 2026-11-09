@@ -127,7 +127,7 @@ void EditSubmodelAliasesDialog::ValidateWindow()
 
 void EditSubmodelAliasesDialog::OnButtonAddClick(wxCommandEvent& event)
 {
-    wxTextEntryDialog te(this, "Alias to add", "Add an alias");
+    wxTextEntryDialog te(this, _("Alias to add"), _("Add an alias"));
 
     if (te.ShowModal() == wxID_OK) {
         auto add = te.GetValue().Lower();

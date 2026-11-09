@@ -244,7 +244,7 @@ void xLightsFrame::LoadEffectsFile()
                     "Would you like to use the autosave file instead?",
                     xmlTimeStr, backupTimeStr
                 );
-                if (wxMessageBox(msg, "Newer Autosave File Found", wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION) == wxYES) {
+                if (wxMessageBox(msg, _("Newer Autosave File Found"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION) == wxYES) {
                     // run a backup ... equivalent of a F10
 
                     // we have not actually read the backup location yet so lets just use the show folder
@@ -370,7 +370,7 @@ void xLightsFrame::LoadEffectsFile()
                         "Autosave file: %s\n\n"
                         "Would you like to use the autosave file instead?",
                         jsonTime.Format("%Y-%m-%d %H:%M:%S"), bkpTime.Format("%Y-%m-%d %H:%M:%S"));
-                    if (wxMessageBox(msg, "Newer Autosave Presets File Found", wxYES_NO | wxICON_QUESTION) == wxYES) {
+                    if (wxMessageBox(msg, _("Newer Autosave Presets File Found"), wxYES_NO | wxICON_QUESTION) == wxYES) {
                         wxRemoveFile(presetsFile.GetFullPath());
                         wxRenameFile(presetsBkp.GetFullPath(), presetsFile.GetFullPath());
                     } else {
@@ -401,7 +401,7 @@ void xLightsFrame::LoadEffectsFile()
     // check version, do we need to convert?
     wxString effectsVersion = _effectPresetManager.GetVersion();
     if (effectsVersion < "0004") {
-        wxMessageBox("Loading of xLights v3 rgbeffects is no longer supported.", "Error", wxOK | wxCENTRE |wxICON_ERROR, xLightsFrame::GetFrame());
+        wxMessageBox(_("Loading of xLights v3 rgbeffects is no longer supported."), _("Error"), wxOK | wxCENTRE |wxICON_ERROR, xLightsFrame::GetFrame());
     }
     if (effectsVersion < "0005") {
         //flip to AntiAlias=1 by default
@@ -761,7 +761,7 @@ void xLightsFrame::LoadEffectsFile()
 
     if (converted) {
         UnsavedRgbEffectsChanges = { true, "older layout file converted" };
-        wxMessageBox("Your setup tab data has been converted to the new controller centric format.\nIf you choose to save either the Controller (Setup) or Layout Tab data it is critical you save both or some of your model start channels will break.\nIf this happens you can either repair them manually or roll back to a backup copy.");
+        wxMessageBox(_("Your setup tab data has been converted to the new controller centric format.\nIf you choose to save either the Controller (Setup) or Layout Tab data it is critical you save both or some of your model start channels will break.\nIf this happens you can either repair them manually or roll back to a backup copy."));
     }
 }
 
@@ -1203,7 +1203,7 @@ void xLightsFrame::LoadModels(pugi::xml_node modelsNode,
                     choices.push_back("Delete Group");
 
                     wxString msg = "A model of name \'" + name + "\' already exists.  What action should we take?";
-                    wxSingleChoiceDialog dlg(this, msg, "Model/Group Name Conflict", choices, (void**)nullptr,
+                    wxSingleChoiceDialog dlg(this, msg, _("Model/Group Name Conflict"), choices, (void**)nullptr,
                         wxDEFAULT_DIALOG_STYLE | wxOK | wxCENTRE | wxRESIZE_BORDER, wxDefaultPosition);
                     bool done = false;
                     do {
@@ -1773,7 +1773,7 @@ void xLightsFrame::SaveSequence()
         }
 
         wxFileDialog fd(this,
-                        "Choose filename to Save Sequence:",
+                        _("Choose filename to Save Sequence:"),
                         CurrentDir,
                         startname,
                         strSequenceSaveAsFileTypes,
@@ -2023,7 +2023,7 @@ void xLightsFrame::SaveAsSequence()
     }
     wxString newFilename;
     wxFileDialog fd(this,
-                    "Choose filename to Save Sequence:",
+                    _("Choose filename to Save Sequence:"),
                     initialDir,
                     CurrentSeqXmlFile->GetName(),
                     strSequenceSaveAsFileTypes,
@@ -2672,7 +2672,7 @@ void xLightsFrame::ExportSongRegion(int startMS, int endMS, const std::string& r
     }
 
     wxFileDialog fd(this,
-                    "Export Song Region as New Sequence",
+                    _("Export Song Region as New Sequence"),
                     CurrentDir,
                     defaultName,
                     "xLights Sequence (*.xsq)|*.xsq",
@@ -2719,7 +2719,7 @@ void xLightsFrame::ExportAllSongRegions() {
     }
 
     wxDirDialog dd(this,
-                   "Select Folder for Exported Sequences",
+                   _("Select Folder for Exported Sequences"),
                    CurrentDir,
                    wxDD_DEFAULT_STYLE);
 
@@ -2729,8 +2729,8 @@ void xLightsFrame::ExportAllSongRegions() {
 
     wxString outputDir = dd.GetPath();
 
-    wxProgressDialog progress("Exporting Song Regions",
-                              "Starting export...",
+    wxProgressDialog progress(_("Exporting Song Regions"),
+                              _("Starting export..."),
                               namedCount,
                               this,
                               wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT | wxPD_ELAPSED_TIME);

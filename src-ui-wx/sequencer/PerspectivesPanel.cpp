@@ -103,7 +103,7 @@ void PerspectivesPanel::SetPerspectives(xLightsFrame* frame)
 
 void PerspectivesPanel::OnButtonAddPerspectiveClick(wxCommandEvent& event)
 {
-    wxString name = wxGetTextFromUser("Enter name of perspective","Perspective Name");
+    wxString name = wxGetTextFromUser(_("Enter name of perspective"),"Perspective Name");
     if (name.size() > 0 && !CheckForDuplicates(name))
     {
         xLightsFrame::Perspective p;
@@ -142,7 +142,7 @@ void PerspectivesPanel::OnButtonRenamePerspectiveClick(wxCommandEvent& event)
         xLightsFrame::Perspective* p = (xLightsFrame::Perspective*)(ListBoxPerspectives->GetClientData(selection_index));
         if (p != nullptr)
         {
-            wxString name = wxGetTextFromUser("Enter new name for perspective","Rename Perspective ");
+            wxString name = wxGetTextFromUser(_("Enter new name for perspective"),"Rename Perspective ");
             if (name.size() > 0 && !CheckForDuplicates(name))
             {
                 if (p->name == _frame->_currentPerspectiveName) {

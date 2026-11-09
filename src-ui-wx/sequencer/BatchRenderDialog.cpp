@@ -595,7 +595,7 @@ void BatchRenderDialog::SelectFromFPPPlayList()
     std::transform(instances.begin(), instances.end(), std::back_inserter(itemList),
                    [](auto const& it) { return it->hostName + " " + it->ipAddress; });
 
-    wxSingleChoiceDialog dlg(this, "Select a FPP Device", "FPP", itemList);
+    wxSingleChoiceDialog dlg(this, _("Select a FPP Device"), "FPP", itemList);
 
     if (dlg.ShowModal() == wxID_OK) {
         int const index = dlg.GetSelection();
@@ -610,7 +610,7 @@ void BatchRenderDialog::SelectFromFPPPlayList()
                 std::transform(fpp->playlists.begin(), fpp->playlists.end(), std::back_inserter(wxplaylists),
                                [](auto const& it) { return it; });
 
-                wxSingleChoiceDialog dlg(this, "Select a FPP PlayList", "PlayList", wxplaylists);
+                wxSingleChoiceDialog dlg(this, _("Select a FPP PlayList"), _("PlayList"), wxplaylists);
 
                 if (dlg.ShowModal() == wxID_OK) {
                     auto const selected_playlist = dlg.GetStringSelection();

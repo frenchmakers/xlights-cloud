@@ -263,7 +263,7 @@ void PathGenerationDialog::OnButton_GenerateClick(wxCommandEvent& event)
 
     if (FileExists(fn1.GetFullPath()) || FileExists(fn2.GetFullPath()))
     {
-        if (wxMessageBox("Overwrite existing curves?", "Overwite?", wxYES_NO, this) == wxNO) return;
+        if (wxMessageBox(_("Overwrite existing curves?"), _("Overwite?"), wxYES_NO, this) == wxNO) return;
     }
 
     ValueCurve vc1("");
@@ -306,7 +306,7 @@ void PathGenerationDialog::OnButton_CloseClick(wxCommandEvent& event)
 {
     if (unsaved)
     {
-        if (wxMessageBox("Are you sure you want to exit?", "You have not saved your curve. Are you sure you want to exit?", wxYES_NO, this) == wxNO)
+        if (wxMessageBox(_("Are you sure you want to exit?"), _("You have not saved your curve. Are you sure you want to exit?"), wxYES_NO, this) == wxNO)
         {
             return;
         }

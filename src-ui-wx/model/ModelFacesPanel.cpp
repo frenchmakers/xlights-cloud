@@ -750,7 +750,7 @@ bool ModelFacesPanel::CanUsePencil() const
 
 void ModelFacesPanel::OnButtonMatrixAddClicked(wxCommandEvent& event)
 {
-    wxTextEntryDialog dlg(this, "New Face", "Enter name for new face definition");
+    wxTextEntryDialog dlg(this, _("New Face"), _("Enter name for new face definition"));
     if (dlg.ShowModal() == wxID_OK) {
         std::string n = Model::SafeModelName(dlg.GetValue().ToStdString(), true);
         if (!n.empty() && NameChoice->FindString(n) == wxNOT_FOUND) {
@@ -1602,7 +1602,7 @@ void ModelFacesPanel::ImportSubmodel(wxGridEvent& event)
     }
 
     if (choices.GetCount() == 0) {
-        wxMessageBox("No SubModels Found.");
+        wxMessageBox(_("No SubModels Found."));
         return;
     }
 
@@ -1837,7 +1837,7 @@ void ModelFacesPanel::CopyFaceData()
     if (index == -1)
         return;
     auto const& currentName = NameChoice->GetString(index);
-    wxTextEntryDialog dlg(this, "Copy Face", "Enter name for copied face definition", currentName);
+    wxTextEntryDialog dlg(this, _("Copy Face"), _("Enter name for copied face definition"), currentName);
     if (dlg.ShowModal() == wxID_OK) {
         std::string n = Model::SafeModelName(dlg.GetValue().ToStdString(), true);
         if (!n.empty() && NameChoice->FindString(n) == wxNOT_FOUND) {
@@ -1860,7 +1860,7 @@ void ModelFacesPanel::RenameFace()
     if (index == -1)
         return;
     auto const& currentName = NameChoice->GetString(index);
-    wxTextEntryDialog dlg(this, "Rename Face", "Enter new name for face definition", currentName);
+    wxTextEntryDialog dlg(this, _("Rename Face"), _("Enter new name for face definition"), currentName);
     if (dlg.ShowModal() == wxID_OK) {
         std::string n = Model::SafeModelName(dlg.GetValue().ToStdString(), true);
         if (!n.empty() && NameChoice->FindString(n) == wxNOT_FOUND) {
@@ -2182,7 +2182,7 @@ void ModelFacesPanel::ShiftFaceNodes()
     long min = 0;
     long max = model->GetNodeCount();
 
-    wxNumberEntryDialog dlg(this, "Enter Increase/Decrease Value", "", "Increment/Decrement Value", 0, -(max - 1), max - 1);
+    wxNumberEntryDialog dlg(this, _("Enter Increase/Decrease Value"), "", "Increment/Decrement Value", 0, -(max - 1), max - 1);
     if (dlg.ShowModal() == wxID_OK) {
         auto scaleFactor = dlg.GetValue();
         if (scaleFactor != 0) {
@@ -2457,7 +2457,7 @@ void ModelFacesPanel::OnNodeRangeGridResize(wxSizeEvent& event)
 
 void ModelFacesPanel::ExportFacesToOtherModels()
 {
-    if (wxMessageBox("Are you sure you want to Export this model's Face definitions to other models?\nThis will override all the other model's existing faces and there is no way to undo it.", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+    if (wxMessageBox(_("Are you sure you want to Export this model's Face definitions to other models?\nThis will override all the other model's existing faces and there is no way to undo it."), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
         return;
     }
 

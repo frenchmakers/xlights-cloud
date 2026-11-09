@@ -220,20 +220,20 @@ void VsaImportDialog::LoadMapping(wxCommandEvent& event)
 {
     if (_dirty)
     {
-        if (wxMessageBox("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO)
+        if (wxMessageBox(_("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO)
         {
             return;
         }
     }
 
-    wxFileDialog dlg(this, "Load mapping", wxEmptyString, wxEmptyString, "Mapping Files (*.xmap)|*.xmap|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+    wxFileDialog dlg(this, _("Load mapping"), wxEmptyString, wxEmptyString, "Mapping Files (*.xmap)|*.xmap|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (dlg.ShowModal() == wxID_OK) {
         ChannelMapGrid->BeginBatch();
         wxFileInputStream input(dlg.GetPath());
         wxTextInputStream text(input, "\t");
         int count = wxAtoi(text.ReadLine());
         if( (size_t)count != _num_tracks ) {
-            if (wxMessageBox("Number of tracks in mapping file does not match number of tracks imported. Do you want to continue with this import?", "", wxICON_WARNING | wxYES_NO, this) == wxNO) {
+            if (wxMessageBox(_("Number of tracks in mapping file does not match number of tracks imported. Do you want to continue with this import?"), "", wxICON_WARNING | wxYES_NO, this) == wxNO) {
                 return;
             }
         }
@@ -284,7 +284,7 @@ void VsaImportDialog::LoadMapping(wxCommandEvent& event)
 
 void VsaImportDialog::SaveMapping(wxCommandEvent& event)
 {
-    wxFileDialog dlg(this, "Save mapping", wxEmptyString, "mapping", "Mapping Files (*.xmap)|*.xmap|All Files (*.)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+    wxFileDialog dlg(this, _("Save mapping"), wxEmptyString, "mapping", "Mapping Files (*.xmap)|*.xmap|All Files (*.)|*.*", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
     if (dlg.ShowModal() == wxID_OK) {
         wxFileOutputStream output(dlg.GetPath());
         wxTextOutputStream text(output);
@@ -303,7 +303,7 @@ void VsaImportDialog::OnButton_OkClick(wxCommandEvent& event)
 {
     if (_dirty)
     {
-        if (wxMessageBox("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxYES)
+        if (wxMessageBox(_("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxYES)
         {
             EndDialog(wxID_OK);
         }
@@ -319,7 +319,7 @@ void VsaImportDialog::OnButton_CancelClick(wxCommandEvent& event)
 {
     if (_dirty)
     {
-        if (wxMessageBox("Are you sure you want to cancel WITHOUT saving your mapping changes for future imports?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxYES)
+        if (wxMessageBox(_("Are you sure you want to cancel WITHOUT saving your mapping changes for future imports?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxYES)
         {
             EndDialog(wxID_CANCEL);
         }

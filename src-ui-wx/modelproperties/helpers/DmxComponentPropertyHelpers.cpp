@@ -412,8 +412,8 @@ int OnMeshPropertyGridChange(wxPropertyGridInterface* grid, wxPropertyGridEvent&
             }
         }
         if (hasSpaces) {
-            if (wxMessageBox("The OBJ file contains materials with spaces in the filename.  This will prevent the materials from working.  Should we attempt to fix the file?",
-                             "Files with spaces",
+            if (wxMessageBox(_("The OBJ file contains materials with spaces in the filename.  This will prevent the materials from working.  Should we attempt to fix the file?"),
+                             _("Files with spaces"),
                              wxYES_NO | wxCENTRE | wxICON_WARNING) == wxYES) {
                 xlMesh::FixMaterialFilenamesInOBJ(objFile);
             }

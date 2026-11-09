@@ -83,7 +83,7 @@ int DmxServoPropertyAdapter::OnPropertyGridChange(wxPropertyGridInterface* grid,
                 p->SetValue(min_channels);
             }
             std::string msg = wxString::Format("You have %d servos at %d bits so you need %d channels minimum.", _servo.GetNumServos(), _servo.Is16Bit() ? 16 : 8, min_channels);
-            wxMessageBox(msg, "Minimum Channel Violation", wxOK | wxCENTER);
+            wxMessageBox(msg, _("Minimum Channel Violation"), wxOK | wxCENTER);
             return 0;
         }
     }

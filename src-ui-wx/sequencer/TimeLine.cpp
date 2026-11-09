@@ -1825,8 +1825,8 @@ void TimeLine::OnSongStructurePopup(wxCommandEvent& event)
             if (ms && ms->PanelEffectGrid) ms->PanelEffectGrid->Refresh(false);
         }
     } else if (id == ID_SONG_CLEAR_STRUCTURE) {
-        if (wxMessageBox("Are you sure you want to clear all song structure regions?",
-                          "Clear Song Structure", wxYES_NO | wxICON_QUESTION, this) == wxYES) {
+        if (wxMessageBox(_("Are you sure you want to clear all song structure regions?"),
+                          _("Clear Song Structure"), wxYES_NO | wxICON_QUESTION, this) == wxYES) {
             ssm.Clear();
             RaiseSequenceChange();
             Refresh(false);
@@ -1860,7 +1860,7 @@ void TimeLine::OnSongStructurePopup(wxCommandEvent& event)
         Refresh(false);
         if (ms && ms->PanelEffectGrid) ms->PanelEffectGrid->Refresh(false);
     } else if (id == ID_SONG_VIEW_NEW) {
-        wxString name = wxGetTextFromUser("Enter name for new view:", "New Song Structure View", "", this);
+        wxString name = wxGetTextFromUser(_("Enter name for new view:"), "New Song Structure View", "", this);
         if (!name.empty()) {
             int idx = ssm.AddView(name.ToStdString());
             ssm.SetActiveView(idx);
@@ -1870,7 +1870,7 @@ void TimeLine::OnSongStructurePopup(wxCommandEvent& event)
         }
     } else if (id == ID_SONG_VIEW_DUPLICATE) {
         wxString defaultName = ssm.GetActiveViewName() + " (copy)";
-        wxString name = wxGetTextFromUser("Enter name for duplicated view:",
+        wxString name = wxGetTextFromUser(_("Enter name for duplicated view:"),
             "Duplicate Song Structure View", defaultName, this);
         if (!name.empty()) {
             int idx = ssm.DuplicateView(ssm.GetActiveViewIndex(), name.ToStdString());
@@ -1880,15 +1880,15 @@ void TimeLine::OnSongStructurePopup(wxCommandEvent& event)
             if (ms && ms->PanelEffectGrid) ms->PanelEffectGrid->Refresh(false);
         }
     } else if (id == ID_SONG_VIEW_RENAME) {
-        wxString name = wxGetTextFromUser("Enter new name for current view:",
+        wxString name = wxGetTextFromUser(_("Enter new name for current view:"),
             "Rename Song Structure View", ssm.GetActiveViewName(), this);
         if (!name.empty()) {
             ssm.RenameView(ssm.GetActiveViewIndex(), name.ToStdString());
             RaiseSequenceChange();
         }
     } else if (id == ID_SONG_VIEW_DELETE) {
-        if (wxMessageBox(wxString::Format("Delete view \"%s\"?", wxString::FromUTF8(ssm.GetActiveViewName())),
-                          "Delete Song Structure View", wxYES_NO | wxICON_QUESTION, this) == wxYES) {
+        if (wxMessageBox(wxString::Format(_("Delete view \"%s\"?"), wxString::FromUTF8(ssm.GetActiveViewName())),
+                          _("Delete Song Structure View"), wxYES_NO | wxICON_QUESTION, this) == wxYES) {
             ssm.DeleteView(ssm.GetActiveViewIndex());
             RaiseSequenceChange();
             Refresh(false);

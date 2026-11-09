@@ -1201,14 +1201,14 @@ static wxString SafeGroupName(const wxString& name)
 
 void xLightsImportChannelMapDialog::AddEmptyGroup()
 {
-    wxTextEntryDialog dialog(this, "Enter the name for the new group:", "Add New Group", "");
+    wxTextEntryDialog dialog(this, _("Enter the name for the new group:"), _("Add New Group"), "");
     if (dialog.ShowModal() != wxID_OK) {
         return;
     }
 
     wxString groupName = SafeGroupName(dialog.GetValue());
     if (groupName.IsEmpty()) {
-        wxMessageBox("Group name cannot be empty.", "Error", wxOK | wxICON_ERROR, this);
+        wxMessageBox(_("Group name cannot be empty."), _("Error"), wxOK | wxICON_ERROR, this);
         return;
     }
 
@@ -2554,12 +2554,12 @@ xLightsImportModelNode* xLightsImportChannelMapDialog::TreeContainsModel(std::st
 void xLightsImportChannelMapDialog::LoadMapping(wxCommandEvent& event)
 {
     if (_dirty) {
-        if (wxMessageBox("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+        if (wxMessageBox(_("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
             return;
         }
     }
 
-    wxFileDialog dlg(this, "Load mapping", wxEmptyString, wxEmptyString, "Mapping Files (*.xjmap;*.xmap;*.xmaphint)|*.xjmap;*.xmap;*.xmaphint|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+    wxFileDialog dlg(this, _("Load mapping"), wxEmptyString, wxEmptyString, "Mapping Files (*.xjmap;*.xmap;*.xmaphint)|*.xjmap;*.xmap;*.xmaphint|All Files (*.)|*.*", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (dlg.ShowModal() == wxID_OK) {
         LoadMappingFile( dlg.GetPath());
     }
@@ -2581,8 +2581,8 @@ void xLightsImportChannelMapDialog::LoadMappingFile(wxString const& filepath, bo
 
         if (hasMappings) {
             wxMessageDialog prompt(this,
-                "What do you want to do with the existing mapped effects?",
-                "Load Mapping File",
+                _("What do you want to do with the existing mapped effects?"),
+                _("Load Mapping File"),
                 wxYES_NO | wxCANCEL | wxCENTRE);
             prompt.SetYesNoCancelLabels("Clear & Replace", "Merge", "Cancel");
             int result = prompt.ShowModal();
@@ -2977,7 +2977,7 @@ bool xLightsImportChannelMapDialog::ShouldRecordDonor() const
 
 void xLightsImportChannelMapDialog::SaveMapping(wxCommandEvent& event)
 {
-    wxFileDialog dlg(this, "Save mapping", wxEmptyString, _mappingFile, "Text Maping (*.xmap)|*.xmap|JSON Mapping Files (*.xjmap)|*.xjmap|xMapHint (*.xmaphint)|*.xmaphint", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+    wxFileDialog dlg(this, _("Save mapping"), wxEmptyString, _mappingFile, "Text Maping (*.xmap)|*.xmap|JSON Mapping Files (*.xjmap)|*.xjmap|xMapHint (*.xmaphint)|*.xmaphint", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
     if (dlg.ShowModal() == wxID_OK) {
         if (dlg.GetPath().Lower().EndsWith(".xmaphint")) {
             generateMapHintsFile(dlg.GetPath());
@@ -3325,7 +3325,7 @@ wxDataViewItem xLightsImportChannelMapDialog::GetPriorTreeItem(const wxDataViewI
 void xLightsImportChannelMapDialog::OnButton_OkClick(wxCommandEvent& event)
 {
     if (_dirty) {
-        if (wxMessageBox("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxYES) {
+        if (wxMessageBox(_("Are you sure you want to leave WITHOUT saving your mapping changes for future imports?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxYES) {
             EndDialog(wxID_OK);
         }
     } else {
@@ -3361,7 +3361,7 @@ bool xLightsImportChannelMapDialog::ConfirmDiscard(bool closingWindow)
         }
         msg += "\n\n" + groups;
     }
-    return msg.IsEmpty() || wxMessageBox(msg, "Are you sure?", wxYES_NO | wxCENTER, this) == wxYES;
+    return msg.IsEmpty() || wxMessageBox(msg, _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxYES;
 }
 
 void xLightsImportChannelMapDialog::OnButton_CancelClick(wxCommandEvent& event)
@@ -4461,8 +4461,8 @@ bool xLightsImportChannelMapDialog::PromptAndApplyMapping(
     bool addAdditional = false;
     if (anyAlreadyMapped) {
         wxMessageDialog dlg(this,
-            "One or more selected items is already mapped.\n\nReplace the existing mapping, or add this as an additional stacked source?",
-            "Destination Already Mapped",
+            _("One or more selected items is already mapped.\n\nReplace the existing mapping, or add this as an additional stacked source?"),
+            _("Destination Already Mapped"),
             wxYES_NO | wxCANCEL | wxNO_DEFAULT);
         dlg.SetYesNoCancelLabels("Replace", "Add Additional", "Cancel");
         int result = dlg.ShowModal();
@@ -4887,7 +4887,7 @@ bool xLightsImportChannelMapDialog::DoStructuredAIMapping(const std::list<Import
 
     if (!result.error.empty()) {
         spdlog::error("Structured AI mapping error: {}", result.error.c_str());
-        wxMessageBox(result.error, "AI Mapping Error", wxICON_ERROR);
+        wxMessageBox(result.error, _("AI Mapping Error"), wxICON_ERROR);
         return false;
     }
 
@@ -5157,7 +5157,7 @@ void xLightsImportChannelMapDialog::DoAIAutoMap(bool select) {
         }
     }
 
-    wxProgressDialog* dlg = new wxProgressDialog("Generating mapping", "Please give me some time to map your models. This can take a minute or two.", 100, this, wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_AUTO_HIDE);
+    wxProgressDialog* dlg = new wxProgressDialog(_("Generating mapping"), _("Please give me some time to map your models. This can take a minute or two."), 100, this, wxPD_APP_MODAL | wxPD_SMOOTH | wxPD_AUTO_HIDE);
     dlg->Show();
 
     // Try structured AI mapping first (e.g., Claude with GenerateModelMapping)
@@ -5184,7 +5184,7 @@ void xLightsImportChannelMapDialog::DoAIAutoMap(bool select) {
     delete dlg;
 
     if (!mapped) {
-        wxMessageBox("Unable to generate mappings. Check log file for details.", "Mapping Failed", 5);
+        wxMessageBox(_("Unable to generate mappings. Check log file for details."), _("Mapping Failed"), 5);
     }
 }
 

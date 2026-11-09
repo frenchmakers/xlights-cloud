@@ -750,12 +750,12 @@ public:
                 for (int i : ports) {
                     names.push_back(_caps->GetSerialPortLabel(i));
                 }
-                wxSingleChoiceDialog dlg(parent, "Select The Port To Move The Models To", "Port", names);
+                wxSingleChoiceDialog dlg(parent, _("Select The Port To Move The Models To"), _("Port"), names);
                 if (dlg.ShowModal() == wxID_OK) {
                     target = ports[dlg.GetSelection()];
                 }
             } else {
-                wxNumberEntryDialog dlg(parent, "Enter The Port To Move The Models To", "Port", "Port", GetPort(), 1, max);
+                wxNumberEntryDialog dlg(parent, _("Enter The Port To Move The Models To"), "Port", "Port", GetPort(), 1, max);
                 if (dlg.ShowModal() == wxID_OK) {
                     target = dlg.GetValue();
                 }
@@ -820,7 +820,7 @@ public:
                 }
             }
 
-            wxSingleChoiceDialog dlg(parent, "Port Protocol", "Protocol", choices);
+            wxSingleChoiceDialog dlg(parent, _("Port Protocol"), _("Protocol"), choices);
             if (dlg.ShowModal() == wxID_OK) {
                 if (_caps != nullptr && !_caps->SupportsMultipleSimultaneousOutputProtocols()) {
                     // We have to apply the protocol to all ports
@@ -858,7 +858,7 @@ public:
                 if (GetUDPort()->GetModels().size() != 0 && nullptr != GetUDPort()->GetModels().front()) {
                     selection = choices.Index(GetUDPort()->GetModels().front()->GetSmartRemoteType());
                 }
-                wxSingleChoiceDialog dlg(parent, "Port Smart Remote Type", "Smart Remote Type", choices);
+                wxSingleChoiceDialog dlg(parent, _("Port Smart Remote Type"), _("Smart Remote Type"), choices);
                 if (selection >= 0 && selection < (int)choices.size()) {
                     dlg.SetSelection(selection);
                 }
@@ -914,7 +914,7 @@ public:
             if (GetUDPort()->GetModels().size() != 0 && nullptr != GetUDPort()->GetModels().front()) {
                 selection = GetUDPort()->GetModels().front()->GetSmartRemote() - 1;//0=none, 1=A,Falcon/FPP, 1=0,HinksPix
             }
-            wxSingleChoiceDialog dlg(parent, "Port Smart Remote ID", "Smart Remote ID", choices);
+            wxSingleChoiceDialog dlg(parent, _("Port Smart Remote ID"), _("Smart Remote ID"), choices);
             if (selection >= 0 && selection < (int)choices.size()) {
                 dlg.SetSelection(selection);
             }
@@ -1818,21 +1818,21 @@ public:
             }
             return true;
         } else if (id == ControllerModelDialog::CONTROLLER_BRIGHTNESS) {
-            wxNumberEntryDialog dlg(parent, "Enter the Model Brightness", "Brightness", "Model Brightness", GetModel()->GetControllerBrightness(), 0, 100);
+            wxNumberEntryDialog dlg(parent, _("Enter the Model Brightness"), "Brightness", "Model Brightness", GetModel()->GetControllerBrightness(), 0, 100);
             if (dlg.ShowModal() == wxID_OK) {
                 GetModel()->SetControllerProperty(CtrlProps::BRIGHTNESS_ACTIVE);
                 GetModel()->SetControllerBrightness(dlg.GetValue());
             }
             return true;
         } else if (id == ControllerModelDialog::CONTROLLER_STARTNULLS) {
-            wxNumberEntryDialog dlg(parent, "Enter the Model Start Nulls", "Start Nulls", "Start Nulls", GetModel()->GetControllerStartNulls(), 0, 100);
+            wxNumberEntryDialog dlg(parent, _("Enter the Model Start Nulls"), "Start Nulls", "Start Nulls", GetModel()->GetControllerStartNulls(), 0, 100);
             if (dlg.ShowModal() == wxID_OK) {
                 GetModel()->SetControllerProperty(CtrlProps::START_NULLS_ACTIVE);
                 GetModel()->SetControllerStartNulls(dlg.GetValue());
             }
             return true;
         } else if (id == ControllerModelDialog::CONTROLLER_ENDNULLS) {
-            wxNumberEntryDialog dlg(parent, "Enter the End Nulls", "End Nulls", "Model End Nulls", GetModel()->GetControllerEndNulls(), 0, 100);
+            wxNumberEntryDialog dlg(parent, _("Enter the End Nulls"), "End Nulls", "Model End Nulls", GetModel()->GetControllerEndNulls(), 0, 100);
             if (dlg.ShowModal() == wxID_OK) {
                 GetModel()->SetControllerProperty(CtrlProps::END_NULLS_ACTIVE);
                 GetModel()->SetControllerEndNulls(dlg.GetValue());
@@ -1843,7 +1843,7 @@ public:
             wxArrayString choices;
             for (const auto& c : colorOrderList) choices.push_back(c);
             int selection = choices.Index(GetModel()->GetControllerColorOrder());
-            wxSingleChoiceDialog dlg(parent, "Model Color Order", "Color Order", choices);
+            wxSingleChoiceDialog dlg(parent, _("Model Color Order"), _("Color Order"), choices);
             if (selection >= 0 && selection < (int)choices.size()) {
                 dlg.SetSelection(selection);
             }
@@ -1853,14 +1853,14 @@ public:
             }
             return true;
         } else if (id == ControllerModelDialog::CONTROLLER_GROUPCOUNT) {
-            wxNumberEntryDialog dlg(parent, "Enter the Group Count", "Group Count", "Model Group Count", GetModel()->GetControllerGroupCount(), 1, 500);
+            wxNumberEntryDialog dlg(parent, _("Enter the Group Count"), "Group Count", "Model Group Count", GetModel()->GetControllerGroupCount(), 1, 500);
             if (dlg.ShowModal() == wxID_OK) {
                 GetModel()->SetControllerProperty(CtrlProps::GROUP_COUNT_ACTIVE);
                 GetModel()->SetControllerGroupCount(dlg.GetValue());
             }
             return true;
         } else if (id == ControllerModelDialog::CONTROLLER_GAMMA) {
-            wxTextEntryDialog dialog(parent, "Enter the Model Gamma", "Gamma", wxString::Format("%.1f", GetModel()->GetControllerGamma()));
+            wxTextEntryDialog dialog(parent, _("Enter the Model Gamma"), _("Gamma"), wxString::Format("%.1f", GetModel()->GetControllerGamma()));
             if (dialog.ShowModal() == wxID_OK) {
                 auto d_gamma = wxAtof(dialog.GetValue());
                 if (d_gamma > 0.1 && d_gamma < 100.0) {
@@ -1874,7 +1874,7 @@ public:
             GetModel()->ClearControllerProperty(ControllerConnection::BRIGHTNESS_ACTIVE);
             return true;
         } else if (id == ControllerModelDialog::CONTROLLER_MODEL_STRINGS) {
-            wxNumberEntryDialog dlg(parent, "Set String Count", "String Count", "Model String Count", GetModel()->GetNumPhysicalStrings(), 1, 100);
+            wxNumberEntryDialog dlg(parent, _("Set String Count"), "String Count", "Model String Count", GetModel()->GetNumPhysicalStrings(), 1, 100);
             if (dlg.ShowModal() == wxID_OK) {
                 std::string mess;
                 if (!GetModel()->ChangeStringCount(dlg.GetValue(), mess)) {
@@ -2329,7 +2329,7 @@ ControllerModelDialog::ControllerModelDialog(wxWindow* parent, UDController* cud
         // If you are doing auto layout then all models must have controller name set ... this may much up model chaining but it has to be done
         // or things will get funky
         if (_cud->SetAllModelsToControllerName(_controller->GetName())) {
-            wxMessageBox("At least one model had to have its controller name set because you are using Auto Layout. This may have mucked up the order of model chaining on some ports and you will need to fix that up here.", wxEmptyString, 5, parent);
+            wxMessageBox(_("At least one model had to have its controller name set because you are using Auto Layout. This may have mucked up the order of model chaining on some ports and you will need to fix that up here."), wxEmptyString, 5, parent);
             changed = true;
         }
     } else {
@@ -2830,7 +2830,7 @@ void ControllerModelDialog::OnPopupCommand(wxCommandEvent& event)
     } else if (id == CONTROLLERModel_SAVE_CSV) {
         SaveCSV();
     } else if (id == CONTROLLER_REMOVEALLMODELS) {
-        if (wxMessageBox("Are you sure You want to remove all the models from this Controller?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+        if (wxMessageBox(_("Are you sure You want to remove all the models from this Controller?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
             return;
         }
         spdlog::debug("removing all models from controller.");
@@ -2867,7 +2867,7 @@ void ControllerModelDialog::OnPopupCommand(wxCommandEvent& event)
         if (ports.empty()) {
             return;
         }
-        wxSingleChoiceDialog dlg(this, "Serial device the adapter appears as on the controller", "Add Serial Adapter Port", names);
+        wxSingleChoiceDialog dlg(this, _("Serial device the adapter appears as on the controller"), _("Add Serial Adapter Port"), names);
         if (dlg.ShowModal() == wxID_OK) {
             _shownExtraSerialPorts.insert(ports[dlg.GetSelection()]);
             ReloadModels();

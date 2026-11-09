@@ -302,7 +302,7 @@ void xLightsFrame::OpenSequence(const wxString& passed_filename, ConvertLogDialo
     wxString filename;
     wxString wildcards = "xLights Sequence files (*.xsq;*.xml)|*.xsq;*.xml|Old xLights Sequence files (*.xml)|*.xml|FSEQ files (*.fseq)|*.fseq|Sequence Backups (*.xbkp)|*.xbkp";
     if (passed_filename.IsEmpty()) {
-        filename = wxFileSelector("Choose sequence file to open", GetLastSequenceDialogDir(), wxEmptyString, "*.xsq", wildcards, wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+        filename = wxFileSelector(_("Choose sequence file to open"), GetLastSequenceDialogDir(), wxEmptyString, "*.xsq", wildcards, wxFD_OPEN | wxFD_FILE_MUST_EXIST);
         if (!filename.empty()) {
             SetLastSequenceDialogDir(wxFileName(filename).GetPath());
         }
@@ -312,7 +312,7 @@ void xLightsFrame::OpenSequence(const wxString& passed_filename, ConvertLogDialo
     spdlog::debug("Opening File: {}", ToStdString(filename));
     if (!filename.empty()) {
         if (filename.Contains(XLIGHTS_RGBEFFECTS_FILE) || filename.Contains(XLIGHTS_NETWORK_FILE) || filename.Contains(XLIGHTS_KEYBINDING_FILE)) {
-            wxMessageBox("the 'xlights_rgbeffects.xml', 'xlights_networks.xml' or 'xlights_keybindings.xml' files are not valid sequence files", "Error");
+            wxMessageBox(_("the 'xlights_rgbeffects.xml', 'xlights_networks.xml' or 'xlights_keybindings.xml' files are not valid sequence files"), _("Error"));
             return;
         }
 
@@ -322,7 +322,7 @@ void xLightsFrame::OpenSequence(const wxString& passed_filename, ConvertLogDialo
         }
 
         if (wxFileName(filename).GetExt().Lower() == "xbkp") {
-            wxMessageBox("NOTE: When you save this .xbkp file it will save as a .xsq file overwriting any existing sequence .xsq file", "Warning");
+            wxMessageBox(_("NOTE: When you save this .xbkp file it will save as a .xsq file overwriting any existing sequence .xsq file"), _("Warning"));
         }
 
         if (rp.IsEmpty()) {
@@ -341,7 +341,7 @@ void xLightsFrame::OpenSequence(const wxString& passed_filename, ConvertLogDialo
                     
                     if (xbkptime.IsValid() && xmltime.IsValid() && (xbkptime > xmltime)) {
                         // autosave file is newer
-                        if (wxMessageBox("Autosaved file found which seems to be newer than your sequence file ... would you like to open that instead and replace your xsq file?", "Newer file found", wxYES_NO) == wxYES) {
+                        if (wxMessageBox(_("Autosaved file found which seems to be newer than your sequence file ... would you like to open that instead and replace your xsq file?"), _("Newer file found"), wxYES_NO) == wxYES) {
                             // run a backup ... equivalent of a F10
                             DoBackup(false, false, true);
                             
@@ -479,12 +479,12 @@ void xLightsFrame::OpenSequence(const wxString& passed_filename, ConvertLogDialo
                          CurrentSeqXmlFile->GetName(), CurrentSeqXmlFile->GetVersion());
             if ((!_renderMode && !_checkSequenceMode) || _promptBatchRenderIssues) {
                 if (wxMessageBox(
-                    wxString::Format("This sequence was last saved with xLights %s which is no longer directly supported.\n\n"
+                    wxString::Format(_("This sequence was last saved with xLights %s which is no longer directly supported.\n\n"
                                      "To properly migrate this sequence, please first open and save it using a version of xLights from 2025.\n\n"
                                      "If you continue loading, effects may render very differently than expected.\n\n"
-                                     "Do you want to continue loading anyway?",
+                                     "Do you want to continue loading anyway?"),
                                      CurrentSeqXmlFile->GetVersion()),
-                    "Old Sequence Version",
+                    _("Old Sequence Version"),
                     wxYES_NO | wxNO_DEFAULT | wxICON_WARNING) == wxNO) {
                     delete CurrentSeqXmlFile;
                     CurrentSeqXmlFile = nullptr;
@@ -714,8 +714,8 @@ seqmedia::VideoConversionResult xLightsFrame::ConvertIncompatibleVideos(const st
     // can run it headlessly; this wrapper only supplies the progress dialog
     // and reports the outcome.
     bool userCancelled = false;
-    wxProgressDialog progDlg("Converting video files",
-                             "Preparing...", 1000, this,
+    wxProgressDialog progDlg(_("Converting video files"),
+                             _("Preparing..."), 1000, this,
                              wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT |
                              wxPD_ELAPSED_TIME | wxPD_ESTIMATED_TIME);
     progDlg.SetSize(wxSize(520, -1));
@@ -751,18 +751,18 @@ seqmedia::VideoConversionResult xLightsFrame::ConvertIncompatibleVideos(const st
     }
 
     if (result.cancelled) {
-        wxMessageBox("Conversion cancelled. Any files already completed were left in place but the sequence was not updated.",
-                     "Cancelled", wxOK | wxICON_INFORMATION, this);
+        wxMessageBox(_("Conversion cancelled. Any files already completed were left in place but the sequence was not updated."),
+                     _("Cancelled"), wxOK | wxICON_INFORMATION, this);
         return result;
     }
 
     if (result.attempted == 0) {
         if (result.gifEffectsConverted > 0) {
             wxMessageBox(wxString::Format(
-                            "Converted %d animated GIF Video effect(s) to Pictures effects.\n"
-                            "Remember to save the sequence to persist the changes.",
+                            _("Converted %d animated GIF Video effect(s) to Pictures effects.\n"
+                            "Remember to save the sequence to persist the changes."),
                             result.gifEffectsConverted),
-                         "GIF effect conversion results",
+                         _("GIF effect conversion results"),
                          wxOK | wxICON_INFORMATION, this);
         }
         return result;
@@ -781,7 +781,7 @@ seqmedia::VideoConversionResult xLightsFrame::ConvertIncompatibleVideos(const st
     if (result.converted > 0 || result.gifEffectsConverted > 0) {
         msg += "\nRemember to save the sequence to persist the updated file references.";
     }
-    wxMessageBox(msg, "Video conversion results",
+    wxMessageBox(msg, _("Video conversion results"),
                  wxOK | (result.failures.empty() ? wxICON_INFORMATION : wxICON_WARNING),
                  this);
     return result;
@@ -813,7 +813,7 @@ void xLightsFrame::CheckMediaCompatibility(bool manual)
     auto issues = MediaCompatibility::CheckSequenceMedia(audioFile, videoFiles);
     if (issues.empty()) {
         if (manual) {
-            wxMessageBox("No media compatibility issues were found.", "Check Media",
+            wxMessageBox(_("No media compatibility issues were found."), _("Check Media"),
                          wxOK | wxICON_INFORMATION, this);
         }
         return;

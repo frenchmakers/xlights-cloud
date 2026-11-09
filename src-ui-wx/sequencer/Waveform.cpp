@@ -490,8 +490,8 @@ void Waveform::OnGridPopup(wxCommandEvent& event)
             }
         }
         if (_soundClasses.empty()) {
-            wxMessageBox("No sound classes detected above the confidence threshold.",
-                         "Classify Audio", wxOK | wxICON_INFORMATION);
+            wxMessageBox(_("No sound classes detected above the confidence threshold."),
+                         _("Classify Audio"), wxOK | wxICON_INFORMATION);
             return;
         }
         wxArrayString names;
@@ -499,9 +499,9 @@ void Waveform::OnGridPopup(wxCommandEvent& event)
             names.Add(wxString::FromUTF8(c.first));
         }
         wxSingleChoiceDialog dlg(this,
-            "Pick a sound class to gate the waveform by.\n"
-            "Only moments where the class is present will show amplitude.",
-            "Classify Audio", names);
+            _("Pick a sound class to gate the waveform by.\n"
+            "Only moments where the class is present will show amplitude."),
+            _("Classify Audio"), names);
         if (dlg.ShowModal() == wxID_OK) {
             _selectedSoundClass = names[dlg.GetSelection()].ToStdString();
             // Push the chosen class's confidence curve down to
@@ -855,10 +855,10 @@ bool Waveform::PrepareStemData(bool sixStem)
         std::filesystem::path src(_media->FileName());
         std::filesystem::path existingOther = src.parent_path() / (src.stem().string() + "_Stem_Other.m4a");
         if (FileExists(existingOther.string()) &&
-            wxMessageBox("This song already has separated stems. Separating guitar and piano re-runs the separation "
+            wxMessageBox(_("This song already has separated stems. Separating guitar and piano re-runs the separation "
                          "with the 6-stem model and replaces the existing Drums, Bass, Other and Vocals stem files. "
-                         "The Other stem will no longer include guitar or piano, so effects driven by it may change.\n\nContinue?",
-                         "Separate Guitar and Piano", wxYES_NO | wxICON_QUESTION, this) != wxYES) {
+                         "The Other stem will no longer include guitar or piano, so effects driven by it may change.\n\nContinue?"),
+                         _("Separate Guitar and Piano"), wxYES_NO | wxICON_QUESTION, this) != wxYES) {
             return false;
         }
         modelPath = AIModelStore::FindModel(AIModelStore::kDemucs6sOnnxModelName, modelDirs);
@@ -887,7 +887,7 @@ bool Waveform::PrepareStemData(bool sixStem)
                                     "Download (~250 MB) and install it to:"
                                   : "The HTDemucs stem-separation model isn't installed yet.\n"
                                     "Download (~300 MB) and install it to:";
-        wxSingleChoiceDialog locDlg(this, prompt, "Install Stem Separation Model", choices);
+        wxSingleChoiceDialog locDlg(this, prompt, _("Install Stem Separation Model"), choices);
         if (locDlg.ShowModal() != wxID_OK)
             return false;
         const std::string chosenRoot = roots[locDlg.GetSelection()];
@@ -899,8 +899,8 @@ bool Waveform::PrepareStemData(bool sixStem)
 
         const std::string local_Path = (std::filesystem::path(destDir) / modelName).string();
         {
-            wxProgressDialog prog("Downloading Model",
-                                    "Downloading HTDemucs stem-separation model…",
+            wxProgressDialog prog(_("Downloading Model"),
+                                    _("Downloading HTDemucs stem-separation model…"),
                                     1000, this,
                                   wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT | wxPD_ELAPSED_TIME | wxPD_REMAINING_TIME);
             std::atomic<bool> dlDone(false);
@@ -947,7 +947,7 @@ bool Waveform::PrepareStemData(bool sixStem)
 
     StemOutput stems;
     {
-        wxProgressDialog prog("Separating Stems",
+        wxProgressDialog prog(_("Separating Stems"),
             sixStem ? "Running HTDemucs — drums, bass, vocals, guitar, piano, other…"
                     : "Running HTDemucs — drums, bass, vocals, other…",
             100, this,
@@ -1129,9 +1129,9 @@ bool Waveform::PrepareStemData(bool /*sixStem*/)
             choices.Add(wxString::FromUTF8(r));
         }
         wxSingleChoiceDialog locDlg(this,
-            "The HTDemucs stem-separation model isn't installed yet.\n"
-            "Download (~65 MB zip, ~180 MB expanded) and install it to:",
-            "Install Stem Separation Model", choices);
+            _("The HTDemucs stem-separation model isn't installed yet.\n"
+            "Download (~65 MB zip, ~180 MB expanded) and install it to:"),
+            _("Install Stem Separation Model"), choices);
         if (locDlg.ShowModal() != wxID_OK) return false;
         const std::string chosenRoot = roots[locDlg.GetSelection()];
         const std::string destDir = chosenRoot + "/" + AIModelStore::kModelsSubdir;
@@ -1143,8 +1143,8 @@ bool Waveform::PrepareStemData(bool /*sixStem*/)
         // Download the zip.
         const std::string zipPath = destDir + "/HTDemucs_SourceSeparation_F32.mlpackage.zip";
         {
-            wxProgressDialog prog("Downloading Model",
-                "Fetching HTDemucs stem-separation model…",
+            wxProgressDialog prog(_("Downloading Model"),
+                _("Fetching HTDemucs stem-separation model…"),
                 100, this,
                 wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT);
             if (!CurlManager::HTTPSGetFile(AIModelStore::kDemucsDownloadURL, zipPath)) {
@@ -1156,8 +1156,8 @@ bool Waveform::PrepareStemData(bool /*sixStem*/)
         // Unzip preserving directory structure (`.mlpackage` is a
         // directory bundle). Entries are written relative to destDir.
         {
-            wxProgressDialog prog("Installing Model",
-                "Extracting the stem-separation model…",
+            wxProgressDialog prog(_("Installing Model"),
+                _("Extracting the stem-separation model…"),
                 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
             wxFileInputStream fin(zipPath);
             if (!fin.IsOk()) {
@@ -1203,8 +1203,8 @@ bool Waveform::PrepareStemData(bool /*sixStem*/)
     // and forwards to wxProgressDialog.
     StemOutput stems;
     {
-        wxProgressDialog prog("Separating Stems",
-            "Running HTDemucs — drums, bass, vocals, other…",
+        wxProgressDialog prog(_("Separating Stems"),
+            _("Running HTDemucs — drums, bass, vocals, other…"),
             100, this,
             wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_ELAPSED_TIME | wxPD_CAN_ABORT);
         std::atomic<bool> done(false);

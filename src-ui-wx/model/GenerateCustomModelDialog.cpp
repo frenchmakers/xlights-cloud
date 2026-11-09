@@ -3104,7 +3104,7 @@ void GenerateCustomModelDialog::OnButton_PCM_RunClick(wxCommandEvent& event)
 
     spdlog::info("Running lights to be videoed.");
 
-    _pd = new wxProgressDialog("Running light patterns", "", 100, this);
+    _pd = new wxProgressDialog(_("Running light patterns"), "", 100, this);
 
     int count = SpinCtrl_NC_Count->GetValue();
     int startch = SpinCtrl_StartChannel->GetValue();
@@ -3371,7 +3371,7 @@ void GenerateCustomModelDialog::OnButton_CV_NextClick(wxCommandEvent& event)
             SwapPage(PAGE_CHOOSEVIDEO, PAGE_STARTFRAME);
         }
         else {
-            wxMessageBox("Start frame could not be found.");
+            wxMessageBox(_("Start frame could not be found."));
             CVTabEntry();
         }
         ShowProgress(false);

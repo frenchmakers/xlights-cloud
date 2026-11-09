@@ -294,7 +294,7 @@ void SeqExportDialog::OnButtonOkClick(wxCommandEvent& event)
             "Consider using \"Lossless RGB Video, *.mov\" instead — same bit-exact "
             "RGB content in a format supported across all platforms.\n\n"
             "Continue with AVI?";
-        int answer = wxMessageBox(msg, "AVI Export Deprecated",
+        int answer = wxMessageBox(msg, _("AVI Export Deprecated"),
                                   wxYES_NO | wxNO_DEFAULT | wxICON_WARNING, this);
         if (answer != wxYES) {
             // Leave the dialog open so the user can pick a different format.

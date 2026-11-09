@@ -235,7 +235,7 @@ static std::string MaybeConvertIncompatibleVideo(wxWindow* parent,
         "Reason: %s\n\n"
         "Convert it to a compatible .mov now?",
         fn.GetFullName(), wxString(reason));
-    int answer = wxMessageBox(msg, "Incompatible Video",
+    int answer = wxMessageBox(msg, _("Incompatible Video"),
                               wxYES_NO | wxCANCEL | wxICON_QUESTION, parent);
     if (answer == wxCANCEL) return {};
     if (answer == wxNO) return originalPath;
@@ -247,7 +247,7 @@ static std::string MaybeConvertIncompatibleVideo(wxWindow* parent,
         target = p.string();
     }
 
-    wxProgressDialog progDlg("Converting Video",
+    wxProgressDialog progDlg(_("Converting Video"),
                              wxString::Format("Converting %s...", fn.GetFullName()),
                              1000, parent,
                              wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT |
@@ -280,9 +280,9 @@ static std::string MaybeConvertIncompatibleVideo(wxWindow* parent,
     if (!err.empty()) {
         std::error_code ec;
         std::filesystem::remove(target, ec);
-        wxMessageBox(wxString::Format("Conversion failed: %s\n\nThe original file will be added as-is.",
+        wxMessageBox(wxString::Format(_("Conversion failed: %s\n\nThe original file will be added as-is."),
                                       wxString(err)),
-                     "Conversion Failed", wxICON_ERROR | wxOK, parent);
+                     _("Conversion Failed"), wxICON_ERROR | wxOK, parent);
         return originalPath;
     }
     return target;
@@ -1281,7 +1281,7 @@ std::string ManageMediaPanel::ExtractWithRename(const std::string& fullPath)
     // Loop until the user picks a path inside the show/media folders or cancels.
     std::string newPath;
     for (;;) {
-        wxFileDialog dlg(this, "Save Image As", fn.GetPath(), fn.GetFullName(),
+        wxFileDialog dlg(this, _("Save Image As"), fn.GetPath(), fn.GetFullName(),
                          wildcard, wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
         if (dlg.ShowModal() != wxID_OK) return {};
 
@@ -1292,9 +1292,9 @@ std::string ManageMediaPanel::ExtractWithRename(const std::string& fullPath)
         if (!outside) break;
 
         int resp = wxMessageBox(
-            "The selected location is outside the show/media folder(s).\n"
-            "Please choose a location inside the show or a media folder.",
-            "Invalid Location", wxOK | wxICON_WARNING, this);
+            _("The selected location is outside the show/media folder(s).\n"
+            "Please choose a location inside the show or a media folder."),
+            _("Invalid Location"), wxOK | wxICON_WARNING, this);
         (void)resp;
         // Reset the dialog's default directory to the show directory for the retry
         fn = wxFileName(wxString(!_showDirectory.empty() ? _showDirectory : newPath),
@@ -1655,7 +1655,7 @@ void ManageMediaPanel::OnReSelectImage(const std::string& oldPath)
             // Copy to ImportedMedia/<seqStem>/Images
             std::string newPath = CopyToDir(pickedPath, importedMediaDir);
             if (newPath.empty()) {
-                wxMessageBox("Failed to copy file to ImportedMedia folder.", "Error",
+                wxMessageBox(_("Failed to copy file to ImportedMedia folder."), _("Error"),
                              wxICON_ERROR | wxOK, this);
                 return;
             }
@@ -1675,7 +1675,7 @@ void ManageMediaPanel::OnReSelectImage(const std::string& oldPath)
                     newPath = ToStdString(dest);
             }
             if (newPath.empty()) {
-                wxMessageBox("Failed to copy file to the selected folder.", "Error",
+                wxMessageBox(_("Failed to copy file to the selected folder."), _("Error"),
                              wxICON_ERROR | wxOK, this);
                 return;
             }
@@ -1737,15 +1737,15 @@ void ManageMediaPanel::OnBulkFindImages()
         // shouldn't be reachable in practice. Kept as a safety net rather
         // than a silent no-op in case that gating and this collection ever
         // drift apart.
-        wxMessageBox("No external (on-disk) images to search for - all images in "
-                     "this sequence are embedded.",
-                     "Bulk Find Images", wxICON_INFORMATION | wxOK, this);
+        wxMessageBox(_("No external (on-disk) images to search for - all images in "
+                     "this sequence are embedded."),
+                     _("Bulk Find Images"), wxICON_INFORMATION | wxOK, this);
         return;
     }
 
     // Ask user to pick a directory to search in
     wxString defaultDir = _showDirectory.empty() ? wxString() : wxString(_showDirectory);
-    wxDirDialog dlg(this, "Select folder to bulk-find images in", defaultDir,
+    wxDirDialog dlg(this, _("Select folder to bulk-find images in"), defaultDir,
                     wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
     if (dlg.ShowModal() != wxID_OK) return;
 
@@ -1781,9 +1781,9 @@ void ManageMediaPanel::OnBulkFindImages()
             choices.Add("Copy to: " + wxString(dir));
 
         wxSingleChoiceDialog choiceDlg(this,
-            "The selected folder is outside the show/media folder(s).\n"
-            "How should found images be handled?",
-            "Files Outside Show/Media Folder", choices);
+            _("The selected folder is outside the show/media folder(s).\n"
+            "How should found images be handled?"),
+            _("Files Outside Show/Media Folder"), choices);
         if (choiceDlg.ShowModal() == wxID_CANCEL) return;
         int rawSel = choiceDlg.GetSelection();
         // Normalise so 0=embed, 1=importedMedia, 2+=copy regardless of whether
@@ -1897,10 +1897,10 @@ void ManageMediaPanel::OnBulkFindImages()
         ++found;
     }
 
-    wxMessageBox(wxString::Format("Bulk find complete.\n\n"
+    wxMessageBox(wxString::Format(_("Bulk find complete.\n\n"
                                   "Found and updated: %d image(s)\n"
-                                  "Still missing: %d image(s)", found, stillMissing),
-                 "Bulk Find Images", wxICON_INFORMATION | wxOK, this);
+                                  "Still missing: %d image(s)"), found, stillMissing),
+                 _("Bulk Find Images"), wxICON_INFORMATION | wxOK, this);
 
     Populate(lastFixedPath);
 }
@@ -2102,9 +2102,9 @@ void ManageMediaPanel::BulkFindMediaByType(MediaType type)
         ++found;
     }
 
-    wxMessageBox(wxString::Format("Bulk find complete.\n\n"
+    wxMessageBox(wxString::Format(_("Bulk find complete.\n\n"
                                   "Found and updated: %d %s(s)\n"
-                                  "Still missing: %d %s(s)",
+                                  "Still missing: %d %s(s)"),
                                   found, typeName.Lower(), stillMissing, typeName.Lower()),
                  "Bulk Find " + typeName, wxICON_INFORMATION | wxOK, this);
 
@@ -2188,9 +2188,9 @@ void ManageMediaPanel::BulkCopyExternalMediaByType(MediaType type)
         ++copied;
     }
 
-    wxMessageBox(wxString::Format("Bulk copy complete.\n\n"
+    wxMessageBox(wxString::Format(_("Bulk copy complete.\n\n"
                                   "Copied: %d %s(s)\n"
-                                  "Failed: %d %s(s)",
+                                  "Failed: %d %s(s)"),
                                   copied, typeName.Lower(), failed, typeName.Lower()),
                  "Bulk Copy " + typeName, wxICON_INFORMATION | wxOK, this);
 
@@ -2208,7 +2208,7 @@ void ManageMediaPanel::OnAddButtonClick(wxCommandEvent& event)
         if (defaultDir.empty())
             defaultDir = _showDirectory.empty() ? wxString() : wxString(_showDirectory);
     }
-    wxFileDialog dlg(this, "Add Media to Sequence", defaultDir, wxEmptyString,
+    wxFileDialog dlg(this, _("Add Media to Sequence"), defaultDir, wxEmptyString,
                      WildcardForMediaType(std::nullopt),
                      wxFD_OPEN | wxFD_FILE_MUST_EXIST | wxFD_MULTIPLE);
     if (dlg.ShowModal() != wxID_OK) return;
@@ -2288,9 +2288,9 @@ void ManageMediaPanel::OnAddButtonClick(wxCommandEvent& event)
                     std::string embeddedName = "Images/" + ToStdString(fn.GetFullName());
                     if (_sequenceMedia->HasImage(embeddedName)) {
                         int answer = wxMessageBox(
-                            wxString::Format("'%s' is already embedded in the sequence.\n\nReplace it with the selected file?",
+                            wxString::Format(_("'%s' is already embedded in the sequence.\n\nReplace it with the selected file?"),
                                              fn.GetFullName()),
-                            "Already Embedded",
+                            _("Already Embedded"),
                             wxYES_NO | wxCANCEL | wxICON_QUESTION, this);
                         if (answer == wxCANCEL) {
                             _sequenceMedia->RemoveImage(path);
@@ -2333,7 +2333,7 @@ void ManageMediaPanel::OnAddButtonClick(wxCommandEvent& event)
                 // Copy to ImportedMedia/<seqStem>/<type>
                 std::string newPath = CopyToDir(path, importedMediaDir);
                 if (newPath.empty()) {
-                    wxMessageBox("Failed to copy file to ImportedMedia folder.", "Error",
+                    wxMessageBox(_("Failed to copy file to ImportedMedia folder."), _("Error"),
                                  wxICON_ERROR | wxOK, this);
                     continue;
                 }
@@ -2349,9 +2349,9 @@ void ManageMediaPanel::OnAddButtonClick(wxCommandEvent& event)
                     wxString destFile = destDir + wxString(sep) + fn.GetFullName();
                     if (wxFileExists(destFile) && !_xlFrame->FilesMatch(path, ToStdString(destFile))) {
                         int answer = wxMessageBox(
-                            wxString::Format("'%s' already exists in the folder.\n\nReplace it with the selected file?",
+                            wxString::Format(_("'%s' already exists in the folder.\n\nReplace it with the selected file?"),
                                              fn.GetFullName()),
-                            "File Already Exists",
+                            _("File Already Exists"),
                             wxYES_NO | wxCANCEL | wxICON_QUESTION, this);
                         if (answer == wxCANCEL) continue;
                         if (answer == wxYES) {
@@ -2371,9 +2371,9 @@ void ManageMediaPanel::OnAddButtonClick(wxCommandEvent& event)
                     if (wxFileExists(dest) &&
                         (!_xlFrame || !_xlFrame->FilesMatch(path, ToStdString(dest)))) {
                         int answer = wxMessageBox(
-                            wxString::Format("'%s' already exists in the folder.\n\nReplace it with the selected file?",
+                            wxString::Format(_("'%s' already exists in the folder.\n\nReplace it with the selected file?"),
                                              fn.GetFullName()),
-                            "File Already Exists",
+                            _("File Already Exists"),
                             wxYES_NO | wxCANCEL | wxICON_QUESTION, this);
                         if (answer == wxCANCEL) continue;
                         if (answer == wxYES) {
@@ -2398,7 +2398,7 @@ void ManageMediaPanel::OnAddButtonClick(wxCommandEvent& event)
                     }
                 }
                 if (newPath.empty()) {
-                    wxMessageBox("Failed to copy file to the selected folder.", "Error",
+                    wxMessageBox(_("Failed to copy file to the selected folder."), _("Error"),
                                  wxICON_ERROR | wxOK, this);
                     continue;
                 }
@@ -2436,9 +2436,9 @@ void ManageMediaPanel::OnAIGenerateButtonClick(wxCommandEvent& event)
 
     auto services = _xlFrame->GetAIServices(aiType::TYPE::IMAGES);
     if (services.empty()) {
-        wxMessageBox("No AI image generation services are registered.\n"
-                     "Configure an AI service in the Settings menu.",
-                     "AI Generate", wxICON_INFORMATION | wxOK, this);
+        wxMessageBox(_("No AI image generation services are registered.\n"
+                     "Configure an AI service in the Settings menu."),
+                     _("AI Generate"), wxICON_INFORMATION | wxOK, this);
         return;
     }
 
@@ -2448,8 +2448,8 @@ void ManageMediaPanel::OnAIGenerateButtonClick(wxCommandEvent& event)
         wxArrayString choices;
         for (auto s : services)
             choices.push_back(s->GetLLMName());
-        wxSingleChoiceDialog pick(this, "Choose AI Image Generator",
-                                  "AI Image Generator", choices);
+        wxSingleChoiceDialog pick(this, _("Choose AI Image Generator"),
+                                  _("AI Image Generator"), choices);
         if (pick.ShowModal() == wxID_CANCEL) return;
         serv = services[pick.GetSelection()];
     }
@@ -2483,7 +2483,7 @@ void ManageMediaPanel::OnRenameButtonClick(wxCommandEvent& event)
     wxFileName fn(oldPath);
     wxString suggested = fn.GetFullName().IsEmpty() ? wxString(oldPath) : fn.GetFullName();
 
-    wxTextEntryDialog dlg(this, "Enter new name for the image:", "Rename Image", suggested);
+    wxTextEntryDialog dlg(this, _("Enter new name for the image:"), _("Rename Image"), suggested);
     if (dlg.ShowModal() != wxID_OK) return;
 
     wxString newName = dlg.GetValue().Trim(true).Trim(false);
@@ -2499,8 +2499,8 @@ void ManageMediaPanel::OnRenameButtonClick(wxCommandEvent& event)
     std::string newPathStr = ToStdString(newPath);
 
     if (!_sequenceMedia->RenameImage(oldPath, newPathStr)) {
-        wxMessageBox("Could not rename: a media entry with that name already exists.",
-                     "Rename", wxICON_WARNING | wxOK, this);
+        wxMessageBox(_("Could not rename: a media entry with that name already exists."),
+                     _("Rename"), wxICON_WARNING | wxOK, this);
         return;
     }
 
@@ -2632,7 +2632,7 @@ void ManageMediaPanel::OnExtractAllButtonClick(wxCommandEvent& event)
     wxString defaultDir = _showDirectory.empty() ? wxString() : wxString(_showDirectory);
     wxString destDir;
     for (;;) {
-        wxDirDialog dlg(this, "Choose directory to extract media into", defaultDir,
+        wxDirDialog dlg(this, _("Choose directory to extract media into"), defaultDir,
                         wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST);
         if (dlg.ShowModal() != wxID_OK) return;
         destDir = dlg.GetPath();
@@ -2643,9 +2643,9 @@ void ManageMediaPanel::OnExtractAllButtonClick(wxCommandEvent& event)
         if (!outside) break;
 
         wxMessageBox(
-            "The selected directory is outside the show/media folder(s).\n"
-            "Please choose a directory inside the show or a media folder.",
-            "Invalid Location", wxOK | wxICON_WARNING, this);
+            _("The selected directory is outside the show/media folder(s).\n"
+            "Please choose a directory inside the show or a media folder."),
+            _("Invalid Location"), wxOK | wxICON_WARNING, this);
         defaultDir = destDir;  // keep the user's last choice as starting point
     }
     ObtainAccessToURL(ToStdString(destDir));
@@ -2763,8 +2763,8 @@ void ManageMediaPanel::OnExtractAllButtonClick(wxCommandEvent& event)
     }
 
     if (failed > 0)
-        wxMessageBox(wxString::Format("%d media file(s) could not be extracted.", failed),
-                     "Extract All", wxICON_WARNING | wxOK, this);
+        wxMessageBox(wxString::Format(_("%d media file(s) could not be extracted."), failed),
+                     _("Extract All"), wxICON_WARNING | wxOK, this);
     Populate();
 }
 void ManageMediaPanel::OnRemoveButtonClick(wxCommandEvent& event)
@@ -2855,14 +2855,14 @@ void ManageMediaPanel::OnRemoveButtonClick(wxCommandEvent& event)
             "Removing them will leave those effects with missing media.\n\n"
             "Remove anyway?",
             usageCount);
-        if (wxMessageBox(msg, "Remove Embedded Media",
+        if (wxMessageBox(msg, _("Remove Embedded Media"),
                          wxYES_NO | wxNO_DEFAULT | wxICON_WARNING, this) != wxYES)
             return;
     } else {
         wxString msg = wxString::Format(
             "Remove %d embedded media file(s) from the sequence?",
             (int)toRemove.size());
-        if (wxMessageBox(msg, "Remove Embedded Media",
+        if (wxMessageBox(msg, _("Remove Embedded Media"),
                          wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION, this) != wxYES)
             return;
     }
@@ -2969,7 +2969,7 @@ void SelectMediaDialog::OnAddFromDisk(wxCommandEvent& event)
         if (defaultDir.empty())
             defaultDir = _panel->_showDirectory.empty() ? wxString() : wxString(_panel->_showDirectory);
     }
-    wxFileDialog dlg(this, "Select Media File", defaultDir, wxEmptyString,
+    wxFileDialog dlg(this, _("Select Media File"), defaultDir, wxEmptyString,
                      WildcardForMediaType(_filterType),
                      wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (dlg.ShowModal() != wxID_OK) return;
@@ -3044,7 +3044,7 @@ void SelectMediaDialog::OnAddFromDisk(wxCommandEvent& event)
             // Copy to ImportedMedia/<seqStem>/<type>
             std::string newPath = CopyToDir(path, importedMediaDir);
             if (newPath.empty()) {
-                wxMessageBox("Failed to copy file to ImportedMedia folder.", "Error",
+                wxMessageBox(_("Failed to copy file to ImportedMedia folder."), _("Error"),
                              wxICON_ERROR | wxOK, this);
                 return;
             }
@@ -3097,7 +3097,7 @@ void SelectMediaDialog::OnAddFromDisk(wxCommandEvent& event)
                         newPath = ToStdString(dest);
                 }
                 if (newPath.empty()) {
-                    wxMessageBox("Failed to copy file to the selected folder.", "Error",
+                    wxMessageBox(_("Failed to copy file to the selected folder."), _("Error"),
                                  wxICON_ERROR | wxOK, this);
                     return;
                 }

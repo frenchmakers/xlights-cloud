@@ -714,13 +714,13 @@ xLightsFrame::xLightsFrame(wxWindow* parent, int ab, wxWindowID id, bool renderO
         auto showBox = [level, msg]() {
             switch (level) {
             case AppCallbacks::DisplayMessageLevel::Error:
-                wxMessageBox(msg, "Error", wxICON_ERROR | wxOK);
+                wxMessageBox(msg, _("Error"), wxICON_ERROR | wxOK);
                 break;
             case AppCallbacks::DisplayMessageLevel::Warning:
-                wxMessageBox(msg, "Warning", wxICON_WARNING | wxOK);
+                wxMessageBox(msg, _("Warning"), wxICON_WARNING | wxOK);
                 break;
             case AppCallbacks::DisplayMessageLevel::Info:
-                wxMessageBox(msg, "Information", wxICON_INFORMATION | wxOK);
+                wxMessageBox(msg, _("Information"), wxICON_INFORMATION | wxOK);
                 break;
             }
         };
@@ -2017,7 +2017,7 @@ xLightsFrame::xLightsFrame(wxWindow* parent, int ab, wxWindowID id, bool renderO
             if (!PromptForShowDirectory(true, dir)) {
                 CurrentDir = "";
                 splash.Hide();
-                wxMessageBox("Exiting as setting a show folder is not optional.");
+                wxMessageBox(_("Exiting as setting a show folder is not optional."));
                 wxExit();
                 return;
             }
@@ -2035,7 +2035,7 @@ xLightsFrame::xLightsFrame(wxWindow* parent, int ab, wxWindowID id, bool renderO
         if (!OfferDefaultShowDirectory(true)) {
             CurrentDir = "";
             splash.Hide();
-            wxMessageBox("Exiting as setting a show folder is not optional.");
+            wxMessageBox(_("Exiting as setting a show folder is not optional."));
             wxExit();
             return;
         }
@@ -2712,15 +2712,15 @@ void xLightsFrame::DoPostStartupCommands()
         static bool hasWarned = false;
         if (verMaj < 8 && !hasWarned) {
             hasWarned = true;
-            wxMessageBox("Windows 7 has known issues rendering some effects.  Support for Windows 7 may be removed entirely soon.",
-                         "Windows Version",
+            wxMessageBox(_("Windows 7 has known issues rendering some effects.  Support for Windows 7 may be removed entirely soon."),
+                         _("Windows Version"),
                          wxICON_INFORMATION | wxCENTER | wxOK);
         }
 #endif
 #ifdef __WXOSX__
         if (hasFullDiskAccess()) {
-            wxMessageBox("xLights has been granted \"Full Disk Access\" in System settings.  This is strongly discouraged.",
-                         "Full Disk Access Detected",
+            wxMessageBox(_("xLights has been granted \"Full Disk Access\" in System settings.  This is strongly discouraged."),
+                         _("Full Disk Access Detected"),
                          wxICON_INFORMATION | wxCENTER | wxOK);
         }
 #endif
@@ -3288,7 +3288,7 @@ void xLightsFrame::OnClose(wxCloseEvent& event)
 
     if (auto* cloud = static_cast<CloudBackupDialog*>(_cloudBackupDialog.get()); cloud && cloud->IsRunning()) {
         if (event.CanVeto() &&
-            wxMessageBox("A cloud backup is still running. Cancel it and quit?", "Backup to Cloud", wxYES_NO | wxICON_QUESTION, this) != wxYES) {
+            wxMessageBox(_("A cloud backup is still running. Cancel it and quit?"), _("Backup to Cloud"), wxYES_NO | wxICON_QUESTION, this) != wxYES) {
             event.Veto();
             return;
         }
@@ -3296,7 +3296,7 @@ void xLightsFrame::OnClose(wxCloseEvent& event)
     }
     if (auto* restore = static_cast<CloudRestoreDialog*>(_cloudRestoreDialog.get()); restore && restore->IsRunning()) {
         if (event.CanVeto() &&
-            wxMessageBox("A restore from the cloud is still running. Cancel it and quit?", "Restore from Cloud", wxYES_NO | wxICON_QUESTION, this) != wxYES) {
+            wxMessageBox(_("A restore from the cloud is still running. Cancel it and quit?"), _("Restore from Cloud"), wxYES_NO | wxICON_QUESTION, this) != wxYES) {
             event.Veto();
             return;
         }
@@ -3365,7 +3365,7 @@ void xLightsFrame::DoBackup(bool prompt, bool startup, bool forceallfiles)
 
     //  first make sure there is a Backup sub directory
     if (_backupDirectory == "") {
-        wxMessageBox("Backup directory has not been set. Aborting backup.");
+        wxMessageBox(_("Backup directory has not been set. Aborting backup."));
         return;
     }
 
@@ -3475,8 +3475,8 @@ void xLightsFrame::OnMenuItemCloudBackupSelected(wxCommandEvent& event)
     // The archive is built from the files on disk, so get pending edits there first.
     CheckUnsavedChanges();
     if (CurrentSeqXmlFile != nullptr && mSavedChangeCount != _sequenceElements.GetChangeCount()) {
-        int r = wxMessageBox("The open sequence has unsaved changes. Save it before the backup?",
-                             "Backup to Cloud", wxYES_NO | wxCANCEL | wxICON_QUESTION, this);
+        int r = wxMessageBox(_("The open sequence has unsaved changes. Save it before the backup?"),
+                             _("Backup to Cloud"), wxYES_NO | wxCANCEL | wxICON_QUESTION, this);
         if (r == wxCANCEL) {
             return;
         }
@@ -4313,8 +4313,8 @@ void xLightsFrame::CheckUnsavedChanges()
         // to the user what this prompt is for
         Notebook1->SetSelection(LAYOUTTAB);
 
-        if (wxYES == wxMessageBox("Save Models, Views, and Perspectives changes?",
-                                  "Models, Views, and Perspectives Changes Confirmation", wxICON_QUESTION | wxYES_NO | wxNO_DEFAULT, this)) {
+        if (wxYES == wxMessageBox(_("Save Models, Views, and Perspectives changes?"),
+                                  _("Models, Views, and Perspectives Changes Confirmation"), wxICON_QUESTION | wxYES_NO | wxNO_DEFAULT, this)) {
             SaveEffectsFile();
         } else {
             // Changes were explicitly discarded ... backdate the autosave backup (if
@@ -4338,15 +4338,15 @@ void xLightsFrame::CheckUnsavedChanges()
         // to the user what this prompt is for
         Notebook1->SetSelection(LAYOUTTAB);
 
-        if (wxYES == wxMessageBox("Save Network Setup changes?",
-                                  "Networks Changes Confirmation", wxICON_QUESTION | wxYES_NO | wxNO_DEFAULT, this)) {
+        if (wxYES == wxMessageBox(_("Save Network Setup changes?"),
+                                  _("Networks Changes Confirmation"), wxICON_QUESTION | wxYES_NO | wxNO_DEFAULT, this)) {
             SaveNetworksFile();
         }
     }
 
     if (UnsavedPresetChanges) {
-        if (wxYES == wxMessageBox("Save Effect Preset changes?",
-                                  "Effect Presets Changes Confirmation",
+        if (wxYES == wxMessageBox(_("Save Effect Preset changes?"),
+                                  _("Effect Presets Changes Confirmation"),
                                   wxICON_QUESTION | wxYES_NO | wxNO_DEFAULT, this)) {
             SavePresetsFile();
         }
@@ -4832,7 +4832,7 @@ std::string xLightsFrame::PackageDebugFiles(bool showDialog)
     wxLogNull logNo; // kludge: avoid "error 0" message from wxWidgets after new file is written
 
     if (showDialog) {
-        wxFileDialog fd(this, "Zip file to create.", zipDir, zipFileName, "zip file(*.zip)|*.zip", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+        wxFileDialog fd(this, _("Zip file to create."), zipDir, zipFileName, "zip file(*.zip)|*.zip", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
         if (fd.ShowModal() == wxID_CANCEL) {
             return "";
         }
@@ -5534,7 +5534,7 @@ std::string xLightsFrame::CheckSequence(bool displayInEditor, bool writeToFile)
         }
     }
 
-    wxProgressDialog prog("Check Sequence", "", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+    wxProgressDialog prog(_("Check Sequence"), "", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
     prog.Show();
     CheckSequenceReport report;
 
@@ -6441,7 +6441,7 @@ void xLightsFrame::OnMenuItem_FPP_ConnectSelected(wxCommandEvent& event)
     RecalcModels();
 
     if (mSavedChangeCount != _sequenceElements.GetChangeCount()) {
-        if (wxMessageBox("Open sequence has not been saved. If you plan on uploading it to FPP then it needs to be saved. Do you want to save it now?", "Save Sequence", wxYES_NO | wxCENTRE, this) == wxYES) {
+        if (wxMessageBox(_("Open sequence has not been saved. If you plan on uploading it to FPP then it needs to be saved. Do you want to save it now?"), _("Save Sequence"), wxYES_NO | wxCENTRE, this) == wxYES) {
             SaveSequence();
         }
     }
@@ -6552,7 +6552,7 @@ void xLightsFrame::OnMenuItem_ConvertSymbolsSelected(wxCommandEvent& event)
         "Do you want to continue?",
         linkedCount, (int)symbols.size());
 
-    if (wxMessageBox(message, "Convert Symbols to Effects", wxYES_NO | wxICON_QUESTION, this) != wxYES) {
+    if (wxMessageBox(message, _("Convert Symbols to Effects"), wxYES_NO | wxICON_QUESTION, this) != wxYES) {
         return;
     }
 
@@ -6571,8 +6571,8 @@ void xLightsFrame::OnMenuItem_ConvertSymbolsSelected(wxCommandEvent& event)
 
     mainSequencer->PanelEffectGrid->Refresh();
 
-    wxMessageBox(wxString::Format("Converted %d effect(s) and removed %d symbol(s).", linkedCount, (int)symbols.size()),
-                 "Conversion Complete", wxOK | wxICON_INFORMATION, this);
+    wxMessageBox(wxString::Format(_("Converted %d effect(s) and removed %d symbol(s)."), linkedCount, (int)symbols.size()),
+                 _("Conversion Complete"), wxOK | wxICON_INFORMATION, this);
 }
 
 std::string xLightsFrame::PackageSequence(bool showDialogs)
@@ -6594,7 +6594,7 @@ std::string xLightsFrame::PackageSequence(bool showDialogs)
 
     bool convertSymbols = false;
     if (showDialogs) {
-        wxFileDialog fd(this, "Zip file to create.", CurrentDir, filename, "zip file(*.zip;*.xsqz)|*.xsqz;*.zip", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+        wxFileDialog fd(this, _("Zip file to create."), CurrentDir, filename, "zip file(*.zip;*.xsqz)|*.xsqz;*.zip", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
         if (fd.ShowModal() == wxID_CANCEL) {
             return "";
         }
@@ -6602,10 +6602,10 @@ std::string xLightsFrame::PackageSequence(bool showDialogs)
 
         if (_sequenceElements.GetEffectSymbolManager().GetSymbolCount() > 0) {
             int result = wxMessageBox(
-                "This sequence contains effect symbols which may not be compatible with older xLights versions.\n\n"
+                _("This sequence contains effect symbols which may not be compatible with older xLights versions.\n\n"
                 "Would you like to convert symbols to regular effects for the packaged sequence?\n\n"
-                "Note: Your original sequence will not be modified.",
-                "Effect Symbols Detected",
+                "Note: Your original sequence will not be modified."),
+                _("Effect Symbols Detected"),
                 wxYES_NO | wxICON_QUESTION, this);
             convertSymbols = (result == wxYES);
         }
@@ -6618,7 +6618,7 @@ std::string xLightsFrame::PackageSequence(bool showDialogs)
 
     spdlog::debug("Packaging sequence into {}.", (const char*)filePath.c_str());
 
-    wxProgressDialog prog("Package Sequence", "", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+    wxProgressDialog prog(_("Package Sequence"), "", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
     prog.Show();
 
     // Collect the desktop-specific extras: house background image
@@ -6903,7 +6903,7 @@ std::string xLightsFrame::MoveToShowFolder(const std::string& file, const std::s
 bool xLightsFrame::CleanupSequenceFileLocations()
 {
     if (GetShowDirectory() == "") {
-        wxMessageBox("Show directory invalid. Cleanup aborted.");
+        wxMessageBox(_("Show directory invalid. Cleanup aborted."));
         return false;
     }
 
@@ -6979,7 +6979,7 @@ void xLightsFrame::OnMenuItem_CleanupFileLocationsSelected(wxCommandEvent& event
         SetStatusText("Cleaning up file locations ... DONE.");
         wxBell();
     } else {
-        wxMessageBox("You must have a sequence opened in order to run Cleanup File Locations.", "Missing Sequence", wxOK);
+        wxMessageBox(_("You must have a sequence opened in order to run Cleanup File Locations."), _("Missing Sequence"), wxOK);
     }
     spdlog::debug("Cleaning up file locations ... DONE.");
 }
@@ -7206,7 +7206,7 @@ void xLightsFrame::OnAC_DisableClick(wxCommandEvent& event)
         Button_ACIntensity->SetValue(true);
 
         if (mainSequencer->PanelEffectGrid->GetActiveTimingElement() == nullptr || mainSequencer->PanelEffectGrid->GetActiveTimingElement()->GetEffectLayer(0)->GetEffectCount() == 0) {
-            wxMessageBox("You need a timing track selected and timing marks in order to use AC mode. Ideally a timing track with lots of timing marks as you can only place effects between those marks.", "Warning", 5L, this);
+            wxMessageBox(_("You need a timing track selected and timing marks in order to use AC mode. Ideally a timing track with lots of timing marks as you can only place effects between those marks."), _("Warning"), 5L, this);
         }
     } else {
         ACToolbar->SetToolBitmap(ID_AUITOOLBARITEM_ACDISABLED, GetToolbarBitmapBundle("xlAC_DISABLED"));
@@ -8048,7 +8048,7 @@ void xLightsFrame::RequestReleaseList(int retriesLeft, bool canSkipUpdates, bool
         }
         spdlog::debug("Version update check failed. Unable to connect.");
         if (showMessageBoxes) {
-            wxMessageBox("Unable to connect.", "Version update check failed");
+            wxMessageBox(_("Unable to connect."), _("Version update check failed"));
         }
     });
 }
@@ -8059,7 +8059,7 @@ void xLightsFrame::HandleReleaseList(const std::string& resp, bool canSkipUpdate
     if (val.is_discarded()) {
         spdlog::debug("Version update check failed. Unable to connect.");
         if (showMessageBoxes) {
-            wxMessageBox("Unable to connect.", "Version update check failed");
+            wxMessageBox(_("Unable to connect."), _("Version update check failed"));
         }
         return;
     }
@@ -8115,7 +8115,7 @@ void xLightsFrame::HandleReleaseList(const std::string& resp, bool canSkipUpdate
     if (downloadURL.empty()) {
         spdlog::debug("Version update check failed. Unable to read available versions.");
         if (showMessageBoxes) {
-            wxMessageBox("Unable to read available versions.", "Version update check failed");
+            wxMessageBox(_("Unable to read available versions."), _("Version update check failed"));
         }
         return;
     }
@@ -8467,7 +8467,7 @@ void xLightsFrame::SetBackupPurgeDays(int nbpi)
 void xLightsFrame::OnMenuItem_DownloadSequencesSelected(wxCommandEvent& event)
 {
     if (CurrentDir == "") {
-        wxMessageBox("Show folder is not valid. Download aborted.");
+        wxMessageBox(_("Show folder is not valid. Download aborted."));
         return;
     }
 
@@ -8510,7 +8510,7 @@ void xLightsFrame::LoadPhonemeDictionaries()
         exeDir.ToStdString()
     };
 
-    wxProgressDialog dlg("Loading", "Loading phoneme dictionaries", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+    wxProgressDialog dlg(_("Loading"), _("Loading phoneme dictionaries"), 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
     dictionary.LoadDictionaries(searchDirs, [&dlg](int pct) { dlg.Update(pct); });
 }
 
@@ -8776,7 +8776,7 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
     return;
 #endif
 
-    wxString filename = wxFileSelector("Choose reaper file describing the changes required to the audio.",
+    wxString filename = wxFileSelector(_("Choose reaper file describing the changes required to the audio."),
                                        CurrentDir, wxEmptyString, "*.rrp",
                                        "Reaper or xAudio files (*.rpp;*.xaudio)|*.rpp;*.xaudio|All files (*.*)|*.*",
                                        wxFD_OPEN | wxFD_FILE_MUST_EXIST, this);
@@ -9026,7 +9026,7 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
                 } else {
                     if (ok && sampleRate != it.second->GetRate()) {
                         spdlog::debug("Songs do not all have the same bitrate ... unable to do the required mixing.");
-                        wxMessageBox("In order to prepare the audio all the input songs must have the same sample rate.");
+                        wxMessageBox(_("In order to prepare the audio all the input songs must have the same sample rate."));
                         ok = false;
                     }
                 }
@@ -9139,7 +9139,7 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
             if (FileExists(targetFile)) {
                 if (wxMessageBox(targetFile.GetFullPath() + " already exists. Do you want to overwrite it?", "Replace", wxYES_NO | wxCENTRE, this) == wxNO) {
                     wxFileDialog fd(this,
-                                    "Choose filename to save the audio as.",
+                                    _("Choose filename to save the audio as."),
                                     targetFile.GetPath(),
                                     targetFile.GetName(),
 #ifdef __WXOSX__
@@ -9164,7 +9164,7 @@ void xLightsFrame::OnMenuItem_PrepareAudioSelected(wxCommandEvent& event)
                                sampleRate,
                                targetFile.GetFullPath(),
                                firstAudio)) {
-                wxMessageBox("Error creating audio file. See log for details.");
+                wxMessageBox(_("Error creating audio file. See log for details."));
                 SetStatusText("Audio file creation failed.");
             } else {
                 SetStatusText("Audio file created: " + targetFile.GetFullPath());
@@ -9660,15 +9660,15 @@ void xLightsFrame::OnMenuItem_RemapCustomSelected(wxCommandEvent& event)
 void xLightsFrame::OnMenuItemRestoreBackupSelected(wxCommandEvent& event)
 {
     if (CurrentSeqXmlFile != nullptr) {
-        wxMessageBox("Please Close the Open Sequence Before Using the Restore Backup Dialog");
+        wxMessageBox(_("Please Close the Open Sequence Before Using the Restore Backup Dialog"));
         return;
     }
     RestoreBackupDialog restore(showDirectory, _backupDirectory, this);
     if (restore.ShowModal() == wxID_OK) {
         auto restoreFolder = restore.GetRestoreFolder();
         auto restoreFiles = restore.GetRestoreFiles();
-        wxProgressDialog prgs("Restoring Backup",
-                              "Restoring Backup", 100, this);
+        wxProgressDialog prgs(_("Restoring Backup"),
+                              _("Restoring Backup"), 100, this);
 
         prgs.Pulse("Restoring Backup... " + restoreFolder);
         prgs.Show();
@@ -9896,7 +9896,7 @@ void xLightsFrame::PromoteToBaseShowFolder(const std::vector<std::string>& contr
 
     auto plan = BaseShowPromotion::BuildPlan(_outputManager, AllModels, AllObjects, controllers, models, objects);
     if (plan.empty()) {
-        wxMessageBox("Everything selected is already in the base show folder.", "Promote to Base Show Folder", wxOK | wxICON_INFORMATION, this);
+        wxMessageBox(_("Everything selected is already in the base show folder."), _("Promote to Base Show Folder"), wxOK | wxICON_INFORMATION, this);
         return;
     }
     if (wxMessageBox(BaseShowPromotion::Describe(plan, baseDir), "Promote to Base Show Folder", wxYES_NO | wxICON_QUESTION, this) != wxYES) {
@@ -9961,7 +9961,7 @@ void xLightsFrame::OnMenuItem_GenerateAIImageSelected(wxCommandEvent& event) {
         for (auto s : services) {
             choices.push_back(s->GetLLMName());
         }
-        wxSingleChoiceDialog dlg(this, "AI Image Generator", "Choose AI Image Generator", choices, nullptr);
+        wxSingleChoiceDialog dlg(this, _("AI Image Generator"), _("Choose AI Image Generator"), choices, nullptr);
         if (dlg.ShowModal() != wxID_CANCEL) {
             serv = services[dlg.GetSelection()];
         }

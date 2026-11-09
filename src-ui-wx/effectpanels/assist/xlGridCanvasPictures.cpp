@@ -186,7 +186,7 @@ void xlGridCanvasPictures::LoadImage()
     // Fallback: no media available, use file dialog
     wxFileName dummy_file(PictureName);
     wxFileDialog fd(this,
-                    "Choose Image File to Load:",
+                    _("Choose Image File to Load:"),
                     dummy_file.GetPath(),
                     wxEmptyString,
                     strSupportedImageTypes,
@@ -219,8 +219,8 @@ void xlGridCanvasPictures::SaveAsImage()
         }
 
         wxTextEntryDialog dlg(this,
-                              "Enter a name for the embedded image\n(use 'group/name' to organise into a group):",
-                              "Save As Embedded Image",
+                              _("Enter a name for the embedded image\n(use 'group/name' to organise into a group):"),
+                              _("Save As Embedded Image"),
                               defaultName);
         if (dlg.ShowModal() != wxID_OK) return;
         wxString newName = dlg.GetValue().Trim(true).Trim(false);
@@ -244,7 +244,7 @@ void xlGridCanvasPictures::SaveAsImage()
     wxFileName save_file(PictureName);
     wxString save_name = PictureName;
     wxFileDialog fd(this,
-                    "Choose filename to Save Image:",
+                    _("Choose filename to Save Image:"),
                     save_file.GetPath(),
                     wxEmptyString,
                     wxFileSelectorDefaultWildcardStr,
@@ -340,7 +340,7 @@ void xlGridCanvasPictures::SaveImage()
     if (save_file.GetFullName() == "NewImage.png") {
         // prompt for new filename
         wxFileDialog fd(this,
-                        "Choose filename to Save Image:",
+                        _("Choose filename to Save Image:"),
                         save_file.GetPath(),
                         wxEmptyString,
                         wxFileSelectorDefaultWildcardStr,

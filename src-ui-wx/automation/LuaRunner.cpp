@@ -205,7 +205,7 @@ bool LuaRunner::Run_Script(std::string const& filepath, std::function<void(std::
         spdlog::info("LuaRunner: Throw Running Script: {}.", filepath);
         spdlog::info("LuaRunner: Error: {}.", e.what());
         SendResponse(e.what());
-        wxMessageBox(e.what(), "Error", wxOK);
+        wxMessageBox(e.what(), _("Error"), wxOK);
         return false;
     }
     return true;

@@ -165,7 +165,7 @@ bool xLightsFrame::SwitchToShowFolder(const wxString& dir, bool permanent)
         return true;
     }
     if (readOnlyMode) {
-        wxMessageBox("Show directory cannot be changed in read only mode.", "Read Only Mode", wxICON_INFORMATION | wxOK);
+        wxMessageBox(_("Show directory cannot be changed in read only mode."), _("Read Only Mode"), wxICON_INFORMATION | wxOK);
         return false;
     }
     // Access before the existence check: on the sandboxed build the folder may
@@ -268,7 +268,7 @@ void xLightsFrame::UpdateRecentFilesList(bool reload) {
 bool xLightsFrame::SetDir(const wxString& newdir, bool permanent)
 {
     if (readOnlyMode) {
-        wxMessageBox("Show directory cannot be changed in read only mode.", "Read Only Mode", wxICON_INFORMATION | wxOK);
+        wxMessageBox(_("Show directory cannot be changed in read only mode."), _("Read Only Mode"), wxICON_INFORMATION | wxOK);
         return false;
     }
     
@@ -517,7 +517,7 @@ bool xLightsFrame::SetDir(const wxString& newdir, bool permanent)
                     "Please migrate these controllers to use DDP (preferred) or e1.31.",
                     controllerList);
 
-                wxMessageBox(message, "ZCPP Deprecated", wxOK | wxICON_WARNING, this);
+                wxMessageBox(message, _("ZCPP Deprecated"), wxOK | wxICON_WARNING, this);
             }
         }
     } else {
@@ -682,7 +682,7 @@ bool xLightsFrame::PromptForShowDirectory(bool permanent, const std::string &def
             else if (!wxDir(newdir).GetFirst(&fn)) {
             }
             // otherwise ... this may not be a show directory ... check the user is sure about this
-            else if (wxMessageBox("Folder chosen does not contain xLights show folder files and is not empty. Are you sure you chose the right folder?", "Possibly incorrect folder chosen.", wxYES_NO, this) == wxNO) {
+            else if (wxMessageBox(_("Folder chosen does not contain xLights show folder files and is not empty. Are you sure you chose the right folder?"), _("Possibly incorrect folder chosen."), wxYES_NO, this) == wxNO) {
                 dirOK = false;
             }
         }
@@ -1757,7 +1757,7 @@ bool xLightsFrame::UploadInputToController(Controller* controller, wxString &mes
             auto model = controller->GetModel();
             auto ip = controller->GetResolvedIP(true);
             if (ip == "MULTICAST" || ip == "") {
-                wxTextEntryDialog dlg(this, "Controller IP Address", "IP Address", ip);
+                wxTextEntryDialog dlg(this, _("Controller IP Address"), _("IP Address"), ip);
                 if (dlg.ShowModal() != wxID_OK) {
                     SetCursor(wxCURSOR_ARROW);
                     return res;
@@ -1842,7 +1842,7 @@ bool xLightsFrame::UploadOutputToController(Controller* controller, wxString& me
             auto model = controller->GetModel();
             auto ip = controller->GetResolvedIP(true);
             if (ip == "MULTICAST") {
-                wxTextEntryDialog dlg(this, "Controller IP Address", "IP Address", ip);
+                wxTextEntryDialog dlg(this, _("Controller IP Address"), _("IP Address"), ip);
                 if (dlg.ShowModal() != wxID_OK) {
                     SetCursor(wxCURSOR_ARROW);
                     return res;

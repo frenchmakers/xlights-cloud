@@ -308,7 +308,7 @@ void EffectsGrid::mouseLeftDClick(wxMouseEvent& event) {
             (!mTimingPlayOnDClick && !event.ShiftDown())) {
             if (selectedEffect->GetParentEffectLayer()->GetParentElement()->GetType() == ElementType::ELEMENT_TYPE_TIMING) {
                 if (selectedEffect->GetParentEffectLayer()->IsFixedTimingLayer()) {
-                    if (wxMessageBox("Cannot Add Labels to a Fixed Timing Track.\nWould You Like to convert it to a Variable Timing Track First?", "Convert Fixed Timing Track First", wxYES_NO) == wxYES) {
+                    if (wxMessageBox(_("Cannot Add Labels to a Fixed Timing Track.\nWould You Like to convert it to a Variable Timing Track First?"), _("Convert Fixed Timing Track First"), wxYES_NO) == wxYES) {
                         TimingElement* te = dynamic_cast<TimingElement*>(selectedEffect->GetParentEffectLayer()->GetParentElement());
                         te->SetFixedTiming(0);
                     } else {
@@ -320,7 +320,7 @@ void EffectsGrid::mouseLeftDClick(wxMouseEvent& event) {
                 }
                 wxString label = selectedEffect->GetEffectName();
 
-                wxTextEntryDialog dlg(this, "Edit Label", "Enter new label:", label);
+                wxTextEntryDialog dlg(this, _("Edit Label"), _("Enter new label:"), label);
                 OptimiseDialogPosition(&dlg);
                 if (dlg.ShowModal()) {
                     wxString newLabel = dlg.GetValue();
@@ -787,7 +787,7 @@ void EffectsGrid::AddShimmer() {
                     Draw();
                     xlights->SetStatusText(wxString::Format("Added '-shimmer' to %d phoneme(s).", modifiedCount));
                 } else {
-                    wxMessageBox("No valid phoneme selected.", "Add Shimmer", wxOK | wxICON_INFORMATION);
+                    wxMessageBox(_("No valid phoneme selected."), _("Add Shimmer"), wxOK | wxICON_INFORMATION);
                 }
                 return;
             }
@@ -830,7 +830,7 @@ void EffectsGrid::RemoveShimmer() {
                     Draw();
                     xlights->SetStatusText(wxString::Format("Removed '-shimmer' from %d phoneme(s).", modifiedCount));
                 } else {
-                    wxMessageBox("No phoneme with '-shimmer' selected.", "Remove Shimmer", wxOK | wxICON_INFORMATION);
+                    wxMessageBox(_("No phoneme with '-shimmer' selected."), _("Remove Shimmer"), wxOK | wxICON_INFORMATION);
                 }
                 return;
             }
@@ -839,7 +839,7 @@ void EffectsGrid::RemoveShimmer() {
 }
 
 void EffectsGrid::Find() {
-    wxTextEntryDialog dlg(const_cast<EffectsGrid*>(this), "Enter text to find:", "Find");
+    wxTextEntryDialog dlg(const_cast<EffectsGrid*>(this), _("Enter text to find:"), _("Find"));
     OptimiseDialogPosition(&dlg);
     if (dlg.ShowModal() == wxID_OK) {
         const_cast<EffectsGrid*>(this)->mSearchText = dlg.GetValue().ToStdString();
@@ -851,19 +851,19 @@ void EffectsGrid::Find() {
 
 void EffectsGrid::FindNext() {
     if (mSearchText.empty() || mSearchRow < 0 || mSearchRow >= (int)mSequenceElements->GetVisibleRowInformationSize()) {
-        wxMessageBox("No search text or invalid row selected.", "Find", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("No search text or invalid row selected."), _("Find"), wxOK | wxICON_INFORMATION);
         return;
     }
 
     Row_Information_Struct* ri = mSequenceElements->GetVisibleRowInformation(mSearchRow);
     if (ri->element->GetType() != ElementType::ELEMENT_TYPE_TIMING) {
-        wxMessageBox("Find is only supported on timing tracks.", "Find", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("Find is only supported on timing tracks."), _("Find"), wxOK | wxICON_INFORMATION);
         return;
     }
 
     EffectLayer* effectLayer = mSequenceElements->GetVisibleEffectLayer(mSearchRow);
     if (effectLayer == nullptr) {
-        wxMessageBox("No effect layer found.", "Find", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("No effect layer found."), _("Find"), wxOK | wxICON_INFORMATION);
         return;
     }
 
@@ -883,24 +883,24 @@ void EffectsGrid::FindNext() {
         }
     }
 
-    wxMessageBox("Text not found.", "Find", wxOK | wxICON_INFORMATION);
+    wxMessageBox(_("Text not found."), _("Find"), wxOK | wxICON_INFORMATION);
 }
 
 void EffectsGrid::FindPrevious() {
     if (mSearchText.empty() || mSearchRow < 0 || mSearchRow >= (int)mSequenceElements->GetVisibleRowInformationSize()) {
-        wxMessageBox("No search text or invalid row selected.", "Find", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("No search text or invalid row selected."), _("Find"), wxOK | wxICON_INFORMATION);
         return;
     }
 
     Row_Information_Struct* ri = mSequenceElements->GetVisibleRowInformation(mSearchRow);
     if (ri->element->GetType() != ElementType::ELEMENT_TYPE_TIMING) {
-        wxMessageBox("Find is only supported on timing tracks.", "Find", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("Find is only supported on timing tracks."), _("Find"), wxOK | wxICON_INFORMATION);
         return;
     }
 
     EffectLayer* effectLayer = mSequenceElements->GetVisibleEffectLayer(mSearchRow);
     if (effectLayer == nullptr) {
-        wxMessageBox("No effect layer found.", "Find", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("No effect layer found."), _("Find"), wxOK | wxICON_INFORMATION);
         return;
     }
 
@@ -920,28 +920,28 @@ void EffectsGrid::FindPrevious() {
         }
     }
 
-    wxMessageBox("Text not found.", "Find", wxOK | wxICON_INFORMATION);
+    wxMessageBox(_("Text not found."), _("Find"), wxOK | wxICON_INFORMATION);
 }
 
 void EffectsGrid::Replace() {
     if (mSearchText.empty() || mSearchRow < 0 || mSearchRow >= (int)mSequenceElements->GetVisibleRowInformationSize()) {
-        wxMessageBox("No search text or invalid row selected. Please use 'Find' first.", "Replace All", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("No search text or invalid row selected. Please use 'Find' first."), _("Replace All"), wxOK | wxICON_INFORMATION);
         return;
     }
 
     Row_Information_Struct* ri = mSequenceElements->GetVisibleRowInformation(mSearchRow);
     if (ri->element->GetType() != ElementType::ELEMENT_TYPE_TIMING) {
-        wxMessageBox("Replace All is only supported on timing tracks.", "Replace All", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("Replace All is only supported on timing tracks."), _("Replace All"), wxOK | wxICON_INFORMATION);
         return;
     }
 
     EffectLayer* effectLayer = mSequenceElements->GetVisibleEffectLayer(mSearchRow);
     if (effectLayer == nullptr) {
-        wxMessageBox("No effect layer found.", "Replace All", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("No effect layer found."), _("Replace All"), wxOK | wxICON_INFORMATION);
         return;
     }
 
-    wxTextEntryDialog dlg(const_cast<EffectsGrid*>(this), "Enter replacement text:", "Replace All", mSearchText);
+    wxTextEntryDialog dlg(const_cast<EffectsGrid*>(this), _("Enter replacement text:"), _("Replace All"), mSearchText);
     OptimiseDialogPosition(&dlg);
     if (dlg.ShowModal() != wxID_OK) {
         return;
@@ -973,7 +973,7 @@ void EffectsGrid::Replace() {
 
         xlights->SetStatusText(wxString::Format("Replaced %d occurrence(s).", replacedCount));
     } else {
-        wxMessageBox("No matching text found for replacement.", "Replace All", wxOK | wxICON_INFORMATION);
+        wxMessageBox(_("No matching text found for replacement."), _("Replace All"), wxOK | wxICON_INFORMATION);
     }
 }
 
@@ -1329,7 +1329,7 @@ void EffectsGrid::OnGridPopup(wxCommandEvent& event) {
         }
 
         if (found_locked) {
-            wxMessageBox("Locked words in the way - Can not break down phrase", "Error", wxOK);
+            wxMessageBox(_("Locked words in the way - Can not break down phrase"), _("Error"), wxOK);
         } else {
             mSequenceElements->get_undo_mgr().CreateUndoStep();
             word_layer->UnSelectAllEffects();
@@ -1374,7 +1374,7 @@ void EffectsGrid::OnGridPopup(wxCommandEvent& event) {
         }
 
         if (found_locked) {
-            wxMessageBox("Locked words in the way - Can not break down phrase", "Error", wxOK);
+            wxMessageBox(_("Locked words in the way - Can not break down phrase"), _("Error"), wxOK);
             word_layer->UnSelectAllEffects();
         } else {
             word_layer->DeleteSelectedEffects(mSequenceElements->get_undo_mgr());
@@ -1449,7 +1449,7 @@ void EffectsGrid::OnGridPopup(wxCommandEvent& event) {
         }
 
         if (found_locked) {
-            wxMessageBox("Locked phonemes in the way - Can not break down word", "Error", wxOK);
+            wxMessageBox(_("Locked phonemes in the way - Can not break down word"), _("Error"), wxOK);
         } else {
             mSequenceElements->get_undo_mgr().CreateUndoStep();
             phoneme_layer->UnSelectAllEffects();
@@ -1495,7 +1495,7 @@ void EffectsGrid::OnGridPopup(wxCommandEvent& event) {
         }
 
         if (found_locked) {
-            wxMessageBox("Locked phonemes in the way - Can not break down words", "Error", wxOK);
+            wxMessageBox(_("Locked phonemes in the way - Can not break down words"), _("Error"), wxOK);
             phoneme_layer->UnSelectAllEffects();
         } else {
             phoneme_layer->DeleteSelectedEffects(mSequenceElements->get_undo_mgr());
@@ -1555,7 +1555,7 @@ Effect* EffectsGrid::FillRandomEffects() {
                 std::swap(timingIndex1, timingIndex2);
             }
             if (timingIndex1 != -1 && timingIndex2 != -1) {
-                wxProgressDialog prog("Generating random effects", "This may take some time", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT);
+                wxProgressDialog prog(_("Generating random effects"), _("This may take some time"), 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT);
                 prog.Show();
                 float progValue = 0;
                 float den = (float)((row2 - row1 + 1) * (timingIndex2 - timingIndex1 + 1));
@@ -5220,7 +5220,7 @@ void EffectsGrid::SetEffectsDescription() {
             }
 
             if (description != thisdescription) {
-                if (wxMessageBox("Effects already have differing descriptions. Are you sure you want to change them all to the same value", "Overwrite description", wxYES_NO) == wxYES) {
+                if (wxMessageBox(_("Effects already have differing descriptions. Are you sure you want to change them all to the same value"), _("Overwrite description"), wxYES_NO) == wxYES) {
                     if (description == "")
                         description = thisdescription;
                     break;
@@ -5232,7 +5232,7 @@ void EffectsGrid::SetEffectsDescription() {
         }
 
         if (oktocont && efs.size() > 0) {
-            wxTextEntryDialog dlg(this, "Enter a description to associate with this effect", "Description", description);
+            wxTextEntryDialog dlg(this, _("Enter a description to associate with this effect"), _("Description"), description);
             OptimiseDialogPosition(&dlg);
             if (dlg.ShowModal() == wxID_OK) {
                 mSequenceElements->get_undo_mgr().CreateUndoStep();
@@ -9159,7 +9159,7 @@ void EffectsGrid::CopyModelEffectsToModels(int row_number) {
     }
 
     if (choices.IsEmpty()) {
-        wxMessageBox("No other models found in this sequence.", "Copy Layers/SubModels to Models",
+        wxMessageBox(_("No other models found in this sequence."), _("Copy Layers/SubModels to Models"),
                      wxOK | wxICON_INFORMATION, (wxWindow*)mParent);
         return;
     }
@@ -9423,8 +9423,8 @@ void EffectsGrid::PasteModelEffectsWithSubModelLayers(ModelElement* me, Element*
     }
     if (hasRemainingEffects) {
         std::string promptName = (pasteTargets.size() == 1) ? pasteTargets.front()->GetName() : me->GetModelName();
-        int answer = wxMessageBox(wxString::Format("'%s' already has effects.\nErase existing effects before pasting?", promptName.c_str()),
-                                  "Erase Existing Effects", wxYES_NO | wxICON_QUESTION, (wxWindow*)mParent);
+        int answer = wxMessageBox(wxString::Format(_("'%s' already has effects.\nErase existing effects before pasting?"), promptName.c_str()),
+                                  _("Erase Existing Effects"), wxYES_NO | wxICON_QUESTION, (wxWindow*)mParent);
         if (answer == wxYES) {
             auto eraseAllEffects = [&undo_mgr](Element* elem) {
                 for (size_t i = 0; i < elem->GetEffectLayerCount(); ++i) {
@@ -9611,13 +9611,13 @@ void EffectsGrid::DuplicateSelectedTimingToTrack() {
     }
 
     if (choices.IsEmpty()) {
-        wxMessageBox("No other timing tracks found in this sequence.", "Duplicate Selection to Timing Track",
+        wxMessageBox(_("No other timing tracks found in this sequence."), _("Duplicate Selection to Timing Track"),
                      wxOK | wxICON_INFORMATION, (wxWindow*)mParent);
         return;
     }
 
-    wxSingleChoiceDialog dlg((wxWindow*)mParent, "Duplicate the selected timing marks to which timing track?",
-                             "Duplicate Selection to Timing Track", choices);
+    wxSingleChoiceDialog dlg((wxWindow*)mParent, _("Duplicate the selected timing marks to which timing track?"),
+                             _("Duplicate Selection to Timing Track"), choices);
     if (dlg.ShowModal() != wxID_OK) {
         return;
     }
@@ -9648,8 +9648,8 @@ void EffectsGrid::DuplicateSelectedTimingToTrack() {
     destElement->SetCollapsed(false);
 
     if (skipped > 0) {
-        wxMessageBox(wxString::Format("%d timing mark(s) were skipped because they overlap existing marks on the destination track.", skipped),
-                     "Duplicate Selection to Timing Track", wxOK | wxICON_WARNING, (wxWindow*)mParent);
+        wxMessageBox(wxString::Format(_("%d timing mark(s) were skipped because they overlap existing marks on the destination track."), skipped),
+                     _("Duplicate Selection to Timing Track"), wxOK | wxICON_WARNING, (wxWindow*)mParent);
     }
 
     mSequenceElements->PopulateRowInformation();
@@ -9827,7 +9827,7 @@ void EffectsGrid::CreateSymbolFromEffect()
 
     EffectSymbolManager& symbolMgr = mSequenceElements->GetEffectSymbolManager();
 
-    wxTextEntryDialog dlg(this, "Enter a name for the effect symbol:", "Create Effect Symbol",
+    wxTextEntryDialog dlg(this, _("Enter a name for the effect symbol:"), _("Create Effect Symbol"),
         xlights->GetEffectManager().GetEffectName(targetEffect->GetEffectIndex()) + " Symbol");
 
     if (dlg.ShowModal() != wxID_OK) {
@@ -9836,13 +9836,13 @@ void EffectsGrid::CreateSymbolFromEffect()
 
     std::string symbolName = dlg.GetValue().ToStdString();
     if (symbolName.empty()) {
-        wxMessageBox("Symbol name cannot be empty.", "Error", wxOK | wxICON_ERROR, this);
+        wxMessageBox(_("Symbol name cannot be empty."), _("Error"), wxOK | wxICON_ERROR, this);
         return;
     }
 
     if (symbolMgr.GetSymbolByName(symbolName) != nullptr) {
-        wxMessageBox("A symbol with this name already exists. Please choose a different name.",
-            "Error", wxOK | wxICON_ERROR, this);
+        wxMessageBox(_("A symbol with this name already exists. Please choose a different name."),
+            _("Error"), wxOK | wxICON_ERROR, this);
         return;
     }
 
@@ -9851,8 +9851,8 @@ void EffectsGrid::CreateSymbolFromEffect()
         targetEffect->LinkToSymbol(symbol->GetId());
         symbolMgr.RegisterLinkedEffect(targetEffect, symbol->GetId());
 
-        wxMessageBox(wxString::Format("Symbol '%s' created successfully.\nThe effect is now linked to this symbol.",
-            symbolName.c_str()), "Symbol Created", wxOK | wxICON_INFORMATION, this);
+        wxMessageBox(wxString::Format(_("Symbol '%s' created successfully.\nThe effect is now linked to this symbol."),
+            symbolName.c_str()), _("Symbol Created"), wxOK | wxICON_INFORMATION, this);
     }
 }
 

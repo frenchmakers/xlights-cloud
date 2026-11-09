@@ -262,8 +262,8 @@ FPPConnectDialog::FPPConnectDialog(wxWindow* parent, OutputManager* outputManage
     FlexGridSizer1->Fit(this);
     FlexGridSizer1->SetSizeHints(this);
 
-    wxProgressDialog prgs("Discovering FPP Instances",
-                          "Discovering FPP Instances", 100, parent);
+    wxProgressDialog prgs(_("Discovering FPP Instances"),
+                          _("Discovering FPP Instances"), 100, parent);
     prgs.Pulse("Discovering FPP Instances");
     prgs.Show();
 
@@ -1387,7 +1387,7 @@ void FPPConnectDialog::PromptForOutdatedModels(FPPUploadProgressDialog *prgs, co
                    "\n\nFPP uses them for Display Testing and pixel overlays in place of the models it creates from the "
                    "string outputs, so they will light the wrong pixels.\n\n"
                    "Upload models to these instances now? FPPD will restart.";
-    wxMessageDialog dlg(prgs, msg, "Outdated Models on FPP", wxYES_NO | wxICON_WARNING | wxCENTRE);
+    wxMessageDialog dlg(prgs, msg, _("Outdated Models on FPP"), wxYES_NO | wxICON_WARNING | wxCENTRE);
     dlg.SetYesNoLabels("Upload Models", "Leave As Is");
     if (dlg.ShowModal() != wxID_YES) {
         for (const auto& [r, idx] : resultIndex) {
@@ -1940,7 +1940,7 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
                              ToUTF8(wxString::Format(wxPLURAL("%d controller reported problems", "%d controllers reported problems", (int)messageResults.size()), (int)messageResults.size())),
                              true, messageResults);
         } else {
-            wxMessageBox(messages, "Problems Uploading", wxOK | wxCENTRE, this);
+            wxMessageBox(messages, _("Problems Uploading"), wxOK | wxCENTRE, this);
         }
         prgs->finish(prgs->isCancelled(), 2, stayOpen);
     } else {
@@ -2186,8 +2186,8 @@ void FPPConnectDialog::OnFPPReDiscoverClick(wxCommandEvent& event) {
     int curSize = instances.size();
     std::list<std::string> add;
   
-    wxProgressDialog prgs("Discovering FPP Instances",
-                          "Discovering FPP Instances", 100, this);
+    wxProgressDialog prgs(_("Discovering FPP Instances"),
+                          _("Discovering FPP Instances"), 100, this);
     prgs.Pulse("Discovering FPP Instances");
 
     std::string fppConnectIP = "";
@@ -2239,7 +2239,7 @@ void FPPConnectDialog::OnFPPReDiscoverClick(wxCommandEvent& event) {
 
 void FPPConnectDialog::OnAddFPPButtonClick(wxCommandEvent& event)
 {
-    wxTextEntryDialog dlg(this, "Find FPP Instance", "Enter IP address or hostname for FPP Instance");
+    wxTextEntryDialog dlg(this, _("Find FPP Instance"), _("Enter IP address or hostname for FPP Instance"));
     if (dlg.ShowModal() == wxID_OK && ip_utils::IsIPValidOrHostname(ToStdString(dlg.GetValue()))) {
         std::string ipAd = ToStdString(dlg.GetValue());
         int curSize = instances.size();

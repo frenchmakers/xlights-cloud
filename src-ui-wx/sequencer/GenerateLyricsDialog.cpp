@@ -312,7 +312,7 @@ void GenerateLyricsDialog::PaintFace(wxDC& dc, int x, int y, const char* xpm[])
 
 void GenerateLyricsDialog::OnButton_SaveClick(wxCommandEvent& event)
 {
-    wxFileDialog dlg(this, "Save mapping", wxEmptyString, "mapping", "Mapping Files (*.xfacemap)|*.xfacemap", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+    wxFileDialog dlg(this, _("Save mapping"), wxEmptyString, "mapping", "Mapping Files (*.xfacemap)|*.xfacemap", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
     if (dlg.ShowModal() == wxID_OK) {
         wxFileOutputStream output(dlg.GetPath());
         wxTextOutputStream text(output);
@@ -328,7 +328,7 @@ void GenerateLyricsDialog::OnButton_SaveClick(wxCommandEvent& event)
 
 void GenerateLyricsDialog::OnButton_LoadClick(wxCommandEvent& event)
 {
-    wxFileDialog dlg(this, "Load mapping", wxEmptyString, wxEmptyString, "Mapping Files (*.xfacemap)|*.xfacemap", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+    wxFileDialog dlg(this, _("Load mapping"), wxEmptyString, wxEmptyString, "Mapping Files (*.xfacemap)|*.xfacemap", wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (dlg.ShowModal() == wxID_OK) {
 
         wxFileInputStream input(dlg.GetPath());

@@ -212,7 +212,7 @@ void RestoreBackupDialog::OnButtonRunClick(wxCommandEvent& event)
     if (_restoreFiles.empty()) {
         return;
     }
-    if (wxMessageBox("This will override any open file.\nAre you sure you want do this?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+    if (wxMessageBox(_("This will override any open file.\nAre you sure you want do this?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
         return;
     }
     EndDialog(wxID_OK);

@@ -1387,7 +1387,7 @@ void VendorModelDialog::OnCheckBox_DontDownloadClick(wxCommandEvent& event)
 
     if (!event.IsChecked())
     {
-        wxMessageBox("Close and open the vendor download to load this vendor's model list.");
+        wxMessageBox(_("Close and open the vendor download to load this vendor's model list."));
     }
 
     SuppressVendor(vendor, event.IsChecked());

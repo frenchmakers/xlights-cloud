@@ -160,7 +160,7 @@ public:
         
 
         if (xLightsFrame::CurrentDir == "") {
-            wxMessageBox("Show folder invalid. Shader download aborted.");
+            wxMessageBox(_("Show folder invalid. Shader download aborted."));
         }
 
         auto download = GetDownload();

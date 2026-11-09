@@ -726,7 +726,7 @@ void ValueCurvePanel::mouseLeftDClick(wxMouseEvent& event) {
 
         if (_vc->NearCustomPoint(x, y)) {
             auto point = vcSortablePoint::Normalise(x);
-            wxTextEntryDialog dlg(GetParent(), "Enter value:", "Manual entry", std::to_string(ToReal(_vc->GetPointAt(point))));
+            wxTextEntryDialog dlg(GetParent(), _("Enter value:"), _("Manual entry"), std::to_string(ToReal(_vc->GetPointAt(point))));
             if (dlg.ShowModal() == wxID_OK) {
                 float v = wxAtof(dlg.GetValue());
                 if (v < _vc->GetMin() / _vc->GetDivisor())
@@ -1632,7 +1632,7 @@ void ValueCurveDialog::PopulatePresets() {
 
 void ValueCurveDialog::OnButtonPresetClick(wxCommandEvent& event) {
     if (_vcp->IsDirty()) {
-        if (wxMessageBox("Are you sure you want to discard your current value curve?", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+        if (wxMessageBox(_("Are you sure you want to discard your current value curve?"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
             return;
         }
     }

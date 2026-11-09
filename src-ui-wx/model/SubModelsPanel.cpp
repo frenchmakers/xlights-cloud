@@ -833,7 +833,7 @@ void SubModelsPanel::OnDeleteButtonClick(wxCommandEvent& event)
         msg = "Are you sure you want to delete SubModel " + names + "? \n\nCurrent open sequence effects will be removed as well.";
     }
     int answer = wxMessageBox(msg,
-                          "Delete Model",
+                          _("Delete Model"),
                           wxYES_NO, this);
     // no: return
     if (answer == wxNO) {
@@ -1639,7 +1639,7 @@ void SubModelsPanel::Symmetrize()
         wxArrayString chs;
         chs.push_back("Yes");
         chs.push_back("No");
-        wxSingleChoiceDialog adlg(this, "Squarify aspect ratio?", "Aspect Ratio", chs);
+        wxSingleChoiceDialog adlg(this, _("Squarify aspect ratio?"), _("Aspect Ratio"), chs);
         adlg.ShowModal();
         opts.squarifyAspect = (adlg.GetStringSelection() == "Yes");
     }
@@ -1648,7 +1648,7 @@ void SubModelsPanel::Symmetrize()
         wxArrayString chs;
         chs.push_back("Yes");
         chs.push_back("No");
-        wxSingleChoiceDialog cdlg(this, "Shoud a center node be identified?", "Center Node", chs);
+        wxSingleChoiceDialog cdlg(this, _("Shoud a center node be identified?"), _("Center Node"), chs);
         cdlg.ShowModal();
         opts.handleCenterNode = (cdlg.GetStringSelection() == "Yes");
     }
@@ -1758,7 +1758,7 @@ void SubModelsPanel::OrderPoints(bool wholesub)
         chs.push_back(wxString(c));
     }
 
-    wxSingleChoiceDialog dlg(this, "Please choose direction, start/end, and centroid", "Order Type", chs);
+    wxSingleChoiceDialog dlg(this, _("Please choose direction, start/end, and centroid"), _("Order Type"), chs);
     if (dlg.ShowModal() != wxID_OK) {
         return;
     }
@@ -3259,7 +3259,7 @@ void SubModelsPanel::ImportCustomModel(std::string filename)
     int modelh = model->GetDefaultBufferHt();
     
     if (modelw < customModel.width || modelh < customModel.height) {
-        wxMessageBox("Model is too small for the custom model.");
+        wxMessageBox(_("Model is too small for the custom model."));
         return;
     }
     
@@ -3641,7 +3641,7 @@ void SubModelsPanel::ShiftNodes(bool selectedOnly)
 
     long max = model->GetNodeCount();
 
-    wxNumberEntryDialog dlg(this, "Enter Increase/Decrease Value", "", "Increment/Decrement Value", 0, -(max - 1), max - 1);
+    wxNumberEntryDialog dlg(this, _("Enter Increase/Decrease Value"), "", "Increment/Decrement Value", 0, -(max - 1), max - 1);
     if (dlg.ShowModal() != wxID_OK)
         return;
 
@@ -3964,7 +3964,7 @@ void SubModelsPanel::SortSubModelsByName()
 
 void SubModelsPanel::ExportSubmodelToOtherModels()
 {
-    if (wxMessageBox("Are you sure you want to Export this models SubModels to Other Models?\nThis will override all the other Models existing SubModels and There is no way to undo it", "Are you sure?", wxYES_NO | wxCENTER, this) == wxNO) {
+    if (wxMessageBox(_("Are you sure you want to Export this models SubModels to Other Models?\nThis will override all the other Models existing SubModels and There is no way to undo it"), _("Are you sure?"), wxYES_NO | wxCENTER, this) == wxNO) {
         return;
     }
     xLightsFrame* xlights = xLightsApp::GetFrame();
@@ -4092,7 +4092,7 @@ void SubModelsPanel::ReadRGBEffectsFile(wxString const& filename) {
 }
 
 wxString SubModelsPanel::GetDownloadSubmodels() {
-    wxProgressDialog* prog = new wxProgressDialog("Model download", "Downloading models ...", 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
+    wxProgressDialog* prog = new wxProgressDialog(_("Model download"), _("Downloading models ..."), 100, this, wxPD_APP_MODAL | wxPD_AUTO_HIDE);
     prog->Show();
     prog->CenterOnParent();
     xLightsFrame* xlights = xLightsApp::GetFrame();

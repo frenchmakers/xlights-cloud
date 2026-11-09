@@ -314,7 +314,7 @@ void DownloadVamp() {
         {
             wxBusyCursor busy;
             if (!CurlManager::HTTPSGetFile(PACK_URL, installer)) {
-                wxMessageBox("Failed to download the Vamp Plugin Pack. Please try again, or install it manually from https://www.vamp-plugins.org/pack.html", "Download failed", wxICON_ERROR);
+                wxMessageBox(_("Failed to download the Vamp Plugin Pack. Please try again, or install it manually from https://www.vamp-plugins.org/pack.html"), _("Download failed"), wxICON_ERROR);
                 return;
             }
         }
@@ -326,18 +326,18 @@ void DownloadVamp() {
         wxBusyCursor busy;
         long rc = wxExecute(cmd, wxEXEC_SYNC);
         if (rc == 0) {
-            wxMessageBox("Vamp audio-analysis plugins installed. Please close and reopen xLights to use them.", "Vamp plugins installed");
+            wxMessageBox(_("Vamp audio-analysis plugins installed. Please close and reopen xLights to use them."), _("Vamp plugins installed"));
         } else {
-            wxMessageBox("The Vamp Plugin Pack installer did not complete. You can install it manually from https://www.vamp-plugins.org/pack.html", "Install incomplete", wxICON_WARNING);
+            wxMessageBox(_("The Vamp Plugin Pack installer did not complete. You can install it manually from https://www.vamp-plugins.org/pack.html"), _("Install incomplete"), wxICON_WARNING);
         }
         return;
     }
     // Classic install: direct the user to the official installer (targets Program Files).
-    wxMessageBox("We are about to download the Vamp plugins for your platform. Once downloaded please install them and then close and reopen xLights to use them.");
+    wxMessageBox(_("We are about to download the Vamp plugins for your platform. Once downloaded please install them and then close and reopen xLights to use them."));
     ::wxLaunchDefaultBrowser(PACK_URL);
 #else
     // Mac/Linux: xLights never bundles Vamp; point at the official pack page.
-    wxMessageBox("We are about to open the Vamp plugin pack download page. Once installed please close and reopen xLights to use them.");
+    wxMessageBox(_("We are about to open the Vamp plugin pack download page. Once installed please close and reopen xLights to use them."));
     ::wxLaunchDefaultBrowser("https://www.vamp-plugins.org/pack.html");
 #endif
 }

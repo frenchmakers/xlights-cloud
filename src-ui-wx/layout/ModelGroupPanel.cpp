@@ -1366,7 +1366,7 @@ void ModelGroupPanel::OnPopup(wxCommandEvent& event)
 {
     int id = event.GetId();
     if (id == ID_MNU_CLEARALL) {
-        if (wxMessageBox("Remove All Models From Group?", "Clear Group", wxYES_NO, this) == wxYES) {
+        if (wxMessageBox(_("Remove All Models From Group?"), _("Clear Group"), wxYES_NO, this) == wxYES) {
             for (int i = ListBoxModelsInGroup->GetItemCount(); i >= 0; --i) {
                 ListBoxModelsInGroup->SetItemState(i, 0, wxLIST_STATE_SELECTED);
                 ListBoxModelsInGroup->DeleteItem(i);

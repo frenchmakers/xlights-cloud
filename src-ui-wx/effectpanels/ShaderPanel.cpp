@@ -285,7 +285,7 @@ void ShaderPanel::OnClearClicked(wxCommandEvent& /*event*/) {
 }
 
 void ShaderPanel::OnDownloadClicked(wxCommandEvent& /*event*/) {
-    wxProgressDialog prog("Shader download", "Downloading shaders ...", 100, this,
+    wxProgressDialog prog(_("Shader download"), _("Downloading shaders ..."), 100, this,
                           wxPD_APP_MODAL | wxPD_AUTO_HIDE);
     prog.Show();
     ShaderDownloadDialog dlg(this);
