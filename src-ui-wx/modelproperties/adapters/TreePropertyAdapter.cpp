@@ -14,17 +14,18 @@
 #include "TreePropertyAdapter.h"
 #include "models/TreeModel.h"
 #include "models/OutputModelManager.h"
+#include "modelproperties/PropertyGridHelpers.h"
 
 static const char* TREE_STYLES_VALUES[] = {
-    "Round",
-    "Flat",
-    "Ribbon"
+    wxTRANSLATE("Round"),
+    wxTRANSLATE("Flat"),
+    wxTRANSLATE("Ribbon")
 };
 static wxPGChoices TREE_STYLES(wxArrayString(3, TREE_STYLES_VALUES));
 
 static const char* TREE_DIRECTION_VALUES[] = {
-    "Horizontal",
-    "Vertical"
+    wxTRANSLATE("Horizontal"),
+    wxTRANSLATE("Vertical")
 };
 static wxPGChoices TREE_DIRECTIONS(wxArrayString(2, TREE_DIRECTION_VALUES));
 
@@ -32,7 +33,7 @@ TreePropertyAdapter::TreePropertyAdapter(Model& model)
     : MatrixPropertyAdapter(model), _tree(static_cast<TreeModel&>(model)) {}
 
 void TreePropertyAdapter::AddStyleProperties(wxPropertyGridInterface* grid) {
-    grid->Append(new wxEnumProperty("Type", "TreeStyle", TREE_STYLES, _tree.GetTreeType()));
+    grid->Append(new wxEnumProperty("Type", "TreeStyle", TranslatedChoices(TREE_STYLES), wxArrayInt(), _tree.GetTreeType()));
 
     wxPGProperty* p = grid->Append(new wxUIntProperty("Degrees", "TreeDegrees", _tree.GetTreeType() == 0 ? _tree.GetTreeDegrees() : 180));
     p->SetAttribute("Min", "1");
@@ -79,7 +80,7 @@ void TreePropertyAdapter::AddStyleProperties(wxPropertyGridInterface* grid) {
     p->SetEditor("CheckBox");
     p->Enable(_tree.HasAlternateNodes() == false);
 
-    grid->Append(new wxEnumProperty("Strand Direction", "StrandDir", TREE_DIRECTIONS, _tree.isVerticalMatrix() ? 1 : 0));
+    grid->Append(new wxEnumProperty("Strand Direction", "StrandDir", TranslatedChoices(TREE_DIRECTIONS), wxArrayInt(), _tree.isVerticalMatrix() ? 1 : 0));
 }
 
 int TreePropertyAdapter::OnPropertyGridChange(wxPropertyGridInterface* grid, wxPropertyGridEvent& event) {

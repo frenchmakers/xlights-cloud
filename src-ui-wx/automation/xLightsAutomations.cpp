@@ -1590,6 +1590,10 @@ bool xLightsFrame::ProcessAutomation(std::vector<std::string> &paths,
         if (liveProp != nullptr && liveProp->GetChoices().GetCount() > 0) {
             int idx = liveProp->GetChoices().Index(propData);
             if (idx == wxNOT_FOUND) {
+                // Scripts use the English label; the grid may show it translated.
+                idx = liveProp->GetChoices().Index(wxGetTranslation(wxString::FromUTF8(propData)));
+            }
+            if (idx == wxNOT_FOUND) {
                 char* end = nullptr;
                 long asIndex = std::strtol(propData.c_str(), &end, 10);
                 if (end != propData.c_str() && *end == '\0' && asIndex >= 0 &&

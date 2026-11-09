@@ -14,8 +14,9 @@
 #include "WreathPropertyAdapter.h"
 #include "models/WreathModel.h"
 #include "models/OutputModelManager.h"
+#include "modelproperties/PropertyGridHelpers.h"
 
-static const char* TOP_BOT_LEFT_RIGHT_VALUES[] = { "Top Ctr-CCW", "Top Ctr-CW", "Bottom Ctr-CW", "Bottom Ctr-CCW" };
+static const char* TOP_BOT_LEFT_RIGHT_VALUES[] = { wxTRANSLATE("Top Ctr-CCW"), wxTRANSLATE("Top Ctr-CW"), wxTRANSLATE("Bottom Ctr-CW"), wxTRANSLATE("Bottom Ctr-CCW") };
 static wxPGChoices TOP_BOT_LEFT_RIGHT(wxArrayString(4, TOP_BOT_LEFT_RIGHT_VALUES));
 
 WreathPropertyAdapter::WreathPropertyAdapter(Model& model)
@@ -41,7 +42,7 @@ void WreathPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Out
         p->SetHelpString("This is typically the total number of pixels per #String.");
     }
 
-    grid->Append(new wxEnumProperty("Starting Location", "WreathStart", TOP_BOT_LEFT_RIGHT,
+    grid->Append(new wxEnumProperty("Starting Location", "WreathStart", TranslatedChoices(TOP_BOT_LEFT_RIGHT), wxArrayInt(),
         _wreath.GetIsLtoR() ? (_wreath.GetIsBtoT() ? 2 : 0) : (_wreath.GetIsBtoT() ? 3 : 1)));
 }
 

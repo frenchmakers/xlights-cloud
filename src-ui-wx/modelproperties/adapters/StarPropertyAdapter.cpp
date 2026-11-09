@@ -14,20 +14,21 @@
 #include "StarPropertyAdapter.h"
 #include "models/StarModel.h"
 #include "models/OutputModelManager.h"
+#include "modelproperties/PropertyGridHelpers.h"
 
 static const char* TOP_BOT_LEFT_RIGHT_VALUES[] = {
-    "Top Ctr-CCW",
-    "Top Ctr-CW",
-    "Top Ctr-CCW Inside",
-    "Top Ctr-CW Inside",
-    "Bottom Ctr-CW",
-    "Bottom Ctr-CCW",
-    "Bottom Ctr-CW Inside",
-    "Bottom Ctr-CCW Inside",
-    "Left Bottom-CW",
-    "Left Bottom-CCW",
-    "Right Bottom-CW",
-    "Right Bottom-CCW"
+    wxTRANSLATE("Top Ctr-CCW"),
+    wxTRANSLATE("Top Ctr-CW"),
+    wxTRANSLATE("Top Ctr-CCW Inside"),
+    wxTRANSLATE("Top Ctr-CW Inside"),
+    wxTRANSLATE("Bottom Ctr-CW"),
+    wxTRANSLATE("Bottom Ctr-CCW"),
+    wxTRANSLATE("Bottom Ctr-CW Inside"),
+    wxTRANSLATE("Bottom Ctr-CCW Inside"),
+    wxTRANSLATE("Left Bottom-CW"),
+    wxTRANSLATE("Left Bottom-CCW"),
+    wxTRANSLATE("Right Bottom-CW"),
+    wxTRANSLATE("Right Bottom-CCW")
 };
 
 static wxPGChoices TOP_BOT_LEFT_RIGHT(wxArrayString(12, TOP_BOT_LEFT_RIGHT_VALUES));
@@ -69,7 +70,7 @@ void StarPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Outpu
         }
     }
 
-    grid->Append(new wxEnumProperty("Starting Location", "StarStart", TOP_BOT_LEFT_RIGHT, ssl));
+    grid->Append(new wxEnumProperty("Starting Location", "StarStart", TranslatedChoices(TOP_BOT_LEFT_RIGHT), wxArrayInt(), ssl));
     AddLayerSizeProperty(grid);
 
     p = grid->Append(new wxFloatProperty("Outer to Inner Ratio", "StarRatio", _star.GetStarRatio()));

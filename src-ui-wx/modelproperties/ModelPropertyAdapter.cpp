@@ -242,6 +242,11 @@ protected:
 };
 
 namespace {
+// Built-in entries at the start of the preview and controller lists
+// (Model::GetLayoutGroups(), Model.h), translated when shown.
+const char* BUILTIN_LAYOUT_GROUPS[] = { wxTRANSLATE("Default"), wxTRANSLATE("All Previews"), wxTRANSLATE("Unassigned") };
+const char* BUILTIN_CONTROLLER_CHOICES[] = { wxTRANSLATE("Use Start Channel"), wxTRANSLATE("No Controller") };
+
 wxString FormatStrandNodeNamesLabel(const Model& m) {
     const auto nodes = m.GetNodeCount();
     return wxString::Format(nodes == 1 ? _("Strand/Node Names (%u node)") : _("Strand/Node Names (%u nodes)"),
@@ -353,7 +358,7 @@ void ModelPropertyAdapter::AddProperties(wxPropertyGridInterface* grid, OutputMa
     }
 
     if (CONTROLLERS.size() > 1) {
-        p = grid->Append(new wxEnumProperty("Controller", "Controller", CONTROLLERS, wxArrayInt(), _model._controller));
+        p = grid->Append(new wxEnumProperty("Controller", "Controller", TranslatedChoices(CONTROLLERS, WXSIZEOF(BUILTIN_CONTROLLER_CHOICES)), wxArrayInt(), _model._controller));
         p->Enable(CONTROLLERS.size() > 0);
     }
 
@@ -428,7 +433,7 @@ void ModelPropertyAdapter::AddProperties(wxPropertyGridInterface* grid, OutputMa
     }
 
     grid->Append(new wxStringProperty("Description", "Description", _model.GetDescription()));
-    grid->Append(new wxEnumProperty("Preview", "ModelLayoutGroup", LAYOUT_GROUPS, wxArrayInt(), layout_group_number));
+    grid->Append(new wxEnumProperty("Preview", "ModelLayoutGroup", TranslatedChoices(LAYOUT_GROUPS, WXSIZEOF(BUILTIN_LAYOUT_GROUPS)), wxArrayInt(), layout_group_number));
 
     p = grid->Append(new PopupDialogProperty(
         &_model, outputManager,

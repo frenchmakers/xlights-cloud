@@ -377,9 +377,21 @@ public:
 
 };
 
-#define STARTCHANCOLNAME "Start Chan"
-#define ENDCHANCOLNAME "End Chan"
-#define CONTCONNCOLNAME "Ctrlr Conn"
+#define STARTCHANCOLNAME wxTRANSLATE("Start Chan")
+#define ENDCHANCOLNAME wxTRANSLATE("End Chan")
+#define CONTCONNCOLNAME wxTRANSLATE("Ctrlr Conn")
+
+// The model list column titles are shown translated, but saved in the column
+// order setting and compared in English.
+static wxString ModelColumnKey(const wxString& title)
+{
+    for (const char* key : { STARTCHANCOLNAME, ENDCHANCOLNAME, CONTCONNCOLNAME }) {
+        if (title == wxGetTranslation(key)) {
+            return key;
+        }
+    }
+    return title;
+}
 
 wxTreeListItem lastFoundItem = nullptr;
 
@@ -1172,21 +1184,21 @@ wxTreeListCtrl* LayoutPanel::CreateTreeListCtrl(long style, wxPanel* panel, long
     int i = 1;
     for (const auto& c : colNames) {
         if (c == STARTCHANCOLNAME) {
-            tree->AppendColumn(STARTCHANCOLNAME,
+            tree->AppendColumn(wxGetTranslation(STARTCHANCOLNAME),
                 tree->WidthFor(CHNUMWIDTH),
                 wxALIGN_LEFT,
                 wxCOL_RESIZABLE | wxCOL_SORTABLE | wxCOL_REORDERABLE);
             cols.startChan = i++;
         }
         else if (c == ENDCHANCOLNAME) {
-            tree->AppendColumn(ENDCHANCOLNAME,
+            tree->AppendColumn(wxGetTranslation(ENDCHANCOLNAME),
                 tree->WidthFor(CHNUMWIDTH),
                 wxALIGN_LEFT,
                 wxCOL_RESIZABLE | wxCOL_SORTABLE | wxCOL_REORDERABLE);
             cols.endChan = i++;
         }
         else if (c == CONTCONNCOLNAME) {
-            tree->AppendColumn(CONTCONNCOLNAME,
+            tree->AppendColumn(wxGetTranslation(CONTCONNCOLNAME),
                 wxCOL_WIDTH_AUTOSIZE,
                 wxALIGN_LEFT,
                 wxCOL_RESIZABLE | wxCOL_SORTABLE | wxCOL_REORDERABLE);
@@ -1277,7 +1289,7 @@ int LayoutPanel::GetColumnIndex(const std::string& name) const
 {
     for (size_t i = 0; i < TreeListViewModels->GetColumnCount(); i++) {
         auto col = TreeListViewModels->GetDataView()->GetColumn(i);
-        if (col->GetTitle() == name) return i;
+        if (ModelColumnKey(col->GetTitle()) == name) return i;
     }
     wxASSERT(false);
     return -1;
@@ -1309,7 +1321,7 @@ void LayoutPanel::SaveTreeListColumns(wxTreeListCtrl* tree, const std::string& c
                 else {
                     colOrder += " ";
                 }
-                colOrder += col->GetTitle() + ",";
+                colOrder += ModelColumnKey(col->GetTitle()) + ",";
             }
         }
     }
@@ -1944,14 +1956,14 @@ void LayoutPanel::ThawTreeListView(wxTreeListCtrl* tree, wxDataViewModel* intern
         tree->SetColumnWidth(1, wxCOL_WIDTH_AUTOSIZE);
         int width = tree->GetColumnWidth(1);
         if (width < 20) {
-            width = tree->WidthFor(STARTCHANCOLNAME);
+            width = tree->WidthFor(wxGetTranslation(STARTCHANCOLNAME));
         }
         tree->SetColumnWidth(1, width);
 
         tree->SetColumnWidth(2, wxCOL_WIDTH_AUTOSIZE);
         width = tree->GetColumnWidth(2);
         if (width < 20) {
-            width = tree->WidthFor(STARTCHANCOLNAME);
+            width = tree->WidthFor(wxGetTranslation(STARTCHANCOLNAME));
         }
         tree->SetColumnWidth(2, width);
     }
@@ -1988,7 +2000,7 @@ void LayoutPanel::ThawTreeListView(wxTreeListCtrl* tree, wxDataViewModel* intern
     {
         int w = tree->GetColumnWidth(3);
         if (w < 20) {
-            w = tree->WidthFor(CONTCONNCOLNAME);
+            w = tree->WidthFor(wxGetTranslation(CONTCONNCOLNAME));
         }
         if (w < 20) {
             w = 100;
@@ -4706,7 +4718,7 @@ int LayoutPanel::ModelListComparator::SortElementsFunction(wxTreeListCtrl* treel
 
     auto colobj = treelist->GetDataView()->GetColumn(sortColumn);
 
-    if (colobj->GetTitle() == STARTCHANCOLNAME) {
+    if (ModelColumnKey(colobj->GetTitle()) == STARTCHANCOLNAME) {
         int ia = data1->startingChannel;
         int ib = data2->startingChannel;
         if (ia > ib)
@@ -4715,7 +4727,7 @@ int LayoutPanel::ModelListComparator::SortElementsFunction(wxTreeListCtrl* treel
             return -1;
         return NumberAwareStringCompare(a->name, b->name);
     }
-    else if (colobj->GetTitle() == ENDCHANCOLNAME) {
+    else if (ModelColumnKey(colobj->GetTitle()) == ENDCHANCOLNAME) {
         int ia = data1->endingChannel;
         int ib = data2->endingChannel;
         if (ia > ib)
@@ -4724,7 +4736,7 @@ int LayoutPanel::ModelListComparator::SortElementsFunction(wxTreeListCtrl* treel
             return -1;
         return NumberAwareStringCompare(a->name, b->name);
     }
-    else if (colobj->GetTitle() == CONTCONNCOLNAME) {
+    else if (ModelColumnKey(colobj->GetTitle()) == CONTCONNCOLNAME) {
         int32_t sc;
         // group controllers first
         Output* oa = xlights->GetOutputManager()->GetOutput(data1->startingChannel, sc);

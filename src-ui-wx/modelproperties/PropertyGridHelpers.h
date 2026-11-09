@@ -36,5 +36,13 @@ extern wxArrayString CONTROLLER_DIRECTION;
 
 extern const std::string CLICK_TO_EDIT;
 
+// Choice labels translated for display, for a wxEnumProperty whose values
+// are the indexes: the selection is still read by index, and the shared choices
+// stay in English for the code that compares their text. Only the first
+// translateCount labels are translated, e.g. the built-in entries of a list
+// that ends with names chosen by the user.
+wxArrayString TranslatedChoices(const wxPGChoices& choices, size_t translateCount = (size_t)-1);
+wxArrayString TranslatedChoices(const wxArrayString& labels, size_t translateCount = (size_t)-1);
+
 // Helper to extract color info from a property grid color property
 wxString GetColorString(wxPGProperty* p, xlColor& xc);

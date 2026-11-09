@@ -14,46 +14,47 @@
 #include "CubePropertyAdapter.h"
 #include "models/CubeModel.h"
 #include "models/OutputModelManager.h"
+#include "modelproperties/PropertyGridHelpers.h"
 
 static const char* TOP_BOT_LEFT_RIGHT_VALUES[] = {
-    "Front Bottom Left",
-    "Front Bottom Right",
-    "Front Top Left",
-    "Front Top Right",
-    "Back Bottom Left",
-    "Back Bottom Right",
-    "Back Top Left",
-    "Back Top Right"
+    wxTRANSLATE("Front Bottom Left"),
+    wxTRANSLATE("Front Bottom Right"),
+    wxTRANSLATE("Front Top Left"),
+    wxTRANSLATE("Front Top Right"),
+    wxTRANSLATE("Back Bottom Left"),
+    wxTRANSLATE("Back Bottom Right"),
+    wxTRANSLATE("Back Top Left"),
+    wxTRANSLATE("Back Top Right")
 };
 static wxPGChoices TOP_BOT_LEFT_RIGHT(wxArrayString(8, TOP_BOT_LEFT_RIGHT_VALUES));
 
 static const char* CUBE_STYLES_VALUES[] = {
-    "Vertical Front/Back",
-    "Vertical Left/Right",
-    "Horizontal Front/Back",
-    "Horizontal Left/Right",
-    "Stacked Front/Back",
-    "Stacked Left/Right"
+    wxTRANSLATE("Vertical Front/Back"),
+    wxTRANSLATE("Vertical Left/Right"),
+    wxTRANSLATE("Horizontal Front/Back"),
+    wxTRANSLATE("Horizontal Left/Right"),
+    wxTRANSLATE("Stacked Front/Back"),
+    wxTRANSLATE("Stacked Left/Right")
 };
 static wxPGChoices CUBE_STYLES(wxArrayString(6, CUBE_STYLES_VALUES));
 
 static const char* STRAND_STYLES_VALUES[] = {
-    "Zig Zag",
-    "No Zig Zag",
-    "Aternate Pixel"
+    wxTRANSLATE("Zig Zag"),
+    wxTRANSLATE("No Zig Zag"),
+    wxTRANSLATE("Aternate Pixel")
 };
 static wxPGChoices STRAND_STYLES(wxArrayString(3, STRAND_STYLES_VALUES));
 
 static const char* CUBE_SHAPE_VALUES[] = {
-    "Cube",
-    "Cylinder"
+    wxTRANSLATE("Cube"),
+    wxTRANSLATE("Cylinder")
 };
 static wxPGChoices CUBE_SHAPES(wxArrayString(2, CUBE_SHAPE_VALUES));
 
 static const char* ROW_OFFSET_VALUES[] = {
-    "None",
-    "Positive",
-    "Negative"
+    wxTRANSLATE("None"),
+    wxTRANSLATE("Positive"),
+    wxTRANSLATE("Negative")
 };
 static wxPGChoices ROW_OFFSETS(wxArrayString(3, ROW_OFFSET_VALUES));
 
@@ -61,10 +62,10 @@ CubePropertyAdapter::CubePropertyAdapter(Model& model)
     : ModelPropertyAdapter(model), _cube(static_cast<CubeModel&>(model)) {}
 
 void CubePropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, OutputManager* outputManager) {
-    grid->Append(new wxEnumProperty("Shape", "CubeShape", CUBE_SHAPES, _cube.GetCubeShape()));
-    grid->Append(new wxEnumProperty("Starting Location", "CubeStart", TOP_BOT_LEFT_RIGHT, _cube.GetCubeStartIndex()));
-    grid->Append(new wxEnumProperty("Direction", "CubeStyle", CUBE_STYLES, _cube.GetCubeStyleIndex()));
-    grid->Append(new wxEnumProperty("Strand Style", "StrandPerLine", STRAND_STYLES, _cube.GetStrandStyleIndex()));
+    grid->Append(new wxEnumProperty("Shape", "CubeShape", TranslatedChoices(CUBE_SHAPES), wxArrayInt(), _cube.GetCubeShape()));
+    grid->Append(new wxEnumProperty("Starting Location", "CubeStart", TranslatedChoices(TOP_BOT_LEFT_RIGHT), wxArrayInt(), _cube.GetCubeStartIndex()));
+    grid->Append(new wxEnumProperty("Direction", "CubeStyle", TranslatedChoices(CUBE_STYLES), wxArrayInt(), _cube.GetCubeStyleIndex()));
+    grid->Append(new wxEnumProperty("Strand Style", "StrandPerLine", TranslatedChoices(STRAND_STYLES), wxArrayInt(), _cube.GetStrandStyleIndex()));
     auto p = grid->Append(new wxBoolProperty("Layers All Start in Same Place", "StrandPerLayer", _cube.IsStrandPerLayer()));
     p->SetAttribute("UseCheckbox", true);
 
@@ -93,7 +94,7 @@ void CubePropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Outpu
         p->SetEditor("SpinCtrl");
         p->SetHelpString("Inner hollow radius as a percentage of outer radius (0=solid, 99=thin shell).");
     } else {
-        grid->Append(new wxEnumProperty("Row Offset", "CubeRowOffset", ROW_OFFSETS, _cube.GetRowOffset()));
+        grid->Append(new wxEnumProperty("Row Offset", "CubeRowOffset", TranslatedChoices(ROW_OFFSETS), wxArrayInt(), _cube.GetRowOffset()));
     }
 
     p = grid->Append(new wxUIntProperty("# Strings", "CubeStrings", _cube.GetCubeStrings()));

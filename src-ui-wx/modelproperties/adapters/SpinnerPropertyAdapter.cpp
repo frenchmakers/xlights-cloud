@@ -14,14 +14,15 @@
 #include "SpinnerPropertyAdapter.h"
 #include "models/SpinnerModel.h"
 #include "models/OutputModelManager.h"
+#include "modelproperties/PropertyGridHelpers.h"
 
 static const char* TOP_BOT_LEFT_RIGHT_VALUES[] = {
-    "Center Counter Clockwise",
-    "Center Clockwise",
-    "End Counter Clockwise",
-    "End Clockwise",
-    "Center Alternate Counter Clockwise",
-    "Center Alternate Clockwise"
+    wxTRANSLATE("Center Counter Clockwise"),
+    wxTRANSLATE("Center Clockwise"),
+    wxTRANSLATE("End Counter Clockwise"),
+    wxTRANSLATE("End Clockwise"),
+    wxTRANSLATE("Center Alternate Counter Clockwise"),
+    wxTRANSLATE("Center Alternate Clockwise")
 };
 static wxPGChoices TOP_BOT_LEFT_RIGHT(wxArrayString(6, TOP_BOT_LEFT_RIGHT_VALUES));
 
@@ -60,7 +61,7 @@ void SpinnerPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Ou
     p->SetAttribute("Max", 360);
     p->SetEditor("SpinCtrl");
 
-    grid->Append(new wxEnumProperty("Starting Location", "MatrixStart", TOP_BOT_LEFT_RIGHT, _spinner.EncodeStartLocation()));
+    grid->Append(new wxEnumProperty("Starting Location", "MatrixStart", TranslatedChoices(TOP_BOT_LEFT_RIGHT), wxArrayInt(), _spinner.EncodeStartLocation()));
 
     p = grid->Append(new wxBoolProperty("Zig-Zag Start", "ZigZag", _spinner.HasZigZag()));
     p->SetEditor("CheckBox");

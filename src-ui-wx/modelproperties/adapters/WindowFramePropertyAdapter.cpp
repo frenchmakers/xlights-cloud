@@ -14,18 +14,19 @@
 #include "WindowFramePropertyAdapter.h"
 #include "models/WindowFrameModel.h"
 #include "models/OutputModelManager.h"
+#include "modelproperties/PropertyGridHelpers.h"
 
 static const char* TOP_BOT_LEFT_RIGHT_VALUES[] = {
-    "Top Left",
-    "Top Right",
-    "Bottom Left",
-    "Bottom Right"
+    wxTRANSLATE("Top Left"),
+    wxTRANSLATE("Top Right"),
+    wxTRANSLATE("Bottom Left"),
+    wxTRANSLATE("Bottom Right")
 };
 static wxPGChoices TOP_BOT_LEFT_RIGHT(wxArrayString(4, TOP_BOT_LEFT_RIGHT_VALUES));
 
 static const char* CLOCKWISE_ANTI_VALUES[] = {
-    "Clockwise",
-    "Counter Clockwise"
+    wxTRANSLATE("Clockwise"),
+    wxTRANSLATE("Counter Clockwise")
 };
 static wxPGChoices CLOCKWISE_ANTI(wxArrayString(2, CLOCKWISE_ANTI_VALUES));
 
@@ -48,10 +49,10 @@ void WindowFramePropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid
     p->SetAttribute("Max", 1000);
     p->SetEditor("SpinCtrl");
 
-    grid->Append(new wxEnumProperty("Starting Location", "WFStartLocation", TOP_BOT_LEFT_RIGHT,
+    grid->Append(new wxEnumProperty("Starting Location", "WFStartLocation", TranslatedChoices(TOP_BOT_LEFT_RIGHT), wxArrayInt(),
         _windowFrame.GetIsLtoR() ? (_windowFrame.GetIsBtoT() ? 2 : 0) : (_windowFrame.GetIsBtoT() ? 3 : 1)));
 
-    grid->Append(new wxEnumProperty("Direction", "WFDirection", CLOCKWISE_ANTI, _windowFrame.GetRotation()));
+    grid->Append(new wxEnumProperty("Direction", "WFDirection", TranslatedChoices(CLOCKWISE_ANTI), wxArrayInt(), _windowFrame.GetRotation()));
 }
 
 int WindowFramePropertyAdapter::OnPropertyGridChange(wxPropertyGridInterface* grid, wxPropertyGridEvent& event) {

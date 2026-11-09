@@ -15,18 +15,19 @@
 #include "MatrixPropertyAdapter.h"
 #include "models/MatrixModel.h"
 #include "models/OutputModelManager.h"
+#include "modelproperties/PropertyGridHelpers.h"
 
 static const char* TOP_BOT_LEFT_RIGHT_VALUES[] = {
-    "Top Left",
-    "Top Right",
-    "Bottom Left",
-    "Bottom Right"
+    wxTRANSLATE("Top Left"),
+    wxTRANSLATE("Top Right"),
+    wxTRANSLATE("Bottom Left"),
+    wxTRANSLATE("Bottom Right")
 };
 static wxPGChoices TOP_BOT_LEFT_RIGHT(wxArrayString(4, TOP_BOT_LEFT_RIGHT_VALUES));
 
 static const char* MATRIX_STYLES_VALUES[] = {
-    "Horizontal",
-    "Vertical"
+    wxTRANSLATE("Horizontal"),
+    wxTRANSLATE("Vertical")
 };
 static wxPGChoices MATRIX_STYLES(wxArrayString(2, MATRIX_STYLES_VALUES));
 
@@ -34,7 +35,7 @@ MatrixPropertyAdapter::MatrixPropertyAdapter(Model& model)
     : ModelPropertyAdapter(model), _matrix(static_cast<MatrixModel&>(model)) {}
 
 void MatrixPropertyAdapter::AddStyleProperties(wxPropertyGridInterface* grid) {
-    grid->Append(new wxEnumProperty("Direction", "MatrixStyle", MATRIX_STYLES, _matrix.isVerticalMatrix() ? 1 : 0));
+    grid->Append(new wxEnumProperty("Direction", "MatrixStyle", TranslatedChoices(MATRIX_STYLES), wxArrayInt(), _matrix.isVerticalMatrix() ? 1 : 0));
     wxPGProperty* p = grid->Append(new wxBoolProperty("Alternate Nodes", "AlternateNodes", _matrix.HasAlternateNodes()));
     p->SetEditor("CheckBox");
     p->Enable(_matrix.IsNoZigZag() == false);
@@ -78,7 +79,7 @@ void MatrixPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Out
         p->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_LISTBOX));
     }
 
-    grid->Append(new wxEnumProperty("Starting Location", "MatrixStart", TOP_BOT_LEFT_RIGHT,
+    grid->Append(new wxEnumProperty("Starting Location", "MatrixStart", TranslatedChoices(TOP_BOT_LEFT_RIGHT), wxArrayInt(),
         _matrix.GetIsLtoR() ? (_matrix.GetIsBtoT() ? 2 : 0) : (_matrix.GetIsBtoT() ? 3 : 1)));
 }
 

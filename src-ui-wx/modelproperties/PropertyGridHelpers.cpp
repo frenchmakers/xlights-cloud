@@ -45,6 +45,18 @@ wxArrayString CONTROLLER_DIRECTION(2, CONTROLLER_DIRECTION_VALUES);
 
 const std::string CLICK_TO_EDIT("--Click To Edit--");
 
+wxArrayString TranslatedChoices(const wxPGChoices& choices, size_t translateCount) {
+    return TranslatedChoices(choices.GetLabels(), translateCount);
+}
+
+wxArrayString TranslatedChoices(const wxArrayString& labels, size_t translateCount) {
+    wxArrayString result;
+    for (size_t i = 0; i < labels.GetCount(); i++) {
+        result.Add(i < translateCount ? wxGetTranslation(labels[i]) : labels[i]);
+    }
+    return result;
+}
+
 wxString GetColorString(wxPGProperty* p, xlColor& xc) {
     wxString tp = "Single Color Custom";
     if (p != nullptr) {
