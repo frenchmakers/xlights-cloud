@@ -1545,7 +1545,7 @@ msgstr ""
 msgid "Rename"
 msgstr ""
 
-#: src-ui-wx/EffectSymbolDialog.cpp:58 src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:99 ... (+14)
+#: src-ui-wx/EffectSymbolDialog.cpp:58 src-ui-wx/xLightsMain.cpp:8722 src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 ... (+15)
 msgid "Close"
 msgstr ""
 
@@ -2161,6 +2161,706 @@ msgstr ""
 
 #: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:95
 msgid "Add Apply Setting"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:174
+msgctxt "key action"
+msgid "Timing add"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:175
+msgctxt "key action"
+msgid "Timing split"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:176
+msgctxt "key action"
+msgid "Timing divide 2"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:177
+msgctxt "key action"
+msgid "Timing divide 3"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:178
+msgctxt "key action"
+msgid "Timing divide 4"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:179
+msgctxt "key action"
+msgid "Timing divide 6"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:180
+msgctxt "key action"
+msgid "Timing divide 8"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:181
+msgctxt "key action"
+msgid "Timing divide 12"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:182
+msgctxt "key action"
+msgid "Timing divide 16"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:183
+msgctxt "key action"
+msgid "Zoom in"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:184
+msgctxt "key action"
+msgid "Zoom out"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:185
+msgctxt "key action"
+msgid "Zoom sel"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:186
+msgctxt "key action"
+msgid "Random"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:187
+msgctxt "key action"
+msgid "Render all"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:188
+msgctxt "key action"
+msgid "Save current tab"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:189
+msgctxt "key action"
+msgid "Lights toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:190
+msgctxt "key action"
+msgid "Open sequence"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:191
+msgctxt "key action"
+msgid "Close sequence"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:192
+msgctxt "key action"
+msgid "New sequence"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:193
+msgctxt "key action"
+msgid "Paste by cell"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:194
+msgctxt "key action"
+msgid "Paste by time"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:195
+msgctxt "key action"
+msgid "Backup"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:196
+msgctxt "key action"
+msgid "Alternate backup"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:197
+msgctxt "key action"
+msgid "Select show folder"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:198
+msgctxt "key action"
+msgid "Saveas sequence"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:199
+msgctxt "key action"
+msgid "Save sequence"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:200
+msgctxt "key action"
+msgid "Effect settings toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:201
+msgctxt "key action"
+msgid "Effect assist toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:202
+msgctxt "key action"
+msgid "Color toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:203
+msgctxt "key action"
+msgid "Layer setting toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:204
+msgctxt "key action"
+msgid "Layer blending toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:205
+msgctxt "key action"
+msgid "Model preview toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:206
+msgctxt "key action"
+msgid "House preview toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:207
+msgctxt "key action"
+msgid "Video preview toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:208
+msgctxt "key action"
+msgid "Effects toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:209
+msgctxt "key action"
+msgid "Display elements toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:210
+msgctxt "key action"
+msgid "Jukebox toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:211
+msgctxt "key action"
+msgid "Sequence settings"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:212
+msgctxt "key action"
+msgid "Lock effect"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:213
+msgctxt "key action"
+msgid "Unlock effect"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:214
+msgctxt "key action"
+msgid "Mark spot"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:215
+msgctxt "key action"
+msgid "Return to spot"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:216
+msgctxt "key action"
+msgid "Effect description"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:217
+msgctxt "key action"
+msgid "Effect align start"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:218
+msgctxt "key action"
+msgid "Effect align end"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:219
+msgctxt "key action"
+msgid "Effect align both"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:220
+msgctxt "key action"
+msgid "Insert layer above"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:221
+msgctxt "key action"
+msgid "Insert layer below"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:222
+msgctxt "key action"
+msgid "Toggle element expand"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:223
+msgctxt "key action"
+msgid "Select all"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:224
+msgctxt "key action"
+msgid "Select all no timing"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:225
+msgctxt "key action"
+msgid "Show presets"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:226
+msgctxt "key action"
+msgid "Search toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:227
+msgctxt "key action"
+msgid "Perspectives toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:228
+msgctxt "key action"
+msgid "Effect update"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:229
+msgctxt "key action"
+msgid "Color update"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:230
+msgctxt "key action"
+msgid "Play loop"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:231
+msgctxt "key action"
+msgid "Play"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:232
+msgctxt "key action"
+msgid "Toggle play"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:233
+msgctxt "key action"
+msgid "Start of song"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:234
+msgctxt "key action"
+msgid "End of song"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:235
+msgctxt "key action"
+msgid "Stop"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:236
+msgctxt "key action"
+msgid "Pause"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:237
+msgctxt "key action"
+msgid "Effect"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:238
+msgctxt "key action"
+msgid "Applysetting"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:239
+msgctxt "key action"
+msgid "Preset"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:240
+msgctxt "key action"
+msgid "Lock model"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:241
+msgctxt "key action"
+msgid "Unlock model"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:242
+msgctxt "key action"
+msgid "Group models"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:243
+msgctxt "key action"
+msgid "Wiring view"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:244
+msgctxt "key action"
+msgid "Export model cad"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:245
+msgctxt "key action"
+msgid "Export layout dxf"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:246
+msgctxt "key action"
+msgid "Node layout"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:247
+msgctxt "key action"
+msgid "Save layout"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:248
+msgctxt "key action"
+msgid "Select all models"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:249
+msgctxt "key action"
+msgid "Model align top"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:250
+msgctxt "key action"
+msgid "Model align bottom"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:251
+msgctxt "key action"
+msgid "Model align left"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:252
+msgctxt "key action"
+msgid "Model align right"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:253
+msgctxt "key action"
+msgid "Model align center vert"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:254
+msgctxt "key action"
+msgid "Model align center horiz"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:255
+msgctxt "key action"
+msgid "Model align backs"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:256
+msgctxt "key action"
+msgid "Model align fronts"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:257
+msgctxt "key action"
+msgid "Model align ground"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:258
+msgctxt "key action"
+msgid "Model distribute horiz"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:259
+msgctxt "key action"
+msgid "Model distribute vert"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:260
+msgctxt "key action"
+msgid "Model flip horiz"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:261
+msgctxt "key action"
+msgid "Model flip vert"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:262
+msgctxt "key action"
+msgid "Model submodels"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:263
+msgctxt "key action"
+msgid "Model faces"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:264
+msgctxt "key action"
+msgid "Model states"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:265
+msgctxt "key action"
+msgid "Model modeldata"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:266
+msgctxt "key action"
+msgid "Cancel render"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:267
+msgctxt "key action"
+msgid "Toggle render"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:268
+msgctxt "key action"
+msgid "Presets toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:269
+msgctxt "key action"
+msgid "Focus sequencer"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:270
+msgctxt "key action"
+msgid "Valuecurves toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:271
+msgctxt "key action"
+msgid "Color dropper toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:272
+msgctxt "key action"
+msgid "Audio full speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:273
+msgctxt "key action"
+msgid "Audio f 1 5 speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:274
+msgctxt "key action"
+msgid "Audio f 2 speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:275
+msgctxt "key action"
+msgid "Audio f 3 speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:276
+msgctxt "key action"
+msgid "Audio f 4 speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:277
+msgctxt "key action"
+msgid "Audio s 3 4 speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:278
+msgctxt "key action"
+msgid "Audio s 1 2 speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:279
+msgctxt "key action"
+msgid "Audio s 1 4 speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:280
+msgctxt "key action"
+msgid "Prior tag"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:281
+msgctxt "key action"
+msgid "Next tag"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:282
+msgctxt "key action"
+msgid "Play prior tag"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:283
+msgctxt "key action"
+msgid "Play next tag"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:284
+msgctxt "key action"
+msgid "Model toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:285
+msgctxt "key action"
+msgid "Model disable"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:286
+msgctxt "key action"
+msgid "Model enable"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:287
+msgctxt "key action"
+msgid "Effect toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:288
+msgctxt "key action"
+msgid "Effect disable"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:289
+msgctxt "key action"
+msgid "Effect enable"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:290
+msgctxt "key action"
+msgid "Model effect toggle"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:291
+msgctxt "key action"
+msgid "Effects to timing"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:292
+msgctxt "key action"
+msgid "Select timing 1"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:293
+msgctxt "key action"
+msgid "Select timing 2"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:294
+msgctxt "key action"
+msgid "Select timing 3"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:295
+msgctxt "key action"
+msgid "Select timing 4"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:296
+msgctxt "key action"
+msgid "Select timing 5"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:297
+msgctxt "key action"
+msgid "Select timing 6"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:298
+msgctxt "key action"
+msgid "Select timing 7"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:299
+msgctxt "key action"
+msgid "Select timing 8"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:300
+msgctxt "key action"
+msgid "Select timing 9"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:301
+msgctxt "key action"
+msgid "Select no timing"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:302
+msgctxt "key action"
+msgid "Increase speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:303
+msgctxt "key action"
+msgid "Decrease speed"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:304
+msgctxt "key action"
+msgid "Jukebox btn 1"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:305
+msgctxt "key action"
+msgid "Jukebox btn 2"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:306
+msgctxt "key action"
+msgid "Jukebox btn 3"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:307
+msgctxt "key action"
+msgid "Jukebox btn 4"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:308
+msgctxt "key action"
+msgid "Jukebox btn 5"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:309
+msgctxt "key action"
+msgid "Fpp connect"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:310
+msgctxt "key action"
+msgid "Command palette"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:311
+msgctxt "key action"
+msgid "Import effects"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:312
+msgctxt "key action"
+msgid "Filter sequencer"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:313
+msgctxt "key action"
+msgid "Alternate paste"
 msgstr ""
 
 #: src-ui-wx/app-shell/RestoreBackupDialog.cpp:121
@@ -4749,6 +5449,16 @@ msgstr ""
 msgid "Also add alias to model (auto-remap future sequences)"
 msgstr ""
 
+#: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:123 src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:123
+#, c-format
+msgid "Searching %s"
+msgstr ""
+
+#: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:128
+#, c-format
+msgid "Reading %s"
+msgstr ""
+
 #: src-ui-wx/diagnostics/ShowFolderSearchDialog.cpp:48
 msgid "Find Show Folder Dialog"
 msgstr ""
@@ -4851,7 +5561,7 @@ msgstr ""
 msgid "Timing Track"
 msgstr ""
 
-#: src-ui-wx/effectpanels/JsonEffectPanel.cpp:1330 src-ui-wx/import_export/ModelRemap.cpp:42 src-ui-wx/import_export/ModelRemap.cpp:46
+#: src-ui-wx/effectpanels/JsonEffectPanel.cpp:1330 src-ui-wx/import_export/ModelRemap.cpp:47 src-ui-wx/import_export/ModelRemap.cpp:51
 msgid "Select a file"
 msgstr ""
 
@@ -5767,24 +6477,95 @@ msgstr ""
 msgid "Map LMS Channels with no network:"
 msgstr ""
 
-#: src-ui-wx/import_export/ModelRemap.cpp:36
+#: src-ui-wx/import_export/ModelRemap.cpp:104
+msgid "Select valid xmodel files."
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:107
+msgid "Select valid original xmodel."
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:110
+msgid "Select valid new wiring xmodel."
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:115
+msgid "Original model contains no faces/states/submodels to import."
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:344
+msgid "No Custom model found in file."
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:347
+#, c-format
+msgid "Model is not a custom model: %s"
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:358
+#, c-format
+msgid "W: %d H: %d D: %d"
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:361
+msgid "At least one dimension invalid."
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:379
+msgid "No pixels."
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:381
+#, c-format
+msgid "Pixels: %u"
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:393
+#, c-format
+msgid "Faces: %d States: %d Submodels: %d"
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:405
+msgid "Model dimensions do not match."
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:41
 msgid "Set in code"
 msgstr ""
 
-#: src-ui-wx/import_export/ModelRemap.cpp:40
+#: src-ui-wx/import_export/ModelRemap.cpp:415
+#, c-format
+msgid "At least one pixel is located in a different cell in the model grid Original: %u New: %u."
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:45
 msgid "Custom xModel File With the faces/states/submodels:"
 msgstr ""
 
-#: src-ui-wx/import_export/ModelRemap.cpp:44
+#: src-ui-wx/import_export/ModelRemap.cpp:49
 msgid "Custom xModel File with the correct wiring layout:"
 msgstr ""
 
-#: src-ui-wx/import_export/ModelRemap.cpp:49
+#: src-ui-wx/import_export/ModelRemap.cpp:54
 msgid "Select xModel files."
 msgstr ""
 
-#: src-ui-wx/import_export/ModelRemap.cpp:51
+#: src-ui-wx/import_export/ModelRemap.cpp:56
 msgid "Generate xModel"
+msgstr ""
+
+#: src-ui-wx/import_export/ModelRemap.cpp:67
+msgid ""
+"This tool is used to take a model with valid/useful face definitions, state definitions and submodels and remap them onto a model with a reordered wiring layout.\n"
+"\n"
+"To use the tool you must have 2 xmodel files.\n"
+"\n"
+"The first xmodel is the custom model with the original wiring layout but the faces/states/submodels you want.\n"
+"The second is an identically dimensioned custom model with pixels in all the same positions but renumbered that you want to load the submodels into.\n"
+"\n"
+"As part of this process all existing faces/states/submodels on the second xmodel file will be removed.\n"
+"\n"
+"When you click generate a new xmodel file will be created combining the second models wiring layout with the faces/states/submodels of the first model."
 msgstr ""
 
 #: src-ui-wx/import_export/SeqExportDialog.cpp:119
@@ -8345,6 +9126,26 @@ msgstr ""
 
 #: src-ui-wx/media/ManageMediaPanel.cpp:2972
 msgid "Select Media File"
+msgstr ""
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:687
+msgctxt "column"
+msgid "File"
+msgstr ""
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:689
+msgctxt "column"
+msgid "Size"
+msgstr ""
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:691
+msgctxt "column"
+msgid "Frames"
+msgstr ""
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:693
+msgctxt "column"
+msgid "Status"
 msgstr ""
 
 #: src-ui-wx/media/ManageMediaPanel.cpp:713
@@ -14518,7 +15319,7 @@ msgstr ""
 msgid "Sequence Type:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:267 src-ui-wx/sequencer/SeqSettingsDialog.cpp:534
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:267
 msgid "Media"
 msgstr ""
 
@@ -14682,12 +15483,22 @@ msgstr ""
 msgid "Don't Create Sequence"
 msgstr ""
 
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:534
+msgctxt "tab"
+msgid "Media"
+msgstr ""
+
 #: src-ui-wx/sequencer/SeqSettingsDialog.cpp:563
 msgid "Edit Name"
 msgstr ""
 
 #: src-ui-wx/sequencer/SeqSettingsDialog.cpp:572 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2523
 msgid "Audio Tracks"
+msgstr ""
+
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:601
+msgctxt "tree"
+msgid "Layers to Render"
 msgstr ""
 
 #: src-ui-wx/sequencer/SeqSettingsDialog.cpp:791
@@ -16423,7 +17234,7 @@ msgstr ""
 msgid "Access the free Zoom Room for Help"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:1236
+#: src-ui-wx/xLightsMain.cpp:1236 src-ui-wx/xLightsMain.cpp:8710
 msgid "Key Bindings"
 msgstr ""
 

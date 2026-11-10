@@ -120,12 +120,12 @@ void ShowFolderSearchDialog::FindShowFolders(wxArrayString const& logs, wxString
     std::map<wxString, int> showFolders;
     //Show directory set to : D:\lights_data\cubicle.
     static wxRegEx logregex("Show directory set to : (.*)\\.");
-    wxProgressDialog dlg("Searching " + folder, "Searching " + folder, logs.size(), this, wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT);
+    wxProgressDialog dlg(wxString::Format(_("Searching %s"), folder), wxString::Format(_("Searching %s"), folder), logs.size(), this, wxPD_APP_MODAL | wxPD_AUTO_HIDE | wxPD_CAN_ABORT);
     dlg.Show();
     int i{ 0 };
     for (auto const& log : logs) {
         if (FileExists(log)) {
-            dlg.Update(i, "Reading " + log);
+            dlg.Update(i, wxString::Format(_("Reading %s"), log));
             wxFileName fn(log);
             wxFileInputStream input(fn.GetFullPath());
             if (input.IsOk()) {

@@ -684,13 +684,13 @@ ManageMediaPanel::ManageMediaPanel(wxWindow* parent, SequenceMedia* sequenceMedi
                                     (singleSelect ? wxDV_SINGLE : wxDV_MULTIPLE) | wxBORDER_SUNKEN);
     _mediaTree->AssociateModel(_model.get());
 
-    _mediaTree->AppendTextColumn("File",   COL_NAME,   wxDATAVIEW_CELL_INERT, 220, wxALIGN_LEFT,
+    _mediaTree->AppendTextColumn(wxGETTEXT_IN_CONTEXT("column", "File"),   COL_NAME,   wxDATAVIEW_CELL_INERT, 220, wxALIGN_LEFT,
                                  wxDATAVIEW_COL_RESIZABLE | wxDATAVIEW_COL_SORTABLE);
-    _mediaTree->AppendTextColumn("Size",   COL_SIZE,   wxDATAVIEW_CELL_INERT,  70, wxALIGN_LEFT,
+    _mediaTree->AppendTextColumn(wxGETTEXT_IN_CONTEXT("column", "Size"),   COL_SIZE,   wxDATAVIEW_CELL_INERT,  70, wxALIGN_LEFT,
                                  wxDATAVIEW_COL_RESIZABLE);
-    _mediaTree->AppendTextColumn("Frames", COL_FRAMES, wxDATAVIEW_CELL_INERT,  50, wxALIGN_LEFT,
+    _mediaTree->AppendTextColumn(wxGETTEXT_IN_CONTEXT("column", "Frames"), COL_FRAMES, wxDATAVIEW_CELL_INERT,  50, wxALIGN_LEFT,
                                  wxDATAVIEW_COL_RESIZABLE);
-    _mediaTree->AppendTextColumn("Status", COL_STATUS, wxDATAVIEW_CELL_INERT,  -1, wxALIGN_LEFT,
+    _mediaTree->AppendTextColumn(wxGETTEXT_IN_CONTEXT("column", "Status"), COL_STATUS, wxDATAVIEW_CELL_INERT,  -1, wxALIGN_LEFT,
                                  wxDATAVIEW_COL_RESIZABLE);
     // Only constrain height — width fills whatever space the dialog provides.
     _mediaTree->SetMinSize(wxSize(-1, 100));

@@ -531,7 +531,7 @@ SeqSettingsDialog::SeqSettingsDialog(wxWindow* parent, SequenceFile* file_to_han
                                              sequenceElements,
                                              xLightsParent ? xLightsParent->GetShowDirectory() : std::string{},
                                              xLightsParent);
-        Notebook_Seq_Settings->InsertPage(3, Panel_ManageMedia, _("Media"), false);
+        Notebook_Seq_Settings->InsertPage(3, Panel_ManageMedia, wxGETTEXT_IN_CONTEXT("tab", "Media"), false);
         Panel_SequenceFaces = new SequenceFacesPanel(Notebook_Seq_Settings,
                                              sequenceElements,
                                              xLightsParent ? xLightsParent->GetShowDirectory() : std::string{},
@@ -598,7 +598,7 @@ SeqSettingsDialog::SeqSettingsDialog(wxWindow* parent, SequenceFile* file_to_han
     m_defaultSavedTimer.SetOwner(this);
     Connect(m_defaultSavedTimer.GetId(), wxEVT_TIMER, (wxObjectEventFunction)&SeqSettingsDialog::OnDefaultSavedTimer);
 
-    TreeCtrl_Data_Layers->AddRoot("Layers to Render");
+    TreeCtrl_Data_Layers->AddRoot(wxGETTEXT_IN_CONTEXT("tree", "Layers to Render"));
     Button_Close->SetDefault();
 
     if (wizard_active) {
@@ -1002,7 +1002,7 @@ void SeqSettingsDialog::ProcessSequenceType()
 
 void SeqSettingsDialog::SetHash()
 {
-    if (Notebook_Seq_Settings->GetPageText(Notebook_Seq_Settings->GetSelection()) == "Info / Media")
+    if (Notebook_Seq_Settings->GetCurrentPage() == PanelInfo)
     {
         if (xml_file->GetMedia() != nullptr)
         {

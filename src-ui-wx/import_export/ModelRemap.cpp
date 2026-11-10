@@ -7,6 +7,11 @@
 
 #include <wx/msgdlg.h>
 
+// The messages are kept as UTF-8 std::string and converted back when shown.
+static std::string Utf8(const wxString& s) {
+    return s.utf8_string();
+}
+
 //(*IdInit(ModelRemap)
 const long ModelRemap::ID_STATICTEXT1 = wxNewId();
 const long ModelRemap::ID_STATICTEXT2 = wxNewId();
@@ -59,12 +64,12 @@ ModelRemap::ModelRemap(wxWindow* parent,wxWindowID id,const wxPoint& pos,const w
 	Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ModelRemap::OnButton_GenerateClick);
 	//*)
 
-    StaticText1->SetLabelText("This tool is used to take a model with valid/useful face definitions, state definitions and submodels and remap them onto a model with a reordered wiring layout.\n\n"
+    StaticText1->SetLabelText(_("This tool is used to take a model with valid/useful face definitions, state definitions and submodels and remap them onto a model with a reordered wiring layout.\n\n"
                               "To use the tool you must have 2 xmodel files.\n\n"
                               "The first xmodel is the custom model with the original wiring layout but the faces/states/submodels you want.\n"
                               "The second is an identically dimensioned custom model with pixels in all the same positions but renumbered that you want to load the submodels into.\n\n"
                               "As part of this process all existing faces/states/submodels on the second xmodel file will be removed.\n\n"
-                              "When you click generate a new xmodel file will be created combining the second models wiring layout with the faces/states/submodels of the first model.");
+                              "When you click generate a new xmodel file will be created combining the second models wiring layout with the faces/states/submodels of the first model."));
 
     Fit();
     ValidateWindow();
@@ -96,22 +101,22 @@ void ModelRemap::ValidateWindow() {
     newWiringProperties.Load(FilePickerCtrl_NewWiring->GetFileName().GetFullPath());
 
     if (!originalProperties.IsOk() && !newWiringProperties.IsOk()) {
-        message = "Select valid xmodel files.";
+        message = Utf8(_("Select valid xmodel files."));
     } else if (!originalProperties.IsOk()) {
         message = newWiringProperties.Message();
-        message += "\n\nSelect valid original xmodel.";
+        message += "\n\n" + Utf8(_("Select valid original xmodel."));
     } else if (!newWiringProperties.IsOk()) {
         message = originalProperties.Message();
-        message += "\n\nSelect valid new wiring xmodel.";
+        message += "\n\n" + Utf8(_("Select valid new wiring xmodel."));
     } else {
         newWiringProperties.Compare(originalProperties);
         message = originalProperties.Message() + "\n\n" + newWiringProperties.Message();
         if (!originalProperties.ContainsFSSM()) {
-            message += "\n\nOriginal model contains no faces/states/submodels to import.";
+            message += "\n\n" + Utf8(_("Original model contains no faces/states/submodels to import."));
         }
     }
 
-    TextCtrl_Messages->SetValue(message);
+    TextCtrl_Messages->SetValue(wxString::FromUTF8(message));
 
     if (originalProperties.IsOk() && newWiringProperties.IsOk()) {
         Button_Generate->Enable();
@@ -319,7 +324,7 @@ void RemapModelProperties::Load(const std::string& filename) {
         _xmodel.load_file(filename.c_str());
         pugi::xml_node root = _xmodel.document_element();
         if (root) {
-            _message = filename;
+            _message = Utf8(wxString(filename));
 
             // Resolve the actual model node — two supported file shapes:
             //   Old: <custommodel .../>  (root is the model)
@@ -336,10 +341,10 @@ void RemapModelProperties::Load(const std::string& filename) {
                     }
                 }
                 if (!modelNode) {
-                    _message += "\nNo Custom model found in file.";
+                    _message += "\n" + Utf8(_("No Custom model found in file."));
                 }
             } else {
-                _message += std::string("\nModel is not a custom model: ") + root.name();
+                _message += "\n" + Utf8(wxString::Format(_("Model is not a custom model: %s"), root.name()));
             }
 
             if (modelNode) {
@@ -350,10 +355,10 @@ void RemapModelProperties::Load(const std::string& filename) {
                 _h = !modelNode.attribute("CustomHeight").empty() ? modelNode.attribute("CustomHeight").as_int(0) : modelNode.attribute("parm2").as_int(0);
                 _d = modelNode.attribute("Depth").as_int(1);
 
-                _message += "\nW: " + std::to_string(_w) + " H: " + std::to_string(_h) + " D: " + std::to_string(_d);
+                _message += "\n" + Utf8(wxString::Format(_("W: %d H: %d D: %d"), _w, _h, _d));
 
                 if (_w == 0 || _h == 0 || _d == 0) {
-                    _message += "\nAt least one dimension invalid.";
+                    _message += "\n" + Utf8(_("At least one dimension invalid."));
                 } else {
                     // number of pixels — support both old (CustomModel) and new (CustomModelCompressed) formats
                     std::string compressedData = modelNode.attribute("CustomModelCompressed").as_string();
@@ -371,9 +376,9 @@ void RemapModelProperties::Load(const std::string& filename) {
                     }
 
                     if (cnt == 0) {
-                        _message += "\nNo pixels.";
+                        _message += "\n" + Utf8(_("No pixels."));
                     } else {
-                        _message += "\nPixels: " + std::to_string(cnt);
+                        _message += "\n" + Utf8(wxString::Format(_("Pixels: %u"), (unsigned)cnt));
                         _ok = true;
 
                         for (pugi::xml_node n = modelNode.first_child(); n; n = n.next_sibling()) {
@@ -385,7 +390,7 @@ void RemapModelProperties::Load(const std::string& filename) {
                             else if (nname == "stateInfo")
                                 _states++;
                         }
-                        _message += "\nFaces: " + std::to_string(_faces) + " States: " + std::to_string(_states) + " Submodels: " + std::to_string(_submodels);
+                        _message += "\n" + Utf8(wxString::Format(_("Faces: %d States: %d Submodels: %d"), (int)_faces, (int)_states, (int)_submodels));
                     }
                 }
             }
@@ -397,7 +402,7 @@ void RemapModelProperties::Compare(RemapModelProperties& original) {
     // compare dimensions
     if (_w != original.GetWidth() || _h != original.GetHeight() || _d != original.GetDepth()) {
         _ok = false;
-        _message += "\n\nModel dimensions do not match.";
+        _message += "\n\n" + Utf8(_("Model dimensions do not match."));
     } else {
         uint32_t remapped = 0;
 
@@ -407,7 +412,7 @@ void RemapModelProperties::Compare(RemapModelProperties& original) {
 
         while (it1 != _data.end() && it2 != original.GetData().end()) {
             if ((*it1 == 0 && *it2 != 0) || (*it1 != 0 && *it2 == 0)) {
-                _message += "\n\nAt least one pixel is located in a different cell in the model grid Original: " + std::to_string(*it2) + " New: " + std::to_string(*it1) + ".";
+                _message += "\n\n" + Utf8(wxString::Format(_("At least one pixel is located in a different cell in the model grid Original: %u New: %u."), (unsigned)*it2, (unsigned)*it1));
                 _ok = false;
                 break;
             }
