@@ -2776,10 +2776,50 @@ void xLightsFrame::LogPerspective(const wxString& perspective) const
     }
 }
 
+// Paragraphs of XLIGHTS_LICENSE, listed for the translation catalog. The text is
+// translated paragraph by paragraph, so a paragraph changed upstream simply
+// shows in English until the catalog catches up.
+[[maybe_unused]] static const char* const LICENSE_PARAGRAPHS[] = {
+    wxTRANSLATE("xLights Copyright 2010-2013 Matt Brown\nNutcracker Copyright 2012-2013 Sean Meighan"),
+    wxTRANSLATE("This file is part of xLights."),
+    wxTRANSLATE("xLights is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. xLights is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details."),
+    wxTRANSLATE("You should have received a copy of the GNU General Public License along with xLights.  If not, see <http://www.gnu.org/licenses/>."),
+    wxTRANSLATE("xLights website is http://xlights.org"),
+    wxTRANSLATE("Acknowledgements"),
+    wxTRANSLATE("xLights relies on several open-source libraries: wxWidgets, libav, sdl, spdlog, box2d and irrXML."),
+    wxTRANSLATE("Code for serial port communication was inspired by the ctb library written by Joachim Buermann. Code for base64 encoding and decoding was written by Rene Nyffenegger.")
+};
+
+static wxString TranslatedLicenseText()
+{
+    wxArrayString lines = wxSplit(wxString(XLIGHTS_LICENSE), '\n', '\0');
+    wxString result, current;
+    auto flush = [&]() {
+        if (!current.empty()) {
+            result += wxGetTranslation(current);
+            current.clear();
+        }
+    };
+    for (const auto& line : lines) {
+        if (line.empty()) {
+            flush();
+            result += "\n\n";
+        } else {
+            if (!current.empty()) {
+                current += "\n";
+            }
+            current += line;
+        }
+    }
+    flush();
+    return result;
+}
+
 void xLightsFrame::OnAbout(wxCommandEvent& event)
 {
-    wxString hdg = wxString::Format(_(L"About xLights\u2122 %s"), GetDisplayVersionString());
+    wxString hdg = wxString::Format(_("About %s %s"), wxString(L"xLights\u2122"), GetDisplayVersionString());
     wxString ver = wxString::Format(_("Version: %s\n%s"), GetDisplayVersionString(), wxVERSION_STRING);
+    ver = _("xLights Cloud edition: cloud backup and multilingual interface") + "\n\n" + ver;
 #if defined(_MSC_VER)
     ver += wxString::Format("\nVisual C++ %d" ,_MSC_VER);
 #endif
@@ -2796,7 +2836,7 @@ void xLightsFrame::OnAbout(wxCommandEvent& event)
 
     dlg.VersionLabel->SetLabel(ver);
     dlg.SetTitle(hdg);
-    dlg.LegalTextLabel->SetLabel(XLIGHTS_LICENSE);
+    dlg.LegalTextLabel->SetLabel(TranslatedLicenseText());
     dlg.MainSizer->Fit(&dlg);
     dlg.MainSizer->SetSizeHints(&dlg);
 
