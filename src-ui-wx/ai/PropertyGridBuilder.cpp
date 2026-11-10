@@ -5,8 +5,71 @@
 #include <wx/propgrid/advprops.h>
 #include <wx/sizer.h>
 
+#include <wx/translation.h>
+
 #include <functional>
 #include <string>
+
+// Labels and help texts of the AI services. They are defined in the wx-free core,
+// so they are listed here for the translation catalog and translated when the
+// grid is built. Choice values are not translated: the grid saves them as shown.
+[[maybe_unused]] static const char* const AI_SERVICE_TEXTS[] = {
+    wxTRANSLATE_IN_CONTEXT("ai service", "Enable %s"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Prompt"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Color Palette"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Images"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Mapping"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Speech to Text"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "API Key"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Bearer Token"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Fake API key"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Your Anthropic API key (masked for security)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Your ChatGPT Bearer Token (masked for security)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Your Google Gemini API key (masked for security)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Model"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Image Model"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Completion Model"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Transcribe Model"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Base URL"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Host"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Port"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Https"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Size"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Steps"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Style"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Generic OpenAI Client"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Apple Intelligence Image"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Inference Device"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Hardware target for inference (AUTO lets OpenVINO pick the fastest available)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "SD Model Directory"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Path to a Stable Diffusion model exported to OpenVINO IR format.\n"
+                                         "Export with: optimum-cli export openvino --model stabilityai/stable-diffusion-v1-5 <dir>"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Whisper Model Directory"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Path to a Whisper model exported to OpenVINO IR format.\n"
+                                         "Export with: optimum-cli export openvino --model openai/whisper-base <dir>"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Image Width (px)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Image Height (px)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Width of generated images"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Height of generated images"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Diffusion Steps"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Denoising steps (20 is a good default; more = slower but higher quality)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Width (px)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Height (px)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Output image width in pixels (must match the model's trained resolution)"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Output image height in pixels"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Inference Steps"),
+    wxTRANSLATE_IN_CONTEXT("ai service", "Number of diffusion denoising steps (more = higher quality, slower)")
+};
+
+static wxString AIText(const std::string& s) {
+    static const wxString ctx("ai service");
+    static const std::string enable("Enable ");
+    if (s.rfind(enable, 0) == 0) {
+        return wxString::Format(wxGetTranslation("Enable %s", wxString(), ctx),
+                                wxGetTranslation(wxString::FromUTF8(s.substr(enable.size())), wxString(), ctx));
+    }
+    return wxGetTranslation(wxString::FromUTF8(s), wxString(), ctx);
+}
 
 namespace PropertyGridBuilder {
 
@@ -14,37 +77,37 @@ void Append(wxPropertyGrid* page, const std::vector<ServiceProperty>& props) {
     for (const auto& p : props) {
         switch (p.kind) {
             case ServiceProperty::Kind::Category: {
-                page->Append(new wxPropertyCategory(p.label.empty() ? p.category : p.label));
+                page->Append(new wxPropertyCategory(AIText(p.label.empty() ? p.category : p.label), p.label.empty() ? p.category : p.label));
                 break;
             }
             case ServiceProperty::Kind::Bool: {
                 bool v = std::holds_alternative<bool>(p.value) ? std::get<bool>(p.value) : false;
-                auto* prop = page->Append(new wxBoolProperty(p.label, p.id, v));
+                auto* prop = page->Append(new wxBoolProperty(AIText(p.label), p.id, v));
                 prop->SetEditor("CheckBox");
-                if (!p.help.empty()) prop->SetHelpString(p.help);
+                if (!p.help.empty()) prop->SetHelpString(AIText(p.help));
                 break;
             }
             case ServiceProperty::Kind::Int: {
                 int v = std::holds_alternative<int>(p.value) ? std::get<int>(p.value) : 0;
-                auto* prop = page->Append(new wxIntProperty(p.label, p.id, v));
-                if (!p.help.empty()) prop->SetHelpString(p.help);
+                auto* prop = page->Append(new wxIntProperty(AIText(p.label), p.id, v));
+                if (!p.help.empty()) prop->SetHelpString(AIText(p.help));
                 break;
             }
             case ServiceProperty::Kind::String: {
                 const std::string& v = std::holds_alternative<std::string>(p.value)
                                        ? std::get<std::string>(p.value)
                                        : std::string();
-                auto* prop = page->Append(new wxStringProperty(p.label, p.id, v));
-                if (!p.help.empty()) prop->SetHelpString(p.help);
+                auto* prop = page->Append(new wxStringProperty(AIText(p.label), p.id, v));
+                if (!p.help.empty()) prop->SetHelpString(AIText(p.help));
                 break;
             }
             case ServiceProperty::Kind::Secret: {
                 const std::string& v = std::holds_alternative<std::string>(p.value)
                                        ? std::get<std::string>(p.value)
                                        : std::string();
-                auto* prop = page->Append(new wxStringProperty(p.label, p.id, v));
+                auto* prop = page->Append(new wxStringProperty(AIText(p.label), p.id, v));
                 prop->SetAttribute(wxPG_STRING_PASSWORD, true);
-                if (!p.help.empty()) prop->SetHelpString(p.help);
+                if (!p.help.empty()) prop->SetHelpString(AIText(p.help));
                 break;
             }
             case ServiceProperty::Kind::Choice: {
@@ -57,8 +120,8 @@ void Append(wxPropertyGrid* page, const std::vector<ServiceProperty>& props) {
                 for (size_t i = 0; i < p.choices.size(); ++i) {
                     if (p.choices[i] == v) { sel = static_cast<int>(i); break; }
                 }
-                auto* prop = page->Append(new wxEnumProperty(p.label, p.id, choices, sel));
-                if (!p.help.empty()) prop->SetHelpString(p.help);
+                auto* prop = page->Append(new wxEnumProperty(AIText(p.label), p.id, choices, sel));
+                if (!p.help.empty()) prop->SetHelpString(AIText(p.help));
                 break;
             }
         }

@@ -199,14 +199,14 @@ void ServicesPanel::OnButtonTestClick(wxCommandEvent& event) {
         return;
     }
     if (!ts->IsAvailable()) {
-        wxMessageBox("Service " + ts->GetLLMName() + " is not yet configured or enabled. Please check configure parameter(s).", "Error", wxICON_ERROR);
+        wxMessageBox(wxString::Format(_("Service %s is not yet configured or enabled. Please check configure parameter(s)."), ts->GetLLMName()), _("Error"), wxICON_ERROR);
         return;
     }
     auto const[msg, work] = ts->TestLLM();
     if (work) {
-        wxMessageBox("Service " + ts->GetLLMName() + " is valid", "Success", wxICON_INFORMATION);
+        wxMessageBox(wxString::Format(_("Service %s is valid"), ts->GetLLMName()), _("Success"), wxICON_INFORMATION);
     } else {
-        wxMessageBox("Service " + ts->GetLLMName() + " returned: " + (msg.empty() ? "No response" : msg), "Error", wxICON_ERROR);
+        wxMessageBox(wxString::Format(_("Service %s returned: %s"), ts->GetLLMName(), msg.empty() ? _("No response") : wxString::FromUTF8(msg)), _("Error"), wxICON_ERROR);
     }
 }
 

@@ -1513,7 +1513,7 @@ msgstr ""
 msgid "Symbol name cannot be empty."
 msgstr ""
 
-#: src-ui-wx/EffectSymbolDialog.cpp:181 src-ui-wx/EffectSymbolDialog.cpp:190 src-ui-wx/xLightsApp.cpp:1391 src-ui-wx/xLightsMain.cpp:717 src-ui-wx/xLightsMain.cpp:9996 ... (+25)
+#: src-ui-wx/EffectSymbolDialog.cpp:181 src-ui-wx/EffectSymbolDialog.cpp:190 src-ui-wx/xLightsApp.cpp:1391 src-ui-wx/xLightsMain.cpp:717 src-ui-wx/xLightsMain.cpp:9996 ... (+27)
 msgid "Error"
 msgstr ""
 
@@ -1551,6 +1551,226 @@ msgstr ""
 
 #: src-ui-wx/ai/AIImageDialog.cpp:639 src-ui-wx/layout/LayoutPanel.cpp:12076
 msgid "Save Image"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:17
+#, c-format
+msgctxt "ai service"
+msgid "Enable %s"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:18
+msgctxt "ai service"
+msgid "Prompt"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:19
+msgctxt "ai service"
+msgid "Color Palette"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:20
+msgctxt "ai service"
+msgid "Images"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:21
+msgctxt "ai service"
+msgid "Mapping"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:22
+msgctxt "ai service"
+msgid "Speech to Text"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:23
+msgctxt "ai service"
+msgid "API Key"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:24
+msgctxt "ai service"
+msgid "Bearer Token"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:25
+msgctxt "ai service"
+msgid "Fake API key"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:26
+msgctxt "ai service"
+msgid "Your Anthropic API key (masked for security)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:27
+msgctxt "ai service"
+msgid "Your ChatGPT Bearer Token (masked for security)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:28
+msgctxt "ai service"
+msgid "Your Google Gemini API key (masked for security)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:29
+msgctxt "ai service"
+msgid "Model"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:30
+msgctxt "ai service"
+msgid "Image Model"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:31
+msgctxt "ai service"
+msgid "Completion Model"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:32
+msgctxt "ai service"
+msgid "Transcribe Model"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:33
+msgctxt "ai service"
+msgid "Base URL"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:34
+msgctxt "ai service"
+msgid "Host"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:35
+msgctxt "ai service"
+msgid "Port"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:36
+msgctxt "ai service"
+msgid "Https"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:37
+msgctxt "ai service"
+msgid "Size"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:38
+msgctxt "ai service"
+msgid "Steps"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:39
+msgctxt "ai service"
+msgid "Style"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:40
+msgctxt "ai service"
+msgid "Generic OpenAI Client"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:41
+msgctxt "ai service"
+msgid "Apple Intelligence Image"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:42
+msgctxt "ai service"
+msgid "Inference Device"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:43
+msgctxt "ai service"
+msgid "Hardware target for inference (AUTO lets OpenVINO pick the fastest available)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:44
+msgctxt "ai service"
+msgid "SD Model Directory"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:45
+msgctxt "ai service"
+msgid ""
+"Path to a Stable Diffusion model exported to OpenVINO IR format.\n"
+"Export with: optimum-cli export openvino --model stabilityai/stable-diffusion-v1-5 <dir>"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:47
+msgctxt "ai service"
+msgid "Whisper Model Directory"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:48
+msgctxt "ai service"
+msgid ""
+"Path to a Whisper model exported to OpenVINO IR format.\n"
+"Export with: optimum-cli export openvino --model openai/whisper-base <dir>"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:50
+msgctxt "ai service"
+msgid "Image Width (px)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:51
+msgctxt "ai service"
+msgid "Image Height (px)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:52
+msgctxt "ai service"
+msgid "Width of generated images"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:53
+msgctxt "ai service"
+msgid "Height of generated images"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:54
+msgctxt "ai service"
+msgid "Diffusion Steps"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:55
+msgctxt "ai service"
+msgid "Denoising steps (20 is a good default; more = slower but higher quality)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:56
+msgctxt "ai service"
+msgid "Width (px)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:57
+msgctxt "ai service"
+msgid "Height (px)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:58
+msgctxt "ai service"
+msgid "Output image width in pixels (must match the model's trained resolution)"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:59
+msgctxt "ai service"
+msgid "Output image height in pixels"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:60
+msgctxt "ai service"
+msgid "Inference Steps"
+msgstr ""
+
+#: src-ui-wx/ai/PropertyGridBuilder.cpp:61
+msgctxt "ai service"
+msgid "Number of diffusion denoising steps (more = higher quality, slower)"
 msgstr ""
 
 #: src-ui-wx/app-shell/AboutDialog.cpp:34
@@ -12179,6 +12399,29 @@ msgstr ""
 
 #: src-ui-wx/preferences/ServicesPanel.cpp:127
 msgid "Select Service"
+msgstr ""
+
+#: src-ui-wx/preferences/ServicesPanel.cpp:202
+#, c-format
+msgid "Service %s is not yet configured or enabled. Please check configure parameter(s)."
+msgstr ""
+
+#: src-ui-wx/preferences/ServicesPanel.cpp:207
+#, c-format
+msgid "Service %s is valid"
+msgstr ""
+
+#: src-ui-wx/preferences/ServicesPanel.cpp:207
+msgid "Success"
+msgstr ""
+
+#: src-ui-wx/preferences/ServicesPanel.cpp:209
+#, c-format
+msgid "Service %s returned: %s"
+msgstr ""
+
+#: src-ui-wx/preferences/ServicesPanel.cpp:209
+msgid "No response"
 msgstr ""
 
 #: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:49
