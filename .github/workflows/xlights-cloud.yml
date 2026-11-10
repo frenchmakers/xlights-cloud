@@ -174,18 +174,13 @@ jobs:
           applied=true
           git apply --3way --index "${excludes[@]}" "$RUNNER_TEMP/feature.patch" 2> "$RUNNER_TEMP/apply.log" || applied=false
           if ! $applied && ! grep -qE '^error:' "$RUNNER_TEMP/apply.log"; then
-            # Conflicts in files that only the French translation changes: the
-            # xLights team changed those lines after the tag. Keep the
+            # Conflicts where the xLights team changed, after the tag, lines the
+            # branch only translates (or got from the official master): keep the
             # release's lines there (they stay in English in this build) and
-            # apply the rest. Any other conflict still stops the build.
+            # apply the rest. A conflict on lines of the branch's own features
+            # (cloud backup...) still stops the build.
             conflicted=$(git diff --name-only --diff-filter=U)
-            others=""
-            for f in $conflicted; do
-              if git log --format=%s "$base..$GITHUB_SHA" -- "$f" | grep -qvE '^(French translation|Translation (tools|docs))'; then
-                others="$others $f"
-              fi
-            done
-            if [ -n "$conflicted" ] && [ -z "$others" ]; then
+            if [ -n "$conflicted" ] && python3 "$GITHUB_WORKSPACE/ci_scripts/xlights_keep_release_in_conflicts.py" --check "$base" "$GITHUB_SHA" $conflicted; then
               python3 ci_scripts/xlights_keep_release_in_conflicts.py $conflicted
               git add $conflicted
               echo "::notice::Kept the release's lines where the translation conflicts:" $conflicted
