@@ -67,6 +67,22 @@ EmailDialog::EmailDialog(wxWindow* parent, const std::string& email, wxWindowID 
 	Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&EmailDialog::OnButton_NoClick);
 	//*)
 
+    // xLights Cloud keeps crash reports on the computer (see xlCrashHandler), so
+    // the official text about uploading to the crash server would be wrong.
+    // Set outside the wxSmith block so a regeneration keeps it.
+    StaticText1->SetLabel(_("From time to time xLights has been known to crash. To help find the cause, xLights Cloud can\n"
+                            "record your email address in its log.\n\n"
+                            "How it is used in xLights Cloud:\n\n"
+                            "1. Your email address is stored on your computer only.\n"
+                            "2. It is written to the log file each time xLights starts.\n"
+                            "3. Crash reports stay on your computer: xLights Cloud does not send them to the xLights team\n"
+                            "   or to any server. If you send a crash report or a log yourself (for example in an issue),\n"
+                            "   it contains your email address.\n"
+                            "4. Your email address is not used for anything else.\n\n"
+                            "You can leave it empty."));
+    GetSizer()->Fit(this);
+    GetSizer()->SetSizeHints(this);
+
     SetEscapeId(ID_BUTTON2);
     TextCtrl_Email->SetValue(email);
 

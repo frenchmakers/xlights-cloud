@@ -330,7 +330,7 @@ MainSequencer::MainSequencer(wxWindow* parent, bool smallWaveform, wxWindowID id
     // Cap the min width so revealing it doesn't widen the View column past what
     // ViewChoice/ViewLabel already require - wxSearchCtrl's natural best size is wider.
     _seqFilterCtrl->SetMinSize(wxSize(FromDIP(1), -1));
-    _seqFilterCtrl->SetDescriptiveText("Filter props...");
+    _seqFilterCtrl->SetDescriptiveText(_("Filter props..."));
     _seqFilterCtrl->ShowCancelButton(true);
     _seqFilterCtrl->Bind(wxEVT_TEXT, &MainSequencer::OnSeqFilterText, this);
     _seqFilterCtrl->Bind(wxEVT_TEXT_ENTER, &MainSequencer::OnSeqFilterEnter, this);

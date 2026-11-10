@@ -116,7 +116,7 @@ SketchAssistPanel::SketchAssistPanel(wxWindow* parent, wxWindowID id /*wxID_ANY*
 
     m_pathDescriptionLabel = new wxStaticText(this, wxID_ANY, _("Path Description"));
     m_pathDescriptionText = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
-    m_pathDescriptionText->SetHint("Enter path description...");
+    m_pathDescriptionText->SetHint(_("Enter path description..."));
     pathDescriptionSizer->Add(m_pathDescriptionLabel, 0, wxBOTTOM, 2);
     pathDescriptionSizer->Add(m_pathDescriptionText, 0, wxEXPAND);
 

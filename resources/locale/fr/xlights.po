@@ -1490,6 +1490,10 @@ msgstr "Roto-zoom"
 msgid "Hue"
 msgstr "Teinte"
 
+#: src-ui-wx/CommandPaletteDialog.cpp:310
+msgid "Search commands and effects..."
+msgstr "Rechercher des commandes et des effets..."
+
 #: src-ui-wx/EffectSymbolDialog.cpp:128
 #, c-format
 msgid ""
@@ -2119,6 +2123,36 @@ msgstr "OK"
 #: src-ui-wx/app-shell/EmailDialog.cpp:58
 msgid "No Thanks"
 msgstr "Non merci"
+
+#: src-ui-wx/app-shell/EmailDialog.cpp:73
+msgid ""
+"From time to time xLights has been known to crash. To help find the cause, xLights Cloud can\n"
+"record your email address in its log.\n"
+"\n"
+"How it is used in xLights Cloud:\n"
+"\n"
+"1. Your email address is stored on your computer only.\n"
+"2. It is written to the log file each time xLights starts.\n"
+"3. Crash reports stay on your computer: xLights Cloud does not send them to the xLights team\n"
+"   or to any server. If you send a crash report or a log yourself (for example in an issue),\n"
+"   it contains your email address.\n"
+"4. Your email address is not used for anything else.\n"
+"\n"
+"You can leave it empty."
+msgstr ""
+"xLights plante de temps en temps. Pour aider à en trouver la cause, xLights Cloud peut\n"
+"enregistrer votre adresse e-mail dans son journal.\n"
+"\n"
+"Son usage dans xLights Cloud :\n"
+"\n"
+"1. Votre adresse e-mail est enregistrée sur votre ordinateur uniquement.\n"
+"2. Elle est écrite dans le journal à chaque démarrage de xLights.\n"
+"3. Les rapports de plantage restent sur votre ordinateur : xLights Cloud ne les envoie ni à l'équipe\n"
+"   xLights ni à aucun serveur. Si vous envoyez vous-même un rapport ou un journal (par exemple dans\n"
+"   un ticket), il contient votre adresse e-mail.\n"
+"4. Votre adresse e-mail ne sert à rien d'autre.\n"
+"\n"
+"Vous pouvez laisser ce champ vide."
 
 #: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:100
 msgid "Add Preset"
@@ -6720,6 +6754,10 @@ msgstr "Tracés (0)"
 msgid "Path Description"
 msgstr "Description du tracé"
 
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:119
+msgid "Enter path description..."
+msgstr "Décrivez le tracé..."
+
 #: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:123
 msgid "Canvas Hotkeys"
 msgstr "Raccourcis du canevas"
@@ -7530,7 +7568,7 @@ msgstr "Article"
 msgid "NOTE: Models are provided by the vendors, not by xLights. They are free to use in your layout, but the designs are copyrighted and not licensed for recreation or public distribution."
 msgstr "REMARQUE : les modèles sont fournis par les fabricants, pas par xLights. Vous pouvez les utiliser librement dans votre disposition, mais les créations sont protégées par le droit d'auteur et ne peuvent être ni reproduites ni diffusées publiquement."
 
-#: src-ui-wx/import_export/VendorModelDialog.cpp:285 src-ui-wx/layout/ViewsModelsPanel.cpp:272 src-ui-wx/setup/ControllerModelDialog.cpp:2195 src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:354
+#: src-ui-wx/import_export/VendorModelDialog.cpp:285 src-ui-wx/layout/LayoutPanel.cpp:806 src-ui-wx/layout/ViewsModelsPanel.cpp:272 src-ui-wx/setup/ControllerModelDialog.cpp:2195 src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:354
 msgid "Filter models..."
 msgstr "Filtrer les modèles..."
 
@@ -9173,6 +9211,10 @@ msgstr "Afficher les modèles sans contrôleur"
 #: src-ui-wx/layout/LayoutPanel.cpp:8399
 msgid "Enter New Segment Size:"
 msgstr "Nouvelle taille des segments :"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:844
+msgid "Filter groups..."
+msgstr "Filtrer les groupes..."
 
 #: src-ui-wx/layout/LayoutPanel.cpp:8445 src-ui-wx/layout/LayoutPanel.cpp:8458
 msgid "Confirm Delete Viewpoint"
@@ -15318,6 +15360,10 @@ msgstr "Afficher le filtre de décors du séquenceur"
 #: src-ui-wx/sequencer/MainSequencer.cpp:291
 msgid "Suspend Render"
 msgstr "Suspendre le rendu"
+
+#: src-ui-wx/sequencer/MainSequencer.cpp:333
+msgid "Filter props..."
+msgstr "Filtrer les éléments..."
 
 #: src-ui-wx/sequencer/MainSequencer.cpp:417
 #, c-format

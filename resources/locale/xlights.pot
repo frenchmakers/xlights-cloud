@@ -1484,6 +1484,10 @@ msgstr ""
 msgid "Hue"
 msgstr ""
 
+#: src-ui-wx/CommandPaletteDialog.cpp:310
+msgid "Search commands and effects..."
+msgstr ""
+
 #: src-ui-wx/EffectSymbolDialog.cpp:128
 #, c-format
 msgid ""
@@ -2084,6 +2088,23 @@ msgstr ""
 
 #: src-ui-wx/app-shell/EmailDialog.cpp:58
 msgid "No Thanks"
+msgstr ""
+
+#: src-ui-wx/app-shell/EmailDialog.cpp:73
+msgid ""
+"From time to time xLights has been known to crash. To help find the cause, xLights Cloud can\n"
+"record your email address in its log.\n"
+"\n"
+"How it is used in xLights Cloud:\n"
+"\n"
+"1. Your email address is stored on your computer only.\n"
+"2. It is written to the log file each time xLights starts.\n"
+"3. Crash reports stay on your computer: xLights Cloud does not send them to the xLights team\n"
+"   or to any server. If you send a crash report or a log yourself (for example in an issue),\n"
+"   it contains your email address.\n"
+"4. Your email address is not used for anything else.\n"
+"\n"
+"You can leave it empty."
 msgstr ""
 
 #: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:100
@@ -6614,6 +6635,10 @@ msgstr ""
 msgid "Path Description"
 msgstr ""
 
+#: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:119
+msgid "Enter path description..."
+msgstr ""
+
 #: src-ui-wx/effectpanels/assist/SketchAssistPanel.cpp:123
 msgid "Canvas Hotkeys"
 msgstr ""
@@ -7395,7 +7420,7 @@ msgstr ""
 msgid "NOTE: Models are provided by the vendors, not by xLights. They are free to use in your layout, but the designs are copyrighted and not licensed for recreation or public distribution."
 msgstr ""
 
-#: src-ui-wx/import_export/VendorModelDialog.cpp:285 src-ui-wx/layout/ViewsModelsPanel.cpp:272 src-ui-wx/setup/ControllerModelDialog.cpp:2195 src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:354
+#: src-ui-wx/import_export/VendorModelDialog.cpp:285 src-ui-wx/layout/LayoutPanel.cpp:806 src-ui-wx/layout/ViewsModelsPanel.cpp:272 src-ui-wx/setup/ControllerModelDialog.cpp:2195 src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:354
 msgid "Filter models..."
 msgstr ""
 
@@ -8997,6 +9022,10 @@ msgstr ""
 
 #: src-ui-wx/layout/LayoutPanel.cpp:8399
 msgid "Enter New Segment Size:"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:844
+msgid "Filter groups..."
 msgstr ""
 
 #: src-ui-wx/layout/LayoutPanel.cpp:8445 src-ui-wx/layout/LayoutPanel.cpp:8458
@@ -15001,6 +15030,10 @@ msgstr ""
 
 #: src-ui-wx/sequencer/MainSequencer.cpp:291
 msgid "Suspend Render"
+msgstr ""
+
+#: src-ui-wx/sequencer/MainSequencer.cpp:333
+msgid "Filter props..."
 msgstr ""
 
 #: src-ui-wx/sequencer/MainSequencer.cpp:417

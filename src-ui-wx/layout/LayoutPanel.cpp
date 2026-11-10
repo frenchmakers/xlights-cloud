@@ -803,7 +803,7 @@ LayoutPanel::LayoutPanel(wxWindow* parent, xLightsFrame *xl, wxPanel* sequencer)
     wxBoxSizer* filterSizer = new wxBoxSizer(wxHORIZONTAL);
     ModelFilterCtrl = new wxSearchCtrl(new_panel, ID_TEXTCTRL_MODEL_FILTER,
         wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
-    ModelFilterCtrl->SetDescriptiveText("Filter models...");
+    ModelFilterCtrl->SetDescriptiveText(_("Filter models..."));
     ModelFilterCtrl->SetToolTip(wxFilterQuery::Hint());
     ModelFilterCtrl->ShowCancelButton(true);
     ModelFilterCtrl->Bind(wxEVT_TEXT_ENTER, &LayoutPanel::OnModelFilterTextChanged, this);
@@ -841,7 +841,7 @@ LayoutPanel::LayoutPanel(wxWindow* parent, xLightsFrame *xl, wxPanel* sequencer)
     wxBoxSizer* groupFilterSizer = new wxBoxSizer(wxHORIZONTAL);
     GroupFilterCtrl = new wxSearchCtrl(groups_panel_holder, ID_TEXTCTRL_GROUP_FILTER,
         wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
-    GroupFilterCtrl->SetDescriptiveText("Filter groups...");
+    GroupFilterCtrl->SetDescriptiveText(_("Filter groups..."));
     GroupFilterCtrl->SetToolTip(wxFilterQuery::Hint());
     GroupFilterCtrl->ShowCancelButton(true);
     GroupFilterCtrl->Bind(wxEVT_TEXT_ENTER, &LayoutPanel::OnGroupFilterTextChanged, this);

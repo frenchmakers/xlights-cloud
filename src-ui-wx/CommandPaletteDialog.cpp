@@ -307,7 +307,7 @@ CommandPaletteDialog::CommandPaletteDialog(wxWindow* parent, wxMenuBar* menuBar,
     wxFont searchFont = _searchCtrl->GetFont();
     searchFont.SetPointSize(searchFont.GetPointSize() + 2);
     _searchCtrl->SetFont(searchFont);
-    _searchCtrl->SetHint("Search commands and effects...");
+    _searchCtrl->SetHint(_("Search commands and effects..."));
 
 #ifdef __WXMAC__
     // Remove the macOS focus ring
