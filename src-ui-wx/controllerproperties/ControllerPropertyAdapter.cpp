@@ -187,7 +187,7 @@ void ControllerPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, M
 void ControllerPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid, ModelManager* modelManager, std::list<wxPGProperty*>& expandProperties) {
 
     wxPGProperty* p = propertyGrid->Append(new wxStringProperty("Name", "ControllerName", _controller.GetName()));
-    p->SetHelpString("This must be unique.");
+    p->SetHelpString(_("This must be unique."));
 
     propertyGrid->Append(new wxStringProperty("Description", "ControllerDescription", _controller.GetDescription()));
 
@@ -211,35 +211,35 @@ void ControllerPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid, Mode
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 65335);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("For controllers that don't support universes the Id can be used with some start channel addressing modes.");
+    p->SetHelpString(_("For controllers that don't support universes the Id can be used with some start channel addressing modes."));
 
     p = propertyGrid->Append(new wxBoolProperty("Auto Layout Models", "AutoLayout", _controller.IsAutoLayout()));
     p->SetEditor("CheckBox");
-    p->SetHelpString("Auto layout models causes xLights to move models around in the controllers channel range to optimise them. It also needs to be set to allow you to move modes in the visualiser between controllers.");
+    p->SetHelpString(_("Auto layout models causes xLights to move models around in the controllers channel range to optimise them. It also needs to be set to allow you to move modes in the visualiser between controllers."));
 
     p = propertyGrid->Append(new wxBoolProperty("Auto Upload Configuration", "AutoUpload", _controller.IsAutoUpload()));
     p->SetEditor("CheckBox");
-    p->SetHelpString("This option will send your controller configuration to the controller when you turn on output to lights. This is known to cause delays in turning on output to lights when controllers are not reachable.");
+    p->SetHelpString(_("This option will send your controller configuration to the controller when you turn on output to lights. This is known to cause delays in turning on output to lights when controllers are not reachable."));
 
     p = propertyGrid->Append(new wxBoolProperty("Auto Size", "AutoSize", _controller.IsAutoSize()));
     p->SetEditor("CheckBox");
-    p->SetHelpString("This option will cause xLights to dynamically resize the number of channels on the controller to ensure there are exactly enough for the models on the controller.");
+    p->SetHelpString(_("This option will cause xLights to dynamically resize the number of channels on the controller to ensure there are exactly enough for the models on the controller."));
 
     p = propertyGrid->Append(new wxBoolProperty("Full xLights Control", "FullxLightsControl", _controller.IsFullxLightsControl()));
     p->SetEditor("CheckBox");
-    p->SetHelpString("This option will when uploading erase the configuration of all unused ports on the controller per the configuration in xLights.");
+    p->SetHelpString(_("This option will when uploading erase the configuration of all unused ports on the controller per the configuration in xLights."));
 
     p = propertyGrid->Append(new wxUIntProperty("Default Port Brightness", "DefaultBrightnessUnderFullxLightsControl", _controller.GetDefaultBrightnessUnderFullControl()));
     p->SetAttribute("Min", 5);
     p->SetAttribute("Max", 100);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This option will set the brightness of all ports to this value unless specifically overriden by a model.");
+    p->SetHelpString(_("This option will set the brightness of all ports to this value unless specifically overriden by a model."));
 
     p = propertyGrid->Append(new wxFloatProperty("Default Port Gamma", "DefaultGammaUnderFullxLightsControl", _controller.GetDefaultGammaUnderFullControl()));
     p->SetAttribute("Min", 0.1F);
     p->SetAttribute("Max", 5.0F);
     p->SetEditor("SpinCtrlDouble");
-    p->SetHelpString("This option will set the Gamma of all ports to this value unless specifically overriden by a model.");
+    p->SetHelpString(_("This option will set the Gamma of all ports to this value unless specifically overriden by a model."));
 
     if (ACTIVETYPENAMES.IsEmpty()) {
         ACTIVETYPENAMES.push_back("Active");
@@ -247,15 +247,15 @@ void ControllerPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid, Mode
         ACTIVETYPENAMES.push_back("xLights Only");
     }
     p = propertyGrid->Append(new wxEnumProperty("Active", "Active", ACTIVETYPENAMES, wxArrayInt(), (int)_controller.GetActive()));
-    p->SetHelpString("When inactive no data is output and any upload to FPP or xSchedule will also not output to the lights. When xLights only it will output when played in xLights but again FPP and xSchedule will not output to the lights.");
+    p->SetHelpString(_("When inactive no data is output and any upload to FPP or xSchedule will also not output to the lights. When xLights only it will output when played in xLights but again FPP and xSchedule will not output to the lights."));
 
     p = propertyGrid->Append(new wxBoolProperty("Monitor", "Monitor", _controller.IsMonitoring()));
     p->SetEditor("CheckBox");
-    p->SetHelpString("When selected, the show player will monitor the connectivity to the controller via ping packets or other network traffic to make sure the controller is up and running.  Disabling can reduce network traffic as well as reduce load on the controller.");
+    p->SetHelpString(_("When selected, the show player will monitor the connectivity to the controller via ping packets or other network traffic to make sure the controller is up and running.  Disabling can reduce network traffic as well as reduce load on the controller."));
 
     p = propertyGrid->Append(new wxBoolProperty("Suppress Duplicate Frames", "SuppressDuplicates", _controller.IsSuppressDuplicateFrames()));
     p->SetEditor("CheckBox");
-    p->SetHelpString("When selected if a data packet is the same in a subsequent frame then xLights will not send the duplicate frame trusting that the controller will just reuse the previously sent data. This can reduce unnecessary network traffic.");
+    p->SetHelpString(_("When selected if a data packet is the same in a subsequent frame then xLights will not send the duplicate frame trusting that the controller will just reuse the previously sent data. This can reduce unnecessary network traffic."));
 
     ControllerCaps* caps = ControllerCaps::GetControllerConfig(&_controller);
     if (caps) {

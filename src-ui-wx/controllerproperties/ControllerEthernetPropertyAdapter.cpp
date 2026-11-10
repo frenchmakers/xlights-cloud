@@ -278,9 +278,9 @@ void ControllerEthernetPropertyAdapter::UpdateProperties(wxPropertyGrid* propert
         p->Hide(false);
         p->SetValue(ip);
         if (protocol == OUTPUT_ZCPP || protocol == OUTPUT_DDP) {
-            p->SetHelpString("This must be unique across all controllers.");
+            p->SetHelpString(_("This must be unique across all controllers."));
         } else {
-            p->SetHelpString("This should ideally be unique across all controllers.");
+            p->SetHelpString(_("This should ideally be unique across all controllers."));
         }
     } else {
         p->Hide(true);
@@ -299,7 +299,7 @@ void ControllerEthernetPropertyAdapter::UpdateProperties(wxPropertyGrid* propert
         p->Hide(false);
         p->SetValue(_ethernet.IsManaged());
         if (!_ethernet.IsManaged()) {
-            p->SetHelpString("This controller cannot be made managed until all other controllers with the same IP address are removed.");
+            p->SetHelpString(_("This controller cannot be made managed until all other controllers with the same IP address are removed."));
         } else {
             p->SetHelpString("");
         }
@@ -369,7 +369,7 @@ void ControllerEthernetPropertyAdapter::AddProperties(wxPropertyGrid* propertyGr
     p = propertyGrid->Append(new wxStringProperty("IP Address", "IP", ip));
 
     p = propertyGrid->Append(new wxStringProperty("FPP Proxy IP/Hostname", "FPPProxy", _ethernet.GetControllerFPPProxy()));
-    p->SetHelpString("This is typically the WIFI IP of a FPP instance that bridges two networks.");
+    p->SetHelpString(_("This is typically the WIFI IP of a FPP instance that bridges two networks."));
 
     auto protocols = GetEthernetProtocols(_ethernet);
     p = propertyGrid->Append(new wxEnumProperty("Protocol", "Protocol", protocols, EncodeChoices(protocols, protocol)));
@@ -386,7 +386,7 @@ void ControllerEthernetPropertyAdapter::AddProperties(wxPropertyGrid* propertyGr
     p->SetAttribute("Min", 0);
     p->SetAttribute("Max", 100);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("Some controllers can receive data from more than one source and will ignore one of the sources where this priority is lower.");
+    p->SetHelpString(_("Some controllers can receive data from more than one source and will ignore one of the sources where this priority is lower."));
 
     p = propertyGrid->Append(new wxStringProperty("Models", "Models", ""));
     p->ChangeFlag(wxPGFlags::ReadOnly, true);

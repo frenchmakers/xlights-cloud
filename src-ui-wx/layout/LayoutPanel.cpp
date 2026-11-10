@@ -590,7 +590,7 @@ public:
     NewModelBitmapButton(wxWindow *parent, const wxImage &img, int iconSize, const std::string &type)
         : wxBitmapButton(parent, wxID_ANY, wxBitmapBundle()), modelType(type),
           originalImage(img), originalDisabled(img.ConvertToDisabled()), originalPressed(img.ConvertToDisabled(128)) {
-        SetToolTip("Create new " + type);
+        SetToolTip(wxString::Format(_("Create new %s"), type));
         UpdateIconSize(iconSize);
     }
     virtual ~NewModelBitmapButton() {}
@@ -1094,7 +1094,7 @@ LayoutPanel::LayoutPanel(wxWindow* parent, xLightsFrame *xl, wxPanel* sequencer)
 
     LabelDirectoriesFooter = new wxStaticText(layoutControlsBar, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, 0);
     ButtonOpenShowFolder = new wxBitmapButton(layoutControlsBar, wxID_ANY, wxArtProvider::GetBitmapBundle("wxART_FOLDER_OPEN", wxART_BUTTON));
-    ButtonOpenShowFolder->SetToolTip("Select Show Folder");
+    ButtonOpenShowFolder->SetToolTip(_("Select Show Folder"));
     ButtonOpenShowFolder->Bind(wxEVT_BUTTON, [this](wxCommandEvent& e) { xlights->OpenShowDirectoriesDialog(); });
     {
         wxBoxSizer* lcbSizer = new wxBoxSizer(wxHORIZONTAL);
@@ -1227,7 +1227,7 @@ void LayoutPanel::Reset()
     ChoiceLayoutGroups->Append("Default");
     ChoiceLayoutGroups->Append("All Models");
     ChoiceLayoutGroups->Append("Unassigned");
-    ChoiceLayoutGroups->SetToolTip("Select a preview or model group to display in the Layout Preview window. Choose 'Default' for models assigned to the default preview, 'All Models' to show all models, or a specific group to filter displayed models.");
+    ChoiceLayoutGroups->SetToolTip(_("Select a preview or model group to display in the Layout Preview window. Choose 'Default' for models assigned to the default preview, 'All Models' to show all models, or a specific group to filter displayed models."));
     for (const auto& [name, grp] : xlights->LayoutGroups) {
         ChoiceLayoutGroups->Append(name);
     }
@@ -4351,7 +4351,7 @@ void LayoutPanel::SetupPropGrid(BaseObject *base_object) {
         if (dynamic_cast<SubModel*>(base_object) != nullptr) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("SubModel names cannot be changed here.");
+            p->SetHelpString(_("SubModel names cannot be changed here."));
         }
     } else {
         propertyEditor->Append(new wxStringProperty("Name", "ObjectName", base_object->name));
@@ -4426,7 +4426,7 @@ void LayoutPanel::SetupPropGrid(BaseObject *base_object) {
     }
 
     if (base_object->IsFromBase()) {
-        propertyEditor->SetToolTip("This model comes from the base folder and its properties cannot be edited.");
+        propertyEditor->SetToolTip(_("This model comes from the base folder and its properties cannot be edited."));
         auto it = propertyEditor->GetIterator(wxPG_ITERATE_ALL, nullptr);
         while (!it.AtEnd())
         {
@@ -13155,7 +13155,7 @@ void LayoutPanel::OnItemContextMenu(wxTreeListEvent& event)
     PopupMenu(&mnuContext);
 }
 
-static inline void SetToolTipForTreeList(wxTreeListCtrl *tv, const std::string &tip) {
+static inline void SetToolTipForTreeList(wxTreeListCtrl *tv, const wxString &tip) {
 #ifdef __WXMSW__
     if (tip == "") {
         tv->GetView()->UnsetToolTip();
@@ -13310,17 +13310,17 @@ void LayoutPanel::HandleSelectionChanged() {
         int smSize = selectedTreeSubModels.size();
         int totalSelections = mSize + smSize + gSize;
 
-        std::string tooltip = "";
+        wxString tooltip;
 
         if (totalSelections > 1) {
-            tooltip = wxString::Format("Selected Items:\n -Groups: %d\n -Models: %d\n -SubModels: %d\n\nTotal Nodes: %d", gSize, mSize, smSize, calculateNodeCountOfSelected());
+            tooltip = wxString::Format(_("Selected Items:\n -Groups: %d\n -Models: %d\n -SubModels: %d\n\nTotal Nodes: %d"), gSize, mSize, smSize, calculateNodeCountOfSelected());
             showBackgroundProperties();
         } else if (gSize == 1) {
             Model* model = GetModelFromTreeItem(selectedTreeGroups[0]);
             if (model != nullptr && model->IsFromBase()) {
-                tooltip = "From Base Show Folder";
+                tooltip = _("From Base Show Folder");
             } else {
-                tooltip = wxString::Format("Total Nodes in Group: %d", calculateNodeCountOfSelected());
+                tooltip = wxString::Format(_("Total Nodes in Group: %d"), calculateNodeCountOfSelected());
             }
             ShowPropGrid(false);
             // The tree text is a display label (it can differ from the stored name), so
@@ -13338,9 +13338,9 @@ void LayoutPanel::HandleSelectionChanged() {
         } else if (mSize == 1) {
             Model* model = GetModelFromTreeItem(selectedTreeModels[0]);
             if (model != nullptr) {
-                tooltip = xlights->GetChannelToControllerMapping(model->GetNumberFromChannelString(model->ModelStartChannel)) + "Nodes: " + wxString::Format("%d", (int)model->GetNodeCount()).ToStdString();
+                tooltip = wxString::FromUTF8(xlights->GetChannelToControllerMapping(model->GetNumberFromChannelString(model->ModelStartChannel))) + wxString::Format(_("Nodes: %d"), (int)model->GetNodeCount());
                 if (model->IsFromBase()) {
-                    tooltip += "\nFrom Base Show Folder";
+                    tooltip += "\n" + _("From Base Show Folder");
                 }
             } else {
                 spdlog::critical("LayoutPanel::HandleSelectionChanged Model was selected and now is null, this should not have happened.");
@@ -13352,13 +13352,13 @@ void LayoutPanel::HandleSelectionChanged() {
                     if (!tooltip.empty()) {
                         tooltip += "\n";
                     }
-                    tooltip += "Warning: Model is perhaps flipped left to right.";
+                    tooltip += _("Warning: Model is perhaps flipped left to right.");
                     break;
                 case TwoPointScreenLocation::FlipDirection::TopBottom:
                     if (!tooltip.empty()) {
                         tooltip += "\n";
                     }
-                    tooltip += "Warning: Model is perhaps flipped top to bottom.";
+                    tooltip += _("Warning: Model is perhaps flipped top to bottom.");
                     break;
                 case TwoPointScreenLocation::FlipDirection::None:
                     break;

@@ -136,7 +136,7 @@ void E131OutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, C
         if (c->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Universes Count cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Universes Count cannot be changed when an output is set to Auto Size."));
         } else {
             p->ChangeFlag(wxPGFlags::ReadOnly, false);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNTEXT));
@@ -167,7 +167,7 @@ void E131OutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, C
         if (ce->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Individual Sizes cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Individual Sizes cannot be changed when an output is set to Auto Size."));
         } else {
             bool v = !ce->AllSameSize() || ce->IsForcingSizes() || ce->IsUniversePerString();
             p->SetValue(v);
@@ -215,7 +215,7 @@ void E131OutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, C
             if (ce->IsAutoSize()) {
                 p->ChangeFlag(wxPGFlags::ReadOnly, true);
                 p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-                p->SetHelpString("Channels cannot be changed when an output is set to Auto Size.");
+                p->SetHelpString(_("Channels cannot be changed when an output is set to Auto Size."));
             } else {
                 p->SetEditor("SpinCtrl");
                 p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -285,7 +285,7 @@ void ArtNetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid,
         if (c->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Universes Count cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Universes Count cannot be changed when an output is set to Auto Size."));
         } else {
             p->SetEditor("SpinCtrl");
             p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -316,7 +316,7 @@ void ArtNetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid,
         if (ce->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Individual Sizes cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Individual Sizes cannot be changed when an output is set to Auto Size."));
         } else {
             bool v = !ce->AllSameSize() || ce->IsForcingSizes() || ce->IsUniversePerString();
             p->SetValue(v);
@@ -364,7 +364,7 @@ void ArtNetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid,
             if (ce->IsAutoSize()) {
                 p->ChangeFlag(wxPGFlags::ReadOnly, true);
                 p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-                p->SetHelpString("Channels cannot be changed when an output is set to Auto Size.");
+                p->SetHelpString(_("Channels cannot be changed when an output is set to Auto Size."));
             } else {
                 p->SetEditor("SpinCtrl");
                 p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -382,7 +382,7 @@ void ArtNetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid,
 void ArtNetOutputPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid, wxPGProperty* before, Controller* c, bool allSameSize, std::list<wxPGProperty*>& expandProperties) {
     auto p = propertyGrid->Insert(before, new wxBoolProperty("Force source port", "ForceSourcePort", _artnet.isForceSourcePort()));
     p->SetEditor("CheckBox");
-    p->SetHelpString("You should only set this option if your ArtNet device is not seeing the ArtNet packets because it strictly requires that packets come from port 0x1936.");
+    p->SetHelpString(_("You should only set this option if your ArtNet device is not seeing the ArtNet packets because it strictly requires that packets come from port 0x1936."));
 
     p = propertyGrid->Insert(before, new wxUIntProperty("Start Universe", "Universe", _artnet.GetUniverse()));
     p->SetAttribute("Min", 0);
@@ -443,7 +443,7 @@ void DDPOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, Co
         if (c->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Channels cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Channels cannot be changed when an output is set to Auto Size."));
         } else {
             p->SetEditor("SpinCtrl");
             p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -458,12 +458,12 @@ void DDPOutputPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid, wxPGP
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 1440);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("It would be very rare that you would ever want to change this from the default.");
+    p->SetHelpString(_("It would be very rare that you would ever want to change this from the default."));
 
     if (c == nullptr || c->GetVendor() != "FPP") {
         p = propertyGrid->Insert(before, new wxBoolProperty("Keep Channel Numbers", "KeepChannelNumbers", _ddp.IsKeepChannelNumbers()));
         p->SetEditor("CheckBox");
-        p->SetHelpString("When not selected DDP data arrives at each controller looking like it starts at channel 1. When selected it arrives with the xLights channel number.");
+        p->SetHelpString(_("When not selected DDP data arrives at each controller looking like it starts at channel 1. When selected it arrives with the xLights channel number."));
     }
 
     p = propertyGrid->Insert(before, new wxUIntProperty("Channels", "Channels", _ddp.GetChannels()));
@@ -520,7 +520,7 @@ void KinetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, 
         if (c->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Universes Count cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Universes Count cannot be changed when an output is set to Auto Size."));
         } else {
             p->SetEditor("SpinCtrl");
             p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -542,7 +542,7 @@ void KinetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, 
         if (ce->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Individual Sizes cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Individual Sizes cannot be changed when an output is set to Auto Size."));
         } else {
             bool v = !ce->AllSameSize() || ce->IsForcingSizes() || ce->IsUniversePerString();
             p->SetValue(v);
@@ -590,7 +590,7 @@ void KinetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, 
             if (ce->IsAutoSize()) {
                 p->ChangeFlag(wxPGFlags::ReadOnly, true);
                 p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-                p->SetHelpString("Channels cannot be changed when an output is set to Auto Size.");
+                p->SetHelpString(_("Channels cannot be changed when an output is set to Auto Size."));
             } else {
                 p->SetEditor("SpinCtrl");
                 p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -610,7 +610,7 @@ void KinetOutputPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid, wxP
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 2);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("Kinet protocol version.");
+    p->SetHelpString(_("Kinet protocol version."));
 
     p = propertyGrid->Insert(before, new wxUIntProperty("Start Port", "Universe", _kinet.GetUniverse()));
     p->SetAttribute("Min", 0);
@@ -657,7 +657,7 @@ void ZCPPOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, C
         if (c->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Channels cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Channels cannot be changed when an output is set to Auto Size."));
         } else {
             p->SetEditor("SpinCtrl");
             p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -745,7 +745,7 @@ void TwinklyOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid
         if (c->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Channels cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Channels cannot be changed when an output is set to Auto Size."));
         } else {
             p->SetEditor("SpinCtrl");
             p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -760,7 +760,7 @@ void TwinklyOutputPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid, w
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 65535);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("Twinkly normally listens on port 80 but you may want to change the port if using Artnet To Twinkly.");
+    p->SetHelpString(_("Twinkly normally listens on port 80 but you may want to change the port if using Artnet To Twinkly."));
 
     p = propertyGrid->Insert(before, new wxUIntProperty("Channels", "Channels", _twinkly.GetChannels()));
     p->SetAttribute("Min", 1);
@@ -805,7 +805,7 @@ void OPCOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* propertyGrid, Co
         if (ce->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Channels cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Channels cannot be changed when an output is set to Auto Size."));
         } else {
             p->SetEditor("SpinCtrl");
             p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -851,7 +851,7 @@ void xxxEthernetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* property
         if (c->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Port Count cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Port Count cannot be changed when an output is set to Auto Size."));
         } else {
             p->SetEditor("SpinCtrl");
             p->ChangeFlag(wxPGFlags::ReadOnly, false);
@@ -873,7 +873,7 @@ void xxxEthernetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* property
         if (ce->IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-            p->SetHelpString("Individual Sizes cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Individual Sizes cannot be changed when an output is set to Auto Size."));
         } else {
             bool v = !ce->AllSameSize() || ce->IsForcingSizes() || ce->IsUniversePerString();
             p->SetValue(v);
@@ -921,7 +921,7 @@ void xxxEthernetOutputPropertyAdapter::UpdateProperties(wxPropertyGrid* property
             if (ce->IsAutoSize()) {
                 p->ChangeFlag(wxPGFlags::ReadOnly, true);
                 p->SetTextColour(wxSystemSettings::GetColour(wxSYS_COLOUR_GRAYTEXT));
-                p->SetHelpString("Channels cannot be changed when an output is set to Auto Size.");
+                p->SetHelpString(_("Channels cannot be changed when an output is set to Auto Size."));
             } else {
                 p->SetEditor("SpinCtrl");
                 p->ChangeFlag(wxPGFlags::ReadOnly, false);

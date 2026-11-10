@@ -877,7 +877,7 @@ xLightsImportChannelMapDialog::xLightsImportChannelMapDialog(xLightsFrame* paren
     StashWarningButton = new wxBitmapButton(Panel1, ID_BITMAPBUTTON_STASH,
         wxArtProvider::GetBitmapBundle(wxART_WARNING, wxART_BUTTON),
         wxDefaultPosition, wxDefaultSize, wxBU_AUTODRAW | wxBORDER_NONE);
-    StashWarningButton->SetToolTip("Stashed mappings exist — click to view");
+    StashWarningButton->SetToolTip(_("Stashed mappings exist — click to view"));
     StashWarningButton->Hide();
     FlexGridSizer10->Add(StashWarningButton, 0, wxBOTTOM | wxRIGHT | wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer9->Add(FlexGridSizer10, 1, wxALIGN_LEFT, 5);
@@ -5342,7 +5342,7 @@ void xLightsImportChannelMapDialog::SetImportMediaTooltip() {
         return;
     }
 
-    wxString toolTip = "Available media will be imported into:\n";
+    wxString toolTip = _("Available media will be imported into:") + "\n";
 
     // add configured paths
     wxString paths = wxString::Format("\n  - Faces: %s", _xsqPkg->GetImportOptions()->GetDir(MediaTargetDir::FACES_DIR));

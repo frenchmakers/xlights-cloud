@@ -98,7 +98,7 @@ void CustomPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Out
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 100);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This is typically the number of connections from the prop to your controller.");
+    p->SetHelpString(_("This is typically the number of connections from the prop to your controller."));
 
     if (_custom.GetNumStrings() == 1) {
         // cant set start node
@@ -143,19 +143,19 @@ void CustomPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Out
     p->SetAttribute("Min", 10);
     p->SetAttribute("Max", 500);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("Scale of the background image as a percentage of the model size (100 = fit model bounds).");
+    p->SetHelpString(_("Scale of the background image as a percentage of the model size (100 = fit model bounds)."));
 
     p = grid->Append(new wxUIntProperty("Background Image Brightness %", "CustomBkgBrightness", _custom.GetCustomBkgBrightness()));
     p->SetAttribute("Min", 0);
     p->SetAttribute("Max", 100);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("Brightness of the background image (0 = black, 100 = full brightness).");
+    p->SetHelpString(_("Brightness of the background image (0 = black, 100 = full brightness)."));
 
     p = grid->Append(new wxUIntProperty("Background Image Transparency %", "CustomBkgTransparency", _custom.GetCustomBkgTransparency()));
     p->SetAttribute("Min", 0);
     p->SetAttribute("Max", 100);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("Transparency of the background image (0 = fully opaque, 100 = fully invisible). Increase this so props/pixels positioned behind the image show through it.");
+    p->SetHelpString(_("Transparency of the background image (0 = fully opaque, 100 = fully invisible). Increase this so props/pixels positioned behind the image show through it."));
 }
 
 int CustomPropertyAdapter::OnPropertyGridChange(wxPropertyGridInterface* grid, wxPropertyGridEvent& event) {

@@ -244,7 +244,7 @@ void AddMotorProperties(wxPropertyGridInterface* grid, const DmxMotor& motor) {
     p->SetAttribute("Min", 0);
     p->SetAttribute("Max", 512);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("Optional DMX channel that scales the Slew Limit (0-255 -> 0-100% of the Slew Limit). Leave at 0 to always move at the full Slew Limit.");
+    p->SetHelpString(_("Optional DMX channel that scales the Slew Limit (0-255 -> 0-100% of the Slew Limit). Leave at 0 to always move at the full Slew Limit."));
 
     p = grid->Append(new wxBoolProperty("Reverse Rotation", base_name + "Reverse", motor.GetReverse()));
     p->SetAttribute("UseCheckbox", true);

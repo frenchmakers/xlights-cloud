@@ -110,8 +110,8 @@ HousePreviewPanel::HousePreviewPanel(wxWindow* parent, xLightsFrame* frame,
     Rewind10Button->SetBitmap(wxArtProvider::GetBitmapBundle("xlART_REWIND10", wxART_TOOLBAR));
     FastForward10Button->SetBitmap(wxArtProvider::GetBitmapBundle("xlART_FFORWARD10", wxART_TOOLBAR));
 
-    Rewind10Button->SetToolTip("Rewind 10 seconds.");
-    FastForward10Button->SetToolTip("Fast forward 10 seconds.");
+    Rewind10Button->SetToolTip(_("Rewind 10 seconds."));
+    FastForward10Button->SetToolTip(_("Fast forward 10 seconds."));
 
     Fit();
     Layout();

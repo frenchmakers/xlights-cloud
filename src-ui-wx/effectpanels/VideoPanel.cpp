@@ -443,9 +443,9 @@ void VideoPanel::ValidateWindow() {
             }
         }
         if (!file.empty() && !fileExists) {
-            SetToolTip("File " + file + " does not exist.");
+            SetToolTip(wxString::Format(_("File %s does not exist."), file));
         } else if (!file.empty() && !IsXmlSafe(file)) {
-            SetToolTip("File " + file + " contains characters in the path or filename that will cause issues in xLights. Please rename it.");
+            SetToolTip(wxString::Format(_("File %s contains characters in the path or filename that will cause issues in xLights. Please rename it."), file));
         } else {
             SetToolTip(file);
         }

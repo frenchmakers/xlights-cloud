@@ -41,7 +41,7 @@ void StarPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Outpu
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 640);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This is typically the number of connections from the prop to your controller.");
+    p->SetHelpString(_("This is typically the number of connections from the prop to your controller."));
 
     if (_star.IsSingleNode()) {
         p = grid->Append(new wxUIntProperty("Lights/String", "StarLightCount", _star.GetNodesPerString()));
@@ -53,7 +53,7 @@ void StarPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Outpu
         p->SetAttribute("Min", 1);
         p->SetAttribute("Max", 10000);
         p->SetEditor("SpinCtrl");
-        p->SetHelpString("This is typically the total number of pixels per #String.");
+        p->SetHelpString(_("This is typically the total number of pixels per #String."));
     }
 
     p = grid->Append(new wxUIntProperty("# Points", "StarStrandCount", _star.GetStarPoints()));

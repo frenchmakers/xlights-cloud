@@ -1572,7 +1572,7 @@ void SubModelsPanel::Symmetrize()
     auto* orderBox = new wxRadioBox(&dlg, wxID_ANY, "Build Order", wxDefaultPosition, wxDefaultSize,
                                     2, orderChoices, 1, wxRA_SPECIFY_COLS);
     orderBox->SetSelection(savedBottomToTop ? 1 : 0);
-    orderBox->SetToolTip("Top to Bottom: generated strands are added after original");
+    orderBox->SetToolTip(_("Top to Bottom: generated strands are added after original"));
 
     auto* dosRow = new wxBoxSizer(wxHORIZONTAL);
     dosRow->Add(new wxStaticText(&dlg, wxID_ANY, "Degree of Symmetry:"), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, 6);

@@ -371,7 +371,7 @@ void ModelPropertyAdapter::AddProperties(wxPropertyGridInterface* grid, OutputMa
         p->SetAttribute("UseCheckbox", true);
         p->Enable(_model.GetNumStrings() > 1 && (_model.GetControllerName() == "" || _model._controller == 0));
         if (_model.GetNumStrings() > 1 && (_model.GetControllerName() != "" && _model._controller != 0)) {
-            p->SetHelpString("Individual start channels cannot be set if you have assigned a model to a controller rather than using start channels.");
+            p->SetHelpString(_("Individual start channels cannot be set if you have assigned a model to a controller rather than using start channels."));
         } else {
             p->SetHelpString("");
         }
@@ -462,7 +462,7 @@ void ModelPropertyAdapter::AddProperties(wxPropertyGridInterface* grid, OutputMa
         FormatAliasesLabel(_model),
         "Aliases", CLICK_TO_EDIT, 6));
     grid->LimitPropertyEditing(p);
-    p->SetHelpString("Aliases are used in mapping to provide alternate names for this model which might match a model in a sequence you are importing from. To use it use the Auto Map button.");
+    p->SetHelpString(_("Aliases are used in mapping to provide alternate names for this model which might match a model in a sequence you are importing from. To use it use the Auto Map button."));
 
     auto modelGroups = _model.GetModelManager().GetGroupsContainingModel(&_model);
     if (modelGroups.size() > 0) {
@@ -518,7 +518,7 @@ void ModelPropertyAdapter::AddProperties(wxPropertyGridInterface* grid, OutputMa
         }
         grid->AppendIn(p, new wxColourProperty("Color", "ModelStringColor", v));
         if (NODE_TYPES[i] == "Node Single Color") {
-            grid->GetPropertyByName("ModelStringType")->SetHelpString("This represents a string of single color LEDS which are individually controlled. These are very uncommon.");
+            grid->GetPropertyByName("ModelStringType")->SetHelpString(_("This represents a string of single color LEDS which are individually controlled. These are very uncommon."));
         }
     } else if (NODE_TYPES[i] == "Superstring") {
         auto& ssc = _model.GetSuperStringColours();
@@ -545,28 +545,28 @@ void ModelPropertyAdapter::AddProperties(wxPropertyGridInterface* grid, OutputMa
 
     p = grid->Append(new wxPropertyCategory("Appearance", "ModelAppearance"));
     sp = grid->AppendIn(p, new wxBoolProperty("Active", "Active", _model.IsActive()));
-    sp->SetHelpString("If unchecked the model will not be shown in the layout screen.");
+    sp->SetHelpString(_("If unchecked the model will not be shown in the layout screen."));
     sp->SetAttribute("UseCheckbox", true);
     sp = grid->AppendIn(p, new wxUIntProperty("Pixel Size", "ModelPixelSize", _model.GetPixelSize()));
     sp->SetAttribute("Min", 1);
     sp->SetAttribute("Max", 300);
     sp->SetEditor("SpinCtrl");
-    sp->SetHelpString("By increasing the pixel size, the appearance of the element can be made to display a bigger size.");
+    sp->SetHelpString(_("By increasing the pixel size, the appearance of the element can be made to display a bigger size."));
 
     sp = grid->AppendIn(p, new wxEnumProperty("Pixel Style", "ModelPixelStyle", PIXEL_STYLES, wxArrayInt(), (int)_model.GetPixelStyle()));
-    sp->SetHelpString("A visual representation of a pixel.");
+    sp->SetHelpString(_("A visual representation of a pixel."));
     sp = grid->AppendIn(p, new wxUIntProperty("Transparency", "ModelPixelTransparency", _model.GetTransparency()));
-    sp->SetHelpString("Adjust how opaque the element is on the display.");
+    sp->SetHelpString(_("Adjust how opaque the element is on the display."));
     sp->SetAttribute("Min", 0);
     sp->SetAttribute("Max", 100);
     sp->SetEditor("SpinCtrl");
     sp = grid->AppendIn(p, new wxUIntProperty("Black Transparency", "ModelPixelBlackTransparency", _model.GetBlackTransparency()));
-    sp->SetHelpString("Adjust how transparent the element is on the display.");
+    sp->SetHelpString(_("Adjust how transparent the element is on the display."));
     sp->SetAttribute("Min", 0);
     sp->SetAttribute("Max", 100);
     sp->SetEditor("SpinCtrl");
     sp = grid->AppendIn(p, new wxColourProperty("Tag Color", "ModelTagColour", xlColorToWxColour(_model.GetTagColour())));
-    sp->SetHelpString("A visual color assigned to the model in the model list.");
+    sp->SetHelpString(_("A visual color assigned to the model in the model list."));
     UpdateControllerProperties(grid);
     DisableUnusedProperties(grid);
 
@@ -608,7 +608,7 @@ void ModelPropertyAdapter::UpdateProperties(wxPropertyGridInterface* grid, Outpu
         if (grid->GetPropertyByName("ModelIndividualStartChannels") != nullptr) {
             grid->GetPropertyByName("ModelIndividualStartChannels")->Enable(_model.GetNumStrings() > 1 && (_model.GetControllerName() == "" || _model._controller == 0));
             if (_model.GetNumStrings() > 1 && (_model.GetControllerName() != "" && _model._controller != 0)) {
-                grid->GetPropertyByName("ModelIndividualStartChannels")->SetHelpString("Individual start channels cannot be set if you have assigned a model to a controller rather than using start channels.");
+                grid->GetPropertyByName("ModelIndividualStartChannels")->SetHelpString(_("Individual start channels cannot be set if you have assigned a model to a controller rather than using start channels."));
             } else {
                 grid->GetPropertyByName("ModelIndividualStartChannels")->SetHelpString("");
             }
@@ -631,7 +631,7 @@ void ModelPropertyAdapter::UpdateProperties(wxPropertyGridInterface* grid, Outpu
                 grid->GetPropertyByName("ModelStringColor")->Enable();
             }
             if (NODE_TYPES[i] == "Node Single Color") {
-                grid->GetPropertyByName("ModelStringType")->SetHelpString("This represents a string of single color LEDS which are individually controlled. These are very uncommon.");
+                grid->GetPropertyByName("ModelStringType")->SetHelpString(_("This represents a string of single color LEDS which are individually controlled. These are very uncommon."));
             } else {
                 grid->GetPropertyByName("ModelStringType")->SetHelpString("");
             }
@@ -720,7 +720,7 @@ void ModelPropertyAdapter::AddControllerProperties(wxPropertyGridInterface* grid
 
             sp = grid->AppendIn(p, new wxBoolProperty("Use Smart Remote", "UseSmartRemote", _model.IsCtrlPropertySet(CtrlProps::USE_SMART_REMOTE)));
             sp->SetAttribute("UseCheckbox", true);
-            p->SetHelpString("Enable Smart Remote for this Model.");
+            p->SetHelpString(_("Enable Smart Remote for this Model."));
 
             if (_model.IsCtrlPropertySet(CtrlProps::USE_SMART_REMOTE)) {
                 if (_model.GetSmartRemote() != 0) {
@@ -747,12 +747,12 @@ void ModelPropertyAdapter::AddControllerProperties(wxPropertyGridInterface* grid
                     sp = grid->AppendIn(p, new wxUIntProperty("Max Cascade Remotes", "MaxCascadeRemotes", _model.GetSRMaxCascade()));
                     sp->SetAttribute("Min", 1);
                     sp->SetAttribute("Max", smartRemoteCount);
-                    p->SetHelpString("This is the number of smart remotes on a chain to use so if start is B and this is 2 then B and C remotes will be used.");
+                    p->SetHelpString(_("This is the number of smart remotes on a chain to use so if start is B and this is 2 then B and C remotes will be used."));
                     sp->SetEditor("SpinCtrl");
 
                     sp = grid->AppendIn(p, new wxBoolProperty("Cascade On Port", "CascadeOnPort", _model.GetSRCascadeOnPort()));
                     sp->SetAttribute("UseCheckbox", true);
-                    p->SetHelpString("When selected order is 1A 1B 1C etc. When not selected order is 1A 2A 3A 4A 1B etc.");
+                    p->SetHelpString(_("When selected order is 1A 1B 1C etc. When not selected order is 1A 2A 3A 4A 1B etc."));
                 }
             }
         }
@@ -774,15 +774,15 @@ void ModelPropertyAdapter::AddControllerProperties(wxPropertyGridInterface* grid
         sp->SetAttribute("Min", 1);
         sp->SetAttribute("Max", LOR_ENHANCED_MAX_UNIT);
         sp->SetEditor("SpinCtrl");
-        sp->SetHelpString("The LOR unit ID the model starts on. A string with more pixels than the rest of the unit carries on into the next unit ID, and each further string of the model starts on the next port's unit ID.");
+        sp->SetHelpString(_("The LOR unit ID the model starts on. A string with more pixels than the rest of the unit carries on into the next unit ID, and each further string of the model starts on the next port's unit ID."));
         sp = grid->AppendIn(p, new wxUIntProperty("Start Pixel", "ModelControllerConnectionLORStartPixel", LOREnhancedPixelFromChannel(ch)));
         sp->SetAttribute("Min", 1);
         sp->SetAttribute("Max", LOR_ENHANCED_PIXELS_PER_UNIT);
         sp->SetEditor("SpinCtrl");
-        sp->SetHelpString("The pixel on the LOR unit where the model starts.");
+        sp->SetHelpString(_("The pixel on the LOR unit where the model starts."));
         sp = grid->AppendIn(p, new wxBoolProperty("340 Pixels Per Port", "ModelControllerConnectionLOR340", _model.GetControllerLORPortPixels() == 340));
         sp->SetAttribute("UseCheckbox", true);
-        sp->SetHelpString("The controller's ports are set for 340 pixels, so each port answers to two unit IDs and each string of the model starts two unit IDs after the one before.");
+        sp->SetHelpString(_("The controller's ports are set for 340 pixels, so each port answers to two unit IDs and each string of the model starts two unit IDs after the one before."));
         if (_model.GetNumPhysicalStrings() > 1) {
             // the unit IDs each string lands on, as the upload configures them
             std::string ids;
@@ -794,7 +794,7 @@ void ModelPropertyAdapter::AddControllerProperties(wxPropertyGridInterface* grid
             }
             sp = grid->AppendIn(p, new wxStringProperty("String Unit IDs", "ModelControllerConnectionLORStringUnits", ids));
             sp->ChangeFlag(wxPGFlags::ReadOnly, true);
-            sp->SetHelpString("The unit ID each string of the model is on, in string order. A string that carries on into another unit ID shows it after a +.");
+            sp->SetHelpString(_("The unit ID each string of the model is on, in string order. A string that carries on into another unit ID shows it after a +."));
         }
         wxArrayString csWx;
         for (const auto& s : cs) csWx.Add(wxString(s));
@@ -960,7 +960,7 @@ void ModelPropertyAdapter::UpdateControllerProperties(wxPropertyGridInterface* g
             if (caps != nullptr && caps->GetMaxPixelPort() == 0 && caps->GetMaxSerialPort() == 0) {
                 // we let this be 0
             } else {
-                p->SetHelpString("When using controller name instead of start channels then port must be specified if the controller has ports.");
+                p->SetHelpString(_("When using controller name instead of start channels then port must be specified if the controller has ports."));
                 p->SetBackgroundColour(*wxRED);
             }
         } else {
@@ -972,7 +972,7 @@ void ModelPropertyAdapter::UpdateControllerProperties(wxPropertyGridInterface* g
     p = grid->GetPropertyByName("ModelControllerConnectionProtocol");
     if (p != nullptr) {
         if (_model.GetControllerName() != "" && _model._controller != 0 && (_model.GetControllerPort() == 0 || _model.GetControllerProtocol() == "")) {
-            p->SetHelpString("When using controller name instead of start channels then protocol must be specified.");
+            p->SetHelpString(_("When using controller name instead of start channels then protocol must be specified."));
             p->SetBackgroundColour(*wxRED);
         } else {
             p->SetHelpString("");

@@ -30,7 +30,7 @@ void IciclesPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Ou
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 100);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This is typically the number of connections from the prop to your controller.");
+    p->SetHelpString(_("This is typically the number of connections from the prop to your controller."));
 
     if (_icicles.IsSingleNode()) {
         p = grid->Append(new wxUIntProperty("Lights/String", "IciclesLights", _icicles.GetLightsPerString()));
@@ -42,7 +42,7 @@ void IciclesPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Ou
         p->SetAttribute("Min", 1);
         p->SetAttribute("Max", 2000);
         p->SetEditor("SpinCtrl");
-        p->SetHelpString("This is typically the total number of pixels per #String.");
+        p->SetHelpString(_("This is typically the total number of pixels per #String."));
     }
 
     p = grid->Append(new wxBoolProperty("Alternate Nodes", "AlternateNodes", _icicles.HasAlternateNodes()));

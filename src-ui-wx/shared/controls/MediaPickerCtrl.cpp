@@ -53,7 +53,7 @@ MediaPickerCtrl::MediaPickerCtrl(wxWindow* parent, wxWindowID id,
     wxBitmap clearBmp = wxArtProvider::GetBitmap(wxART_DELETE, wxART_BUTTON);
     _clearButton = new wxBitmapButton(this, wxID_ANY, clearBmp,
                                       wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
-    _clearButton->SetToolTip("Clear selection");
+    _clearButton->SetToolTip(_("Clear selection"));
     sizer->Add(_clearButton, 0, wxALIGN_CENTER_VERTICAL);
 
     SetSizer(sizer);

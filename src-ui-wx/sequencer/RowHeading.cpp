@@ -291,7 +291,7 @@ void RowHeading::ProcessTooltip(wxMouseEvent& event)
             }
             if (e->GetType() == ElementType::ELEMENT_TYPE_MODEL) {
                 if (!tip.empty()) tip += "\n";
-                tip += "Double-click: show/hide submodels\nShift+double-click: show/hide submodels and strands";
+                tip += _("Double-click: show/hide submodels\nShift+double-click: show/hide submodels and strands");
             }
             if (GetToolTipText() != tip) {
                 SetToolTip(tip);

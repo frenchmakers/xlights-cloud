@@ -114,10 +114,10 @@ void ControllerSerialPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid
             portStr = port.substr(port.find(":") + 1);
         }
         p = propertyGrid->Append(new wxStringProperty("IP Address", "IP", ip));
-        p->SetHelpString("FPP IP address or host name.");
+        p->SetHelpString(_("FPP IP address or host name."));
 
         p = propertyGrid->Append(new wxStringProperty("FPP Proxy IP/Hostname", "FPPProxy", _serial.GetControllerFPPProxy()));
-        p->SetHelpString("This is typically the WIFI IP of a FPP instance that bridges two networks.");
+        p->SetHelpString(_("This is typically the WIFI IP of a FPP instance that bridges two networks."));
 
         wxPGChoices ports;
         for (int x = 0; x < 6; x++) {
@@ -164,7 +164,7 @@ void ControllerSerialPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid
     } else {
         auto portChoices = __serialPorts;
         p = propertyGrid->Append(new wxEnumProperty("Port", "Port", portChoices, EncodeChoices(portChoices, port)));
-        p->SetHelpString("This must be unique across all controllers.");
+        p->SetHelpString(_("This must be unique across all controllers."));
 
         auto protocols = GetSerialProtocols(_serial);
         propertyGrid->Append(new wxEnumProperty("Protocol", "Protocol", protocols, EncodeChoices(protocols, protocol)));
@@ -175,7 +175,7 @@ void ControllerSerialPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid
             if (!serialOutput->AllowsBaudRateSetting()) {
                 p->ChangeFlag(wxPGFlags::ReadOnly, true);
                 p->SetBackgroundColour(*wxLIGHT_GREY);
-                p->SetHelpString("Speed is fixed for this protocol.");
+                p->SetHelpString(_("Speed is fixed for this protocol."));
             }
         }
     }
@@ -197,7 +197,7 @@ void ControllerSerialPropertyAdapter::AddProperties(wxPropertyGrid* propertyGrid
         if (_serial.IsAutoSize()) {
             p->ChangeFlag(wxPGFlags::ReadOnly, true);
             p->SetBackgroundColour(*wxLIGHT_GREY);
-            p->SetHelpString("Channels cannot be changed when an output is set to Auto Size.");
+            p->SetHelpString(_("Channels cannot be changed when an output is set to Auto Size."));
         } else {
             p->SetEditor("SpinCtrl");
         }

@@ -5327,6 +5327,16 @@ msgstr "Téléchargement de shader"
 msgid "Downloading shaders ..."
 msgstr "Téléchargement des shaders..."
 
+#: src-ui-wx/effectpanels/ShaderPanel.cpp:496 src-ui-wx/effectpanels/VideoPanel.cpp:446 src-ui-wx/shared/controls/BulkEditControls.cpp:115
+#, c-format
+msgid "File %s does not exist."
+msgstr "Le fichier %s n'existe pas."
+
+#: src-ui-wx/effectpanels/ShaderPanel.cpp:499 src-ui-wx/effectpanels/VideoPanel.cpp:448 src-ui-wx/shared/controls/BulkEditControls.cpp:118
+#, c-format
+msgid "File %s contains characters in the path or filename that will cause issues in xLights. Please rename it."
+msgstr "Le chemin ou le nom du fichier %s contient des caractères qui poseront problème dans xLights. Renommez-le."
+
 #: src-ui-wx/effectpanels/ShapePanel.cpp:208 resources/effectmetadata/Shape.json
 msgid "Character"
 msgstr "Caractère"
@@ -6466,6 +6476,10 @@ msgstr "Impossible de générer les correspondances. Consultez le journal pour l
 msgid "Mapping Failed"
 msgstr "Échec de la correspondance"
 
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:5345
+msgid "Available media will be imported into:"
+msgstr "Les médias disponibles seront importés dans :"
+
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:5788
 msgid "Update Aliases Done."
 msgstr "Mise à jour des alias terminée."
@@ -6541,6 +6555,10 @@ msgstr "Enregistrer l'association"
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:875
 msgid "Load Map"
 msgstr "Charger une association"
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:880
+msgid "Stashed mappings exist — click to view"
+msgstr "Des correspondances mises de côté existent — cliquez pour les voir"
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:987 src-ui-wx/model/NodeSelectGrid.cpp:251 src-ui-wx/sequencer/BatchRenderDialog.cpp:162
 msgid "Select None"
@@ -6683,6 +6701,10 @@ msgstr "IP locale forcée (globale)"
 msgid "Global FPP Proxy"
 msgstr "Proxy FPP global"
 
+#: src-ui-wx/layout/ControllerListPanel.cpp:1381 src-ui-wx/layout/ControllerListPanel.cpp:1487
+msgid "Properties cannot be edited when outputting to lights."
+msgstr "Les propriétés ne sont pas modifiables pendant la sortie vers les lumières."
+
 #: src-ui-wx/layout/ControllerListPanel.cpp:1444
 msgid "Last Input Upload"
 msgstr "Dernier envoi des entrées"
@@ -6699,6 +6721,10 @@ msgstr "Afficher dans la disposition"
 msgid "Shows this controller as a movable box in the layout preview so you can place it where it physically sits. Controller Tab Only shows it while this tab is selected; Layout Panel shows it anywhere in the layout editor but not during playback; Always shows it everywhere."
 msgstr "Affiche ce contrôleur comme une boîte déplaçable dans l'aperçu de la disposition, pour le placer à son emplacement réel. Controller Tab Only : seulement dans cet onglet ; Layout Panel : partout dans l'éditeur de disposition, mais pas pendant la lecture ; Always : partout."
 
+#: src-ui-wx/layout/ControllerListPanel.cpp:1485
+msgid "This controller comes from the base folder and its properties cannot be edited."
+msgstr "Ce contrôleur provient du dossier de base : ses propriétés ne sont pas modifiables."
+
 #: src-ui-wx/layout/ControllerListPanel.cpp:243
 msgid "Filter controllers..."
 msgstr "Filtrer les contrôleurs..."
@@ -6706,6 +6732,10 @@ msgstr "Filtrer les contrôleurs..."
 #: src-ui-wx/layout/ControllerListPanel.cpp:258
 msgid "Show All Info"
 msgstr "Tout afficher"
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:259
+msgid "Show every controller column for every controller in a larger window"
+msgstr "Afficher toutes les colonnes de tous les contrôleurs dans une fenêtre plus grande"
 
 #: src-ui-wx/layout/ControllerListPanel.cpp:598
 msgid "Show Label"
@@ -6857,6 +6887,14 @@ msgstr "Largeur :"
 msgid "Height:"
 msgstr "Hauteur :"
 
+#: src-ui-wx/layout/HousePreviewPanel.cpp:113
+msgid "Rewind 10 seconds."
+msgstr "Reculer de 10 secondes."
+
+#: src-ui-wx/layout/HousePreviewPanel.cpp:114
+msgid "Fast forward 10 seconds."
+msgstr "Avancer de 10 secondes."
+
 #: src-ui-wx/layout/HousePreviewPanel.cpp:85
 msgid "00:00.000"
 msgstr ""
@@ -6961,6 +6999,10 @@ msgstr "Erreur de capture d'image"
 #: src-ui-wx/layout/LayoutPanel.cpp:12215 src-ui-wx/layout/ViewsModelsPanel.cpp:3118 src-ui-wx/model/SubModelsPanel.cpp:4054
 msgid "Choose RGB Effects file to import from"
 msgstr "Choisir le fichier RGB Effects à importer"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:1230
+msgid "Select a preview or model group to display in the Layout Preview window. Choose 'Default' for models assigned to the default preview, 'All Models' to show all models, or a specific group to filter displayed models."
+msgstr "Choisissez un aperçu ou un groupe de modèles à afficher dans la fenêtre d'aperçu de la disposition : « Default » pour les modèles de l'aperçu par défaut, « All Models » pour tous les modèles, ou un groupe pour filtrer les modèles affichés."
 
 #: src-ui-wx/layout/LayoutPanel.cpp:12423
 msgid "Change preview name"
@@ -7085,6 +7127,45 @@ msgstr "Rendre tous les canaux de début valides"
 #: src-ui-wx/layout/LayoutPanel.cpp:13142
 msgid "Make All Start Channels Not Overlapping"
 msgstr "Rendre tous les canaux de début sans chevauchement"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13316
+#, c-format
+msgid ""
+"Selected Items:\n"
+" -Groups: %d\n"
+" -Models: %d\n"
+" -SubModels: %d\n"
+"\n"
+"Total Nodes: %d"
+msgstr ""
+"Éléments sélectionnés :\n"
+" - Groupes : %d\n"
+" - Modèles : %d\n"
+" - Sous-modèles : %d\n"
+"\n"
+"Nombre total de nœuds : %d"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13321 src-ui-wx/layout/LayoutPanel.cpp:13343 src-ui-wx/layout/ViewObjectPanel.cpp:489
+msgid "From Base Show Folder"
+msgstr "Provient du dossier de show de base"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13323
+#, c-format
+msgid "Total Nodes in Group: %d"
+msgstr "Nombre total de nœuds du groupe : %d"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13341
+#, c-format
+msgid "Nodes: %d"
+msgstr "Nœuds : %d"
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13355
+msgid "Warning: Model is perhaps flipped left to right."
+msgstr "Attention : le modèle est peut-être inversé de gauche à droite."
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13361
+msgid "Warning: Model is perhaps flipped top to bottom."
+msgstr "Attention : le modèle est peut-être inversé de haut en bas."
 
 #: src-ui-wx/layout/LayoutPanel.cpp:1387
 #, c-format
@@ -7356,6 +7437,10 @@ msgstr "Dimensions"
 msgid "Size/Location"
 msgstr "Taille/Position"
 
+#: src-ui-wx/layout/LayoutPanel.cpp:4429
+msgid "This model comes from the base folder and its properties cannot be edited."
+msgstr "Ce modèle provient du dossier de base : ses propriétés ne sont pas modifiables."
+
 #: src-ui-wx/layout/LayoutPanel.cpp:4661
 msgid "Preview layout saved"
 msgstr "Disposition de l'aperçu enregistrée"
@@ -7364,6 +7449,11 @@ msgstr "Disposition de l'aperçu enregistrée"
 #, c-format
 msgid "Set '%s' contains a locked or base show model - unlock it (or remove the base model from the Set) to move the Set."
 msgstr "L'ensemble « %s » contient un modèle verrouillé ou du show de base : déverrouillez-le (ou retirez le modèle de base de l'ensemble) pour déplacer l'ensemble."
+
+#: src-ui-wx/layout/LayoutPanel.cpp:593
+#, c-format
+msgid "Create new %s"
+msgstr "Créer : %s"
 
 #: src-ui-wx/layout/LayoutPanel.cpp:5974
 msgid "Failed to download model file."
@@ -8040,6 +8130,10 @@ msgstr "Sélectionner / désélectionner tous les modèles visibles"
 #: src-ui-wx/layout/ReplaceModelDialog.h:92
 msgid "Model Name"
 msgstr "Nom du modèle"
+
+#: src-ui-wx/layout/ViewObjectPanel.cpp:539
+msgid "This object comes from the base folder and its properties cannot be edited."
+msgstr "Cet objet provient du dossier de base : ses propriétés ne sont pas modifiables."
 
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:1365 src-ui-wx/preferences/xLightsPreferences.cpp:205
 msgid "View"
@@ -10068,6 +10162,10 @@ msgstr "Joindre en un seul brin"
 #: src-ui-wx/model/SubModelsPanel.cpp:1392 src-ui-wx/sequencer/EffectsGrid.cpp:491
 msgid "Split"
 msgstr "Scinder"
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1575
+msgid "Top to Bottom: generated strands are added after original"
+msgstr "De haut en bas : les brins générés sont ajoutés après l'original"
 
 #: src-ui-wx/model/SubModelsPanel.cpp:1608
 msgid "Unable to create results file for Symmetrize. Aborted."
@@ -14287,6 +14385,14 @@ msgstr "Créer les régions du morceau"
 msgid "Locked words/phonemes in the way - Can not break down phrases"
 msgstr "Des mots/phonèmes verrouillés gênent : impossible de découper les phrases"
 
+#: src-ui-wx/sequencer/RowHeading.cpp:294
+msgid ""
+"Double-click: show/hide submodels\n"
+"Shift+double-click: show/hide submodels and strands"
+msgstr ""
+"Double-clic : afficher/masquer les sous-modèles\n"
+"Maj+double-clic : afficher/masquer les sous-modèles et les brins"
+
 #: src-ui-wx/sequencer/RowHeading.cpp:638 src-ui-wx/sequencer/RowHeading.cpp:843
 msgid "Edit Display Elements"
 msgstr "Modifier les éléments affichés"
@@ -15453,6 +15559,10 @@ msgstr "Périphérique série sous lequel l'adaptateur apparaît sur le contrôl
 msgid "Add Serial Adapter Port"
 msgstr "Ajouter un port d'adaptateur série"
 
+#: src-ui-wx/setup/ControllerModelDialog.cpp:3101
+msgid "Print Box Size"
+msgstr "Taille du cadre d'impression"
+
 #: src-ui-wx/setup/ControllerModelDialog.cpp:3278
 msgid "Save Controller Spreadsheet"
 msgstr "Enregistrer le tableur du contrôleur"
@@ -15837,6 +15947,10 @@ msgstr "Coché"
 #: src-ui-wx/shared/controls/BulkEditControls.cpp:532
 msgid "Unchecked"
 msgstr "Décoché"
+
+#: src-ui-wx/shared/controls/MediaPickerCtrl.cpp:56
+msgid "Clear selection"
+msgstr "Effacer la sélection"
 
 #: src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:104 resources/effectmetadata/Ripple.json resources/effectmetadata/Shockwave.json
 msgid "Filter"
@@ -16653,6 +16767,10 @@ msgstr "Afficher les informations sur l'application"
 #: src-ui-wx/xLightsMain.cpp:1259
 msgid "&Help"
 msgstr "Aid&e"
+
+#: src-ui-wx/xLightsMain.cpp:1717
+msgid "Click to change the show folder. Shift+click to open it in the file manager."
+msgstr "Cliquez pour changer de dossier de show. Maj+clic pour l'ouvrir dans l'explorateur de fichiers."
 
 #: src-ui-wx/xLightsMain.cpp:1861
 msgid "Locked Only"
@@ -17544,7 +17662,7 @@ msgstr "Toute la sélection est déjà dans le dossier du show de base."
 msgid "Promote to Base Show Folder"
 msgstr "Promouvoir vers le dossier du show de base"
 
-#: src-ui-wx/xLightsMain.cpp:997
+#: src-ui-wx/xLightsMain.cpp:997 src-ui-wx/layout/LayoutPanel.cpp:1097
 msgid "Select Show Folder"
 msgstr "Choisir le dossier du show"
 

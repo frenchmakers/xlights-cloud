@@ -34,7 +34,7 @@ void SpinnerPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Ou
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 640);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This is typically the number of connections from the prop to your controller.");
+    p->SetHelpString(_("This is typically the number of connections from the prop to your controller."));
 
     p = grid->Append(new wxUIntProperty("Arms/String", "FoldCount", _spinner.GetArmsPerString()));
     p->SetAttribute("Min", 1);

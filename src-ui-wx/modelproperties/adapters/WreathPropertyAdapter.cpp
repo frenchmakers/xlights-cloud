@@ -27,7 +27,7 @@ void WreathPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Out
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 640);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This is typically the number of connections from the prop to your controller.");
+    p->SetHelpString(_("This is typically the number of connections from the prop to your controller."));
 
     if (_wreath.IsSingleNode()) {
         p = grid->Append(new wxUIntProperty("Lights/String", "WreathLightCount", _wreath.GetNodesPerString()));
@@ -39,7 +39,7 @@ void WreathPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Out
         p->SetAttribute("Min", 1);
         p->SetAttribute("Max", 640);
         p->SetEditor("SpinCtrl");
-        p->SetHelpString("This is typically the total number of pixels per #String.");
+        p->SetHelpString(_("This is typically the total number of pixels per #String."));
     }
 
     grid->Append(new wxEnumProperty("Starting Location", "WreathStart", TranslatedChoices(TOP_BOT_LEFT_RIGHT), wxArrayInt(),

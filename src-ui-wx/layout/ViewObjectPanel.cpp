@@ -486,7 +486,7 @@ bool ViewObjectPanel::OnSelectionChanged(wxTreeListEvent& event, ViewObject** vi
             }
 
             if ((*view_object)->IsFromBase()) {
-                TreeListViewObjects->SetToolTip("From Base Show Folder");
+                TreeListViewObjects->SetToolTip(_("From Base Show Folder"));
             } else {
                 TreeListViewObjects->UnsetToolTip();
             }
@@ -536,7 +536,7 @@ void ViewObjectPanel::OnPropertyGridChange(wxPropertyGrid *propertyEditor, wxPro
     }
 
     if (mSelectedObject != nullptr && mSelectedObject->IsFromBase()) {
-        propertyEditor->SetToolTip("This object comes from the base folder and its properties cannot be edited.");
+        propertyEditor->SetToolTip(_("This object comes from the base folder and its properties cannot be edited."));
         auto it = propertyEditor->GetIterator(wxPG_ITERATE_ALL, nullptr);
         while (!it.AtEnd()) {
             it.GetProperty()->Enable(false);

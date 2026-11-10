@@ -5242,6 +5242,16 @@ msgstr ""
 msgid "Downloading shaders ..."
 msgstr ""
 
+#: src-ui-wx/effectpanels/ShaderPanel.cpp:496 src-ui-wx/effectpanels/VideoPanel.cpp:446 src-ui-wx/shared/controls/BulkEditControls.cpp:115
+#, c-format
+msgid "File %s does not exist."
+msgstr ""
+
+#: src-ui-wx/effectpanels/ShaderPanel.cpp:499 src-ui-wx/effectpanels/VideoPanel.cpp:448 src-ui-wx/shared/controls/BulkEditControls.cpp:118
+#, c-format
+msgid "File %s contains characters in the path or filename that will cause issues in xLights. Please rename it."
+msgstr ""
+
 #: src-ui-wx/effectpanels/ShapePanel.cpp:208 resources/effectmetadata/Shape.json
 msgid "Character"
 msgstr ""
@@ -6345,6 +6355,10 @@ msgstr ""
 msgid "Mapping Failed"
 msgstr ""
 
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:5345
+msgid "Available media will be imported into:"
+msgstr ""
+
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:5788
 msgid "Update Aliases Done."
 msgstr ""
@@ -6419,6 +6433,10 @@ msgstr ""
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:875
 msgid "Load Map"
+msgstr ""
+
+#: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:880
+msgid "Stashed mappings exist — click to view"
 msgstr ""
 
 #: src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:987 src-ui-wx/model/NodeSelectGrid.cpp:251 src-ui-wx/sequencer/BatchRenderDialog.cpp:162
@@ -6558,6 +6576,10 @@ msgstr ""
 msgid "Global FPP Proxy"
 msgstr ""
 
+#: src-ui-wx/layout/ControllerListPanel.cpp:1381 src-ui-wx/layout/ControllerListPanel.cpp:1487
+msgid "Properties cannot be edited when outputting to lights."
+msgstr ""
+
 #: src-ui-wx/layout/ControllerListPanel.cpp:1444
 msgid "Last Input Upload"
 msgstr ""
@@ -6574,12 +6596,20 @@ msgstr ""
 msgid "Shows this controller as a movable box in the layout preview so you can place it where it physically sits. Controller Tab Only shows it while this tab is selected; Layout Panel shows it anywhere in the layout editor but not during playback; Always shows it everywhere."
 msgstr ""
 
+#: src-ui-wx/layout/ControllerListPanel.cpp:1485
+msgid "This controller comes from the base folder and its properties cannot be edited."
+msgstr ""
+
 #: src-ui-wx/layout/ControllerListPanel.cpp:243
 msgid "Filter controllers..."
 msgstr ""
 
 #: src-ui-wx/layout/ControllerListPanel.cpp:258
 msgid "Show All Info"
+msgstr ""
+
+#: src-ui-wx/layout/ControllerListPanel.cpp:259
+msgid "Show every controller column for every controller in a larger window"
 msgstr ""
 
 #: src-ui-wx/layout/ControllerListPanel.cpp:598
@@ -6729,6 +6759,14 @@ msgstr ""
 msgid "Height:"
 msgstr ""
 
+#: src-ui-wx/layout/HousePreviewPanel.cpp:113
+msgid "Rewind 10 seconds."
+msgstr ""
+
+#: src-ui-wx/layout/HousePreviewPanel.cpp:114
+msgid "Fast forward 10 seconds."
+msgstr ""
+
 #: src-ui-wx/layout/HousePreviewPanel.cpp:85
 msgid "00:00.000"
 msgstr ""
@@ -6824,6 +6862,10 @@ msgstr ""
 
 #: src-ui-wx/layout/LayoutPanel.cpp:12215 src-ui-wx/layout/ViewsModelsPanel.cpp:3118 src-ui-wx/model/SubModelsPanel.cpp:4054
 msgid "Choose RGB Effects file to import from"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:1230
+msgid "Select a preview or model group to display in the Layout Preview window. Choose 'Default' for models assigned to the default preview, 'All Models' to show all models, or a specific group to filter displayed models."
 msgstr ""
 
 #: src-ui-wx/layout/LayoutPanel.cpp:12423
@@ -6948,6 +6990,39 @@ msgstr ""
 
 #: src-ui-wx/layout/LayoutPanel.cpp:13142
 msgid "Make All Start Channels Not Overlapping"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13316
+#, c-format
+msgid ""
+"Selected Items:\n"
+" -Groups: %d\n"
+" -Models: %d\n"
+" -SubModels: %d\n"
+"\n"
+"Total Nodes: %d"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13321 src-ui-wx/layout/LayoutPanel.cpp:13343 src-ui-wx/layout/ViewObjectPanel.cpp:489
+msgid "From Base Show Folder"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13323
+#, c-format
+msgid "Total Nodes in Group: %d"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13341
+#, c-format
+msgid "Nodes: %d"
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13355
+msgid "Warning: Model is perhaps flipped left to right."
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:13361
+msgid "Warning: Model is perhaps flipped top to bottom."
 msgstr ""
 
 #: src-ui-wx/layout/LayoutPanel.cpp:1387
@@ -7208,6 +7283,10 @@ msgstr ""
 msgid "Size/Location"
 msgstr ""
 
+#: src-ui-wx/layout/LayoutPanel.cpp:4429
+msgid "This model comes from the base folder and its properties cannot be edited."
+msgstr ""
+
 #: src-ui-wx/layout/LayoutPanel.cpp:4661
 msgid "Preview layout saved"
 msgstr ""
@@ -7215,6 +7294,11 @@ msgstr ""
 #: src-ui-wx/layout/LayoutPanel.cpp:5233
 #, c-format
 msgid "Set '%s' contains a locked or base show model - unlock it (or remove the base model from the Set) to move the Set."
+msgstr ""
+
+#: src-ui-wx/layout/LayoutPanel.cpp:593
+#, c-format
+msgid "Create new %s"
 msgstr ""
 
 #: src-ui-wx/layout/LayoutPanel.cpp:5974
@@ -7887,6 +7971,10 @@ msgstr ""
 
 #: src-ui-wx/layout/ReplaceModelDialog.h:92
 msgid "Model Name"
+msgstr ""
+
+#: src-ui-wx/layout/ViewObjectPanel.cpp:539
+msgid "This object comes from the base folder and its properties cannot be edited."
 msgstr ""
 
 #: src-ui-wx/layout/ViewsModelsPanel.cpp:1365 src-ui-wx/preferences/xLightsPreferences.cpp:205
@@ -9828,6 +9916,10 @@ msgstr ""
 
 #: src-ui-wx/model/SubModelsPanel.cpp:1392 src-ui-wx/sequencer/EffectsGrid.cpp:491
 msgid "Split"
+msgstr ""
+
+#: src-ui-wx/model/SubModelsPanel.cpp:1575
+msgid "Top to Bottom: generated strands are added after original"
 msgstr ""
 
 #: src-ui-wx/model/SubModelsPanel.cpp:1608
@@ -13992,6 +14084,12 @@ msgstr ""
 msgid "Locked words/phonemes in the way - Can not break down phrases"
 msgstr ""
 
+#: src-ui-wx/sequencer/RowHeading.cpp:294
+msgid ""
+"Double-click: show/hide submodels\n"
+"Shift+double-click: show/hide submodels and strands"
+msgstr ""
+
 #: src-ui-wx/sequencer/RowHeading.cpp:638 src-ui-wx/sequencer/RowHeading.cpp:843
 msgid "Edit Display Elements"
 msgstr ""
@@ -15147,6 +15245,10 @@ msgstr ""
 msgid "Add Serial Adapter Port"
 msgstr ""
 
+#: src-ui-wx/setup/ControllerModelDialog.cpp:3101
+msgid "Print Box Size"
+msgstr ""
+
 #: src-ui-wx/setup/ControllerModelDialog.cpp:3278
 msgid "Save Controller Spreadsheet"
 msgstr ""
@@ -15526,6 +15628,10 @@ msgstr ""
 
 #: src-ui-wx/shared/controls/BulkEditControls.cpp:532
 msgid "Unchecked"
+msgstr ""
+
+#: src-ui-wx/shared/controls/MediaPickerCtrl.cpp:56
+msgid "Clear selection"
 msgstr ""
 
 #: src-ui-wx/shared/dialogs/CheckboxSelectDialog.cpp:104 resources/effectmetadata/Ripple.json resources/effectmetadata/Shockwave.json
@@ -16342,6 +16448,10 @@ msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:1259
 msgid "&Help"
+msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:1717
+msgid "Click to change the show folder. Shift+click to open it in the file manager."
 msgstr ""
 
 #: src-ui-wx/xLightsMain.cpp:1861
@@ -17208,7 +17318,7 @@ msgstr ""
 msgid "Promote to Base Show Folder"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:997
+#: src-ui-wx/xLightsMain.cpp:997 src-ui-wx/layout/LayoutPanel.cpp:1097
 msgid "Select Show Folder"
 msgstr ""
 

@@ -52,7 +52,7 @@ void MatrixPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Out
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 10000);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This is typically the number of connections from the prop to your controller. *This would also be the 'Height' of a Horizontal Virtual Matrix.");
+    p->SetHelpString(_("This is typically the number of connections from the prop to your controller. *This would also be the 'Height' of a Horizontal Virtual Matrix."));
 
     if (_matrix.IsSingleNode()) {
         p = grid->Append(new wxUIntProperty("Lights/String", "MatrixLightCount", _matrix.GetNodesPerString()));
@@ -64,17 +64,17 @@ void MatrixPropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Out
         p->SetAttribute("Min", 1);
         p->SetAttribute("Max", 10000);
         p->SetEditor("SpinCtrl");
-        p->SetHelpString("This is typically the total number of pixels per #String. \n *This would also be the 'Width' of a Horizontal Virtual Matrix.");
+        p->SetHelpString(_("This is typically the total number of pixels per #String. \n *This would also be the 'Width' of a Horizontal Virtual Matrix."));
     }
 
     p = grid->Append(new wxUIntProperty("Strands/String", "MatrixStrandCount", _matrix.GetStrandsPerString()));
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 2500);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This is typically how many times the #String ZigZags.");
+    p->SetHelpString(_("This is typically how many times the #String ZigZags."));
     if (_matrix.GetNodesPerString() % _matrix.GetStrandsPerString() != 0) {
         p->SetBackgroundColour(*wxRED);
-        p->SetHelpString("Strands/String must divide into Nodes/String evenly.");
+        p->SetHelpString(_("Strands/String must divide into Nodes/String evenly."));
     } else {
         p->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_LISTBOX));
     }

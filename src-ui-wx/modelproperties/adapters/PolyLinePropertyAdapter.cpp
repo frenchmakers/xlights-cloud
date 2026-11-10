@@ -54,7 +54,7 @@ void PolyLinePropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, O
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 48);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This is typically the number of connections from the prop to your controller.");
+    p->SetHelpString(_("This is typically the number of connections from the prop to your controller."));
 
     if (_polyLine.GetNumStrings() == 1) {
         // cant set start node

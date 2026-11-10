@@ -256,7 +256,7 @@ ControllerListPanel::ControllerListPanel(wxWindow* parent, xLightsFrame* frame, 
     filterSizer->Add(_controllerFilterCtrl, 1, wxEXPAND | wxTOP, 2);
 
     _btnFullColumns = new wxButton(this, wxID_ANY, _("Show All Info"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
-    _btnFullColumns->SetToolTip("Show every controller column for every controller in a larger window");
+    _btnFullColumns->SetToolTip(_("Show every controller column for every controller in a larger window"));
     _btnFullColumns->Bind(wxEVT_BUTTON, &ControllerListPanel::OnFullColumnsClick, this);
     filterSizer->Add(_btnFullColumns, 0, wxEXPAND | wxLEFT | wxTOP, 2);
 
@@ -597,12 +597,12 @@ void ControllerListPanel::RefreshControllerPlacementProperties(ControllerObject*
     if (!have) {
         auto* lbl = _propGrid->Append(new wxBoolProperty("Show Label", "LayoutShowLabel", co->GetShowLabel()));
         lbl->SetEditor("CheckBox");
-        lbl->SetHelpString("Draws the controller name under its box in the preview.");
+        lbl->SetHelpString(_("Draws the controller name under its box in the preview."));
         auto* sz = _propGrid->Append(new wxIntProperty("Label Size (%)", "LayoutLabelSize", co->GetLabelSize()));
         sz->SetAttribute("Min", ControllerObject::MIN_LABEL_SIZE);
         sz->SetAttribute("Max", ControllerObject::MAX_LABEL_SIZE);
         sz->SetEditor("SpinCtrl");
-        sz->SetHelpString("Size of the name label, as a percentage of the size that fits it to the box.");
+        sz->SetHelpString(_("Size of the name label, as a percentage of the size that fits it to the box."));
         sz->Enable(co->GetShowLabel());
         // Base-reference overload - it dynamic_casts to the concrete location
         // internally; the typed ones are private.
@@ -1353,7 +1353,7 @@ void ControllerListPanel::UpdateControllerProperties() {
 
         wxPGProperty* p = _propGrid->Append(new wxBoolProperty("Controller Sync", "ControllerSync", _frame->E131Sync()));
         p->SetEditor("CheckBox");
-        p->SetHelpString("Sends a sync packet at the end of each frame for controllers to synchronise light change to. Supported by E1.31, ArtNET and ZCPP. Controller support varies.");
+        p->SetHelpString(_("Sends a sync packet at the end of each frame for controllers to synchronise light change to. Supported by E1.31, ArtNET and ZCPP. Controller support varies."));
 
         if (_frame->E131Sync()) {
             p = _propGrid->Append(new wxUIntProperty("E1.31 Sync Universe", "E131SyncUniverse", om->GetSyncUniverse()));
@@ -1378,7 +1378,7 @@ void ControllerListPanel::UpdateControllerProperties() {
         _propGrid->Append(new wxStringProperty("Global FPP Proxy", "GlobalFPPProxy", om->GetGlobalFPPProxy()));
 
         if (!NetworkChangesAllowed()) {
-            _propGrid->SetToolTip("Properties cannot be edited when outputting to lights.");
+            _propGrid->SetToolTip(_("Properties cannot be edited when outputting to lights."));
             auto it = _propGrid->GetIterator(wxPG_ITERATE_ALL, nullptr);
             while (!it.AtEnd()) {
                 auto* prop = it.GetProperty();
@@ -1471,9 +1471,9 @@ void ControllerListPanel::UpdateControllerProperties() {
                     vis.Add("Layout Panel");
                     vis.Add("Always");
                     p = _propGrid->AppendIn(_propGrid->GetRoot(), new wxEnumProperty("Show on Layout", "LayoutVisibility", vis, 0));
-                    p->SetHelpString("Shows this controller as a movable box in the layout preview so you can place it where it physically sits. "
+                    p->SetHelpString(_("Shows this controller as a movable box in the layout preview so you can place it where it physically sits. "
                                      "Controller Tab Only shows it while this tab is selected; Layout Panel shows it anywhere in the layout editor "
-                                     "but not during playback; Always shows it everywhere.");
+                                     "but not during playback; Always shows it everywhere."));
                 }
                 auto* co = _frame->AllObjects.GetControllerObject(controller->GetName());
                 p->SetValue((int)(co != nullptr ? co->GetVisibility() : ControllerObject::Visibility::Off));
@@ -1482,9 +1482,9 @@ void ControllerListPanel::UpdateControllerProperties() {
 
             if (controller->IsFromBase() || !allowed) {
                 if (controller->IsFromBase()) {
-                    _propGrid->SetToolTip("This controller comes from the base folder and its properties cannot be edited.");
+                    _propGrid->SetToolTip(_("This controller comes from the base folder and its properties cannot be edited."));
                 } else {
-                    _propGrid->SetToolTip("Properties cannot be edited when outputting to lights.");
+                    _propGrid->SetToolTip(_("Properties cannot be edited when outputting to lights."));
                 }
                 auto it = _propGrid->GetIterator(wxPG_ITERATE_ALL, nullptr);
                 while (!it.AtEnd()) {

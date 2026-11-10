@@ -3098,7 +3098,7 @@ ControllerModelPrintPreviewDialog::ControllerModelPrintPreviewDialog(ControllerM
     // so the internal range is scaled up by 10 (0-10) and converted below.
     _boxSizeSlider = new wxSlider(this, wxID_ANY, std::lround(std::clamp(_owner->GetPrintScale(), 0.0, 1.0) * 10), 0, 10,
                                    wxDefaultPosition, wxSize(200, -1));
-    _boxSizeSlider->SetToolTip("Print Box Size");
+    _boxSizeSlider->SetToolTip(_("Print Box Size"));
     toolbar->Add(_boxSizeSlider, 0, wxALIGN_CENTER_VERTICAL | wxALL, 6);
     wxButton* fitButton = new wxButton(this, wxID_ANY, "Fit to Page");
     toolbar->Add(fitButton, 0, wxALIGN_CENTER_VERTICAL | wxALL, 6);

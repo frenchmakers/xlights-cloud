@@ -92,7 +92,7 @@ void CubePropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Outpu
         p->SetAttribute("Min", 0);
         p->SetAttribute("Max", 99);
         p->SetEditor("SpinCtrl");
-        p->SetHelpString("Inner hollow radius as a percentage of outer radius (0=solid, 99=thin shell).");
+        p->SetHelpString(_("Inner hollow radius as a percentage of outer radius (0=solid, 99=thin shell)."));
     } else {
         grid->Append(new wxEnumProperty("Row Offset", "CubeRowOffset", TranslatedChoices(ROW_OFFSETS), wxArrayInt(), _cube.GetRowOffset()));
     }
@@ -101,7 +101,7 @@ void CubePropertyAdapter::AddTypeProperties(wxPropertyGridInterface* grid, Outpu
     p->SetAttribute("Min", 1);
     p->SetAttribute("Max", 1000);
     p->SetEditor("SpinCtrl");
-    p->SetHelpString("This is typically the number of connections from the prop to your controller.");
+    p->SetHelpString(_("This is typically the number of connections from the prop to your controller."));
 }
 
 int CubePropertyAdapter::OnPropertyGridChange(wxPropertyGridInterface* grid, wxPropertyGridEvent& event) {
