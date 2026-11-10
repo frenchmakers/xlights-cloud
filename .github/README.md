@@ -71,6 +71,10 @@ chmod +x xLightsCloud-*-x86_64.AppImage
 - It shares its settings (`~/.config/xLights`) and log (`~/.local/state/xLights`) with the
   official xLights AppImage.
 - If FUSE is missing (`libfuse2t64` on Ubuntu 24.04), run it with `--appimage-extract-and-run`.
+- Like every AppImage, it uses the system's ALSA sound library instead of bundling it: on a
+  minimal install, `error while loading shared libraries: libasound.so.2` means `libasound2t64`
+  is missing. Without a sound card, ALSA messages in the terminal are harmless; sequences just
+  play without sound.
 - The cloud secret key goes to the system keyring (GNOME Keyring, KWallet...) through libsecret.
   On a machine without one, it is saved, unencrypted, in `~/.config/xLights/settings.json`, and
   Preferences > Cloud Storage says so. Set `XLIGHTS_CLOUD_NO_KEYRING=1` to always use the settings
@@ -80,7 +84,7 @@ chmod +x xLightsCloud-*-x86_64.AppImage
 **Without a screen** (e.g. an Ubuntu 24.04 server or VM), run it in Xvfb:
 
 ```bash
-sudo apt install xvfb libgl1 libegl1 libglu1-mesa libgl1-mesa-dri imagemagick
+sudo apt install xvfb libgl1 libegl1 libglu1-mesa libgl1-mesa-dri libasound2t64 imagemagick
 Xvfb :99 -screen 0 1920x1080x24 &
 DISPLAY=:99 XLIGHTS_CLOUD_NO_KEYRING=1 ./xLightsCloud-*-x86_64.AppImage --appimage-extract-and-run &
 DISPLAY=:99 import -window root screenshot.png   # screenshot of the whole screen
