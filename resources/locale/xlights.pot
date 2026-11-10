@@ -2086,81 +2086,93 @@ msgstr ""
 msgid "No Thanks"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:138 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:230
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:100
+msgid "Add Preset"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:102
+msgid "Add Apply Setting"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:145 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:237
 msgctxt "key"
 msgid "Control"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:141
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:148
 msgid "macOS Ctrl"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:143
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:150
 msgid "Details"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:214 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:130 src-ui-wx/model/GenerateCustomModelDialog.cpp:2522 src-ui-wx/model/SubModelGenerateDialog.cpp:51 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:36 ... (+7)
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:221 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:137 src-ui-wx/model/GenerateCustomModelDialog.cpp:2522 src-ui-wx/model/SubModelGenerateDialog.cpp:51 src-ui-wx/modelproperties/adapters/TreePropertyAdapter.cpp:36 ... (+7)
 msgid "Type"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:228 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:131
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:235 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:138
 msgid "Key"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:233 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:139
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:240 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:146
 msgid "Alt"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:236 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:140 src-ui-wx/model/CustomModelDialog.cpp:2889
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:243 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:147 src-ui-wx/model/CustomModelDialog.cpp:2889
 msgid "Shift"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:239
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:246
 msgid "RawControl"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:252 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269 resources/effectmetadata/Curtain.json resources/effectmetadata/Meteors.json ... (+1)
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:259 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269 resources/effectmetadata/Curtain.json resources/effectmetadata/Meteors.json ... (+1)
 msgid "Effect"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:257
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:264
 msgid "Effect Setting"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:269 src-ui-wx/sequencer/BufferPanel.cpp:131
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:276 src-ui-wx/sequencer/BufferPanel.cpp:131
 msgid "Preset"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:419 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:420 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:421 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:422 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:132 ... (+4)
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:426 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:427 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:428 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:429 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:132 ... (+4)
 msgid "Y"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:48
-msgid "All tabs"
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:44 src-ui-wx/app-shell/KeyBindings.cpp:374
+msgid "Insert an effect."
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:540 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:548
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:45 src-ui-wx/app-shell/KeyBindings.cpp:376
+msgid "Insert a preset effect."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:46 src-ui-wx/app-shell/KeyBindings.cpp:375
+msgid "Apply setting to selected effects."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:547 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:555
 msgid "2020.15"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:66
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:55
+msgid "All tabs"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:73
 msgid "Edit Keybindings"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:74
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:81
 msgid "Scope:"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:91
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:98
 msgid "Add Effect"
-msgstr ""
-
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:93
-msgid "Add Preset"
-msgstr ""
-
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:95
-msgid "Add Apply Setting"
 msgstr ""
 
 #: src-ui-wx/app-shell/KeyBindings.cpp:174
@@ -2861,6 +2873,526 @@ msgstr ""
 #: src-ui-wx/app-shell/KeyBindings.cpp:313
 msgctxt "key action"
 msgid "Alternate paste"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:317
+msgid "Add a timing mark."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:318
+msgid "Split a timing mark."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:319
+msgid "Zoom into the effects grid."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:320
+msgid "Zoom out of the effects grid."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:321
+msgid "Zoom so selected timeline fills the screen."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:322
+msgid "Insert random effects."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:323
+msgid "Render all."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:324
+msgid "Save the currently selected tab."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:325
+msgid "Toggle output to lights on/off."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:326
+msgid "Open a sequence."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:327
+msgid "Close the open sequence."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:328
+msgid "Create a new sequence."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:329
+msgid "Put cut/copy/paste into Paste By Cell mode."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:330
+msgid "Put cut/copy/paste into Paste By Time mode."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:331
+msgid "Backup your show folder."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:332
+msgid "Backup your show folder to the alternate backup location."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:333
+msgid "Change your current show folder."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:334
+msgid "Save the current sequence to a new file."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:335
+msgid "Save the current sequence."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:336
+msgid "Toggle display of the effect settings panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:337
+msgid "Toggle display of the effect assist panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:338
+msgid "Toggle display of the color panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:339
+msgid "Toggle display of the layer settings panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:340
+msgid "Toggle display of the layer blending panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:341
+msgid "Toggle display of the model preview panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:342
+msgid "Toggle display of the house preview panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:343
+msgid "Toggle display of the video preview panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:344
+msgid "Toggle display of the effect dropper panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:345
+msgid "Toggle display of the display elements panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:346
+msgid "Toggle display of the jukebox panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:347
+msgid "Display the sequence settings."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:348
+msgid "Lock the selected effects."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:349
+msgid "Unlock the selected effects."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:350
+msgid "Mark the current spot in the sequencer so you can return to it."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:351
+msgid "Return to the previously marked spot in the sequencer."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:352
+msgid "Open the effect description dialog."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:353
+msgid "Align the selected effects to have the same start times."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:354
+msgid "Align the selected effects to have the same end times."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:355
+msgid "Align the selected effects to have the same start and end times."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:356
+msgid "Insert a sequencing layer above the current row."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:357
+msgid "Insert a sequencing layer below the current row."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:358
+msgid "Expand the current element."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:359
+msgid "Select all effects and timing marks."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:360
+msgid "Select all effects but not timing marks."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:361
+msgid "Show the effect presets panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:362
+msgid "Toggle display of the effect search panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:363
+msgid "Show/hide the sequencer prop filter box to jump to a prop."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:364
+msgid "Toggle display of the perspectives panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:365
+msgid "Apply the current effect settings to all selected effects."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:366
+msgid "Apply the current colors to all selected effects."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:367
+msgid "Play the selected part of the song repeatedly."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:368
+msgid "Play the song."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:369
+msgid "Play/Stop playing the song."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:370
+msgid "Jump to the start of the song."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:371
+msgid "Jump to the end of the song."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:372
+msgid "Stop sequence playback."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:373
+msgid "Pause sequence playback."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:377
+msgid "Lock the selected models."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:378
+msgid "Unlock the selected models."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:379
+msgid "Create a group from the selected models."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:380
+msgid "Display the wiring view for the selected model."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:381
+msgid "Export the selected model as a DXF or STL or VRML File."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:382
+msgid "Export the default layout as a DXF File."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:383
+msgid "Display the node layout for the selected model."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:384
+msgid "Save the layout tab."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:385
+msgid "Select all models."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:386
+msgid "Align the selected models to the top edge."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:387
+msgid "Align the selected models to the bottom edge."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:388
+msgid "Align the selected models to the left edge."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:389
+msgid "Align the selected models to the right edge."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:390
+msgid "Align the selected models to be vertically centered."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:391
+msgid "Align the selected models to be horizontally centered."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:392
+msgid "Align the selected models to the front edge."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:393
+msgid "Align the selected models to the back edge."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:394
+msgid "Align the selected models to the ground."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:395
+msgid "Distribute the selected model horizontally."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:396
+msgid "Distribute the selected models vertically."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:397
+msgid "Flip the selected models horizontally."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:398
+msgid "Flip the selected models vertically."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:399
+msgid "Cancel current rendering activity."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:400
+msgid "Toggle background rendering."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:401
+msgid "Toggle display of the presets panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:402
+msgid "Force keyboard focus to the effects gid."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:403
+msgid "Toggle display of the value curves droppper panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:404
+msgid "Toggle display of the color dropper panel."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:405
+msgid "Playback audio at normal speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:406
+msgid "Playback audio at 1.5 times speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:407
+msgid "Playback audio at 2 times speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:408
+msgid "Playback audio at 3 times speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:409
+msgid "Playback audio at 4 times speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:410
+msgid "Playback audio at 3/4 speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:411
+msgid "Playback audio at 1/2 speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:412
+msgid "Playback audio at 1/4 speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:413
+msgid "Jump to prior audio tag."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:414
+msgid "Jump to next audio tag."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:415
+msgid "Play from prior audio tag."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:416
+msgid "Play from next audio tag."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:417
+msgid "Edit model submodels."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:418
+msgid "Edit model faces."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:419
+msgid "Edit model states."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:420
+msgid "Edit custom model data."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:421
+msgid "Toggle (Enable/Disable) rendering of the selected model in the sequencer"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:422
+msgid "Disable rendering of the selected model in the sequencer"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:423
+msgid "Enable rendering of the selected model in the sequencer"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:424
+msgid "Toggle (Enable/Disable) rendering of the selected effects in the sequencer"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:425
+msgid "Disable rendering of the selected effects in the sequencer"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:426
+msgid "Enable rendering of the selected effects in the sequencer"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:427
+msgid "Toggle (Enable/Disable) rendering of the selected model or the effects in the sequencer"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:428
+msgid "Convert selected effects to timing marks."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:429
+msgid "Select first timing."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:430
+msgid "Select second timing."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:431
+msgid "Select third timing."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:432
+msgid "Select fourth timing."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:433
+msgid "Select fifth timing."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:434
+msgid "Select sixth timing."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:435
+msgid "Select seventh timing."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:436
+msgid "Select eighth timing."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:437
+msgid "Select ninth timing."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:438
+msgid "Select no timing tracks."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:439
+msgid "Increase speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:440
+msgid "Decrease speed."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:441
+msgid "Jukebox Button 1."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:442
+msgid "Jukebox Button 2."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:443
+msgid "Jukebox Button 3."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:444
+msgid "Jukebox Button 4."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:445
+msgid "Jukebox Button 5."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:446
+msgid "Run FPP Connect"
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:447
+msgid "Open the command palette."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:448
+msgid "Open the Import Effects dialog."
+msgstr ""
+
+#: src-ui-wx/app-shell/KeyBindings.cpp:449
+msgid "Paste effects using the opposite of the configured 'Paste As' mode (Relative vs As Layers)."
 msgstr ""
 
 #: src-ui-wx/app-shell/RestoreBackupDialog.cpp:121
@@ -17722,7 +18254,7 @@ msgstr ""
 msgid "Open Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:3121 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:97 src-ui-wx/layout/LayoutPanel.cpp:701 ... (+4)
+#: src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:827 src-ui-wx/xLightsMain.cpp:3121 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:104 src-ui-wx/layout/LayoutPanel.cpp:701 ... (+4)
 msgid "Save"
 msgstr ""
 
@@ -17890,7 +18422,7 @@ msgstr ""
 msgid "Off - DELETE"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:897 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:540 src-ui-wx/effectpanels/MovingHeadPanel.cpp:357
+#: src-ui-wx/xLightsMain.cpp:897 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:547 src-ui-wx/effectpanels/MovingHeadPanel.cpp:357
 msgid "On"
 msgstr ""
 
@@ -18082,11 +18614,11 @@ msgstr ""
 msgid "Tools Toolbar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:942 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:48
+#: src-ui-wx/xLightsMain.cpp:942 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:55
 msgid "Layout"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:943 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:48
+#: src-ui-wx/xLightsMain.cpp:943 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:55
 msgid "Sequencer"
 msgstr ""
 

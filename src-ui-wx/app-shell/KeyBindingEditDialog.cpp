@@ -39,6 +39,13 @@ const long KeyBindingEditDialog::ID_BUTTON_SAVE = wxNewId();
 const long KeyBindingEditDialog::ID_BUTTON_CANCEL = wxNewId();
 //*)
 
+// Tips of the EFFECT, PRESET and APPLYSETTING bindings, set in KeyBindings.h.
+[[maybe_unused]] static const char* const KEY_BINDING_HEADER_TIPS[] = {
+    wxTRANSLATE("Insert an effect."),
+    wxTRANSLATE("Insert a preset effect."),
+    wxTRANSLATE("Apply setting to selected effects.")
+};
+
 BEGIN_EVENT_TABLE(KeyBindingEditDialog,wxDialog)
 	//(*EventTable(KeyBindingEditDialog)
 	//*)
@@ -213,7 +220,7 @@ void KeyBindingEditDialog::SetKeyBindingProperties() {
 
 	wxPGProperty* p = _propertyGrid->Append(new wxStringProperty("Type", "KBType", b.GetType()));
 	p->ChangeFlag(wxPGFlags::ReadOnly, true);
-	p->SetHelpString(b.GetTip());
+	p->SetHelpString(wxGetTranslation(wxString::FromUTF8(b.GetTip())));
 
 	int k = b.GetKey();
 	if (k >= 65 && k <= 90) k += 32;
