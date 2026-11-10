@@ -7209,27 +7209,27 @@ void EffectsGrid::SetEffectStatusText(Effect* eff) const {
                     }
 
                     if (isExactMatch) {
-                        columnInfo = wxString::Format(" spans: %d timing marks (exact)", columnCount);
+                        columnInfo = " " + wxString::Format(_("spans: %d timing marks (exact)"), columnCount);
                     } else {
-                        columnInfo = wxString::Format(" spans: %d timing marks (partial)", columnCount);
+                        columnInfo = " " + wxString::Format(_("spans: %d timing marks (partial)"), columnCount);
                     }
                 }
             }
         }
 
-        wxString disabledStr = eff->IsEffectRenderDisabled() ? "DISABLED" : "";
+        wxString disabledStr = eff->IsEffectRenderDisabled() ? _("DISABLED") : wxString();
 
         wxString fadeInfo = "";
         double fadeInTime = eff->GetSettings().GetDouble("T_TEXTCTRL_Fadein");
         double fadeOutTime = eff->GetSettings().GetDouble("T_TEXTCTRL_Fadeout");
         if (fadeInTime > 0) {
-            fadeInfo += wxString::Format(" fadein: %.2fs", fadeInTime);
+            fadeInfo += " " + wxString::Format(_("fadein: %.2fs"), fadeInTime);
         }
         if (fadeOutTime > 0) {
-            fadeInfo += wxString::Format(" fadeout: %.2fs", fadeOutTime);
+            fadeInfo += " " + wxString::Format(_("fadeout: %.2fs"), fadeOutTime);
         }
 
-        wxString e = wxString::Format("start: %s end: %s duration: %s%s%s %s %s %s",
+        wxString e = wxString::Format(_("start: %s end: %s duration: %s%s%s %s %s %s"),
                                       FORMATTIME(eff->GetStartTimeMS()),
                                       FORMATTIME(eff->GetEndTimeMS()),
                                       FORMATTIME(eff->GetEndTimeMS() - eff->GetStartTimeMS()),
@@ -8769,7 +8769,7 @@ void EffectsGrid::UpdateEffectMoveDragState(int x, int y, bool snapToTiming, boo
                 wxString::Format(_("start: %s  end: %s  duration: %s%s"),
                                  FORMATTIME(minStart), FORMATTIME(maxEnd),
                                  FORMATTIME(maxEnd - minStart),
-                                 mEffectMoveLockTime ? "  [timing locked]" : ""), true);
+                                 mEffectMoveLockTime ? "  " + _("[timing locked]") : wxString()), true);
         }
     }
 

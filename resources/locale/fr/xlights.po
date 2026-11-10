@@ -13580,6 +13580,35 @@ msgstr "Rechercher le précédent"
 msgid "Replace All..."
 msgstr "Tout remplacer..."
 
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7212
+#, c-format
+msgid "spans: %d timing marks (exact)"
+msgstr "couvre : %d repères de timing (exact)"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7214
+#, c-format
+msgid "spans: %d timing marks (partial)"
+msgstr "couvre : %d repères de timing (partiel)"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7220
+msgid "DISABLED"
+msgstr "DÉSACTIVÉ"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7226
+#, c-format
+msgid "fadein: %.2fs"
+msgstr "fondu d'entrée : %.2fs"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7229
+#, c-format
+msgid "fadeout: %.2fs"
+msgstr "fondu de sortie : %.2fs"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7232
+#, c-format
+msgid "start: %s end: %s duration: %s%s%s %s %s %s"
+msgstr "début : %s fin : %s durée : %s%s%s %s %s %s"
+
 #: src-ui-wx/sequencer/EffectsGrid.cpp:788
 #, c-format
 msgid "Added '-shimmer' to %d phoneme(s)."
@@ -13626,6 +13655,10 @@ msgstr "Aucun calque d'effet trouvé."
 #, c-format
 msgid "start: %s  end: %s  duration: %s%s"
 msgstr "début : %s  fin : %s  durée : %s%s"
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:8772
+msgid "[timing locked]"
+msgstr "[timing verrouillé]"
 
 #: src-ui-wx/sequencer/EffectsGrid.cpp:886 src-ui-wx/sequencer/EffectsGrid.cpp:923
 msgid "Text not found."

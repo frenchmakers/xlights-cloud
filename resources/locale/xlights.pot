@@ -13299,6 +13299,35 @@ msgstr ""
 msgid "Replace All..."
 msgstr ""
 
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7212
+#, c-format
+msgid "spans: %d timing marks (exact)"
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7214
+#, c-format
+msgid "spans: %d timing marks (partial)"
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7220
+msgid "DISABLED"
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7226
+#, c-format
+msgid "fadein: %.2fs"
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7229
+#, c-format
+msgid "fadeout: %.2fs"
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:7232
+#, c-format
+msgid "start: %s end: %s duration: %s%s%s %s %s %s"
+msgstr ""
+
 #: src-ui-wx/sequencer/EffectsGrid.cpp:788
 #, c-format
 msgid "Added '-shimmer' to %d phoneme(s)."
@@ -13344,6 +13373,10 @@ msgstr ""
 #: src-ui-wx/sequencer/EffectsGrid.cpp:8769
 #, c-format
 msgid "start: %s  end: %s  duration: %s%s"
+msgstr ""
+
+#: src-ui-wx/sequencer/EffectsGrid.cpp:8772
+msgid "[timing locked]"
 msgstr ""
 
 #: src-ui-wx/sequencer/EffectsGrid.cpp:886 src-ui-wx/sequencer/EffectsGrid.cpp:923
