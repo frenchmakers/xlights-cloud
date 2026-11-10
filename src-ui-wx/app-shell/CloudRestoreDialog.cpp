@@ -283,7 +283,7 @@ void CloudRestoreDialog::Reload() {
     std::string problem = _settings.Validate();
     if (!problem.empty()) {
         _storageLabel->SetLabel(_("Cloud storage is not set up."));
-        SetStatus(wxString::FromUTF8(problem) + _(". Click Settings... to enter the storage details."), true);
+        SetStatus(wxGetTranslation(wxString::FromUTF8(problem)) + _(". Click Settings... to enter the storage details."), true);
         UpdateButtons();
         Layout();
         return;

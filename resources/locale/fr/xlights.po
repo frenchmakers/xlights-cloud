@@ -1522,7 +1522,7 @@ msgstr "Renommer le symbole"
 msgid "Symbol name cannot be empty."
 msgstr "Le nom du symbole ne peut pas être vide."
 
-#: src-ui-wx/EffectSymbolDialog.cpp:181 src-ui-wx/EffectSymbolDialog.cpp:190 src-ui-wx/xLightsApp.cpp:1391 src-ui-wx/xLightsMain.cpp:717 src-ui-wx/xLightsMain.cpp:9995 ... (+25)
+#: src-ui-wx/EffectSymbolDialog.cpp:181 src-ui-wx/EffectSymbolDialog.cpp:190 src-ui-wx/xLightsApp.cpp:1391 src-ui-wx/xLightsMain.cpp:717 src-ui-wx/xLightsMain.cpp:9996 ... (+25)
 msgid "Error"
 msgstr "Erreur"
 
@@ -1831,6 +1831,30 @@ msgstr "Étape 2/2 : extraction"
 #: src-ui-wx/app-shell/CloudRestoreDialog.cpp:719
 msgid "Cancel the restore in progress? The files restored so far are removed."
 msgstr "Annuler la restauration en cours ? Les fichiers déjà restaurés seront supprimés."
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:102
+msgid "Access key ID is missing"
+msgstr "L'ID de clé d'accès est manquant"
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:105
+msgid "Secret access key is missing"
+msgstr "La clé d'accès secrète est manquante"
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:87
+msgid "Cloudflare account ID is missing"
+msgstr "L'ID de compte Cloudflare est manquant"
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:92
+msgid "Endpoint URL is missing"
+msgstr "L'URL du point de terminaison est manquante"
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:95
+msgid "Endpoint URL must start with https://"
+msgstr "L'URL du point de terminaison doit commencer par https://"
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:99
+msgid "Bucket name is missing"
+msgstr "Le nom du bucket est manquant"
 
 #: src-ui-wx/app-shell/EmailDialog.cpp:45
 msgid ""
@@ -15883,11 +15907,11 @@ msgstr "Paramètres de ligne de commande non reconnus"
 msgid "Select Show Directory"
 msgstr "Choisir le dossier du show"
 
-#: src-ui-wx/xLightsMain.cpp:10004 src-ui-wx/effectpanels/PicturesPanel.cpp:275 src-ui-wx/media/ManageMediaPanel.cpp:2452
+#: src-ui-wx/xLightsMain.cpp:10005 src-ui-wx/effectpanels/PicturesPanel.cpp:275 src-ui-wx/media/ManageMediaPanel.cpp:2452
 msgid "AI Image Generator"
 msgstr "Générateur d'images IA"
 
-#: src-ui-wx/xLightsMain.cpp:10004 src-ui-wx/effectpanels/PicturesPanel.cpp:274 src-ui-wx/media/ManageMediaPanel.cpp:2451
+#: src-ui-wx/xLightsMain.cpp:10005 src-ui-wx/effectpanels/PicturesPanel.cpp:274 src-ui-wx/media/ManageMediaPanel.cpp:2451
 msgid "Choose AI Image Generator"
 msgstr "Choisir le générateur d'images IA"
 
@@ -15915,7 +15939,7 @@ msgstr "Restaurer une sauvegarde"
 msgid "Alternate Backup\tF11"
 msgstr "Sauvegarde alternative\tF11"
 
-#: src-ui-wx/xLightsMain.cpp:1013 src-ui-wx/xLightsMain.cpp:3331 src-ui-wx/xLightsMain.cpp:3519 src-ui-wx/app-shell/CloudBackupDialog.cpp:123 src-ui-wx/app-shell/CloudBackupDialog.cpp:197 ... (+2)
+#: src-ui-wx/xLightsMain.cpp:1013 src-ui-wx/xLightsMain.cpp:3331 src-ui-wx/xLightsMain.cpp:3511 src-ui-wx/xLightsMain.cpp:3520 src-ui-wx/app-shell/CloudBackupDialog.cpp:123 ... (+3)
 msgid "Backup to Cloud"
 msgstr "Sauvegarder dans le cloud"
 
@@ -15963,7 +15987,7 @@ msgstr "Décaler les effets et le timing"
 msgid "Use this options to shift all timing and effects in the sequence."
 msgstr "Décale tout le timing et tous les effets de la séquence."
 
-#: src-ui-wx/xLightsMain.cpp:1041 src-ui-wx/xLightsMain.cpp:6321
+#: src-ui-wx/xLightsMain.cpp:1041 src-ui-wx/xLightsMain.cpp:6322
 msgid "Shift Effects"
 msgstr "Décaler les effets"
 
@@ -15971,7 +15995,7 @@ msgstr "Décaler les effets"
 msgid "Use this options to shift all effects in the sequence."
 msgstr "Décale tous les effets de la séquence."
 
-#: src-ui-wx/xLightsMain.cpp:1043 src-ui-wx/xLightsMain.cpp:6273
+#: src-ui-wx/xLightsMain.cpp:1043 src-ui-wx/xLightsMain.cpp:6274
 msgid "Shift Selected Effects"
 msgstr "Décaler les effets sélectionnés"
 
@@ -16415,7 +16439,7 @@ msgstr "Dernier enregistrement"
 msgid "Revert To..."
 msgstr "Revenir à..."
 
-#: src-ui-wx/xLightsMain.cpp:2191 src-ui-wx/xLightsMain.cpp:6027
+#: src-ui-wx/xLightsMain.cpp:2191 src-ui-wx/xLightsMain.cpp:6028
 msgid "Open New xLights Instance"
 msgstr "Ouvrir une nouvelle instance de xLights"
 
@@ -16545,88 +16569,101 @@ msgstr "Impossible de trouver un nom unique pour le dossier de sauvegarde ! La s
 msgid "No show folder is open."
 msgstr "Aucun dossier de show n'est ouvert."
 
-#: src-ui-wx/xLightsMain.cpp:3518
+#: src-ui-wx/xLightsMain.cpp:3509
+#, c-format
+msgid ""
+"Cloud storage is not set up yet: %s.\n"
+"\n"
+"Enter the storage details in Preferences > Cloud Storage."
+msgstr ""
+"Le stockage cloud n'est pas encore configuré : %s.
+"
+"
+"
+"Saisissez les informations du stockage dans Préférences > Stockage cloud."
+
+#: src-ui-wx/xLightsMain.cpp:3519
 msgid "The open sequence has unsaved changes. Save it before the backup?"
 msgstr "La séquence ouverte a des changements non enregistrés. L'enregistrer avant la sauvegarde ?"
 
-#: src-ui-wx/xLightsMain.cpp:3681
+#: src-ui-wx/xLightsMain.cpp:3682
 msgid "All xml files backed up."
 msgstr "Tous les fichiers xml sont sauvegardés."
 
-#: src-ui-wx/xLightsMain.cpp:3932 src-ui-wx/xLightsMain.cpp:8627 src-ui-wx/app-shell/TabSequence.cpp:165
+#: src-ui-wx/xLightsMain.cpp:3933 src-ui-wx/xLightsMain.cpp:8628 src-ui-wx/app-shell/TabSequence.cpp:165
 msgid "Sequences cannot be opened in read only mode!"
 msgstr "Les séquences ne peuvent pas être ouvertes en mode lecture seule !"
 
-#: src-ui-wx/xLightsMain.cpp:4117
+#: src-ui-wx/xLightsMain.cpp:4118
 #, c-format
 msgid "'%s' exported in %4.3f sec."
 msgstr "« %s » exporté en %4.3f s."
 
-#: src-ui-wx/xLightsMain.cpp:4160
+#: src-ui-wx/xLightsMain.cpp:4161
 msgid "Toolbar locations will reset to defaults upon restart."
 msgstr "La position des barres d'outils sera réinitialisée au prochain démarrage."
 
-#: src-ui-wx/xLightsMain.cpp:4299
+#: src-ui-wx/xLightsMain.cpp:4300
 msgid "Turning off save of the FSEQ is really not recommended. This will often require you to re-render a sequence every time you load it ... all to save yourself a couple of seconds save time."
 msgstr "Désactiver l'enregistrement du FSEQ est vraiment déconseillé. Il faudra souvent refaire le rendu de la séquence à chaque ouverture... tout ça pour gagner quelques secondes à l'enregistrement."
 
-#: src-ui-wx/xLightsMain.cpp:4356
+#: src-ui-wx/xLightsMain.cpp:4357
 msgid "Save Models, Views, and Perspectives changes?"
 msgstr "Enregistrer les changements de modèles, vues et perspectives ?"
 
-#: src-ui-wx/xLightsMain.cpp:4357
+#: src-ui-wx/xLightsMain.cpp:4358
 msgid "Models, Views, and Perspectives Changes Confirmation"
 msgstr "Confirmation des changements de modèles, vues et perspectives"
 
-#: src-ui-wx/xLightsMain.cpp:4381
+#: src-ui-wx/xLightsMain.cpp:4382
 msgid "Save Network Setup changes?"
 msgstr "Enregistrer les changements de configuration réseau ?"
 
-#: src-ui-wx/xLightsMain.cpp:4382
+#: src-ui-wx/xLightsMain.cpp:4383
 msgid "Networks Changes Confirmation"
 msgstr "Confirmation des changements de réseaux"
 
-#: src-ui-wx/xLightsMain.cpp:4388
+#: src-ui-wx/xLightsMain.cpp:4389
 msgid "Save Effect Preset changes?"
 msgstr "Enregistrer les changements de préréglages d'effets ?"
 
-#: src-ui-wx/xLightsMain.cpp:4389
+#: src-ui-wx/xLightsMain.cpp:4390
 msgid "Effect Presets Changes Confirmation"
 msgstr "Confirmation des changements de préréglages d'effets"
 
-#: src-ui-wx/xLightsMain.cpp:4875 src-ui-wx/xLightsMain.cpp:6637
+#: src-ui-wx/xLightsMain.cpp:4876 src-ui-wx/xLightsMain.cpp:6638
 msgid "Zip file to create."
 msgstr "Fichier zip à créer."
 
-#: src-ui-wx/xLightsMain.cpp:5179
+#: src-ui-wx/xLightsMain.cpp:5180
 msgid "Previews"
 msgstr "Aperçus"
 
-#: src-ui-wx/xLightsMain.cpp:5185 src-ui-wx/layout/ViewsModelsPanel.cpp:1812
+#: src-ui-wx/xLightsMain.cpp:5186 src-ui-wx/layout/ViewsModelsPanel.cpp:1812
 msgid "Show All"
 msgstr "Tout afficher"
 
-#: src-ui-wx/xLightsMain.cpp:5418
+#: src-ui-wx/xLightsMain.cpp:5419
 msgid "Select alternate backup directory"
 msgstr "Choisir un dossier de sauvegarde alternatif"
 
-#: src-ui-wx/xLightsMain.cpp:5442 src-ui-wx/xLightsMain.cpp:6209 src-ui-wx/xLightsMain.cpp:9457 src-ui-wx/color/ColorCurveDialog.cpp:828 src-ui-wx/import_export/SeqExportDialog.cpp:272 ... (+14)
+#: src-ui-wx/xLightsMain.cpp:5443 src-ui-wx/xLightsMain.cpp:6210 src-ui-wx/xLightsMain.cpp:9458 src-ui-wx/color/ColorCurveDialog.cpp:828 src-ui-wx/import_export/SeqExportDialog.cpp:272 ... (+14)
 msgid "Choose output file"
 msgstr "Choisir le fichier de sortie"
 
-#: src-ui-wx/xLightsMain.cpp:5572
+#: src-ui-wx/xLightsMain.cpp:5573
 msgid "Unable to create results file for Check Sequence. Aborted."
 msgstr "Impossible de créer le fichier de résultats de la vérification de séquence. Opération annulée."
 
-#: src-ui-wx/xLightsMain.cpp:6025
+#: src-ui-wx/xLightsMain.cpp:6026
 msgid "Could not locate the xLights application bundle. A new instance can only be launched when xLights is run from a .app bundle."
 msgstr "Impossible de trouver le paquet d'application xLights. Une nouvelle instance ne peut être lancée que si xLights est exécuté depuis un paquet .app."
 
-#: src-ui-wx/xLightsMain.cpp:6204 src-ui-wx/xLightsMain.cpp:6621
+#: src-ui-wx/xLightsMain.cpp:6205 src-ui-wx/xLightsMain.cpp:6622
 msgid "No sequence open"
 msgstr "Aucune séquence ouverte"
 
-#: src-ui-wx/xLightsMain.cpp:6222
+#: src-ui-wx/xLightsMain.cpp:6223
 msgid ""
 "Enter the number of milliseconds to shift all effects and timing marks:\n"
 "\n"
@@ -16640,11 +16677,11 @@ msgstr ""
 "      Cette opération ne peut pas être annulée.\n"
 "      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés."
 
-#: src-ui-wx/xLightsMain.cpp:6226
+#: src-ui-wx/xLightsMain.cpp:6227
 msgid "Shift Effects And Timings"
 msgstr "Décaler les effets et les repères de temps"
 
-#: src-ui-wx/xLightsMain.cpp:6268
+#: src-ui-wx/xLightsMain.cpp:6269
 msgid ""
 "Enter the number of milliseconds to shift the selected effects:\n"
 "\n"
@@ -16660,7 +16697,7 @@ msgstr ""
 "      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés.\n"
 "      Les effets qui chevaucheraient des effets non sélectionnés ne seront pas déplacés."
 
-#: src-ui-wx/xLightsMain.cpp:6317
+#: src-ui-wx/xLightsMain.cpp:6318
 msgid ""
 "Enter the number of milliseconds to shift all effects:\n"
 "\n"
@@ -16678,48 +16715,48 @@ msgstr ""
 msgid "Open New Instance"
 msgstr "Ouvrir une nouvelle instance"
 
-#: src-ui-wx/xLightsMain.cpp:6484 src-ui-wx/layout/ControllerListPanel.cpp:963
+#: src-ui-wx/xLightsMain.cpp:6485 src-ui-wx/layout/ControllerListPanel.cpp:963
 msgid "Open sequence has not been saved. If you plan on uploading it to FPP then it needs to be saved. Do you want to save it now?"
 msgstr "La séquence ouverte n'est pas enregistrée. Pour l'envoyer à FPP, elle doit l'être. L'enregistrer maintenant ?"
 
-#: src-ui-wx/xLightsMain.cpp:6484 src-ui-wx/layout/ControllerListPanel.cpp:963
+#: src-ui-wx/xLightsMain.cpp:6485 src-ui-wx/layout/ControllerListPanel.cpp:963
 msgid "Save Sequence"
 msgstr "Enregistrer la séquence"
 
-#: src-ui-wx/xLightsMain.cpp:6572
+#: src-ui-wx/xLightsMain.cpp:6573
 msgid "Please open a sequence first."
 msgstr "Ouvrez d'abord une séquence."
 
-#: src-ui-wx/xLightsMain.cpp:6572
+#: src-ui-wx/xLightsMain.cpp:6573
 msgid "No Sequence"
 msgstr "Aucune séquence"
 
-#: src-ui-wx/xLightsMain.cpp:6580
+#: src-ui-wx/xLightsMain.cpp:6581
 msgid "There are no effect symbols in this sequence."
 msgstr "Cette séquence ne contient aucun symbole d'effet."
 
-#: src-ui-wx/xLightsMain.cpp:6580
+#: src-ui-wx/xLightsMain.cpp:6581
 msgid "No Symbols"
 msgstr "Aucun symbole"
 
-#: src-ui-wx/xLightsMain.cpp:6595
+#: src-ui-wx/xLightsMain.cpp:6596
 msgid "Convert Symbols to Effects"
 msgstr "Convertir les symboles en effets"
 
-#: src-ui-wx/xLightsMain.cpp:6614
+#: src-ui-wx/xLightsMain.cpp:6615
 #, c-format
 msgid "Converted %d effect(s) and removed %d symbol(s)."
 msgstr "%d effet(s) converti(s) et %d symbole(s) supprimé(s)."
 
-#: src-ui-wx/xLightsMain.cpp:6615
+#: src-ui-wx/xLightsMain.cpp:6616
 msgid "Conversion Complete"
 msgstr "Conversion terminée"
 
-#: src-ui-wx/xLightsMain.cpp:6628
+#: src-ui-wx/xLightsMain.cpp:6629
 msgid "Your sequence has unsaved changes. These changes will not be packaged but any new referenced files will be. We suggest you consider saving and trying this again."
 msgstr "Votre séquence a des modifications non enregistrées. Elles ne seront pas empaquetées, contrairement aux nouveaux fichiers référencés. Nous vous conseillons d'enregistrer puis de recommencer."
 
-#: src-ui-wx/xLightsMain.cpp:6645
+#: src-ui-wx/xLightsMain.cpp:6646
 msgid ""
 "This sequence contains effect symbols which may not be compatible with older xLights versions.\n"
 "\n"
@@ -16733,75 +16770,75 @@ msgstr ""
 "\n"
 "Remarque : votre séquence d'origine ne sera pas modifiée."
 
-#: src-ui-wx/xLightsMain.cpp:6648
+#: src-ui-wx/xLightsMain.cpp:6649
 msgid "Effect Symbols Detected"
 msgstr "Symboles d'effets détectés"
 
-#: src-ui-wx/xLightsMain.cpp:6946
+#: src-ui-wx/xLightsMain.cpp:6947
 msgid "Show directory invalid. Cleanup aborted."
 msgstr "Dossier du show non valide. Rangement annulé."
 
-#: src-ui-wx/xLightsMain.cpp:7017
+#: src-ui-wx/xLightsMain.cpp:7018
 msgid "Cleaning up file locations."
 msgstr "Rangement des emplacements des fichiers."
 
-#: src-ui-wx/xLightsMain.cpp:7019
+#: src-ui-wx/xLightsMain.cpp:7020
 msgid "Cleaning up file locations ... DONE."
 msgstr "Rangement des emplacements des fichiers... TERMINÉ."
 
-#: src-ui-wx/xLightsMain.cpp:7022
+#: src-ui-wx/xLightsMain.cpp:7023
 msgid "You must have a sequence opened in order to run Cleanup File Locations."
 msgstr "Une séquence doit être ouverte pour ranger les emplacements des fichiers."
 
-#: src-ui-wx/xLightsMain.cpp:7022
+#: src-ui-wx/xLightsMain.cpp:7023
 msgid "Missing Sequence"
 msgstr "Séquence manquante"
 
-#: src-ui-wx/xLightsMain.cpp:7047
+#: src-ui-wx/xLightsMain.cpp:7048
 msgid "Main Toolbar"
 msgstr "Barre principale"
 
-#: src-ui-wx/xLightsMain.cpp:7048
+#: src-ui-wx/xLightsMain.cpp:7049
 msgid "Play Toolbar"
 msgstr "Barre de lecture"
 
-#: src-ui-wx/xLightsMain.cpp:7049
+#: src-ui-wx/xLightsMain.cpp:7050
 msgid "Windows Toolbar"
 msgstr "Barre des fenêtres"
 
-#: src-ui-wx/xLightsMain.cpp:7052 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:48
+#: src-ui-wx/xLightsMain.cpp:7053 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:48
 msgid "Effects Toolbar"
 msgstr "Barre d'outils des effets"
 
-#: src-ui-wx/xLightsMain.cpp:720 src-ui-wx/xLightsMain.cpp:7249 src-ui-wx/import_export/SeqFileUtilities.cpp:325 src-ui-wx/sequencer/tabSequencer.cpp:432 src-ui-wx/setup/PixelTestDialog.cpp:2918 ... (+1)
+#: src-ui-wx/xLightsMain.cpp:720 src-ui-wx/xLightsMain.cpp:7250 src-ui-wx/import_export/SeqFileUtilities.cpp:325 src-ui-wx/sequencer/tabSequencer.cpp:432 src-ui-wx/setup/PixelTestDialog.cpp:2918 ... (+1)
 msgid "Warning"
 msgstr "Avertissement"
 
-#: src-ui-wx/xLightsMain.cpp:7249
+#: src-ui-wx/xLightsMain.cpp:7250
 msgid "You need a timing track selected and timing marks in order to use AC mode. Ideally a timing track with lots of timing marks as you can only place effects between those marks."
 msgstr "Le mode AC nécessite une piste de timing sélectionnée avec des repères, idéalement de nombreux repères, car les effets ne se placent qu'entre eux."
 
-#: src-ui-wx/xLightsMain.cpp:7966
+#: src-ui-wx/xLightsMain.cpp:7967
 msgid "A batch render is already running."
 msgstr "Un rendu par lots est déjà en cours."
 
-#: src-ui-wx/xLightsMain.cpp:8005
+#: src-ui-wx/xLightsMain.cpp:8006
 msgid "This xLights was installed from the Microsoft Store / App Installer, which keeps it up to date automatically."
 msgstr "Ce xLights a été installé depuis le Microsoft Store / App Installer, qui le tient à jour automatiquement."
 
-#: src-ui-wx/xLightsMain.cpp:8091 src-ui-wx/xLightsMain.cpp:8102
+#: src-ui-wx/xLightsMain.cpp:8092 src-ui-wx/xLightsMain.cpp:8103
 msgid "Unable to connect."
 msgstr "Connexion impossible."
 
-#: src-ui-wx/xLightsMain.cpp:8091 src-ui-wx/xLightsMain.cpp:8102 src-ui-wx/xLightsMain.cpp:8158
+#: src-ui-wx/xLightsMain.cpp:8092 src-ui-wx/xLightsMain.cpp:8103 src-ui-wx/xLightsMain.cpp:8159
 msgid "Version update check failed"
 msgstr "Échec de la recherche de mises à jour"
 
-#: src-ui-wx/xLightsMain.cpp:8158
+#: src-ui-wx/xLightsMain.cpp:8159
 msgid "Unable to read available versions."
 msgstr "Impossible de lire les versions disponibles."
 
-#: src-ui-wx/xLightsMain.cpp:8181
+#: src-ui-wx/xLightsMain.cpp:8182
 msgid "Update check complete: No update found"
 msgstr "Recherche de mises à jour terminée : aucune mise à jour trouvée"
 
@@ -16809,7 +16846,7 @@ msgstr "Recherche de mises à jour terminée : aucune mise à jour trouvée"
 msgid "<use variables in xLightsMain.h>"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:8206
+#: src-ui-wx/xLightsMain.cpp:8207
 msgid "Layout cannot be saved in read only mode!"
 msgstr "La disposition ne peut pas être enregistrée en mode lecture seule !"
 
@@ -16917,7 +16954,7 @@ msgstr "Effets"
 msgid "Effects Assistant"
 msgstr "Assistant d'effets"
 
-#: src-ui-wx/xLightsMain.cpp:8510
+#: src-ui-wx/xLightsMain.cpp:8511
 msgid "Show folder is not valid. Download aborted."
 msgstr "Le dossier du show n'est pas valide. Téléchargement annulé."
 
@@ -16925,7 +16962,7 @@ msgstr "Le dossier du show n'est pas valide. Téléchargement annulé."
 msgid "Select Effects"
 msgstr "Sélectionner des effets"
 
-#: src-ui-wx/xLightsMain.cpp:8524
+#: src-ui-wx/xLightsMain.cpp:8525
 msgid "Unable to access online repositories."
 msgstr "Impossible d'accéder aux dépôts en ligne."
 
@@ -16933,11 +16970,11 @@ msgstr "Impossible d'accéder aux dépôts en ligne."
 msgid "Windows Tool Bar"
 msgstr "Barre des fenêtres"
 
-#: src-ui-wx/xLightsMain.cpp:8553
+#: src-ui-wx/xLightsMain.cpp:8554
 msgid "Loading"
 msgstr "Chargement"
 
-#: src-ui-wx/xLightsMain.cpp:8553
+#: src-ui-wx/xLightsMain.cpp:8554
 msgid "Loading phoneme dictionaries"
 msgstr "Chargement des dictionnaires de phonèmes"
 
@@ -16945,7 +16982,7 @@ msgstr "Chargement des dictionnaires de phonèmes"
 msgid "Paste By Time"
 msgstr "Coller par temps"
 
-#: src-ui-wx/xLightsMain.cpp:8560
+#: src-ui-wx/xLightsMain.cpp:8561
 msgid "Loading dictionaries ..."
 msgstr "Chargement des dictionnaires ..."
 
@@ -16953,29 +16990,29 @@ msgstr "Chargement des dictionnaires ..."
 msgid "Paste By Cell"
 msgstr "Coller par cellule"
 
-#: src-ui-wx/xLightsMain.cpp:859 src-ui-wx/xLightsMain.cpp:7050
+#: src-ui-wx/xLightsMain.cpp:859 src-ui-wx/xLightsMain.cpp:7051
 msgid "Paste Toolbar"
 msgstr "Barre de collage"
 
-#: src-ui-wx/xLightsMain.cpp:8634 src-ui-wx/import_export/SeqFileUtilities.cpp:128
+#: src-ui-wx/xLightsMain.cpp:8635 src-ui-wx/import_export/SeqFileUtilities.cpp:128
 msgid "Sequences cannot be created in read only mode!"
 msgstr "Les séquences ne peuvent pas être créées en mode lecture seule !"
 
-#: src-ui-wx/xLightsMain.cpp:8680
+#: src-ui-wx/xLightsMain.cpp:8681
 msgid "Show folder cannot be changed in read only mode! Close and restart xLights."
 msgstr "Le dossier de show ne peut pas être changé en mode lecture seule ! Fermez et relancez xLights."
 
-#: src-ui-wx/xLightsMain.cpp:8819
+#: src-ui-wx/xLightsMain.cpp:8820
 msgid "Choose reaper file describing the changes required to the audio."
 msgstr "Choisir le fichier Reaper qui décrit les changements à apporter à l'audio."
-
-#: src-ui-wx/xLightsMain.cpp:8929
-msgid "No edits found in RPP file."
-msgstr "Aucune modification dans le fichier RPP."
 
 #: src-ui-wx/xLightsMain.cpp:893
 msgid "Disable"
 msgstr "Désactiver"
+
+#: src-ui-wx/xLightsMain.cpp:8930
+msgid "No edits found in RPP file."
+msgstr "Aucune modification dans le fichier RPP."
 
 #: src-ui-wx/xLightsMain.cpp:895 src-ui-wx/media/MediaImportOptionsDialog.cpp:79 src-ui-wx/media/MediaImportOptionsDialog.cpp:88 src-ui-wx/media/MediaImportOptionsDialog.cpp:97 src-ui-wx/media/MediaImportOptionsDialog.cpp:106 ... (+1)
 msgid "Select"
@@ -17025,7 +17062,7 @@ msgstr "Intensité"
 msgid "Intensity - I"
 msgstr "Intensité - I"
 
-#: src-ui-wx/xLightsMain.cpp:9016
+#: src-ui-wx/xLightsMain.cpp:9017
 msgid "No edits found in xAudio file."
 msgstr "Aucune modification dans le fichier xAudio."
 
@@ -17037,11 +17074,11 @@ msgstr "Rampe montante"
 msgid "Ramp Up - U"
 msgstr "Rampe montante - U"
 
-#: src-ui-wx/xLightsMain.cpp:9020
+#: src-ui-wx/xLightsMain.cpp:9021
 msgid "Invalid xAudio file."
 msgstr "Fichier xAudio non valide."
 
-#: src-ui-wx/xLightsMain.cpp:9025
+#: src-ui-wx/xLightsMain.cpp:9026
 msgid "Loading audio files."
 msgstr "Chargement des fichiers audio."
 
@@ -17069,11 +17106,11 @@ msgstr ""
 msgid "Parm2"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:9069
+#: src-ui-wx/xLightsMain.cpp:9070
 msgid "In order to prepare the audio all the input songs must have the same sample rate."
 msgstr "Pour préparer l'audio, tous les morceaux d'entrée doivent avoir la même fréquence d'échantillonnage."
 
-#: src-ui-wx/xLightsMain.cpp:9077
+#: src-ui-wx/xLightsMain.cpp:9078
 msgid "Audio file creation failed - No input audio."
 msgstr "Échec de la création du fichier audio : aucun audio en entrée."
 
@@ -17093,7 +17130,7 @@ msgstr "Cascade"
 msgid "Cascade - H"
 msgstr "Cascade - H"
 
-#: src-ui-wx/xLightsMain.cpp:9100
+#: src-ui-wx/xLightsMain.cpp:9101
 msgid "Combining audio clips."
 msgstr "Assemblage des extraits audio."
 
@@ -17113,7 +17150,7 @@ msgstr "Arrière-plan"
 msgid "Background - B"
 msgstr "Arrière-plan - B"
 
-#: src-ui-wx/xLightsMain.cpp:914 src-ui-wx/xLightsMain.cpp:7068
+#: src-ui-wx/xLightsMain.cpp:914 src-ui-wx/xLightsMain.cpp:7069
 msgid "AC Toolbar"
 msgstr "Barre d'outils AC"
 
@@ -17133,23 +17170,23 @@ msgstr "Paramètres de la séquence"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src-ui-wx/xLightsMain.cpp:9182
+#: src-ui-wx/xLightsMain.cpp:9183
 msgid "Choose filename to save the audio as."
 msgstr "Choisir le nom du fichier audio à enregistrer."
 
-#: src-ui-wx/xLightsMain.cpp:920 src-ui-wx/xLightsMain.cpp:7051
+#: src-ui-wx/xLightsMain.cpp:920 src-ui-wx/xLightsMain.cpp:7052
 msgid "View Toolbar"
 msgstr "Barre d'affichage"
 
-#: src-ui-wx/xLightsMain.cpp:9200
+#: src-ui-wx/xLightsMain.cpp:9201
 msgid "Saving output file."
 msgstr "Enregistrement du fichier de sortie."
 
-#: src-ui-wx/xLightsMain.cpp:9207 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2413
+#: src-ui-wx/xLightsMain.cpp:9208 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2413
 msgid "Error creating audio file. See log for details."
 msgstr "Erreur lors de la création du fichier audio. Consultez le journal pour les détails."
 
-#: src-ui-wx/xLightsMain.cpp:9208 src-ui-wx/xLightsMain.cpp:9213
+#: src-ui-wx/xLightsMain.cpp:9209 src-ui-wx/xLightsMain.cpp:9214
 msgid "Audio file creation failed."
 msgstr "Échec de la création du fichier audio."
 
@@ -17157,15 +17194,15 @@ msgstr "Échec de la création du fichier audio."
 msgid "Test"
 msgstr "Test"
 
-#: src-ui-wx/xLightsMain.cpp:926 src-ui-wx/xLightsMain.cpp:926 src-ui-wx/xLightsMain.cpp:5577 src-ui-wx/preferences/xLightsPreferences.cpp:221
+#: src-ui-wx/xLightsMain.cpp:926 src-ui-wx/xLightsMain.cpp:926 src-ui-wx/xLightsMain.cpp:5578 src-ui-wx/preferences/xLightsPreferences.cpp:221
 msgid "Check Sequence"
 msgstr "Vérification de séquence"
 
-#: src-ui-wx/xLightsMain.cpp:927 src-ui-wx/xLightsMain.cpp:927 src-ui-wx/xLightsMain.cpp:6661
+#: src-ui-wx/xLightsMain.cpp:927 src-ui-wx/xLightsMain.cpp:927 src-ui-wx/xLightsMain.cpp:6662
 msgid "Package Sequence"
 msgstr "Empaqueter la séquence"
 
-#: src-ui-wx/xLightsMain.cpp:928 src-ui-wx/xLightsMain.cpp:928 src-ui-wx/xLightsMain.cpp:7966 src-ui-wx/sequencer/BatchRenderDialog.cpp:81 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:41
+#: src-ui-wx/xLightsMain.cpp:928 src-ui-wx/xLightsMain.cpp:928 src-ui-wx/xLightsMain.cpp:7967 src-ui-wx/sequencer/BatchRenderDialog.cpp:81 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:41
 msgid "Batch Render"
 msgstr "Rendu par lots"
 
@@ -17181,7 +17218,7 @@ msgstr "Envoi groupé vers les contrôleurs"
 msgid "View Log"
 msgstr "Voir le journal"
 
-#: src-ui-wx/xLightsMain.cpp:933 src-ui-wx/xLightsMain.cpp:7053
+#: src-ui-wx/xLightsMain.cpp:933 src-ui-wx/xLightsMain.cpp:7054
 msgid "Tools Toolbar"
 msgstr "Barre des outils"
 
@@ -17213,11 +17250,11 @@ msgstr "Nouvelle séquence\tCtrl-n"
 msgid "Open Sequence\tCTRL-o"
 msgstr "Ouvrir une séquence\tCTRL-o"
 
-#: src-ui-wx/xLightsMain.cpp:9703
+#: src-ui-wx/xLightsMain.cpp:9704
 msgid "Please Close the Open Sequence Before Using the Restore Backup Dialog"
 msgstr "Fermez la séquence ouverte avant de restaurer une sauvegarde."
 
-#: src-ui-wx/xLightsMain.cpp:9710 src-ui-wx/xLightsMain.cpp:9711
+#: src-ui-wx/xLightsMain.cpp:9711 src-ui-wx/xLightsMain.cpp:9712
 msgid "Restoring Backup"
 msgstr "Restauration de la sauvegarde"
 
@@ -17237,7 +17274,7 @@ msgstr "Enregistrer\tCTRL-S"
 msgid "Save Sequence As"
 msgstr "Enregistrer la séquence sous"
 
-#: src-ui-wx/xLightsMain.cpp:9828
+#: src-ui-wx/xLightsMain.cpp:9829
 msgid "A render is still running. Try updating from the base show folder again in a moment."
 msgstr "Un rendu est encore en cours. Réessayez la mise à jour depuis le dossier de show de base dans un instant."
 
@@ -17253,23 +17290,23 @@ msgstr "Préférences...\tCTRL-,"
 msgid "Key bindings"
 msgstr "Raccourcis clavier"
 
-#: src-ui-wx/xLightsMain.cpp:9939
+#: src-ui-wx/xLightsMain.cpp:994 src-ui-wx/xLightsMain.cpp:3977 src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:32
+msgid "Export House Preview Video"
+msgstr "Exporter la vidéo de l'aperçu maison"
+
+#: src-ui-wx/xLightsMain.cpp:9940
 msgid "Everything selected is already in the base show folder."
 msgstr "Toute la sélection est déjà dans le dossier du show de base."
 
-#: src-ui-wx/xLightsMain.cpp:9939 src-ui-wx/layout/ControllerListPanel.cpp:824 src-ui-wx/layout/LayoutPanel.cpp:7777 src-ui-wx/layout/ViewObjectPanel.cpp:575
+#: src-ui-wx/xLightsMain.cpp:9940 src-ui-wx/layout/ControllerListPanel.cpp:824 src-ui-wx/layout/LayoutPanel.cpp:7777 src-ui-wx/layout/ViewObjectPanel.cpp:575
 msgid "Promote to Base Show Folder"
 msgstr "Promouvoir vers le dossier du show de base"
-
-#: src-ui-wx/xLightsMain.cpp:994 src-ui-wx/xLightsMain.cpp:3976 src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:32
-msgid "Export House Preview Video"
-msgstr "Exporter la vidéo de l'aperçu maison"
 
 #: src-ui-wx/xLightsMain.cpp:997
 msgid "Select Show Folder"
 msgstr "Choisir le dossier du show"
 
-#: src-ui-wx/xLightsMain.cpp:9995
+#: src-ui-wx/xLightsMain.cpp:9996
 msgid "No AI Services Registered for creating images"
 msgstr "Aucun service d'IA n'est configuré pour créer des images"
 

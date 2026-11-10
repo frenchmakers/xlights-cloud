@@ -214,7 +214,7 @@ void CloudStorageSettingsPanel::OnTestConnection(wxCommandEvent& event) {
     std::string problem = s.Validate();
     if (!problem.empty()) {
         _testResult->SetForegroundColour(*wxRED);
-        _testResult->SetLabel(problem);
+        _testResult->SetLabel(wxGetTranslation(wxString::FromUTF8(problem)));
         Layout();
         return;
     }

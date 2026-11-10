@@ -3506,8 +3506,9 @@ void xLightsFrame::OnMenuItemCloudBackupSelected(wxCommandEvent& event)
     CloudStorageSettings settings = CloudStorageSettings::Load();
     std::string problem = settings.Validate();
     if (!problem.empty()) {
-        wxMessageBox("Cloud storage is not set up yet: " + problem + ".\n\nEnter the storage details in Preferences > Cloud Storage.",
-                     "Backup to Cloud", wxICON_INFORMATION | wxOK, this);
+        wxMessageBox(wxString::Format(_("Cloud storage is not set up yet: %s.\n\nEnter the storage details in Preferences > Cloud Storage."),
+                                      wxGetTranslation(wxString::FromUTF8(problem))),
+                     _("Backup to Cloud"), wxICON_INFORMATION | wxOK, this);
         ShowPreferencesDialog("Cloud Storage");
         return;
     }

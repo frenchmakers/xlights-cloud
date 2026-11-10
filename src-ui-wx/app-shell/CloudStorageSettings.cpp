@@ -14,6 +14,8 @@
 #include "settings/XLightsConfigAdapter.h"
 #include "utils/string_utils.h"
 
+#include <wx/translation.h>
+
 #include <algorithm>
 
 namespace {
@@ -82,25 +84,25 @@ S3Config CloudStorageSettings::ToS3Config() const {
 
 std::string CloudStorageSettings::Validate() const {
     if (IsR2() && Trim(r2AccountId).empty()) {
-        return "Cloudflare account ID is missing";
+        return wxTRANSLATE("Cloudflare account ID is missing");
     }
     if (!IsR2()) {
         std::string ep = Trim(endpoint);
         if (ep.empty()) {
-            return "Endpoint URL is missing";
+            return wxTRANSLATE("Endpoint URL is missing");
         }
         if (ep.rfind("https://", 0) != 0 && ep.rfind("http://", 0) != 0) {
-            return "Endpoint URL must start with https://";
+            return wxTRANSLATE("Endpoint URL must start with https://");
         }
     }
     if (Trim(bucket).empty()) {
-        return "Bucket name is missing";
+        return wxTRANSLATE("Bucket name is missing");
     }
     if (Trim(accessKeyId).empty()) {
-        return "Access key ID is missing";
+        return wxTRANSLATE("Access key ID is missing");
     }
     if (Trim(secretAccessKey).empty()) {
-        return "Secret access key is missing";
+        return wxTRANSLATE("Secret access key is missing");
     }
     return {};
 }
