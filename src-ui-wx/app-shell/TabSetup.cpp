@@ -700,8 +700,8 @@ bool xLightsFrame::OfferDefaultShowDirectory(bool permanent) {
     wxString documents = wxStandardPaths::Get().GetDocumentsDir();
     wxString defaultShowDir = documents + wxFileName::GetPathSeparator() + "xLights";
 
-    int answer = wxMessageBox("No show folder is set.\n\nWould you like xLights to create and use a default show folder at:\n\n" + defaultShowDir + "\n\nChoose No to pick a different folder.",
-                              "Create Default Show Folder", wxYES_NO | wxICON_QUESTION, this);
+    int answer = wxMessageBox(wxString::Format(_("No show folder is set.\n\nWould you like xLights to create and use a default show folder at:\n\n%s\n\nChoose No to pick a different folder."), defaultShowDir),
+                              _("Create Default Show Folder"), wxYES_NO | wxICON_QUESTION, this);
 
     if (answer != wxYES) {
         return PromptForShowDirectory(permanent);
@@ -710,7 +710,7 @@ bool xLightsFrame::OfferDefaultShowDirectory(bool permanent) {
     ObtainAccessToURL(documents, true);
     if (!wxFileName::DirExists(defaultShowDir)) {
         if (!wxFileName::Mkdir(defaultShowDir, wxS_DIR_DEFAULT, wxPATH_MKDIR_FULL)) {
-            DisplayError(ToStdString("Unable to create the default show folder:\n" + defaultShowDir + "\n\nPlease choose a folder instead."), this);
+            DisplayError(wxString::Format(_("Unable to create the default show folder:\n%s\n\nPlease choose a folder instead."), defaultShowDir), this);
             return PromptForShowDirectory(permanent);
         }
     }

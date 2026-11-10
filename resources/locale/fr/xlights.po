@@ -3784,6 +3784,42 @@ msgstr "Le dossier choisi ne contient pas de fichiers de show xLights et n'est p
 msgid "Possibly incorrect folder chosen."
 msgstr "Le dossier choisi est peut-être incorrect."
 
+#: src-ui-wx/app-shell/TabSetup.cpp:703
+#, c-format
+msgid ""
+"No show folder is set.\n"
+"\n"
+"Would you like xLights to create and use a default show folder at:\n"
+"\n"
+"%s\n"
+"\n"
+"Choose No to pick a different folder."
+msgstr ""
+"Aucun dossier de show n'est défini.\n"
+"\n"
+"Voulez-vous que xLights crée et utilise un dossier de show par défaut ici :\n"
+"\n"
+"%s\n"
+"\n"
+"Choisissez Non pour choisir un autre dossier."
+
+#: src-ui-wx/app-shell/TabSetup.cpp:704
+msgid "Create Default Show Folder"
+msgstr "Créer le dossier de show par défaut"
+
+#: src-ui-wx/app-shell/TabSetup.cpp:713
+#, c-format
+msgid ""
+"Unable to create the default show folder:\n"
+"%s\n"
+"\n"
+"Please choose a folder instead."
+msgstr ""
+"Impossible de créer le dossier de show par défaut :\n"
+"%s\n"
+"\n"
+"Choisissez plutôt un dossier."
+
 #: src-ui-wx/app-shell/TabSetup.cpp:875
 msgid "Unable to save network definition file"
 msgstr "Impossible d'enregistrer le fichier de définition du réseau"

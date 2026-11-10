@@ -3733,6 +3733,31 @@ msgstr ""
 msgid "Possibly incorrect folder chosen."
 msgstr ""
 
+#: src-ui-wx/app-shell/TabSetup.cpp:703
+#, c-format
+msgid ""
+"No show folder is set.\n"
+"\n"
+"Would you like xLights to create and use a default show folder at:\n"
+"\n"
+"%s\n"
+"\n"
+"Choose No to pick a different folder."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:704
+msgid "Create Default Show Folder"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:713
+#, c-format
+msgid ""
+"Unable to create the default show folder:\n"
+"%s\n"
+"\n"
+"Please choose a folder instead."
+msgstr ""
+
 #: src-ui-wx/app-shell/TabSetup.cpp:875
 msgid "Unable to save network definition file"
 msgstr ""
