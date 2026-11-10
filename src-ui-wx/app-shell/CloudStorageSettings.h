@@ -15,8 +15,8 @@
 #include "utils/S3Client.h"
 
 // Per-machine cloud storage settings. Everything but the secret key lives in
-// the xLights settings file; the secret goes to the OS secure store
-// (wxSecretStore) through WxServiceSettingsStore.
+// the xLights settings file; the secret goes to the OS secure store when there
+// is one (wxSecretStore), otherwise to the settings file too.
 struct CloudStorageSettings {
     static constexpr const char* PROVIDER_R2 = "r2";
     static constexpr const char* PROVIDER_S3 = "s3";
@@ -39,7 +39,10 @@ struct CloudStorageSettings {
     // loadSecret = false avoids touching the secure store (which can prompt
     // on macOS) when only the plain settings are needed.
     static CloudStorageSettings Load(bool loadSecret = true);
+    // The secret goes to the secure store when it is available, otherwise
+    // (Linux without a keyring service) to the settings file.
     void Save() const;
+    static bool SecureStoreAvailable(std::string* reason = nullptr);
 
     bool IsR2() const { return provider == PROVIDER_R2; }
     std::string EffectiveEndpoint() const;

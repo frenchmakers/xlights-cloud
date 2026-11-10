@@ -14,15 +14,57 @@
 #include "settings/XLightsConfigAdapter.h"
 #include "utils/string_utils.h"
 
+#include <wx/secretstore.h>
 #include <wx/translation.h>
 
+#include <log.h>
+
 #include <algorithm>
+#include <cstdlib>
 
 namespace {
 
 const char* SECRET_NAME = "xLightsCloudStorage";
+// Where the secret goes when the system's secure store can't be used (Linux
+// without a keyring service, e.g. a headless machine).
+const char* SECRET_FALLBACK_KEY = "CloudStorageSecretAccessKey";
+
+bool SaveToSecureStore(const std::string& secret) {
+#if wxUSE_SECRETSTORE
+    wxSecretStore store = wxSecretStore::GetDefault();
+    if (store.IsOk()) {
+        return store.Save(SECRET_NAME, "token", wxSecretValue(wxString::FromUTF8(secret)));
+    }
+#endif
+    return false;
+}
 
 } // namespace
+
+bool CloudStorageSettings::SecureStoreAvailable(std::string* reason) {
+    // On a machine without a screen a keyring service may be installed but
+    // locked, and unlocking it asks in a window nobody sees: this skips it.
+    if (const char* off = std::getenv("XLIGHTS_CLOUD_NO_KEYRING"); off != nullptr && *off != '\0' && std::string(off) != "0") {
+        if (reason != nullptr) {
+            *reason = "turned off by XLIGHTS_CLOUD_NO_KEYRING";
+        }
+        return false;
+    }
+#if wxUSE_SECRETSTORE
+    // Opening the store connects to the keyring service, so do it once.
+    static wxString error;
+    static const bool ok = wxSecretStore::GetDefault().IsOk(&error);
+    if (!ok && reason != nullptr) {
+        *reason = error.utf8_string();
+    }
+    return ok;
+#else
+    if (reason != nullptr) {
+        *reason = "not supported by this build";
+    }
+    return false;
+#endif
+}
 
 CloudStorageSettings CloudStorageSettings::Load(bool loadSecret) {
     CloudStorageSettings s;
@@ -39,8 +81,13 @@ CloudStorageSettings CloudStorageSettings::Load(bool loadSecret) {
     s.includeThumbnail = config->ReadBool("CloudStorageIncludeThumbnail", true);
     s.keepBackups = std::clamp((int)config->ReadLong("CloudStorageKeepBackups", 0), 0, MAX_KEEP_BACKUPS);
     if (loadSecret) {
-        WxServiceSettingsStore store;
-        s.secretAccessKey = store.getSecret(SECRET_NAME);
+        if (SecureStoreAvailable()) {
+            WxServiceSettingsStore store;
+            s.secretAccessKey = store.getSecret(SECRET_NAME);
+        }
+        if (s.secretAccessKey.empty()) {
+            s.secretAccessKey = config->Read(SECRET_FALLBACK_KEY, std::string());
+        }
     }
     return s;
 }
@@ -58,9 +105,19 @@ void CloudStorageSettings::Save() const {
     config->Write("CloudStorageIncludeFseq", includeFseq);
     config->Write("CloudStorageIncludeThumbnail", includeThumbnail);
     config->Write("CloudStorageKeepBackups", std::clamp(keepBackups, 0, MAX_KEEP_BACKUPS));
+    const std::string secret = Trim(secretAccessKey);
+    std::string reason;
+    if (SecureStoreAvailable(&reason) && SaveToSecureStore(secret)) {
+        config->DeleteEntry(SECRET_FALLBACK_KEY);
+    } else {
+        // Without a secure store the key would be lost and every backup would
+        // fail with "secret access key is missing": keep it in the settings
+        // file instead (the preferences page says so).
+        spdlog::warn("Cloud storage: the system's secure storage is not available ({}), the secret key is saved in the settings file",
+                     reason.empty() ? std::string("saving failed") : reason);
+        config->Write(SECRET_FALLBACK_KEY, secret);
+    }
     config->Flush();
-    WxServiceSettingsStore store;
-    store.setSecret(SECRET_NAME, Trim(secretAccessKey));
 }
 
 std::string CloudStorageSettings::EffectiveEndpoint() const {

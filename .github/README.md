@@ -45,15 +45,50 @@ Les détails techniques de la traduction (fichiers du catalogue, outils, règles
 dans [`resources/locale/README.md`](../resources/locale/README.md), et les choix de vocabulaire
 dans le [glossaire français](../resources/locale/fr/GLOSSARY.md).
 
-## Download (Windows 64-bit)
+## Download
 
-Get the installer from the [Releases](../../releases) page. There is one xLights Cloud release for
-each official xLights release, built from that exact version with the cloud backup added.
+Get it from the [Releases](../../releases) page. There is one xLights Cloud release for each
+official xLights release, built from that exact version with the cloud backup and the French
+translation added. Help > Check for Updates looks for new xLights Cloud releases here.
+
+### Windows 64-bit
+
+`xLightsCloud64_<version>.exe`
 
 - It installs next to the official xLights (in `C:\Program Files\xLights Cloud`) and shares its
   settings; `.xsq` files keep opening with the official xLights.
-- Help > Check for Updates looks for new xLights Cloud releases here.
 - The installer is not code-signed: Windows SmartScreen asks for confirmation (More info > Run anyway).
+
+### Linux x86_64 (AppImage)
+
+`xLightsCloud-<version>-x86_64.AppImage`, built the same way as the official xLights AppImage.
+
+```bash
+chmod +x xLightsCloud-*-x86_64.AppImage
+./xLightsCloud-*-x86_64.AppImage
+```
+
+- It shares its settings (`~/.config/xLights`) and log (`~/.local/state/xLights`) with the
+  official xLights AppImage.
+- If FUSE is missing (`libfuse2t64` on Ubuntu 24.04), run it with `--appimage-extract-and-run`.
+- The cloud secret key goes to the system keyring (GNOME Keyring, KWallet...) through libsecret.
+  On a machine without one, it is saved, unencrypted, in `~/.config/xLights/settings.json`, and
+  Preferences > Cloud Storage says so. Set `XLIGHTS_CLOUD_NO_KEYRING=1` to always use the settings
+  file, for example on a headless machine where a locked keyring would ask for its password in a
+  window nobody sees.
+
+**Without a screen** (e.g. an Ubuntu 24.04 server or VM), run it in Xvfb:
+
+```bash
+sudo apt install xvfb libgl1 libegl1 libglu1-mesa libgl1-mesa-dri imagemagick
+Xvfb :99 -screen 0 1920x1080x24 &
+DISPLAY=:99 XLIGHTS_CLOUD_NO_KEYRING=1 ./xLightsCloud-*-x86_64.AppImage --appimage-extract-and-run &
+DISPLAY=:99 import -window root screenshot.png   # screenshot of the whole screen
+```
+
+The language is set in `~/.config/xLights/settings.json` (`"xLightsUILanguage": "fr"` in the
+`main` section) or in Preferences > Other > Language. Each release is checked this way before it
+is published: the French catalogs are in the AppImage and xLights starts in French under Xvfb.
 
 ## Support
 
@@ -74,6 +109,6 @@ same license, and its source is this repository.
 
 *En français :* xLights Cloud est le xLights officiel avec en plus la sauvegarde et la restauration
 du dossier de show vers Cloudflare R2 ou tout stockage compatible S3, et une interface en français
-(voir [Version française intégrée](#version-française-intégrée)). Une version Windows est publiée
-pour chaque version officielle. Ce n'est pas un produit de l'équipe xLights : signalez les
+(voir [Version française intégrée](#version-française-intégrée)). Un installeur Windows et une
+AppImage Linux sont publiés pour chaque version officielle. Ce n'est pas un produit de l'équipe xLights : signalez les
 problèmes ici.

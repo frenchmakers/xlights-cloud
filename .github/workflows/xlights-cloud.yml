@@ -5,11 +5,13 @@
 #     issue here, so the conflict is fixed long before the next release;
 #   * its newest release tag (2026.19, ...): when there is no "<version>-cloud"
 #     release yet, it applies this branch's changes onto that exact tag, builds
-#     it on Windows and publishes the installer as release "<version>-cloud".
+#     the Windows installer and the Linux AppImage and publishes both as
+#     release "<version>-cloud". The Windows installer is published even when
+#     the Linux build fails.
 #
 # The official project's own workflows are turned off in this fork on every run.
 
-name: xLights Cloud (Windows)
+name: xLights Cloud
 
 on:
   schedule:
@@ -419,24 +421,128 @@ jobs:
         run: |
           tag="$VERSION-cloud"
           installer=$(ls build_scripts/msw/output/*.exe)
-          if [ "$SIGN" = "true" ]; then
-            SIGNING_NOTE="Signed by SYNAPSE DEVELOPPEMENT (FrenchMakers). Windows SmartScreen may still ask for confirmation while this new publisher builds its reputation."
-          else
-            SIGNING_NOTE="The installer is not code-signed, so Windows SmartScreen warns before running it (More info > Run anyway)."
+          # The Linux job publishes after this one; on a rebuild the release
+          # may already hold an AppImage.
+          LINUX=false
+          if gh release view "$tag" --json assets --jq '.assets[].name' 2> /dev/null | grep -q '\.AppImage$'; then
+            LINUX=true
           fi
-          cat > "$RUNNER_TEMP/notes.md" << EOF
-          **xLights Cloud $VERSION** is the official [xLights $VERSION](https://github.com/$UPSTREAM_REPO/releases/tag/$VERSION) plus **File > Backup to Cloud** and **File > Restore from Cloud** (Cloudflare R2 or any S3-compatible storage, set up in Preferences > Cloud Storage).
-
-          - Windows 64-bit. It installs next to the official xLights, in *C:\\Program Files\\xLights Cloud*, and shares its settings. \`.xsq\` files still open with the official xLights.
-          - Not made or supported by the xLights team: report problems [here](https://github.com/$GH_REPO/issues), not to the xLights project. Crash reports stay on your computer.
-          - $SIGNING_NOTE
-
-          Built from the official tag \`$VERSION\` with [\`${GITHUB_SHA::9}\`](https://github.com/$GH_REPO/commit/$GITHUB_SHA) of this repository applied on top.
-          EOF
+          export LINUX
+          python ci_scripts/xlights_cloud_release_notes.py "$VERSION" "$RUNNER_TEMP/notes.md"
           if gh release view "$tag" > /dev/null 2>&1; then
             gh release upload "$tag" "$installer" --clobber
             gh release edit "$tag" --notes-file "$RUNNER_TEMP/notes.md"
           else
             gh release create "$tag" "$installer" --target "$GITHUB_SHA" \
               --title "xLights Cloud $VERSION" --notes-file "$RUNNER_TEMP/notes.md" --latest
+          fi
+
+  # Linux AppImage, built like the official one (Ubuntu_Window_Release.yml) but
+  # from the official tag with xLights Cloud applied. It runs next to the
+  # Windows build and never holds it up: a failure here only opens an issue.
+  build-linux:
+    needs: check
+    if: needs.check.outputs.build == 'true'
+    runs-on: ubuntu-24.04
+    env:
+      VERSION: ${{ needs.check.outputs.version }}
+      GH_TOKEN: ${{ github.token }}
+      BUILD_IMAGE: ghcr.io/xlightssequencer/xlights-build-docker:master
+    steps:
+      - name: Checkout the official xLights ${{ needs.check.outputs.version }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.UPSTREAM_REPO }}
+          ref: refs/tags/${{ needs.check.outputs.version }}
+          submodules: 'true'
+
+      - name: Get the release patch
+        uses: actions/download-artifact@v4
+        with:
+          name: release-patch
+          path: ${{ runner.temp }}
+
+      - name: Apply xLights Cloud
+        run: git apply --binary --whitespace=nowarn "$RUNNER_TEMP/release.patch" && git status --short | tail -5
+
+      - name: Build the AppImage
+        run: |
+          docker pull "$BUILD_IMAGE"
+          docker run --name buildvm -v "$GITHUB_WORKSPACE:/xLights/xlights-git" -e XLIGHTS_VERSION="$VERSION" \
+            "$BUILD_IMAGE" /bin/bash /xLights/xlights-git/build_scripts/linux/xlights_cloud_appimage.sh
+          docker cp buildvm:/xLights/xLights/AppImage/. "$RUNNER_TEMP/AppImage/"
+          mkdir -p "$RUNNER_TEMP/out"
+          mv "$RUNNER_TEMP"/AppImage/*.AppImage "$RUNNER_TEMP/out/xLightsCloud-$VERSION-x86_64.AppImage"
+          chmod +x "$RUNNER_TEMP/out/xLightsCloud-$VERSION-x86_64.AppImage"
+          ls -lh "$RUNNER_TEMP/out"
+
+      # French catalogs in place, libraries bundled, and a start in French on a
+      # machine without a screen or keyring (as on a headless Ubuntu VM).
+      - name: Check the AppImage
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q xvfb imagemagick libgl1 libegl1 libglu1-mesa libgl1-mesa-dri > /dev/null
+          bash build_scripts/linux/xlights_cloud_smoke_test.sh "$RUNNER_TEMP/out/xLightsCloud-$VERSION-x86_64.AppImage" "$RUNNER_TEMP/check"
+
+      - name: Keep the screenshot and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xLights_Cloud_Linux_check
+          path: ${{ runner.temp }}/check
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Keep the AppImage
+        uses: actions/upload-artifact@v4
+        with:
+          name: xLights_Cloud_AppImage
+          path: ${{ runner.temp }}/out/*.AppImage
+          retention-days: 14
+
+      - name: Report the failure
+        if: failure()
+        run: |
+          title="Linux AppImage build failed"
+          body=$(printf 'The Linux AppImage of xLights Cloud %s (`%s`) failed: %s/%s/actions/runs/%s\n\nThe Windows installer is published as usual. If this release already had an AppImage, it is the one from an earlier build.' \
+            "$VERSION" "${GITHUB_SHA::9}" "$GITHUB_SERVER_URL" "$GH_REPO" "$GITHUB_RUN_ID")
+          open=$(gh issue list --state open --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -1)
+          if [ -n "$open" ]; then
+            gh issue comment "$open" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi
+
+  # Adds the AppImage to the release the Windows job published.
+  publish-linux:
+    needs: [check, build, build-linux]
+    if: needs.build.result == 'success' && needs.build-linux.result == 'success'
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.check.outputs.version }}
+      GH_TOKEN: ${{ github.token }}
+      SIGN: ${{ vars.SIGNING_ENABLED == 'true' }}
+      LINUX: 'true'
+    steps:
+      - name: Checkout xLights Cloud
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: ci_scripts
+
+      - name: Get the AppImage
+        uses: actions/download-artifact@v4
+        with:
+          name: xLights_Cloud_AppImage
+          path: ${{ runner.temp }}/out
+
+      - name: Publish the AppImage
+        run: |
+          tag="$VERSION-cloud"
+          python3 ci_scripts/xlights_cloud_release_notes.py "$VERSION" "$RUNNER_TEMP/notes.md"
+          gh release upload "$tag" "$RUNNER_TEMP"/out/*.AppImage --clobber
+          gh release edit "$tag" --notes-file "$RUNNER_TEMP/notes.md"
+          title="Linux AppImage build failed"
+          open=$(gh issue list --state open --json number,title --jq ".[] | select(.title == \"$title\") | .number" | head -1)
+          if [ -n "$open" ]; then
+            gh issue close "$open" --comment "The AppImage of xLights Cloud $VERSION is published again."
           fi

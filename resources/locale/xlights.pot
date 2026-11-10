@@ -2034,28 +2034,28 @@ msgstr ""
 msgid "Cancel the restore in progress? The files restored so far are removed."
 msgstr ""
 
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:102
-msgid "Access key ID is missing"
-msgstr ""
-
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:105
-msgid "Secret access key is missing"
-msgstr ""
-
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:87
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:144
 msgid "Cloudflare account ID is missing"
 msgstr ""
 
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:92
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:149
 msgid "Endpoint URL is missing"
 msgstr ""
 
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:95
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:152
 msgid "Endpoint URL must start with https://"
 msgstr ""
 
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:99
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:156
 msgid "Bucket name is missing"
+msgstr ""
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:159
+msgid "Access key ID is missing"
+msgstr ""
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:162
+msgid "Secret access key is missing"
 msgstr ""
 
 #: src-ui-wx/app-shell/EmailDialog.cpp:45
@@ -13085,20 +13085,29 @@ msgid ""
 "Backups can also be deleted one at a time from File > Restore from Cloud."
 msgstr ""
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:107
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:106
 msgid ""
 "Cloudflare R2 is recommended: its free tier includes 10 GB of storage and free downloads.\n"
 "Use a token limited to the backup bucket and keep it private: anyone with these keys can\n"
 "read the backups, audio files included. Never make the bucket public.\n"
-"On storage with versioning or object lock turned on, deleted backups can still use space.\n"
-"Settings are stored on this computer; the secret key is kept in the system's secure storage."
+"On storage with versioning or object lock turned on, deleted backups can still use space."
 msgstr ""
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:224
-msgid "Testing connection..."
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:111
+msgid "Settings are stored on this computer; the secret key is kept in the system's secure storage."
+msgstr ""
+
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:113
+msgid ""
+"This computer has no secure storage service (keyring): the secret key is saved, unencrypted,\n"
+"in the xLights settings file of your user account."
 msgstr ""
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:229
+msgid "Testing connection..."
+msgstr ""
+
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:234
 msgid "Connection OK: the bucket is writable."
 msgstr ""
 

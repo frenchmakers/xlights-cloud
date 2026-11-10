@@ -103,12 +103,17 @@ CloudStorageSettingsPanel::CloudStorageSettingsPanel(wxWindow* parent, wxWindowI
     backupBox->Add(keepRow, 0, wxALL, 4);
     top->Add(backupBox, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 8);
 
-    auto* note = new wxStaticText(this, wxID_ANY,
-                                  _("Cloudflare R2 is recommended: its free tier includes 10 GB of storage and free downloads.\n"
-                                    "Use a token limited to the backup bucket and keep it private: anyone with these keys can\n"
-                                    "read the backups, audio files included. Never make the bucket public.\n"
-                                    "On storage with versioning or object lock turned on, deleted backups can still use space.\n"
-                                    "Settings are stored on this computer; the secret key is kept in the system's secure storage."));
+    wxString noteText = _("Cloudflare R2 is recommended: its free tier includes 10 GB of storage and free downloads.\n"
+                          "Use a token limited to the backup bucket and keep it private: anyone with these keys can\n"
+                          "read the backups, audio files included. Never make the bucket public.\n"
+                          "On storage with versioning or object lock turned on, deleted backups can still use space.");
+    if (CloudStorageSettings::SecureStoreAvailable()) {
+        noteText += "\n" + _("Settings are stored on this computer; the secret key is kept in the system's secure storage.");
+    } else {
+        noteText += "\n" + _("This computer has no secure storage service (keyring): the secret key is saved, unencrypted,\n"
+                             "in the xLights settings file of your user account.");
+    }
+    auto* note = new wxStaticText(this, wxID_ANY, noteText);
     top->Add(note, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 8);
 
     SetSizer(top);

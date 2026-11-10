@@ -2056,29 +2056,29 @@ msgstr "Étape 2/2 : extraction"
 msgid "Cancel the restore in progress? The files restored so far are removed."
 msgstr "Annuler la restauration en cours ? Les fichiers déjà restaurés seront supprimés."
 
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:102
-msgid "Access key ID is missing"
-msgstr "L'ID de clé d'accès est manquant"
-
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:105
-msgid "Secret access key is missing"
-msgstr "La clé d'accès secrète est manquante"
-
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:87
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:144
 msgid "Cloudflare account ID is missing"
 msgstr "L'ID de compte Cloudflare est manquant"
 
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:92
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:149
 msgid "Endpoint URL is missing"
 msgstr "L'URL du point de terminaison est manquante"
 
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:95
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:152
 msgid "Endpoint URL must start with https://"
 msgstr "L'URL du point de terminaison doit commencer par https://"
 
-#: src-ui-wx/app-shell/CloudStorageSettings.cpp:99
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:156
 msgid "Bucket name is missing"
 msgstr "Le nom du bucket est manquant"
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:159
+msgid "Access key ID is missing"
+msgstr "L'ID de clé d'accès est manquant"
+
+#: src-ui-wx/app-shell/CloudStorageSettings.cpp:162
+msgid "Secret access key is missing"
+msgstr "La clé d'accès secrète est manquante"
 
 #: src-ui-wx/app-shell/EmailDialog.cpp:45
 msgid ""
@@ -13367,25 +13367,35 @@ msgstr ""
 "Après chaque sauvegarde réussie, les anciennes sauvegardes du même show sont supprimées du bucket.\n"
 "Les sauvegardes peuvent aussi être supprimées une à une depuis Fichier > Restaurer depuis le cloud."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:107
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:106
 msgid ""
 "Cloudflare R2 is recommended: its free tier includes 10 GB of storage and free downloads.\n"
 "Use a token limited to the backup bucket and keep it private: anyone with these keys can\n"
 "read the backups, audio files included. Never make the bucket public.\n"
-"On storage with versioning or object lock turned on, deleted backups can still use space.\n"
-"Settings are stored on this computer; the secret key is kept in the system's secure storage."
+"On storage with versioning or object lock turned on, deleted backups can still use space."
 msgstr ""
 "Cloudflare R2 est recommandé : son offre gratuite inclut 10 Go de stockage et les téléchargements.\n"
 "Utilisez un jeton limité au bucket de sauvegarde et gardez-le privé : toute personne ayant ces clés\n"
 "peut lire les sauvegardes, fichiers audio compris. Ne rendez jamais le bucket public.\n"
-"Sur un stockage avec versionnage ou verrouillage d'objets, les sauvegardes supprimées peuvent encore occuper de la place.\n"
-"Les paramètres sont enregistrés sur cet ordinateur ; la clé secrète est conservée dans le stockage sécurisé du système."
+"Sur un stockage avec versionnage ou verrouillage d'objets, les sauvegardes supprimées peuvent encore occuper de la place."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:224
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:111
+msgid "Settings are stored on this computer; the secret key is kept in the system's secure storage."
+msgstr "Les paramètres sont enregistrés sur cet ordinateur ; la clé secrète est conservée dans le stockage sécurisé du système."
+
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:113
+msgid ""
+"This computer has no secure storage service (keyring): the secret key is saved, unencrypted,\n"
+"in the xLights settings file of your user account."
+msgstr ""
+"Cet ordinateur n'a pas de service de stockage sécurisé (trousseau) : la clé secrète est enregistrée,\n"
+"non chiffrée, dans le fichier de réglages xLights de votre compte utilisateur."
+
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:229
 msgid "Testing connection..."
 msgstr "Test de la connexion..."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:229
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:234
 msgid "Connection OK: the bucket is writable."
 msgstr "Connexion OK : le bucket est accessible en écriture."
 
@@ -19055,4 +19065,17 @@ msgstr "Choisir le dossier du show"
 #: src-ui-wx/xLightsMain.cpp:9996
 msgid "No AI Services Registered for creating images"
 msgstr "Aucun service d'IA n'est configuré pour créer des images"
+
+#~ msgid ""
+#~ "Cloudflare R2 is recommended: its free tier includes 10 GB of storage and free downloads.\n"
+#~ "Use a token limited to the backup bucket and keep it private: anyone with these keys can\n"
+#~ "read the backups, audio files included. Never make the bucket public.\n"
+#~ "On storage with versioning or object lock turned on, deleted backups can still use space.\n"
+#~ "Settings are stored on this computer; the secret key is kept in the system's secure storage."
+#~ msgstr ""
+#~ "Cloudflare R2 est recommandé : son offre gratuite inclut 10 Go de stockage et les téléchargements.\n"
+#~ "Utilisez un jeton limité au bucket de sauvegarde et gardez-le privé : toute personne ayant ces clés\n"
+#~ "peut lire les sauvegardes, fichiers audio compris. Ne rendez jamais le bucket public.\n"
+#~ "Sur un stockage avec versionnage ou verrouillage d'objets, les sauvegardes supprimées peuvent encore occuper de la place.\n"
+#~ "Les paramètres sont enregistrés sur cet ordinateur ; la clé secrète est conservée dans le stockage sécurisé du système."
 
