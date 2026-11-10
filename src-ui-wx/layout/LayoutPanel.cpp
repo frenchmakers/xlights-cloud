@@ -210,7 +210,7 @@ public:
     }
 
     wxAuiFloatingFrame* CreateFloatingFrame(wxWindow* parent, const wxAuiPaneInfo& p) override {
-        wxAuiFloatingFrame* frame = new wxAuiFloatingFrame(parent, this, p, wxID_ANY,
+        wxAuiFloatingFrame* frame = new TranslatedFloatingFrame(parent, this, p, wxID_ANY,
             wxRESIZE_BORDER | wxSYSTEM_MENU | wxCAPTION |
             wxFRAME_NO_TASKBAR | wxFRAME_FLOAT_ON_PARENT |
             wxCLIP_CHILDREN | wxCLOSE_BOX);

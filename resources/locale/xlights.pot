@@ -15756,7 +15756,7 @@ msgstr ""
 msgid "Manual entry"
 msgstr ""
 
-#: src-ui-wx/shared/utils/TranslatedDockArt.h:32
+#: src-ui-wx/shared/utils/TranslatedDockArt.h:29
 msgid "Color Panel"
 msgstr ""
 
@@ -16820,7 +16820,7 @@ msgstr ""
 msgid "Play Tool Bar"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:1151 src-ui-wx/sequencer/tabSequencer.cpp:192 src-ui-wx/shared/utils/TranslatedDockArt.h:28
+#: src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:1151 src-ui-wx/sequencer/tabSequencer.cpp:192 src-ui-wx/shared/utils/TranslatedDockArt.h:26
 msgid "Effect Settings"
 msgstr ""
 

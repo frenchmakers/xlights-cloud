@@ -6,7 +6,7 @@
 		<id_arg>0</id_arg>
 		<handler function="OnClose" entry="EVT_CLOSE" />
 		<handler function="OnChar" entry="EVT_CHAR" />
-		<object class="wxAuiManager" variable="MainAuiManager" member="yes">
+		<object class="wxAuiManager" subclass="TranslatedAuiManager" variable="MainAuiManager" member="yes">
 			<style>wxAUI_MGR_ALLOW_FLOATING|wxAUI_MGR_DEFAULT</style>
 			<object class="AuiManagerItem">
 				<object class="wxAuiToolBar" name="ID_AUITOOLBAR_MAIN" subclass="xlAuiToolBar" variable="MainToolBar" member="yes">
@@ -665,7 +665,7 @@
 						<object class="wxPanel" name="XLIGHTS_SEQUENCER_TAB" variable="PanelSequencer" member="yes">
 							<style>wxTAB_TRAVERSAL|wxWANTS_CHARS</style>
 							<handler function="OnPanelSequencerPaint" entry="EVT_PAINT" />
-							<object class="wxAuiManager" variable="m_mgr" member="yes">
+							<object class="wxAuiManager" subclass="TranslatedAuiManager" variable="m_mgr" member="yes">
 								<style>wxAUI_MGR_ALLOW_FLOATING|wxAUI_MGR_DEFAULT</style>
 								<handler function="OnPaneClose" entry="EVT_AUI_PANE_CLOSE" />
 							</object>

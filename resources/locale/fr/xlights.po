@@ -16066,7 +16066,7 @@ msgstr "Valeur :"
 msgid "Manual entry"
 msgstr "Saisie manuelle"
 
-#: src-ui-wx/shared/utils/TranslatedDockArt.h:32
+#: src-ui-wx/shared/utils/TranslatedDockArt.h:29
 msgid "Color Panel"
 msgstr "Couleur"
 
@@ -17156,7 +17156,7 @@ msgstr "Sortie vers les lumières"
 msgid "Play Tool Bar"
 msgstr "Barre de lecture"
 
-#: src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:1151 src-ui-wx/sequencer/tabSequencer.cpp:192 src-ui-wx/shared/utils/TranslatedDockArt.h:28
+#: src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:843 src-ui-wx/xLightsMain.cpp:1151 src-ui-wx/sequencer/tabSequencer.cpp:192 src-ui-wx/shared/utils/TranslatedDockArt.h:26
 msgid "Effect Settings"
 msgstr "Paramètres de l'effet"
 
