@@ -694,6 +694,112 @@ TEST_CASE("Pictures numbered image sequences play as frames", "[effects][media]"
     CHECK(AllColour(fr, 4, 0, 0, 255));
 }
 
+// ================================================================== Check Sequence: Morph, Liquid
+
+namespace {
+bool HasWarning(const std::list<std::string>& l, const std::string& s) {
+    return std::any_of(l.begin(), l.end(), [&](const std::string& x) { return x.find(s) != std::string::npos; });
+}
+
+// A horizontal matrix: each string is a row, so NumStrings is the height.
+std::string MatrixXml(int wi, int ht) {
+    return "<model name=\"M\" DisplayAs=\"Matrix\" StartChannel=\"1\" NumStrings=\"" + std::to_string(ht) +
+           "\" NodesPerString=\"" + std::to_string(wi) + "\" StringType=\"RGB Nodes\"/>";
+}
+
+// A horizontal line from X 0..width at Y 0 that morphs straight down to Y 100,
+// so Render() repeats it along X.
+std::string FallingLine(int width, int count, int skip) {
+    auto v = [](int n) { return std::to_string(n); };
+    return "E_SLIDER_Morph_Start_X1=0,E_SLIDER_Morph_Start_X2=" + v(width) +
+           ",E_SLIDER_Morph_Start_Y1=0,E_SLIDER_Morph_Start_Y2=0" +
+           ",E_SLIDER_Morph_End_X1=0,E_SLIDER_Morph_End_X2=" + v(width) +
+           ",E_SLIDER_Morph_End_Y1=100,E_SLIDER_Morph_End_Y2=100" +
+           ",E_SLIDER_Morph_Repeat_Count=" + v(count) +
+           ",E_SLIDER_Morph_Repeat_Skip=" + v(skip);
+}
+
+// The same line turned on its side: a vertical line from Y 0..height at X 0
+// that morphs right to X 100, so Render() repeats it along Y.
+std::string SlidingLine(int height, int count, int skip) {
+    auto v = [](int n) { return std::to_string(n); };
+    return "E_SLIDER_Morph_Start_X1=0,E_SLIDER_Morph_Start_X2=0" +
+           std::string(",E_SLIDER_Morph_Start_Y1=0,E_SLIDER_Morph_Start_Y2=") + v(height) +
+           ",E_SLIDER_Morph_End_X1=100,E_SLIDER_Morph_End_X2=100" +
+           ",E_SLIDER_Morph_End_Y1=0,E_SLIDER_Morph_End_Y2=" + v(height) +
+           ",E_SLIDER_Morph_Repeat_Count=" + v(count) +
+           ",E_SLIDER_Morph_Repeat_Skip=" + v(skip);
+}
+
+bool MorphWarns(int wi, int ht, const std::string& settings) {
+    Fx f(MatrixXml(wi, ht));
+    REQUIRE(f.model->GetDefaultBufferWi() == wi);
+    REQUIRE(f.model->GetDefaultBufferHt() == ht);
+    Effect* e = f.Add("Morph", settings);
+    return HasWarning(f.Get("Morph")->CheckEffectSettings(e->GetSettings(), nullptr, f.model, e, false),
+                      "repeat count and skip");
+}
+} // namespace
+
+TEST_CASE("Morph check measures repeated copies by their real span", "[effects][media]") {
+    // 32 wide: a 25% line is 8 px + 1. Copies span 9 + count * skip; the limit is 2 * 32.
+    CHECK_FALSE(MorphWarns(32, 32, FallingLine(25, 20, 2)));  // 49
+    CHECK_FALSE(MorphWarns(32, 32, FallingLine(25, 27, 2)));  // 63
+    CHECK(MorphWarns(32, 32, FallingLine(25, 28, 2)));        // 65
+    CHECK_FALSE(MorphWarns(32, 32, FallingLine(25, 0, 50)));  // no repeats
+}
+
+TEST_CASE("Morph check uses the axis the copies are repeated along", "[effects][media]") {
+    // Narrow and tall: a falling line repeats across the 16 px width, so 20 copies
+    // 2 px apart (5 + 40 = 45 > 32) overshoot even though the model is 64 tall.
+    CHECK(MorphWarns(16, 64, FallingLine(25, 20, 2)));
+    // The same settings sliding sideways repeat down the 64 px height: fine.
+    CHECK_FALSE(MorphWarns(16, 64, SlidingLine(25, 20, 2)));
+    // And on the wide-and-short model the two swap.
+    CHECK_FALSE(MorphWarns(64, 16, FallingLine(25, 20, 2)));
+    CHECK(MorphWarns(64, 16, SlidingLine(25, 20, 2)));
+}
+
+TEST_CASE("Morph check skips Auto Repeat and value-curve repeats", "[effects][media]") {
+    // Auto Repeat replaces the Repeat Count slider with its own count.
+    CHECK_FALSE(MorphWarns(16, 16, FallingLine(25, 200, 5) + ",E_CHECKBOX_Morph_AutoRepeat=1"));
+    CHECK_FALSE(MorphWarns(16, 16, FallingLine(25, 200, 5) +
+                           ",E_VALUECURVE_Morph_Repeat_Count=Active=TRUE|Id=ID_VALUECURVE_Morph_Repeat_Count|Type=Flat|Min=0.00|Max=250.00|P1=10.00|"));
+    CHECK(MorphWarns(16, 16, FallingLine(25, 200, 5)));
+}
+
+namespace {
+bool LiquidWarns(const std::string& settings, int endMs) {
+    Fx f(MatrixXml(16, 16));
+    Effect* e = f.Add("Liquid", settings, {}, 0, endMs);
+    return HasWarning(f.Get("Liquid")->CheckEffectSettings(e->GetSettings(), nullptr, f.model, e, false),
+                      "Particle count will be limited");
+}
+} // namespace
+
+TEST_CASE("Liquid check estimates particles from Life Time, not effect length", "[effects][media]") {
+    // Flow 500 = 2000/s from one emitter; Life Time 300 = 3 s, about 3.3 s with
+    // the renderer's random spread: about 6600 live particles however long the effect.
+    CHECK_FALSE(LiquidWarns("E_SLIDER_LifeTime=300,E_SLIDER_Flow1=500", 600000));
+
+    // Flow 1000 = 20000/s. 10 s Life Time lives about 11 s: 220000, over the cap.
+    CHECK(LiquidWarns("E_SLIDER_LifeTime=1000,E_SLIDER_Flow1=1000", 30000));
+
+    // 4.8 s of Life Time is 96000 nominal but about 105600 on average.
+    CHECK(LiquidWarns("E_SLIDER_LifeTime=480,E_SLIDER_Flow1=1000", 30000));
+    CHECK_FALSE(LiquidWarns("E_SLIDER_LifeTime=430,E_SLIDER_Flow1=1000", 30000)); // ~94600
+}
+
+TEST_CASE("Liquid check counts Warm Up Time toward reaching the steady state", "[effects][media]") {
+    // A 1 s effect only builds up 20000 particles...
+    CHECK_FALSE(LiquidWarns("E_SLIDER_LifeTime=1000,E_SLIDER_Flow1=1000", 1000));
+    // ...unless 10 s of warm-up has already filled the model.
+    CHECK(LiquidWarns("E_SLIDER_LifeTime=1000,E_SLIDER_Flow1=1000,E_TEXTCTRL_WarmUpTime=1000", 1000));
+    // Life Time 0 never ages particles out, so the run length is the limit.
+    CHECK_FALSE(LiquidWarns("E_SLIDER_LifeTime=0,E_SLIDER_Flow1=1000", 4000));
+    CHECK(LiquidWarns("E_SLIDER_LifeTime=0,E_SLIDER_Flow1=1000", 6000));
+}
+
 // ================================================================== Glediator
 
 namespace {

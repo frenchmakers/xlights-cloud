@@ -33,6 +33,11 @@ if(NOT Catch2_FOUND)
         GIT_TAG v3.8.1)
     FetchContent_MakeAvailable(Catch2)
     list(APPEND CMAKE_MODULE_PATH ${catch2_SOURCE_DIR}/extras)
+    # Under the root build, wx's directory-wide _UNICODE makes Catch2 define wmain,
+    # which a /subsystem:console exe doesn't link against.
+    if(WIN32)
+        target_compile_definitions(Catch2WithMain PRIVATE DO_NOT_USE_WMAIN)
+    endif()
 endif()
 
 # Two ways to get src-core under test:
@@ -72,6 +77,15 @@ target_link_libraries(xlights_unit_tests PRIVATE xlights_core_testlib Catch2::Ca
 if(XL_TEST_FULL_CORE AND NOT APPLE)
     target_sources(xlights_unit_tests PRIVATE ${CMAKE_CURRENT_LIST_DIR}/support/GLFunctionPointers.cpp)
 endif()
+# The bundle's DLLs (bin64) next to the exe; catch_discover_tests runs it as part of the build.
+if(XL_TEST_FULL_CORE AND WIN32)
+    add_custom_command(TARGET xlights_unit_tests PRE_LINK
+        COMMAND ${CMAKE_COMMAND}
+            "-DSRC_DIR=${XL_REPO_ROOT}/bin64"
+            "-DDST_DIR=$<TARGET_FILE_DIR:xlights_unit_tests>"
+            "-DGLOB_PAT=*.dll"
+            -P "${XL_REPO_ROOT}/cmake/safe_copy_dlls.cmake")
+endif()
 
 # Release builds use -ffast-math; the NaN/inf guards only mean something when
 # the test is compiled the same way.
@@ -81,12 +95,23 @@ if(NOT MSVC)
 endif()
 
 include(Catch)
+# ctest runs each test case in its own process, in parallel. The PixLite tests (core/, not
+# built on Windows) all need the fixed UDP discovery port 49150, so they take a lock and run
+# one at a time.
+set(XL_NOT_LOCKED "")
+if(XL_TEST_FULL_CORE AND NOT WIN32)
+    catch_discover_tests(xlights_unit_tests TEST_SPEC "[pixlite3]" TEST_LIST xlights_unit_tests_PIXLITE
+        PROPERTIES RESOURCE_LOCK pixlite_udp_port)
+    set(XL_NOT_LOCKED "~[pixlite3]")
+endif()
 if(XL_TEST_VULKAN)
-    catch_discover_tests(xlights_unit_tests TEST_SPEC "~[gpu]")
+    catch_discover_tests(xlights_unit_tests TEST_SPEC "~[gpu]${XL_NOT_LOCKED}")
     # A software Vulkan device (lavapipe on CI) only takes compute work with
     # XL_VULKAN_ALLOW_CPU set. Only these tests get it: the rest keep their CPU paths.
     catch_discover_tests(xlights_unit_tests TEST_SPEC "[gpu]" TEST_LIST xlights_unit_tests_GPU
         PROPERTIES ENVIRONMENT "XL_VULKAN_ALLOW_CPU=1")
+elseif(XL_NOT_LOCKED)
+    catch_discover_tests(xlights_unit_tests TEST_SPEC "${XL_NOT_LOCKED}")
 else()
     catch_discover_tests(xlights_unit_tests)
 endif()

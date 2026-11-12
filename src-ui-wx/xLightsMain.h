@@ -511,6 +511,9 @@ public:
     void ClearSequenceData();
     void LoadAudioData(SequenceFile& xml_file);
     virtual void CreateDebugReport(xlCrashHandler* crashHandler) override;
+#ifdef __WXMSW__
+    virtual WXLRESULT MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM lParam) override;
+#endif
     virtual std::string GetCurrentDir() const override { return CurrentDir.ToStdString(); }
     wxString GetThreadStatusReport();
     void PushTraceContext();
@@ -1834,6 +1837,9 @@ public:
     void SaveAsSequence();
     bool SaveAsSequence(const std::string& filename);
     bool IsSequenceInShowDir(const wxString& filename) const;
+    // Why the open sequence can't be saved to `path` ("" = it can). An empty
+    // path skips the show-folder check.
+    std::string SequenceSaveRefusal(const wxString& path) const;
     wxString GetLastSequenceDialogDir() const;
     void SetLastSequenceDialogDir(const wxString& dir);
     void SetPasteByCell();
