@@ -20,9 +20,20 @@ SRC=/xLights/xlights-git
 # The mounted checkout belongs to the runner's user, not root.
 git config --global --add safe.directory '*'
 
-sed 's|^\./Recipe$|(cd /xLights/xlights-git \&\& colormake-short -j"$(nproc)")|' /Recipe.appimage > /tmp/Recipe.cloud
+# After make install, also copy ONNX Runtime into the AppDir: the binary links
+# libonnxruntime.so.1 since 2026.20, but that release's Makefile does not
+# install it (fixed after the tag, xLightsSequencer/xLights fe78fdddb) and
+# linuxdeploy then fails. Harmless once the Makefile installs it itself.
+ORT_COPY='if ls lib/linux/libonnxruntime.so* > /dev/null 2>\&1; then install -d -m 755 ${BASEDIR}/$APP/$APP.AppDir/usr/lib \&\& cp -fP lib/linux/libonnxruntime.so* ${BASEDIR}/$APP/$APP.AppDir/usr/lib/; fi'
+sed -e 's|^\./Recipe$|(cd /xLights/xlights-git \&\& colormake-short -j"$(nproc)")|' \
+    -e "/^make install DESTDIR=/a $ORT_COPY" \
+    /Recipe.appimage > /tmp/Recipe.cloud
 if ! grep -q 'cd /xLights/xlights-git && colormake-short' /tmp/Recipe.cloud; then
     echo "xlights_cloud_appimage: /Recipe.appimage no longer starts with ./Recipe, update this script" >&2
+    exit 1
+fi
+if ! grep -q 'libonnxruntime' /tmp/Recipe.cloud; then
+    echo "xlights_cloud_appimage: no 'make install DESTDIR=' line in /Recipe.appimage, update this script" >&2
     exit 1
 fi
 
