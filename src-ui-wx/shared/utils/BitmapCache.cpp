@@ -123,6 +123,8 @@
 #include "valuecurveselected.xpm"
 
 #include "Images_png.h"
+#include "Images_png_fr.h"
+#include "settings/UILanguage.h"
 
 #include "xLights.xpm"
 #include "xLights-16.xpm"
@@ -318,6 +320,38 @@ static wxBitmapBundle CreateBitmapBundleFromPNGs(const wxString &id,
     return wxBitmapBundle::FromImpl(new xlNamedBitmapBundleImpl(id, bitmaps[0].GetSize(), bitmaps));
 }
 
+// The new sequence wizard's buttons have their text in the picture: in French,
+// use the French pictures. The language is read at startup, like the catalogs.
+static bool LocalizedWizardButton(const wxString& id, wxBitmapBundle& bundle) {
+    struct Picture {
+        const char* id;
+        const unsigned char* data;
+        int size;
+    };
+    static const Picture french[] = {
+        { "xlART_musical_seq", musical_seq_fr_png, sizeof(musical_seq_fr_png) },
+        { "xlART_musical_seq_pressed", musical_seq_pressed_fr_png, sizeof(musical_seq_pressed_fr_png) },
+        { "xlART_effect_seq", effect_seq_fr_png, sizeof(effect_seq_fr_png) },
+        { "xlART_effect_seq_pressed", effect_seq_pressed_fr_png, sizeof(effect_seq_pressed_fr_png) },
+        { "xlART_time_custom", time_custom_fr_png, sizeof(time_custom_fr_png) },
+        { "xlART_time_custom_pressed", time_custom_pressed_fr_png, sizeof(time_custom_pressed_fr_png) },
+        { "xlART_quick_start", quick_start_fr_png, sizeof(quick_start_fr_png) },
+        { "xlART_quick_start_pressed", quick_start_pressed_fr_png, sizeof(quick_start_pressed_fr_png) },
+    };
+    for (const auto& p : french) {
+        if (id == p.id) {
+            // Only asked for these pictures, so the settings are loaded by now.
+            static const bool isFrench = UILanguage::GetConfigured() == "fr";
+            if (!isFrench) {
+                return false;
+            }
+            bundle = CreateBitmapBundleFromPNGs(id, p.data, p.size);
+            return true;
+        }
+    }
+    return false;
+}
+
 
 static const char cloudSVG[] =
     "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\">"
@@ -357,6 +391,10 @@ wxBitmapBundle xlArtProvider::CreateBitmapBundle(const wxArtID& id,
     }
     */
     
+    if (wxBitmapBundle localized; LocalizedWizardButton(id, localized)) {
+        return localized;
+    }
+
 #ifdef __WXOSX__
     // macOS SF Symbol based icons, use instead of our xpms.  Honor light/dark mode, scale properly, etc...
     if ("xlART_DICE_ICON" == id) {

@@ -2148,7 +2148,7 @@ msgstr ""
 msgid "RawControl"
 msgstr ""
 
-#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:259 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:269 resources/effectmetadata/Curtain.json resources/effectmetadata/Meteors.json ... (+1)
+#: src-ui-wx/app-shell/KeyBindingEditDialog.cpp:259 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:54 src-ui-wx/sequencer/SeqSettingsDialog.cpp:270 resources/effectmetadata/Curtain.json resources/effectmetadata/Meteors.json ... (+1)
 msgid "Effect"
 msgstr ""
 
@@ -3944,7 +3944,7 @@ msgstr ""
 msgid "Timing 5"
 msgstr ""
 
-#: src-ui-wx/color/ColorManager.h:129 src-ui-wx/sequencer/SeqSettingsDialog.cpp:453
+#: src-ui-wx/color/ColorManager.h:129 src-ui-wx/sequencer/SeqSettingsDialog.cpp:454
 msgid "Timings"
 msgstr ""
 
@@ -5041,7 +5041,7 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: src-ui-wx/controllers/HinksPixExportDialog.cpp:248 src-ui-wx/media/ManageMediaPanel.cpp:751 src-ui-wx/model/ViewpointDialog.cpp:58 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:171 src-ui-wx/sequencer/SeqSettingsDialog.cpp:396 ... (+2)
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:248 src-ui-wx/media/ManageMediaPanel.cpp:751 src-ui-wx/model/ViewpointDialog.cpp:58 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:171 src-ui-wx/sequencer/SeqSettingsDialog.cpp:397 ... (+2)
 msgid "Remove"
 msgstr ""
 
@@ -6757,7 +6757,7 @@ msgstr ""
 msgid "Shader sites"
 msgstr ""
 
-#: src-ui-wx/effects/ShaderDownloadDialog.cpp:307 src-ui-wx/import_export/VendorModelDialog.cpp:212 src-ui-wx/import_export/VendorMusicDialog.cpp:119 src-ui-wx/sequencer/SeqSettingsDialog.cpp:353
+#: src-ui-wx/effects/ShaderDownloadDialog.cpp:307 src-ui-wx/import_export/VendorModelDialog.cpp:212 src-ui-wx/import_export/VendorMusicDialog.cpp:119 src-ui-wx/sequencer/SeqSettingsDialog.cpp:354
 msgid "Website:"
 msgstr ""
 
@@ -7452,7 +7452,7 @@ msgstr ""
 msgid "Assign VSA Tracks to xLights Models/Layers"
 msgstr ""
 
-#: src-ui-wx/import_export/VsaImportDialog.cpp:86 src-ui-wx/sequencer/NoteImportDialog.cpp:98 src-ui-wx/sequencer/SeqSettingsDialog.cpp:553 resources/effectmetadata/Guitar.json resources/effectmetadata/Piano.json
+#: src-ui-wx/import_export/VsaImportDialog.cpp:86 src-ui-wx/sequencer/NoteImportDialog.cpp:98 src-ui-wx/sequencer/SeqSettingsDialog.cpp:554 resources/effectmetadata/Guitar.json resources/effectmetadata/Piano.json
 msgid "Track"
 msgstr ""
 
@@ -9822,7 +9822,7 @@ msgstr ""
 msgid "Restore Defaults"
 msgstr ""
 
-#: src-ui-wx/media/MediaImportOptionsDialog.cpp:74 src-ui-wx/sequencer/SeqSettingsDialog.cpp:539
+#: src-ui-wx/media/MediaImportOptionsDialog.cpp:74 src-ui-wx/sequencer/SeqSettingsDialog.cpp:540
 msgid "Faces"
 msgstr ""
 
@@ -10733,7 +10733,7 @@ msgstr ""
 msgid "Eyes:"
 msgstr ""
 
-#: src-ui-wx/model/ModelFacesPanel.cpp:271 src-ui-wx/model/ModelFacesPanel.cpp:2322 src-ui-wx/sequencer/SeqSettingsDialog.cpp:359 src-ui-wx/sequencer/SeqSettingsDialog.cpp:380 src-ui-wx/setup/ShowDirectoriesDialog.cpp:132
+#: src-ui-wx/model/ModelFacesPanel.cpp:271 src-ui-wx/model/ModelFacesPanel.cpp:2322 src-ui-wx/sequencer/SeqSettingsDialog.cpp:360 src-ui-wx/sequencer/SeqSettingsDialog.cpp:381 src-ui-wx/setup/ShowDirectoriesDialog.cpp:132
 msgid "Open"
 msgstr ""
 
@@ -13261,7 +13261,7 @@ msgstr ""
 msgid "Suppress Dark Mode"
 msgstr ""
 
-#: src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:79 src-ui-wx/sequencer/SeqSettingsDialog.cpp:414 src-ui-wx/sequencer/SeqSettingsDialog.cpp:435
+#: src-ui-wx/preferences/ColorManagerSettingsPanel.cpp:79 src-ui-wx/sequencer/SeqSettingsDialog.cpp:415 src-ui-wx/sequencer/SeqSettingsDialog.cpp:436
 msgid "Import"
 msgstr ""
 
@@ -13920,11 +13920,11 @@ msgstr ""
 msgid "Visible"
 msgstr ""
 
-#: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:64 src-ui-wx/sequencer/SeqSettingsDialog.cpp:440
+#: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:64 src-ui-wx/sequencer/SeqSettingsDialog.cpp:441
 msgid "Move Up"
 msgstr ""
 
-#: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:65 src-ui-wx/sequencer/SeqSettingsDialog.cpp:443
+#: src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:65 src-ui-wx/sequencer/SeqSettingsDialog.cpp:444
 msgid "Move Down"
 msgstr ""
 
@@ -14156,7 +14156,7 @@ msgstr ""
 msgid "Stopped"
 msgstr ""
 
-#: src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:199 src-ui-wx/sequencer/SeqSettingsDialog.cpp:478
+#: src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:199 src-ui-wx/sequencer/SeqSettingsDialog.cpp:479
 msgid "Done"
 msgstr ""
 
@@ -15235,7 +15235,7 @@ msgid ""
 "%d could not be added (overlap with locked effects?)."
 msgstr ""
 
-#: src-ui-wx/sequencer/MovingHeadSongDialog.cpp:65 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2436
+#: src-ui-wx/sequencer/MovingHeadSongDialog.cpp:65 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2438
 msgid "(none)"
 msgstr ""
 
@@ -15272,7 +15272,7 @@ msgstr ""
 msgid "Select New Timing Interval:"
 msgstr ""
 
-#: src-ui-wx/sequencer/NewTimingDialog.cpp:40 src-ui-wx/sequencer/NewTimingDialog.cpp:60 src-ui-wx/sequencer/SeqSettingsDialog.cpp:858
+#: src-ui-wx/sequencer/NewTimingDialog.cpp:40 src-ui-wx/sequencer/NewTimingDialog.cpp:60
 msgid "Empty"
 msgstr ""
 
@@ -15361,7 +15361,7 @@ msgstr ""
 msgid "Polyphonic Transcription"
 msgstr ""
 
-#: src-ui-wx/sequencer/NoteImportDialog.cpp:88 src-ui-wx/sequencer/SeqSettingsDialog.cpp:554
+#: src-ui-wx/sequencer/NoteImportDialog.cpp:88 src-ui-wx/sequencer/SeqSettingsDialog.cpp:555
 msgid "File"
 msgstr ""
 
@@ -15429,11 +15429,11 @@ msgstr ""
 msgid "What is the new name of the layer?"
 msgstr ""
 
-#: src-ui-wx/sequencer/RowHeading.cpp:1342 src-ui-wx/sequencer/RowHeading.cpp:1394 src-ui-wx/sequencer/RowHeading.cpp:1425 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1233 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1286 ... (+1)
+#: src-ui-wx/sequencer/RowHeading.cpp:1342 src-ui-wx/sequencer/RowHeading.cpp:1394 src-ui-wx/sequencer/RowHeading.cpp:1425 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1235 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1288 ... (+1)
 msgid "Enter a name for the timing track"
 msgstr ""
 
-#: src-ui-wx/sequencer/RowHeading.cpp:1377 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1267
+#: src-ui-wx/sequencer/RowHeading.cpp:1377 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1269
 msgid "Enter metronome timing"
 msgstr ""
 
@@ -15794,349 +15794,367 @@ msgstr ""
 msgid "Select Timings"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1128
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1130
 msgid "Are you sure you want a sequence longer than an hour. This will consume a large amount of memory and is likely to crash xLights."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1128
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1130
 msgid "Excessively long sequence detected."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1421
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1423
 msgid "Choose file to import as data layer"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1487 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1493 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1499 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1505
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1489 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1495 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1501 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1507
 msgid "Turn off all channels at the end?"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1487 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1493 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1499 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1505
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1489 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1495 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1501 src-ui-wx/sequencer/SeqSettingsDialog.cpp:1507
 msgid "Conversion Options"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1804
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1806
 msgid "Choose Audio file"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1863
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1865
 msgid "No audio file found in the selected package."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1863
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:1865
 msgid "No Audio Found"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2083
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2085
 msgid "Are you sure?  Modifying the timing interval will cause the sequence to be Saved, Closed, then Re-Opened.  Effects will be moved to the nearest interval"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2096
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2098
 msgid "Are you sure? Moving to a larger timing interval may truncate small effects?"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2116
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2118
 msgid "Show folder invalid. Download aborted."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2133
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2135
 msgid "Nothing available for this song."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2202
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2204
 msgid "Invalid Pre/Post value(s). Neither can be blank, 0 is okay."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2207
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2209
 msgid "Pre and Post value(s) are both zero. Nothing to do here."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2211
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2213
 msgid "Audio duration is invalid."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2433
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2435
 msgid "Main"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2444
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2446
 msgid "(not found)"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2457 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2497
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2459 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2499
 msgid "Audio Files|*.mp3;*.ogg;*.flac;*.wav;*.m4a;*.aac;*.wma;*.aiff;*.aif|All Files|*.*"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2463 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2502
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2465 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2504
 msgid "Choose Audio File"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:248
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:249
 msgid "Filename:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:252
-msgid "XML Version:"
-msgstr ""
-
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2523
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2525
 msgid "The main track label cannot be changed."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2529
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:253
+msgid "XML Version:"
+msgstr ""
+
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2531
 msgid "Enter a short name for this track (leave empty for auto-name):"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2530
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2532
 msgid "Edit Track Name"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2543
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2545
 msgid "A default duration must be greater than zero."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2553 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2570
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2555 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2572
 msgid "Saved!"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2560
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2562
 msgid "A default timing must be greater than zero."
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:258
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:259
 msgid "# Models:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2619
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2621
 msgid "Choose the sequence effects were imported from"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2620
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:2622
 msgid "xLights Sequences (*.xsq)|*.xsq|All files (*.*)|*.*"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:264
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:265
 msgid "Sequence Type:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:267
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:268
 msgid "Media"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:268
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:269
 msgid "Animation"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:274
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:275
 msgid "Media:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:281
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:282
 msgid "Pre:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:283
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:284
 msgid "Post:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:285
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:286
 msgid "Hash:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:287
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:288
 msgid "N/A"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:292
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:293
 msgid "Milliseconds to add to the beginning of the sequence"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:296
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:297
 msgid "Milliseconds to add to the ending of the sequence"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:299
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:300
 msgid "Download Sequence and Lyrics"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:303
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:304
 msgid "Adjust Milliseconds"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:308
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:309
 msgid "Sequence Duration:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:313 src-ui-wx/sequencer/SeqSettingsDialog.cpp:328 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2544 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2550 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2561 ... (+2)
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:314 src-ui-wx/sequencer/SeqSettingsDialog.cpp:329 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2546 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2552 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2563 ... (+2)
 msgid "Set Default"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:314
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:315
 msgid "Save current duration as the default for new sequences"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:316
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:317
 msgid "Overwrite Media Tags"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:321
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:322
 msgid "Sequence Timing:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:329
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:330
 msgid "Save current timing as the default for new sequences"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:331
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:332
 msgid "Allow Blending Between Models"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:340
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:341
 msgid "Author:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:344
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:345
 msgid "Email:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:350
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:351
 msgid "Send"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:362
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:363
 msgid "Song:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:366
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:367
 msgid "Artist:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:370
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:371
 msgid "Album:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:374
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:375
 msgid "Music URL:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:383
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:384
 msgid "Comment:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:387
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:388
 msgid "Imported From:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:391
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:392
 msgid "Sequences effects were imported from, most recent first"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:398 src-ui-wx/sequencer/SeqSettingsDialog.cpp:561
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:399 src-ui-wx/sequencer/SeqSettingsDialog.cpp:562
 msgid "Change File"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:412
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:413
 msgid "New"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:425
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:426
 msgid "Render Mode:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:428
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:429
 msgid "Erase"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:429
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:430
 msgid "Canvas"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:446
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:447
 msgid "Re-Import"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:451
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:452
 msgid "Info / Media"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:452
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:453
 msgid "Meta Data"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:454
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:455
 msgid "Data Layers"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:456
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:457
 msgid "Show Warning Here"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:462
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:463
 msgid "Show Info Here"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:468
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:469
 msgid "Media File must be selected or change to animation!"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:475
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:476
 msgid "Don't Create Sequence"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:534
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:535
 msgctxt "tab"
 msgid "Media"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:563
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:564
 msgid "Edit Name"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:572 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2523
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:573 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2525
 msgid "Audio Tracks"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:601
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:602
 msgctxt "tree"
 msgid "Layers to Render"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:791
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:792
 msgid "Wizard"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:852
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:841
+msgid ""
+"This option defines the smallest division in the sequence. \n"
+"Higher FPS options result in larger file sizes.  If you're not sure choose 20fps."
+msgstr ""
+
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:853
 msgid "Select a View:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:857
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:858
+msgctxt "view"
 msgid "All Models"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:876
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:859
+msgctxt "view"
+msgid "Empty"
+msgstr ""
+
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:878
 msgid "More Options >>"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:898
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:891
+msgid ""
+"This option is used to select which models will populate the master view. \n"
+"Press Quick Start to begin sequencing and skip option steps."
+msgstr ""
+
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:900
 msgid "Import Data (Optional):"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:917
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:919
 msgid "Skip >>"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:940
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:942
 msgid "Other Optional Tasks:"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:946
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:948
 msgid "Edit Metadata"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:949
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:951
 msgid "Import Timings"
 msgstr ""
 
-#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:955
+#: src-ui-wx/sequencer/SeqSettingsDialog.cpp:957
 msgid "Done >>"
 msgstr ""
 
@@ -18625,7 +18643,7 @@ msgstr ""
 msgid "Zoom Out"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:918 src-ui-wx/xLightsMain.cpp:989 src-ui-wx/sequencer/SeqSettingsDialog.cpp:240
+#: src-ui-wx/xLightsMain.cpp:918 src-ui-wx/xLightsMain.cpp:989 src-ui-wx/sequencer/SeqSettingsDialog.cpp:241
 msgid "Sequence Settings"
 msgstr ""
 
@@ -18645,7 +18663,7 @@ msgstr ""
 msgid "Saving output file."
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:9242 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2413
+#: src-ui-wx/xLightsMain.cpp:9242 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2415
 msgid "Error creating audio file. See log for details."
 msgstr ""
 

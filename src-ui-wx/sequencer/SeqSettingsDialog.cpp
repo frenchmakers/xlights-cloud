@@ -43,6 +43,7 @@
 #include "xLightsMain.h"
 #include "sequencer/MetronomeLabelDialog.h"
 #include "UtilFunctions.h"
+#include "shared/utils/TranslatedChoice.h"
 #include "utils/ExternalHooks.h"
 #include "import_export/ConvertDialog.h"
 #include "media/ManageMediaPanel.h"
@@ -837,7 +838,7 @@ void SeqSettingsDialog::WizardPage2()
     Connect(ID_BITMAPBUTTON_50ms,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&SeqSettingsDialog::OnBitmapButton_50msClick);
     Connect(ID_BITMAPBUTTON_Custom,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&SeqSettingsDialog::OnBitmapButton_CustomClick);
 
-    StaticText_Info->SetLabelText("This option defines the smallest division in the sequence. \nHigher FPS options result in larger file sizes.  If you're not sure choose 20fps.");
+    StaticText_Info->SetLabelText(_("This option defines the smallest division in the sequence. \nHigher FPS options result in larger file sizes.  If you're not sure choose 20fps."));
     StaticText_Info->Show();
     Fit();
     Refresh();
@@ -854,8 +855,8 @@ void SeqSettingsDialog::WizardPage3()
     StaticText_Page3Optional->SetFont(Page3OptionalFont);
     GridSizerWizButtons->Add(StaticText_Page3Optional, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 0);
 	ModelsChoice = new wxChoice(Panel_Wizard, ID_CHOICE_Models, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, _T("ID_CHOICE_Models"));
-	ModelsChoice->Append(_("All Models"));
-	ModelsChoice->Append(_("Empty"));
+	ModelsChoice->Append(wxTRANSLATE_IN_CONTEXT("view", "All Models"));
+	ModelsChoice->Append(wxTRANSLATE_IN_CONTEXT("view", "Empty"));
 	auto views = xLightsParent->GetViewsManager()->GetViews();
     for(auto it = views.begin(); it != views.end(); ++it)
     {
@@ -865,9 +866,10 @@ void SeqSettingsDialog::WizardPage3()
             ModelsChoice->Append((*it)->GetName());
         }
     }
+	TranslateChoiceItems(ModelsChoice, "view");
 	ModelsChoice->SetSelection(0);
     if (selected_view != "All Models") {
-        ModelsChoice->SetStringSelection(selected_view);
+        SetEnglishSelection(ModelsChoice, wxString::FromUTF8(selected_view));
     }
 	GridSizerWizButtons->Add(ModelsChoice, 1, wxALL|wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL, 2);
     BitmapButton_quick_start = new FlickerFreeBitmapButton(Panel_Wizard, ID_BITMAPBUTTON_quick_start, quick_start, wxDefaultPosition, wxDefaultSize, wxNO_BORDER, wxDefaultValidator, _T("ID_BITMAPBUTTON_quick_start"));
@@ -886,7 +888,7 @@ void SeqSettingsDialog::WizardPage3()
     Connect(ID_BITMAPBUTTON_quick_start,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&SeqSettingsDialog::OnBitmapButton_quick_startClick);
     ModelsChoice->Connect(wxEVT_CHOICE, (wxObjectEventFunction)&SeqSettingsDialog::OnViewSelect, NULL, this);
 
-    StaticText_Info->SetLabelText("This option is used to select which models will populate the master view. \nPress Quick Start to begin sequencing and skip option steps.");
+    StaticText_Info->SetLabelText(_("This option is used to select which models will populate the master view. \nPress Quick Start to begin sequencing and skip option steps."));
     StaticText_Info->Show();
 }
 
@@ -2069,7 +2071,7 @@ void SeqSettingsDialog::OnButton_CancelClick(wxCommandEvent& event)
 
 void SeqSettingsDialog::OnViewSelect(wxCommandEvent& event)
 {
-    selected_view = (ModelsChoice->GetString(ModelsChoice->GetSelection())).ToStdString();
+    selected_view = GetEnglishSelection(ModelsChoice).utf8_string();
 }
 
 void SeqSettingsDialog::OnCheckBox1Click(wxCommandEvent& event)

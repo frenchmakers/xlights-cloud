@@ -411,6 +411,7 @@
 		<Unit filename="../src-ui-wx/setup/IPEntryDialog.cpp" />
 		<Unit filename="../src-ui-wx/setup/IPEntryDialog.h" />
 		<Unit filename="../src-ui-wx/shared/utils/Images_png.h" />
+		<Unit filename="../src-ui-wx/shared/utils/Images_png_fr.h" />
 		<Unit filename="../src-ui-wx/model/ImportPreviewsModelsDialog.cpp" />
 		<Unit filename="../src-ui-wx/model/ImportPreviewsModelsDialog.h" />
 		<Unit filename="../src-core/utils/AppCallbacks.cpp" />
