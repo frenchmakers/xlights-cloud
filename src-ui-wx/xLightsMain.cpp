@@ -4165,7 +4165,10 @@ void xLightsFrame::SetGridSpacing(int size)
     // The row heading and the effect grid draw in physical pixels on Windows.
     DEFAULT_ROW_HEADING_HEIGHT = FromDIP(size + 6);
     // The row names grow with the row height: widen their column to match.
-    int headingWidth = mainSequencer->ConvertDialogToPixels(wxSize(90, -1)).GetWidth() * std::max(22, size + 6) / 22;
+    // Base on the width the sequencer was built with: its dialog units change once
+    // the window's final font is applied, which would make the default spacing wider.
+    static const int baseHeadingWidth = mainSequencer->PanelRowHeadings->GetMinSize().GetWidth();
+    int headingWidth = baseHeadingWidth * std::max(22, size + 6) / 22;
     mainSequencer->PanelRowHeadings->SetMinSize(wxSize(headingWidth, -1));
     mainSequencer->PanelRowHeadings->SetMaxSize(wxSize(headingWidth, -1));
     mainSequencer->Layout();

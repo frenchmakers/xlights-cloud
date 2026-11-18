@@ -1433,6 +1433,9 @@ void TimeLine::render( wxDC& dc ) {
         {
             float t = GetTimeMSfromPosition(x+mStartPixelOffset);
             wxRect r(x-FromDIP(25),h/2-FromDIP(10),FromDIP(50),FromDIP(12));
+            if (r.x < 0) {
+                r.x = 0;
+            }
             minutes = t/60000;
             seconds = (t-(minutes*60000))/1000;
             subsecs = t - (minutes*60000 + seconds*1000);
