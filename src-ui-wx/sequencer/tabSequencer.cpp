@@ -1152,6 +1152,9 @@ void xLightsFrame::RowHeadingsChanged( wxCommandEvent& event)
     displayElementsPanel->UpdateModelsForSelectedView();
     _sequenceElements.PopulateRowInformation();
     displayElementsPanel->Initialize();
+    // The startup call ran before the window had its final font, so the row name
+    // column could keep a stale width until the preferences were applied.
+    SetGridSpacing(mGridSpacing);
     ResizeMainSequencer();
 }
 
