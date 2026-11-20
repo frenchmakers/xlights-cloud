@@ -72,6 +72,10 @@
     <ClCompile Include="..\src-ui-wx\klightmapper\KLightMapperBridge_win.cpp" />
     <ClCompile Include="..\src-core\utils\AppCallbacks.cpp" />
     <ClCompile Include="..\src-core\utils\JobPool.cpp" />
+    <ClCompile Include="..\src-core\utils\LayoutObjectId.cpp" />
+    <ClCompile Include="..\src-core\utils\LayoutRecords.cpp" />
+    <ClCompile Include="..\src-core\utils\LayoutRenameHints.cpp" />
+    <ClCompile Include="..\src-core\utils\LayoutRenameLog.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\KeyBindings.cpp" />
     <ClCompile Include="..\src-ui-wx\layout\LayoutGroup.cpp" />
     <ClCompile Include="..\src-ui-wx\layout\LayoutPanel.cpp" />
@@ -115,6 +119,7 @@
     <ClCompile Include="..\src-ui-wx\diagnostics\RenderProgressDialog.cpp" />
     <ClCompile Include="..\src-ui-wx\media\ResizeImageDialog.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\SaveChangesDialog.cpp" />
+    <ClCompile Include="..\src-ui-wx\app-shell\ShowFileMergeDialog.cpp" />
     <ClCompile Include="..\src-ui-wx\sequencer\SelectPanel.cpp" />
     <ClCompile Include="..\src-ui-wx\sequencer\SelectTimingsDialog.cpp" />
     <ClCompile Include="..\src-ui-wx\sequencer\SelectModelDialog.cpp" />
@@ -134,6 +139,7 @@
     <ClCompile Include="..\src-ui-wx\app-shell\TabConvert.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\TabPreview.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\TabSequence.cpp" />
+    <ClCompile Include="..\src-ui-wx\app-shell\ShowFileWatch.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\DiscoveryHelpers.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\TabSetup.cpp" />
     <ClCompile Include="..\src-ui-wx\sequencer\BlendingPanel.cpp" />
@@ -348,9 +354,6 @@
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="..\src-core\models\SingleLineModel.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src-core\models\MeshObject.cpp">
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="..\src-ui-wx\model\ImportPreviewsModelsDialog.cpp" />
@@ -606,6 +609,15 @@
     <ClCompile Include="..\src-ui-wx\color\ColoursPanel.cpp" />
     <ClCompile Include="..\src-ui-wx\shared\utils\DragColoursBitmapButton.cpp" />
     <ClCompile Include="..\src-core\utils\ShowGuid.cpp" />
+    <ClCompile Include="..\src-core\utils\ShowAutosave.cpp" />
+    <ClCompile Include="..\src-core\utils\ShowFileGuard.cpp" />
+    <ClCompile Include="..\src-core\utils\ShowFileMerge.cpp" />
+    <ClCompile Include="..\src-core\utils\ShowSaveMerge.cpp" />
+    <ClCompile Include="..\src-core\render\ShowMergeApply.cpp" />
+    <ClCompile Include="..\src-core\utils\ShowConflictedCopies.cpp" />
+    <ClCompile Include="..\src-core\utils\ShowPresence.cpp" />
+    <ClCompile Include="..\src-core\utils\ShowFileWatcher.cpp" />
+    <ClCompile Include="..\src-core\render\ShowFileLiveMerge.cpp" />
     <ClCompile Include="..\src-core\utils\ShowRedactor.cpp" />
     <ClCompile Include="..\src-core\utils\TraceLog.cpp" />
     <ClCompile Include="..\src-core\utils\xlCrashCapture.cpp" />
@@ -763,6 +775,9 @@
     <ClCompile Include="..\src-core\render\Effect.cpp">
       <Filter>render</Filter>
     </ClCompile>
+    <ClCompile Include="..\src-core\render\EffectEditCoalescer.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
     <ClCompile Include="..\src-core\render\EffectSymbol.cpp">
       <Filter>render</Filter>
     </ClCompile>
@@ -794,6 +809,21 @@
     <ClCompile Include="..\src-core\render\SequenceElements.cpp">
       <Filter>render</Filter>
     </ClCompile>
+    <ClCompile Include="..\src-core\render\SequenceCommands.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\render\SequenceElementCommands.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\render\CommandExecutor.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\render\SequenceEditCapture.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\render\SequenceBulkEdits.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
     <ClCompile Include="..\src-core\render\SongStructureManager.cpp">
       <Filter>render</Filter>
     </ClCompile>
@@ -801,6 +831,9 @@
       <Filter>render</Filter>
     </ClCompile>
     <ClCompile Include="..\src-core\render\SequenceMedia.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\render\SequenceMediaCommands.cpp">
       <Filter>render</Filter>
     </ClCompile>
     <ClCompile Include="..\src-core\render\SequenceFaces.cpp">
@@ -861,9 +894,11 @@
     <ClCompile Include="..\src-core\graphics\xlGraphicsCapability.cpp">
       <Filter>graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\src-core\graphics\xlFontInfo.cpp" />
-    <ClCompile Include="..\src-ui-wx\automation\ScriptsDialog.cpp" />
+    <ClCompile Include="..\src-core\graphics\xlFontInfo.cpp">
       <Filter>graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-ui-wx\automation\ScriptsDialog.cpp">
+      <Filter>automation</Filter>
     </ClCompile>
     <ClCompile Include="..\src-core\graphics\GLBackend.cpp">
       <Filter>graphics</Filter>
@@ -1302,6 +1337,9 @@
     <ClCompile Include="..\src-core\XmlSerializer\XmlDeserializingObjectFactory.cpp">
       <Filter>XmlSerializer</Filter>
     </ClCompile>
+    <ClCompile Include="..\src-core\XmlSerializer\LayoutRecordPatch.cpp">
+      <Filter>XmlSerializer</Filter>
+    </ClCompile>
     <ClCompile Include="..\src-core\XmlSerializer\XmlSerializeFunctions.cpp">
       <Filter>XmlSerializer</Filter>
     </ClCompile>
@@ -1585,6 +1623,51 @@
     <ClCompile Include="..\src-ui-wx\shared\utils\TreeListColumnVisibility.cpp" />
     <ClCompile Include="..\src-ui-wx\shared\utils\wxUtilities.cpp" />
     <ClCompile Include="..\src-core\media\StemSeparator.cpp" />
+    <ClCompile Include="..\src-core\effects\vulkan\VulkanGraphicsUtilities.cpp">
+      <Filter>Effects\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\effects\vulkan\VulkanShaderEffect.cpp">
+      <Filter>Effects\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\effects\vulkan\VulkanShaderTranslate.cpp">
+      <Filter>Effects\vulkan</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\render\D2DTextDrawingContext.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\render\FreeTypeTextDrawingContext.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-ui-wx\shared\utils\xlDisplayInfo.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClInclude Include="..\src-core\effects\vulkan\VulkanGraphicsUtilities.h">
+      <Filter>Effects\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\effects\vulkan\VulkanShaderEffect.h">
+      <Filter>Effects\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\effects\vulkan\VulkanShaderTranslate.h">
+      <Filter>Effects\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\models\SubModelOps.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\D2DTextDrawingContext.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\FSEQFileIO.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\FreeTypeTextDrawingContext.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\HeadlessRenderContext.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-ui-wx\shared\utils\xlDisplayInfo.h">
+      <Filter>utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src-ui-wx\sequencer\BatchRenderDialog.h" />
@@ -1662,6 +1745,10 @@
     <ClInclude Include="..\src-ui-wx\shared\utils\Images_png_fr.h" />
     <ClInclude Include="..\src-core\utils\AppCallbacks.h" />
     <ClInclude Include="..\src-core\utils\JobPool.h" />
+    <ClInclude Include="..\src-core\utils\LayoutObjectId.h" />
+    <ClInclude Include="..\src-core\utils\LayoutRecords.h" />
+    <ClInclude Include="..\src-core\utils\LayoutRenameHints.h" />
+    <ClInclude Include="..\src-core\utils\LayoutRenameLog.h" />
     <ClInclude Include="..\src-ui-wx\app-shell\KeyBindings.h" />
     <ClInclude Include="..\src-ui-wx\layout\LayoutGroup.h" />
     <ClInclude Include="..\src-ui-wx\layout\LayoutPanel.h" />
@@ -1702,6 +1789,7 @@
     <ClInclude Include="..\src-ui-wx\diagnostics\RenderProgressDialog.h" />
     <ClInclude Include="..\src-ui-wx\media\ResizeImageDialog.h" />
     <ClInclude Include="..\src-ui-wx\app-shell\SaveChangesDialog.h" />
+    <ClInclude Include="..\src-ui-wx\app-shell\ShowFileMergeDialog.h" />
     <ClInclude Include="..\src-ui-wx\sequencer\SelectPanel.h" />
     <ClInclude Include="..\src-ui-wx\sequencer\SelectTimingsDialog.h" />
     <ClInclude Include="..\src-ui-wx\sequencer\SelectModelDialog.h" />
@@ -1932,9 +2020,6 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="..\src-core\models\SingleLineModel.h">
-      <Filter>Models</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src-core\models\MeshObject.h">
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="..\src-ui-wx\model\ImportPreviewsModelsDialog.h" />
@@ -2202,6 +2287,15 @@
     <ClInclude Include="..\src-ui-wx\shared\utils\DragColoursBitmapButton.h" />
     <ClInclude Include="..\src-core\utils\SpecialOptions.h" />
     <ClInclude Include="..\src-core\utils\ShowGuid.h" />
+    <ClInclude Include="..\src-core\utils\ShowAutosave.h" />
+    <ClInclude Include="..\src-core\utils\ShowFileGuard.h" />
+    <ClInclude Include="..\src-core\utils\ShowFileMerge.h" />
+    <ClInclude Include="..\src-core\utils\ShowSaveMerge.h" />
+    <ClInclude Include="..\src-core\render\ShowMergeApply.h" />
+    <ClInclude Include="..\src-core\utils\ShowConflictedCopies.h" />
+    <ClInclude Include="..\src-core\utils\ShowPresence.h" />
+    <ClInclude Include="..\src-core\utils\ShowFileWatcher.h" />
+    <ClInclude Include="..\src-core\render\ShowFileLiveMerge.h" />
     <ClInclude Include="..\src-core\utils\ShowRedactor.h" />
     <ClInclude Include="..\src-core\utils\TraceLog.h" />
     <ClInclude Include="..\src-core\utils\xlCrashCapture.h" />
@@ -2354,6 +2448,9 @@
     <ClInclude Include="..\src-core\render\Effect.h">
       <Filter>render</Filter>
     </ClInclude>
+    <ClInclude Include="..\src-core\render\EffectEditCoalescer.h">
+      <Filter>render</Filter>
+    </ClInclude>
     <ClInclude Include="..\src-core\render\EffectSymbol.h">
       <Filter>render</Filter>
     </ClInclude>
@@ -2388,6 +2485,27 @@
     <ClInclude Include="..\src-core\render\SequenceElements.h">
       <Filter>render</Filter>
     </ClInclude>
+    <ClInclude Include="..\src-core\render\SequenceCommands.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\SequenceElementCommands.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\SequenceIds.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\SequenceMutationGuard.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\CommandExecutor.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\SequenceEditCapture.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\SequenceBulkEdits.h">
+      <Filter>render</Filter>
+    </ClInclude>
     <ClInclude Include="..\src-core\render\SongStructureManager.h">
       <Filter>render</Filter>
     </ClInclude>
@@ -2395,6 +2513,9 @@
       <Filter>render</Filter>
     </ClInclude>
     <ClInclude Include="..\src-core\render\SequenceMedia.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\render\SequenceMediaCommands.h">
       <Filter>render</Filter>
     </ClInclude>
     <ClInclude Include="..\src-core\render\SequenceFaces.h">
@@ -2457,8 +2578,12 @@
     <ClInclude Include="..\src-core\graphics\xlGraphicsCapability.h">
       <Filter>graphics</Filter>
     </ClInclude>
-    <ClInclude Include="..\src-core\graphics\xlFontInfo.h" />
-    <ClInclude Include="..\src-ui-wx\automation\ScriptsDialog.h" />
+    <ClInclude Include="..\src-core\graphics\xlFontInfo.h">
+      <Filter>graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-ui-wx\automation\ScriptsDialog.h">
+      <Filter>automation</Filter>
+    </ClInclude>
     <ClInclude Include="..\src-core\graphics\tiny_obj_loader.h">
       <Filter>graphics</Filter>
     </ClInclude>
@@ -2847,6 +2972,9 @@
     <ClInclude Include="..\src-core\XmlSerializer\XmlNodeKeys.h">
       <Filter>XmlSerializer</Filter>
     </ClInclude>
+    <ClInclude Include="..\src-core\XmlSerializer\LayoutRecordPatch.h">
+      <Filter>XmlSerializer</Filter>
+    </ClInclude>
     <ClInclude Include="..\src-core\XmlSerializer\XmlSerializeFunctions.h">
       <Filter>XmlSerializer</Filter>
     </ClInclude>
@@ -3163,8 +3291,6 @@
     <ClInclude Include="..\src-core\outputs\SocketAbstraction.h">
       <Filter>Outputs</Filter>
     </ClInclude>
-      <Filter>graphics</Filter>
-    </ClInclude>
     <ClInclude Include="..\src-core\graphics\GLBackend.h">
       <Filter>graphics</Filter>
     </ClInclude>
@@ -3252,7 +3378,6 @@
     <ClInclude Include="..\dependencies\vamp-hostsdk\Window.h" />
     <ClInclude Include="..\src-ui-wx\shared\controls\MediaPickerCtrl.h" />
     <ClInclude Include="..\src-ui-wx\graphics\wxTextDrawingContext.h" />
-    <ClInclude Include="..\src-core\effects\ispc\CirclesFunctions.ispc.h" />
     <ClInclude Include="..\src-ui-wx\modelproperties\adapters\PositionZoneDialog.h">
       <Filter>modelproperties\adapters</Filter>
     </ClInclude>
@@ -3408,9 +3533,6 @@
       <Filter>Effects\ispc</Filter>
     </CustomBuild>
     <CustomBuild Include="..\src-core\effects\ispc\FanFunctions.ispc">
-      <Filter>Effects\ispc</Filter>
-    </CustomBuild>
-    <CustomBuild Include="..\src-core\effects\ispc\KaleidoscopeFunctions.ispc">
       <Filter>Effects\ispc</Filter>
     </CustomBuild>
     <CustomBuild Include="..\src-core\effects\ispc\ShockwaveFunctions.ispc">

@@ -43,6 +43,10 @@ public:
     }
     Effect* GetEffectByTime(int ms);
     Effect* GetEffectFromID(int id);
+    Effect* GetEffectFromUid(SeqObjectId uid) const;
+    size_t GetUidIndexBuildCount() const { return mUidIndexBuilds; }
+    // Called by Effect::SetUid so the id index follows the new id.
+    void EffectUidChanged(Effect* e, SeqObjectId oldUid);
     int GetFirstSelectedEffectStartMS() const;
     int GetLastSelectedEffectEndMS() const;
     void RemoveEffect(int index);
@@ -59,6 +63,10 @@ public:
 
     int GetLayerNumber() const;
     int GetIndex() const;
+    SeqObjectId GetUid() const { return mUid; }
+    // Only for restoring an identity onto a re-created layer (undo). The
+    // caller guarantees no live layer already holds `uid`.
+    void SetUid(SeqObjectId uid) { mUid = uid; }
     int GetEffectCount() const;
 
     bool IsStartTimeLinked(int index) const;
@@ -122,6 +130,8 @@ public:
     void DeleteSelectedEffects(UndoManager& undo_mgr);
     void DeleteAllEffects();
     void DeleteEffect(int id);
+    // Like DeleteEffect(id) but by stable identity; returns false if not found.
+    bool DeleteEffectByUid(SeqObjectId uid);
     void DeleteEffectByIndex(int idx);
     static bool ShouldDeleteSelected(Effect* eff);
     static bool ShouldDeleteNotLocked(Effect* eff);
@@ -147,6 +157,7 @@ public:
         return *name;
     }
     void SetLayerName(const std::string& n) {
+        XL_SEQ_MUTATION("EffectLayer::SetLayerName");
         if (name != nullptr) {
             delete name;
             name = nullptr;
@@ -171,7 +182,19 @@ private:
     void GetMaximumRangeWithRightMovement(int index, int& toLeft, int& toRight);
     std::vector<Effect*> mEffects;
     std::list<Effect*> mEffectsToDelete;
+    // GetEffectFromUid index for layers with many effects, created on first
+    // use. Single adds and removes update it in place (bulk edits one effect
+    // at a time would otherwise rebuild it per effect); bulk changes drop it.
+    // A hit is checked against the effect's current id and a miss falls back
+    // to a scan, so an id changed behind its back can't make it lie.
+    struct UidIndex;
+    mutable std::atomic<UidIndex*> mUidIndex{ nullptr };
+    mutable size_t mUidIndexBuilds = 0;
+    void InvalidateUidIndex();
+    void IndexAdded(Effect* e);
+    void IndexRemoved(Effect* e);
     int mIndex = 0;
+    SeqObjectId mUid = SeqIds::Next();
     Element* mParentElement = nullptr;
     std::recursive_mutex lock;
     std::mutex effectsToDeleteLock;

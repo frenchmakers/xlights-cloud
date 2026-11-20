@@ -46,6 +46,7 @@
 #include <cctype>
 #include <cstdlib>
 #include <cstring>
+#include <chrono>
 #include <thread>
 #include <string>
 
@@ -73,8 +74,12 @@
 #include "diagnostics/CheckReportTranslation.h"
 #include "shared/utils/ExternalHooksUI.h"
 #include "diagnostics/FindDataPanel.h"
+#include "render/SequenceBulkEdits.h"
+#include "render/CommandExecutor.h"
+#include "render/SequenceEditCapture.h"
 #include "render/GPURenderUtils.h"
 #include "render/SequenceMedia.h"
+#include "render/SequenceElementCommands.h"
 #include "render/SequencePackage.h"
 #include "render/EffectSymbol.h"
 #include "render/EffectSymbolManager.h"
@@ -114,6 +119,11 @@
 #include "app-shell/CloudRestoreDialog.h"
 #include "sequencer/SeqSettingsDialog.h"
 #include "effects/ShaderDownloadDialog.h"
+#include "utils/ShowAutosave.h"
+#include "utils/ShowPresence.h"
+#include "utils/ShowFileWatcher.h"
+#include "render/ShowFileLiveMerge.h"
+#include "utils/ShowFileGuard.h"
 #include "utils/ShowGuid.h"
 #include "utils/SpecialOptions.h"
 #include "app-shell/SplashDialog.h"
@@ -1612,6 +1622,12 @@ xLightsFrame::xLightsFrame(wxWindow* parent, int ab, wxWindowID id, bool renderO
     ChoiceParm1->SetStringSelection("100");
     ChoiceParm2->SetStringSelection("100");
 
+    // Who else is editing the layout or controllers in a shared show folder.
+    _presenceHint = new wxStaticText(AUIStatusBar, wxID_ANY, wxEmptyString);
+    _presenceHint->SetForegroundColour(wxColour(0xD0, 0x70, 0x00));
+    _presenceHint->Hide();
+    StatusBarSizer->Add(_presenceHint, wxGBPosition(0, 4), wxDefaultSpan, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+    CreateShowFileBanner();
     StatusBarSizer->AddGrowableCol(1, 2);
     StatusBarSizer->AddGrowableCol(3, 1);
     ProgressBar->Connect(wxEVT_LEFT_DOWN, (wxObjectEventFunction)&xLightsFrame::OnProgressBarDoubleClick, nullptr, this);
@@ -1939,6 +1955,35 @@ xLightsFrame::xLightsFrame(wxWindow* parent, int ab, wxWindowID id, bool renderO
     config->Read("AutoSaveInterval", &mAutoSaveInterval, 3);
     SetAutoSaveInterval(mAutoSaveInterval);
     spdlog::debug("Autosave interval: {}.", mAutoSaveInterval);
+
+    // Identifies this install's autosaves in a show folder others share.
+    {
+        wxString storedId;
+        config->Read("InstallId", &storedId, "");
+        const std::string installId = ShowAutosave::ValidInstallIdOr(storedId.ToStdString());
+        if (installId != storedId.ToStdString()) {
+            config->Write("InstallId", wxString(installId));
+        }
+        wxString device = wxGetHostName();
+        if (device.empty()) {
+            device = wxGetUserId();
+        }
+        ShowAutosave::SetIdentity(installId, device.ToStdString(), xlights_version_string);
+
+        wxString user = wxGetUserName();
+        if (user.empty()) {
+            user = wxGetUserId();
+        }
+        auto& presence = ShowPresencePublisher::Instance();
+        presence.SetIdentity(installId, user.ToStdString(), device.ToStdString(), ShowPresence::ThisPlatform(), xlights_version_string);
+        // A render-and-exit run is not someone working in the show folder.
+        presence.Enable(!_renderMode);
+        if (presence.IsEnabled()) {
+            _presenceTimer.Bind(wxEVT_TIMER, [this](wxTimerEvent&) { UpdatePresence(); });
+            _presenceTimer.Start(10000);
+            StartShowFileWatch();
+        }
+    }
 
     config->Read("xFadePort", &_xFadePort, 0);
 
@@ -2289,6 +2334,8 @@ xLightsFrame::~xLightsFrame()
     EffectSettingsTimer.Stop();
     OutputTimer.Stop();
     RenderStatusTimer.Stop();
+    _presenceTimer.Stop();
+    StopShowFileWatch();
     TextDrawingContext::CleanUp();
     EffectIconCache::Clear();
 
@@ -2499,6 +2546,32 @@ void xLightsFrame::ReleaseAudio(AudioManager* audio)
     if (mainSequencer->PanelWaveForm->GetMedia() == audio) {
         mainSequencer->PanelWaveForm->CloseMedia();
     }
+}
+
+// Whenever the open sequence is about to delete an AudioManager, stop whatever
+// still uses it. The waveform is reopened on the replacement once the change that
+// deleted it has finished, and a render that had to be stopped is restarted.
+void xLightsFrame::WatchSequenceAudio(SequenceFile* sf)
+{
+    sf->SetAudioReleasingCallback([this, sf](AudioManager* audio) {
+        int numThreadsAborted = 0;
+        AbortRender(60000, &numThreadsAborted);
+        ReleaseAudio(audio);
+        CallAfter([this, sf, numThreadsAborted]() {
+            if (CurrentSeqXmlFile != sf || mainSequencer == nullptr) {
+                return;
+            }
+            if (mainSequencer->PanelWaveForm->GetMedia() == nullptr) {
+                if (AudioManager* playback = GetPlaybackAudio(); playback != nullptr) {
+                    wxString error;
+                    mainSequencer->PanelWaveForm->OpenfileMedia(playback, error);
+                }
+            }
+            if (numThreadsAborted > 0) {
+                RenderAll();
+            }
+        });
+    });
 }
 
 void xLightsFrame::ReleaseAltAudioTrack(int altIndex, bool removing)
@@ -3377,6 +3450,20 @@ void xLightsFrame::OnClose(wxCloseEvent& event)
 
     CheckUnsavedChanges();
 
+    StopShowFileWatch();
+    _presenceTimer.Stop();
+    {
+        std::lock_guard<std::mutex> l(_presenceLink->lock);
+        _presenceLink->alive = false;
+    }
+    // Disable, not just Clear: an update still running on its worker then
+    // can't write the file again, and removes it if it already had.
+    ShowPresencePublisher::Instance().Enable(false);
+    for (int i = 0; i < 100 && _presenceLink->busy; ++i) {
+        // Give a worker a moment to finish; one stuck on a dead share is left.
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+    }
+
     // Release GL resources from all models while contexts are still alive.
     // Must happen before ShowHideAllSequencerWindows: hiding canvases causes
     // IsShownOnScreen()==false which makes SetCurrentGLContext() a no-op, so
@@ -3682,7 +3769,7 @@ void xLightsFrame::BackupDirectory(wxString sourceDir, wxString targetDirName, w
         // I dont think backup should follow symbolic links
         bool cont = srcDir.GetFirst(&dir, "", wxDIR_DIRS | wxDIR_NO_FOLLOW);
         while (cont) {
-            if (dir.Lower() != "backup") {
+            if (dir.Lower() != "backup" && !ShowAutosave::IsShowStateDirName(dir.ToStdString())) {
                 wxDir subdir(srcDir.GetNameWithSep() + dir);
                 BackupDirectory(subdir.GetNameWithSep(), targetDirName + wxFileName::GetPathSeparator() + dir, lastCreatedDirectory, forceallfiles, backupSubfolders, errors);
             }
@@ -4371,19 +4458,9 @@ void xLightsFrame::CheckUnsavedChanges()
                                   _("Models, Views, and Perspectives Changes Confirmation"), wxICON_QUESTION | wxYES_NO | wxNO_DEFAULT, this)) {
             SaveEffectsFile();
         } else {
-            // Changes were explicitly discarded ... backdate the autosave backup (if
-            // any) below the real file's mtime so LoadEffectsFile() doesn't re-offer
-            // the same discarded changes as a "newer autosave found" prompt next open.
-            wxFileName fn(CurrentDir, XLIGHTS_RGBEFFECTS_FILE);
-            wxFileName bkp(CurrentDir, XLIGHTS_RGBEFFECTS_FILE_BACKUP);
-            if (FileExists(fn) && FileExists(bkp)) {
-                wxDateTime xmltime = fn.GetModificationTime();
-                wxDateTime xbkptime = bkp.GetModificationTime();
-                if (xmltime.IsValid() && xbkptime.IsValid() && xbkptime > xmltime) {
-                    xmltime -= wxTimeSpan(0, 0, 3, 0); // FAT time resolution is 2 seconds
-                    bkp.SetTimes(&xmltime, &xmltime, &xmltime);
-                }
-            }
+            // Changes were explicitly discarded, so their autosave is not
+            // offered back at the next load.
+            ShowAutosave::RemoveIfMine(ShowAutosave::LayoutAutosavePath(CurrentDir.ToStdString(), XLIGHTS_RGBEFFECTS_FILE));
         }
     }
 
@@ -4403,6 +4480,8 @@ void xLightsFrame::CheckUnsavedChanges()
                                   _("Effect Presets Changes Confirmation"),
                                   wxICON_QUESTION | wxYES_NO | wxNO_DEFAULT, this)) {
             SavePresetsFile();
+        } else {
+            ShowAutosave::RemoveIfMine(ShowAutosave::LayoutAutosavePath(CurrentDir.ToStdString(), XLIGHTS_PRESETS_FILE));
         }
     }
 }
@@ -4827,8 +4906,11 @@ void xLightsFrame::CreateDebugReport(xlCrashHandler* crashHandler)
     if (FileExists(wxFileName(CurrentDir, "xlights_rgbeffects.xml"))) {
         report->AddFile(wxFileName(CurrentDir, "xlights_rgbeffects.xml").GetFullPath(), "xlights_rgbeffects.xml");
     }
-    if (UnsavedRgbEffectsChanges && FileExists(wxFileName(CurrentDir, "xlights_rgbeffects.xbkp"))) {
-        report->AddFile(wxFileName(CurrentDir, "xlights_rgbeffects.xbkp").GetFullPath(), "xlights_rgbeffects.xbkp");
+    if (UnsavedRgbEffectsChanges) {
+        const std::string layoutAutosave = ShowAutosave::LayoutAutosavePath(CurrentDir.ToStdString(), XLIGHTS_RGBEFFECTS_FILE);
+        if (FileExists(layoutAutosave)) {
+            report->AddFile(layoutAutosave, XLIGHTS_RGBEFFECTS_FILE_BACKUP);
+        }
     }
 
     if (GetSeqXmlFileName() != "") {
@@ -5050,8 +5132,11 @@ void xLightsFrame::AddDebugFilesToReport(wxDebugReport& report)
     if (FileExists(wxFileName(CurrentDir, "xlights_rgbeffects.xml"))) {
         report.AddFile(wxFileName(CurrentDir, "xlights_rgbeffects.xml").GetFullPath(), "xlights_rgbeffects.xml");
     }
-    if (UnsavedRgbEffectsChanges && FileExists(wxFileName(CurrentDir, "xlights_rgbeffects.xbkp"))) {
-        report.AddFile(wxFileName(CurrentDir, "xlights_rgbeffects.xbkp").GetFullPath(), "xlights_rgbeffects.xbkp");
+    if (UnsavedRgbEffectsChanges) {
+        const std::string layoutAutosave = ShowAutosave::LayoutAutosavePath(CurrentDir.ToStdString(), XLIGHTS_RGBEFFECTS_FILE);
+        if (FileExists(layoutAutosave)) {
+            report.AddFile(layoutAutosave, XLIGHTS_RGBEFFECTS_FILE_BACKUP);
+        }
     }
     AddLogFile(CurrentDir, "xLights_spdlog.log", report);
     // if the rolled log exists, add it to just in case it has the information we need
@@ -5139,6 +5224,9 @@ bool xLightsFrame::SaveWorking()
     }
 
     CurrentSeqXmlFile->SetFullPath(origPath);
+    if (b) {
+        ShowAutosave::WriteSidecar(tmp.ToStdString(), ShowAutosave::BaseFor(origPath, ShowFileGuard::Instance()));
+    }
     return b;
 }
 
@@ -6258,7 +6346,6 @@ void xLightsFrame::OnMenuItemShiftEffectsAndTimingSelected(wxCommandEvent& event
         return;
     wxTextEntryDialog ted(this, _("Enter the number of milliseconds to shift all effects and timing marks:\n\n"
         "Note: Will be rounded to the nearest timing interval.\n"
-        "      This operation cannot be reversed with Undo.\n"
         "      Effects shifted left may be truncated or deleted."),
         _("Shift Effects And Timings"), "", wxOK | wxCANCEL | wxCENTER);
     if (ted.ShowModal() == wxID_OK) {
@@ -6269,33 +6356,10 @@ void xLightsFrame::OnMenuItemShiftEffectsAndTimingSelected(wxCommandEvent& event
             milliseconds /= ms;
             milliseconds *= ms;
         }
-        for (int elem = 0; elem < (int)_sequenceElements.GetElementCount(MASTER_VIEW); elem++) {
-            Element* ele = _sequenceElements.GetElement(elem, MASTER_VIEW);
-            for (int layer = 0; layer < (int)ele->GetEffectLayerCount(); layer++) {
-                EffectLayer* el = ele->GetEffectLayer(layer);
-                ShiftEffectsOnLayer(el, milliseconds);
-            }
-            if (ele->GetType() == ElementType::ELEMENT_TYPE_MODEL) {
-                ModelElement* me = dynamic_cast<ModelElement*>(ele);
-                for (int i = 0; i < me->GetStrandCount(); ++i) {
-                    Element* se = me->GetStrand(i);
-                    StrandElement* ste = dynamic_cast<StrandElement*>(se);
-                    for (int k = 0; k < ste->GetNodeLayerCount(); ++k) {
-                        NodeLayer* nl = ste->GetNodeLayer(k, false);
-                        if (nl != nullptr) {
-                            ShiftEffectsOnLayer(nl, milliseconds);
-                        }
-                    }
-                }
-                for (int i = 0; i < me->GetSubModelAndStrandCount(); ++i) {
-                    Element* se = me->GetSubModel(i);
-                    for (int layer = 0; layer < (int)se->GetEffectLayerCount(); layer++) {
-                        EffectLayer* sel = se->GetEffectLayer(layer);
-                        ShiftEffectsOnLayer(sel, milliseconds);
-                    }
-                }
-            }
+        if (selectedEffect != nullptr && selectedEffect->GetEndTimeMS() + milliseconds < 0) {
+            UnselectEffect();
         }
+        ShiftEffects(_sequenceElements, milliseconds, true, false, "Shift Effects And Timing");
         mainSequencer->PanelEffectGrid->Refresh();
     }
 }
@@ -6304,7 +6368,6 @@ void xLightsFrame::OnMenuItemShiftSelectedEffectsSelected(wxCommandEvent& event)
 {
     wxTextEntryDialog ted(this, _("Enter the number of milliseconds to shift the selected effects:\n\n"
                                 "Note: Will be rounded to the nearest timing interval.\n"
-                                "      This operation cannot be reversed with Undo.\n"
                                 "      Effects shifted left may be truncated or deleted.\n"
                                 "      Effects that would overlap unselected effects wont be moved."),
                           _("Shift Selected Effects"), "", wxOK | wxCANCEL | wxCENTER);
@@ -6316,33 +6379,10 @@ void xLightsFrame::OnMenuItemShiftSelectedEffectsSelected(wxCommandEvent& event)
             milliseconds /= ms;
             milliseconds *= ms;
         }
-        for (int elem = 0; elem < (int)_sequenceElements.GetElementCount(MASTER_VIEW); elem++) {
-            Element* ele = _sequenceElements.GetElement(elem, MASTER_VIEW);
-            for (int layer = 0; layer < (int)ele->GetEffectLayerCount(); layer++) {
-                EffectLayer* el = ele->GetEffectLayer(layer);
-                ShiftSelectedEffectsOnLayer(el, milliseconds);
-            }
-            if (ele->GetType() == ElementType::ELEMENT_TYPE_MODEL) {
-                ModelElement* me = dynamic_cast<ModelElement*>(ele);
-                for (int i = 0; i < me->GetStrandCount(); ++i) {
-                    Element* se = me->GetStrand(i);
-                    StrandElement* ste = dynamic_cast<StrandElement*>(se);
-                    for (int k = 0; k < ste->GetNodeLayerCount(); ++k) {
-                        NodeLayer* nl = ste->GetNodeLayer(k, false);
-                        if (nl != nullptr) {
-                            ShiftSelectedEffectsOnLayer(nl, milliseconds);
-                        }
-                    }
-                }
-                for (int i = 0; i < me->GetSubModelAndStrandCount(); ++i) {
-                    Element* se = me->GetSubModel(i);
-                    for (int layer = 0; layer < (int)se->GetEffectLayerCount(); layer++) {
-                        EffectLayer* sel = se->GetEffectLayer(layer);
-                        ShiftSelectedEffectsOnLayer(sel, milliseconds);
-                    }
-                }
-            }
+        if (selectedEffect != nullptr && selectedEffect->GetEndTimeMS() + milliseconds < 0) {
+            UnselectEffect();
         }
+        ShiftEffects(_sequenceElements, milliseconds, true, true, "Shift Selected Effects");
         mainSequencer->PanelEffectGrid->Refresh();
     }
 }
@@ -6353,7 +6393,6 @@ void xLightsFrame::OnMenuItemShiftEffectsSelected(wxCommandEvent& event)
         return;
     wxTextEntryDialog ted(this, _("Enter the number of milliseconds to shift all effects:\n\n"
                                 "Note: Will be rounded to the nearest timing interval.\n"
-                                "      This operation cannot be reversed with Undo.\n"
                                 "      Effects shifted left may be truncated or deleted."),
                           _("Shift Effects"), "", wxOK | wxCANCEL | wxCENTER);
     if (ted.ShowModal() == wxID_OK) {
@@ -6364,139 +6403,11 @@ void xLightsFrame::OnMenuItemShiftEffectsSelected(wxCommandEvent& event)
             milliseconds /= ms;
             milliseconds *= ms;
         }
-        for (int elem = 0; elem < (int)_sequenceElements.GetElementCount(MASTER_VIEW); elem++) {
-            Element* ele = _sequenceElements.GetElement(elem, MASTER_VIEW);
-            if (ele->GetType() != ElementType::ELEMENT_TYPE_TIMING) {
-                for (int layer = 0; layer < (int)ele->GetEffectLayerCount(); layer++) {
-                    EffectLayer* el = ele->GetEffectLayer(layer);
-                    ShiftEffectsOnLayer(el, milliseconds);
-                }
-            }
-            if (ele->GetType() == ElementType::ELEMENT_TYPE_MODEL) {
-                ModelElement* me = dynamic_cast<ModelElement*>(ele);
-                for (int i = 0; i < me->GetStrandCount(); ++i) {
-                    Element* se = me->GetStrand(i);
-                    StrandElement* ste = dynamic_cast<StrandElement*>(se);
-                    for (int k = 0; k < ste->GetNodeLayerCount(); ++k) {
-                        NodeLayer* nl = ste->GetNodeLayer(k, false);
-                        if (nl != nullptr) {
-                            ShiftEffectsOnLayer(nl, milliseconds);
-                        }
-                    }
-                }
-                for (int i = 0; i < me->GetSubModelAndStrandCount(); ++i) {
-                    Element* se = me->GetSubModel(i);
-                    for (int layer = 0; layer < (int)se->GetEffectLayerCount(); layer++) {
-                        EffectLayer* sel = se->GetEffectLayer(layer);
-                        ShiftEffectsOnLayer(sel, milliseconds);
-                    }
-                }
-            }
+        if (selectedEffect != nullptr && selectedEffect->GetEndTimeMS() + milliseconds < 0) {
+            UnselectEffect();
         }
+        ShiftEffects(_sequenceElements, milliseconds, false, false, "Shift Effects");
         mainSequencer->PanelEffectGrid->Refresh();
-    }
-}
-
-void xLightsFrame::ShiftEffectsOnLayer(EffectLayer* el, int milliseconds)
-{
-    for (int ef = el->GetEffectCount() - 1; ef >= 0; ef--) { // count backwards so we can delete if needed
-        Effect* eff = el->GetEffect(ef);
-        int start_ms = eff->GetStartTimeMS();
-        int end_ms = eff->GetEndTimeMS();
-        if (start_ms + milliseconds < 0) {
-            if (end_ms + milliseconds < 0) {
-                // effect shifted off screen - delete
-
-                el->RemoveEffect(ef);
-                if (eff == selectedEffect) {
-                    UnselectEffect();
-                }
-                continue;
-            } else {
-                // truncate start of effect
-                eff->SetStartTimeMS(0);
-            }
-        } else {
-            eff->SetStartTimeMS(start_ms + milliseconds);
-        }
-        eff->SetEndTimeMS(end_ms + milliseconds);
-    }
-}
-
-void xLightsFrame::ShiftSelectedEffectsOnLayer(EffectLayer* el, int milliseconds)
-{
-    if (milliseconds < 0) {
-        std::list<int> toRemove;
-        for (int ef = 0; ef < el->GetEffectCount(); ef++) {
-            // move left
-            Effect* eff = el->GetEffect(ef);
-            if (eff->GetSelected()) {
-                bool moved = false;
-                int start_ms = eff->GetStartTimeMS();
-                int end_ms = eff->GetEndTimeMS();
-                if (start_ms + milliseconds < 0) {
-                    if (end_ms + milliseconds < 0) {
-                        // effect shifted off screen - delete
-                        if (eff == selectedEffect) {
-                            UnselectEffect();
-                        }
-                        // move it out of the way so it doesnt cause clashes
-                        eff->SetStartTimeMS(-100);
-                        eff->SetEndTimeMS(-90);
-                        toRemove.push_front(ef); // we need to delete them in reverse order
-                        continue;
-                    } else {
-                        // truncate start of effect
-                        eff->SetStartTimeMS(0);
-                        moved = true;
-                    }
-                } else {
-                    auto effectsInTime = el->GetAllEffectsByTime(start_ms + milliseconds, end_ms + milliseconds);
-                    bool clash = false;
-                    for (const auto& it : effectsInTime) {
-                        if (it->GetID() != eff->GetID()) {
-                            clash = true;
-                            break;
-                        }
-                    }
-                    if (!clash) {
-                        eff->SetStartTimeMS(start_ms + milliseconds);
-                        moved = true;
-                    }
-                }
-                if (moved) {
-                    eff->SetEndTimeMS(end_ms + milliseconds);
-                }
-            }
-        }
-        for (auto it = toRemove.begin(); it != toRemove.end(); ++it) {
-            el->RemoveEffect(*it);
-        }
-    } else {
-        // Move right
-        for (int ef = el->GetEffectCount() - 1; ef >= 0; ef--) { // count backwards so we can delete if needed
-            Effect* eff = el->GetEffect(ef);
-            if (eff->GetSelected()) {
-                bool moved = false;
-                int start_ms = eff->GetStartTimeMS();
-                int end_ms = eff->GetEndTimeMS();
-                auto effectsInTime = el->GetAllEffectsByTime(start_ms + milliseconds, end_ms + milliseconds);
-                bool clash = false;
-                for (const auto& it : effectsInTime) {
-                    if (it->GetID() != eff->GetID()) {
-                        clash = true;
-                        break;
-                    }
-                }
-                if (!clash) {
-                    eff->SetStartTimeMS(start_ms + milliseconds);
-                    moved = true;
-                }
-                if (moved) {
-                    eff->SetEndTimeMS(end_ms + milliseconds);
-                }
-            }
-        }
     }
 }
 
@@ -6633,18 +6544,7 @@ void xLightsFrame::OnMenuItem_ConvertSymbolsSelected(wxCommandEvent& event)
         return;
     }
 
-    for (const auto& symbol : symbols) {
-        std::vector<Effect*> linkedEffects = symbolMgr.GetLinkedEffects(symbol->GetId());
-        for (Effect* effect : linkedEffects) {
-            if (effect != nullptr) {
-                effect->UnlinkFromSymbol();
-            }
-        }
-    }
-
-    symbolMgr.Clear();
-
-    _sequenceElements.IncrementChangeCount(nullptr);
+    SymbolEdits::ConvertAllToEffects(_sequenceElements);
 
     mainSequencer->PanelEffectGrid->Refresh();
 
@@ -6991,6 +6891,9 @@ bool xLightsFrame::CleanupSequenceFileLocations()
     }
 
     bool changed = false;
+    // One batch for observers; it records no undo step (files are moved on
+    // disk and the show file is rewritten too).
+    ScopedCommandBatch batch(_sequenceElements.GetCommandExecutor(), "Cleanup File Locations");
     for (size_t j = 0; j < _sequenceElements.GetElementCount(0); j++) {
         Element* e = _sequenceElements.GetElement(j);
         changed = e->CleanupFileLocations(this, effectManager) || changed;
@@ -7929,12 +7832,11 @@ void xLightsFrame::OnMenuItem_GenerateLyricsSelected(wxCommandEvent& event)
         }
 
         // now create the phenome timing track
+        NewElementsRecorder recorder(_sequenceElements, "Generate Lyrics");
         std::string name = _sequenceElements.UniqueElementName(dlg.GetLyricName());
-        int timingCount = _sequenceElements.GetNumberOfTimingElements();
-        Element* e = _sequenceElements.AddElement(timingCount, name, "timing", true, false, true, false, false);
+        TimingElement* timing = ElementEdits::AddTimingTrack(_sequenceElements, -1, name, "");
+        timing->SetActive(true);
         _sequenceElements.AddTimingToCurrentView(name);
-        TimingElement* timing = dynamic_cast<TimingElement*>(e);
-        timing->AddEffectLayer();
         timing->AddEffectLayer();
         EffectLayer* tl = timing->AddEffectLayer();
 

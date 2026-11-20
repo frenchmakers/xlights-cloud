@@ -11,6 +11,8 @@
  **************************************************************/
 
 #include <cstdint>
+#include <map>
+#include <optional>
 #include <vector>
 #include <string>
 #include <mutex>
@@ -19,6 +21,8 @@
 #include "UtilClasses.h"
 #include "../graphics/xlGraphicsAccumulators.h"
 #include "Color.h"
+#include "SequenceIds.h"
+#include "SequenceMutationGuard.h"
 
 class EffectLayer;
 class ValueCurve;
@@ -42,6 +46,7 @@ class Effect
 {
     static bool backgroundDisplayListsEnabled;
     int mID = 0;
+    SeqObjectId mUid = SeqIds::Next();
     short mEffectIndex = -1;
     std::string *mName = nullptr;
     int mStartTime = 0;
@@ -73,6 +78,12 @@ public:
     int GetID() const { return mID; }
     void SetID(int i) { mID = i; }
 
+    // Stable identity (see SequenceIds.h). GetID() is the position in the layer.
+    SeqObjectId GetUid() const { return mUid; }
+    // Only for restoring an identity onto a re-created effect (undo). The
+    // caller guarantees no live effect already holds `uid`.
+    void SetUid(SeqObjectId uid);
+
     bool IsTimeToDelete() const;
     void SetTimeToDelete();
 
@@ -102,13 +113,23 @@ public:
     void SetTagged(bool tagged) { mTagged = tagged; }
 
     bool GetProtected() const { return mProtected; }
-    void SetProtected(bool Protected) { mProtected = Protected; }
+    void SetProtected(bool Protected) {
+        XL_SEQ_MUTATION("Effect::SetProtected");
+        mProtected = Protected;
+    }
 
     // Symbol linking - allows effects to be linked to reusable EffectSymbol definitions.
     bool IsLinkedToSymbol() const { return !_linkedSymbolId.empty(); }
     const std::string& GetLinkedSymbolId() const { return _linkedSymbolId; }
     void LinkToSymbol(const std::string& symbolId);
     void UnlinkFromSymbol();
+    // Changes only the link (empty unlinks); the effect's type, settings and
+    // palette are left alone. An id the sequence has no symbol for unlinks.
+    void SetLinkedSymbolId(const std::string& symbolId);
+    // Called when the effect is removed from its layer: it stops receiving
+    // symbol changes but keeps its link id (an undo re-adds it from its
+    // settings, link included).
+    void DetachFromSymbolManager();
     void ApplySymbolSettings(const EffectSymbol* symbol);
     void HandlePastedSymbolLink();
 
@@ -154,6 +175,8 @@ public:
     void PressButton(RenderableEffect* re, const std::string& id);
     const SettingsMap &GetSettings() const { return mSettings; }
     void CopySettingsMap(SettingsMap &target, bool stripPfx = false) const;
+    // Both maps as they are now, read under the settings lock.
+    void SnapshotMaps(SettingsMap& settings, SettingsMap& palette) const;
     void FixBuffer(const Model* m);
     bool IsPersistent() const;
 
@@ -165,6 +188,10 @@ public:
     void SetPalette(const std::string& i);
     void SetColourOnlyPalette(const std::string& i, bool json = false, bool keepCheckboxes = false);
     void CopyPalette(xlColorVector &target, xlColorCurveVector& newcc) const;
+    // Key-level edits: a value sets the key, std::nullopt removes it. Returns
+    // true (and marks the effect changed) if anything actually changed.
+    bool ApplySettingChanges(const std::map<std::string, std::optional<std::string>>& changes);
+    bool ApplyPaletteChanges(const std::map<std::string, std::optional<std::string>>& changes);
     void EraseSettingsStartingWith(const std::string& s);
     void ErasePalette();
     void EraseColourSettings();

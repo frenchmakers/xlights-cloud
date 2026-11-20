@@ -24,8 +24,8 @@ SUDO		= `which sudo`
 
 SUBDIRS         = xLights
 
-WXWIDGETS_TAG=xlights_2026.19
-ISPC_VERSION=1.31.0
+WXWIDGETS_TAG=xlights_2026.21
+ISPC_VERSION=1.32.0
 ISPC_ARCH=$(shell uname -m)
 
 ifeq '$(ISPC_ARCH)' 'aarch64'
@@ -183,12 +183,17 @@ install:
 			install -m 755 -p "$$shim" $(DESTDIR)/${PREFIX}/lib/; \
 		done; \
 	fi
+	@if ls lib/linux/libonnxruntime.so* >/dev/null 2>&1; then \
+		install -d -m 755 $(DESTDIR)/${PREFIX}/lib; \
+		cp -fP lib/linux/libonnxruntime.so* $(DESTDIR)/${PREFIX}/lib/; \
+	fi
 
 uninstall:
 	-$(DEL_FILE) $(DESTDIR)/${PREFIX}/bin/xLights
 	-$(DEL_FILE) $(DESTDIR)/${PREFIX}/share/applications/xlights.desktop
 	-$(DEL_FILE) $(DESTDIR)/${PREFIX}/lib/libklightmapper.so
 	-$(DEL_FILE) $(DESTDIR)/${PREFIX}/lib/libklightmapper_av*.so
+	-$(DEL_FILE) $(DESTDIR)/${PREFIX}/lib/libonnxruntime.so*
 
 #############################################################################
 

@@ -5,7 +5,11 @@
 #include <wx/string.h>
 //*)
 
+#include <wx/filedlg.h>
+#include <wx/filename.h>
 #include <wx/msgdlg.h>
+
+#include "utils/ExternalHooks.h"
 
 // The messages are kept as UTF-8 std::string and converted back when shown.
 static std::string Utf8(const wxString& s) {
@@ -83,8 +87,9 @@ ModelRemap::~ModelRemap()
 
 void ModelRemap::OnButton_GenerateClick(wxCommandEvent& event) {
     newWiringProperties.Remap(originalProperties);
-    newWiringProperties.Save(this);
-    EndDialog(wxCLOSE);
+    if (newWiringProperties.Save(this)) {
+        EndDialog(wxCLOSE);
+    }
 }
 
 void ModelRemap::OnFilePickerCtrl_OriginalFileChanged(wxFileDirPickerEvent& event) {
@@ -514,11 +519,26 @@ void RemapModelProperties::Remap(RemapModelProperties& original) {
     }
 }
 
-void RemapModelProperties::Save(wxWindow* parent) {
+bool RemapModelProperties::Save(wxWindow* parent) {
     wxFileName fn(_filename);
-    auto newfn = fn.GetPath() + "/" + fn.GetName() + "_REMAP." + fn.GetExt();
+    wxString newfn = fn.GetPath() + "/" + fn.GetName() + "_REMAP." + fn.GetExt();
 
-    _xmodel.save_file(newfn.ToStdString().c_str());
+    // The sandbox only grants the picked file, not its folder, so writing beside it can fail;
+    // the Save dialog grants write access to the location the user chooses.
+    if (!_xmodel.save_file(newfn.utf8_str().data())) {
+        wxString chosen = wxFileSelector(_("Save remapped xModel"), fn.GetPath(), wxFileName(newfn).GetFullName(), "xmodel",
+                                         _("xModel files (*.xmodel)|*.xmodel"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT, parent);
+        if (chosen.IsEmpty()) {
+            return false;
+        }
+        newfn = chosen;
+        ObtainAccessToURL(newfn.ToStdString(), true);
+        if (!_xmodel.save_file(newfn.utf8_str().data())) {
+            wxMessageBox(wxString::Format(_("Couldn't write %s."), newfn), _("xModel not saved"), wxOK | wxICON_ERROR, parent);
+            return false;
+        }
+    }
 
-    wxMessageBox("xModel file " + newfn + " created.", "xModel file saved", 5L, parent);
+    wxMessageBox(wxString::Format(_("xModel file %s created."), newfn), _("xModel file saved"), wxOK, parent);
+    return true;
 }
