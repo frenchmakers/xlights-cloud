@@ -292,6 +292,9 @@ void CloudBackupDialog::Run() {
         }
     }
     for (const auto& config : _job.controllerConfigs) {
+        for (const auto& w : config.warnings) {
+            archive.warnings.push_back(config.controller + ": " + w);
+        }
         if (!config.error.empty()) {
             archive.warnings.push_back("The output configuration of " + config.controller + " was not published: " + config.error);
         } else if (client.PutObject(config.key, config.json, "application/json", error)) {

@@ -3633,7 +3633,9 @@ void xLightsFrame::OnMenuItemCloudBackupSelected(wxCommandEvent& event)
     if (settings.includeThumbnail) {
         job.thumbnailPng = CaptureLayoutThumbnailPng(GetLayoutPreview(), 1280, job.thumbnailWarning);
     }
-    job.controllerConfigs = CloudControllerConfig::BuildAll(&_outputManager, &AllModels, ShowArchiver::FormatUtcIso(time(nullptr)));
+    // The boards play one sequence; the open one is the best guess of its frame time.
+    job.controllerConfigs = CloudControllerConfig::BuildAll(&_outputManager, &AllModels, ShowArchiver::FormatUtcIso(time(nullptr)),
+                                                            CurrentSeqXmlFile != nullptr ? CurrentSeqXmlFile->GetFrameMS() : 0);
 
     // The dialog shows itself once scanning and any prompt are out of the way.
     auto* dlg = new CloudBackupDialog(this, std::move(job));

@@ -10,6 +10,8 @@
 
 #include "CloudControllerConfig.h"
 
+#include <algorithm>
+
 #include <nlohmann/json.hpp>
 
 #include "ControllerCaps.h"
@@ -37,7 +39,12 @@ std::string ObjectKey(const std::string& controllerName) {
     return "controllers/" + name + ".json";
 }
 
-std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, const std::string& generatedUtc, std::string& error) {
+std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, const std::string& generatedUtc, std::string& error,
+                  int frameMs, std::vector<std::string>* warnings) {
+    if (controller->GetName().size() > MAX_NAME_LENGTH) {
+        error = "The controller name is longer than " + std::to_string(MAX_NAME_LENGTH) + " characters.";
+        return {};
+    }
     UDController cud(controller, om, mm, false);
     ControllerCaps* rules = ControllerCaps::GetControllerConfig(controller);
     std::string check;
@@ -68,6 +75,9 @@ std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, c
     const float defaultGamma = controller->GetDefaultGammaUnderFullControl();
 
     nlohmann::json pixelPorts = nlohmann::json::array();
+    int longestWire = 0;
+    int longestPort = 0;
+    int totalChannels = 0;
     for (int p = 1; p <= cud.GetMaxPixelPort(); p++) {
         if (!cud.HasPixelPort(p)) {
             continue;
@@ -93,6 +103,13 @@ std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, c
         jp["zigZag"] = first->GetZigZag(0);
         jp["reverse"] = first->GetDirection("Forward") == "Reverse";
         pixelPorts.push_back(jp);
+
+        int wire = jp["startNulls"].get<int>() + port->Pixels() * std::max(1, jp["groupCount"].get<int>()) + jp["endNulls"].get<int>();
+        if (wire > longestWire) {
+            longestWire = wire;
+            longestPort = p;
+        }
+        totalChannels += port->Channels();
     }
     j["pixelPorts"] = pixelPorts;
 
@@ -114,11 +131,25 @@ std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, c
         serialPorts.push_back(jp);
     }
     j["serialPorts"] = serialPorts;
+
+    if (frameMs > 0 && warnings != nullptr) {
+        int maxWire = (frameMs * 1000 - WIRE_RESET_US) / WIRE_US_PER_PIXEL;
+        if (longestWire > maxWire) {
+            warnings->push_back("Port " + std::to_string(longestPort) + " drives " + std::to_string(longestWire) +
+                                " pixels; at " + std::to_string(frameMs) + " ms per frame the board can send at most " +
+                                std::to_string(maxWire) + " per port.");
+        }
+        int maxChannels = (int)((long long)MAX_CHANNELS_PER_SECOND * frameMs / 1000);
+        if (totalChannels > maxChannels) {
+            warnings->push_back(std::to_string(totalChannels) + " channels per frame; at " + std::to_string(frameMs) +
+                                " ms per frame the board can read at most " + std::to_string(maxChannels) + ".");
+        }
+    }
     j["generated"] = generatedUtc;
     return j.dump();
 }
 
-std::vector<File> BuildAll(OutputManager* om, ModelManager* mm, const std::string& generatedUtc) {
+std::vector<File> BuildAll(OutputManager* om, ModelManager* mm, const std::string& generatedUtc, int frameMs) {
     std::vector<File> files;
     for (Controller* c : om->GetControllers()) {
         if (!IsCloudController(c) || !c->IsActive()) {
@@ -127,7 +158,7 @@ std::vector<File> BuildAll(OutputManager* om, ModelManager* mm, const std::strin
         File f;
         f.controller = c->GetName();
         f.key = ObjectKey(c->GetName());
-        f.json = Build(c, om, mm, generatedUtc, f.error);
+        f.json = Build(c, om, mm, generatedUtc, f.error, frameMs, &f.warnings);
         files.push_back(std::move(f));
     }
     return files;

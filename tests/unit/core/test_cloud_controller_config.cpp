@@ -2,6 +2,7 @@
 
 #include <filesystem>
 #include <string>
+#include <vector>
 
 #include <nlohmann/json.hpp>
 #include <pugixml.hpp>
@@ -22,7 +23,7 @@ std::filesystem::path RepoResourcesDir() {
     return std::filesystem::path(__FILE__).parent_path().parent_path().parent_path().parent_path() / "resources";
 }
 
-// The shipped FrenchMakers board with a 45000 channel DDP input (15 ports of 1000 pixels).
+// The shipped FrenchMakers board with an 18000 channel DDP input (6 ports of 1000 pixels).
 struct CloudShow {
     std::string prevResources;
     OutputManager om;
@@ -41,9 +42,9 @@ struct CloudShow {
         ctl->SetProtocol(OUTPUT_DDP);
         ctl->SetVendor(CloudControllerConfig::VENDOR);
         ctl->SetModel("STM32 Cloud Pixel");
-        ctl->SetVariant("15 Ports");
+        ctl->SetVariant("6 Ports");
         ctl->SetAutoLayout(false);
-        ctl->GetOutputs().front()->SetChannels(45000);
+        ctl->GetOutputs().front()->SetChannels(18000);
         om.AddController(ctl);
         om.SomethingChanged();
     }
@@ -93,7 +94,7 @@ TEST_CASE("Cloud controller config lists the ports Upload Outputs would send", "
     CHECK(j["ip"] == "192.168.1.50");
     CHECK(j["input"]["protocol"] == OUTPUT_DDP);
     CHECK(j["input"]["startChannel"] == 1);
-    CHECK(j["input"]["channels"] == 45000);
+    CHECK(j["input"]["channels"] == 18000);
     CHECK(j["generated"] == "2026-11-21T15:00:00Z");
     CHECK(j["serialPorts"].empty());
 
@@ -144,4 +145,61 @@ TEST_CASE("Only active FrenchMakers controllers get a config file", "[controller
     show.ctl->SetVendor(CloudControllerConfig::VENDOR);
     show.ctl->SetActive("Inactive");
     CHECK(CloudControllerConfig::BuildAll(&show.om, &show.mm, "").empty());
+}
+
+TEST_CASE("Cloud controller config refuses ports and names the board cannot hold", "[controllers][cloud]") {
+    CloudShow show;
+    show.OnPort("Port7", 7, 10, "!frenchmakers:1");
+    show.Recalc();
+    std::string error;
+    CHECK(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error).empty());
+    CHECK_FALSE(error.empty());
+
+    CloudShow named;
+    named.ctl->SetName(std::string(CloudControllerConfig::MAX_NAME_LENGTH + 1, 'x'));
+    error.clear();
+    CHECK(CloudControllerConfig::Build(named.ctl, &named.om, &named.mm, "", error).empty());
+    CHECK(error.find("32") != std::string::npos);
+}
+
+TEST_CASE("Cloud controller config warns when the frame rate is too high for the board", "[controllers][cloud]") {
+    CloudShow show;
+    show.OnPort("Long", 1, 900, "!frenchmakers:1");
+    show.Recalc();
+
+    std::string error;
+    std::vector<std::string> warnings;
+    // (25000 - 350) / 30 = 821 pixels per port at 40 fps
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 25, &warnings).empty());
+    REQUIRE(warnings.size() == 1);
+    CHECK(warnings[0].find("Port 1") != std::string::npos);
+    CHECK(warnings[0].find("821") != std::string::npos);
+
+    warnings.clear();
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 50, &warnings).empty());
+    CHECK(warnings.empty());
+
+    warnings.clear();
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 0, &warnings).empty());
+    CHECK(warnings.empty());
+}
+
+TEST_CASE("Cloud controller config warns when the board cannot read that many channels", "[controllers][cloud]") {
+    CloudShow show;
+    for (int p = 1; p <= 6; p++) {
+        show.OnPort("P" + std::to_string(p), p, 800, "!frenchmakers:" + std::to_string((p - 1) * 2400 + 1));
+    }
+    show.Recalc();
+
+    std::string error;
+    std::vector<std::string> warnings;
+    // 6 x 800 x 3 = 14400 channels, 12500 at most at 40 fps
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 25, &warnings).empty());
+    REQUIRE(warnings.size() == 1);
+    CHECK(warnings[0].find("14400") != std::string::npos);
+    CHECK(warnings[0].find("12500") != std::string::npos);
+
+    warnings.clear();
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 50, &warnings).empty());
+    CHECK(warnings.empty());
 }
