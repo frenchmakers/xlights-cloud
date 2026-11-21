@@ -240,8 +240,8 @@ void xLightsFrame::LoadEffectsFile()
         if (!_renderMode && !_checkSequenceMode) {
             const std::string realPath = effectsFile.GetFullPath().ToStdString();
             const std::string showDir = CurrentDir.ToStdString();
-            if (!OfferAutosaveRecovery(realPath, ShowAutosave::LayoutAutosavePath(showDir, XLIGHTS_RGBEFFECTS_FILE), "the layout", true)) {
-                OfferAutosaveRecovery(realPath, ShowAutosave::LegacyLayoutAutosavePath(showDir, XLIGHTS_RGBEFFECTS_FILE), "the layout", true);
+            if (!OfferAutosaveRecovery(realPath, ShowAutosave::LayoutAutosavePath(showDir, XLIGHTS_RGBEFFECTS_FILE), _("the layout"), true)) {
+                OfferAutosaveRecovery(realPath, ShowAutosave::LegacyLayoutAutosavePath(showDir, XLIGHTS_RGBEFFECTS_FILE), _("the layout"), true);
             }
         }
         ShowFileGuard::Instance().RecordFromDisk(effectsFile.GetFullPath().ToStdString());
@@ -338,8 +338,8 @@ void xLightsFrame::LoadEffectsFile()
         if (!_renderMode && !_checkSequenceMode) {
             const std::string realPath = presetsFile.GetFullPath().ToStdString();
             const std::string showDir = CurrentDir.ToStdString();
-            if (!OfferAutosaveRecovery(realPath, ShowAutosave::LayoutAutosavePath(showDir, XLIGHTS_PRESETS_FILE), "the effect presets", false)) {
-                OfferAutosaveRecovery(realPath, ShowAutosave::LegacyLayoutAutosavePath(showDir, XLIGHTS_PRESETS_FILE), "the effect presets", false);
+            if (!OfferAutosaveRecovery(realPath, ShowAutosave::LayoutAutosavePath(showDir, XLIGHTS_PRESETS_FILE), _("the effect presets"), false)) {
+                OfferAutosaveRecovery(realPath, ShowAutosave::LegacyLayoutAutosavePath(showDir, XLIGHTS_PRESETS_FILE), _("the effect presets"), false);
             }
         }
 
@@ -945,8 +945,8 @@ bool xLightsFrame::ConfirmOpenSequenceOpenElsewhere(const wxString& sequencePath
     }
     spdlog::info("Opening {}: also open on {} other install(s) sharing the show folder.", fn.GetFullPath().ToStdString(), holders.size());
     wxMessageDialog dlg(this, wxString(ShowPresence::SequenceOpenWarning(holders, now)),
-                        "Sequence Open Elsewhere", wxYES_NO | wxNO_DEFAULT | wxICON_WARNING);
-    dlg.SetYesNoLabels("Open Anyway", "Cancel");
+                        _("Sequence Open Elsewhere"), wxYES_NO | wxNO_DEFAULT | wxICON_WARNING);
+    dlg.SetYesNoLabels(_("Open Anyway"), _("Cancel"));
     return dlg.ShowModal() == wxID_YES;
 }
 
@@ -958,18 +958,19 @@ xLightsFrame::ShowFileConflict xLightsFrame::AskShowFileConflict(const std::vect
     wxString names;
     for (const auto& p : paths) {
         if (!names.empty()) {
-            names += " and ";
+            names += " " + _("and") + " ";
         }
         names += wxFileName(wxString::FromUTF8(p)).GetFullName();
     }
-    const wxString verb = paths.size() == 1 ? "was" : "were";
     if (!canMerge) {
         wxMessageDialog dlg(parent,
-                            names + " " + verb + " changed by someone else (or another app) since you opened it, and the version you opened "
-                                                 "is not known, so the changes cannot be merged.\n\nSaving now would overwrite their changes.",
-                            "File Changed by Someone Else",
+                            wxString::Format((paths.size() == 1 ? _("%s was changed by someone else (or another app) since you opened it, and the version you opened "
+                                                 "is not known, so the changes cannot be merged.\n\nSaving now would overwrite their changes.")
+                                                 : _("%s were changed by someone else (or another app) since you opened them, and the versions you opened "
+                                                 "are not known, so the changes cannot be merged.\n\nSaving now would overwrite their changes.")), names),
+                            _("File Changed by Someone Else"),
                             wxYES_NO | wxCANCEL | wxCANCEL_DEFAULT | wxICON_WARNING);
-        dlg.SetYesNoCancelLabels("Overwrite", "Save Mine as a Copy", "Cancel");
+        dlg.SetYesNoCancelLabels(_("Overwrite"), _("Save Mine as a Copy"), _("Cancel"));
         switch (dlg.ShowModal()) {
         case wxID_YES: return ShowFileConflict::Overwrite;
         case wxID_NO: return ShowFileConflict::SavedCopy;
@@ -977,13 +978,16 @@ xLightsFrame::ShowFileConflict xLightsFrame::AskShowFileConflict(const std::vect
         }
     }
     wxMessageDialog dlg(parent,
-                        names + " " + verb + " changed by someone else (or another app) since you opened it.\n\n"
+                        wxString::Format((paths.size() == 1 ? _("%s was changed by someone else (or another app) since you opened it.\n\n"
                                              "Merge keeps their changes and yours; if you both changed the same thing you choose which to keep. "
-                                             "Overwrite replaces their changes with yours.",
-                        "File Changed by Someone Else",
+                                             "Overwrite replaces their changes with yours.")
+                                             : _("%s were changed by someone else (or another app) since you opened them.\n\n"
+                                             "Merge keeps their changes and yours; if you both changed the same thing you choose which to keep. "
+                                             "Overwrite replaces their changes with yours.")), names),
+                        _("File Changed by Someone Else"),
                         wxYES_NO | wxCANCEL | wxHELP | wxYES_DEFAULT | wxICON_WARNING);
-    dlg.SetYesNoCancelLabels("Merge", "Save Mine as a Copy", "Cancel");
-    dlg.SetHelpLabel("Overwrite");
+    dlg.SetYesNoCancelLabels(_("Merge"), _("Save Mine as a Copy"), _("Cancel"));
+    dlg.SetHelpLabel(_("Overwrite"));
     switch (dlg.ShowModal()) {
     case wxID_YES: return ShowFileConflict::Merge;
     case wxID_HELP: return ShowFileConflict::Overwrite;
@@ -1038,18 +1042,18 @@ xLightsFrame::ShowSaveResult xLightsFrame::SaveShowFiles(const std::vector<ShowS
                     }
                     const std::string copy = ShowFileGuard::MakeCopyPath(f.path);
                     if (!(writeCopy ? writeCopy(f, copy) : ShowFileGuard::WriteFileAtomically(copy, f.mine))) {
-                        DisplayError("Unable to save a copy to " + copy, parent);
+                        DisplayError(wxString::Format(_("Unable to save a copy to %s"), wxString::FromUTF8(copy)).utf8_string(), parent);
                         return ShowSaveResult::Cancelled;
                     }
                     spdlog::info("{} was changed by someone else; saved this session's version to {} instead.", f.path, copy);
                     saved += wxString::FromUTF8(copy) + "\n";
-                    if (!originals.empty()) originals += " and ";
+                    if (!originals.empty()) originals += " " + _("and") + " ";
                     originals += wxFileName(wxString::FromUTF8(f.path)).GetFullName();
                 }
-                wxMessageBox(wxString::Format("Your version was saved as:\n%s\n%s was left as the other person saved it. "
-                                              "Your changes are still open here and are still marked as unsaved.",
+                wxMessageBox(wxString::Format(_("Your version was saved as:\n%s\n%s was left as the other person saved it. "
+                                              "Your changes are still open here and are still marked as unsaved."),
                                               saved, originals),
-                             "Saved a Copy", wxOK | wxICON_INFORMATION, parent);
+                             _("Saved a Copy"), wxOK | wxICON_INFORMATION, parent);
                 return ShowSaveResult::SavedCopy;
             }
             case ShowFileConflict::Overwrite: {
@@ -1061,7 +1065,7 @@ xLightsFrame::ShowSaveResult xLightsFrame::SaveShowFiles(const std::vector<ShowS
                     if (!f.write) continue;
                     spdlog::info("Overwriting {} at the user's request (it was changed by someone else).", f.path);
                     if (!guard.SaveFile(f.path, f.mine)) {
-                        DisplayError("Unable to save " + f.path, parent);
+                        DisplayError(wxString::Format(_("Unable to save %s"), wxString::FromUTF8(f.path)).utf8_string(), parent);
                         return ShowSaveResult::Failed;
                     }
                 }
@@ -1134,10 +1138,10 @@ xLightsFrame::ShowSaveResult xLightsFrame::SaveShowFiles(const std::vector<ShowS
             continue;
         }
         if (wr == WriteResult::Failed) {
-            DisplayError("Unable to save: " + error, parent);
+            DisplayError(_("Unable to save:").utf8_string() + " " + error, parent);
             return ShowSaveResult::Failed;
         }
-        DisplayError("Nothing was saved: " + error, parent);
+        DisplayError(_("Nothing was saved:").utf8_string() + " " + error, parent);
         return ShowSaveResult::Cancelled;
     }
 
@@ -1210,7 +1214,7 @@ void xLightsFrame::ApplyMergedShowFiles(const ShowSaveMerge::Plan& plan, ShowSav
         }
         case FileKind::Networks:
             ShowMergeApply::ReloadControllers(*this);
-            report.changes.push_back("Controllers reloaded");
+            report.changes.push_back(_("Controllers reloaded").utf8_string());
             for (uint32_t work : { OutputModelManager::WORK_UPDATE_NETWORK_LIST, OutputModelManager::WORK_CALCULATE_START_CHANNELS,
                                    OutputModelManager::WORK_NETWORK_CHANNELSCHANGE, OutputModelManager::WORK_MODELS_CHANGE_REQUIRING_RERENDER }) {
                 _outputModelManager.AddASAPWork(work, "SaveShowFiles-merge");
@@ -1231,7 +1235,7 @@ void xLightsFrame::ApplyMergedShowFiles(const ShowSaveMerge::Plan& plan, ShowSav
                 EffectTreeDlg->InitItems(_effectPresetManager);
                 _effectPresetsInitialized = true;
             }
-            report.changes.push_back("Effect presets reloaded");
+            report.changes.push_back(_("Effect presets reloaded").utf8_string());
             break;
         }
         }
@@ -1315,9 +1319,9 @@ bool xLightsFrame::OfferAutosaveRecovery(const std::string& realPath, const std:
 
     const wxString name = wxFileName(realPath).GetFullName();
     const int64_t when = (check.hasInfo && check.info.savedAt > 0) ? check.info.savedAt : check.backupTime;
-    const wxString whenStr = when > 0 ? wxDateTime((time_t)when).Format("%Y-%m-%d %H:%M:%S") : wxString("an unknown time");
+    const wxString whenStr = when > 0 ? wxDateTime((time_t)when).Format("%Y-%m-%d %H:%M:%S") : _("an unknown time");
     wxDateTime realTime = wxFileName(realPath).GetModificationTime();
-    const wxString realStr = realTime.IsValid() ? realTime.Format("%Y-%m-%d %H:%M:%S") : wxString("missing");
+    const wxString realStr = realTime.IsValid() ? realTime.Format("%Y-%m-%d %H:%M:%S") : _("missing");
 
     auto runBackup = [this, backupFirst]() {
         if (!backupFirst) {
@@ -1337,24 +1341,24 @@ bool xLightsFrame::OfferAutosaveRecovery(const std::string& realPath, const std:
         runBackup();
         std::string kept;
         if (!ShowAutosave::Restore(realPath, backupPath, keepCurrentAsCopy, ShowFileGuard::Instance(), &kept)) {
-            DisplayError("Unable to restore the autosave " + backupPath + " to " + realPath, this);
+            DisplayError(wxString::Format(_("Unable to restore the autosave %s to %s"), wxString::FromUTF8(backupPath), wxString::FromUTF8(realPath)).utf8_string(), this);
             return false;
         }
         if (!kept.empty()) {
-            wxMessageBox(wxString::Format("The autosave was restored to %s.\n\nThe version it replaced was kept as:\n%s",
+            wxMessageBox(wxString::Format(_("The autosave was restored to %s.\n\nThe version it replaced was kept as:\n%s"),
                                           name, wxString(kept)),
-                         "Autosave Restored", wxOK | wxICON_INFORMATION, this);
+                         _("Autosave Restored"), wxOK | wxICON_INFORMATION, this);
         }
         return true;
     };
 
     if (check.offer == AutosaveOffer::Offer) {
-        wxString msg = wxString::Format("An autosave of %s from %s has changes that were never saved.\n\n"
+        wxString msg = wxString::Format(_("An autosave of %s from %s has changes that were never saved.\n\n"
                                         "Current file:  %s\n"
                                         "Autosave:      %s\n\n"
-                                        "Would you like to use the autosave instead?",
+                                        "Would you like to use the autosave instead?"),
                                         what, whenStr, realStr, whenStr);
-        if (wxMessageBox(msg, "Unsaved Changes Found", wxYES_NO | wxICON_QUESTION, this) == wxYES) {
+        if (wxMessageBox(msg, _("Unsaved Changes Found"), wxYES_NO | wxICON_QUESTION, this) == wxYES) {
             return restore(false);
         }
         ShowAutosave::Decline(backupPath);
@@ -1368,14 +1372,14 @@ bool xLightsFrame::OfferAutosaveRecovery(const std::string& realPath, const std:
         auto merge = ShowSaveMerge::PrepareAutosaveMerge(kind, realPath, backupPath);
         if (merge && merge->CanMerge()) {
             wxMessageDialog dlg(this,
-                                wxString::Format("An autosave of %s from %s has changes that were never saved, but %s "
+                                wxString::Format(_("An autosave of %s from %s has changes that were never saved, but %s "
                                                  "was changed by someone else (or another app) since then.\n\n"
-                                                 "Merge keeps their changes and the autosaved ones; Restore Anyway replaces theirs.",
+                                                 "Merge keeps their changes and the autosaved ones; Restore Anyway replaces theirs."),
                                                  what, whenStr, name),
-                                "Autosave and Someone Else's Changes",
+                                _("Autosave and Someone Else's Changes"),
                                 wxYES_NO | wxCANCEL | wxHELP | wxYES_DEFAULT | wxICON_WARNING);
-            dlg.SetYesNoCancelLabels("Merge", "Save Autosave as a Copy", "Ignore");
-            dlg.SetHelpLabel("Restore Anyway");
+            dlg.SetYesNoCancelLabels(_("Merge"), _("Save Autosave as a Copy"), _("Ignore"));
+            dlg.SetHelpLabel(_("Restore Anyway"));
             switch (dlg.ShowModal()) {
             case wxID_YES: {
                 if (merge->HasConflicts()) {
@@ -1387,7 +1391,7 @@ bool xLightsFrame::OfferAutosaveRecovery(const std::string& realPath, const std:
                 runBackup();
                 std::string error;
                 if (merge->Write(ShowFileGuard::Instance(), &error) != ShowSaveMerge::WriteResult::Written) {
-                    DisplayError("Unable to merge the autosave " + backupPath + " into " + realPath + ": " + error, this);
+                    DisplayError(wxString::Format(_("Unable to merge the autosave %s into %s"), wxString::FromUTF8(backupPath), wxString::FromUTF8(realPath)).utf8_string() + ": " + error, this);
                     return false;
                 }
                 spdlog::info("Merged autosave {} into {}, which someone else changed.", backupPath, realPath);
@@ -1404,10 +1408,10 @@ bool xLightsFrame::OfferAutosaveRecovery(const std::string& realPath, const std:
             case wxID_NO: {
                 const std::string copy = ShowAutosave::SaveAsCopy(realPath, backupPath);
                 if (copy.empty()) {
-                    DisplayError("Unable to save the autosave " + backupPath + " as a copy", this);
+                    DisplayError(wxString::Format(_("Unable to save the autosave %s as a copy"), wxString::FromUTF8(backupPath)).utf8_string(), this);
                 } else {
-                    wxMessageBox(wxString::Format("Your autosaved changes were saved as:\n%s\n\n%s was left as it is.", wxString(copy), name),
-                                 "Saved a Copy", wxOK | wxICON_INFORMATION, this);
+                    wxMessageBox(wxString::Format(_("Your autosaved changes were saved as:\n%s\n\n%s was left as it is."), wxString(copy), name),
+                                 _("Saved a Copy"), wxOK | wxICON_INFORMATION, this);
                 }
                 return false;
             }
@@ -1417,21 +1421,21 @@ bool xLightsFrame::OfferAutosaveRecovery(const std::string& realPath, const std:
             }
         }
         wxMessageDialog dlg(this,
-                            wxString::Format("An autosave of %s from %s has changes that were never saved, but %s "
+                            wxString::Format(_("An autosave of %s from %s has changes that were never saved, but %s "
                                              "was changed by someone else (or another app) since then.\n\n"
-                                             "Restoring the autosave would replace their changes.",
+                                             "Restoring the autosave would replace their changes."),
                                              what, whenStr, name),
-                            "Autosave and Someone Else's Changes",
+                            _("Autosave and Someone Else's Changes"),
                             wxYES_NO | wxCANCEL | wxYES_DEFAULT | wxICON_WARNING);
-        dlg.SetYesNoCancelLabels("Save Autosave as a Copy", "Restore Anyway", "Ignore");
+        dlg.SetYesNoCancelLabels(_("Save Autosave as a Copy"), _("Restore Anyway"), _("Ignore"));
         switch (dlg.ShowModal()) {
         case wxID_YES: {
             const std::string copy = ShowAutosave::SaveAsCopy(realPath, backupPath);
             if (copy.empty()) {
-                DisplayError("Unable to save the autosave " + backupPath + " as a copy", this);
+                DisplayError(wxString::Format(_("Unable to save the autosave %s as a copy"), wxString::FromUTF8(backupPath)).utf8_string(), this);
             } else {
-                wxMessageBox(wxString::Format("Your autosaved changes were saved as:\n%s\n\n%s was left as it is.", wxString(copy), name),
-                             "Saved a Copy", wxOK | wxICON_INFORMATION, this);
+                wxMessageBox(wxString::Format(_("Your autosaved changes were saved as:\n%s\n\n%s was left as it is."), wxString(copy), name),
+                             _("Saved a Copy"), wxOK | wxICON_INFORMATION, this);
             }
             return false;
         }
@@ -1445,14 +1449,14 @@ bool xLightsFrame::OfferAutosaveRecovery(const std::string& realPath, const std:
     }
 
     // OfferLegacy
-    wxString msg = wxString::Format("An autosave of %s was found that is newer than the file.\n\n"
+    wxString msg = wxString::Format(_("An autosave of %s was found that is newer than the file.\n\n"
                                     "Current file:  %s\n"
                                     "Autosave:      %s\n\n"
                                     "It was written by an older version of xLights, so if this show folder is shared "
                                     "it may be someone else's.\n\n"
-                                    "Would you like to use the autosave instead? The current file is kept as a copy.",
+                                    "Would you like to use the autosave instead? The current file is kept as a copy."),
                                     what, realStr, whenStr);
-    if (wxMessageBox(msg, "Older Autosave Found", wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION, this) == wxYES) {
+    if (wxMessageBox(msg, _("Older Autosave Found"), wxYES_NO | wxNO_DEFAULT | wxICON_QUESTION, this) == wxYES) {
         return restore(true);
     }
     ShowAutosave::Decline(backupPath);

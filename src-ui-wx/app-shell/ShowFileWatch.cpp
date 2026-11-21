@@ -69,10 +69,10 @@ void xLightsFrame::CreateShowFileBanner()
     _showFileBannerText = new wxStaticText(_showFileBanner, wxID_ANY, wxEmptyString);
     _showFileBannerText->SetForegroundColour(wxColour(0x20, 0x70, 0xD0));
     sizer->Add(_showFileBannerText, 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, 6);
-    _showFileBannerReview = new wxButton(_showFileBanner, wxID_ANY, "Review...", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
+    _showFileBannerReview = new wxButton(_showFileBanner, wxID_ANY, _("Review..."), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
     _showFileBannerReview->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { ReviewIncomingShowChanges(); });
     sizer->Add(_showFileBannerReview, 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, 4);
-    auto* dismiss = new wxButton(_showFileBanner, wxID_ANY, "Dismiss", wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
+    auto* dismiss = new wxButton(_showFileBanner, wxID_ANY, _("Dismiss"), wxDefaultPosition, wxDefaultSize, wxBU_EXACTFIT);
     dismiss->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { HideShowFileBanner(); });
     sizer->Add(dismiss, 0, wxALIGN_CENTER_VERTICAL);
     _showFileBanner->SetSizer(sizer);
@@ -86,7 +86,7 @@ void xLightsFrame::ShowShowFileBanner(const wxString& text, bool review)
         return;
     }
     _showFileBannerText->SetLabel(text);
-    _showFileBannerText->SetToolTip(review ? text + ".\nReview to choose which version to keep. Until then, saving asks the same questions."
+    _showFileBannerText->SetToolTip(review ? text + ".\n" + _("Review to choose which version to keep. Until then, saving asks the same questions.")
                                            : text);
     _showFileBannerReview->Show(review);
     _showFileBannerHideAt = review ? 0 : wxGetLocalTimeMillis().GetValue() + kInfoBannerMs;
@@ -262,7 +262,7 @@ void xLightsFrame::HandleIncomingShowChanges(bool review)
         if (!in->CanMerge()) {
             spdlog::warn("{} changed on disk but cannot be merged now (unknown base or a file that does not parse); it is handled when saving.", names);
             _pendingIncoming.reset();
-            ShowShowFileBanner(wxString::FromUTF8(BannerText(who, kinds, 0, 0) + ". It could not be merged; saving will ask what to do."), false);
+            ShowShowFileBanner(wxString::FromUTF8(BannerText(who, kinds, 0, 0)) + ". " + _("It could not be merged; saving will ask what to do."), false);
             return;
         }
         if (in->NeedsDecisions()) {
@@ -274,7 +274,7 @@ void xLightsFrame::HandleIncomingShowChanges(bool review)
                 return;
             }
             ShowFileMergeDialog::Labels labels;
-            labels.ok = "Apply";
+            labels.ok = _("Apply").utf8_string();
             ShowFileMergeDialog dlg(this, in->Plan(), labels);
             const int rc = dlg.ShowModal();
             if (rc != wxID_OK || !in->Plan().AllResolved()) {

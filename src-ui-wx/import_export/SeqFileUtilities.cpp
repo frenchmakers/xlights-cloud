@@ -342,7 +342,7 @@ void xLightsFrame::OpenSequence(const wxString& passed_filename, ConvertLogDialo
             if (!_renderMode && !_checkSequenceMode && wxFileName(filename).GetExt().Lower() != "xbkp" && wxFileName(filename).GetExt().Lower() != "fseq") {
                 wxFileName xx(filename);
                 xx.SetExt("xbkp");
-                OfferAutosaveRecovery(filename.ToStdString(), xx.GetLongPath().ToStdString(), "this sequence", true);
+                OfferAutosaveRecovery(filename.ToStdString(), xx.GetLongPath().ToStdString(), _("this sequence"), true);
             }
         }
         wxStopWatch sw; // start a stopwatch timer

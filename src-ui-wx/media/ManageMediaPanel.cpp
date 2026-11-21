@@ -1308,8 +1308,8 @@ std::string ManageMediaPanel::ExtractWithRename(const std::string& fullPath)
 
     // Write the data to disk, then re-key the entry and every reference to it
     if (!SeqMediaEdits::Extract(*_sequenceElements, fullPath, newPath, finalPath)) {
-        wxMessageBox("Failed to save image to:\n" + newPath,
-                     "Extract Failed", wxICON_ERROR | wxOK, this);
+        wxMessageBox(_("Failed to save image to:") + "\n" + newPath,
+                     _("Extract Failed"), wxICON_ERROR | wxOK, this);
         return {};
     }
     return finalPath;

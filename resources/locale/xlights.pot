@@ -1541,7 +1541,7 @@ msgstr ""
 msgid "Linked Effects"
 msgstr ""
 
-#: src-ui-wx/EffectSymbolDialog.cpp:57 src-ui-wx/layout/ControllerListPanel.cpp:821 src-ui-wx/layout/LayoutPanel.cpp:3089 src-ui-wx/layout/ViewObjectPanel.cpp:572 src-ui-wx/layout/ViewsModelsPanel.cpp:190 ... (+12)
+#: src-ui-wx/EffectSymbolDialog.cpp:57 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:33 src-ui-wx/layout/ControllerListPanel.cpp:821 src-ui-wx/layout/LayoutPanel.cpp:3089 src-ui-wx/layout/ViewObjectPanel.cpp:572 ... (+13)
 msgid "Delete"
 msgstr ""
 
@@ -1805,7 +1805,7 @@ msgstr ""
 msgid "Preparing..."
 msgstr ""
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:136 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/color/ColorCurveDialog.cpp:145 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:47 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:1408 ... (+35)
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:136 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:96 src-ui-wx/app-shell/TabSequence.cpp:949 src-ui-wx/app-shell/TabSequence.cpp:973 ... (+39)
 msgid "Cancel"
 msgstr ""
 
@@ -3472,6 +3472,145 @@ msgstr ""
 msgid "&Cancel"
 msgstr ""
 
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:200
+msgid "There is no model or group without a row in the open sequence to move the effects to."
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:200 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:204
+msgid "Map Effects"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:205
+#, c-format
+msgid ""
+"Someone else deleted '%s'.\n"
+"Its effects in the open sequence can move to:"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:236
+msgid "Keep Model"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:237
+msgid "Delete Model && Effects"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:238
+msgid "Map Effects To..."
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:248
+msgid "Every conflict has a choice."
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:249
+#, c-format
+msgid "%d of %d still to choose."
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:258
+msgid "Saved with Someone Else's Changes"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:32
+msgid "Keep model"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:34
+msgid "Keep both"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:35
+#, c-format
+msgid "Map to %s"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:49
+msgid "Merge Changes"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:56 src-ui-wx/media/ManageMediaPanel.cpp:689
+msgctxt "column"
+msgid "File"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:57
+msgctxt "column"
+msgid "Item"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:58
+msgctxt "column"
+msgid "What changed"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:59
+msgctxt "column"
+msgid "Keep"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:67
+msgid "Before either change"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:79 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:80 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:236 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:237
+#, c-format
+msgid "Keep %s"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:81 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:238
+msgid "Keep Both"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.cpp:82 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:83
+#, c-format
+msgid "All %s"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.h:29
+msgid ""
+"Someone else saved changes to the same things you changed. Choose which version to keep for each one.\n"
+"Everything else you and they changed is merged."
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.h:31
+msgctxt "merge side"
+msgid "Mine"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.h:32
+msgctxt "merge side"
+msgid "Theirs"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.h:33
+msgid "Yours"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileMergeDialog.h:34
+msgid "Theirs (saved on disk)"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileWatch.cpp:265
+msgid "It could not be merged; saving will ask what to do."
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileWatch.cpp:277 src-ui-wx/model/ViewpointDialog.cpp:52
+msgid "Apply"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileWatch.cpp:72
+msgid "Review..."
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileWatch.cpp:75
+msgid "Dismiss"
+msgstr ""
+
+#: src-ui-wx/app-shell/ShowFileWatch.cpp:89
+msgid "Review to choose which version to keep. Until then, saving asks the same questions."
+msgstr ""
+
 #: src-ui-wx/app-shell/TabConvert.cpp:428
 msgid "Cannot export to LOR unless the sequence timing is evenly divisible by 10ms"
 msgstr ""
@@ -3488,80 +3627,231 @@ msgstr ""
 msgid "Exporting model video..."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:1096
+#: src-ui-wx/app-shell/TabSequence.cpp:1045
+#, c-format
+msgid "Unable to save a copy to %s"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1053
+#, c-format
+msgid ""
+"Your version was saved as:\n"
+"%s\n"
+"%s was left as the other person saved it. Your changes are still open here and are still marked as unsaved."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1056 src-ui-wx/app-shell/TabSequence.cpp:1414 src-ui-wx/app-shell/TabSequence.cpp:1438
+msgid "Saved a Copy"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1068
+#, c-format
+msgid "Unable to save %s"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1100
 msgid "A render is still running. Nothing was saved; try saving again in a moment."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:1121
+#: src-ui-wx/app-shell/TabSequence.cpp:1125
 msgid "The file changed again while saving and can no longer be merged. Nothing was saved."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:1539
+#: src-ui-wx/app-shell/TabSequence.cpp:1141
+msgid "Unable to save:"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1144
+msgid "Nothing was saved:"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1217
+msgid "Controllers reloaded"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1238
+msgid "Effect presets reloaded"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1322
+msgid "an unknown time"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1324
+msgid "missing"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1344
+#, c-format
+msgid "Unable to restore the autosave %s to %s"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1348
+#, c-format
+msgid ""
+"The autosave was restored to %s.\n"
+"\n"
+"The version it replaced was kept as:\n"
+"%s"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1350
+msgid "Autosave Restored"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1356
+#, c-format
+msgid ""
+"An autosave of %s from %s has changes that were never saved.\n"
+"\n"
+"Current file:  %s\n"
+"Autosave:      %s\n"
+"\n"
+"Would you like to use the autosave instead?"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1361
+msgid "Unsaved Changes Found"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1375
+#, c-format
+msgid ""
+"An autosave of %s from %s has changes that were never saved, but %s was changed by someone else (or another app) since then.\n"
+"\n"
+"Merge keeps their changes and the autosaved ones; Restore Anyway replaces theirs."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1379 src-ui-wx/app-shell/TabSequence.cpp:1428
+msgid "Autosave and Someone Else's Changes"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1381 src-ui-wx/app-shell/TabSequence.cpp:1430
+msgid "Save Autosave as a Copy"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1381 src-ui-wx/app-shell/TabSequence.cpp:1430 src-ui-wx/app-shell/TabSetup.cpp:299
+msgid "Ignore"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1382 src-ui-wx/app-shell/TabSequence.cpp:1430
+msgid "Restore Anyway"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1394
+#, c-format
+msgid "Unable to merge the autosave %s into %s"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1411 src-ui-wx/app-shell/TabSequence.cpp:1435
+#, c-format
+msgid "Unable to save the autosave %s as a copy"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1413 src-ui-wx/app-shell/TabSequence.cpp:1437
+#, c-format
+msgid ""
+"Your autosaved changes were saved as:\n"
+"%s\n"
+"\n"
+"%s was left as it is."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1424
+#, c-format
+msgid ""
+"An autosave of %s from %s has changes that were never saved, but %s was changed by someone else (or another app) since then.\n"
+"\n"
+"Restoring the autosave would replace their changes."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1452
+#, c-format
+msgid ""
+"An autosave of %s was found that is newer than the file.\n"
+"\n"
+"Current file:  %s\n"
+"Autosave:      %s\n"
+"\n"
+"It was written by an older version of xLights, so if this show folder is shared it may be someone else's.\n"
+"\n"
+"Would you like to use the autosave instead? The current file is kept as a copy."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1459
+msgid "Older Autosave Found"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:1543
 msgid "Unable to save effect presets file"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:1700 src-ui-wx/sequencer/EffectListDialog.cpp:86
+#: src-ui-wx/app-shell/TabSequence.cpp:1704 src-ui-wx/sequencer/EffectListDialog.cpp:86
 msgid "Enter new name"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:1777
+#: src-ui-wx/app-shell/TabSequence.cpp:1781
 msgid "Model/Group Name Conflict"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:1954 src-ui-wx/app-shell/TabSequence.cpp:2036
+#: src-ui-wx/app-shell/TabSequence.cpp:1958 src-ui-wx/app-shell/TabSequence.cpp:2040
 msgid "Checking sequence "
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:1954 src-ui-wx/app-shell/TabSequence.cpp:2036
+#: src-ui-wx/app-shell/TabSequence.cpp:1958 src-ui-wx/app-shell/TabSequence.cpp:2040
 msgid "."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2008
+#: src-ui-wx/app-shell/TabSequence.cpp:2012
 msgid "Batch Check Sequence Cancelled."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2095
+#: src-ui-wx/app-shell/TabSequence.cpp:2099
 msgid "Batch Render Done."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2130
+#: src-ui-wx/app-shell/TabSequence.cpp:2134
 msgid "Batch Render Cancelled."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2198
+#: src-ui-wx/app-shell/TabSequence.cpp:2202
 msgid "could not be opened"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2225 src-ui-wx/app-shell/TabSequence.cpp:2255 src-ui-wx/app-shell/TabSequence.cpp:2433 src-ui-wx/app-shell/TabSequence.cpp:2456 src-ui-wx/app-shell/TabSequence.cpp:2501 ... (+1)
+#: src-ui-wx/app-shell/TabSequence.cpp:2229 src-ui-wx/app-shell/TabSequence.cpp:2259 src-ui-wx/app-shell/TabSequence.cpp:2437 src-ui-wx/app-shell/TabSequence.cpp:2460 src-ui-wx/app-shell/TabSequence.cpp:2505 ... (+1)
 msgid "Saving "
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2225 src-ui-wx/app-shell/TabSequence.cpp:2456
+#: src-ui-wx/app-shell/TabSequence.cpp:2229 src-ui-wx/app-shell/TabSequence.cpp:2460
 msgid " ... Rendering."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2255 src-ui-wx/app-shell/TabSequence.cpp:2501 src-ui-wx/app-shell/TabSequence.cpp:2518
+#: src-ui-wx/app-shell/TabSequence.cpp:2259 src-ui-wx/app-shell/TabSequence.cpp:2505 src-ui-wx/app-shell/TabSequence.cpp:2522
 msgid " ... Writing fseq."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2260
+#: src-ui-wx/app-shell/TabSequence.cpp:2264
 msgid "aborted twice, may be incomplete"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2264 src-ui-wx/app-shell/TabSequence.cpp:2506 src-ui-wx/app-shell/TabSequence.cpp:2527
+#: src-ui-wx/app-shell/TabSequence.cpp:2268 src-ui-wx/app-shell/TabSequence.cpp:2510 src-ui-wx/app-shell/TabSequence.cpp:2531
 #, c-format
 msgid "%s     Updated in %7.3f seconds"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2361 src-ui-wx/app-shell/TabSequence.cpp:2634
+#: src-ui-wx/app-shell/TabSequence.cpp:2365 src-ui-wx/app-shell/TabSequence.cpp:2638
 msgid "Choose filename to Save Sequence:"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2378 src-ui-wx/app-shell/TabSequence.cpp:2651
+#: src-ui-wx/app-shell/TabSequence.cpp:2382 src-ui-wx/app-shell/TabSequence.cpp:2655
 msgid "File name cannot be empty"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2433
+#: src-ui-wx/app-shell/TabSequence.cpp:243 src-ui-wx/app-shell/TabSequence.cpp:244
+msgid "the layout"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:2437
 msgid " ... Saving xsq."
 msgstr ""
 
@@ -3569,59 +3859,63 @@ msgstr ""
 msgid "Invalid RGB effects file ... creating a default one."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2614
+#: src-ui-wx/app-shell/TabSequence.cpp:2618
 msgid "Sequences cannot be saved in read only mode!"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2619
+#: src-ui-wx/app-shell/TabSequence.cpp:2623
 msgid "You must open a sequence first!"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2717
+#: src-ui-wx/app-shell/TabSequence.cpp:2721
 msgid "Rendering all layers"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:2731
+#: src-ui-wx/app-shell/TabSequence.cpp:2735
 #, c-format
 msgid "Rendered in %7.3f seconds"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:3281 src-ui-wx/app-shell/TabSequence.cpp:3316
+#: src-ui-wx/app-shell/TabSequence.cpp:3285 src-ui-wx/app-shell/TabSequence.cpp:3320
 msgid "No sequence is open."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:3291 src-ui-wx/sequencer/TimeLine.cpp:346
+#: src-ui-wx/app-shell/TabSequence.cpp:3295 src-ui-wx/sequencer/TimeLine.cpp:346
 msgid "Export Song Region as New Sequence"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:3310
+#: src-ui-wx/app-shell/TabSequence.cpp:3314
 #, c-format
 msgid "Exported song region '%s' to %s"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:3322
+#: src-ui-wx/app-shell/TabSequence.cpp:3326
 msgid "No song structure regions defined."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:3333
+#: src-ui-wx/app-shell/TabSequence.cpp:3337
 msgid "No named song regions to export."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:3338
+#: src-ui-wx/app-shell/TabSequence.cpp:3342
 msgid "Select Folder for Exported Sequences"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:3348
+#: src-ui-wx/app-shell/TabSequence.cpp:3352
 msgid "Exporting Song Regions"
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:3349
+#: src-ui-wx/app-shell/TabSequence.cpp:3353
 msgid "Starting export..."
 msgstr ""
 
-#: src-ui-wx/app-shell/TabSequence.cpp:3394
+#: src-ui-wx/app-shell/TabSequence.cpp:3398
 #, c-format
 msgid "Exported %d song regions to %s"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:341 src-ui-wx/app-shell/TabSequence.cpp:342
+msgid "the effect presets"
 msgstr ""
 
 #: src-ui-wx/app-shell/TabSequence.cpp:362
@@ -3638,6 +3932,66 @@ msgid ""
 "Your setup tab data has been converted to the new controller centric format.\n"
 "If you choose to save either the Controller (Setup) or Layout Tab data it is critical you save both or some of your model start channels will break.\n"
 "If this happens you can either repair them manually or roll back to a backup copy."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:948
+msgid "Sequence Open Elsewhere"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:949
+msgid "Open Anyway"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:961 src-ui-wx/app-shell/TabSequence.cpp:1050
+msgid "and"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:967
+#, c-format
+msgid ""
+"%s was changed by someone else (or another app) since you opened it, and the version you opened is not known, so the changes cannot be merged.\n"
+"\n"
+"Saving now would overwrite their changes."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:969
+#, c-format
+msgid ""
+"%s were changed by someone else (or another app) since you opened them, and the versions you opened are not known, so the changes cannot be merged.\n"
+"\n"
+"Saving now would overwrite their changes."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:971 src-ui-wx/app-shell/TabSequence.cpp:987
+msgid "File Changed by Someone Else"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:973 src-ui-wx/app-shell/TabSequence.cpp:990
+msgid "Overwrite"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:973 src-ui-wx/app-shell/TabSequence.cpp:989
+msgid "Save Mine as a Copy"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:981
+#, c-format
+msgid ""
+"%s was changed by someone else (or another app) since you opened it.\n"
+"\n"
+"Merge keeps their changes and yours; if you both changed the same thing you choose which to keep. Overwrite replaces their changes with yours."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:984
+#, c-format
+msgid ""
+"%s were changed by someone else (or another app) since you opened them.\n"
+"\n"
+"Merge keeps their changes and yours; if you both changed the same thing you choose which to keep. Overwrite replaces their changes with yours."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSequence.cpp:989 src-ui-wx/app-shell/TabSequence.cpp:1381 src-ui-wx/app-shell/TabSetup.cpp:299
+msgid "Merge"
 msgstr ""
 
 #: src-ui-wx/app-shell/TabSetup.cpp:1476
@@ -3720,6 +4074,81 @@ msgstr ""
 
 #: src-ui-wx/app-shell/TabSetup.cpp:1955
 msgid "Uploading outputs to controller."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:290
+#, c-format
+msgid ""
+"%s left a conflicted copy of %s:\n"
+"\n"
+"%s\n"
+"\n"
+"It holds the changes of a save that happened at the same time as another one, which the sync could not combine. Merge them into %s?\n"
+"\n"
+"After merging, the copy is moved to the backup folder."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:296
+msgid "It holds the same as the current file, so merging only moves it out of the way."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:298
+msgid "Conflicted Copy Found"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:299
+msgid "Not Now"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:316 src-ui-wx/app-shell/TabSetup.cpp:340 src-ui-wx/app-shell/TabSetup.cpp:348
+#, c-format
+msgid "Unable to merge %s"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:320
+msgid "The conflicted copy and the current file both changed these. Choose which version to keep for each one.\n"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:322
+msgid "No earlier version of the file was found to compare them with, so every difference is listed."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:323
+msgid "Everything else either of them changed is merged."
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:324
+msgctxt "merge side"
+msgid "Copy"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:325
+msgctxt "merge side"
+msgid "Current"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:326
+msgid "The conflicted copy"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:327
+msgid "The current file"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:352
+#, c-format
+msgid ""
+"%s was merged into %s.\n"
+"\n"
+"The copy was moved to:\n"
+"%s\n"
+"\n"
+"The file as it was before the merge was kept as:\n"
+"%s"
+msgstr ""
+
+#: src-ui-wx/app-shell/TabSetup.cpp:354
+msgid "Conflicted Copy Merged"
 msgstr ""
 
 #: src-ui-wx/app-shell/TabSetup.cpp:386
@@ -5038,7 +5467,12 @@ msgstr ""
 msgid "Playlist Name Already Exists"
 msgstr ""
 
-#: src-ui-wx/controllers/HinksPixExportDialog.cpp:2375
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:1779
+#, c-format
+msgid "HinksPix controller '%s' has no model/variant selected that xLights recognizes. Select the HinksPix model in the controller settings."
+msgstr ""
+
+#: src-ui-wx/controllers/HinksPixExportDialog.cpp:2376
 msgid "No Schedule with Playlists are Checked, nothing will be Played!"
 msgstr ""
 
@@ -7279,6 +7713,10 @@ msgstr ""
 
 #: src-ui-wx/import_export/SeqFileUtilities.cpp:337
 msgid "NOTE: When you save this .xbkp file it will save as a .xsq file overwriting any existing sequence .xsq file"
+msgstr ""
+
+#: src-ui-wx/import_export/SeqFileUtilities.cpp:345
+msgid "this sequence"
 msgstr ""
 
 #: src-ui-wx/import_export/SeqFileUtilities.cpp:467
@@ -9573,6 +10011,14 @@ msgstr ""
 msgid "Invalid Location"
 msgstr ""
 
+#: src-ui-wx/media/ManageMediaPanel.cpp:1311
+msgid "Failed to save image to:"
+msgstr ""
+
+#: src-ui-wx/media/ManageMediaPanel.cpp:1312
+msgid "Extract Failed"
+msgstr ""
+
 #: src-ui-wx/media/ManageMediaPanel.cpp:1330
 msgid "Reload from Disk"
 msgstr ""
@@ -9739,11 +10185,6 @@ msgstr ""
 
 #: src-ui-wx/media/ManageMediaPanel.cpp:287
 msgid "Conversion Failed"
-msgstr ""
-
-#: src-ui-wx/media/ManageMediaPanel.cpp:689
-msgctxt "column"
-msgid "File"
 msgstr ""
 
 #: src-ui-wx/media/ManageMediaPanel.cpp:691
@@ -11566,10 +12007,6 @@ msgstr ""
 
 #: src-ui-wx/model/SubModelsPanel.cpp:921
 msgid "Export SubModels To Other Model(s)"
-msgstr ""
-
-#: src-ui-wx/model/ViewpointDialog.cpp:52
-msgid "Apply"
 msgstr ""
 
 #: src-ui-wx/model/WiringDialog.cpp:100
@@ -16566,6 +17003,23 @@ msgstr ""
 msgid "No media file associated with this sequence. Please add a media file and try again."
 msgstr ""
 
+#: src-ui-wx/sequencer/tabSequencer.cpp:554
+msgid "Some models in this sequence were renamed in the layout since it was saved. Their rows were renamed to match:"
+msgstr ""
+
+#: src-ui-wx/sequencer/tabSequencer.cpp:559
+#, c-format
+msgid "... and %d more"
+msgstr ""
+
+#: src-ui-wx/sequencer/tabSequencer.cpp:561
+msgid "Save the sequence to keep the new names."
+msgstr ""
+
+#: src-ui-wx/sequencer/tabSequencer.cpp:562
+msgid "Renamed Models"
+msgstr ""
+
 #: src-ui-wx/sequencer/tabSequencer.cpp:630
 msgid "Many missing models in this sequence"
 msgstr ""
@@ -18367,7 +18821,7 @@ msgstr ""
 msgid "Open Sequence"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:837 src-ui-wx/xLightsMain.cpp:837 src-ui-wx/xLightsMain.cpp:3205 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:104 src-ui-wx/layout/LayoutPanel.cpp:704 ... (+4)
+#: src-ui-wx/xLightsMain.cpp:837 src-ui-wx/xLightsMain.cpp:837 src-ui-wx/xLightsMain.cpp:3205 src-ui-wx/app-shell/KeyBindingEditDialog.cpp:104 src-ui-wx/app-shell/ShowFileMergeDialog.h:37 ... (+5)
 msgid "Save"
 msgstr ""
 

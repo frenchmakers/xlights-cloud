@@ -11,6 +11,7 @@
  **************************************************************/
 
 #include <wx/dialog.h>
+#include <wx/intl.h>
 
 #include <string>
 
@@ -25,15 +26,15 @@ class wxTextCtrl;
 // What the two sides of ShowFileMergeDialog are called. The defaults fit a
 // save: "mine" is this session, "theirs" the file someone else saved.
 struct ShowFileMergeLabels {
-    std::string intro = "Someone else saved changes to the same things you changed. Choose which version to keep for each one.\n"
-                        "Everything else you and they changed is merged.";
-    std::string mine = "Mine";
-    std::string theirs = "Theirs";
-    std::string mineColumn = "Yours";
-    std::string theirsColumn = "Theirs (saved on disk)";
+    std::string intro = _("Someone else saved changes to the same things you changed. Choose which version to keep for each one.\n"
+                          "Everything else you and they changed is merged.").utf8_string();
+    std::string mine = wxGETTEXT_IN_CONTEXT("merge side", "Mine").utf8_string();
+    std::string theirs = wxGETTEXT_IN_CONTEXT("merge side", "Theirs").utf8_string();
+    std::string mineColumn = _("Yours").utf8_string();
+    std::string theirsColumn = _("Theirs (saved on disk)").utf8_string();
     // "Save" when deciding a save; "Apply" when bringing someone else's
     // changes into the open show without saving.
-    std::string ok = "Save";
+    std::string ok = _("Save").utf8_string();
 };
 
 // Lists what both this session and someone else changed differently in the

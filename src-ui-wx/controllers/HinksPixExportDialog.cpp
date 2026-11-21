@@ -1776,7 +1776,8 @@ bool HinksPixExportDialog::Create_HinksPix_HSEQ_File(std::string const& fseqFile
     spdlog::debug("HinksPix HSEQ Creation from {}", fseqFile);
 
     if (hix->GetControllerCaps() == nullptr) {
-        errorMsg = fmt::format("HinksPix controller '{}' has no model/variant selected that xLights recognizes. Select the HinksPix model in the controller settings.", hix->GetName());
+        errorMsg = wxString::Format(_("HinksPix controller '%s' has no model/variant selected that xLights recognizes. Select the HinksPix model in the controller settings."),
+                                    wxString::FromUTF8(hix->GetName())).utf8_string();
         spdlog::error(errorMsg);
         return false;
     }

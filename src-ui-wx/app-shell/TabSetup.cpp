@@ -287,16 +287,16 @@ void xLightsFrame::OfferConflictedCopies(const std::string& showDir)
     for (const auto& copy : found) {
         const wxString realName = wxFileName(wxString::FromUTF8(copy.realPath)).GetFullName();
         const wxString copyName = wxFileName(wxString::FromUTF8(copy.copyPath)).GetFullName();
-        wxString msg = wxString::Format("%s left a conflicted copy of %s:\n\n%s\n\n"
+        wxString msg = wxString::Format(_("%s left a conflicted copy of %s:\n\n%s\n\n"
                                         "It holds the changes of a save that happened at the same time as another one, which the sync "
                                         "could not combine. Merge them into %s?\n\n"
-                                        "After merging, the copy is moved to the backup folder.",
+                                        "After merging, the copy is moved to the backup folder."),
                                         wxString::FromUTF8(copy.client), realName, copyName, realName);
         if (copy.sameAsCurrent) {
-            msg += "\n\nIt holds the same as the current file, so merging only moves it out of the way.";
+            msg += "\n\n" + _("It holds the same as the current file, so merging only moves it out of the way.");
         }
-        wxMessageDialog ask(this, msg, "Conflicted Copy Found", wxYES_NO | wxCANCEL | wxICON_QUESTION);
-        ask.SetYesNoCancelLabels("Merge", "Ignore", "Not Now");
+        wxMessageDialog ask(this, msg, _("Conflicted Copy Found"), wxYES_NO | wxCANCEL | wxICON_QUESTION);
+        ask.SetYesNoCancelLabels(_("Merge"), _("Ignore"), _("Not Now"));
         const int answer = ask.ShowModal();
         if (answer == wxID_NO) {
             if (!CC::Ignore(showDir, installId, copy)) {
@@ -313,18 +313,18 @@ void xLightsFrame::OfferConflictedCopies(const std::string& showDir)
         std::string error;
         auto plan = CC::PrepareMerge(copy, base, &error);
         if (!plan || !plan->CanMerge()) {
-            DisplayError("Unable to merge " + copy.copyPath + (error.empty() ? std::string() : ": " + error), this);
+            DisplayError(wxString::Format(_("Unable to merge %s"), wxString::FromUTF8(copy.copyPath)).utf8_string() + (error.empty() ? std::string() : ": " + error), this);
             continue;
         }
         ShowFileMergeDialog::Labels labels;
-        labels.intro = "The conflicted copy and the current file both changed these. Choose which version to keep for each one.\n";
+        labels.intro = _("The conflicted copy and the current file both changed these. Choose which version to keep for each one.\n").utf8_string();
         labels.intro += base.source == CC::BaseSource::None
-                            ? "No earlier version of the file was found to compare them with, so every difference is listed."
-                            : "Everything else either of them changed is merged.";
-        labels.mine = "Copy";
-        labels.theirs = "Current";
-        labels.mineColumn = "The conflicted copy";
-        labels.theirsColumn = "The current file";
+                            ? _("No earlier version of the file was found to compare them with, so every difference is listed.").utf8_string()
+                            : _("Everything else either of them changed is merged.").utf8_string();
+        labels.mine = wxGETTEXT_IN_CONTEXT("merge side", "Copy").utf8_string();
+        labels.theirs = wxGETTEXT_IN_CONTEXT("merge side", "Current").utf8_string();
+        labels.mineColumn = _("The conflicted copy").utf8_string();
+        labels.theirsColumn = _("The current file").utf8_string();
         for (int attempt = 0;; ++attempt) {
             if (!plan->AllResolved()) {
                 ShowFileMergeDialog dlg(this, *plan, labels);
@@ -337,7 +337,7 @@ void xLightsFrame::OfferConflictedCopies(const std::string& showDir)
             if (done.writeResult == ShowSaveMerge::WriteResult::ChangedAgain && attempt < 3) {
                 auto again = CC::PrepareMerge(copy, base, &error);
                 if (!again || !again->CanMerge()) {
-                    DisplayError("Unable to merge " + copy.copyPath + (error.empty() ? std::string() : ": " + error), this);
+                    DisplayError(wxString::Format(_("Unable to merge %s"), wxString::FromUTF8(copy.copyPath)).utf8_string() + (error.empty() ? std::string() : ": " + error), this);
                     break;
                 }
                 again->AdoptResolutions(*plan);
@@ -345,13 +345,13 @@ void xLightsFrame::OfferConflictedCopies(const std::string& showDir)
                 continue;
             }
             if (!done.written) {
-                DisplayError("Unable to merge " + copy.copyPath + ": " + done.error, this);
+                DisplayError(wxString::Format(_("Unable to merge %s"), wxString::FromUTF8(copy.copyPath)).utf8_string() + ": " + done.error, this);
             } else if (!done.error.empty()) {
                 DisplayWarning(done.error, this);
             } else {
-                wxMessageBox(wxString::Format("%s was merged into %s.\n\nThe copy was moved to:\n%s\n\nThe file as it was before the merge was kept as:\n%s",
+                wxMessageBox(wxString::Format(_("%s was merged into %s.\n\nThe copy was moved to:\n%s\n\nThe file as it was before the merge was kept as:\n%s"),
                                               copyName, realName, wxString::FromUTF8(done.movedCopy), wxString::FromUTF8(done.keptCurrent)),
-                             "Conflicted Copy Merged", wxOK | wxICON_INFORMATION, this);
+                             _("Conflicted Copy Merged"), wxOK | wxICON_INFORMATION, this);
             }
             break;
         }
