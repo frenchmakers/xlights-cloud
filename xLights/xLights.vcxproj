@@ -515,6 +515,7 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClCompile Include="..\src-core\controllers\BaseController.cpp" />
     <ClCompile Include="..\src-core\controllers\ControllerCaps.cpp" />
     <ClCompile Include="..\src-core\controllers\ControllerUploadData.cpp" />
+    <ClCompile Include="..\src-core\controllers\CloudControllerConfig.cpp" />
     <ClCompile Include="..\src-core\controllers\ESPixelStick.cpp" />
     <ClCompile Include="..\src-core\controllers\Experience.cpp" />
     <ClCompile Include="..\src-core\controllers\Falcon.cpp" />
@@ -1270,6 +1271,7 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClInclude Include="..\src-core\controllers\ControllerCaps.h" />
     <ClInclude Include="..\src-core\controllers\ControllerUploadData.h" />
     <ClInclude Include="..\src-core\controllers\ExportSettings.h" />
+    <ClInclude Include="..\src-core\controllers\CloudControllerConfig.h" />
     <ClInclude Include="..\src-core\controllers\ESPixelStick.h" />
     <ClInclude Include="..\src-core\controllers\Experience.h" />
     <ClInclude Include="..\src-core\controllers\Falcon.h" />

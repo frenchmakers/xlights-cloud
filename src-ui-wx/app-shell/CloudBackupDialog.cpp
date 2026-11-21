@@ -291,6 +291,15 @@ void CloudBackupDialog::Run() {
             archive.warnings.push_back("The thumbnail could not be uploaded: " + error);
         }
     }
+    for (const auto& config : _job.controllerConfigs) {
+        if (!config.error.empty()) {
+            archive.warnings.push_back("The output configuration of " + config.controller + " was not published: " + config.error);
+        } else if (client.PutObject(config.key, config.json, "application/json", error)) {
+            spdlog::info("Cloud backup: published {}", config.key);
+        } else {
+            archive.warnings.push_back("The output configuration of " + config.controller + " could not be uploaded: " + error);
+        }
+    }
     ShowArchiver::ManifestInfo info;
     info.showName = showName;
     info.createdUtc = ShowArchiver::FormatUtcIso(now);

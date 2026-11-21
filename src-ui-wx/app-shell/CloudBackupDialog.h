@@ -22,6 +22,7 @@
 #include <vector>
 
 #include "CloudStorageSettings.h"
+#include "controllers/CloudControllerConfig.h"
 #include "utils/ShowArchiver.h"
 
 class ModelPreview;
@@ -35,6 +36,8 @@ struct CloudBackupJob {
     CloudStorageSettings settings;
     std::string thumbnailPng;     // empty: no thumbnail
     std::string thumbnailWarning; // why the thumbnail could not be made
+    // Uploaded at the bucket root, next to the show.fseq the boards download.
+    std::vector<CloudControllerConfig::File> controllerConfigs;
 };
 
 // "12.3 MB" style size for progress and result messages.

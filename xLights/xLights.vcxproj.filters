@@ -427,6 +427,9 @@
     <ClCompile Include="..\src-core\outputs\Output.cpp">
       <Filter>Outputs</Filter>
     </ClCompile>
+    <ClCompile Include="..\src-core\controllers\CloudControllerConfig.cpp">
+      <Filter>Controllers</Filter>
+    </ClCompile>
     <ClCompile Include="..\src-core\controllers\ESPixelStick.cpp">
       <Filter>Controllers</Filter>
     </ClCompile>
@@ -2101,6 +2104,9 @@
     </ClInclude>
     <ClInclude Include="..\src-core\outputs\Output.h">
       <Filter>Outputs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\controllers\CloudControllerConfig.h">
+      <Filter>Controllers</Filter>
     </ClInclude>
     <ClInclude Include="..\src-core\controllers\ESPixelStick.h">
       <Filter>Controllers</Filter>

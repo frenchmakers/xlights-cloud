@@ -1,0 +1,25 @@
+<Vendor Name="FrenchMakers">
+	<!-- Boards with no upload API: they download the sequence and the output
+	     configuration xLights publishes to the cloud bucket. -->
+	<Controller Name="STM32 Cloud Pixel">
+		<Variant Name="15 Ports" ID="STM32CloudPixel15">
+			<MaxPixelPort>15</MaxPixelPort>
+			<MaxSerialPort>0</MaxSerialPort>
+			<MaxPixelPortChannels>3000</MaxPixelPortChannels>
+			<MaxSerialPortChannels>0</MaxSerialPortChannels>
+			<SupportsAutoLayout/>
+			<SupportsDefaultBrightness/>
+			<SupportsPixelPortBrightness/>
+			<SupportsPixelPortColourOrder/>
+			<PixelProtocols>
+				<Protocol>ws2811</Protocol>
+			</PixelProtocols>
+			<SerialProtocols/>
+			<InputProtocols>
+				<Protocol>ddp</Protocol>
+			</InputProtocols>
+			<PreferredInputProtocol>DDP</PreferredInputProtocol>
+			<DDPStartsAtOne/>
+		</Variant>
+	</Controller>
+</Vendor>
