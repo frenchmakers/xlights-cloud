@@ -484,10 +484,6 @@ msgstr "Largeur de l'éclair"
 msgid "Forked Lightning"
 msgstr "Éclair fourchu"
 
-#: resources/effectmetadata/Lightning.json resources/effectmetadata/Shimmer.json
-msgid "Yes"
-msgstr "Oui"
-
 #: resources/effectmetadata/Lightning.json
 msgid "Top X Location"
 msgstr "Position X du haut"
@@ -1526,7 +1522,7 @@ msgstr "Renommer le symbole"
 msgid "Symbol name cannot be empty."
 msgstr "Le nom du symbole ne peut pas être vide."
 
-#: src-ui-wx/EffectSymbolDialog.cpp:173 src-ui-wx/EffectSymbolDialog.cpp:182 src-ui-wx/xLightsApp.cpp:1391 src-ui-wx/xLightsMain.cpp:727 src-ui-wx/xLightsMain.cpp:9934 ... (+27)
+#: src-ui-wx/EffectSymbolDialog.cpp:173 src-ui-wx/EffectSymbolDialog.cpp:182 src-ui-wx/xLightsApp.cpp:1391 src-ui-wx/xLightsMain.cpp:727 src-ui-wx/xLightsMain.cpp:9945 ... (+27)
 msgid "Error"
 msgstr "Erreur"
 
@@ -1558,7 +1554,7 @@ msgstr "Supprimer"
 msgid "Rename"
 msgstr "Renommer"
 
-#: src-ui-wx/EffectSymbolDialog.cpp:59 src-ui-wx/xLightsMain.cpp:8660 src-ui-wx/app-shell/CloudBackupDialog.cpp:351 src-ui-wx/app-shell/CloudRestoreDialog.cpp:178 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 ... (+15)
+#: src-ui-wx/EffectSymbolDialog.cpp:59 src-ui-wx/xLightsMain.cpp:8671 src-ui-wx/app-shell/CloudBackupDialog.cpp:585 src-ui-wx/app-shell/CloudRestoreDialog.cpp:174 src-ui-wx/app-shell/CloudRestoreDialog.cpp:266 ... (+15)
 msgid "Close"
 msgstr "Fermer"
 
@@ -1814,153 +1810,211 @@ msgstr "Politique de confidentialité"
 msgid "https://xlights.org/privacy-policy/"
 msgstr ""
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:127 src-ui-wx/import_export/SeqFileUtilities.cpp:705
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:138 src-ui-wx/import_export/SeqFileUtilities.cpp:705
 msgid "Preparing..."
 msgstr "Préparation..."
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:136 src-ui-wx/app-shell/CloudRestoreDialog.cpp:267 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:96 src-ui-wx/app-shell/TabSequence.cpp:949 src-ui-wx/app-shell/TabSequence.cpp:973 ... (+39)
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:147 src-ui-wx/app-shell/CloudRestoreDialog.cpp:266 src-ui-wx/app-shell/ShowFileMergeDialog.cpp:96 src-ui-wx/app-shell/TabSequence.cpp:949 src-ui-wx/app-shell/TabSequence.cpp:973 ... (+39)
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:337
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:571
 msgid "Backup complete"
 msgstr "Sauvegarde terminée"
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:337
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:571
 msgid "Backup cancelled"
 msgstr "Sauvegarde annulée"
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:337
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:571
 msgid "Backup failed"
 msgstr "Échec de la sauvegarde"
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:371
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:605
 msgid "Waiting for your answer..."
 msgstr "En attente de votre réponse..."
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:380
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:614
 msgid "Scanning the show folder..."
 msgstr "Analyse du dossier du show..."
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:383
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:617
 msgid "Step 1/2: building the archive"
 msgstr "Étape 1/2 : création de l'archive"
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:386
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:620
 msgid "Step 2/2: uploading"
 msgstr "Étape 2/2 : envoi"
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:389
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:623
+msgid "Publishing the ready to play version..."
+msgstr "Publication de la version prête à jouer..."
+
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:626
 msgid "Writing the manifest..."
 msgstr "Écriture du manifeste..."
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:394 src-ui-wx/app-shell/CloudRestoreDialog.cpp:699
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:631 src-ui-wx/app-shell/CloudRestoreDialog.cpp:773
 msgid "Cancelling..."
 msgstr "Annulation..."
 
-#: src-ui-wx/app-shell/CloudBackupDialog.cpp:426
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:664
 msgid "Cancel the cloud backup in progress?"
 msgstr "Annuler la sauvegarde cloud en cours ?"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:124 src-ui-wx/automation/ScriptsDialog.cpp:103 src-ui-wx/sequencer/SelectPanel.cpp:131
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:736
+#, c-format
+msgid ""
+"Check the sequences to publish for the cloud boards and put them in playing order (%d at most).\n"
+"Uncheck them all to back up without a ready to play version."
+msgstr ""
+"Cochez les séquences à publier pour les cartes cloud et mettez-les dans l'ordre de lecture (%d au maximum).\n"
+"Décochez-les toutes pour sauvegarder sans version prête à jouer."
+
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:739 src-ui-wx/app-shell/CloudBackupDialog.cpp:763
+msgid "Ready to Play"
+msgstr "Prêt à jouer"
+
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:742
+msgid "Put this version on air when the backup is done"
+msgstr "Mettre cette version en lecture à la fin de la sauvegarde"
+
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:744
+msgid ""
+"The cloud boards play it at their next synchronization. Otherwise, put it on air later\n"
+"from File > Restore from Cloud."
+msgstr ""
+"Les cartes cloud la joueront à leur prochaine synchronisation. Sinon, mettez-la en lecture plus tard\n"
+"depuis Fichier > Restaurer depuis le cloud."
+
+#: src-ui-wx/app-shell/CloudBackupDialog.cpp:761
+#, c-format
+msgid "The cloud boards play %d sequences at most; %d are checked."
+msgstr "Les cartes cloud jouent %d séquences au maximum ; %d sont cochées."
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:115 src-ui-wx/automation/ScriptsDialog.cpp:103 src-ui-wx/sequencer/SelectPanel.cpp:131
 msgid "Refresh"
 msgstr "Actualiser"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:126
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:117
 msgid "Settings..."
 msgstr "Paramètres..."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:132
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:123
 msgid "Shows"
 msgstr "Shows"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:138
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:129
 msgid "Backups"
 msgstr "Sauvegardes"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:140
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:131
 msgid "Date"
 msgstr "Date"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:141 resources/effectmetadata/Circles.json resources/effectmetadata/Kaleidoscope.json resources/effectmetadata/Liquid.json resources/effectmetadata/Pinwheel.json ... (+1)
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:132 resources/effectmetadata/Circles.json resources/effectmetadata/Kaleidoscope.json resources/effectmetadata/Liquid.json resources/effectmetadata/Pinwheel.json ... (+1)
 msgid "Size"
 msgstr "Taille"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:155
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:133
+msgid "Ready to play"
+msgstr "Prêt à jouer"
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:147
 msgid "Restore to"
 msgstr "Restaurer dans"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:157
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:149
 msgid "A new or empty folder. The current show is never overwritten."
 msgstr "Un dossier nouveau ou vide. Le show actuel n'est jamais écrasé."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:159 src-ui-wx/effectpanels/ShapePanel.cpp:240
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:151 src-ui-wx/effectpanels/ShapePanel.cpp:240
 msgid "Browse..."
 msgstr "Parcourir..."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:172
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:164
 msgid "Delete Backup..."
 msgstr "Supprimer la sauvegarde..."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:173
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:165
 msgid "Removes the selected backup from the bucket to free space."
 msgstr "Supprime la sauvegarde sélectionnée du bucket pour libérer de la place."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:176
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:167
+msgid "Put on Air..."
+msgstr "Mettre en lecture..."
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:168
+msgid ""
+"The cloud boards play the ready to play version of the selected backup\n"
+"at their next synchronization."
+msgstr ""
+"Les cartes cloud joueront la version prête à jouer de la sauvegarde sélectionnée\n"
+"à leur prochaine synchronisation."
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:172
 msgid "Restore"
 msgstr "Restaurer"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:285
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:284
 msgid "Cloud storage is not set up."
 msgstr "Le stockage cloud n'est pas configuré."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:286
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:285
 msgid ". Click Settings... to enter the storage details."
 msgstr ". Cliquez sur Paramètres... pour saisir les informations du stockage."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:291
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:290
 #, c-format
 msgid "Bucket \"%s\" on %s"
 msgstr "Bucket « %s » sur %s"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:292 src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:44
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:291 src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:44
 msgid "Cloudflare R2"
 msgstr ""
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:299
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:298
 msgid "Looking for backups..."
 msgstr "Recherche des sauvegardes..."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:330
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:328
 msgid "Unable to list the bucket: "
 msgstr "Impossible de lister le bucket : "
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:338
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:336
 msgid "No backups found in this bucket."
 msgstr "Aucune sauvegarde trouvée dans ce bucket."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:341
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:339
 #, c-format
 msgid "%d show(s) found. Select one, then a backup."
 msgstr "%d show(s) trouvé(s). Choisissez-en un, puis une sauvegarde."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:364
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:362
 msgid "Listing backups..."
 msgstr "Liste des sauvegardes..."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:382
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:395
 msgid "Unable to list the backups: "
 msgstr "Impossible de lister les sauvegardes : "
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:391
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:406
+msgid "On air"
+msgstr "En lecture"
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:408 resources/effectmetadata/Lightning.json resources/effectmetadata/Shimmer.json
+msgid "Yes"
+msgstr "Oui"
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:412
 msgid "This show has no complete backup."
 msgstr "Ce show n'a aucune sauvegarde complète."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:418
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:439
 msgid "Loading..."
 msgstr "Chargement..."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:457
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:478
 #, c-format
 msgid ""
 "%d sequences, %d files, %s uncompressed\n"
@@ -1971,19 +2025,27 @@ msgstr ""
 "Fichiers .fseq : %s\n"
 "Créée avec xLights %s"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:460
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:481
 msgid "included"
 msgstr "inclus"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:460
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:481
 msgid "not included"
 msgstr "non inclus"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:477
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:498
 msgid "Folder to restore the show into (new or empty)"
 msgstr "Dossier où restaurer le show (nouveau ou vide)"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:492
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:514
+msgid "The cloud boards play the ready to play version of this backup. Put another version on air before deleting it."
+msgstr "Les cartes cloud jouent la version prête à jouer de cette sauvegarde. Mettez une autre version en lecture avant de la supprimer."
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:515 src-ui-wx/app-shell/CloudRestoreDialog.cpp:527
+msgid "Delete Backup"
+msgstr "Supprimer la sauvegarde"
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:518
 #, c-format
 msgid ""
 "Delete the backup of \"%s\" made on %s (%s) from the bucket?\n"
@@ -1994,7 +2056,17 @@ msgstr ""
 "\n"
 "Cette opération est irréversible."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:495
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:522
+msgid ""
+"\n"
+"\n"
+"Its ready to play version is deleted too."
+msgstr ""
+"\n"
+"\n"
+"Sa version prête à jouer est aussi supprimée."
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:525
 msgid ""
 "\n"
 "\n"
@@ -2004,59 +2076,82 @@ msgstr ""
 "\n"
 "C'est la seule sauvegarde de ce show."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:497
-msgid "Delete Backup"
-msgstr "Supprimer la sauvegarde"
-
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:503
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:533
 msgid "Deleting the backup..."
 msgstr "Suppression de la sauvegarde..."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:528
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:563
 msgid "Backup deleted."
 msgstr "Sauvegarde supprimée."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:528
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:563
 msgid "Unable to delete the backup: "
 msgstr "Impossible de supprimer la sauvegarde : "
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:539
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:576
+#, c-format
+msgid ""
+"Put the version of \"%s\" made on %s on air?\n"
+"\n"
+"The cloud boards play it at their next synchronization."
+msgstr ""
+"Mettre en lecture la version de « %s » du %s ?\n"
+"\n"
+"Les cartes cloud la joueront à leur prochaine synchronisation."
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:579
+msgid "Put on Air"
+msgstr "Mettre en lecture"
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:584
+msgid "Putting the version on air..."
+msgstr "Mise en lecture de la version..."
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:602
+msgid "The version is on air."
+msgstr "La version est en lecture."
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:602
+msgid "Unable to put the version on air: "
+msgstr "Impossible de mettre la version en lecture : "
+
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:613
 msgid "Choose the folder to restore into."
 msgstr "Choisissez le dossier de restauration."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:544
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:618
 msgid "The destination must be a full folder path."
 msgstr "La destination doit être un chemin de dossier complet."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:550
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:624
 msgid "The destination is a file, not a folder."
 msgstr "La destination est un fichier, pas un dossier."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:554
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:628
 msgid "The destination folder is not empty. Choose a new or empty folder."
 msgstr "Le dossier de destination n'est pas vide. Choisissez un dossier nouveau ou vide."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:559
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:633
 msgid "The destination cannot be the current show folder or a folder inside it."
 msgstr "La destination ne peut pas être le dossier du show actuel ni l'un de ses sous-dossiers."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:669
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:743
 msgid "The show was restored. Open it now as the current show folder?"
 msgstr "Le show a été restauré. L'ouvrir maintenant comme dossier du show actuel ?"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:689
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:763
 msgid "Step 1/2: downloading"
 msgstr "Étape 1/2 : téléchargement"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:692
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:766
 msgid "Checking the download..."
 msgstr "Vérification du téléchargement..."
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:695
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:769
 msgid "Step 2/2: extracting"
 msgstr "Étape 2/2 : extraction"
 
-#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:719
+#: src-ui-wx/app-shell/CloudRestoreDialog.cpp:793
 msgid "Cancel the restore in progress? The files restored so far are removed."
 msgstr "Annuler la restauration en cours ? Les fichiers déjà restaurés seront supprimés."
 
@@ -13958,11 +14053,11 @@ msgstr "Désactiver la vérification des images de l'effet Sketch."
 msgid "Sketch effect image files are not essential to rendering."
 msgstr "Les images de l'effet Sketch ne sont pas indispensables au rendu."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:100
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:101
 msgid "backups of each show (0 = keep them all)"
 msgstr "sauvegardes de chaque show (0 = tout garder)"
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:101
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:102
 msgid ""
 "After each successful backup, older backups of the same show are deleted from the bucket.\n"
 "Backups can also be deleted one at a time from File > Restore from Cloud."
@@ -13970,7 +14065,7 @@ msgstr ""
 "Après chaque sauvegarde réussie, les anciennes sauvegardes du même show sont supprimées du bucket.\n"
 "Les sauvegardes peuvent aussi être supprimées une à une depuis Fichier > Restaurer depuis le cloud."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:106
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:107
 msgid ""
 "Cloudflare R2 is recommended: its free tier includes 10 GB of storage and free downloads.\n"
 "Use a token limited to the backup bucket and keep it private: anyone with these keys can\n"
@@ -13982,11 +14077,11 @@ msgstr ""
 "peut lire les sauvegardes, fichiers audio compris. Ne rendez jamais le bucket public.\n"
 "Sur un stockage avec versionnage ou verrouillage d'objets, les sauvegardes supprimées peuvent encore occuper de la place."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:111
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:112
 msgid "Settings are stored on this computer; the secret key is kept in the system's secure storage."
 msgstr "Les paramètres sont enregistrés sur cet ordinateur ; la clé secrète est conservée dans le stockage sécurisé du système."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:113
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:114
 msgid ""
 "This computer has no secure storage service (keyring): the secret key is saved, unencrypted,\n"
 "in the xLights settings file of your user account."
@@ -13994,11 +14089,11 @@ msgstr ""
 "Cet ordinateur n'a pas de service de stockage sécurisé (trousseau) : la clé secrète est enregistrée,\n"
 "non chiffrée, dans le fichier de réglages xLights de votre compte utilisateur."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:229
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:230
 msgid "Testing connection..."
 msgstr "Test de la connexion..."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:234
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:235
 msgid "Connection OK: the bucket is writable."
 msgstr "Connexion OK : le bucket est accessible en écriture."
 
@@ -14059,22 +14154,26 @@ msgid "Test Connection"
 msgstr "Tester la connexion"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:89
-msgid "Include rendered .fseq files"
-msgstr "Inclure les fichiers .fseq rendus"
+msgid "Publish a ready to play folder for the cloud boards"
+msgstr "Publier un dossier prêt à jouer pour les cartes cloud"
 
 #: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:90
-msgid "A restored show can be played right away without rendering every sequence again."
-msgstr "Un show restauré peut être lu tout de suite, sans refaire le rendu de chaque séquence."
+msgid ""
+"The backup asks which rendered sequences to publish, in playing order, with their audio and\n"
+"the settings of each cloud controller. File > Restore from Cloud puts a version on air."
+msgstr ""
+"La sauvegarde demande quelles séquences rendues publier, dans l'ordre de lecture, avec leur audio et\n"
+"les réglages de chaque contrôleur cloud. Fichier > Restaurer depuis le cloud met une version en lecture."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:92
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:93
 msgid "Include a thumbnail of the layout (.png)"
 msgstr "Inclure une miniature de la disposition (.png)"
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:93
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:94
 msgid "Shown when choosing a backup to restore."
 msgstr "Affichée lors du choix d'une sauvegarde à restaurer."
 
-#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:96
+#: src-ui-wx/preferences/CloudStorageSettingsPanel.cpp:97
 msgid "Keep the last"
 msgstr "Garder les"
 
@@ -18314,7 +18413,7 @@ msgstr "Choisir le dossier du show"
 msgid "Key bindings"
 msgstr "Raccourcis clavier"
 
-#: src-ui-wx/xLightsMain.cpp:1004 src-ui-wx/xLightsMain.cpp:4075 src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:32
+#: src-ui-wx/xLightsMain.cpp:1004 src-ui-wx/xLightsMain.cpp:4086 src-ui-wx/layout/HousePreviewExportOptionsDialog.cpp:32
 msgid "Export House Preview Video"
 msgstr "Exporter la vidéo de l'aperçu maison"
 
@@ -18346,11 +18445,11 @@ msgstr "Restaurer une sauvegarde"
 msgid "Alternate Backup\tF11"
 msgstr "Sauvegarde alternative\tF11"
 
-#: src-ui-wx/xLightsMain.cpp:1023 src-ui-wx/xLightsMain.cpp:3415 src-ui-wx/xLightsMain.cpp:3609 src-ui-wx/xLightsMain.cpp:3618 src-ui-wx/app-shell/CloudBackupDialog.cpp:123 ... (+3)
+#: src-ui-wx/xLightsMain.cpp:1023 src-ui-wx/xLightsMain.cpp:3415 src-ui-wx/xLightsMain.cpp:3609 src-ui-wx/xLightsMain.cpp:3618 src-ui-wx/app-shell/CloudBackupDialog.cpp:134 ... (+3)
 msgid "Backup to Cloud"
 msgstr "Sauvegarder dans le cloud"
 
-#: src-ui-wx/xLightsMain.cpp:1025 src-ui-wx/xLightsMain.cpp:3423 src-ui-wx/app-shell/CloudRestoreDialog.cpp:116 src-ui-wx/app-shell/CloudRestoreDialog.cpp:669 src-ui-wx/app-shell/CloudRestoreDialog.cpp:719
+#: src-ui-wx/xLightsMain.cpp:1025 src-ui-wx/xLightsMain.cpp:3423 src-ui-wx/app-shell/CloudRestoreDialog.cpp:107 src-ui-wx/app-shell/CloudRestoreDialog.cpp:743 src-ui-wx/app-shell/CloudRestoreDialog.cpp:793
 msgid "Restore from Cloud"
 msgstr "Restaurer depuis le cloud"
 
@@ -18394,7 +18493,7 @@ msgstr "Décaler les effets et le timing"
 msgid "Use this options to shift all timing and effects in the sequence."
 msgstr "Décale tout le timing et tous les effets de la séquence."
 
-#: src-ui-wx/xLightsMain.cpp:1051 src-ui-wx/xLightsMain.cpp:6397
+#: src-ui-wx/xLightsMain.cpp:1051 src-ui-wx/xLightsMain.cpp:6408
 msgid "Shift Effects"
 msgstr "Décaler les effets"
 
@@ -18402,7 +18501,7 @@ msgstr "Décaler les effets"
 msgid "Use this options to shift all effects in the sequence."
 msgstr "Décale tous les effets de la séquence."
 
-#: src-ui-wx/xLightsMain.cpp:1053 src-ui-wx/xLightsMain.cpp:6373
+#: src-ui-wx/xLightsMain.cpp:1053 src-ui-wx/xLightsMain.cpp:6384
 msgid "Shift Selected Effects"
 msgstr "Décaler les effets sélectionnés"
 
@@ -18754,7 +18853,7 @@ msgstr "Aide sur Zoom"
 msgid "Access the free Zoom Room for Help"
 msgstr "Accéder à la salle Zoom d'aide gratuite"
 
-#: src-ui-wx/xLightsMain.cpp:1246 src-ui-wx/xLightsMain.cpp:8648
+#: src-ui-wx/xLightsMain.cpp:1246 src-ui-wx/xLightsMain.cpp:8659
 msgid "Key Bindings"
 msgstr "Raccourcis clavier"
 
@@ -18850,7 +18949,7 @@ msgstr "Dernier enregistrement"
 msgid "Revert To..."
 msgstr "Revenir à..."
 
-#: src-ui-wx/xLightsMain.cpp:2247 src-ui-wx/xLightsMain.cpp:6152
+#: src-ui-wx/xLightsMain.cpp:2247 src-ui-wx/xLightsMain.cpp:6163
 msgid "Open New xLights Instance"
 msgstr "Ouvrir une nouvelle instance de xLights"
 
@@ -18992,84 +19091,84 @@ msgstr "Le stockage cloud n'est pas encore configuré : %sSaisissez les informat
 msgid "The open sequence has unsaved changes. Save it before the backup?"
 msgstr "La séquence ouverte a des changements non enregistrés. L'enregistrer avant la sauvegarde ?"
 
-#: src-ui-wx/xLightsMain.cpp:3780
+#: src-ui-wx/xLightsMain.cpp:3791
 msgid "All xml files backed up."
 msgstr "Tous les fichiers xml sont sauvegardés."
 
-#: src-ui-wx/xLightsMain.cpp:4031 src-ui-wx/xLightsMain.cpp:8566 src-ui-wx/app-shell/TabSequence.cpp:182
+#: src-ui-wx/xLightsMain.cpp:4042 src-ui-wx/xLightsMain.cpp:8577 src-ui-wx/app-shell/TabSequence.cpp:182
 msgid "Sequences cannot be opened in read only mode!"
 msgstr "Les séquences ne peuvent pas être ouvertes en mode lecture seule !"
 
-#: src-ui-wx/xLightsMain.cpp:4216
+#: src-ui-wx/xLightsMain.cpp:4227
 #, c-format
 msgid "'%s' exported in %4.3f sec."
 msgstr "« %s » exporté en %4.3f s."
 
-#: src-ui-wx/xLightsMain.cpp:4261
+#: src-ui-wx/xLightsMain.cpp:4272
 msgid "Toolbar locations will reset to defaults upon restart."
 msgstr "La position des barres d'outils sera réinitialisée au prochain démarrage."
 
-#: src-ui-wx/xLightsMain.cpp:4400
+#: src-ui-wx/xLightsMain.cpp:4411
 msgid "Turning off save of the FSEQ is really not recommended. This will often require you to re-render a sequence every time you load it ... all to save yourself a couple of seconds save time."
 msgstr "Désactiver l'enregistrement du FSEQ est vraiment déconseillé. Il faudra souvent refaire le rendu de la séquence à chaque ouverture... tout ça pour gagner quelques secondes à l'enregistrement."
 
-#: src-ui-wx/xLightsMain.cpp:4457
+#: src-ui-wx/xLightsMain.cpp:4468
 msgid "Save Models, Views, and Perspectives changes?"
 msgstr "Enregistrer les changements de modèles, vues et perspectives ?"
 
-#: src-ui-wx/xLightsMain.cpp:4458
+#: src-ui-wx/xLightsMain.cpp:4469
 msgid "Models, Views, and Perspectives Changes Confirmation"
 msgstr "Confirmation des changements de modèles, vues et perspectives"
 
-#: src-ui-wx/xLightsMain.cpp:4472
+#: src-ui-wx/xLightsMain.cpp:4483
 msgid "Save Network Setup changes?"
 msgstr "Enregistrer les changements de configuration réseau ?"
 
-#: src-ui-wx/xLightsMain.cpp:4473
+#: src-ui-wx/xLightsMain.cpp:4484
 msgid "Networks Changes Confirmation"
 msgstr "Confirmation des changements de réseaux"
 
-#: src-ui-wx/xLightsMain.cpp:4479
+#: src-ui-wx/xLightsMain.cpp:4490
 msgid "Save Effect Preset changes?"
 msgstr "Enregistrer les changements de préréglages d'effets ?"
 
-#: src-ui-wx/xLightsMain.cpp:4480
+#: src-ui-wx/xLightsMain.cpp:4491
 msgid "Effect Presets Changes Confirmation"
 msgstr "Confirmation des changements de préréglages d'effets"
 
-#: src-ui-wx/xLightsMain.cpp:4994 src-ui-wx/xLightsMain.cpp:6574
+#: src-ui-wx/xLightsMain.cpp:5005 src-ui-wx/xLightsMain.cpp:6585
 msgid "Zip file to create."
 msgstr "Fichier zip à créer."
 
-#: src-ui-wx/xLightsMain.cpp:5304
+#: src-ui-wx/xLightsMain.cpp:5315
 msgid "Previews"
 msgstr "Aperçus"
 
-#: src-ui-wx/xLightsMain.cpp:5310 src-ui-wx/layout/ViewsModelsPanel.cpp:1818
+#: src-ui-wx/xLightsMain.cpp:5321 src-ui-wx/layout/ViewsModelsPanel.cpp:1818
 msgid "Show All"
 msgstr "Tout afficher"
 
-#: src-ui-wx/xLightsMain.cpp:5543
+#: src-ui-wx/xLightsMain.cpp:5554
 msgid "Select alternate backup directory"
 msgstr "Choisir un dossier de sauvegarde alternatif"
 
-#: src-ui-wx/xLightsMain.cpp:5567 src-ui-wx/xLightsMain.cpp:6334 src-ui-wx/xLightsMain.cpp:9396 src-ui-wx/color/ColorCurveDialog.cpp:828 src-ui-wx/import_export/SeqExportDialog.cpp:272 ... (+14)
+#: src-ui-wx/xLightsMain.cpp:5578 src-ui-wx/xLightsMain.cpp:6345 src-ui-wx/xLightsMain.cpp:9407 src-ui-wx/color/ColorCurveDialog.cpp:828 src-ui-wx/import_export/SeqExportDialog.cpp:272 ... (+14)
 msgid "Choose output file"
 msgstr "Choisir le fichier de sortie"
 
-#: src-ui-wx/xLightsMain.cpp:5697
+#: src-ui-wx/xLightsMain.cpp:5708
 msgid "Unable to create results file for Check Sequence. Aborted."
 msgstr "Impossible de créer le fichier de résultats de la vérification de séquence. Opération annulée."
 
-#: src-ui-wx/xLightsMain.cpp:6150
+#: src-ui-wx/xLightsMain.cpp:6161
 msgid "Could not locate the xLights application bundle. A new instance can only be launched when xLights is run from a .app bundle."
 msgstr "Impossible de trouver le paquet d'application xLights. Une nouvelle instance ne peut être lancée que si xLights est exécuté depuis un paquet .app."
 
-#: src-ui-wx/xLightsMain.cpp:6329 src-ui-wx/xLightsMain.cpp:6558
+#: src-ui-wx/xLightsMain.cpp:6340 src-ui-wx/xLightsMain.cpp:6569
 msgid "No sequence open"
 msgstr "Aucune séquence ouverte"
 
-#: src-ui-wx/xLightsMain.cpp:6347
+#: src-ui-wx/xLightsMain.cpp:6358
 msgid ""
 "Enter the number of milliseconds to shift all effects and timing marks:\n"
 "\n"
@@ -19081,11 +19180,11 @@ msgstr ""
 "Remarque : la valeur sera arrondie à l'intervalle de temps le plus proche.\n"
 "      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés."
 
-#: src-ui-wx/xLightsMain.cpp:6350
+#: src-ui-wx/xLightsMain.cpp:6361
 msgid "Shift Effects And Timings"
 msgstr "Décaler les effets et les repères de temps"
 
-#: src-ui-wx/xLightsMain.cpp:6369
+#: src-ui-wx/xLightsMain.cpp:6380
 msgid ""
 "Enter the number of milliseconds to shift the selected effects:\n"
 "\n"
@@ -19099,7 +19198,7 @@ msgstr ""
 "      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés.\n"
 "      Les effets qui chevaucheraient des effets non sélectionnés ne seront pas déplacés."
 
-#: src-ui-wx/xLightsMain.cpp:6394
+#: src-ui-wx/xLightsMain.cpp:6405
 msgid ""
 "Enter the number of milliseconds to shift all effects:\n"
 "\n"
@@ -19111,11 +19210,11 @@ msgstr ""
 "Remarque : la valeur sera arrondie à l'intervalle de temps le plus proche.\n"
 "      Les effets décalés vers la gauche peuvent être raccourcis ou supprimés."
 
-#: src-ui-wx/xLightsMain.cpp:6432 src-ui-wx/layout/ControllerListPanel.cpp:963
+#: src-ui-wx/xLightsMain.cpp:6443 src-ui-wx/layout/ControllerListPanel.cpp:963
 msgid "Open sequence has not been saved. If you plan on uploading it to FPP then it needs to be saved. Do you want to save it now?"
 msgstr "La séquence ouverte n'est pas enregistrée. Pour l'envoyer à FPP, elle doit l'être. L'enregistrer maintenant ?"
 
-#: src-ui-wx/xLightsMain.cpp:6432 src-ui-wx/layout/ControllerListPanel.cpp:963
+#: src-ui-wx/xLightsMain.cpp:6443 src-ui-wx/layout/ControllerListPanel.cpp:963
 msgid "Save Sequence"
 msgstr "Enregistrer la séquence"
 
@@ -19123,40 +19222,40 @@ msgstr "Enregistrer la séquence"
 msgid "Open New Instance"
 msgstr "Ouvrir une nouvelle instance"
 
-#: src-ui-wx/xLightsMain.cpp:6520
+#: src-ui-wx/xLightsMain.cpp:6531
 msgid "Please open a sequence first."
 msgstr "Ouvrez d'abord une séquence."
 
-#: src-ui-wx/xLightsMain.cpp:6520
+#: src-ui-wx/xLightsMain.cpp:6531
 msgid "No Sequence"
 msgstr "Aucune séquence"
 
-#: src-ui-wx/xLightsMain.cpp:6528
+#: src-ui-wx/xLightsMain.cpp:6539
 msgid "There are no effect symbols in this sequence."
 msgstr "Cette séquence ne contient aucun symbole d'effet."
 
-#: src-ui-wx/xLightsMain.cpp:6528
+#: src-ui-wx/xLightsMain.cpp:6539
 msgid "No Symbols"
 msgstr "Aucun symbole"
 
-#: src-ui-wx/xLightsMain.cpp:6543
+#: src-ui-wx/xLightsMain.cpp:6554
 msgid "Convert Symbols to Effects"
 msgstr "Convertir les symboles en effets"
 
-#: src-ui-wx/xLightsMain.cpp:6551
+#: src-ui-wx/xLightsMain.cpp:6562
 #, c-format
 msgid "Converted %d effect(s) and removed %d symbol(s)."
 msgstr "%d effet(s) converti(s) et %d symbole(s) supprimé(s)."
 
-#: src-ui-wx/xLightsMain.cpp:6552
+#: src-ui-wx/xLightsMain.cpp:6563
 msgid "Conversion Complete"
 msgstr "Conversion terminée"
 
-#: src-ui-wx/xLightsMain.cpp:6565
+#: src-ui-wx/xLightsMain.cpp:6576
 msgid "Your sequence has unsaved changes. These changes will not be packaged but any new referenced files will be. We suggest you consider saving and trying this again."
 msgstr "Votre séquence a des modifications non enregistrées. Elles ne seront pas empaquetées, contrairement aux nouveaux fichiers référencés. Nous vous conseillons d'enregistrer puis de recommencer."
 
-#: src-ui-wx/xLightsMain.cpp:6582
+#: src-ui-wx/xLightsMain.cpp:6593
 msgid ""
 "This sequence contains effect symbols which may not be compatible with older xLights versions.\n"
 "\n"
@@ -19170,79 +19269,79 @@ msgstr ""
 "\n"
 "Remarque : votre séquence d'origine ne sera pas modifiée."
 
-#: src-ui-wx/xLightsMain.cpp:6585
+#: src-ui-wx/xLightsMain.cpp:6596
 msgid "Effect Symbols Detected"
 msgstr "Symboles d'effets détectés"
 
-#: src-ui-wx/xLightsMain.cpp:6883
+#: src-ui-wx/xLightsMain.cpp:6894
 msgid "Show directory invalid. Cleanup aborted."
 msgstr "Dossier du show non valide. Rangement annulé."
 
-#: src-ui-wx/xLightsMain.cpp:6957
+#: src-ui-wx/xLightsMain.cpp:6968
 msgid "Cleaning up file locations."
 msgstr "Rangement des emplacements des fichiers."
 
-#: src-ui-wx/xLightsMain.cpp:6959
+#: src-ui-wx/xLightsMain.cpp:6970
 msgid "Cleaning up file locations ... DONE."
 msgstr "Rangement des emplacements des fichiers... TERMINÉ."
 
-#: src-ui-wx/xLightsMain.cpp:6962
+#: src-ui-wx/xLightsMain.cpp:6973
 msgid "You must have a sequence opened in order to run Cleanup File Locations."
 msgstr "Une séquence doit être ouverte pour ranger les emplacements des fichiers."
 
-#: src-ui-wx/xLightsMain.cpp:6962
+#: src-ui-wx/xLightsMain.cpp:6973
 msgid "Missing Sequence"
 msgstr "Séquence manquante"
 
-#: src-ui-wx/xLightsMain.cpp:6987
+#: src-ui-wx/xLightsMain.cpp:6998
 msgid "Main Toolbar"
 msgstr "Barre principale"
 
-#: src-ui-wx/xLightsMain.cpp:6988
+#: src-ui-wx/xLightsMain.cpp:6999
 msgid "Play Toolbar"
 msgstr "Barre de lecture"
 
-#: src-ui-wx/xLightsMain.cpp:6989
+#: src-ui-wx/xLightsMain.cpp:7000
 msgid "Windows Toolbar"
 msgstr "Barre des fenêtres"
 
-#: src-ui-wx/xLightsMain.cpp:6992 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:48
+#: src-ui-wx/xLightsMain.cpp:7003 src-ui-wx/preferences/ToolbarsSettingsPanel.cpp:48
 msgid "Effects Toolbar"
 msgstr "Barre d'outils des effets"
 
-#: src-ui-wx/xLightsMain.cpp:7189
+#: src-ui-wx/xLightsMain.cpp:7200
 msgid "You need a timing track selected and timing marks in order to use AC mode. Ideally a timing track with lots of timing marks as you can only place effects between those marks."
 msgstr "Le mode AC nécessite une piste de timing sélectionnée avec des repères, idéalement de nombreux repères, car les effets ne se placent qu'entre eux."
 
-#: src-ui-wx/xLightsMain.cpp:730 src-ui-wx/xLightsMain.cpp:7189 src-ui-wx/import_export/SeqFileUtilities.cpp:337 src-ui-wx/sequencer/tabSequencer.cpp:438 src-ui-wx/setup/PixelTestDialog.cpp:2918 ... (+1)
+#: src-ui-wx/xLightsMain.cpp:730 src-ui-wx/xLightsMain.cpp:7200 src-ui-wx/import_export/SeqFileUtilities.cpp:337 src-ui-wx/sequencer/tabSequencer.cpp:438 src-ui-wx/setup/PixelTestDialog.cpp:2918 ... (+1)
 msgid "Warning"
 msgstr "Avertissement"
 
-#: src-ui-wx/xLightsMain.cpp:7905
+#: src-ui-wx/xLightsMain.cpp:7916
 msgid "A batch render is already running."
 msgstr "Un rendu par lots est déjà en cours."
 
-#: src-ui-wx/xLightsMain.cpp:7944
+#: src-ui-wx/xLightsMain.cpp:7955
 msgid "This xLights was installed from the Microsoft Store / App Installer, which keeps it up to date automatically."
 msgstr "Ce xLights a été installé depuis le Microsoft Store / App Installer, qui le tient à jour automatiquement."
 
-#: src-ui-wx/xLightsMain.cpp:8030 src-ui-wx/xLightsMain.cpp:8041
+#: src-ui-wx/xLightsMain.cpp:8041 src-ui-wx/xLightsMain.cpp:8052
 msgid "Unable to connect."
 msgstr "Connexion impossible."
 
-#: src-ui-wx/xLightsMain.cpp:8030 src-ui-wx/xLightsMain.cpp:8041 src-ui-wx/xLightsMain.cpp:8097
+#: src-ui-wx/xLightsMain.cpp:8041 src-ui-wx/xLightsMain.cpp:8052 src-ui-wx/xLightsMain.cpp:8108
 msgid "Version update check failed"
 msgstr "Échec de la recherche de mises à jour"
 
-#: src-ui-wx/xLightsMain.cpp:8097
+#: src-ui-wx/xLightsMain.cpp:8108
 msgid "Unable to read available versions."
 msgstr "Impossible de lire les versions disponibles."
 
-#: src-ui-wx/xLightsMain.cpp:8120
+#: src-ui-wx/xLightsMain.cpp:8131
 msgid "Update check complete: No update found"
 msgstr "Recherche de mises à jour terminée : aucune mise à jour trouvée"
 
-#: src-ui-wx/xLightsMain.cpp:8145
+#: src-ui-wx/xLightsMain.cpp:8156
 msgid "Layout cannot be saved in read only mode!"
 msgstr "La disposition ne peut pas être enregistrée en mode lecture seule !"
 
@@ -19286,10 +19385,6 @@ msgstr "Lire"
 msgid "Pause"
 msgstr "Pause"
 
-#: src-ui-wx/xLightsMain.cpp:8449
-msgid "Show folder is not valid. Download aborted."
-msgstr "Le dossier du show n'est pas valide. Téléchargement annulé."
-
 #: src-ui-wx/xLightsMain.cpp:845 src-ui-wx/xLightsMain.cpp:845 src-ui-wx/custommodelbuilder/CustomModelBuilderDialog.cpp:159 src-ui-wx/model/ModelStatesPanel.cpp:2253 src-ui-wx/model/SubModelsPanel.cpp:4229 ... (+1)
 msgid "Stop"
 msgstr "Arrêter"
@@ -19302,13 +19397,17 @@ msgstr ""
 msgid "First Frame"
 msgstr "Première image"
 
-#: src-ui-wx/xLightsMain.cpp:8463
-msgid "Unable to access online repositories."
-msgstr "Impossible d'accéder aux dépôts en ligne."
+#: src-ui-wx/xLightsMain.cpp:8460
+msgid "Show folder is not valid. Download aborted."
+msgstr "Le dossier du show n'est pas valide. Téléchargement annulé."
 
 #: src-ui-wx/xLightsMain.cpp:847
 msgid "Last Frame"
 msgstr "Dernière image"
+
+#: src-ui-wx/xLightsMain.cpp:8474
+msgid "Unable to access online repositories."
+msgstr "Impossible d'accéder aux dépôts en ligne."
 
 #: src-ui-wx/xLightsMain.cpp:848
 msgid "Replay Section"
@@ -19318,21 +19417,21 @@ msgstr "Rejouer la section"
 msgid "Output To Lights"
 msgstr "Sortie vers les lumières"
 
-#: src-ui-wx/xLightsMain.cpp:8492
+#: src-ui-wx/xLightsMain.cpp:8503
 msgid "Loading"
 msgstr "Chargement"
 
-#: src-ui-wx/xLightsMain.cpp:8492
+#: src-ui-wx/xLightsMain.cpp:8503
 msgid "Loading phoneme dictionaries"
 msgstr "Chargement des dictionnaires de phonèmes"
-
-#: src-ui-wx/xLightsMain.cpp:8499
-msgid "Loading dictionaries ..."
-msgstr "Chargement des dictionnaires ..."
 
 #: src-ui-wx/xLightsMain.cpp:851
 msgid "Play Tool Bar"
 msgstr "Barre de lecture"
+
+#: src-ui-wx/xLightsMain.cpp:8510
+msgid "Loading dictionaries ..."
+msgstr "Chargement des dictionnaires ..."
 
 #: src-ui-wx/xLightsMain.cpp:853 src-ui-wx/xLightsMain.cpp:853 src-ui-wx/xLightsMain.cpp:1161 src-ui-wx/sequencer/tabSequencer.cpp:198 src-ui-wx/shared/utils/TranslatedDockArt.h:26
 msgid "Effect Settings"
@@ -19354,13 +19453,13 @@ msgstr "Fusion des calques"
 msgid "Model Preview"
 msgstr "Aperçu du modèle"
 
-#: src-ui-wx/xLightsMain.cpp:8573 src-ui-wx/import_export/SeqFileUtilities.cpp:130
-msgid "Sequences cannot be created in read only mode!"
-msgstr "Les séquences ne peuvent pas être créées en mode lecture seule !"
-
 #: src-ui-wx/xLightsMain.cpp:858 src-ui-wx/xLightsMain.cpp:858 src-ui-wx/xLightsMain.cpp:1159 src-ui-wx/xLightsMain.cpp:1191 src-ui-wx/layout/ModelPreview.cpp:1337 ... (+1)
 msgid "House Preview"
 msgstr "Aperçu de la maison"
+
+#: src-ui-wx/xLightsMain.cpp:8584 src-ui-wx/import_export/SeqFileUtilities.cpp:130
+msgid "Sequences cannot be created in read only mode!"
+msgstr "Les séquences ne peuvent pas être créées en mode lecture seule !"
 
 #: src-ui-wx/xLightsMain.cpp:859 src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:391 src-ui-wx/controllerproperties/ControllerNullPropertyAdapter.cpp:31 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:206 src-ui-wx/controllers/FPPConnectDialog.cpp:1382 ... (+5)
 msgid "Models"
@@ -19378,13 +19477,13 @@ msgstr "Effets"
 msgid "Effects Assistant"
 msgstr "Assistant d'effets"
 
-#: src-ui-wx/xLightsMain.cpp:8619
-msgid "Show folder cannot be changed in read only mode! Close and restart xLights."
-msgstr "Le dossier de show ne peut pas être changé en mode lecture seule ! Fermez et relancez xLights."
-
 #: src-ui-wx/xLightsMain.cpp:862 src-ui-wx/xLightsMain.cpp:862 src-ui-wx/sequencer/RowHeading.cpp:763 src-ui-wx/sequencer/RowHeading.cpp:764 src-ui-wx/sequencer/tabSequencer.cpp:203
 msgid "Select Effects"
 msgstr "Sélectionner des effets"
+
+#: src-ui-wx/xLightsMain.cpp:8630
+msgid "Show folder cannot be changed in read only mode! Close and restart xLights."
+msgstr "Le dossier de show ne peut pas être changé en mode lecture seule ! Fermez et relancez xLights."
 
 #: src-ui-wx/xLightsMain.cpp:864
 msgid "Windows Tool Bar"
@@ -19398,45 +19497,41 @@ msgstr "Coller par temps"
 msgid "Paste By Cell"
 msgstr "Coller par cellule"
 
-#: src-ui-wx/xLightsMain.cpp:869 src-ui-wx/xLightsMain.cpp:6990
+#: src-ui-wx/xLightsMain.cpp:869 src-ui-wx/xLightsMain.cpp:7001
 msgid "Paste Toolbar"
 msgstr "Barre de collage"
 
-#: src-ui-wx/xLightsMain.cpp:8758
+#: src-ui-wx/xLightsMain.cpp:8769
 msgid "Choose reaper file describing the changes required to the audio."
 msgstr "Choisir le fichier Reaper qui décrit les changements à apporter à l'audio."
 
-#: src-ui-wx/xLightsMain.cpp:8868
+#: src-ui-wx/xLightsMain.cpp:8879
 msgid "No edits found in RPP file."
 msgstr "Aucune modification dans le fichier RPP."
 
-#: src-ui-wx/xLightsMain.cpp:8955
+#: src-ui-wx/xLightsMain.cpp:8966
 msgid "No edits found in xAudio file."
 msgstr "Aucune modification dans le fichier xAudio."
 
-#: src-ui-wx/xLightsMain.cpp:8959
+#: src-ui-wx/xLightsMain.cpp:8970
 msgid "Invalid xAudio file."
 msgstr "Fichier xAudio non valide."
 
-#: src-ui-wx/xLightsMain.cpp:8964
+#: src-ui-wx/xLightsMain.cpp:8975
 msgid "Loading audio files."
 msgstr "Chargement des fichiers audio."
 
-#: src-ui-wx/xLightsMain.cpp:9008
+#: src-ui-wx/xLightsMain.cpp:9019
 msgid "In order to prepare the audio all the input songs must have the same sample rate."
 msgstr "Pour préparer l'audio, tous les morceaux d'entrée doivent avoir la même fréquence d'échantillonnage."
 
-#: src-ui-wx/xLightsMain.cpp:9016
+#: src-ui-wx/xLightsMain.cpp:9027
 msgid "Audio file creation failed - No input audio."
 msgstr "Échec de la création du fichier audio : aucun audio en entrée."
 
 #: src-ui-wx/xLightsMain.cpp:903
 msgid "Disable"
 msgstr "Désactiver"
-
-#: src-ui-wx/xLightsMain.cpp:9039
-msgid "Combining audio clips."
-msgstr "Assemblage des extraits audio."
 
 #: src-ui-wx/xLightsMain.cpp:905 src-ui-wx/media/MediaImportOptionsDialog.cpp:79 src-ui-wx/media/MediaImportOptionsDialog.cpp:88 src-ui-wx/media/MediaImportOptionsDialog.cpp:97 src-ui-wx/media/MediaImportOptionsDialog.cpp:106 ... (+1)
 msgid "Select"
@@ -19445,6 +19540,10 @@ msgstr "Sélectionner"
 #: src-ui-wx/xLightsMain.cpp:905
 msgid "Select - SHIFT L"
 msgstr "Sélectionner - SHIFT L"
+
+#: src-ui-wx/xLightsMain.cpp:9050
+msgid "Combining audio clips."
+msgstr "Assemblage des extraits audio."
 
 #: src-ui-wx/xLightsMain.cpp:906 src-ui-wx/effectpanels/MovingHeadPanel.cpp:359 src-ui-wx/preferences/OtherSettingsPanel.cpp:176 src-ui-wx/setup/PixelTestDialog.cpp:1202 src-ui-wx/setup/PixelTestDialog.cpp:1256 ... (+2)
 msgid "Off"
@@ -19494,10 +19593,6 @@ msgstr "Rampe montante"
 msgid "Ramp Up - U"
 msgstr "Rampe montante - U"
 
-#: src-ui-wx/xLightsMain.cpp:9121
-msgid "Choose filename to save the audio as."
-msgstr "Choisir le nom du fichier audio à enregistrer."
-
 #: src-ui-wx/xLightsMain.cpp:913
 msgid "Ramp Down"
 msgstr "Rampe descendante"
@@ -19506,9 +19601,9 @@ msgstr "Rampe descendante"
 msgid "Ramp Down - D"
 msgstr "Rampe descendante - D"
 
-#: src-ui-wx/xLightsMain.cpp:9139
-msgid "Saving output file."
-msgstr "Enregistrement du fichier de sortie."
+#: src-ui-wx/xLightsMain.cpp:9132
+msgid "Choose filename to save the audio as."
+msgstr "Choisir le nom du fichier audio à enregistrer."
 
 #: src-ui-wx/xLightsMain.cpp:914 src-ui-wx/shared/dialogs/ValueCurveDialog.cpp:184
 msgid "Ramp Up/Down"
@@ -19518,17 +19613,21 @@ msgstr ""
 msgid "Ramp Up/Down - A"
 msgstr "Rampe montante/descendante - A"
 
-#: src-ui-wx/xLightsMain.cpp:9146 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2415
-msgid "Error creating audio file. See log for details."
-msgstr "Erreur lors de la création du fichier audio. Consultez le journal pour les détails."
-
-#: src-ui-wx/xLightsMain.cpp:9147 src-ui-wx/xLightsMain.cpp:9152
-msgid "Audio file creation failed."
-msgstr "Échec de la création du fichier audio."
-
 #: src-ui-wx/xLightsMain.cpp:915
 msgid "Parm1"
 msgstr ""
+
+#: src-ui-wx/xLightsMain.cpp:9150
+msgid "Saving output file."
+msgstr "Enregistrement du fichier de sortie."
+
+#: src-ui-wx/xLightsMain.cpp:9157 src-ui-wx/sequencer/SeqSettingsDialog.cpp:2415
+msgid "Error creating audio file. See log for details."
+msgstr "Erreur lors de la création du fichier audio. Consultez le journal pour les détails."
+
+#: src-ui-wx/xLightsMain.cpp:9158 src-ui-wx/xLightsMain.cpp:9163
+msgid "Audio file creation failed."
+msgstr "Échec de la création du fichier audio."
 
 #: src-ui-wx/xLightsMain.cpp:916
 msgid "Parm2"
@@ -19566,7 +19665,7 @@ msgstr "Arrière-plan"
 msgid "Background - B"
 msgstr "Arrière-plan - B"
 
-#: src-ui-wx/xLightsMain.cpp:924 src-ui-wx/xLightsMain.cpp:7008
+#: src-ui-wx/xLightsMain.cpp:924 src-ui-wx/xLightsMain.cpp:7019
 msgid "AC Toolbar"
 msgstr "Barre d'outils AC"
 
@@ -19586,7 +19685,7 @@ msgstr "Paramètres de la séquence"
 msgid "Settings"
 msgstr "Paramètres"
 
-#: src-ui-wx/xLightsMain.cpp:930 src-ui-wx/xLightsMain.cpp:6991
+#: src-ui-wx/xLightsMain.cpp:930 src-ui-wx/xLightsMain.cpp:7002
 msgid "View Toolbar"
 msgstr "Barre d'affichage"
 
@@ -19594,15 +19693,15 @@ msgstr "Barre d'affichage"
 msgid "Test"
 msgstr "Test"
 
-#: src-ui-wx/xLightsMain.cpp:936 src-ui-wx/xLightsMain.cpp:936 src-ui-wx/xLightsMain.cpp:5702 src-ui-wx/preferences/xLightsPreferences.cpp:221
+#: src-ui-wx/xLightsMain.cpp:936 src-ui-wx/xLightsMain.cpp:936 src-ui-wx/xLightsMain.cpp:5713 src-ui-wx/preferences/xLightsPreferences.cpp:221
 msgid "Check Sequence"
 msgstr "Vérification de séquence"
 
-#: src-ui-wx/xLightsMain.cpp:937 src-ui-wx/xLightsMain.cpp:937 src-ui-wx/xLightsMain.cpp:6598
+#: src-ui-wx/xLightsMain.cpp:937 src-ui-wx/xLightsMain.cpp:937 src-ui-wx/xLightsMain.cpp:6609
 msgid "Package Sequence"
 msgstr "Empaqueter la séquence"
 
-#: src-ui-wx/xLightsMain.cpp:938 src-ui-wx/xLightsMain.cpp:938 src-ui-wx/xLightsMain.cpp:7905 src-ui-wx/sequencer/BatchRenderDialog.cpp:81 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:41
+#: src-ui-wx/xLightsMain.cpp:938 src-ui-wx/xLightsMain.cpp:938 src-ui-wx/xLightsMain.cpp:7916 src-ui-wx/sequencer/BatchRenderDialog.cpp:81 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:41
 msgid "Batch Render"
 msgstr "Rendu par lots"
 
@@ -19618,7 +19717,7 @@ msgstr "Envoi groupé vers les contrôleurs"
 msgid "View Log"
 msgstr "Voir le journal"
 
-#: src-ui-wx/xLightsMain.cpp:943 src-ui-wx/xLightsMain.cpp:6993
+#: src-ui-wx/xLightsMain.cpp:943 src-ui-wx/xLightsMain.cpp:7004
 msgid "Tools Toolbar"
 msgstr "Barre des outils"
 
@@ -19638,11 +19737,11 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:9642
+#: src-ui-wx/xLightsMain.cpp:9653
 msgid "Please Close the Open Sequence Before Using the Restore Backup Dialog"
 msgstr "Fermez la séquence ouverte avant de restaurer une sauvegarde."
 
-#: src-ui-wx/xLightsMain.cpp:9649 src-ui-wx/xLightsMain.cpp:9650
+#: src-ui-wx/xLightsMain.cpp:9660 src-ui-wx/xLightsMain.cpp:9661
 msgid "Restoring Backup"
 msgstr "Restauration de la sauvegarde"
 
@@ -19654,7 +19753,7 @@ msgstr ""
 msgid "New Sequence\tCtrl-n"
 msgstr "Nouvelle séquence\tCtrl-n"
 
-#: src-ui-wx/xLightsMain.cpp:9767
+#: src-ui-wx/xLightsMain.cpp:9778
 msgid "A render is still running. Try updating from the base show folder again in a moment."
 msgstr "Un rendu est encore en cours. Réessayez la mise à jour depuis le dossier de show de base dans un instant."
 
@@ -19674,11 +19773,11 @@ msgstr "Ouvrir une séquence récente"
 msgid "Save\tCTRL-S"
 msgstr "Enregistrer\tCTRL-S"
 
-#: src-ui-wx/xLightsMain.cpp:9878
+#: src-ui-wx/xLightsMain.cpp:9889
 msgid "Everything selected is already in the base show folder."
 msgstr "Toute la sélection est déjà dans le dossier du show de base."
 
-#: src-ui-wx/xLightsMain.cpp:9878 src-ui-wx/layout/ControllerListPanel.cpp:824 src-ui-wx/layout/LayoutPanel.cpp:7782 src-ui-wx/layout/ViewObjectPanel.cpp:575
+#: src-ui-wx/xLightsMain.cpp:9889 src-ui-wx/layout/ControllerListPanel.cpp:824 src-ui-wx/layout/LayoutPanel.cpp:7782 src-ui-wx/layout/ViewObjectPanel.cpp:575
 msgid "Promote to Base Show Folder"
 msgstr "Promouvoir vers le dossier du show de base"
 
@@ -19690,21 +19789,27 @@ msgstr "Enregistrer la séquence sous"
 msgid "Close Sequence"
 msgstr "Fermer la séquence"
 
-#: src-ui-wx/xLightsMain.cpp:9934
+#: src-ui-wx/xLightsMain.cpp:9945
 msgid "No AI Services Registered for creating images"
 msgstr "Aucun service d'IA n'est configuré pour créer des images"
 
-#: src-ui-wx/xLightsMain.cpp:9943 src-ui-wx/effectpanels/PicturesPanel.cpp:276 src-ui-wx/media/ManageMediaPanel.cpp:2347
+#: src-ui-wx/xLightsMain.cpp:9954 src-ui-wx/effectpanels/PicturesPanel.cpp:276 src-ui-wx/media/ManageMediaPanel.cpp:2347
 msgid "AI Image Generator"
 msgstr "Générateur d'images IA"
 
-#: src-ui-wx/xLightsMain.cpp:9943 src-ui-wx/effectpanels/PicturesPanel.cpp:275 src-ui-wx/media/ManageMediaPanel.cpp:2346
+#: src-ui-wx/xLightsMain.cpp:9954 src-ui-wx/effectpanels/PicturesPanel.cpp:275 src-ui-wx/media/ManageMediaPanel.cpp:2346
 msgid "Choose AI Image Generator"
 msgstr "Choisir le générateur d'images IA"
 
 #: src-ui-wx/xLightsMain.cpp:997
 msgid "Preferences...\tCTRL-,"
 msgstr "Préférences...\tCTRL-,"
+
+#~ msgid "Include rendered .fseq files"
+#~ msgstr "Inclure les fichiers .fseq rendus"
+
+#~ msgid "A restored show can be played right away without rendering every sequence again."
+#~ msgstr "Un show restauré peut être lu tout de suite, sans refaire le rendu de chaque séquence."
 
 #~ msgid "Mine"
 #~ msgstr "la mienne"

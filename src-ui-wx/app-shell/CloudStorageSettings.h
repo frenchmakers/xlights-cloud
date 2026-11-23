@@ -31,8 +31,10 @@ struct CloudStorageSettings {
     std::string accessKeyId;
     std::string secretAccessKey;
     bool pathStyle = true;
-    // What File > Backup to Cloud adds besides the show folder.
-    bool includeFseq = true;
+    // What File > Backup to Cloud adds besides the show folder: a ready to
+    // play version (rendered sequences, audio, controller settings) for the
+    // cloud boards, and a thumbnail.
+    bool publishReadyToPlay = true;
     bool includeThumbnail = true;
     int keepBackups = 0; // backups of each show kept after a backup; 0 keeps them all
 

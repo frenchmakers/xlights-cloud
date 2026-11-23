@@ -47,7 +47,7 @@ private:
     wxTextCtrl* _secretKey = nullptr;
     wxButton* _testButton = nullptr;
     wxStaticText* _testResult = nullptr;
-    wxCheckBox* _includeFseq = nullptr;
+    wxCheckBox* _publishReadyToPlay = nullptr;
     wxCheckBox* _includeThumbnail = nullptr;
     wxSpinCtrl* _keepBackups = nullptr;
 

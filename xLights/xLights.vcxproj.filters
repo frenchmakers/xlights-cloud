@@ -1162,6 +1162,9 @@
     <ClCompile Include="..\src-core\utils\CloudBackupStore.cpp">
       <Filter>utils</Filter>
     </ClCompile>
+    <ClCompile Include="..\src-core\utils\ReadyToPlay.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
     <ClCompile Include="..\src-core\utils\ShowArchiver.cpp">
       <Filter>utils</Filter>
     </ClCompile>
@@ -2711,6 +2714,9 @@
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\src-core\utils\CloudBackupStore.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\utils\ReadyToPlay.h">
       <Filter>utils</Filter>
     </ClInclude>
     <ClInclude Include="..\src-core\utils\ShowArchiver.h">

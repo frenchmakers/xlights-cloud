@@ -3629,13 +3629,21 @@ void xLightsFrame::OnMenuItemCloudBackupSelected(wxCommandEvent& event)
     job.archive.showDir = showDirectory;
     job.archive.fseqDir = fseqDirectory;
     job.archive.mediaDirs = mediaDirectories;
-    job.archive.includeFseq = settings.includeFseq;
+    // The rendered sequences go to the ready to play version, not the archive.
+    job.archive.includeFseq = false;
+    if (settings.publishReadyToPlay) {
+        if (!ChooseCloudPlaylist(this, job)) {
+            return;
+        }
+        if (job.publishReadyToPlay) {
+            job.xlightsVersion = xlights_version_string;
+            // Frame-rate checks are made for each published sequence.
+            job.controllerConfigs = CloudControllerConfig::BuildAll(&_outputManager, &AllModels);
+        }
+    }
     if (settings.includeThumbnail) {
         job.thumbnailPng = CaptureLayoutThumbnailPng(GetLayoutPreview(), 1280, job.thumbnailWarning);
     }
-    // The boards play one sequence; the open one is the best guess of its frame time.
-    job.controllerConfigs = CloudControllerConfig::BuildAll(&_outputManager, &AllModels, ShowArchiver::FormatUtcIso(time(nullptr)),
-                                                            CurrentSeqXmlFile != nullptr ? CurrentSeqXmlFile->GetFrameMS() : 0);
 
     // The dialog shows itself once scanning and any prompt are out of the way.
     auto* dlg = new CloudBackupDialog(this, std::move(job));

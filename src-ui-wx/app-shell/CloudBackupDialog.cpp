@@ -11,24 +11,35 @@
 #include "CloudBackupDialog.h"
 
 #include "layout/ModelPreview.h"
+#include "render/FSEQFile.h"
 #include "utils/CloudBackupStore.h"
+#include "utils/ReadyToPlay.h"
+#include "utils/Sha256.h"
+#include "utils/string_utils.h"
 #include "utils/S3Client.h"
 
+#include "settings/XLightsConfigAdapter.h"
+
 #include <wx/button.h>
+#include <wx/checkbox.h>
 #include <wx/gauge.h>
 #include <wx/image.h>
 #include <wx/mstream.h>
 #include <wx/msgdlg.h>
+#include <wx/panel.h>
+#include <wx/rearrangectrl.h>
 #include <wx/sizer.h>
 #include <wx/stattext.h>
 #include <wx/textctrl.h>
 
+#include <nlohmann/json.hpp>
 #include <spdlog/spdlog.h>
 
 #include <filesystem>
 #include <algorithm>
 #include <future>
 #include <memory>
+#include <set>
 
 namespace fs = std::filesystem;
 
@@ -192,7 +203,7 @@ bool CloudBackupDialog::AskContinueWithStaleFseq(const std::vector<std::string>&
                              : wxString::Format("These %d sequences have no .fseq file, or their .fseq is older than the sequence:", (int)count);
         wxString msg = intro + "\n\n" + wxString::FromUTF8(list) +
                        "\nRendering alone does not write the .fseq: save the sequence after rendering, "
-                       "or use Tools > Batch Render.\n\nBack up anyway?";
+                       "or use Tools > Batch Render.\n\nBack up without publishing a ready to play version?";
         wxWindow* parent = IsShown() ? (wxWindow*)this : GetParent();
         int r = wxMessageBox(msg, _("Backup to Cloud"), wxYES_NO | wxICON_WARNING, parent);
         answer->set_value(r == wxYES);
@@ -225,10 +236,27 @@ void CloudBackupDialog::Run() {
     if (!_job.thumbnailWarning.empty()) {
         plan.warnings.push_back(_job.thumbnailWarning);
     }
-    auto stale = plan.StaleOrMissingFseq();
-    if (!stale.empty() && !AskContinueWithStaleFseq(stale)) {
-        Finish(false, true, "Backup cancelled.", {});
-        return;
+    // The sequences to publish, each with an up to date .fseq.
+    std::vector<const ShowArchiveSequence*> published;
+    bool publish = _job.publishReadyToPlay && !_job.playlist.empty();
+    if (publish) {
+        std::vector<std::string> notReady;
+        for (const auto& name : _job.playlist) {
+            auto it = std::find_if(plan.sequences.begin(), plan.sequences.end(), [&](const ShowArchiveSequence& s) { return s.name == name; });
+            if (it == plan.sequences.end() || it->fseqPath.empty() || !it->fseqUpToDate) {
+                notReady.push_back(name);
+            } else {
+                published.push_back(&*it);
+            }
+        }
+        if (!notReady.empty()) {
+            if (!AskContinueWithStaleFseq(notReady)) {
+                Finish(false, true, "Backup cancelled.", {});
+                return;
+            }
+            publish = false;
+            plan.warnings.push_back("No ready to play version was published: some sequences have no up to date .fseq.");
+        }
     }
 
     std::error_code ec;
@@ -258,7 +286,7 @@ void CloudBackupDialog::Run() {
     }
 
     std::string showName = ToUtf8(FromUtf8(_job.archive.showDir).lexically_normal().filename());
-    std::string folder = CloudBackupStore::ShowFolderKey(settings.prefix, showName);
+    std::string folder = CloudBackupStore::SourceFolderKey(settings.prefix, showName);
     const std::string stamp = ShowArchiver::FormatUtcForKey(now);
     std::string zipKey = folder + stamp + ".zip";
 
@@ -291,18 +319,6 @@ void CloudBackupDialog::Run() {
             archive.warnings.push_back("The thumbnail could not be uploaded: " + error);
         }
     }
-    for (const auto& config : _job.controllerConfigs) {
-        for (const auto& w : config.warnings) {
-            archive.warnings.push_back(config.controller + ": " + w);
-        }
-        if (!config.error.empty()) {
-            archive.warnings.push_back("The output configuration of " + config.controller + " was not published: " + config.error);
-        } else if (client.PutObject(config.key, config.json, "application/json", error)) {
-            spdlog::info("Cloud backup: published {}", config.key);
-        } else {
-            archive.warnings.push_back("The output configuration of " + config.controller + " could not be uploaded: " + error);
-        }
-    }
     ShowArchiver::ManifestInfo info;
     info.showName = showName;
     info.createdUtc = ShowArchiver::FormatUtcIso(now);
@@ -326,7 +342,213 @@ void CloudBackupDialog::Run() {
             message += " " + pruned;
         }
     }
+    if (publish) {
+        _stage = PUBLISHING;
+        std::string published_message;
+        if (!PublishReadyToPlay(client, published, showName, stamp, now, archive.warnings, published_message, error)) {
+            bool wasCancelled = _cancel;
+            Finish(false, wasCancelled,
+                   message + " " + (wasCancelled ? std::string("Publishing the ready to play version was cancelled.")
+                                                 : "The ready to play version was not published: " + error),
+                   archive.warnings);
+            return;
+        }
+        message += " " + published_message;
+    }
     Finish(true, false, message, archive.warnings);
+}
+
+bool CloudBackupDialog::PublishReadyToPlay(S3Client& client, const std::vector<const ShowArchiveSequence*>& sequences,
+                                           const std::string& showName, const std::string& stamp, time_t now,
+                                           std::vector<std::string>& warnings, std::string& message, std::string& error) {
+    const auto& settings = _job.settings;
+    const std::string folder = ReadyToPlay::VersionFolderKey(settings.prefix, showName, stamp);
+    std::vector<std::string> sent;
+    auto removeSent = [&]() {
+        std::string ignored;
+        for (const auto& k : sent) {
+            client.DeleteObject(k, ignored);
+        }
+    };
+    std::error_code ec;
+    fs::path tmp = fs::temp_directory_path(ec) / ("xlights-readytoplay-" + stamp);
+    fs::create_directories(tmp, ec);
+    struct TmpGuard {
+        fs::path p;
+        ~TmpGuard() {
+            std::error_code e;
+            fs::remove_all(p, e);
+        }
+    } guard{ tmp };
+
+    std::vector<const CloudControllerConfig::File*> controllers;
+    for (const auto& c : _job.controllerConfigs) {
+        for (const auto& w : c.warnings) {
+            warnings.push_back(c.controller + ": " + w);
+        }
+        if (!c.error.empty()) {
+            warnings.push_back(c.controller + " is not in the ready to play version: " + c.error);
+        } else {
+            controllers.push_back(&c);
+        }
+    }
+    if (controllers.empty()) {
+        warnings.push_back("The ready to play version has no controller: no active FrenchMakers controller could be published.");
+    }
+
+    _total = sequences.size() * (controllers.size() + 1) + controllers.size() + 1;
+    _done = 0;
+    auto upload = [&](const std::string& path, const fs::path& file, const std::string& type, ReadyToPlay::FileInfo& info) {
+        std::string key = folder + path;
+        SetCurrent(path);
+        bool cancelled = false;
+        if (!client.UploadFile(key, file, type, [this](uint64_t, uint64_t) { return !_cancel; }, error, &info.sha256, &cancelled)) {
+            if (cancelled) {
+                error = "cancelled";
+            }
+            return false;
+        }
+        sent.push_back(key);
+        info.size = fs::file_size(file, ec);
+        return true;
+    };
+
+    ReadyToPlay::Version v;
+    v.show = showName;
+    v.stamp = stamp;
+    v.createdUtc = ShowArchiver::FormatUtcIso(now);
+    v.xlightsVersion = _job.xlightsVersion;
+    for (size_t i = 0; i < sequences.size(); i++) {
+        const ShowArchiveSequence* s = sequences[i];
+        std::string display = s->name.substr(s->name.find_last_of('/') == std::string::npos ? 0 : s->name.find_last_of('/') + 1);
+        if (display.size() > ReadyToPlay::MAX_NAME_BYTES) {
+            size_t cut = ReadyToPlay::MAX_NAME_BYTES;
+            while (cut > 0 && ((unsigned char)display[cut] & 0xC0) == 0x80) {
+                cut--;
+            }
+            display.resize(cut);
+        }
+        ReadyToPlay::Entry e;
+        e.name = display;
+        {
+            std::unique_ptr<FSEQFile> f(FSEQFile::openFSEQFile(ToUtf8(s->fseqPath)));
+            if (!f) {
+                error = "unable to read " + ToUtf8(s->fseqPath);
+                removeSent();
+                return false;
+            }
+            e.frameMs = f->getStepTime();
+            e.durationMs = f->getTotalTimeMS();
+        }
+        const std::string stem = ReadyToPlay::EntryStem(i, display);
+        if (!s->mediaPath.empty()) {
+            if (::Lower(ToUtf8(s->mediaPath.extension())) == ".mp3") {
+                ReadyToPlay::FileInfo info;
+                std::string path = "media/" + stem + ".mp3";
+                if (!upload(path, s->mediaPath, "audio/mpeg", info)) {
+                    removeSent();
+                    return false;
+                }
+                v.files[path] = info;
+                e.media = path;
+            } else {
+                warnings.push_back("The audio of " + s->name + " is not an .mp3 file: it is published without audio.");
+            }
+        }
+        _done = _done + 1;
+        v.playlist.push_back(e);
+    }
+
+    for (const auto* c : controllers) {
+        std::string key = CloudControllerConfig::ObjectKey(c->controller);
+        std::string dir = key.substr(0, key.size() - 5) + "/"; // "controllers/<name>/"
+        ReadyToPlay::Controller rc;
+        rc.name = c->controller;
+        rc.config = dir + "config.json";
+        SetCurrent(rc.config);
+        if (!client.PutObject(folder + rc.config, c->json, "application/json", error)) {
+            removeSent();
+            return false;
+        }
+        sent.push_back(folder + rc.config);
+        v.files[rc.config] = { c->json.size(), Sha256::HexOf(c->json.data(), c->json.size()) };
+        _done = _done + 1;
+        for (size_t i = 0; i < sequences.size(); i++) {
+            if (_cancel) {
+                error = "cancelled";
+                removeSent();
+                return false;
+            }
+            for (const auto& w : CloudControllerConfig::TimingWarnings(c->timing, v.playlist[i].frameMs)) {
+                warnings.push_back(c->controller + ", " + sequences[i]->name + ": " + w);
+            }
+            std::string path = dir + ReadyToPlay::EntryStem(i, v.playlist[i].name) + ".fseq";
+            fs::path file = tmp / (std::to_string(i) + ".fseq");
+            SetCurrent(path);
+            if (!ReadyToPlay::WriteControllerFseq(ToUtf8(sequences[i]->fseqPath), c->startChannel, c->channels, ToUtf8(file), error)) {
+                removeSent();
+                return false;
+            }
+            ReadyToPlay::FileInfo info;
+            if (!upload(path, file, "application/octet-stream", info)) {
+                removeSent();
+                return false;
+            }
+            fs::remove(file, ec);
+            v.files[path] = info;
+            rc.fseq.push_back(path);
+            _done = _done + 1;
+        }
+        v.controllers.push_back(rc);
+    }
+
+    SetCurrent(ReadyToPlay::MANIFEST);
+    if (!client.PutObject(folder + ReadyToPlay::MANIFEST, ReadyToPlay::BuildManifest(v), "application/json", error)) {
+        removeSent();
+        return false;
+    }
+    spdlog::info("Cloud backup: published ready to play version {}", folder);
+    message = "Ready to play version published (" + std::to_string(v.playlist.size()) + " sequence(s), " +
+              std::to_string(v.controllers.size()) + " controller(s)).";
+
+    std::string currentText;
+    std::string readError;
+    ReadyToPlay::CurrentShow current;
+    if (client.ReadObject(ReadyToPlay::CURRENT_SHOW_KEY, currentText, readError)) {
+        current = ReadyToPlay::ParseCurrentShow(currentText);
+    }
+    if (_job.putOnAir) {
+        std::string onAir = ReadyToPlay::BuildCurrentShow(folder, showName, stamp, ShowArchiver::FormatUtcIso(time(nullptr)));
+        if (client.PutObject(ReadyToPlay::CURRENT_SHOW_KEY, onAir, "application/json", error)) {
+            message += " It is now on air.";
+            current = ReadyToPlay::ParseCurrentShow(onAir);
+        } else {
+            warnings.push_back("The version was published but could not be put on air: " + error);
+        }
+    }
+    _done = _total.load();
+
+    if (settings.keepBackups > 0) {
+        const std::string versions = ReadyToPlay::VersionsFolderKey(settings.prefix, showName);
+        std::vector<S3Object> objects;
+        std::vector<std::string> unused;
+        if (!client.ListObjects(versions, "", objects, unused, readError)) {
+            warnings.push_back("Older ready to play versions were not deleted: unable to list them: " + readError);
+            return true;
+        }
+        std::set<std::string> protect{ stamp };
+        if (current.ok && StartsWith(current.version, versions)) {
+            protect.insert(current.stamp);
+        }
+        auto old = ReadyToPlay::SelectForPruning(ReadyToPlay::CompleteVersions(objects, versions), settings.keepBackups, protect);
+        for (const auto& o : old) {
+            if (!ReadyToPlay::DeleteVersion(CloudObjectOps::For(client), objects, versions + o + "/", readError)) {
+                warnings.push_back("An older ready to play version could not be deleted: " + readError);
+                break;
+            }
+        }
+    }
+    return true;
 }
 
 void CloudBackupDialog::Finish(bool ok, bool cancelled, const std::string& message, const std::vector<std::string>& warnings) {
@@ -397,6 +619,9 @@ void CloudBackupDialog::OnTimer(wxTimerEvent& event) {
         case UPLOADING:
             _stageText->SetLabel(_("Step 2/2: uploading"));
             break;
+        case PUBLISHING:
+            _stageText->SetLabel(_("Publishing the ready to play version..."));
+            break;
         default:
             _stageText->SetLabel(_("Writing the manifest..."));
             break;
@@ -414,7 +639,8 @@ void CloudBackupDialog::OnTimer(wxTimerEvent& event) {
     }
     _gauge->SetValue((int)std::min<uint64_t>(1000, done * 1000 / total));
 
-    std::string text = CloudFormatBytes(done) + " / " + CloudFormatBytes(total);
+    std::string text = stage == PUBLISHING ? std::to_string(done) + " / " + std::to_string(total)
+                                           : CloudFormatBytes(done) + " / " + CloudFormatBytes(total);
     double secs = std::chrono::duration<double>(std::chrono::steady_clock::now() - _stageStart).count();
     if (stage == UPLOADING && secs > 2.0 && done > 0) {
         double rate = done / secs;
@@ -456,4 +682,92 @@ void CloudBackupDialog::OnCloseWindow(wxCloseEvent& event) {
         return;
     }
     Destroy();
+}
+
+bool ChooseCloudPlaylist(wxWindow* parent, CloudBackupJob& job) {
+    std::vector<std::string> names = ShowArchiver::ListSequenceNames(job.archive);
+    if (names.empty()) {
+        job.publishReadyToPlay = false;
+        return true;
+    }
+
+    // Remembered per show folder: {"<show dir>": {"playlist": [...], "onAir": bool}}
+    auto* config = GetXLightsConfig();
+    nlohmann::json saved = nlohmann::json::parse(config->Read("CloudPlaylists", std::string("{}")), nullptr, false);
+    if (!saved.is_object()) {
+        saved = nlohmann::json::object();
+    }
+    std::vector<std::string> previous;
+    bool onAir = false;
+    if (saved.contains(job.archive.showDir) && saved[job.archive.showDir].is_object()) {
+        const auto& s = saved[job.archive.showDir];
+        if (s.contains("playlist") && s["playlist"].is_array()) {
+            for (const auto& n : s["playlist"]) {
+                if (n.is_string()) {
+                    previous.push_back(n.get<std::string>());
+                }
+            }
+        }
+        onAir = s.value("onAir", false);
+    }
+
+    wxArrayString items;
+    for (const auto& n : names) {
+        items.Add(wxString::FromUTF8(n));
+    }
+    wxArrayInt order;
+    std::set<int> placed;
+    for (const auto& p : previous) {
+        auto it = std::find(names.begin(), names.end(), p);
+        if (it != names.end() && !placed.count((int)(it - names.begin()))) {
+            int idx = (int)(it - names.begin());
+            order.Add(idx);
+            placed.insert(idx);
+        }
+    }
+    for (int i = 0; i < (int)names.size(); i++) {
+        if (!placed.count(i)) {
+            order.Add(~i);
+        }
+    }
+
+    while (true) {
+        wxRearrangeDialog dlg(parent,
+                              wxString::Format(_("Check the sequences to publish for the cloud boards and put them in playing order (%d at most).\n"
+                                                 "Uncheck them all to back up without a ready to play version."),
+                                               (int)ReadyToPlay::MAX_PLAYLIST),
+                              _("Ready to Play"), order, items);
+        auto* extra = new wxPanel(&dlg);
+        auto* sizer = new wxBoxSizer(wxVERTICAL);
+        auto* onAirBox = new wxCheckBox(extra, wxID_ANY, _("Put this version on air when the backup is done"));
+        onAirBox->SetValue(onAir);
+        onAirBox->SetToolTip(_("The cloud boards play it at their next synchronization. Otherwise, put it on air later\n"
+                               "from File > Restore from Cloud."));
+        sizer->Add(onAirBox, 0, wxALL, 4);
+        extra->SetSizer(sizer);
+        dlg.AddExtraControls(extra);
+        if (dlg.ShowModal() != wxID_OK) {
+            return false;
+        }
+        order = dlg.GetOrder();
+        onAir = onAirBox->GetValue();
+        std::vector<std::string> playlist;
+        for (int o : order) {
+            if (o >= 0) {
+                playlist.push_back(names[o]);
+            }
+        }
+        if (playlist.size() > ReadyToPlay::MAX_PLAYLIST) {
+            wxMessageBox(wxString::Format(_("The cloud boards play %d sequences at most; %d are checked."), (int)ReadyToPlay::MAX_PLAYLIST,
+                                          (int)playlist.size()),
+                         _("Ready to Play"), wxOK | wxICON_WARNING, parent);
+            continue;
+        }
+        saved[job.archive.showDir] = { { "playlist", playlist }, { "onAir", onAir } };
+        config->Write("CloudPlaylists", saved.dump());
+        job.playlist = playlist;
+        job.publishReadyToPlay = !playlist.empty();
+        job.putOnAir = onAir && job.publishReadyToPlay;
+        return true;
+    }
 }

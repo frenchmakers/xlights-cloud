@@ -39,8 +39,27 @@ std::string ObjectKey(const std::string& controllerName) {
     return "controllers/" + name + ".json";
 }
 
-std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, const std::string& generatedUtc, std::string& error,
-                  int frameMs, std::vector<std::string>* warnings) {
+std::vector<std::string> TimingWarnings(const Timing& t, int frameMs) {
+    std::vector<std::string> warnings;
+    if (frameMs <= 0) {
+        return warnings;
+    }
+    int maxWire = (frameMs * 1000 - WIRE_RESET_US) / WIRE_US_PER_PIXEL;
+    if (t.longestWire > maxWire) {
+        warnings.push_back("Port " + std::to_string(t.longestPort) + " drives " + std::to_string(t.longestWire) +
+                           " pixels; at " + std::to_string(frameMs) + " ms per frame the board can send at most " +
+                           std::to_string(maxWire) + " per port.");
+    }
+    int maxChannels = (int)((long long)MAX_CHANNELS_PER_SECOND * frameMs / 1000);
+    if (t.totalChannels > maxChannels) {
+        warnings.push_back(std::to_string(t.totalChannels) + " channels per frame; at " + std::to_string(frameMs) +
+                           " ms per frame the board can read at most " + std::to_string(maxChannels) + ".");
+    }
+    return warnings;
+}
+
+std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, std::string& error,
+                  int frameMs, std::vector<std::string>* warnings, Timing* timing) {
     if (controller->GetName().size() > MAX_NAME_LENGTH) {
         error = "The controller name is longer than " + std::to_string(MAX_NAME_LENGTH) + " characters.";
         return {};
@@ -132,24 +151,19 @@ std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, c
     }
     j["serialPorts"] = serialPorts;
 
-    if (frameMs > 0 && warnings != nullptr) {
-        int maxWire = (frameMs * 1000 - WIRE_RESET_US) / WIRE_US_PER_PIXEL;
-        if (longestWire > maxWire) {
-            warnings->push_back("Port " + std::to_string(longestPort) + " drives " + std::to_string(longestWire) +
-                                " pixels; at " + std::to_string(frameMs) + " ms per frame the board can send at most " +
-                                std::to_string(maxWire) + " per port.");
-        }
-        int maxChannels = (int)((long long)MAX_CHANNELS_PER_SECOND * frameMs / 1000);
-        if (totalChannels > maxChannels) {
-            warnings->push_back(std::to_string(totalChannels) + " channels per frame; at " + std::to_string(frameMs) +
-                                " ms per frame the board can read at most " + std::to_string(maxChannels) + ".");
+    Timing t{ longestWire, longestPort, totalChannels };
+    if (timing != nullptr) {
+        *timing = t;
+    }
+    if (warnings != nullptr) {
+        for (auto& w : TimingWarnings(t, frameMs)) {
+            warnings->push_back(std::move(w));
         }
     }
-    j["generated"] = generatedUtc;
     return j.dump();
 }
 
-std::vector<File> BuildAll(OutputManager* om, ModelManager* mm, const std::string& generatedUtc, int frameMs) {
+std::vector<File> BuildAll(OutputManager* om, ModelManager* mm, int frameMs) {
     std::vector<File> files;
     for (Controller* c : om->GetControllers()) {
         if (!IsCloudController(c) || !c->IsActive()) {
@@ -158,7 +172,9 @@ std::vector<File> BuildAll(OutputManager* om, ModelManager* mm, const std::strin
         File f;
         f.controller = c->GetName();
         f.key = ObjectKey(c->GetName());
-        f.json = Build(c, om, mm, generatedUtc, f.error, frameMs, &f.warnings);
+        f.startChannel = (uint32_t)std::max<int32_t>(1, c->GetStartChannel());
+        f.channels = (uint32_t)std::max<int32_t>(0, c->GetChannels());
+        f.json = Build(c, om, mm, f.error, frameMs, &f.warnings, &f.timing);
         files.push_back(std::move(f));
     }
     return files;

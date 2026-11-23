@@ -89,9 +89,11 @@ CloudBackup Find(const std::vector<CloudBackup>& backups, const std::string& sta
 } // namespace
 
 TEST_CASE("ShowFolderKey ignores stray slashes around the prefix", "[cloud]") {
-    CHECK(CloudBackupStore::ShowFolderKey("xlights", "My Show") == "xlights/My Show/");
-    CHECK(CloudBackupStore::ShowFolderKey("/xlights/", "My Show") == "xlights/My Show/");
-    CHECK(CloudBackupStore::ShowFolderKey("", "My Show") == "My Show/");
+    CHECK(CloudBackupStore::ShowFolderKey("xlights", "My Show") == "xlights/shows/My Show/");
+    CHECK(CloudBackupStore::ShowFolderKey("/xlights/", "My Show") == "xlights/shows/My Show/");
+    CHECK(CloudBackupStore::ShowFolderKey("", "My Show") == "shows/My Show/");
+    CHECK(CloudBackupStore::ShowsRootKey("xlights/") == "xlights/shows/");
+    CHECK(CloudBackupStore::SourceFolderKey("xlights", "My Show") == "xlights/shows/My Show/source/");
 }
 
 TEST_CASE("FromListing keeps only complete backups, newest first", "[cloud]") {

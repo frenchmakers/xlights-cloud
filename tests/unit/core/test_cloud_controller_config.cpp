@@ -85,7 +85,7 @@ TEST_CASE("Cloud controller config lists the ports Upload Outputs would send", "
     show.Recalc();
 
     std::string error;
-    std::string text = CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "2026-11-21T15:00:00Z", error);
+    std::string text = CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, error);
     INFO(error);
     REQUIRE_FALSE(text.empty());
     auto j = nlohmann::json::parse(text);
@@ -95,7 +95,7 @@ TEST_CASE("Cloud controller config lists the ports Upload Outputs would send", "
     CHECK(j["input"]["protocol"] == OUTPUT_DDP);
     CHECK(j["input"]["startChannel"] == 1);
     CHECK(j["input"]["channels"] == 18000);
-    CHECK(j["generated"] == "2026-11-21T15:00:00Z");
+    CHECK_FALSE(j.contains("generated"));
     CHECK(j["serialPorts"].empty());
 
     REQUIRE(j["pixelPorts"].size() == 2);
@@ -125,7 +125,7 @@ TEST_CASE("Cloud controller config refuses ports the board cannot drive", "[cont
     show.Recalc();
 
     std::string error;
-    CHECK(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error).empty());
+    CHECK(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, error).empty());
     CHECK_FALSE(error.empty());
 }
 
@@ -134,17 +134,19 @@ TEST_CASE("Only active FrenchMakers controllers get a config file", "[controller
     show.OnPort("Roof", 1, 10, "!frenchmakers:1");
     show.Recalc();
 
-    auto files = CloudControllerConfig::BuildAll(&show.om, &show.mm, "");
+    auto files = CloudControllerConfig::BuildAll(&show.om, &show.mm);
     REQUIRE(files.size() == 1);
     CHECK(files[0].key == "controllers/frenchmakers.json");
+    CHECK(files[0].startChannel == 1);
+    CHECK(files[0].channels == 18000);
     CHECK(files[0].error.empty());
 
     show.ctl->SetVendor("ESPixelStick");
-    CHECK(CloudControllerConfig::BuildAll(&show.om, &show.mm, "").empty());
+    CHECK(CloudControllerConfig::BuildAll(&show.om, &show.mm).empty());
 
     show.ctl->SetVendor(CloudControllerConfig::VENDOR);
     show.ctl->SetActive("Inactive");
-    CHECK(CloudControllerConfig::BuildAll(&show.om, &show.mm, "").empty());
+    CHECK(CloudControllerConfig::BuildAll(&show.om, &show.mm).empty());
 }
 
 TEST_CASE("Cloud controller config refuses ports and names the board cannot hold", "[controllers][cloud]") {
@@ -152,13 +154,13 @@ TEST_CASE("Cloud controller config refuses ports and names the board cannot hold
     show.OnPort("Port7", 7, 10, "!frenchmakers:1");
     show.Recalc();
     std::string error;
-    CHECK(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error).empty());
+    CHECK(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, error).empty());
     CHECK_FALSE(error.empty());
 
     CloudShow named;
     named.ctl->SetName(std::string(CloudControllerConfig::MAX_NAME_LENGTH + 1, 'x'));
     error.clear();
-    CHECK(CloudControllerConfig::Build(named.ctl, &named.om, &named.mm, "", error).empty());
+    CHECK(CloudControllerConfig::Build(named.ctl, &named.om, &named.mm, error).empty());
     CHECK(error.find("32") != std::string::npos);
 }
 
@@ -170,17 +172,17 @@ TEST_CASE("Cloud controller config warns when the frame rate is too high for the
     std::string error;
     std::vector<std::string> warnings;
     // (25000 - 350) / 30 = 821 pixels per port at 40 fps
-    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 25, &warnings).empty());
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, error, 25, &warnings).empty());
     REQUIRE(warnings.size() == 1);
     CHECK(warnings[0].find("Port 1") != std::string::npos);
     CHECK(warnings[0].find("821") != std::string::npos);
 
     warnings.clear();
-    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 50, &warnings).empty());
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, error, 50, &warnings).empty());
     CHECK(warnings.empty());
 
     warnings.clear();
-    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 0, &warnings).empty());
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, error, 0, &warnings).empty());
     CHECK(warnings.empty());
 }
 
@@ -194,12 +196,31 @@ TEST_CASE("Cloud controller config warns when the board cannot read that many ch
     std::string error;
     std::vector<std::string> warnings;
     // 6 x 800 x 3 = 14400 channels, 12500 at most at 40 fps
-    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 25, &warnings).empty());
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, error, 25, &warnings).empty());
     REQUIRE(warnings.size() == 1);
     CHECK(warnings[0].find("14400") != std::string::npos);
     CHECK(warnings[0].find("12500") != std::string::npos);
 
     warnings.clear();
-    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, "", error, 50, &warnings).empty());
+    CHECK_FALSE(CloudControllerConfig::Build(show.ctl, &show.om, &show.mm, error, 50, &warnings).empty());
     CHECK(warnings.empty());
+}
+
+TEST_CASE("Cloud controller timing is kept for each sequence's frame rate", "[controllers][cloud]") {
+    CloudShow show;
+    show.OnPort("Long", 2, 900, "!frenchmakers:1");
+    show.Recalc();
+
+    auto files = CloudControllerConfig::BuildAll(&show.om, &show.mm);
+    REQUIRE(files.size() == 1);
+    CHECK(files[0].timing.longestPort == 2);
+    CHECK(files[0].timing.longestWire == 900);
+    CHECK(files[0].timing.totalChannels == 2700);
+    CHECK(files[0].warnings.empty());
+
+    auto at40 = CloudControllerConfig::TimingWarnings(files[0].timing, 25);
+    REQUIRE(at40.size() == 1);
+    CHECK(at40[0].find("Port 2") != std::string::npos);
+    CHECK(CloudControllerConfig::TimingWarnings(files[0].timing, 50).empty());
+    CHECK(CloudControllerConfig::TimingWarnings(files[0].timing, 0).empty());
 }

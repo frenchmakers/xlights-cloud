@@ -86,9 +86,10 @@ CloudStorageSettingsPanel::CloudStorageSettingsPanel(wxWindow* parent, wxWindowI
     top->Add(storageBox, 0, wxEXPAND | wxALL, 8);
 
     auto* backupBox = new wxStaticBoxSizer(wxVERTICAL, this, _("Backup to Cloud"));
-    _includeFseq = new wxCheckBox(backupBox->GetStaticBox(), wxID_ANY, _("Include rendered .fseq files"));
-    _includeFseq->SetToolTip(_("A restored show can be played right away without rendering every sequence again."));
-    backupBox->Add(_includeFseq, 0, wxALL, 4);
+    _publishReadyToPlay = new wxCheckBox(backupBox->GetStaticBox(), wxID_ANY, _("Publish a ready to play folder for the cloud boards"));
+    _publishReadyToPlay->SetToolTip(_("The backup asks which rendered sequences to publish, in playing order, with their audio and\n"
+                                      "the settings of each cloud controller. File > Restore from Cloud puts a version on air."));
+    backupBox->Add(_publishReadyToPlay, 0, wxALL, 4);
     _includeThumbnail = new wxCheckBox(backupBox->GetStaticBox(), wxID_ANY, _("Include a thumbnail of the layout (.png)"));
     _includeThumbnail->SetToolTip(_("Shown when choosing a backup to restore."));
     backupBox->Add(_includeThumbnail, 0, wxALL, 4);
@@ -123,7 +124,7 @@ CloudStorageSettingsPanel::CloudStorageSettingsPanel(wxWindow* parent, wxWindowI
         UpdateEnabled();
         ApplyIfImmediate(false);
     });
-    for (auto* c : { _pathStyle, _includeFseq, _includeThumbnail }) {
+    for (auto* c : { _pathStyle, _publishReadyToPlay, _includeThumbnail }) {
         c->Bind(wxEVT_CHECKBOX, [this](wxCommandEvent&) { ApplyIfImmediate(false); });
     }
     _keepBackups->Bind(wxEVT_SPINCTRL, [this](wxSpinEvent&) { ApplyIfImmediate(false); });
@@ -160,7 +161,7 @@ CloudStorageSettings CloudStorageSettingsPanel::FromControls() const {
     s.prefix = _prefix->GetValue().utf8_string();
     s.accessKeyId = _accessKey->GetValue().utf8_string();
     s.secretAccessKey = _secretKey->GetValue().utf8_string();
-    s.includeFseq = _includeFseq->GetValue();
+    s.publishReadyToPlay = _publishReadyToPlay->GetValue();
     s.includeThumbnail = _includeThumbnail->GetValue();
     s.keepBackups = _keepBackups->GetValue();
     return s;
@@ -198,7 +199,7 @@ bool CloudStorageSettingsPanel::TransferDataToWindow() {
     _prefix->ChangeValue(wxString::FromUTF8(s.prefix));
     _accessKey->ChangeValue(wxString::FromUTF8(s.accessKeyId));
     _secretKey->ChangeValue(wxString::FromUTF8(s.secretAccessKey));
-    _includeFseq->SetValue(s.includeFseq);
+    _publishReadyToPlay->SetValue(s.publishReadyToPlay);
     _includeThumbnail->SetValue(s.includeThumbnail);
     _keepBackups->SetValue(s.keepBackups);
     _savedSecret = s.secretAccessKey;

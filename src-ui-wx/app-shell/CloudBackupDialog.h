@@ -26,6 +26,7 @@
 #include "utils/ShowArchiver.h"
 
 class ModelPreview;
+class S3Client;
 class wxButton;
 class wxGauge;
 class wxStaticText;
@@ -36,9 +37,17 @@ struct CloudBackupJob {
     CloudStorageSettings settings;
     std::string thumbnailPng;     // empty: no thumbnail
     std::string thumbnailWarning; // why the thumbnail could not be made
-    // Uploaded at the bucket root, next to the show.fseq the boards download.
+    // What the backup publishes for the cloud boards (see ReadyToPlay.h).
+    bool publishReadyToPlay = false;
+    std::vector<std::string> playlist; // ShowArchiveSequence names, in playing order
+    bool putOnAir = false;             // write currentshow.json once the version is complete
+    std::string xlightsVersion;
     std::vector<CloudControllerConfig::File> controllerConfigs;
 };
+
+// Asks which sequences of the show to publish, in playing order, and whether
+// to put the version on air; remembered for each show. False when cancelled.
+bool ChooseCloudPlaylist(wxWindow* parent, CloudBackupJob& job);
 
 // "12.3 MB" style size for progress and result messages.
 std::string CloudFormatBytes(uint64_t bytes);
@@ -61,10 +70,15 @@ public:
     void CancelAndWait();
 
 private:
-    enum Stage { SCANNING, COMPRESSING, UPLOADING, FINISHING };
+    enum Stage { SCANNING, COMPRESSING, UPLOADING, FINISHING, PUBLISHING };
 
     void Run();
     bool AskContinueWithStaleFseq(const std::vector<std::string>& names);
+    // Uploads readytoplay/<stamp>/ (manifest last) and, when asked, puts it on
+    // air. On failure the files already sent are removed and error is set.
+    bool PublishReadyToPlay(S3Client& client, const std::vector<const ShowArchiveSequence*>& sequences, const std::string& showName,
+                            const std::string& stamp, time_t now, std::vector<std::string>& warnings, std::string& message,
+                            std::string& error);
     void Finish(bool ok, bool cancelled, const std::string& message, const std::vector<std::string>& warnings);
     void SetCurrent(const std::string& s);
 

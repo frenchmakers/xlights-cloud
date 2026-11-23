@@ -77,7 +77,7 @@ CloudStorageSettings CloudStorageSettings::Load(bool loadSecret) {
     s.prefix = config->Read("CloudStoragePrefix", std::string("xlights"));
     s.accessKeyId = config->Read("CloudStorageAccessKeyId", std::string());
     s.pathStyle = config->ReadBool("CloudStoragePathStyle", true);
-    s.includeFseq = config->ReadBool("CloudStorageIncludeFseq", true);
+    s.publishReadyToPlay = config->ReadBool("CloudStoragePublishReadyToPlay", true);
     s.includeThumbnail = config->ReadBool("CloudStorageIncludeThumbnail", true);
     s.keepBackups = std::clamp((int)config->ReadLong("CloudStorageKeepBackups", 0), 0, MAX_KEEP_BACKUPS);
     if (loadSecret) {
@@ -102,7 +102,7 @@ void CloudStorageSettings::Save() const {
     config->Write("CloudStoragePrefix", Trim(prefix));
     config->Write("CloudStorageAccessKeyId", Trim(accessKeyId));
     config->Write("CloudStoragePathStyle", pathStyle);
-    config->Write("CloudStorageIncludeFseq", includeFseq);
+    config->Write("CloudStoragePublishReadyToPlay", publishReadyToPlay);
     config->Write("CloudStorageIncludeThumbnail", includeThumbnail);
     config->Write("CloudStorageKeepBackups", std::clamp(keepBackups, 0, MAX_KEEP_BACKUPS));
     const std::string secret = Trim(secretAccessKey);

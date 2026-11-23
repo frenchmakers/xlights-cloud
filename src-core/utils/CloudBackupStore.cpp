@@ -51,9 +51,17 @@ CloudObjectOps CloudObjectOps::For(S3Client& client) {
 
 namespace CloudBackupStore {
 
-std::string ShowFolderKey(const std::string& prefix, const std::string& show) {
+std::string ShowsRootKey(const std::string& prefix) {
     std::string p = TrimSlashes(prefix);
-    return (p.empty() ? "" : p + "/") + show + "/";
+    return (p.empty() ? "" : p + "/") + "shows/";
+}
+
+std::string ShowFolderKey(const std::string& prefix, const std::string& show) {
+    return ShowsRootKey(prefix) + show + "/";
+}
+
+std::string SourceFolderKey(const std::string& prefix, const std::string& show) {
+    return ShowFolderKey(prefix, show) + "source/";
 }
 
 std::vector<CloudBackup> FromListing(const std::vector<S3Object>& objects, const std::string& folder) {

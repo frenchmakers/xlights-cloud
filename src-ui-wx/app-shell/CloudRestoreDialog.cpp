@@ -12,6 +12,7 @@
 
 #include "CloudBackupDialog.h"
 #include "utils/ExternalHooks.h"
+#include "utils/ReadyToPlay.h"
 #include "utils/S3Client.h"
 #include "utils/string_utils.h"
 
@@ -50,16 +51,6 @@ fs::path FromUtf8(const std::string& s) {
 std::string ToUtf8(const fs::path& p) {
     auto u = p.u8string();
     return std::string(u.begin(), u.end());
-}
-
-std::string TrimSlashes(std::string s) {
-    while (!s.empty() && (s.back() == '/' || s.back() == '\\')) {
-        s.pop_back();
-    }
-    while (!s.empty() && (s.front() == '/' || s.front() == '\\')) {
-        s.erase(0, 1);
-    }
-    return s;
 }
 
 // "2026-11-06-143000" (UTC) to a time_t; 0 when it does not parse.
@@ -136,9 +127,10 @@ CloudRestoreDialog::CloudRestoreDialog(wxWindow* parent, CloudRestoreHooks hooks
 
     auto* backupCol = new wxBoxSizer(wxVERTICAL);
     backupCol->Add(new wxStaticText(this, wxID_ANY, _("Backups")), 0, wxBOTTOM, 4);
-    _backupList = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxSize(240, 220), wxLC_REPORT | wxLC_SINGLE_SEL);
+    _backupList = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxSize(340, 220), wxLC_REPORT | wxLC_SINGLE_SEL);
     _backupList->AppendColumn(_("Date"), wxLIST_FORMAT_LEFT, 140);
     _backupList->AppendColumn(_("Size"), wxLIST_FORMAT_RIGHT, 80);
+    _backupList->AppendColumn(_("Ready to play"), wxLIST_FORMAT_LEFT, 100);
     backupCol->Add(_backupList, 1, wxEXPAND);
     lists->Add(backupCol, 0, wxEXPAND | wxRIGHT, 10);
 
@@ -172,6 +164,10 @@ CloudRestoreDialog::CloudRestoreDialog(wxWindow* parent, CloudRestoreHooks hooks
     _deleteButton = new wxButton(this, wxID_ANY, _("Delete Backup..."));
     _deleteButton->SetToolTip(_("Removes the selected backup from the bucket to free space."));
     buttons->Add(_deleteButton, 0);
+    _onAirButton = new wxButton(this, wxID_ANY, _("Put on Air..."));
+    _onAirButton->SetToolTip(_("The cloud boards play the ready to play version of the selected backup\n"
+                               "at their next synchronization."));
+    buttons->Add(_onAirButton, 0, wxLEFT, 6);
     buttons->AddStretchSpacer();
     _restoreButton = new wxButton(this, wxID_ANY, _("Restore"));
     buttons->Add(_restoreButton, 0, wxRIGHT, 6);
@@ -187,6 +183,7 @@ CloudRestoreDialog::CloudRestoreDialog(wxWindow* parent, CloudRestoreHooks hooks
     _browse->Bind(wxEVT_BUTTON, &CloudRestoreDialog::OnBrowse, this);
     _restoreButton->Bind(wxEVT_BUTTON, &CloudRestoreDialog::OnRestore, this);
     _deleteButton->Bind(wxEVT_BUTTON, &CloudRestoreDialog::OnDelete, this);
+    _onAirButton->Bind(wxEVT_BUTTON, &CloudRestoreDialog::OnPutOnAir, this);
     _closeButton->Bind(wxEVT_BUTTON, &CloudRestoreDialog::OnClose, this);
     _refreshButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) { Reload(); });
     _settingsButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent&) {
@@ -228,7 +225,7 @@ void CloudRestoreDialog::RunTask(std::function<void()> task) {
 }
 
 std::string CloudRestoreDialog::ShowFolderKey(const std::string& show) const {
-    return CloudBackupStore::ShowFolderKey(_settings.prefix, show);
+    return CloudBackupStore::SourceFolderKey(_settings.prefix, show);
 }
 
 std::string CloudRestoreDialog::DefaultDestination(const std::string& show, const std::string& stamp) const {
@@ -258,6 +255,8 @@ void CloudRestoreDialog::UpdateButtons() {
     bool idle = !_restoring && !_deleting;
     _restoreButton->Enable(idle && _selectedBackup >= 0 && _summary.ok);
     _deleteButton->Enable(idle && _selectedBackup >= 0);
+    bool ready = _selectedBackup >= 0 && _selectedBackup < (int)_backups.size() && _readyStamps.count(_backups[_selectedBackup].stamp);
+    _onAirButton->Enable(idle && ready && _backups[_selectedBackup].stamp != _onAirStamp);
     _shows->Enable(idle);
     _backupList->Enable(idle);
     _dest->Enable(idle);
@@ -299,8 +298,7 @@ void CloudRestoreDialog::LoadShows() {
     SetStatus(_("Looking for backups..."));
     _gauge->Pulse();
     S3Config cfg = _settings.ToS3Config();
-    std::string prefix = TrimSlashes(_settings.prefix);
-    std::string root = prefix.empty() ? "" : prefix + "/";
+    std::string root = CloudBackupStore::ShowsRootKey(_settings.prefix);
     RunTask([this, gen, cfg, root]() {
         S3Client client(cfg);
         std::vector<S3Object> objects;
@@ -364,17 +362,32 @@ void CloudRestoreDialog::LoadBackups(const std::string& show, const wxString& do
     SetStatus(_("Listing backups..."));
     S3Config cfg = _settings.ToS3Config();
     std::string folder = ShowFolderKey(show);
-    RunTask([this, gen, cfg, folder, doneStatus, doneIsError]() {
+    std::string versions = ReadyToPlay::VersionsFolderKey(_settings.prefix, show);
+    RunTask([this, gen, cfg, folder, versions, doneStatus, doneIsError]() {
         S3Client client(cfg);
         std::vector<S3Object> objects;
         std::vector<std::string> unused;
         std::string error;
         bool ok = client.ListObjects(folder, "", objects, unused, error);
         std::vector<Backup> backups = CloudBackupStore::FromListing(objects, folder);
+
+        std::vector<S3Object> versionObjects;
+        std::string ignored;
+        client.ListObjects(versions, "", versionObjects, unused, ignored);
+        auto readyList = ReadyToPlay::CompleteVersions(versionObjects, versions);
+        std::set<std::string> ready(readyList.begin(), readyList.end());
+        std::string onAir;
+        std::string currentText;
+        if (client.ReadObject(ReadyToPlay::CURRENT_SHOW_KEY, currentText, ignored)) {
+            auto current = ReadyToPlay::ParseCurrentShow(currentText);
+            if (current.ok && current.version == versions + current.stamp + "/") {
+                onAir = current.stamp;
+            }
+        }
         if (_closing) {
             return;
         }
-        CallAfter([this, gen, ok, error, backups, doneStatus, doneIsError]() {
+        CallAfter([this, gen, ok, error, backups, ready, onAir, versionObjects, doneStatus, doneIsError]() {
             if (gen != _generation) {
                 return;
             }
@@ -383,9 +396,17 @@ void CloudRestoreDialog::LoadBackups(const std::string& show, const wxString& do
                 return;
             }
             _backups = backups;
+            _readyStamps = ready;
+            _onAirStamp = onAir;
+            _versionObjects = versionObjects;
             for (size_t i = 0; i < backups.size(); ++i) {
                 long row = _backupList->InsertItem((long)i, DisplayStamp(backups[i].stamp));
                 _backupList->SetItem(row, 1, wxString::FromUTF8(CloudFormatBytes(backups[i].zipSize)));
+                if (backups[i].stamp == onAir) {
+                    _backupList->SetItem(row, 2, _("On air"));
+                } else if (ready.count(backups[i].stamp)) {
+                    _backupList->SetItem(row, 2, _("Yes"));
+                }
             }
             if (backups.empty()) {
                 SetStatus(doneStatus.empty() ? _("This show has no complete backup.") : doneStatus, doneIsError);
@@ -489,8 +510,17 @@ void CloudRestoreDialog::OnDelete(wxCommandEvent& event) {
     }
     const std::string show = _showNames[showSel];
     const Backup b = _backups[_selectedBackup];
+    if (b.stamp == _onAirStamp) {
+        wxMessageBox(_("The cloud boards play the ready to play version of this backup. Put another version on air before deleting it."),
+                     _("Delete Backup"), wxOK | wxICON_INFORMATION, this);
+        return;
+    }
     wxString msg = wxString::Format(_("Delete the backup of \"%s\" made on %s (%s) from the bucket?\n\nThis cannot be undone."),
                                     wxString::FromUTF8(show), DisplayStamp(b.stamp), wxString::FromUTF8(CloudFormatBytes(b.zipSize)));
+    const bool withVersion = _readyStamps.count(b.stamp) > 0;
+    if (withVersion) {
+        msg += _("\n\nIts ready to play version is deleted too.");
+    }
     if (_backups.size() == 1) {
         msg += _("\n\nIt is the only backup of this show.");
     }
@@ -505,10 +535,15 @@ void CloudRestoreDialog::OnDelete(wxCommandEvent& event) {
     S3Config cfg = _settings.ToS3Config();
     std::string folder = ShowFolderKey(show);
     std::vector<Backup> all = _backups;
-    RunTask([this, cfg, folder, all, b, show]() {
+    std::string versionFolder = withVersion ? ReadyToPlay::VersionFolderKey(_settings.prefix, show, b.stamp) : std::string();
+    std::vector<S3Object> versionObjects = _versionObjects;
+    RunTask([this, cfg, folder, all, b, show, versionFolder, versionObjects]() {
         S3Client client(cfg);
         std::string error;
         bool ok = CloudBackupStore::Delete(CloudObjectOps::For(client), folder, all, { b }, error);
+        if (ok && !versionFolder.empty()) {
+            ok = ReadyToPlay::DeleteVersion(CloudObjectOps::For(client), versionObjects, versionFolder, error);
+        }
         if (ok) {
             spdlog::info("Cloud restore: deleted backup {}", b.zipKey);
         } else {
@@ -526,6 +561,45 @@ void CloudRestoreDialog::OnDelete(wxCommandEvent& event) {
             }
             // Reload either way: a failed delete may have removed part of the backup.
             LoadBackups(show, ok ? _("Backup deleted.") : _("Unable to delete the backup: ") + wxString::FromUTF8(error), !ok);
+        });
+    });
+}
+
+void CloudRestoreDialog::OnPutOnAir(wxCommandEvent& event) {
+    int showSel = _shows->GetSelection();
+    if (_restoring || _deleting || _selectedBackup < 0 || _selectedBackup >= (int)_backups.size() ||
+        showSel < 0 || showSel >= (int)_showNames.size() || !_readyStamps.count(_backups[_selectedBackup].stamp)) {
+        return;
+    }
+    const std::string show = _showNames[showSel];
+    const std::string stamp = _backups[_selectedBackup].stamp;
+    wxString msg = wxString::Format(_("Put the version of \"%s\" made on %s on air?\n\n"
+                                      "The cloud boards play it at their next synchronization."),
+                                    wxString::FromUTF8(show), DisplayStamp(stamp));
+    if (wxMessageBox(msg, _("Put on Air"), wxYES_NO | wxICON_QUESTION, this) != wxYES) {
+        return;
+    }
+    _deleting = true; // blocks the other actions while the bucket is written
+    UpdateButtons();
+    SetStatus(_("Putting the version on air..."));
+    _gauge->Pulse();
+    S3Config cfg = _settings.ToS3Config();
+    std::string text = ReadyToPlay::BuildCurrentShow(ReadyToPlay::VersionFolderKey(_settings.prefix, show, stamp), show, stamp,
+                                                     ShowArchiver::FormatUtcIso(time(nullptr)));
+    RunTask([this, cfg, text, show]() {
+        S3Client client(cfg);
+        std::string error;
+        bool ok = client.PutObject(ReadyToPlay::CURRENT_SHOW_KEY, text, "application/json", error);
+        if (ok) {
+            spdlog::info("Cloud restore: put on air {}", text);
+        }
+        if (_closing) {
+            return;
+        }
+        CallAfter([this, ok, error, show]() {
+            _deleting = false;
+            _gauge->SetValue(0);
+            LoadBackups(show, ok ? _("The version is on air.") : _("Unable to put the version on air: ") + wxString::FromUTF8(error), !ok);
         });
     });
 }

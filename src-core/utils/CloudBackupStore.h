@@ -11,9 +11,11 @@
  **************************************************************/
 
 // The backups of one show in the bucket. Each backup is a set of objects in
-// "<prefix>/<show>/" named after its UTC stamp:
+// "<prefix>/shows/<show>/source/" named after its UTC stamp:
 //   <stamp>.zip, <stamp>.manifest.json, <stamp>.thumbnail.png (optional)
-// plus latest.manifest.json, a copy of the newest manifest.
+// plus latest.manifest.json, a copy of the newest manifest. The ready to play
+// versions made by the same backups are next to it, in "readytoplay/" (see
+// ReadyToPlay.h).
 
 #include <cstdint>
 #include <functional>
@@ -44,8 +46,12 @@ namespace CloudBackupStore {
 
 constexpr const char* LATEST_MANIFEST = "latest.manifest.json";
 
-// "<prefix>/<show>/", ignoring stray slashes around the prefix.
+// "<prefix>/shows/", ignoring stray slashes around the prefix.
+std::string ShowsRootKey(const std::string& prefix);
+// "<prefix>/shows/<show>/"
 std::string ShowFolderKey(const std::string& prefix, const std::string& show);
+// "<prefix>/shows/<show>/source/", where the backups are.
+std::string SourceFolderKey(const std::string& prefix, const std::string& show);
 
 // Complete backups (manifest and archive both present) in a listing of
 // folder, newest first.

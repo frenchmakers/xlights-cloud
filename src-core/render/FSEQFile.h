@@ -117,6 +117,8 @@ public:
     const std::vector<VariableHeader> &getVariableHeaders() const { return m_variableHeaders;}
 
     void setNumFrames(uint32_t f) { m_seqNumFrames = f; }
+    // Written by writeHeader(); 0 means "use the current time".
+    void setUniqueId(uint64_t id) { m_uniqueId = id; }
     void setStepTime(int st) { m_seqStepTime = st; }
     void setChannelCount(int cc) { m_seqChannelCount = cc; }
     void addVariableHeader(const VariableHeader &header) { m_variableHeaders.push_back(header);}

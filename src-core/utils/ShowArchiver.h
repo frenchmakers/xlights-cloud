@@ -60,6 +60,9 @@ struct ShowArchiveSequence {
     int mediaEntry = -1;    // -1 when the sequence has no audio or it was not found
     std::string mediaRef;   // media file as written in the .xsq
     bool fseqUpToDate = false;
+    // Found on disk whether or not the archive includes them; empty when missing.
+    std::filesystem::path fseqPath;
+    std::filesystem::path mediaPath;
 };
 
 struct ShowArchivePlan {
@@ -90,6 +93,10 @@ using ShowArchiveProgress = std::function<bool(uint64_t doneBytes, uint64_t tota
 namespace ShowArchiver {
 
 ShowArchivePlan Scan(const ShowArchiveOptions& options);
+
+// The .xsq files Scan() would look at, named like ShowArchiveSequence::name,
+// sorted. Quick: the files are not read.
+std::vector<std::string> ListSequenceNames(const ShowArchiveOptions& options);
 
 // Writes the archive to outZip. On failure or cancel the partial file is removed.
 ShowArchiveResult Create(ShowArchivePlan& plan, const std::filesystem::path& outZip, const ShowArchiveProgress& progress = nullptr);

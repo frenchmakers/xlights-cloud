@@ -16,6 +16,7 @@
 // (UDController), written as a small JSON file the board can parse with a
 // fixed buffer.
 
+#include <cstdint>
 #include <string>
 #include <vector>
 
@@ -40,21 +41,36 @@ bool IsCloudController(const Controller* controller);
 // "controllers/<name>.json", the name made safe for an object key.
 std::string ObjectKey(const std::string& controllerName);
 
+// What limits the frame rate a board can keep up with.
+struct Timing {
+    int longestWire = 0;   // pixels on the wire of the longest port: start nulls + pixels x group + end nulls
+    int longestPort = 0;
+    int totalChannels = 0; // channels per frame
+};
+
+// Why the board cannot play frames of frameMs; empty when it can or frameMs <= 0.
+std::vector<std::string> TimingWarnings(const Timing& timing, int frameMs);
+
 // The configuration as JSON, or an empty string and error when the ports do
 // not fit the controller's capabilities. frameMs > 0 is the frame time of the
 // sequence the board will play; ports it cannot keep up with add warnings.
-std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, const std::string& generatedUtc, std::string& error,
-                  int frameMs = 0, std::vector<std::string>* warnings = nullptr);
+// The same layout always gives the same bytes, so a board can tell an
+// unchanged configuration by its hash.
+std::string Build(Controller* controller, OutputManager* om, ModelManager* mm, std::string& error,
+                  int frameMs = 0, std::vector<std::string>* warnings = nullptr, Timing* timing = nullptr);
 
 struct File {
     std::string controller;
     std::string key;
+    uint32_t startChannel = 0; // 1-based, absolute
+    uint32_t channels = 0;
     std::string json;
     std::string error; // set instead of json when the configuration could not be built
     std::vector<std::string> warnings;
+    Timing timing;
 };
 
 // One file for every active cloud controller.
-std::vector<File> BuildAll(OutputManager* om, ModelManager* mm, const std::string& generatedUtc, int frameMs = 0);
+std::vector<File> BuildAll(OutputManager* om, ModelManager* mm, int frameMs = 0);
 
 } // namespace CloudControllerConfig

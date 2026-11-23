@@ -328,6 +328,46 @@ std::string FormatUtcForKey(time_t t) {
     return FormatUtc(t, "%Y-%m-%d-%H%M%S");
 }
 
+std::vector<std::string> ListSequenceNames(const ShowArchiveOptions& options) {
+    std::vector<std::string> names;
+    std::set<std::string> excluded;
+    for (const auto& n : options.excludeDirNames) {
+        excluded.insert(Lower(n));
+    }
+    ObtainAccessToURL(options.showDir);
+    const fs::path showRoot = FromUtf8(options.showDir).lexically_normal();
+    std::error_code ec;
+    fs::recursive_directory_iterator it(showRoot, fs::directory_options::skip_permission_denied, ec);
+    if (ec) {
+        return names;
+    }
+    for (; it != fs::recursive_directory_iterator(); it.increment(ec)) {
+        if (ec) {
+            ec.clear();
+            continue;
+        }
+        const auto& de = *it;
+        std::error_code sec;
+        if (de.is_symlink(sec)) {
+            if (de.is_directory(sec)) {
+                it.disable_recursion_pending();
+            }
+            continue;
+        }
+        if (de.is_directory(sec)) {
+            if (excluded.count(Lower(ToUtf8(de.path().filename())))) {
+                it.disable_recursion_pending();
+            }
+            continue;
+        }
+        if (de.is_regular_file(sec) && Lower(ToUtf8(de.path().extension())) == ".xsq") {
+            names.push_back(ToUtf8Generic(de.path().lexically_relative(showRoot).replace_extension()));
+        }
+    }
+    std::sort(names.begin(), names.end());
+    return names;
+}
+
 ShowArchivePlan Scan(const ShowArchiveOptions& options) {
     ShowArchivePlan plan;
     plan.options = options;
@@ -439,11 +479,14 @@ ShowArchivePlan Scan(const ShowArchiveOptions& options) {
 
         fs::path fseq = fseqElsewhere ? fseqRoot / xsq.stem() : xsq;
         fseq.replace_extension(".fseq");
-        if (options.includeFseq && FileExists(ToUtf8(fseq), false)) {
-            std::string zipName = IsInside(fseq, showRoot) ? "show/" + ToUtf8Generic(fseq.lexically_relative(showRoot))
-                                                           : externalZipName("fseq", fseq);
-            seq.fseqEntry = addEntry(fseq, zipName);
-            seq.fseqUpToDate = plan.entries[seq.fseqEntry].mtime >= FileMTime(xsq);
+        if (FileExists(ToUtf8(fseq), false)) {
+            seq.fseqPath = fseq;
+            seq.fseqUpToDate = FileMTime(fseq) >= FileMTime(xsq);
+            if (options.includeFseq) {
+                std::string zipName = IsInside(fseq, showRoot) ? "show/" + ToUtf8Generic(fseq.lexically_relative(showRoot))
+                                                               : externalZipName("fseq", fseq);
+                seq.fseqEntry = addEntry(fseq, zipName);
+            }
         }
 
         if (!info.mediaFile.empty()) {
@@ -451,6 +494,7 @@ ShowArchivePlan Scan(const ShowArchiveOptions& options) {
             if (media.empty()) {
                 plan.warnings.push_back("Audio for " + seq.name + " not found: " + info.mediaFile);
             } else {
+                seq.mediaPath = media;
                 std::string zipName = IsInside(media, showRoot) ? "show/" + ToUtf8Generic(media.lexically_relative(showRoot))
                                                                 : externalZipName("media", media);
                 seq.mediaEntry = addEntry(media, zipName);

@@ -18,12 +18,14 @@
 #include <cstdint>
 #include <functional>
 #include <mutex>
+#include <set>
 #include <string>
 #include <thread>
 #include <vector>
 
 #include "CloudStorageSettings.h"
 #include "utils/CloudBackupStore.h"
+#include "utils/S3Client.h"
 #include "utils/ShowArchiver.h"
 
 class wxButton;
@@ -79,6 +81,7 @@ private:
     void OnBrowse(wxCommandEvent& event);
     void OnRestore(wxCommandEvent& event);
     void OnDelete(wxCommandEvent& event);
+    void OnPutOnAir(wxCommandEvent& event);
     void OnClose(wxCommandEvent& event);
     void OnCloseWindow(wxCloseEvent& event);
     void OnTimer(wxTimerEvent& event);
@@ -93,6 +96,9 @@ private:
 
     std::vector<std::string> _showNames;
     std::vector<Backup> _backups;
+    std::set<std::string> _readyStamps;   // backups with a complete ready to play version
+    std::string _onAirStamp;              // the one in currentshow.json, if it is of this show
+    std::vector<S3Object> _versionObjects; // listing of the show's readytoplay/ folder
     int _selectedBackup = -1;
     ShowArchiver::BackupSummary _summary;
     bool _destEdited = false;
@@ -120,6 +126,7 @@ private:
     wxButton* _settingsButton = nullptr;
     wxButton* _refreshButton = nullptr;
     wxButton* _deleteButton = nullptr;
+    wxButton* _onAirButton = nullptr;
     wxButton* _restoreButton = nullptr;
     wxButton* _closeButton = nullptr;
 };
