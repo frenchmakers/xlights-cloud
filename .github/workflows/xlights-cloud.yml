@@ -9,7 +9,9 @@
 #     release "<version>-cloud". The Windows installer is published even when
 #     the Linux build fails.
 #
-# The official project's own workflows are turned off in this fork on every run.
+# The official project's own workflows are turned off in this fork on every run,
+# except the unit tests: they only start by hand (or from master), and are run
+# that way to check this branch.
 
 name: xLights Cloud
 
@@ -57,7 +59,7 @@ jobs:
       - name: Turn off the official project's workflows
         run: |
           gh api "repos/$GH_REPO/actions/workflows" --paginate \
-            --jq '.workflows[] | select(.state == "active") | select(.path | startswith(".github/workflows/")) | select(.path != ".github/workflows/xlights-cloud.yml") | "\(.id) \(.path)"' |
+            --jq '.workflows[] | select(.state == "active") | select(.path | startswith(".github/workflows/")) | select(.path != ".github/workflows/xlights-cloud.yml") | select(.path != ".github/workflows/Unit_Tests.yml") | select(.path != ".github/workflows/Unit_Tests_Windows.yml") | "\(.id) \(.path)"' |
           while read -r id path; do
             gh api -X PUT "repos/$GH_REPO/actions/workflows/$id/disable" && echo "Disabled $path"
           done
