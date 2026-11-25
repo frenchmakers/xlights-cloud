@@ -782,19 +782,26 @@ void FPPConnectDialog::PopulateFPPInstanceList(wxProgressDialog *prgs) {
             }
 
         } else if (inst->fppType == FPP_TYPE::CLOUDBOARD) {
+            // As a MultiSync remote the board only needs the sequences: the
+            // master plays the audio and the playlist.
+            const bool remote = StartsWith(inst->mode, "remote");
             wxCheckBox* CheckBox1 = new wxCheckBox(FPPInstanceList, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, MEDIA_COL + rowStr);
-            CheckBox1->SetValue(true);
+            CheckBox1->SetValue(!remote);
             mediaWidget = CheckBox1;
-            // The board plays one playlist, named after the controller.
-            wxComboBox* ComboBox1 = new wxComboBox(FPPInstanceList, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, 0, wxTE_PROCESS_ENTER, wxDefaultValidator, PLAYLIST_COL + rowStr);
-            ComboBox1->Append(_(""));
-            ComboBox1->Append(inst->hostName);
-            ComboBox1->SetSelection(1);
-            wxFont font = ComboBox1->GetFont();
-            font.SetPointSize(font.GetPointSize() - 2);
-            ComboBox1->SetFont(font);
-            playlistWidget = ComboBox1;
-            playlistExpands = true;
+            if (remote) {
+                playlistWidget = new wxStaticText(FPPInstanceList, wxID_ANY, "");
+            } else {
+                // The board plays one playlist, named after the controller.
+                wxComboBox* ComboBox1 = new wxComboBox(FPPInstanceList, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, 0, wxTE_PROCESS_ENTER, wxDefaultValidator, PLAYLIST_COL + rowStr);
+                ComboBox1->Append(_(""));
+                ComboBox1->Append(inst->hostName);
+                ComboBox1->SetSelection(1);
+                wxFont font = ComboBox1->GetFont();
+                font.SetPointSize(font.GetPointSize() - 2);
+                ComboBox1->SetFont(font);
+                playlistWidget = ComboBox1;
+                playlistExpands = true;
+            }
         } else if (inst->fppType == FPP_TYPE::FALCONV4V5) {
             // this probably needs to be moved as this is not really a zlib thing but only the falcons end up here today so I am going to put it here for now
             wxCheckBox *CheckBox1 = new wxCheckBox(FPPInstanceList, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, MEDIA_COL + rowStr);
