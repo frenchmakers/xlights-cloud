@@ -27,6 +27,10 @@ class OutputManager;
 namespace CloudControllerConfig {
 
 constexpr const char* VENDOR = "FrenchMakers";
+constexpr const char* BOARD_MODEL = "STM32 Cloud Pixel";
+constexpr const char* BOARD_VARIANT = "6 Ports";
+// What the board answers FPP pings with (byte 9); unassigned in FPP's MultiSync.h.
+constexpr int FPP_TYPE_ID = 0xC5;
 // The board keeps the controller name in a fixed buffer.
 constexpr size_t MAX_NAME_LENGTH = 32;
 // All ports are clocked out together, so a frame lasts as long as the longest

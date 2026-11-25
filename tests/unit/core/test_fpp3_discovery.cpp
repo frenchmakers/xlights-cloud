@@ -8,6 +8,8 @@
 #ifndef _WIN32
 
 #include "test_fpp3_common.h"
+#include "controllers/CloudControllerConfig.h"
+#include "outputs/DDPOutput.h"
 
 #include <cstring>
 
@@ -441,6 +443,50 @@ TEST_CASE("FPP controller seeding lists the configured addresses", "[fpp3][disco
     Discovery d(&om);
     FPP::FinishControllerSeeding(d, seeded);
     CHECK(d.GetResults().empty());
+}
+
+TEST_CASE("FPP ping from an xLights Cloud board makes a FrenchMakers DDP controller", "[fpp3][discovery][ping]") {
+    InitLoggers();
+    FppServer srv;
+    OutputManager om;
+    Discovery d(&om);
+    auto cb = StartSingle(d, srv.Address());
+    const uint8_t ip[4] = { 192, 0, 2, 50 };
+    Ping p(ip, CloudControllerConfig::FPP_TYPE_ID, "frenchmakers", 2);
+    strcpy((char*)&p.b[125], "STM32F407 W5500");
+    strcpy((char*)&p.b[166], "0-1151");
+    p.Uuid("STM32-0123456789AB");
+    cb(p.b, 7 + 294 + 65, "192.0.2.50");
+    auto* r = d.FindByIp("192.0.2.50");
+    REQUIRE(r != nullptr);
+    CHECK(r->typeId == 0xC5);
+    CHECK(r->mode == "player");
+    CHECK(r->uuid == "STM32-0123456789AB");
+    REQUIRE(r->controller != nullptr);
+    CHECK(r->controller->GetName() == "frenchmakers");
+    CHECK(r->controller->GetProtocol() == OUTPUT_DDP);
+    CHECK(r->controller->GetVendor() == "FrenchMakers");
+    CHECK(r->controller->GetModel() == "STM32 Cloud Pixel");
+    CHECK(r->controller->GetVariant() == "6 Ports");
+    CHECK(r->controller->GetChannels() == 1152);
+    CHECK(r->controller->IsAutoLayout());
+    auto* ddp = dynamic_cast<DDPOutput*>(r->controller->GetOutputs().front());
+    REQUIRE(ddp != nullptr);
+    CHECK_FALSE(ddp->IsKeepChannelNumbers());
+    // the board answers no FPP HTTP API: the ping alone must not probe it
+    d.Close(true);
+    CHECK_FALSE(srv.Has("GET", "/api/channel/output/co-pixelStrings"));
+}
+
+TEST_CASE("An xLights Cloud board is not offered to FPP Connect", "[fpp3][discovery][map]") {
+    InitLoggers();
+    OutputManager om;
+    Discovery d(&om);
+    Result(d, "192.0.2.51", CloudControllerConfig::FPP_TYPE_ID, false, "player")->hostname = "frenchmakers";
+    std::list<FPP*> instances;
+    FPP::MapToFPPInstances(d, instances, &om);
+    CHECK(instances.empty());
+    d.Close(true);
 }
 
 #endif

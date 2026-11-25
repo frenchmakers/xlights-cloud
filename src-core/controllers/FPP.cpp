@@ -44,6 +44,7 @@
 #include "../outputs/Output.h"
 #include "../outputs/E131Output.h"
 #include "../outputs/DDPOutput.h"
+#include "CloudControllerConfig.h"
 #include "../outputs/ArtNetOutput.h"
 #include "../outputs/KinetOutput.h"
 #include "../outputs/TwinklyOutput.h"
@@ -4412,6 +4413,24 @@ static void CreateController(Discovery &discovery, DiscoveredData *inst) {
             inst->controller->SetProtocol(OUTPUT_DDP);
         }
         SetControllerType(inst);
+    } else if (inst->typeId == CloudControllerConfig::FPP_TYPE_ID) {
+        // An xLights Cloud board: it plays what it downloads from the bucket and
+        // takes DDP when xLights outputs to lights. Not an FPP, so not offered to
+        // FPP Connect (no upload, playlist or output API).
+        if (inst->controller->GetProtocol() != OUTPUT_DDP) {
+            inst->controller->SetProtocol(OUTPUT_DDP);
+        }
+        if (inst->controller->GetVendor() != CloudControllerConfig::VENDOR) {
+            inst->SetVendor(CloudControllerConfig::VENDOR);
+            inst->SetModel(CloudControllerConfig::BOARD_MODEL);
+            inst->SetVariant(CloudControllerConfig::BOARD_VARIANT);
+        }
+        dynamic_cast<DDPOutput*>(inst->controller->GetOutputs().front())->SetKeepChannelNumber(false);
+        if (created) {
+            setRangesToChannelCount(inst);
+            inst->controller->SetAutoLayout(true);
+            inst->controller->SetAutoSize(true, nullptr);
+        }
     } else if (inst->typeId == 0xC2 || inst->typeId == 0xC3) {
         if (inst->controller->GetProtocol() != OUTPUT_DDP) {
             inst->controller->SetProtocol(OUTPUT_DDP);
