@@ -1090,7 +1090,7 @@ bool FPP::uploadFileV7(const std::string &filename,
 bool FPP::uploadOrCopyFile(const std::string &filename,
                            const std::string &file,
                            const std::string &dir) {
-    if (fppType == FPP_TYPE::FPP) {
+    if (UsesFPPFileApi()) {
         return uploadFileV7(filename, file, dir);
     }
     return uploadFile(filename, file);
@@ -1294,7 +1294,7 @@ void FPP::PrefetchSequenceMeta(const std::string &seq) {
     _prefetchedMetaName.clear();
     _prefetchedMeta.clear();
     _prefetchedMetaRC = -1;
-    if (fppType != FPP_TYPE::FPP) {
+    if (!UsesFPPFileApi()) {
         return;
     }
     std::string baseName = std::filesystem::path(seq).filename().string();
@@ -1339,7 +1339,10 @@ bool FPP::PrepareUploadSequence(FSEQFile *file,
     std::string baseName = fn.filename().string();
     std::string mediaBaseName = "";
     bool cancelled = false;
-    if (media != "" && fppType == FPP_TYPE::FPP) {
+    // A cloud board only plays mp3 audio.
+    const bool sendMedia = fppType == FPP_TYPE::FPP ||
+                           (fppType == FPP_TYPE::CLOUDBOARD && ::Lower(std::filesystem::path(media).extension().string()) == ".mp3");
+    if (media != "" && sendMedia) {
         cancelled = CheckUploadMedia(media, mediaBaseName);
         if (cancelled) {
             return true;
@@ -1365,7 +1368,7 @@ bool FPP::PrepareUploadSequence(FSEQFile *file,
     uint32_t currentChannelCount = 0;
     std::vector<std::pair<uint32_t, uint32_t>> currentRanges;
     std::vector<std::pair<uint32_t, uint32_t>> newRanges;
-    if (fppType == FPP_TYPE::FPP) {
+    if (UsesFPPFileApi()) {
         nlohmann::json currentMeta;
         bool haveMeta = false;
         // A 401 goes through the synchronous path so the password prompt still runs.
@@ -1442,7 +1445,7 @@ bool FPP::PrepareUploadSequence(FSEQFile *file,
         }
         return r;
     };
-    bool uploadOriginal = fppType == FPP_TYPE::FPP
+    bool uploadOriginal = UsesFPPFileApi()
         && ((FSEQ_Version == 1 && file->getVersionMajor() == 1)
             || fn.extension() == ".eseq"
             || (ctype == FSEQFile::CompressionType::zstd && !sparse && file->getVersionMajor() == 2
@@ -1600,7 +1603,7 @@ bool FPP::FinalizeUploadSequence() {
             delete outputFile;
         }
         outputFile = nullptr;
-        if (tempFileName != "" && (fppType == FPP_TYPE::FPP || fppType == FPP_TYPE::ESPIXELSTICK)) {
+        if (tempFileName != "" && (UsesFPPFileApi() || fppType == FPP_TYPE::ESPIXELSTICK)) {
             std::string directory = "sequences";
             if (EndsWith(baseSeqName, ".eseq")) {
                 directory = "effects";
@@ -4414,9 +4417,9 @@ static void CreateController(Discovery &discovery, DiscoveredData *inst) {
         }
         SetControllerType(inst);
     } else if (inst->typeId == CloudControllerConfig::FPP_TYPE_ID) {
-        // An xLights Cloud board: it plays what it downloads from the bucket and
-        // takes DDP when xLights outputs to lights. Not an FPP, so not offered to
-        // FPP Connect (no upload, playlist or output API).
+        // An xLights Cloud board: it plays what it downloads from the bucket, takes
+        // DDP when xLights outputs to lights, and accepts sequences, audio and a
+        // playlist from FPP Connect (FPP_TYPE::CLOUDBOARD).
         if (inst->controller->GetProtocol() != OUTPUT_DDP) {
             inst->controller->SetProtocol(OUTPUT_DDP);
         }
@@ -5131,6 +5134,9 @@ void FPP::FinishControllerSeeding(Discovery &discovery, const std::list<std::str
     discovery.Discover();
 }
 bool FPP::supportedForFPPConnect() const {
+    if (fppType == FPP_TYPE::CLOUDBOARD) {
+        return true;
+    }
     if (this->IsVersionAtLeast(7, 1)) {
         return true;
     }
@@ -5176,6 +5182,11 @@ static bool supportedForFPPConnect(DiscoveredData* res, OutputManager* outputMan
             }
         }
         return res->majorVersion >= 4 && res->mode == "remote";
+    }
+
+    if (res->typeId == CloudControllerConfig::FPP_TYPE_ID) {
+        // xLights Cloud board: sequences, audio and playlist through the FPP file API
+        return res->mode != "bridge";
     }
 
     if (res->typeId >= 0x88 && res->typeId <= 0x9F) {
@@ -5362,7 +5373,9 @@ void FPP::MapToFPPInstances(Discovery& discovery, std::list<FPP*>& instances, Ou
 }
 
 void FPP::TypeIDtoControllerType(int typeId, FPP* inst) {
-    if (typeId > 0 && typeId < 0x80) {
+    if (typeId == CloudControllerConfig::FPP_TYPE_ID) {
+        inst->fppType = FPP_TYPE::CLOUDBOARD;
+    } else if (typeId > 0 && typeId < 0x80) {
         inst->fppType = FPP_TYPE::FPP;
     } else if (typeId >= 0x88 && typeId <= 0x9F) {
         inst->fppType = FPP_TYPE::FALCONV4V5;

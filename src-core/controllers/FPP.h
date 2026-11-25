@@ -25,7 +25,10 @@ enum class FPP_TYPE { FPP,
                       FALCONV4V5,
                       ESPIXELSTICK,
                       GENIUS,
-                      POWERDMX };
+                      POWERDMX,
+                      // xLights Cloud board (FPP ping type 0xC5): takes sequences, audio
+                      // and a playlist through the FPP file API, nothing else.
+                      CLOUDBOARD };
 
 enum class ReceiverType {
     Standard = 0,
@@ -147,6 +150,8 @@ class FPP : public BaseController
     bool GetUploadNoChannels() const { return lastUploadNoChannels; }
 #endif
     bool supportedForFPPConnect() const;
+    // Sequences, media and playlists go through the FPP 7+ file API.
+    bool UsesFPPFileApi() const { return fppType == FPP_TYPE::FPP || fppType == FPP_TYPE::CLOUDBOARD; }
 
     bool UploadUDPOutputsForProxy(OutputManager* outputManager);
     

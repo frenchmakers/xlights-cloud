@@ -869,6 +869,8 @@
 		<Unit filename="../src-core/controllers/ExportSettings.h" />
 		<Unit filename="../src-core/controllers/ControllerUploadData.cpp" />
 		<Unit filename="../src-core/controllers/ControllerUploadData.h" />
+		<Unit filename="../src-core/controllers/CloudBoard.cpp" />
+		<Unit filename="../src-core/controllers/CloudBoard.h" />
 		<Unit filename="../src-core/controllers/CloudControllerConfig.cpp" />
 		<Unit filename="../src-core/controllers/CloudControllerConfig.h" />
 		<Unit filename="../src-core/controllers/ESPixelStick.cpp" />

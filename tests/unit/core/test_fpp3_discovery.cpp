@@ -478,14 +478,24 @@ TEST_CASE("FPP ping from an xLights Cloud board makes a FrenchMakers DDP control
     CHECK_FALSE(srv.Has("GET", "/api/channel/output/co-pixelStrings"));
 }
 
-TEST_CASE("An xLights Cloud board is not offered to FPP Connect", "[fpp3][discovery][map]") {
+TEST_CASE("An xLights Cloud board is offered to FPP Connect as a cloud board", "[fpp3][discovery][map]") {
     InitLoggers();
     OutputManager om;
     Discovery d(&om);
-    Result(d, "192.0.2.51", CloudControllerConfig::FPP_TYPE_ID, false, "player")->hostname = "frenchmakers";
+    // no FPP HTTP API, and a version that would be too old for a real FPP
+    auto* r = Result(d, "192.0.2.51", CloudControllerConfig::FPP_TYPE_ID, false, "player");
+    r->hostname = "frenchmakers";
+    r->majorVersion = 1;
+    Result(d, "192.0.2.52", CloudControllerConfig::FPP_TYPE_ID, false, "bridge");
     std::list<FPP*> instances;
     FPP::MapToFPPInstances(d, instances, &om);
-    CHECK(instances.empty());
+    REQUIRE(instances.size() == 1);
+    CHECK(instances.front()->ipAddress == "192.0.2.51");
+    CHECK(instances.front()->fppType == FPP_TYPE::CLOUDBOARD);
+    CHECK(instances.front()->supportedForFPPConnect());
+    for (auto* i : instances) {
+        delete i;
+    }
     d.Close(true);
 }
 

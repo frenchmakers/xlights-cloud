@@ -1,12 +1,14 @@
 <Vendor Name="FrenchMakers">
-	<!-- Boards with no upload API: they download the sequence and the output
-	     configuration xLights publishes to the cloud bucket. -->
+	<!-- xLights Cloud boards: they download the show and their output
+	     configuration from the cloud bucket, take DDP live, and accept the
+	     same configuration over HTTP (Upload Outputs, driver CloudBoard). -->
 	<Controller Name="STM32 Cloud Pixel">
 		<Variant Name="6 Ports" ID="STM32CloudPixel6">
 			<MaxPixelPort>6</MaxPixelPort>
 			<MaxSerialPort>0</MaxSerialPort>
 			<MaxPixelPortChannels>3000</MaxPixelPortChannels>
 			<MaxSerialPortChannels>0</MaxSerialPortChannels>
+			<SupportsUpload/>
 			<SupportsAutoLayout/>
 			<SupportsDefaultBrightness/>
 			<SupportsPixelPortBrightness/>
@@ -20,6 +22,7 @@
 			</InputProtocols>
 			<PreferredInputProtocol>DDP</PreferredInputProtocol>
 			<DDPStartsAtOne/>
+			<ConfigDriver>FrenchMakers</ConfigDriver>
 		</Variant>
 	</Controller>
 </Vendor>

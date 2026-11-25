@@ -4400,7 +4400,7 @@ msgstr ""
 msgid "Blend Mode"
 msgstr ""
 
-#: src-ui-wx/color/ColorCurveDialog.cpp:126 src-ui-wx/controllers/FPPConnectDialog.cpp:731 src-ui-wx/controllers/FPPConnectDialog.cpp:742 src-ui-wx/effectpanels/MovingHeadPanel.cpp:229 src-ui-wx/import_export/SuperStarImportDialog.cpp:94 ... (+3)
+#: src-ui-wx/color/ColorCurveDialog.cpp:126 src-ui-wx/controllers/FPPConnectDialog.cpp:743 src-ui-wx/controllers/FPPConnectDialog.cpp:754 src-ui-wx/effectpanels/MovingHeadPanel.cpp:229 src-ui-wx/import_export/SuperStarImportDialog.cpp:94 ... (+3)
 msgid "None"
 msgstr ""
 
@@ -5099,140 +5099,135 @@ msgstr ""
 msgid "Device Channels"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1338
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1364
 msgid "Checking models"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1339
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1365
 msgid "Comparing the models on each FPP with the layout"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1349
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1375
 msgid "Models will be uploaded"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1373
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1399
 msgid "Out of date: "
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1375
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1401
 msgid "Up to date"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1381
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1407
 msgid "nothing to check"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1381
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1407
 msgid "up to date"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1381
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1407
 msgid "will be uploaded"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1391
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1417
 msgid "Outdated Models on FPP"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1395
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1421
 msgid " - left as is"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1397
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1423
 msgid ", left as is"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1404
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1430
 msgid " - will be uploaded"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1406
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1432
 msgid ", will be uploaded"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1424
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1450
 msgid "Sending controller settings"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1431
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1457
 #, c-format
 msgid "Sending settings to %s - %s"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1446
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1472
 msgid "playlist"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1450
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1476
 msgid "proxies"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1461 src-ui-wx/controllers/FPPConnectDialog.cpp:1465
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1487 src-ui-wx/controllers/FPPConnectDialog.cpp:1491
 msgid "UDP outputs"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1477 src-ui-wx/controllers/FPPConnectDialog.cpp:1517
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1503 src-ui-wx/controllers/FPPConnectDialog.cpp:1541 src-ui-wx/controllers/FPPConnectDialog.cpp:1558
 msgid "controller outputs"
-msgstr ""
-
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1495 src-ui-wx/controllers/FPPConnectDialog.cpp:1502
-msgid "models"
 msgstr ""
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:151
 msgid "FPP Upload"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1530
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1521 src-ui-wx/controllers/FPPConnectDialog.cpp:1528
+msgid "models"
+msgstr ""
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1571
 msgid "Sent "
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1533
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1574
 msgid "Failed: no usable connection"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1536 src-ui-wx/controllers/FPPConnectDialog.cpp:1851 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:227 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:163
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1577 src-ui-wx/controllers/FPPConnectDialog.cpp:1892 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:227 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:163
 msgid "Failed"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1539 src-ui-wx/controllers/FPPConnectDialog.cpp:1851 src-ui-wx/controllers/FPPConnectDialog.cpp:1855 src-ui-wx/controllers/FPPConnectDialog.cpp:1864 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:232 ... (+1)
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1580 src-ui-wx/controllers/FPPConnectDialog.cpp:1892 src-ui-wx/controllers/FPPConnectDialog.cpp:1896 src-ui-wx/controllers/FPPConnectDialog.cpp:1905 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:232 ... (+1)
 msgid "Cancelled"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1541
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1582
 msgid "Nothing to send"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1546
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1587
 msgid "Not sent"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1555
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1596
 msgid "done"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1559
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1600
 msgid "cancelled"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1561
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1602
 msgid "Controller settings"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1607
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1648
 #, c-format
 msgid "Checking media (%s) and FSEQ file for %s"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1609
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1650
 #, c-format
 msgid "Checking FSEQ file for %s"
-msgstr ""
-
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1685
-#, c-format
-msgid "Preparing FSEQ file for %s"
 msgstr ""
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:169 src-ui-wx/controllers/HinksPixExportDialog.cpp:251 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:840 src-ui-wx/import_export/xLightsImportChannelMapDialog.cpp:897 src-ui-wx/layout/ModelGroupPanel.cpp:247 ... (+4)
@@ -5243,81 +5238,86 @@ msgstr ""
 msgid "Recursive Search"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:173 src-ui-wx/controllers/HinksPixExportDialog.cpp:255
-msgid "Only Current Directory"
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1726
+#, c-format
+msgid "Preparing FSEQ file for %s"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1735
-#, c-format
-msgid "Sending %s to controllers"
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:173 src-ui-wx/controllers/HinksPixExportDialog.cpp:255
+msgid "Only Current Directory"
 msgstr ""
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:175 src-ui-wx/controllers/HinksPixExportDialog.cpp:257 src-ui-wx/sequencer/BatchRenderDialog.cpp:93
 msgid "Folder:"
 msgstr ""
 
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1776
+#, c-format
+msgid "Sending %s to controllers"
+msgstr ""
+
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:179
 msgid "Selected: 0"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1847 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:227 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:163
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1888 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:227 src-ui-wx/sequencer/BatchRenderProgressDialog.cpp:163
 #, c-format
 msgid "Failed: %s"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1855
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1896
 msgid "Uploaded media"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1858
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1899
 msgid "Skipped - no channels on this controller"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1861 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:217
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1902 src-ui-wx/controllers/FPPUploadProgressDialog.cpp:217
 msgid "Already up to date"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1864
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1905
 msgid "Uploaded"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1867
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1908
 msgid "Not uploaded"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1870
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1911
 #, c-format
 msgid "FSEQ v%d, %s, %s, %u channels"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1873
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1914
 msgid "sparse"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1873
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1914
 msgid "full"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1880
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1921
 #, c-format
 msgid "Media: %s - uploaded (%s)"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1884
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1925
 #, c-format
 msgid "Media: %s - already up to date"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1887
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1928
 #, c-format
 msgid "Media: %s - not found"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1898
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1939
 msgid "could not open the fseq"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1906
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:1947
 msgid "no channels on the selected controllers"
 msgstr ""
 
@@ -5325,67 +5325,67 @@ msgstr ""
 msgid "Add FPP"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1973
-msgid "FPP Connect Upload had errors or warnings"
-msgstr ""
-
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1976
-msgid "Controller messages"
-msgstr ""
-
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:198
 msgid "Re-Discover"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1980
-msgid "Problems Uploading"
-msgstr ""
-
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1985
-msgid "FPP Connect Upload Cancelled"
-msgstr ""
-
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:1988
-msgid "FPP Connect Upload Complete"
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2017
+msgid "FPP Connect Upload had errors or warnings"
 msgstr ""
 
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:202
 msgid "Keep Open"
 msgstr ""
 
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2020
+msgid "Controller messages"
+msgstr ""
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2024
+msgid "Problems Uploading"
+msgstr ""
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2029
+msgid "FPP Connect Upload Cancelled"
+msgstr ""
+
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2032
+msgid "FPP Connect Upload Complete"
+msgstr ""
+
 #: src-ui-wx/controllers/FPPConnectDialog.cpp:205 src-ui-wx/setup/MultiControllerUploadDialog.cpp:107
 msgid "Upload"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:2213 src-ui-wx/controllers/HinksPixExportDialog.cpp:1198
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2261 src-ui-wx/controllers/HinksPixExportDialog.cpp:1198
 msgid "Clear Selections"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:2214 src-ui-wx/controllers/HinksPixExportDialog.cpp:1199 src-ui-wx/model/ImportPreviewsModelsDialog.cpp:438 src-ui-wx/sequencer/BatchRenderDialog.cpp:163 src-ui-wx/setup/PixelTestDialog.cpp:2433 ... (+1)
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2262 src-ui-wx/controllers/HinksPixExportDialog.cpp:1199 src-ui-wx/model/ImportPreviewsModelsDialog.cpp:438 src-ui-wx/sequencer/BatchRenderDialog.cpp:163 src-ui-wx/setup/PixelTestDialog.cpp:2433 ... (+1)
 msgid "Select Highlighted"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:2215 src-ui-wx/controllers/HinksPixExportDialog.cpp:1200 src-ui-wx/model/ImportPreviewsModelsDialog.cpp:439 src-ui-wx/sequencer/BatchRenderDialog.cpp:164 src-ui-wx/setup/PixelTestDialog.cpp:2434 ... (+1)
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2263 src-ui-wx/controllers/HinksPixExportDialog.cpp:1200 src-ui-wx/model/ImportPreviewsModelsDialog.cpp:439 src-ui-wx/sequencer/BatchRenderDialog.cpp:164 src-ui-wx/setup/PixelTestDialog.cpp:2434 ... (+1)
 msgid "Deselect Highlighted"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:2216
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2264
 msgid "Select Batch Render"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:2217
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2265
 msgid "Select Failed Uploads"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:2278
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2326
 msgid "Find FPP Instance"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:2278
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:2326
 msgid "Enter IP address or hostname for FPP Instance"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:265 src-ui-wx/controllers/FPPConnectDialog.cpp:266 src-ui-wx/controllers/FPPConnectDialog.cpp:2226 src-ui-wx/controllers/FPPConnectDialog.cpp:2227
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:265 src-ui-wx/controllers/FPPConnectDialog.cpp:266 src-ui-wx/controllers/FPPConnectDialog.cpp:2274 src-ui-wx/controllers/FPPConnectDialog.cpp:2275
 msgid "Discovering FPP Instances"
 msgstr ""
 
@@ -5397,7 +5397,7 @@ msgstr ""
 msgid "Sort by IP Address"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:452 src-ui-wx/controllers/FPPConnectDialog.cpp:479 src-ui-wx/controllers/FPPConnectDialog.cpp:2212 src-ui-wx/controllers/HinksPixExportDialog.cpp:1197 src-ui-wx/diagnostics/SearchPanel.cpp:78 ... (+11)
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:452 src-ui-wx/controllers/FPPConnectDialog.cpp:479 src-ui-wx/controllers/FPPConnectDialog.cpp:2260 src-ui-wx/controllers/HinksPixExportDialog.cpp:1197 src-ui-wx/diagnostics/SearchPanel.cpp:78 ... (+11)
 msgid "Select All"
 msgstr ""
 
@@ -5413,43 +5413,43 @@ msgstr ""
 msgid "Select Subnet"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:673 src-ui-wx/controllers/FPPConnectDialog.cpp:687 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:123
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:673 src-ui-wx/controllers/FPPConnectDialog.cpp:686 src-ui-wx/controllers/FPPConnectDialog.cpp:699 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:123
 msgid "V1"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:674
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:674 src-ui-wx/controllers/FPPConnectDialog.cpp:687
 msgid "V2 zstd"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:675
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:675 src-ui-wx/controllers/FPPConnectDialog.cpp:688
 msgid "V2 Sparse/zstd"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:676 src-ui-wx/controllers/FPPConnectDialog.cpp:690 src-ui-wx/controllers/FPPConnectDialog.cpp:703 src-ui-wx/controllers/FPPConnectDialog.cpp:706
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:676 src-ui-wx/controllers/FPPConnectDialog.cpp:689 src-ui-wx/controllers/FPPConnectDialog.cpp:702 src-ui-wx/controllers/FPPConnectDialog.cpp:715 src-ui-wx/controllers/FPPConnectDialog.cpp:718
 msgid "V2 Sparse/Uncompressed"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:688 src-ui-wx/controllers/FPPConnectDialog.cpp:707
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:700 src-ui-wx/controllers/FPPConnectDialog.cpp:719
 msgid "V2 zlib"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:689 src-ui-wx/controllers/FPPConnectDialog.cpp:705
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:701 src-ui-wx/controllers/FPPConnectDialog.cpp:717
 msgid "V2 Sparse/zlib"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:691 src-ui-wx/controllers/FPPConnectDialog.cpp:708 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:125
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:703 src-ui-wx/controllers/FPPConnectDialog.cpp:720 src-ui-wx/preferences/SequenceFileSettingsPanel.cpp:125
 msgid "V2 Uncompressed"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:732 src-ui-wx/controllers/FPPConnectDialog.cpp:743 src-ui-wx/effectpanels/MovingHeadPanel.cpp:227 src-ui-wx/import_export/SuperStarImportDialog.cpp:98 src-ui-wx/model/ModelFacesPanel.cpp:256 ... (+1)
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:744 src-ui-wx/controllers/FPPConnectDialog.cpp:755 src-ui-wx/effectpanels/MovingHeadPanel.cpp:227 src-ui-wx/import_export/SuperStarImportDialog.cpp:98 src-ui-wx/model/ModelFacesPanel.cpp:256 ... (+1)
 msgid "All"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:733
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:745
 msgid "Local"
 msgstr ""
 
-#: src-ui-wx/controllers/FPPConnectDialog.cpp:744
+#: src-ui-wx/controllers/FPPConnectDialog.cpp:756
 msgid "Proxied"
 msgstr ""
 
@@ -19059,7 +19059,7 @@ msgstr ""
 msgid "House Preview"
 msgstr ""
 
-#: src-ui-wx/xLightsMain.cpp:860 src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:391 src-ui-wx/controllerproperties/ControllerNullPropertyAdapter.cpp:31 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:206 src-ui-wx/controllers/FPPConnectDialog.cpp:1382 ... (+5)
+#: src-ui-wx/xLightsMain.cpp:860 src-ui-wx/controllerproperties/ControllerEthernetPropertyAdapter.cpp:391 src-ui-wx/controllerproperties/ControllerNullPropertyAdapter.cpp:31 src-ui-wx/controllerproperties/ControllerSerialPropertyAdapter.cpp:206 src-ui-wx/controllers/FPPConnectDialog.cpp:1408 ... (+5)
 msgid "Models"
 msgstr ""
 

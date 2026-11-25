@@ -561,4 +561,54 @@ TEST_CASE("Sequence upload with media checks the media too", "[fpp3][transfer][s
     CHECK(srv.Count("PATCH", "/api/file/sequences") == 1);
 }
 
+TEST_CASE("A cloud board gets the original sequence, mp3 audio and the playlist through the FPP file API", "[fpp3][transfer][cloudboard]") {
+    TempDir dir;
+    TmpDirOverride tmp(dir.path);
+    auto path = WriteSeq(dir.path / "show.fseq");
+    dir.Write("show.mp3", "MP3DATA");
+    dir.Write("clip.mp4", "VIDEO");
+    std::unique_ptr<FSEQFile> file(FSEQFile::openFSEQFile(path));
+    REQUIRE(file);
+    FppServer srv;
+    auto f = MakeFpp(srv, 1);
+    FPP::TypeIDtoControllerType(0xC5, f.get());
+    REQUIRE(f->fppType == FPP_TYPE::CLOUDBOARD);
+    CHECK(f->UsesFPPFileApi());
+    CHECK(f->supportedForFPPConnect()); // whatever version the board reports
+
+    CHECK_FALSE(f->PrepareUploadSequence(file.get(), path, (dir.path / "show.mp3").string(), 2, FSEQFile::CompressionType::zstd, false));
+    CHECK(f->WillUploadSequence());
+    CHECK_FALSE(f->NeedCustomSequence()); // the rendered file as is
+    CHECK_FALSE(f->FinalizeUploadSequence());
+    DrainCurls();
+    INFO(srv.All());
+    CHECK(srv.Has("GET", "/api/sequence/show.fseq/meta"));
+    auto seq = srv.Sent("PATCH", "/api/file/sequences");
+    REQUIRE(seq.size() == 1);
+    CHECK(seq[0].body == ReadAll(path));
+    auto music = srv.Sent("PATCH", "/api/file/music");
+    REQUIRE(music.size() == 1);
+    CHECK(music[0].body == "MP3DATA");
+    CHECK(f->sequences["show.fseq"].media == "show.mp3");
+    CHECK_FALSE(srv.Has("POST", "/fpp?path=uploadFile&filename=show.fseq"));
+
+    // the playlist names the files exactly as they were uploaded
+    CHECK_FALSE(f->UploadPlaylist("frenchmakers"));
+    DrainCurls();
+    auto pl = srv.LastJson("POST", "/api/playlist/frenchmakers");
+    REQUIRE(pl["mainPlaylist"].size() == 1);
+    CHECK(pl["mainPlaylist"][0]["sequenceName"] == "show.fseq");
+    CHECK(pl["mainPlaylist"][0]["mediaName"] == "show.mp3");
+
+    // audio the board cannot play is not sent at all
+    auto g = MakeFpp(srv, 1);
+    FPP::TypeIDtoControllerType(0xC5, g.get());
+    std::unique_ptr<FSEQFile> again(FSEQFile::openFSEQFile(path));
+    CHECK_FALSE(g->PrepareUploadSequence(again.get(), path, (dir.path / "clip.mp4").string(), 2, FSEQFile::CompressionType::zstd, false));
+    g->FinalizeUploadSequence();
+    DrainCurls();
+    CHECK_FALSE(srv.Has("PATCH", "/api/file/videos"));
+    CHECK(g->sequences["show.fseq"].media.empty());
+}
+
 #endif

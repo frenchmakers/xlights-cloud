@@ -460,7 +460,7 @@ void FPPConnectDialog::OnCapePopupClick(wxCommandEvent& event)
     int row = 0;
     for (const auto& inst : instances) {
         std::string l = inst->hostName + " - " + inst->ipAddress;
-        if (inst->fppType == FPP_TYPE::FPP) {
+        if (inst->UsesFPPFileApi()) {
             if (inst->supportedForFPPConnect()) {
                 std::string rowStr = std::to_string(row);
                 if (event.GetId() == ID_POPUP_MNU_SELECT_ALL) {
@@ -497,7 +497,7 @@ void FPPConnectDialog::OnUploadPopupClick(wxCommandEvent& event) {
       int row = 0;
       for (const auto& inst : instances) {
           std::string l = inst->hostName + " - " + inst->ipAddress;
-          if (inst->fppType == FPP_TYPE::FPP) {
+          if (inst->UsesFPPFileApi()) {
               if (inst->supportedForFPPConnect()) {
                   std::string rowStr = std::to_string(row);
                   if (event.GetId() == ID_POPUP_MNU_SELECT_ALL) {
@@ -531,7 +531,7 @@ void FPPConnectDialog::SelectIPsWithSubnet() {
     std::string const& subnet = dlg.GetStringSelection();
     int row { 0 };
     for (const auto& inst : instances) {
-        if (inst->fppType == FPP_TYPE::FPP) {
+        if (inst->UsesFPPFileApi()) {
             if (inst->supportedForFPPConnect()) {
                 std::string rowStr = std::to_string(row);
                 if (ip_utils::IsInSameSubnet(subnet, inst->ipAddress)) {
@@ -556,7 +556,7 @@ void FPPConnectDialog::OnMediaPopupClick(wxCommandEvent& event) {
     int row = 0;
     for (const auto& inst : instances) {
         std::string l = inst->hostName + " - " + inst->ipAddress;
-        if (inst->fppType == FPP_TYPE::FPP) {
+        if (inst->UsesFPPFileApi()) {
             if (inst->supportedForFPPConnect()) {
                 std::string rowStr = std::to_string(row);
                 if (event.GetId() == ID_POPUP_MNU_DESELECT_ALL) {
@@ -678,6 +678,18 @@ void FPPConnectDialog::PopulateFPPInstanceList(wxProgressDialog *prgs) {
                 fseqWidget = Choice1;
                 fseqBorder = 0;
             }
+        } else if (inst->fppType == FPP_TYPE::CLOUDBOARD) {
+            wxChoice* Choice1 = new wxChoice(FPPInstanceList, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, FSEQ_COL + rowStr);
+            wxFont font = Choice1->GetFont();
+            font.SetPointSize(font.GetPointSize() - 2);
+            Choice1->SetFont(font);
+            Choice1->Append(_("V1"));
+            Choice1->Append(_("V2 zstd"));
+            Choice1->Append(_("V2 Sparse/zstd"));
+            Choice1->Append(_("V2 Sparse/Uncompressed"));
+            Choice1->SetSelection(1);
+            fseqWidget = Choice1;
+            fseqBorder = 0;
         } else if (inst->fppType == FPP_TYPE::FALCONV4V5 
             || inst->fppType == FPP_TYPE::POWERDMX) {
             wxChoice* Choice1 = new wxChoice(FPPInstanceList, wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, 0, 0, wxDefaultValidator, FSEQ_COL + rowStr);
@@ -769,6 +781,20 @@ void FPPConnectDialog::PopulateFPPInstanceList(wxProgressDialog *prgs) {
                 playlistWidget = new wxStaticText(FPPInstanceList, wxID_ANY, "");
             }
 
+        } else if (inst->fppType == FPP_TYPE::CLOUDBOARD) {
+            wxCheckBox* CheckBox1 = new wxCheckBox(FPPInstanceList, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, MEDIA_COL + rowStr);
+            CheckBox1->SetValue(true);
+            mediaWidget = CheckBox1;
+            // The board plays one playlist, named after the controller.
+            wxComboBox* ComboBox1 = new wxComboBox(FPPInstanceList, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, 0, wxTE_PROCESS_ENTER, wxDefaultValidator, PLAYLIST_COL + rowStr);
+            ComboBox1->Append(_(""));
+            ComboBox1->Append(inst->hostName);
+            ComboBox1->SetSelection(1);
+            wxFont font = ComboBox1->GetFont();
+            font.SetPointSize(font.GetPointSize() - 2);
+            ComboBox1->SetFont(font);
+            playlistWidget = ComboBox1;
+            playlistExpands = true;
         } else if (inst->fppType == FPP_TYPE::FALCONV4V5) {
             // this probably needs to be moved as this is not really a zlib thing but only the falcons end up here today so I am going to put it here for now
             wxCheckBox *CheckBox1 = new wxCheckBox(FPPInstanceList, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, MEDIA_COL + rowStr);
@@ -1505,6 +1531,21 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
                 }
                 //if restart flag is now set, restart and recheck range
                 inst->Restart(true);
+            } else if (inst->fppType == FPP_TYPE::CLOUDBOARD) {
+                if (GetCheckValue(UPLOAD_CONTROLLER_COL + rowStr) && controller.size() == 1) {
+                    BaseController* bc = BaseController::CreateBaseController(controller.front(), inst->ipAddress);
+                    if (bc == nullptr || !bc->IsConnected()) {
+                        inst->messages.push_back("Unable to send the outputs: the board did not answer.");
+                        noConnection = true;
+                    } else if (bc->SetOutputs(&frame->AllModels, _outputManager, controller.front(), frame)) {
+                        sent.push_back(_("controller outputs"));
+                        auto ts = FormatTimestamp();
+                        auto* config = GetXLightsConfig();
+                        config->Write(MakeControllerTimestampKey("LastOutputUpload", controller.front()->GetName(), frame->showDirectory), wxString::FromUTF8(ts.c_str()));
+                        config->Flush();
+                    }
+                    delete bc;
+                }
             } else if (GetCheckValue(UPLOAD_CONTROLLER_COL + rowStr) && controller.size() == 1) {
                 BaseController* bc = BaseController::CreateBaseController(controller.front(), inst->ipAddress);
                 if (bc == nullptr) {
@@ -1632,7 +1673,7 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
                         int fseqversion{ 1 };
                         FSEQFile::CompressionType cType{ FSEQFile::CompressionType::none };
                         bool sparse{ false };
-                        if (inst->fppType == FPP_TYPE::FPP || inst->fppType == FPP_TYPE::FALCONV4V5 || inst->fppType == FPP_TYPE::GENIUS || inst->fppType == FPP_TYPE::POWERDMX) {
+                        if (inst->UsesFPPFileApi() || inst->fppType == FPP_TYPE::FALCONV4V5 || inst->fppType == FPP_TYPE::GENIUS || inst->fppType == FPP_TYPE::POWERDMX) {
                             std::tie(fseqversion, cType, sparse) = DecodeFSEQVersionAndCompression(GetChoiceValue(FSEQ_COL + rowStr));
                         } else {
                             fseqversion = 2;
@@ -1921,13 +1962,16 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
     wxString failedUploadsList;
     for (const auto& inst : instances) {
         std::string rowStr = std::to_string(row);
-        if (inst->fppType == FPP_TYPE::FPP) {
+        if (inst->UsesFPPFileApi()) {
             if (!cancelled && doUpload[row]) {
                 std::string playlist = GetChoiceValue(PLAYLIST_COL + rowStr);
                 if (playlist != "") {
                     cancelled |= inst->UploadPlaylist(playlist);
                 }
-                inst->Restart(true);
+                // a cloud board restarts by itself once it has the playlist
+                if (inst->fppType == FPP_TYPE::FPP) {
+                    inst->Restart(true);
+                }
             }
         }
         if (!inst->messages.empty()) {
@@ -2084,7 +2128,11 @@ void FPPConnectDialog::SaveSettings(bool onlyInsts)
         if (GetCheckValue(MEDIA_COL + rowStr) != false || config->Read("FPPConnectUploadMedia_" + keyPostfx, &bval)) {
             config->Write("FPPConnectUploadMedia_" + keyPostfx, GetCheckValue(MEDIA_COL + rowStr));
         }
-        if (inst->fppType == FPP_TYPE::FPP && inst->supportedForFPPConnect()) {
+        if (inst->fppType == FPP_TYPE::CLOUDBOARD) {
+            if (GetChoiceValueIndex(FSEQ_COL + rowStr) != 1 || config->Read("FPPConnectUploadFSEQType_" + keyPostfx, &lval)) {
+                config->Write("FPPConnectUploadFSEQType_" + keyPostfx, GetChoiceValueIndex(FSEQ_COL + rowStr));
+            }
+        } else if (inst->fppType == FPP_TYPE::FPP && inst->supportedForFPPConnect()) {
             if (GetChoiceValueIndex(FSEQ_COL + rowStr) != 2 || config->Read("FPPConnectUploadFSEQType_" + keyPostfx, &lval)) {
                 config->Write("FPPConnectUploadFSEQType_" + keyPostfx, GetChoiceValueIndex(FSEQ_COL + rowStr));
             }
@@ -2147,7 +2195,7 @@ void FPPConnectDialog::ApplySavedHostSettings()
                 SetCheckValue(CHECK_COL + rowStr, bval);
                 inst->upload = bval;
             }
-            if ((inst->fppType == FPP_TYPE::FPP || inst->fppType == FPP_TYPE::FALCONV4V5) && config->Read("FPPConnectUploadFSEQType_" + key, &lval)) {
+            if ((inst->UsesFPPFileApi() || inst->fppType == FPP_TYPE::FALCONV4V5) && config->Read("FPPConnectUploadFSEQType_" + key, &lval)) {
                 SetChoiceValueIndex(FSEQ_COL + rowStr, lval);
             }
             if (config->Read("FPPConnectUploadMedia_" + key, &bval)) {
