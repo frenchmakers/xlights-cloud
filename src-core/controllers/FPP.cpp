@@ -1176,7 +1176,10 @@ bool FPP::CheckUploadMedia(const std::string &media, std::string &mediaBaseName)
     if (majorVersion >= 6) {
         FindHostSpecificMedia(hostName, mediaBaseName, mediaFile, mfn);
     }
-    
+    lastUploadMediaState = MediaUploadState::Checking;
+    lastUploadMediaName = mediaBaseName;
+    lastUploadMediaSize = 0;
+
     std::string url = "/api/media/" + URLEncode(mediaBaseName) + "/meta";
     std::string fullUrl = (ip_utils::IsIPv6(ipAddress) ? "[" + ipAddress + "]" : ipAddress) + url;
     std::string ipAddForGet = ipAddress;
@@ -1191,12 +1194,15 @@ bool FPP::CheckUploadMedia(const std::string &media, std::string &mediaBaseName)
     }
     CurlManager::INSTANCE.addGet(fullUrl, [this, mfn, mediaBaseName, mediaFile](int rc, const std::string &resp) {
         bool doMediaUpload = true;
+        std::error_code sizeEc;
+        auto mfnSize = std::filesystem::file_size(mfn, sizeEc);
+        if (!sizeEc) {
+            lastUploadMediaSize = mfnSize;
+        }
         if (rc == 200) {
             try {
                 nlohmann::json currentMeta = nlohmann::json::parse(resp, nullptr, false);
-                std::error_code ec;
-                auto mfnSize = std::filesystem::file_size(mfn, ec);
-                if (!ec && currentMeta.contains("format") && currentMeta["format"].contains("size")) {
+                if (!sizeEc && currentMeta.contains("format") && currentMeta["format"].contains("size")) {
                     auto fppsize = GetJSONIntValueFromString(currentMeta["format"], "size");
                     if (static_cast<int64_t>(mfnSize) == fppsize) {
                         doMediaUpload = false;
@@ -1205,12 +1211,17 @@ bool FPP::CheckUploadMedia(const std::string &media, std::string &mediaBaseName)
             } catch (...) {
             }
         }
-        if (doMediaUpload) {
+        if (!doMediaUpload) {
+            lastUploadMediaState = MediaUploadState::UpToDate;
+            spdlog::info("FPPConnect media {} already on {} ({}) with the same size ({} bytes), not uploading.", mediaBaseName, hostName, ipAddress, mfnSize);
+        } else {
             if (!FileExists(mfn.string())) {
+                lastUploadMediaState = MediaUploadState::NotFound;
                 spdlog::error("Uploading media: {}     Source file not found: {}", mediaBaseName, mediaFile);
                 messages.push_back("ERROR Uploading media: " + mediaBaseName + "     Source file not found: " + mediaFile);
                 faileduploads.push_back(mediaBaseName);
             } else {
+                lastUploadMediaState = MediaUploadState::Uploading;
                 std::string dir = "music";
                 std::string mfnExt = mfn.extension().string();
                 if (!mfnExt.empty() && mfnExt[0] == '.') mfnExt = mfnExt.substr(1);
@@ -1219,6 +1230,8 @@ bool FPP::CheckUploadMedia(const std::string &media, std::string &mediaBaseName)
                         dir = "videos";
                     }
                 }
+                spdlog::info("FPPConnect uploading media {} ({} bytes) to {} ({}) {} folder. Media check RC: {}  Source: {}",
+                             mediaBaseName, lastUploadMediaSize, hostName, ipAddress, dir, rc, mediaFile);
                 uploadOrCopyFile(mediaBaseName, mediaFile, dir);
             }
         }
@@ -1317,6 +1330,10 @@ bool FPP::PrepareUploadSequence(FSEQFile *file,
     lastUploadCompressionType = ctype;
     lastUploadSparse = sparse;
     lastUploadChannelCount = 0;
+    lastUploadMediaState = MediaUploadState::None;
+    lastUploadMediaName.clear();
+    lastUploadMediaSize = 0;
+    lastUploadNoChannels = false;
     std::filesystem::path fn(seq);
     std::string baseName = fn.filename().string();
     std::string mediaBaseName = "";
@@ -1327,9 +1344,13 @@ bool FPP::PrepareUploadSequence(FSEQFile *file,
             return true;
         }
     }
-    sequences[baseName].sequence = baseName;
-    sequences[baseName].media = mediaBaseName;
-    sequences[baseName].duration = ((float)(file->getStepTime() * file->getNumFrames())) / 1000.0f;
+    // An .eseq goes to the effects folder and is started with an FPP command; FPP can't
+    // play it as a playlist sequence entry.
+    if (fn.extension() != ".eseq") {
+        sequences[baseName].sequence = baseName;
+        sequences[baseName].media = mediaBaseName;
+        sequences[baseName].duration = ((float)(file->getStepTime() * file->getNumFrames())) / 1000.0f;
+    }
 
     std::string safeIP = ipAddress;
     std::replace(safeIP.begin(), safeIP.end(), '.', '_');
@@ -1470,6 +1491,7 @@ bool FPP::PrepareUploadSequence(FSEQFile *file,
         newRanges = SparseRangesToWrite(file, v2source, isEffectSeq, extendedRanges, controllerRanges);
         if (newRanges.empty() && isEffectSeq) {
             // The effect touches none of this controller's channels, so it needs no file.
+            lastUploadNoChannels = true;
             if (tempFileName != "") {
                 { std::error_code ec; std::filesystem::remove(tempFileName, ec); }
                 tempFileName = "";

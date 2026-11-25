@@ -64,6 +64,10 @@ struct FolderConfigView: View {
     // (read by `XLDiagnosticUploader.buildMultipartBody`), matching the
     // desktop crash-report email field.
     @AppStorage("xLightsEmail") private var xLightsEmail: String = ""
+    // Live collaboration (beta): shows Collaborate / Join and the session
+    // indicators. Read by SequencerViewModel.collab.
+    @AppStorage(CollabState.enabledKey) private var collaborationEnabled: Bool = false
+    @AppStorage(CollabState.displayNameKey) private var collaborationName: String = ""
 
     enum PickerMode: Identifiable {
         case showFolder
@@ -339,6 +343,28 @@ struct FolderConfigView: View {
                 }
 
                 Section {
+                    Toggle(isOn: $collaborationEnabled) {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Live collaboration (beta)")
+                            Text("Edit a sequence together with other Macs and iPads on the same network. Adds Collaborate to the sequencer toolbar and Join Session to the sequence list.")
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    if collaborationEnabled {
+                        TextField("Your name in sessions", text: $collaborationName,
+                                  prompt: Text(UIDevice.current.name))
+                            .textInputAutocapitalization(.words)
+                            .autocorrectionDisabled()
+                    }
+                } header: {
+                    Text("Collaboration")
+                }
+                .onChange(of: collaborationEnabled) { _, on in
+                    viewModel.collabPreferenceChanged(on)
+                }
+
+                Section {
                     Toggle("Save FSEQ on save", isOn: $fseqEnabled)
                     if fseqEnabled {
                         if let path = fseqFolderPath {
@@ -513,6 +539,13 @@ struct FolderConfigView: View {
     }
 
     private func performUpdateFromBase() {
+        if viewModel.isLayoutLocked {
+            updateResult = BaseDirUpdateResult(
+                success: false,
+                title: "Update Failed",
+                message: viewModel.layoutLockReason)
+            return
+        }
         // Flush pending edits before the merge so Update Now operates against the current path, not the previously-saved one.
         commitBaseShowDirectoryEdits()
 

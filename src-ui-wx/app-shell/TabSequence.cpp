@@ -8,6 +8,8 @@
  * License: https://github.com/xLightsSequencer/xLights/blob/master/License.txt
  **************************************************************/
 
+#include <algorithm>
+
 #include <wx/stopwatch.h>
 #include <wx/utils.h>
 #include <wx/tokenzr.h>
@@ -20,6 +22,7 @@
 #include <wx/dirdlg.h>
 #include <wx/filename.h>
 #include <wx/filedlg.h>
+#include <wx/stdpaths.h>
 
 #include <pugixml.hpp>
 #include <nlohmann/json.hpp>
@@ -28,6 +31,8 @@
 #include <thread>
 
 #include "xLightsMain.h"
+#include "app-shell/Collaboration.h"
+#include "collab/CollabManifest.h"
 #include "media/JukeboxPanel.h"
 #include "sequencer/SeqSettingsDialog.h"
 #include "sequencer/BatchRenderProgressDialog.h"
@@ -1004,6 +1009,35 @@ xLightsFrame::ShowSaveResult xLightsFrame::SaveShowFiles(const std::vector<ShowS
     if (parent == nullptr) {
         parent = this;
     }
+    // The layout and controller files are not written while a collaboration
+    // session holds the layout lock, nor by anyone but the session's host
+    // (whose layout it is); their unsaved changes stay pending. The rest of
+    // the save still goes ahead.
+    const bool writesLayout = std::any_of(files.begin(), files.end(), [](const FileToSave& f) { return f.write && HeldWithLayout(f.kind); });
+    if (writesLayout) {
+        bool held = false;
+        if (IsLayoutLocked()) {
+            RefusesLayoutWrite("saving the layout or controller files");
+            RefuseIfLayoutLocked(parent);
+            held = true;
+        } else if (RefuseIfCollabHostOnly("save the layout and controllers", parent)) {
+            held = true;
+        }
+        if (held) {
+            HeldSplit split = SplitHeldWithLayout(files);
+            for (const auto& p : split.held) {
+                spdlog::info("Not saving {} during the collaboration session; its changes stay pending.", p);
+            }
+            const bool writesRest = std::any_of(split.writable.begin(), split.writable.end(), [](const FileToSave& f) { return f.write; });
+            if (writesRest) {
+                ShowSaveResult rest = SaveShowFiles(split.writable, writeCopy, parent);
+                if (rest != ShowSaveResult::Saved) {
+                    return rest;
+                }
+            }
+            return ShowSaveResult::LayoutHeld;
+        }
+    }
     auto& guard = ShowFileGuard::Instance();
     ShowFileMerge::Options options;
     options.modelRenames = &AllModels.GetRenameLog();
@@ -1500,7 +1534,13 @@ bool xLightsFrame::SaveEffectsFile(bool backup)
     if (!networksPath.empty() && !UnsavedNetworkChanges && !_outputManager.IsDirty() && ShowFileGuard::Instance().HasChangedOnDisk(networksPath)) {
         files.push_back({ ShowSaveMerge::FileKind::Networks, networksPath, _outputManager.SaveToString(), false });
     }
-    if (SaveShowFiles(files, nullptr) != ShowSaveResult::Saved) {
+    const ShowSaveResult result = SaveShowFiles(files, nullptr);
+    if (result == ShowSaveResult::LayoutHeld) {
+        // The presets are a file of their own that the session doesn't hold.
+        SavePresetsFile();
+        return false;
+    }
+    if (result != ShowSaveResult::Saved) {
         return false;
     }
 
@@ -1627,7 +1667,7 @@ bool xLightsFrame::RenameModel(const std::string OldName, const std::string& New
     
     bool internalsChanged = false;
 
-    if (OldName == NewName) {
+    if (OldName == NewName || RefuseIfLayoutLocked()) {
         return false;
     }
     AbortRender();
@@ -2309,6 +2349,16 @@ void xLightsFrame::FinishBatchRenderDialog(bool stopped)
 
 bool xLightsFrame::SaveSequence()
 {
+    // A collaboration client's copy of the session sequence lives in a
+    // temporary folder; saving it means saving a copy somewhere chosen.
+    if (_collab && _collab->IsClientDocument()) {
+        if (IsNonInteractiveSave()) {
+            // Save As is a dialog; a script or batch save must not wait on one.
+            spdlog::error("Not saving: {}", SequenceSaveRefusal(CurrentSeqXmlFile != nullptr ? wxString::FromUTF8(CurrentSeqXmlFile->GetFullPath()) : wxString()));
+            return false;
+        }
+        return SaveAsSequence();
+    }
     LogMemoryUsage("SaveSequence start: " + xlightsFilename.ToStdString());
 
     wxString currentPath;
@@ -2433,6 +2483,13 @@ bool xLightsFrame::SaveSequence()
     // Sync jukebox UI state to sequence data before saving
     if (GetJukeboxPanel()) {
         GetJukeboxPanel()->SyncToData(CurrentSeqXmlFile->GetJukeboxButtons());
+    }
+    if (!mRenderOnSave) {
+        // Without Render on Save the fseq is written from whatever has been
+        // rendered so far; start other participants' waiting renders now so
+        // they at least get the xsq save's head start. Render on Save renders
+        // every row itself.
+        FlushRemoteRenders();
     }
     SetStatusText(_("Saving ") + CurrentSeqXmlFile->GetFullPath() + _(" ... Saving xsq."));
     spdlog::info("Saving XSQ file.");
@@ -2603,6 +2660,18 @@ std::string xLightsFrame::SequenceSaveRefusal(const wxString& path) const
     if (readOnlyMode) {
         return "Sequences cannot be saved in read only mode!";
     }
+    if (_collab != nullptr) {
+        if (!path.IsEmpty()) {
+            if (std::string r = Collab::SessionSaveRefusal(path.utf8_string(), _collab->TemporaryFolders()); !r.empty()) {
+                return r;
+            }
+        }
+        // The show folder is a temporary copy of the host's: the sequence
+        // is kept anywhere else the user picks.
+        if (_collab->OnSessionCopy()) {
+            return "";
+        }
+    }
     if (!path.IsEmpty() && !IsSequenceInShowDir(path)) {
         wxFileName fnDir(CurrentDir, "");
         fnDir.Normalize(wxPATH_NORM_DOTS | wxPATH_NORM_TILDE | wxPATH_NORM_ABSOLUTE | wxPATH_NORM_LONG | wxPATH_NORM_SHORTCUT);
@@ -2624,7 +2693,14 @@ bool xLightsFrame::SaveAsSequence()
         return false;
     }
     wxString initialDir = GetLastSequenceDialogDir();
-    {
+    std::vector<std::string> temporary = _collab != nullptr ? _collab->TemporaryFolders() : std::vector<std::string>();
+    if (_collab != nullptr && _collab->OnSessionCopy()) {
+        // Never start in the session's folders, which go when it ends.
+        std::string start = Collab::SessionSaveStartFolder({ initialDir.utf8_string(), _collab->OriginalShowFolder(),
+                                                             wxStandardPaths::Get().GetDocumentsDir().utf8_string() },
+                                                           temporary);
+        initialDir = wxString::FromUTF8(start);
+    } else {
         wxFileName fnInit(initialDir, "");
         fnInit.Normalize(wxPATH_NORM_DOTS | wxPATH_NORM_TILDE | wxPATH_NORM_ABSOLUTE | wxPATH_NORM_LONG | wxPATH_NORM_SHORTCUT);
         wxFileName fnShow(CurrentDir, "");
@@ -2654,7 +2730,14 @@ bool xLightsFrame::SaveAsSequence()
             ok = false;
             DisplayError("File name cannot be empty", this);
         }
-        if (ok) {
+        if (ok && !temporary.empty()) {
+            if (std::string r = Collab::SessionSaveRefusal(newFilename.utf8_string(), temporary); !r.empty()) {
+                ok = false;
+                DisplayWarning(r, this);
+                fd.SetDirectory(initialDir);
+            }
+        }
+        if (ok && !(_collab != nullptr && _collab->OnSessionCopy())) {
             if (!IsSequenceInShowDir(newFilename)) {
                 ok = false;
                 wxFileName fnDir(CurrentDir, "");

@@ -69,6 +69,7 @@ class OtherSettingsPanel: public wxPanel
 		wxChoice* GraphicsBackendChoice = nullptr;
 		// Hand-added: UI language (restart required).
 		wxChoice* LanguageChoice = nullptr;
+		wxCheckBox* CollaborationCheckBox = nullptr;
 
         virtual bool TransferDataFromWindow() override;
         virtual bool TransferDataToWindow() override;

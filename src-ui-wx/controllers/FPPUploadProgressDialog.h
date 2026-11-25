@@ -16,6 +16,7 @@
 #include <vector>
 
 class wxGauge;
+class wxSplitterWindow;
 class wxTreeCtrl;
 
 class FPPUploadProgressDialog: public wxDialog
@@ -32,7 +33,7 @@ class FPPUploadProgressDialog: public wxDialog
         wxStaticText* ActionLabel;
         //*)
 
-        enum class SequenceState { Uploaded, UpToDate, Failed, Cancelled };
+        enum class SequenceState { Uploaded, UpToDate, Skipped, Failed, Cancelled };
         struct ControllerResult {
             std::string name;
             std::string status;
@@ -70,6 +71,8 @@ class FPPUploadProgressDialog: public wxDialog
     void addCompleted(const wxString& text, const wxColour& colour, const std::vector<ControllerResult>& controllers, bool expand);
     void OnClose(wxCloseEvent& event);
 
+    wxSplitterWindow* _splitter = nullptr;
+    bool _sashMoved = false;
     wxStaticText* _sequenceHeader = nullptr;
     wxStaticText* _completedLabel = nullptr;
     wxTreeCtrl* _completedTree = nullptr;
@@ -82,6 +85,7 @@ class FPPUploadProgressDialog: public wxDialog
     long _firstSequenceStartMs = -1;
     int _uploadedCount = 0;
     int _upToDateCount = 0;
+    int _skippedCount = 0;
     int _failedCount = 0;
     int _cancelledCount = 0;
     int _completedCount = 0;

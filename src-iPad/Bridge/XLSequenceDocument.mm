@@ -321,14 +321,75 @@ typedef void (^XLFPPAuthPromptCompletion)(NSString* _Nullable user,
 typedef void (^XLFPPAuthPromptHandler)(NSString* host,
                                         XLFPPAuthPromptCompletion completion);
 
+NSString* const XLLayoutLockChangedNotification = @"XLLayoutLockChangedNotification";
+
 @synthesize lastClassificationTimeStep = _lastClassificationTimeStep;
 
 - (instancetype)init {
     self = [super init];
     if (self) {
         _context = std::make_unique<iPadRenderContext>();
+        _context->_layoutLockChanged = []() {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:XLLayoutLockChangedNotification object:nil];
+            });
+        };
     }
     return self;
+}
+
+- (BOOL)isLayoutLocked {
+    return _context && _context->IsLayoutLocked() ? YES : NO;
+}
+
+- (BOOL)refusesLayoutEdit {
+    if (!_context) return YES;
+    if (_context->IsLayoutLocked()) return YES;
+    _context->NoteLayoutEdit();
+    return NO;
+}
+
+- (BOOL)refusesLayoutEditOf:(nullable NSString*)name {
+    if (_context && name.length > 0 && _context->IsCollabReadOnly(std::string([name UTF8String]))) return YES;
+    return [self refusesLayoutEdit];
+}
+
+- (void)setCollabReadOnlyObjects:(NSArray<NSString*>*)names {
+    if (!_context) return;
+    std::set<std::string> out;
+    for (NSString* n in names) out.insert(std::string([n UTF8String] ?: ""));
+    _context->SetCollabReadOnlyObjects(std::move(out));
+}
+
+- (void)setLayoutGestureActive:(BOOL)active {
+    if (_context) _context->SetLayoutGestureActive(active ? true : false);
+}
+
+- (NSString*)layoutSaveRefusal {
+    if (_context && _context->InLiveLayoutSession() && !_context->IsCollabHost()) {
+        return @"Only the session host saves the layout and controllers. Your changes reach the host as you make them.";
+    }
+    return @"";
+}
+
+- (NSString*)sequenceSettingsRefusal {
+    if (_context && _context->IsSequenceSettingsLocked()) {
+        return [NSString stringWithUTF8String:_context->GetSequenceSettingsLockReason().c_str()] ?: @"";
+    }
+    if (_context && _context->InCollabSession()) {
+        return @"Sequence settings are locked during a collaboration session";
+    }
+    return @"";
+}
+
+- (NSString*)layoutLockReason {
+    if (!_context) return @"";
+    return [NSString stringWithUTF8String:_context->GetLayoutLockReason().c_str()] ?: @"";
+}
+
+- (void)setCollaborationLock:(BOOL)locked reason:(nullable NSString*)reason {
+    if (!_context) return;
+    _context->SetCollaborationLock(locked, reason ? std::string([reason UTF8String]) : std::string());
 }
 
 - (BOOL)loadShowFolder:(NSString*)path {
@@ -1035,6 +1096,7 @@ static std::optional<HEADER_INFO_TYPES> headerTypeFromString(NSString* key) {
 
 - (BOOL)setHeaderInfo:(NSString*)value forKey:(NSString*)key {
     if (!_context || !_context->IsSequenceLoaded()) return NO;
+    if (_context->RefusesSequenceSettingsWrite("changing sequence header info")) return NO;
     auto* sf = _context->GetSequenceFile();
     if (!sf) return NO;
     auto t = headerTypeFromString(key);
@@ -1085,6 +1147,7 @@ static std::optional<HEADER_INFO_TYPES> headerTypeFromString(NSString* key) {
 
 - (BOOL)setMediaFilePath:(NSString*)path {
     if (!_context || !_context->IsSequenceLoaded()) return NO;
+    if (_context->RefusesSequenceSettingsWrite("changing the sequence media file")) return NO;
     auto* sf = _context->GetSequenceFile();
     if (!sf) return NO;
     std::string p = path ? std::string([path UTF8String]) : std::string();
@@ -1105,6 +1168,7 @@ static std::optional<HEADER_INFO_TYPES> headerTypeFromString(NSString* key) {
 
 - (BOOL)setSequenceType:(NSString*)type {
     if (!_context || !_context->IsSequenceLoaded()) return NO;
+    if (_context->RefusesSequenceSettingsWrite("changing the sequence type")) return NO;
     auto* sf = _context->GetSequenceFile();
     if (!sf || type.length == 0) return NO;
     std::string t([type UTF8String]);
@@ -1117,6 +1181,7 @@ static std::optional<HEADER_INFO_TYPES> headerTypeFromString(NSString* key) {
 
 - (BOOL)setFrameIntervalMS:(int)frameMS {
     if (!_context || !_context->IsSequenceLoaded()) return NO;
+    if (_context->RefusesSequenceSettingsWrite("changing the sequence timing")) return NO;
     auto* sf = _context->GetSequenceFile();
     if (!sf || frameMS <= 0) return NO;
     if (sf->GetFrameMS() == frameMS) return NO;
@@ -1132,6 +1197,7 @@ static std::optional<HEADER_INFO_TYPES> headerTypeFromString(NSString* key) {
 
 - (BOOL)setSequenceSupportsModelBlending:(BOOL)enabled {
     if (!_context || !_context->IsSequenceLoaded()) return NO;
+    if (_context->RefusesSequenceSettingsWrite("changing model blending")) return NO;
     auto& elements = _context->GetSequenceElements();
     if (elements.SupportsModelBlending() == (bool)enabled) return NO;
     elements.SetSupportsModelBlending(enabled ? true : false);
@@ -1154,6 +1220,7 @@ static std::optional<HEADER_INFO_TYPES> headerTypeFromString(NSString* key) {
 
 - (BOOL)setRenderMode:(NSString*)mode {
     if (!_context || !_context->IsSequenceLoaded()) return NO;
+    if (_context->RefusesSequenceSettingsWrite("changing the render mode")) return NO;
     auto* sf = _context->GetSequenceFile();
     if (!sf || mode.length == 0) return NO;
     std::string m([mode UTF8String]);
@@ -1305,6 +1372,7 @@ static std::optional<HEADER_INFO_TYPES> headerTypeFromString(NSString* key) {
 
 - (BOOL)setSequenceDurationMS:(int)ms {
     if (!_context || !_context->IsSequenceLoaded()) return NO;
+    if (_context->RefusesSequenceSettingsWrite("changing the sequence duration")) return NO;
     auto* sf = _context->GetSequenceFile();
     if (!sf || ms <= 0) return NO;
     if (sf->GetSequenceDurationMS() == ms) return NO;
@@ -4397,6 +4465,7 @@ static void SetElementMasterVisible(SequenceElements& se, Element* elem, bool vi
 }
 
 - (BOOL)createLayoutGroup:(NSString*)name {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !name) return NO;
     std::string s = [name UTF8String];
     return _context->AddNamedLayoutGroup(s) ? YES : NO;
@@ -5102,6 +5171,7 @@ static NSArray<NSDictionary*>* SerialPortChoices(const ControllerCaps* caps, int
 - (BOOL)setLayoutModelProperty:(NSString*)name
                            key:(NSString*)key
                          value:(id)value {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !name || !key) return NO;
     // Abort any in-flight render before touching Model state — the
     // render workers hold raw Model* references and racing them
@@ -5889,6 +5959,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 }
 
 - (BOOL)deleteVertexAtIndex:(NSInteger)vertexIndex forModel:(NSString*)modelName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !modelName || modelName.length == 0) return NO;
     Model* m = _context->GetModelManager()[modelName.UTF8String];
     if (!m) return NO;
@@ -5965,39 +6036,10 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 }
 
 - (BOOL)deleteModel:(NSString*)modelName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !modelName || modelName.length == 0) return NO;
     if (!_context->AbortRender(5000)) return NO;
-    auto& mm = _context->GetModelManager();
-    Model* m = mm.GetModel(modelName.UTF8String);
-    if (!m) return NO;
-    const std::string name = m->GetName();
-    const bool isGroup = m->GetDisplayAs() == DisplayAsType::ModelGroup;
-    // Delete also takes the model out of every group's member list and moves
-    // models chained to it onto its start channel, in memory only. The save
-    // patches just the marked records, so mark the ones that changed.
-    auto stateOf = [](Model* other) {
-        std::vector<std::string> s{ other->GetModelStartChannel() };
-        if (other->GetDisplayAs() == DisplayAsType::ModelGroup) {
-            const auto& members = static_cast<ModelGroup*>(other)->ModelNames();
-            s.insert(s.end(), members.begin(), members.end());
-        }
-        return s;
-    };
-    std::map<std::string, std::vector<std::string>> before;
-    for (const auto& [otherName, other] : mm) {
-        if (otherName != name) before[otherName] = stateOf(other);
-    }
-    if (!mm.Delete(name)) return NO;
-    if (isGroup) {
-        _context->MarkGroupDeleted(name);
-    } else {
-        _context->MarkModelDeleted(name);
-    }
-    for (const auto& [otherName, state] : before) {
-        if (Model* other = mm.GetModel(otherName); other && stateOf(other) != state) {
-            _context->MarkLayoutModelDirty(otherName);
-        }
-    }
+    if (!_context->DeleteModelMarked(modelName.UTF8String)) return NO;
     [self recalcModelStartChannels];
     return YES;
 }
@@ -6042,6 +6084,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 
 - (NSString*)createModelSetWithModels:(NSArray<NSString*>*)modelNames
                                  named:(NSString*)suggestedName {
+    if ([self refusesLayoutEdit]) return nil;
     if (!_context || !_context->HasModelManager() || modelNames.count < 2) return nil;
     auto& mgr = _context->GetModelManager();
     std::vector<std::string> members;
@@ -6081,6 +6124,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 }
 
 - (BOOL)renameModelSet:(NSString*)oldName to:(NSString*)newName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !oldName || !newName) return NO;
     auto& setMgr = _context->GetModelManager().GetSetManager();
     auto* s = setMgr.GetSetByName(oldName.UTF8String);
@@ -6089,6 +6133,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 }
 
 - (BOOL)deleteModelSet:(NSString*)setName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !setName) return NO;
     auto& setMgr = _context->GetModelManager().GetSetManager();
     auto* s = setMgr.GetSetByName(setName.UTF8String);
@@ -6098,6 +6143,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 }
 
 - (BOOL)addModel:(NSString*)modelName toModelSet:(NSString*)setName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName || !setName) return NO;
     auto& mgr = _context->GetModelManager();
     Model* m = mgr.GetModel(modelName.UTF8String);
@@ -6116,6 +6162,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 }
 
 - (BOOL)removeModelFromItsSet:(NSString*)modelName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName) return NO;
     auto& setMgr = _context->GetModelManager().GetSetManager();
     if (!setMgr.GetSetContaining(modelName.UTF8String)) return NO;
@@ -6124,6 +6171,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 }
 
 - (BOOL)renameModel:(NSString*)oldName to:(NSString*)newName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager()) return NO;
     if (!oldName || !newName) return NO;
     std::string oldStd = oldName.UTF8String;
@@ -6171,6 +6219,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 
 - (BOOL)setModelAliases:(NSString*)modelName
                 aliases:(NSArray<NSString*>*)aliases {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager()) return NO;
     if (!modelName) return NO;
     Model* m = _context->GetModelManager()[std::string(modelName.UTF8String)];
@@ -6199,6 +6248,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 
 - (BOOL)setStrandNames:(NSString*)modelName
                  names:(NSArray<NSString*>*)names {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName) return NO;
     Model* m = _context->GetModelManager()[std::string(modelName.UTF8String)];
     if (!m) return NO;
@@ -6212,6 +6262,7 @@ static NSDictionary<NSString*, id>* XLIncomingResult(iPadRenderContext::Incoming
 
 - (BOOL)setNodeNames:(NSString*)modelName
                names:(NSArray<NSString*>*)names {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName) return NO;
     Model* m = _context->GetModelManager()[std::string(modelName.UTF8String)];
     if (!m) return NO;
@@ -6270,6 +6321,7 @@ static NSDictionary<NSString*, NSDictionary<NSString*, NSString*>*>* faceStateTo
 
 - (BOOL)setFaceInfo:(NSString*)modelName
             entries:(NSDictionary<NSString*, NSDictionary<NSString*, NSString*>*>*)entries {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName) return NO;
     Model* m = _context->GetModelManager()[std::string(modelName.UTF8String)];
     if (!m) return NO;
@@ -6281,6 +6333,7 @@ static NSDictionary<NSString*, NSDictionary<NSString*, NSString*>*>* faceStateTo
 
 - (BOOL)setStateInfo:(NSString*)modelName
              entries:(NSDictionary<NSString*, NSDictionary<NSString*, NSString*>*>*)entries {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName) return NO;
     Model* m = _context->GetModelManager()[std::string(modelName.UTF8String)];
     if (!m) return NO;
@@ -6311,6 +6364,7 @@ static NSDictionary<NSString*, NSDictionary<NSString*, NSString*>*>* faceStateTo
 
 - (BOOL)setDimmingInfo:(NSString*)modelName
                entries:(NSDictionary<NSString*, NSDictionary<NSString*, NSString*>*>*)entries {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName) return NO;
     Model* m = _context->GetModelManager()[std::string(modelName.UTF8String)];
     if (!m) return NO;
@@ -6586,6 +6640,7 @@ static void repointSequenceFaceReferences(iPadRenderContext* ctx,
                     height:(int)h
                      depth:(int)d
                  locations:(NSArray<NSArray<NSArray<NSNumber*>*>*>*)locations {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName) return NO;
     if (w < 1 || h < 1 || d < 1) return NO;
     if (!locations || (int)locations.count != d) return NO;
@@ -6624,6 +6679,7 @@ static void repointSequenceFaceReferences(iPadRenderContext* ctx,
 }
 
 - (BOOL)clearDimmingCurveOnModel:(NSString*)modelName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName) return NO;
     Model* m = _context->GetModelManager()[std::string(modelName.UTF8String)];
     if (!m) return NO;
@@ -6637,6 +6693,7 @@ static void repointSequenceFaceReferences(iPadRenderContext* ctx,
 - (BOOL)renameSubModelNamed:(NSString*)oldName
                     onModel:(NSString*)parentName
                          to:(NSString*)newName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager()) return NO;
     if (!oldName || !parentName || !newName) return NO;
     Model* parent = _context->GetModelManager()[std::string(parentName.UTF8String)];
@@ -6691,6 +6748,7 @@ static void repointSequenceFaceReferences(iPadRenderContext* ctx,
 
 - (BOOL)replaceSubModelsOnModel:(NSString*)parentName
                     withEntries:(NSArray<NSDictionary*>*)entries {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !parentName || !entries) return NO;
     Model* parent = _context->GetModelManager()[std::string(parentName.UTF8String)];
     if (!parent) return NO;
@@ -6904,7 +6962,9 @@ static NSDictionary* SubModelImportDataToDict(const XmlSerialize::SubModelImport
                         includeEmptyGroups:(BOOL)includeEmptyGroups {
     NSMutableArray<NSString*>* renamed = [NSMutableArray array];
     NSMutableArray<NSString*>* skipped = [NSMutableArray array];
-    if (!_context || !_context->HasModelManager() || path.length == 0) {
+    // Refused before anything is imported: the layout lock can come on
+    // while the import sheet is open.
+    if (!_context || !_context->HasModelManager() || path.length == 0 || [self refusesLayoutEdit]) {
         return @{ @"models": @0, @"groups": @0, @"viewpoints": @0,
                   @"renamed": renamed, @"skippedEmptyGroups": skipped };
     }
@@ -7051,8 +7111,8 @@ static NSDictionary* SubModelImportDataToDict(const XmlSerialize::SubModelImport
     if (modelCount > 0 || groupCount > 0) {
         [self recalcModelStartChannels];
     }
-    if (viewpointCount > 0) {
-        _context->SaveViewpoints();
+    if (viewpointCount > 0 && !_context->SaveViewpoints()) {
+        spdlog::warn("XLSequenceDocument: cross-show import added viewpoints but saving them failed");
     }
     if (modelCount > 0 || groupCount > 0) {
         if (!_context->SaveLayoutChanges()) {
@@ -7203,6 +7263,7 @@ static NSDictionary* SubModelImportDataToDict(const XmlSerialize::SubModelImport
 }
 
 - (BOOL)deleteLayoutGroup:(NSString*)name {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || name.length == 0) return NO;
     if (!_context->DeleteNamedLayoutGroup(std::string(name.UTF8String))) return NO;
     [self recalcModelStartChannels];
@@ -7210,6 +7271,7 @@ static NSDictionary* SubModelImportDataToDict(const XmlSerialize::SubModelImport
 }
 
 - (BOOL)renameLayoutGroup:(NSString*)oldName to:(NSString*)newName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || oldName.length == 0 || newName.length == 0) return NO;
     return _context->RenameNamedLayoutGroup(std::string(oldName.UTF8String),
                                              std::string(newName.UTF8String)) ? YES : NO;
@@ -7281,6 +7343,7 @@ static NSDictionary* SubModelImportDataToDict(const XmlSerialize::SubModelImport
 
 - (nullable NSString*)addSubModelToModel:(NSString*)parentName
                                     name:(NSString*)submodelName {
+    if ([self refusesLayoutEdit]) return nil;
     if (!_context || !_context->HasModelManager()) return nil;
     if (!parentName || !submodelName) return nil;
     Model* parent = _context->GetModelManager()[std::string(parentName.UTF8String)];
@@ -7476,6 +7539,7 @@ static NSDictionary* SubModelImportDataToDict(const XmlSerialize::SubModelImport
 - (BOOL)setSubmodelAliasesOnParent:(NSString*)parentName
                           submodel:(NSString*)submodelName
                            aliases:(NSArray<NSString*>*)aliases {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager()) return NO;
     if (!parentName || !submodelName) return NO;
     Model* parent = _context->GetModelManager()[std::string(parentName.UTF8String)];
@@ -7524,6 +7588,7 @@ static NSDictionary* SubModelImportDataToDict(const XmlSerialize::SubModelImport
 
 - (BOOL)deleteSubModelNamed:(NSString*)submodelName
                     onModel:(NSString*)parentName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager()) return NO;
     if (!submodelName || !parentName) return NO;
     if (submodelName.length == 0 || parentName.length == 0) return NO;
@@ -7684,6 +7749,7 @@ static std::string LayoutGroupForNewItem(const std::string& active) {
 - (BOOL)setLayoutModelGroupProperty:(NSString*)name
                                 key:(NSString*)key
                               value:(id)value {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !name || !key) return NO;
     Model* m = _context->GetModelManager()[std::string([name UTF8String])];
     if (!m || m->GetDisplayAs() != DisplayAsType::ModelGroup) return NO;
@@ -7761,6 +7827,7 @@ static std::string LayoutGroupForNewItem(const std::string& active) {
 
 - (BOOL)addModel:(NSString*)modelName
          toGroup:(NSString*)groupName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName || !groupName) return NO;
     Model* g = _context->GetModelManager()[groupName.UTF8String];
     if (!g || g->GetDisplayAs() != DisplayAsType::ModelGroup) return NO;
@@ -7779,6 +7846,7 @@ static std::string LayoutGroupForNewItem(const std::string& active) {
 
 - (BOOL)removeModel:(NSString*)modelName
           fromGroup:(NSString*)groupName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName || !groupName) return NO;
     Model* g = _context->GetModelManager()[groupName.UTF8String];
     if (!g || g->GetDisplayAs() != DisplayAsType::ModelGroup) return NO;
@@ -7801,6 +7869,7 @@ static std::string LayoutGroupForNewItem(const std::string& active) {
 
 - (BOOL)createModelGroup:(NSString*)groupName
                   members:(NSArray<NSString*>*)initialMembers {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() ||
         !groupName || groupName.length == 0) return NO;
     // J-16 — sanitize via the canonical desktop helper. The
@@ -7839,18 +7908,19 @@ static std::string LayoutGroupForNewItem(const std::string& active) {
 }
 
 - (BOOL)deleteModelGroup:(NSString*)groupName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() ||
         !groupName || groupName.length == 0) return NO;
     Model* g = _context->GetModelManager()[groupName.UTF8String];
     if (!g || g->GetDisplayAs() != DisplayAsType::ModelGroup) return NO;
     std::string name = groupName.UTF8String;
     if (!_context->AbortRender(5000)) return NO;
-    if (!_context->GetModelManager().Delete(name)) return NO;
-    _context->MarkGroupDeleted(name);
+    if (!_context->DeleteModelMarked(name)) return NO;
     return YES;
 }
 
 - (BOOL)renameModelGroup:(NSString*)oldName to:(NSString*)newName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager()) return NO;
     if (!oldName || !newName) return NO;
     std::string oldStd = oldName.UTF8String;
@@ -8147,6 +8217,7 @@ static bool MatchesActiveLayoutGroupForViewObject(const std::string& voGroup,
 }
 
 - (nullable NSString*)createViewObjectWithType:(NSString*)type {
+    if ([self refusesLayoutEdit]) return nil;
     if (!_context || !_context->HasViewObjectManager() || !type) return nil;
     std::string t = type.UTF8String;
     _context->AbortRender(5000);
@@ -8168,6 +8239,7 @@ static bool MatchesActiveLayoutGroupForViewObject(const std::string& voGroup,
 }
 
 - (BOOL)deleteViewObject:(NSString*)name {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasViewObjectManager() || !name || name.length == 0) return NO;
     if ([name isEqualToString:kBackgroundPseudoObjectName]) return NO;
     std::string nm = name.UTF8String;
@@ -8179,6 +8251,7 @@ static bool MatchesActiveLayoutGroupForViewObject(const std::string& voGroup,
 }
 
 - (BOOL)renameViewObject:(NSString*)oldName to:(NSString*)newName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasViewObjectManager()) return NO;
     if (!oldName || !newName) return NO;
     if ([oldName isEqualToString:kBackgroundPseudoObjectName]) return NO;
@@ -8203,6 +8276,7 @@ static bool MatchesActiveLayoutGroupForViewObject(const std::string& voGroup,
 }
 
 - (nullable NSString*)duplicateViewObject:(NSString*)name {
+    if ([self refusesLayoutEdit]) return nil;
     if (!_context || !_context->HasViewObjectManager()) return nil;
     if (!name || name.length == 0) return nil;
     if ([name isEqualToString:kBackgroundPseudoObjectName]) return nil;
@@ -8241,6 +8315,7 @@ static bool MatchesActiveLayoutGroupForViewObject(const std::string& voGroup,
 - (BOOL)setLayoutViewObjectProperty:(NSString*)name
                                 key:(NSString*)key
                               value:(id)value {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !name || !key) return NO;
     _context->AbortRender(5000);
     // J-8 — route 2D Background edits to the active-group
@@ -10011,6 +10086,7 @@ static void BuildCustomProps(CustomModel* cm, NSMutableArray* out) {
 - (BOOL)setPerTypeProperty:(NSString*)key
                    onModel:(NSString*)modelName
                      value:(id)value {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName || !key) return NO;
     Model* m = _context->GetModelManager()[modelName.UTF8String];
     if (!m) return NO;
@@ -11341,6 +11417,7 @@ static void BuildCustomProps(CustomModel* cm, NSMutableArray* out) {
 }
 
 - (BOOL)undoLastLayoutChange {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context) return NO;
     _context->AbortRender(5000);
     return _context->UndoLastLayoutChange() ? YES : NO;
@@ -13222,6 +13299,7 @@ static const char* kFadeOutKey = "T_TEXTCTRL_Fadeout";
 }
 
 - (BOOL)setGlobalOutputSetting:(NSString*)key value:(id)value {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !key) return NO;
     auto& om = _context->GetOutputManager();
     const std::string k = key.UTF8String;
@@ -13403,6 +13481,7 @@ static const char* kFadeOutKey = "T_TEXTCTRL_Fadeout";
 
 - (BOOL)addAltTrackAtPath:(NSString*)path shortname:(NSString*)shortname {
     if (!_context || !path || path.length == 0) return NO;
+    if (_context->RefusesSequenceSettingsWrite("adding an alternate audio track")) return NO;
     SequenceFile* sf = _context->GetSequenceFile();
     if (!sf) return NO;
     sf->AddAltTrack(_context->GetShowDirectory(),
@@ -13414,6 +13493,7 @@ static const char* kFadeOutKey = "T_TEXTCTRL_Fadeout";
 
 - (BOOL)removeAltTrackAtIndex:(NSInteger)index {
     if (!_context) return NO;
+    if (_context->RefusesSequenceSettingsWrite("removing an alternate audio track")) return NO;
     SequenceFile* sf = _context->GetSequenceFile();
     if (!sf) return NO;
     if (index < 0 || index >= sf->GetAltTrackCount()) return NO;
@@ -13430,6 +13510,7 @@ static const char* kFadeOutKey = "T_TEXTCTRL_Fadeout";
 
 - (BOOL)setAltTrackPathAtIndex:(NSInteger)index path:(NSString*)path {
     if (!_context || !path) return NO;
+    if (_context->RefusesSequenceSettingsWrite("changing an alternate audio track")) return NO;
     SequenceFile* sf = _context->GetSequenceFile();
     if (!sf) return NO;
     if (index < 0 || index >= sf->GetAltTrackCount()) return NO;
@@ -13441,6 +13522,7 @@ static const char* kFadeOutKey = "T_TEXTCTRL_Fadeout";
 
 - (BOOL)setAltTrackShortnameAtIndex:(NSInteger)index shortname:(NSString*)shortname {
     if (!_context) return NO;
+    if (_context->RefusesSequenceSettingsWrite("renaming an alternate audio track")) return NO;
     SequenceFile* sf = _context->GetSequenceFile();
     if (!sf) return NO;
     if (index < 0 || index >= sf->GetAltTrackCount()) return NO;
@@ -14008,6 +14090,9 @@ static std::string iPadLiftNestedStemModel(const std::string& rootDir) {
 
 - (void)registerStemTracks:(const std::vector<std::pair<std::string, std::string>>&)encoded {
     if (!_context) return;
+    // The stems stay usable in the waveform (the AudioManager holds them);
+    // only adding them as alternate tracks, a sequence setting, waits.
+    if (_context->RefusesSequenceSettingsWrite("adding stems as alternate audio tracks")) return;
     SequenceFile* sf = _context->GetSequenceFile();
     if (!sf) return;
     std::string showDir = _context->GetShowDirectory();
@@ -17329,6 +17414,7 @@ static NSArray<NSString*>* StdListToNSArray(const std::list<std::string>& list) 
 - (BOOL)setControllerProperty:(NSString*)key
                  onController:(NSString*)name
                         value:(id)value {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !key || !name) return NO;
     Controller* c = _context->GetOutputManager().GetController(name.UTF8String);
     if (!c) return NO;
@@ -17816,6 +17902,7 @@ static NSArray<NSString*>* StdListToNSArray(const std::list<std::string>& list) 
 #pragma mark - J-31.3 — Controllers add / delete
 
 - (nullable NSString*)addControllerOfType:(NSString*)type {
+    if ([self refusesLayoutEdit]) return nil;
     if (!_context || !type) return nil;
     auto& om = _context->GetOutputManager();
     Controller* c = nullptr;
@@ -17835,6 +17922,7 @@ static NSArray<NSString*>* StdListToNSArray(const std::list<std::string>& list) 
 }
 
 - (BOOL)deleteController:(NSString*)name {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !name) return NO;
     auto& om = _context->GetOutputManager();
     if (!om.GetController(name.UTF8String)) return NO;
@@ -17865,6 +17953,7 @@ static NSArray<NSString*>* StdListToNSArray(const std::list<std::string>& list) 
 }
 
 - (BOOL)moveController:(NSString*)name toIndex:(int)destIndex {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !name) return NO;
     auto& om = _context->GetOutputManager();
     Controller* c = om.GetController(name.UTF8String);
@@ -17878,6 +17967,7 @@ static NSArray<NSString*>* StdListToNSArray(const std::list<std::string>& list) 
 
 - (BOOL)setControllerActiveState:(NSString*)state
                     onController:(NSString*)name {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !state || !name) return NO;
     Controller* c = _context->GetOutputManager().GetController(name.UTF8String);
     if (!c) return NO;
@@ -17892,6 +17982,7 @@ static NSArray<NSString*>* StdListToNSArray(const std::list<std::string>& list) 
 }
 
 - (BOOL)unlinkControllerFromBase:(NSString*)name {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !name) return NO;
     Controller* c = _context->GetOutputManager().GetController(name.UTF8String);
     if (!c || !c->IsFromBase()) return NO;
@@ -17901,6 +17992,7 @@ static NSArray<NSString*>* StdListToNSArray(const std::list<std::string>& list) 
 }
 
 - (BOOL)unlinkModelFromBase:(NSString*)modelName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !modelName) return NO;
     auto& mgr = _context->GetModelManager();
     Model* m = mgr[std::string(modelName.UTF8String)];
@@ -17913,6 +18005,7 @@ static NSArray<NSString*>* StdListToNSArray(const std::list<std::string>& list) 
 }
 
 - (BOOL)unlinkGroupFromBase:(NSString*)groupName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !_context->HasModelManager() || !groupName) return NO;
     auto& mgr = _context->GetModelManager();
     Model* m = mgr[std::string(groupName.UTF8String)];
@@ -17947,6 +18040,7 @@ static std::vector<std::string> ToStringVector(NSArray<NSString*>* names) {
 - (nullable NSString*)promoteToBaseShowFolderControllers:(NSArray<NSString*>*)controllers
                                                   models:(NSArray<NSString*>*)models
                                                  objects:(NSArray<NSString*>*)objects {
+    if ([self refusesLayoutEdit]) return nil;
     if (!_context || !_context->HasModelManager()) return @"No show folder loaded.";
     auto& om = _context->GetOutputManager();
     std::string const baseDir = om.GetBaseShowDir();
@@ -18003,10 +18097,12 @@ static std::vector<std::string> ToStringVector(NSArray<NSString*>* names) {
 }
 
 - (NSDictionary*)updateFromBaseShowDirectory {
+    if ([self refusesLayoutEdit]) return @{};
     return [self updateFromBaseShowDirectorySkippingUnchanged:NO];
 }
 
 - (NSDictionary*)updateFromBaseShowDirectorySkippingUnchanged:(BOOL)skipUnchanged {
+    if ([self refusesLayoutEdit]) return @{};
     if (!_context) {
         return @{ @"error": @"No show folder loaded.",
                   @"controllersChanged": @NO,
@@ -18570,6 +18666,7 @@ public:
 }
 
 - (NSArray<NSString*>*)resolvePendingDiscoveredControllers:(BOOL)add {
+    if ([self refusesLayoutEdit]) return @[];
     NSMutableArray<NSString*>* addedNames = [NSMutableArray array];
     if (add && _context) {
         auto& om = _context->GetOutputManager();
@@ -18590,6 +18687,7 @@ public:
 
 - (BOOL)applyDiscoveryMismatch:(NSDictionary*)descriptor
                          action:(NSString*)action {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !descriptor || !action) return NO;
     auto& om = _context->GetOutputManager();
     NSString* kind = descriptor[@"kind"];
@@ -18997,6 +19095,7 @@ static NSDictionary* BuildEmptyPortEntry(NSString* kind,
                                 kind:(NSString*)kind
                                 port:(int)port
                             protocol:(NSString*)protocol {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !name || !kind || !protocol) return NO;
     if (![kind isEqualToString:@"pixel"] && ![kind isEqualToString:@"serial"]) return NO;
     Controller* c = _context->GetOutputManager().GetController(name.UTF8String);
@@ -19124,6 +19223,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
                             port:(int)port
                       afterModel:(nullable NSString*)afterModelName
                      smartRemote:(int)smartRemote {
+    if ([self refusesLayoutEdit]) return NO;
     return [self assignModelToController:modelName controllerName:controllerName kind:portKind port:port
                               afterModel:afterModelName beforeModel:nil smartRemote:smartRemote];
 }
@@ -19134,6 +19234,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
                             port:(int)port
                      beforeModel:(NSString*)beforeModelName
                      smartRemote:(int)smartRemote {
+    if ([self refusesLayoutEdit]) return NO;
     if (beforeModelName.length == 0) return NO;
     return [self assignModelToController:modelName controllerName:controllerName kind:portKind port:port
                               afterModel:nil beforeModel:beforeModelName smartRemote:smartRemote];
@@ -19146,6 +19247,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
                       afterModel:(nullable NSString*)afterModelName
                      beforeModel:(nullable NSString*)beforeModelName
                      smartRemote:(int)smartRemote {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !modelName || !controllerName || !portKind) return NO;
     if (!_context->HasModelManager()) return NO;
     auto& om = _context->GetOutputManager();
@@ -19397,6 +19499,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
 - (int)setSmartRemoteAndIncrementOnController:(NSString*)controllerName
                                           port:(int)port
                                        startId:(int)startId {
+    if ([self refusesLayoutEdit]) return 0;
     if (!_context || !_context->HasModelManager() || controllerName.length == 0) return 0;
     Controller* c = _context->GetOutputManager().GetController(controllerName.UTF8String);
     if (!c) return 0;
@@ -19441,6 +19544,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
 - (int)setSmartRemoteTypeOnController:(NSString*)controllerName
                                   port:(int)port
                                   type:(NSString*)type {
+    if ([self refusesLayoutEdit]) return 0;
     if (!_context || !_context->HasModelManager() || controllerName.length == 0) return 0;
     if (type.length == 0) return 0;
     Controller* c = _context->GetOutputManager().GetController(controllerName.UTF8String);
@@ -19477,6 +19581,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
 // what desktop does — a remote spans the block, so clearing one port
 // alone would leave the rest pointing at a remote that is gone.
 - (int)removeSmartRemoteOnController:(NSString*)controllerName port:(int)port {
+    if ([self refusesLayoutEdit]) return 0;
     if (!_context || !_context->HasModelManager() || controllerName.length == 0) return 0;
     Controller* c = _context->GetOutputManager().GetController(controllerName.UTF8String);
     if (!c) return 0;
@@ -19537,6 +19642,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
 - (int)removeAllModelsFromController:(NSString*)controllerName
                                 kind:(NSString*)kind
                                 port:(int)port {
+    if ([self refusesLayoutEdit]) return 0;
     NSArray<NSString*>* names = [self modelNamesOnController:controllerName kind:kind port:port];
     int n = 0;
     for (NSString* name in names) {
@@ -19546,6 +19652,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
 }
 
 - (int)removeAllModelsFromController:(NSString*)controllerName {
+    if ([self refusesLayoutEdit]) return 0;
     if (!_context || !_context->HasModelManager() || controllerName.length == 0) return 0;
     const std::string target(controllerName.UTF8String);
     // Snapshot first: removing rewrites controller assignments, so
@@ -19567,6 +19674,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
                              kind:(NSString*)kind
                          fromPort:(int)fromPort
                            toPort:(int)toPort {
+    if ([self refusesLayoutEdit]) return 0;
     if (fromPort == toPort) return 0;
     if (!_context || !_context->HasModelManager() || controllerName.length == 0) return 0;
 
@@ -19618,6 +19726,7 @@ static UDControllerPort* GetUDPortForKind(UDController& cud,
 }
 
 - (BOOL)removeModelFromController:(NSString*)modelName {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context || !modelName || !_context->HasModelManager()) return NO;
     auto& mm = _context->GetModelManager();
     Model* m = mm[modelName.UTF8String];
@@ -20813,6 +20922,7 @@ NSString* fppTypeString(FPP_TYPE t) {
 #pragma mark - Theme-07 Sort Controllers
 
 - (BOOL)sortControllersByMode:(NSString*)mode {
+    if ([self refusesLayoutEdit]) return NO;
     if (!_context) return NO;
     auto& om = _context->GetOutputManager();
     std::string m = mode ? mode.UTF8String : "";

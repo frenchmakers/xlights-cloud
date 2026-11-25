@@ -1,0 +1,240 @@
+#pragma once
+
+/***************************************************************
+ * This source files comes from the xLights project
+ * https://www.xlights.org
+ * https://github.com/xLightsSequencer/xLights
+ * See the github commit history for a record of contributing
+ * developers.
+ * Copyright claimed based on commit dates recorded in Github
+ * License: https://github.com/xLightsSequencer/xLights/blob/master/License.txt
+ **************************************************************/
+
+// The desktop side of live collaboration: the ICollabApp hooks over
+// xLightsFrame, the CollabController it drives, the File > Collaborate menu,
+// the status bar indicator and notices, the session and join windows, and
+// presence for the sequencer to draw (CollabOverlay).
+
+#include <functional>
+#include <map>
+#include <memory>
+#include <mutex>
+#include <string>
+#include <vector>
+
+#include <wx/event.h>
+#include <wx/string.h>
+#include <wx/timer.h>
+
+#include "collab/CollabController.h"
+#include "layout/CollabLayoutOverlay.h"
+#include "sequencer/CollabOverlay.h"
+
+class BaseObject;
+class Element;
+class xLightsFrame;
+class wxMenu;
+class wxMenuItem;
+class wxButton;
+class wxPanel;
+class wxStaticText;
+class CollabSessionWindow;
+class CollabJoinDialog;
+
+class DesktopCollab : public Collab::ICollabApp, public wxEvtHandler {
+public:
+    explicit DesktopCollab(xLightsFrame* frame);
+    ~DesktopCollab() override;
+
+    // Adds the menu items and status bar widgets (after the frame's own UI exists).
+    void CreateUI(wxMenu* fileMenu, wxMenuItem* insertAfter);
+
+    // "Live collaboration (beta)" preference.
+    static bool PreferenceEnabled();
+    void SetPreferenceEnabled(bool enabled);
+    bool Available() const;
+
+    // Closing the sequence in a session ends it (host) or leaves it (client).
+    // The frame asks first (false keeps the sequence open; a script or batch
+    // run is always refused), then deals with unsaved changes, and only once
+    // the close can no longer be cancelled calls EndForClose.
+    bool AllowCloseSequence();
+    void EndForClose();
+    // The open sequence is this device's copy of a session it joined (also
+    // once it has taken over hosting): plain Save becomes Save As.
+    bool IsClientDocument() const;
+    // App shutting down.
+    void Shutdown();
+    // The frame closed its sequence. Once a client's session is over this
+    // removes the temporary copy of the session sequence and goes back to
+    // the user's own show folder if the session had switched to a copy of
+    // the host's.
+    void AfterSequenceClosed();
+
+    Collab::CollabController& Controller() { return *_ctl; }
+
+    // ICollabApp
+    SequenceElements& Sequence() override;
+    bool HasSequence() override;
+    bool SaveXsq(std::string& out) override;
+    bool LoadXsq(const std::string& xsq) override;
+    std::string ShowFolder() override;
+    std::vector<std::string> AudioFiles() override;
+    bool UseShowFolder(const std::string& folder) override;
+    void AddMediaFolder(const std::string& folder) override;
+    void SetCollaborationLock(bool locked, const std::string& reason) override;
+    void SetSequenceSettingsLock(bool locked, const std::string& reason) override;
+    void OnSessionStateChanged() override;
+    void OnParticipantsChanged() override;
+    void OnPresenceChanged(Collab::ParticipantId who) override;
+    void OnSequenceChanged(const Collab::SequenceChange& change) override;
+    void MarkSequenceModified() override;
+    void OnRejected(const Collab::RejectNotice& notice) override;
+    void OnUndoStateChanged() override;
+    void OnJoinReport(const Collab::JoinReport& report) override;
+    void OnSessionsFound(const std::vector<Collab::SessionAdvert>& sessions) override;
+    void OnHostChanged(const Collab::HostChange& change) override;
+    void OnBrowseError(const std::string& reason) override;
+    void OnLog(const std::string& line) override;
+    void OnSessionNotice(const std::string& text) override;
+
+    // ICollabLayout
+    bool SupportsLiveLayout() override { return true; }
+    uint64_t LayoutGeneration() override;
+    bool LayoutEditInProgress() override;
+    bool SerializeLayout(Collab::LayoutFiles& out) override;
+    bool ApplyLayout(const Collab::LayoutFiles& current, const Collab::LayoutFiles& target, Collab::LayoutApplied& out) override;
+    void OnLayoutPresenceChanged() override;
+    void OnLayoutRejected(const std::string& text) override;
+
+    // A session is starting, running or ending (not idle, not over).
+    bool SessionLive() const;
+    bool IsSessionClient() const;
+    // The session runs on a temporary copy of the host's show folder.
+    bool OnSessionCopy() const { return !_originalShowDir.empty(); }
+    // The user's own show folder while on a session copy (else empty).
+    const std::string& OriginalShowFolder() const { return _originalShowDir; }
+    // The session's folders, deleted when it ends: the copy of the session
+    // sequence and, on a session copy, the copy of the host's show. Never a
+    // place to save the sequence.
+    std::vector<std::string> TemporaryFolders() const;
+    // Modal layout editors (CollabLayoutEditLock). False (after telling the
+    // user who holds it) when someone else has the object open.
+    bool BeginEditorLock(const std::vector<const BaseObject*>& objects, const std::string& what, wxWindow* parent);
+    void EndEditorLock();
+
+    // Row heading context menu: "Assign to" / "Release" for `element`'s row
+    // while a session runs. Returns the submenu it added (its events must
+    // reach the caller's handler too), if any. HandleRowMenu runs the item
+    // with that id (false: not one of these).
+    wxMenu* AppendRowMenu(wxMenu& menu, Element* element);
+    bool HandleRowMenu(int id);
+
+    // Used by the windows.
+    // group: over SharePlay rather than this network.
+    void HostSession(bool group = false);
+    // preferred: the session to select in the list (the offered SharePlay one).
+    void JoinSession(const std::string& preferred = std::string());
+    void EndOrLeave();
+    void ShowSessionWindow();
+    void SaveCopy();
+    std::string JoinReportText() const;
+    const std::string& JoinAddressesText() const { return _addressesShown; }
+    void UpdateJoinAddresses();
+
+private:
+    void UpdateVisibility();
+    void UpdateStatus();
+    void StartTimer();
+    void OnTimer(wxTimerEvent& event);
+    void GatherPresence();
+    void RebuildOverlay();
+    void RebuildLayoutOverlay();
+    void GatherLayoutSelection();
+    void RefreshSequencer();
+    void ShowNotice(const wxString& text, const wxString& action = wxString(), std::function<void()> onAction = nullptr, int seconds = 10);
+    void HideNotice();
+    void EnableGroupNetwork();
+    wxString GroupHostLabel() const;
+    std::vector<Collab::SessionAdvert> WithGroupOffer(std::vector<Collab::SessionAdvert> sessions) const;
+    void CheckGroupOffer();
+    std::string DocFolder();
+    static std::string Initials(const std::string& name);
+
+    xLightsFrame* _frame;
+    std::unique_ptr<Collab::CollabController> _ctl;
+    // Transports call the dispatcher from their own threads, some (Network
+    // framework handlers) after the transport is gone. They only post while
+    // this is open; the check and the post happen under its lock, and the
+    // destructor closes it under the same lock before anything is torn down.
+    struct DispatchGate {
+        std::mutex lock;
+        bool open = true;
+    };
+    std::shared_ptr<DispatchGate> _gate = std::make_shared<DispatchGate>();
+    Collab::Dispatcher _dispatch;
+    bool _groupNetworkSet = false;
+    std::string _offerNoticed; // the SharePlay offer the notice was shown for
+    wxTimer _timer;
+    int64_t _lastPresence = 0;
+    int64_t _endedAt = 0;
+
+    wxMenu* _fileMenu = nullptr;
+    wxMenu* _menu = nullptr;
+    wxMenuItem* _menuItem = nullptr; // File > Collaborate
+    wxMenuItem* _hostItem = nullptr;
+    wxMenuItem* _hostGroupItem = nullptr;
+    wxMenuItem* _joinItem = nullptr;
+    wxMenuItem* _endItem = nullptr;
+    wxMenuItem* _windowItem = nullptr;
+    size_t _menuPos = 0;
+    bool _menuShown = false;
+
+    wxButton* _statusButton = nullptr;
+    wxPanel* _notice = nullptr;
+    wxStaticText* _noticeText = nullptr;
+    wxButton* _noticeAction = nullptr;
+    std::function<void()> _noticeCallback;
+    int64_t _noticeHideAt = 0;
+
+    CollabSessionWindow* _window = nullptr;
+    CollabJoinDialog* _joinDialog = nullptr;
+
+    std::string _sequenceName; // client: the session's sequence file name
+    std::string _docFolder;    // client: where its copy of the sequence lives
+    bool _loading = false;     // LoadXsq is replacing the sequence
+    bool _closing = false;     // ending / leaving because the sequence closes
+    CollabOverlay _overlay;
+    bool _overlayActive = false;
+    CollabLayoutOverlay _layoutOverlay;
+    std::vector<std::string> _lastLayoutSelection;
+    int _editorLockDepth = 0;
+    bool _editorLockTaken = false;  // BeginLayoutLock was called for the outermost editor
+    std::string _lastBanner;
+    std::map<int, std::function<void()>> _rowMenuActions;
+    std::vector<int> _rowMenuIds; // reused across menus
+    std::string _codeShown; // host (also after taking over): the pairing code
+    std::string _addressesShown; // host: where to join by address, if offered
+    std::string _originalShowDir;              // client: show folder before UseShowFolder
+    std::string _keptSessionShow;              // session copy kept while the sequence uses it
+    std::vector<std::string> _addedMediaFolders; // client: AddMediaFolder, removed at the end
+    void RestoreShowFolder();
+    void RemoveDocFolder();
+};
+
+// Holds the session's lock on the layout objects a modal editor works on
+// while it is open (others see them read-only). Outside a live layout session
+// it is always granted and does nothing.
+class CollabLayoutEditLock {
+public:
+    CollabLayoutEditLock(const BaseObject* object, const std::string& what, wxWindow* parent);
+    CollabLayoutEditLock(const std::vector<const BaseObject*>& objects, const std::string& what, wxWindow* parent);
+    ~CollabLayoutEditLock();
+    CollabLayoutEditLock(const CollabLayoutEditLock&) = delete;
+    CollabLayoutEditLock& operator=(const CollabLayoutEditLock&) = delete;
+    bool Granted() const { return _granted; }
+
+private:
+    DesktopCollab* _collab = nullptr;
+    bool _granted = true;
+};

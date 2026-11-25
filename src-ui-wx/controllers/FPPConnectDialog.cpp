@@ -267,8 +267,8 @@ FPPConnectDialog::FPPConnectDialog(wxWindow* parent, OutputManager* outputManage
     prgs.Pulse("Discovering FPP Instances");
     prgs.Show();
 
-    wxDiscoveryDelegate delegate(this);
-    instances = _frame->DiscoverFPPInstances(&delegate, _targetIp);
+    _discoveryDelegate = std::make_unique<wxDiscoveryDelegate>(this);
+    instances = _frame->DiscoverFPPInstances(_discoveryDelegate.get(), _targetIp);
 
     wxPanel *p1 = AddInstanceHeader("Upload", "Enable to Upload Files/Configs to this FPP Device.");
     p1->Connect(wxEVT_CONTEXT_MENU, (wxObjectEventFunction)& FPPConnectDialog::UploadPopupMenu, nullptr, this);
@@ -1829,10 +1829,14 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
             delete seq;
             std::vector<FPPUploadProgressDialog::ControllerResult> results;
             int failedControllers = 0;
+            int mediaOnlyUploads = 0;
+            int noChannelSkips = 0;
+            int targets = 0;
             if (seqOpened) {
                 size_t i = 0;
                 for (const auto& inst : instances) {
                     if (doUpload[i]) {
+                        ++targets;
                         FPPUploadProgressDialog::ControllerResult r;
                         r.name = inst->hostName + " - " + inst->ipAddress;
                         if (inst->faileduploads.size() > failuresBefore[i]) {
@@ -1847,6 +1851,12 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
                             r.status = prgs->isCancelled() ? ToUTF8(_("Cancelled")) : ToUTF8(_("Failed"));
                             r.failed = !prgs->isCancelled();
                             failedControllers += r.failed ? 1 : 0;
+                        } else if (upToDate[i] && inst->GetUploadMediaState() == FPP::MediaUploadState::Uploading) {
+                            r.status = prgs->isCancelled() ? ToUTF8(_("Cancelled")) : ToUTF8(_("Uploaded media"));
+                            ++mediaOnlyUploads;
+                        } else if (upToDate[i] && inst->GetUploadNoChannels()) {
+                            r.status = ToUTF8(_("Skipped - no channels on this controller"));
+                            ++noChannelSkips;
                         } else if (upToDate[i]) {
                             r.status = ToUTF8(_("Already up to date"));
                         } else if (uploaded[i]) {
@@ -1863,6 +1873,22 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
                                 inst->GetUploadSparse() ? _("sparse") : _("full"),
                                 inst->GetUploadChannelCount())));
                         }
+                        const wxString mediaName = wxString::FromUTF8(inst->GetUploadMediaName());
+                        // PrepareUploadSequence ran for this sequence only when one of these is set
+                        switch ((upToDate[i] || willUpload[i]) ? inst->GetUploadMediaState() : FPP::MediaUploadState::None) {
+                        case FPP::MediaUploadState::Uploading:
+                            r.details.push_back(ToUTF8(wxString::Format(_("Media: %s - uploaded (%s)"), mediaName,
+                                wxFileName::GetHumanReadableSize(wxULongLong(inst->GetUploadMediaSize())))));
+                            break;
+                        case FPP::MediaUploadState::UpToDate:
+                            r.details.push_back(ToUTF8(wxString::Format(_("Media: %s - already up to date"), mediaName)));
+                            break;
+                        case FPP::MediaUploadState::NotFound:
+                            r.details.push_back(ToUTF8(wxString::Format(_("Media: %s - not found"), mediaName)));
+                            break;
+                        default:
+                            break;
+                        }
                         results.push_back(r);
                     }
                     ++i;
@@ -1875,7 +1901,10 @@ void FPPConnectDialog::doUpload(FPPUploadProgressDialog *prgs, std::vector<bool>
                                      ToUTF8(wxString::Format(wxPLURAL("on %d controller", "on %d controllers", failedControllers), failedControllers)), results);
             } else if (cancelled) {
                 prgs->finishSequence(seqIndex, FPPUploadProgressDialog::SequenceState::Cancelled, "", results);
-            } else if (seqUploadTargets == 0) {
+            } else if (seqUploadTargets == 0 && mediaOnlyUploads == 0 && noChannelSkips > 0 && noChannelSkips == targets) {
+                prgs->finishSequence(seqIndex, FPPUploadProgressDialog::SequenceState::Skipped,
+                                     ToUTF8(_("no channels on the selected controllers")), results);
+            } else if (seqUploadTargets == 0 && mediaOnlyUploads == 0) {
                 prgs->finishSequence(seqIndex, FPPUploadProgressDialog::SequenceState::UpToDate, "", results);
             } else {
                 prgs->finishSequence(seqIndex, FPPUploadProgressDialog::SequenceState::Uploaded, "", results);
@@ -2200,8 +2229,7 @@ void FPPConnectDialog::OnFPPReDiscoverClick(wxCommandEvent& event) {
 
     std::string fppConnectIP = "";
     prgs.Show();
-    wxDiscoveryDelegate delegate(this);
-    std::list<FPP*> newInstances = _frame->DiscoverFPPInstances(&delegate, _targetIp);
+    std::list<FPP*> newInstances = _frame->DiscoverFPPInstances(_discoveryDelegate.get(), _targetIp);
     
     for (FPP* fpp : newInstances) {
         bool found = false;

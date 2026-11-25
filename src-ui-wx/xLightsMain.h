@@ -126,7 +126,9 @@ namespace ShowSaveMerge { struct FileToSave; class Plan; struct SaveReport; }
 class aiBase;
 class BaseSerializingVisitor;
 class ShowFileWatcher;
+class DesktopCollab;
 namespace ShowFileLiveMerge { class Incoming; struct LocalFile; struct Applied; }
+namespace Collab { struct LayoutFiles; struct LayoutApplied; }
 class CopyFormat1;
 class Controller;
 class ControllerCaps;
@@ -356,9 +358,13 @@ public:
         _value = v.value;
         _reason.clear();
         _detail.clear();
+        ++_generation;
         return *this;
     }
     operator bool() const { return _value; }
+    // Moves on every assignment: each edit sets the flag again even when it
+    // is already set, so this counts edits, not clean/dirty transitions.
+    uint64_t Generation() const { return _generation; }
     // Used for the log if the next assignment dirties the flag and gives no reason of its own.
     void SetReason(const std::string& reason, const std::string& detail) {
         _reason = reason;
@@ -371,6 +377,7 @@ private:
     std::string _reason;
     std::string _detail;
     bool _value = false;
+    uint64_t _generation = 0;
 };
 
 class xLightsFrame: public xlFrame, public xLightsShowContext, public UICallbacks
@@ -470,7 +477,9 @@ public:
     // automation saves never prompt: they merge when nothing conflicts and
     // otherwise save nothing.
     enum class ShowFileConflict { NoConflict, Merge, Overwrite, SavedCopy, Cancel };
-    enum class ShowSaveResult { Saved, SavedCopy, Cancelled, Failed };
+    // LayoutHeld: a collaboration session kept the layout and controllers
+    // files from being written; the rest of the save was written.
+    enum class ShowSaveResult { Saved, SavedCopy, Cancelled, Failed, LayoutHeld };
     ShowSaveResult SaveShowFiles(const std::vector<ShowSaveMerge::FileToSave>& files,
                                  const std::function<bool(const ShowSaveMerge::FileToSave&, const std::string& copyPath)>& writeCopy,
                                  wxWindow* parent = nullptr);
@@ -632,6 +641,33 @@ public:
 		return readOnlyMode;
 	}
     void UpdateReadOnlyState();
+
+    // Collaboration-session layout lock (xLightsShowContext::SetCollaborationLock).
+    void OnLayoutLockChanged() override;
+    void UpdateLayoutLockState();
+    // Shows the lock reason and returns true while the layout is locked.
+    bool RefuseIfLayoutLocked(wxWindow* parent = nullptr);
+
+    // Live collaboration (app-shell/Collaboration.cpp).
+    DesktopCollab* GetCollab() { return _collab.get(); }
+    // Why the open sequence's settings can't be changed now; empty when they can.
+    std::string SequenceSettingsFreezeReason() const;
+    // Why `action` ("upload to controllers") is refused here: only the
+    // session host may do it. Empty when allowed.
+    std::string CollabHostOnlyReason(const std::string& action) const;
+    // Shows CollabHostOnlyReason and returns true when it is not empty.
+    bool RefuseIfCollabHostOnly(const std::string& action, wxWindow* parent = nullptr);
+    // Before an upload: offers to save unsaved sequence changes, except for
+    // scripted runs and a collaboration session's temporary copy.
+    void OfferSaveBeforeUpload(wxWindow* parent);
+    // Changes whenever the layout or controllers in memory may have changed.
+    uint64_t LayoutGeneration() const;
+    // A layout edit is under way: a drag, a model being created, a modal
+    // dialog, typing not yet committed in a property grid.
+    bool LayoutEditInProgress();
+    // Brings memory from `current` to `target` (collaboration session
+    // layout commit). False when it can't be done now (try again later).
+    bool ApplySessionLayout(const Collab::LayoutFiles& current, const Collab::LayoutFiles& target, Collab::LayoutApplied& out);
 
 
     bool ImportLMS(pugi::xml_document &doc, const wxFileName &filename);
@@ -1458,6 +1494,10 @@ public:
     void SetEnablePositionZones(bool b) { _enablePositionZones = b; }
     bool GetShowZoneIndicator() const override { return _showZoneIndicator; }
     void SetShowZoneIndicator(bool b) { _showZoneIndicator = b; }
+    // "Live collaboration (beta)": shown only where a transport exists.
+    bool CollaborationAvailable() const;
+    bool GetCollaborationEnabled() const;
+    void SetCollaborationEnabled(bool b);
 
     bool GetRecycleTips() const;
     void SetRecycleTips(bool b);
@@ -1569,6 +1609,8 @@ public:
     void OnPingTimer(wxTimerEvent& event);
     void waitForPingsToComplete();
     void PingActiveControllers();
+    void PingControllerAsync(Controller* controller);
+    void RestartPingTimer();
     void RefreshControllerStatusColumn();
     void OnControllerPingComplete();
     void RefreshControllerStatusNow();
@@ -1657,6 +1699,11 @@ public:
     std::shared_ptr<PresenceWorkerLink> _presenceLink = std::make_shared<PresenceWorkerLink>();
     wxTimer _showFileWatchTimer;
     std::unique_ptr<ShowFileWatcher> _showFileWatcher;
+    // Live collaboration (app-shell/Collaboration.cpp).
+    std::unique_ptr<DesktopCollab> _collab;
+    // Menu help texts as built, put back once a session no longer refuses
+    // the item (UpdateLayoutLockState shows the refusal in their place).
+    std::map<wxMenuItem*, wxString> _unlockedMenuHelp;
     std::unique_ptr<ShowFileLiveMerge::Incoming> _pendingIncoming;
     wxPanel* _showFileBanner = nullptr;
     wxStaticText* _showFileBannerText = nullptr;
@@ -1670,6 +1717,10 @@ public:
     void ShowShowFileBanner(const wxString& text, bool review);
     void HideShowFileBanner();
     std::vector<ShowFileLiveMerge::LocalFile> LiveShowFiles();
+    // The layout and controller files as memory holds them (what a save
+    // would write); either pointer may be null. Writes nothing.
+    void SerializeLayoutFiles(std::string* rgbEffects, std::string* networks);
+    uint64_t _layoutChanges = 0;
     void HandleIncomingShowChanges(bool review);
     void RefreshAfterIncomingShowChanges(const ShowFileLiveMerge::Applied& applied);
     bool _renderMode = false;
@@ -2243,6 +2294,7 @@ private:
 
     DECLARE_EVENT_TABLE()
     friend class xLightsApp; //kludge: allow xLightsApp to call OnPaneNutcrackerChar -DJ
+    friend class DesktopCollab;
 
 public:
     FILE* _logfile = nullptr;

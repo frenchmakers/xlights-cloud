@@ -76,6 +76,7 @@
     <ClCompile Include="..\src-core\utils\LayoutRecords.cpp" />
     <ClCompile Include="..\src-core\utils\LayoutRenameHints.cpp" />
     <ClCompile Include="..\src-core\utils\LayoutRenameLog.cpp" />
+    <ClCompile Include="..\src-core\utils\LayoutLock.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\KeyBindings.cpp" />
     <ClCompile Include="..\src-ui-wx\layout\LayoutGroup.cpp" />
     <ClCompile Include="..\src-ui-wx\layout\LayoutPanel.cpp" />
@@ -130,6 +131,9 @@
     <ClCompile Include="..\src-ui-wx\sequencer\SequenceFacesPanel.cpp" />
     <ClCompile Include="..\src-core\render\SequenceData.cpp" />
     <ClCompile Include="..\src-core\render\SequenceViewManager.cpp" />
+    <ClCompile Include="..\src-core\render\RemoteRenderScheduler.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
     <ClCompile Include="..\src-ui-wx\model\SevenSegmentDialog.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\SplashDialog.cpp" />
     <ClCompile Include="..\src-ui-wx\model\StartChannelDialog.cpp" />
@@ -139,6 +143,7 @@
     <ClCompile Include="..\src-ui-wx\app-shell\TabConvert.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\TabPreview.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\TabSequence.cpp" />
+    <ClCompile Include="..\src-ui-wx\app-shell\Collaboration.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\ShowFileWatch.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\DiscoveryHelpers.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\TabSetup.cpp" />
@@ -811,6 +816,57 @@
     </ClCompile>
     <ClCompile Include="..\src-core\render\SequenceElements.cpp">
       <Filter>render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabCommandInfo.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabController.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabDocHash.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabFiles.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabGroup.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabLayout.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabManifest.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabMessages.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabNet.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabRoles.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabNetPortable.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabSession.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabTlsClient.c">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabTlsCrypto.c">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabTlsServer.c">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabTransport.cpp">
+      <Filter>collab</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src-core\collab\CollabUidTable.cpp">
+      <Filter>collab</Filter>
     </ClCompile>
     <ClCompile Include="..\src-core\render\SequenceCommands.cpp">
       <Filter>render</Filter>
@@ -1755,6 +1811,8 @@
     <ClInclude Include="..\src-core\utils\LayoutRecords.h" />
     <ClInclude Include="..\src-core\utils\LayoutRenameHints.h" />
     <ClInclude Include="..\src-core\utils\LayoutRenameLog.h" />
+    <ClInclude Include="..\src-core\utils\LayoutDirt.h" />
+    <ClInclude Include="..\src-core\utils\LayoutLock.h" />
     <ClInclude Include="..\src-ui-wx\app-shell\KeyBindings.h" />
     <ClInclude Include="..\src-ui-wx\layout\LayoutGroup.h" />
     <ClInclude Include="..\src-ui-wx\layout\LayoutPanel.h" />
@@ -2475,6 +2533,11 @@
     <ClInclude Include="..\src-core\render\EffectLayer.h">
       <Filter>render</Filter>
     </ClInclude>
+    <ClInclude Include="..\src-ui-wx\sequencer\CollabOverlay.h">
+      <Filter>sequencer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-ui-wx\layout\CollabLayoutOverlay.h" />
+    <ClInclude Include="..\src-ui-wx\app-shell\Collaboration.h" />
     <ClInclude Include="..\src-ui-wx\sequencer\EffectsGrid.h">
       <Filter>sequencer</Filter>
     </ClInclude>
@@ -2493,6 +2556,54 @@
     </ClInclude>
     <ClInclude Include="..\src-core\render\SequenceElements.h">
       <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabCommandInfo.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabController.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabDocHash.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabFiles.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabGroup.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabGroupWire.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabLayout.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabManifest.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabMessages.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabNet.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabNetWire.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabRoles.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabTlsConfig.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabSession.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabTransport.h">
+      <Filter>collab</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src-core\collab\CollabUidTable.h">
+      <Filter>collab</Filter>
     </ClInclude>
     <ClInclude Include="..\src-core\render\SequenceCommands.h">
       <Filter>render</Filter>
@@ -3285,6 +3396,9 @@
     <ClInclude Include="..\src-core\render\RenderProgressInfo.h">
       <Filter>render</Filter>
     </ClInclude>
+    <ClInclude Include="..\src-core\render\RemoteRenderScheduler.h">
+      <Filter>render</Filter>
+    </ClInclude>
     <ClInclude Include="..\src-core\render\UICallbacks.h">
       <Filter>render</Filter>
     </ClInclude>
@@ -3428,6 +3542,9 @@
     </Filter>
     <Filter Include="sequencer">
       <UniqueIdentifier>{3f511f30-f755-4c36-bc33-eaba751cc83e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="collab">
+      <UniqueIdentifier>{c0ab5e55-1d2e-4f3a-9b7c-5e2d1a6f4c80}</UniqueIdentifier>
     </Filter>
     <Filter Include="render">
       <UniqueIdentifier>{a1b2c3d4-e5f6-7890-abcd-ef1234567890}</UniqueIdentifier>

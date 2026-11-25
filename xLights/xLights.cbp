@@ -52,6 +52,7 @@
 					<Add directory="../dependencies/pugixml/src" />
 					<Add directory="../dependencies/spdlog/include" />
 					<Add directory="../dependencies/midifile/include" />
+					<Add directory="../dependencies/mbedtls/include" />
 					<Add directory="../dependencies/liquidfun/liquidfun/Box2D" />
 					<Add option="`sdl2-config --cflags`" />
 				</Compiler>
@@ -131,6 +132,7 @@
 					<Add directory="../dependencies/pugixml/src" />
 					<Add directory="../dependencies/spdlog/include" />
 					<Add directory="../dependencies/midifile/include" />
+					<Add directory="../dependencies/mbedtls/include" />
 					<Add directory="../dependencies/liquidfun/liquidfun/Box2D" />
 					<Add option="`sdl2-config --cflags`" />
 				</Compiler>
@@ -338,6 +340,45 @@
 		<Unit filename="../src-core/render/DimmingCurve.h" />
 		<Unit filename="../src-ui-wx/color/DimmingCurvePanel.cpp" />
 		<Unit filename="../src-ui-wx/color/DimmingCurvePanel.h" />
+		<Unit filename="../src-core/collab/CollabCommandInfo.cpp" />
+		<Unit filename="../src-core/collab/CollabCommandInfo.h" />
+		<Unit filename="../src-core/collab/CollabController.cpp" />
+		<Unit filename="../src-core/collab/CollabController.h" />
+		<Unit filename="../src-core/collab/CollabDocHash.cpp" />
+		<Unit filename="../src-core/collab/CollabDocHash.h" />
+		<Unit filename="../src-core/collab/CollabFiles.cpp" />
+		<Unit filename="../src-core/collab/CollabFiles.h" />
+		<Unit filename="../src-core/collab/CollabGroup.cpp" />
+		<Unit filename="../src-core/collab/CollabGroup.h" />
+		<Unit filename="../src-core/collab/CollabGroupWire.h" />
+		<Unit filename="../src-core/collab/CollabLayout.cpp" />
+		<Unit filename="../src-core/collab/CollabLayout.h" />
+		<Unit filename="../src-core/collab/CollabManifest.cpp" />
+		<Unit filename="../src-core/collab/CollabManifest.h" />
+		<Unit filename="../src-core/collab/CollabMessages.cpp" />
+		<Unit filename="../src-core/collab/CollabMessages.h" />
+		<Unit filename="../src-core/collab/CollabNet.cpp" />
+		<Unit filename="../src-core/collab/CollabNet.h" />
+		<Unit filename="../src-core/collab/CollabNetPortable.cpp" />
+		<Unit filename="../src-core/collab/CollabNetWire.h" />
+		<Unit filename="../src-core/collab/CollabRoles.cpp" />
+		<Unit filename="../src-core/collab/CollabRoles.h" />
+		<Unit filename="../src-core/collab/CollabSession.cpp" />
+		<Unit filename="../src-core/collab/CollabSession.h" />
+		<Unit filename="../src-core/collab/CollabTlsClient.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src-core/collab/CollabTlsConfig.h" />
+		<Unit filename="../src-core/collab/CollabTlsCrypto.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src-core/collab/CollabTlsServer.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../src-core/collab/CollabTransport.cpp" />
+		<Unit filename="../src-core/collab/CollabTransport.h" />
+		<Unit filename="../src-core/collab/CollabUidTable.cpp" />
+		<Unit filename="../src-core/collab/CollabUidTable.h" />
 		<Unit filename="../src-core/discovery/Discovery.cpp" />
 		<Unit filename="../src-core/discovery/Discovery.h" />
 		<Unit filename="../src-ui-wx/setup/DiscoveryAuthDialog.cpp" />
@@ -425,7 +466,10 @@
 		<Unit filename="../src-core/utils/LayoutRenameHints.cpp" />
 		<Unit filename="../src-core/utils/LayoutRenameHints.h" />
 		<Unit filename="../src-core/utils/LayoutRenameLog.cpp" />
+		<Unit filename="../src-core/utils/LayoutLock.cpp" />
 		<Unit filename="../src-core/utils/LayoutRenameLog.h" />
+		<Unit filename="../src-core/utils/LayoutDirt.h" />
+		<Unit filename="../src-core/utils/LayoutLock.h" />
 		<Unit filename="../src-ui-wx/media/JukeboxPanel.cpp" />
 		<Unit filename="../src-ui-wx/media/JukeboxPanel.h" />
 		<Unit filename="../src-ui-wx/app-shell/KeyBindingEditDialog.cpp" />
@@ -556,6 +600,8 @@
 		<Unit filename="../src-ui-wx/sequencer/RenameTextDialog.h" />
 		<Unit filename="../src-core/render/RenderEngine.cpp" />
 		<Unit filename="../src-core/render/RenderEngine.h" />
+		<Unit filename="../src-core/render/RemoteRenderScheduler.cpp" />
+		<Unit filename="../src-core/render/RemoteRenderScheduler.h" />
 		<Unit filename="../src-core/render/xLightsShowContext.cpp" />
 		<Unit filename="../src-core/render/xLightsShowContext.h" />
 		<Unit filename="../src-core/render/ViewpointMgr.cpp" />
@@ -645,6 +691,8 @@
 		<Unit filename="../src-ui-wx/app-shell/TabConvert.cpp" />
 		<Unit filename="../src-ui-wx/app-shell/TabPreview.cpp" />
 		<Unit filename="../src-ui-wx/app-shell/TabSequence.cpp" />
+		<Unit filename="../src-ui-wx/app-shell/Collaboration.cpp" />
+		<Unit filename="../src-ui-wx/app-shell/Collaboration.h" />
 		<Unit filename="../src-ui-wx/app-shell/ShowFileWatch.cpp" />
 		<Unit filename="../src-ui-wx/app-shell/DiscoveryHelpers.cpp" />
 		<Unit filename="../src-ui-wx/app-shell/TabSetup.cpp" />
@@ -1497,6 +1545,7 @@
 		<Unit filename="../src-core/render/EffectLayer.h" />
 		<Unit filename="../src-ui-wx/sequencer/ElementLayers.h" />
 		<Unit filename="../src-ui-wx/sequencer/EffectsGrid.cpp" />
+		<Unit filename="../src-ui-wx/sequencer/CollabOverlay.h" />
 		<Unit filename="../src-ui-wx/sequencer/EffectsGrid.h" />
 		<Unit filename="../src-core/render/Element.cpp" />
 		<Unit filename="../src-core/render/Element.h" />
@@ -1652,6 +1701,7 @@
 		<Unit filename="../src-ui-wx/shared/controls/MediaPickerCtrl.h" />
 		<Unit filename="../src-ui-wx/graphics/wxTextDrawingContext.cpp" />
 		<Unit filename="../src-ui-wx/graphics/wxTextDrawingContext.h" />
+		<Unit filename="../src-ui-wx/layout/CollabLayoutOverlay.h" />
 		<Unit filename="../src-ui-wx/layout/ControllerListPanel.cpp" />
 		<Unit filename="../src-ui-wx/layout/ControllerListPanel.h" />
 		<Unit filename="../src-ui-wx/layout/ControllerTreeUtils.cpp" />

@@ -68,6 +68,7 @@ struct XLightsApp: App {
             vm.purgeDownloadCache()
         }
         vm.startMemoryMonitoring()
+        vm.startLayoutLockMonitoring()
         _viewModel = State(initialValue: vm)
         LaunchTiming.mark("app-init-done")
         // restorePersistedShowFolder is deliberately NOT called here.
@@ -273,6 +274,31 @@ struct ContentView: View {
                                      },
                                      onDismiss: { viewModel.showFileUpdate = nil })
             }
+            if let offer = viewModel.collab.groupOfferToAnnounce {
+                CollabGroupOfferBanner(offer: offer,
+                                       onJoin: { viewModel.showJoinForGroupOffer() },
+                                       onDismiss: { viewModel.collab.dismissedOfferId = offer.id })
+            }
+            if viewModel.collab.isVisible, let toast = viewModel.collab.rejectToast {
+                CollabRejectBanner(toast: toast,
+                                   onNewLayer: { viewModel.putRejectedOnNewLayer(toast) },
+                                   onDismiss: { viewModel.collab.rejectToast = nil })
+            }
+            if viewModel.collab.isVisible, let notice = viewModel.collab.layoutNotice {
+                CollabLayoutNoticeBanner(notice: notice,
+                                         onDismiss: { viewModel.collab.layoutNotice = nil })
+            }
+            if viewModel.collab.isVisible, let notice = viewModel.collab.hostNotice {
+                CollabLayoutNoticeBanner(notice: notice,
+                                         onDismiss: { viewModel.collab.hostNotice = nil })
+            }
+            if viewModel.collab.isVisible, let ended = viewModel.collab.endNotice {
+                CollabEndedBanner(message: ended,
+                                  showSaveCopy: viewModel.collab.endedAsClient && viewModel.isSequenceLoaded
+                                      && viewModel.collab.clientDocument,
+                                  onSaveCopy: { viewModel.saveCollabCopy() },
+                                  onDismiss: { viewModel.collab.endNotice = nil })
+            }
             Group {
                 if !viewModel.isShowFolderLoaded {
                     ShowFolderSetupView(showFolderConfig: $showFolderConfig)
@@ -287,6 +313,14 @@ struct ContentView: View {
             MediaManagerSheet()
                 .environment(viewModel)
         }
+        // Live collaboration: hosting from the sequencer toolbar, joining
+        // from the sequence list. Root-hosted so a join that opens the
+        // sequence keeps the sheet up.
+        .sheet(isPresented: Bindable(viewModel.collab).showingSheet) {
+            CollaborationSheet()
+                .environment(viewModel)
+        }
+        .onAppear { viewModel.ensureCollabSession() }
         .sheet(isPresented: $showFolderConfig) {
             FolderConfigView()
                 .environment(viewModel)
@@ -1214,6 +1248,16 @@ struct SequencePickerView: View {
                             Image(systemName: "square.stack.3d.up")
                         }
                         .disabled(viewModel.sequenceFiles.isEmpty)
+                        if viewModel.collab.isVisible {
+                            Button {
+                                viewModel.collab.sheetMode = .join
+                                viewModel.collab.showingSheet = true
+                            } label: {
+                                Image(systemName: "person.2.badge.plus")
+                            }
+                            .help("Join a collaboration session")
+                            .accessibilityLabel("Join Session")
+                        }
                         Button {
                             showFolderConfig = true
                         } label: {

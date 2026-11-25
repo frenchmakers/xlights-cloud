@@ -31,6 +31,7 @@
 #include "render/EffectLayer.h"
 #include "sequencer/EffectTimingDialog.h"
 #include "EffectsGrid.h"
+#include "CollabOverlay.h"
 #include "EffectWheelDialog.h"
 #include "BufferPanel.h"
 #include "lyrics/LyricBreakdown.h"
@@ -58,6 +59,8 @@
 #include "effects/GlediatorEffect.h"
 #include "effects/MovingHeadEffect.h"
 #include "effects/PicturesEffect.h"
+#include "ai/AIImageDialog.h"
+#include "ai/aiType.h"
 #include "effects/ShaderEffect.h"
 #include "effects/VideoEffect.h"
 #include "models/DMX/DmxMovingHeadComm.h"
@@ -127,6 +130,7 @@ const long EffectsGrid::ID_GRID_MNU_REDO = wxNewId();
 const long EffectsGrid::ID_GRID_MNU_PRESETS = wxNewId();
 const long EffectsGrid::ID_GRID_MNU_BREAKDOWN_PHRASE = wxNewId();
 const long EffectsGrid::ID_GRID_MNU_BREAKDOWN_PHRASES = wxNewId();
+const long EffectsGrid::ID_GRID_MNU_AI_IMAGE_PHRASE = wxNewId();
 const long EffectsGrid::ID_GRID_MNU_AUTOLABEL = wxNewId();
 const long EffectsGrid::ID_GRID_MNU_HALVETIMINGS = wxNewId();
 const long EffectsGrid::ID_GRID_MNU_BREAKDOWN_WORD = wxNewId();
@@ -663,6 +667,9 @@ void EffectsGrid::rightClick(wxMouseEvent& event) {
                 mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_PHRASE, _("Breakdown Phrase"));
                 if (selectedEffect->GetParentEffectLayer()->GetSelectedEffectCount() > 1) {
                     mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_PHRASES, _("Breakdown Selected Phrases"));
+                }
+                if (!selectedEffect->GetEffectName().empty()) {
+                    mnuLayer.Append(ID_GRID_MNU_AI_IMAGE_PHRASE, "Generate AI Image for Phrase...");
                 }
             } else if (ri->layerIndex == 1) {
                 mnuLayer.Append(ID_GRID_MNU_BREAKDOWN_WORD, _("Breakdown Word"));
@@ -1381,6 +1388,9 @@ void EffectsGrid::OnGridPopup(wxCommandEvent& event) {
             wxCommandEvent eventRowHeaderChanged(EVT_ROW_HEADINGS_CHANGED);
             wxPostEvent(mParent, eventRowHeaderChanged);
         }
+    } else if (id == ID_GRID_MNU_AI_IMAGE_PHRASE) {
+        spdlog::debug("OnGridPopup - ID_GRID_MNU_AI_IMAGE_PHRASE");
+        GenerateAIImageForPhrase(mSelectedEffect);
     } else if (id == ID_GRID_MNU_HALVETIMINGS) {
         wxNumberEntryDialog dlg(this, "", "Divide timings by:", "Divide Timings", 2, 2, 100);
 
@@ -2059,6 +2069,62 @@ void EffectsGrid::DropEffectAt(int row, const std::string& effectName, const std
 
     xlights->GetMainSequencer()->PanelRowHeadings->Refresh(false);
     xlights->GetMainSequencer()->PanelEffectGrid->Refresh(false);
+}
+
+void EffectsGrid::GenerateAIImageForPhrase(Effect* phraseEffect) {
+    if (phraseEffect == nullptr) return;
+
+    auto services = xlights->GetAIServices(aiType::TYPE::IMAGES);
+    if (services.empty()) {
+        wxMessageBox("No AI image generation services are registered.\n"
+                     "Configure an AI service in the Settings menu.",
+                     "AI Generate", wxICON_INFORMATION | wxOK, this);
+        return;
+    }
+
+    aiBase* serv = services[0];
+    if (services.size() > 1) {
+        wxArrayString choices;
+        for (auto s : services) choices.push_back(s->GetLLMName());
+        wxSingleChoiceDialog pick(this, "Choose AI Image Generator", "AI Image Generator", choices);
+        if (pick.ShowModal() == wxID_CANCEL) return;
+        serv = services[pick.GetSelection()];
+    }
+
+    // The phrase has no model/row of its own (it lives on the Lyrics timing
+    // track) - ask which model row the generated Pictures effect should land
+    // on.
+    wxArrayString rowChoices;
+    std::vector<int> rowIndexes;
+    for (size_t i = 0; i < mSequenceElements->GetVisibleRowInformationSize(); ++i) {
+        Row_Information_Struct* ri = mSequenceElements->GetVisibleRowInformation(i);
+        if (ri == nullptr || ri->element == nullptr || ri->element->GetType() == ElementType::ELEMENT_TYPE_TIMING) continue;
+        rowChoices.push_back(ri->displayName);
+        rowIndexes.push_back((int)i);
+    }
+    if (rowChoices.empty()) {
+        wxMessageBox("There are no model rows to place the generated image on.", "AI Generate", wxICON_INFORMATION | wxOK, this);
+        return;
+    }
+
+    wxSingleChoiceDialog rowPick(this, "Place the generated image on which row?", "Generate AI Image for Phrase", rowChoices);
+    if (rowPick.ShowModal() == wxID_CANCEL) return;
+    int targetRow = rowIndexes[rowPick.GetSelection()];
+
+    AIImageDialog dlg(this, serv);
+    dlg.PromptBox->SetValue(phraseEffect->GetEffectName());
+    dlg.SetEmbeddedMode(true);
+    if (dlg.ShowModal() != wxID_OK) return;
+
+    const wxImage& img = dlg.GetCurrentImage();
+    if (!img.IsOk()) return;
+
+    wxString name = wxString::Format("Images/ai_phrase_%lld.png", (long long)wxDateTime::Now().GetTicks());
+    std::string namePath = ToStdString(name);
+    mSequenceElements->GetSequenceMedia().AddEmbeddedImage(namePath, wxImageToXlImage(img));
+
+    std::string effectSettings = "E_TEXTCTRL_Pictures_Filename=" + namePath;
+    DropEffectAt(targetRow, "Pictures", effectSettings, xlights_version_string, phraseEffect->GetStartTimeMS(), phraseEffect->GetEndTimeMS());
 }
 
 int MapHitLocationToEffectSelection(HitLocation location) {
@@ -8214,6 +8280,7 @@ void EffectsGrid::Draw() {
         DrawLines(ctx);
         DrawEffects(ctx);
         DrawSongStructureOverlays(ctx);
+        DrawCollabOverlay(ctx);
         DrawEffectMoveDragOverlay(ctx);
         DrawPlayMarker(ctx);
 
@@ -9688,6 +9755,84 @@ void EffectsGrid::DrawSongStructureOverlays(xlGraphicsContext* ctx) {
     }
 
     ctx->disableBlending();
+}
+
+void EffectsGrid::DrawCollabOverlay(xlGraphicsContext* ctx) {
+    // Live collaboration: rows assigned to someone (a tint and a band in
+    // their colour), other participants' selections (an outline in
+    // their colour each) and soft locks (their initials), this user's edits
+    // still waiting for the host (dashed), and remote edits (a brief flash).
+    CollabOverlay* o = CollabOverlay::Current();
+    if (o == nullptr || mSequenceElements == nullptr || mTimeline == nullptr) return;
+    int width = getWidth();
+    float factor = translateToBacking(1.0);
+    const xlFontInfo& font = xlFontInfo::FindFont(curFontSize);
+    xlVertexColorAccumulator* fills = ctx->createVertexColorAccumulator();
+    xlVertexColorAccumulator* outlineLines = ctx->createVertexColorAccumulator();
+    xlVertexColorAccumulator* ghostLines = ctx->createVertexColorAccumulator();
+    xlVertexTextureAccumulator* labels = ctx->createVertexTextureAccumulator();
+    for (int row = 0; row < (int)mSequenceElements->GetVisibleRowInformationSize(); row++) {
+        Row_Information_Struct* ri = mSequenceElements->GetVisibleRowInformation(row);
+        EffectLayer* layer = mSequenceElements->GetEffectLayer(ri);
+        if (layer == nullptr) continue;
+        float y1 = row * DEFAULT_ROW_HEADING_HEIGHT + 1;
+        float y2 = (row + 1) * DEFAULT_ROW_HEADING_HEIGHT - 1;
+        auto as = o->assigned.find(ri->element->GetUid());
+        if (as != o->assigned.end()) {
+            // A row only one participant may edit: tinted in their colour,
+            // lighter when it is this user's.
+            const xlColor& c = as->second.colour;
+            fills->AddRectAsTriangles(0, y1, width, y2, xlColor(c.red, c.green, c.blue, as->second.mine ? 14 : 34));
+            fills->AddRectAsTriangles(0, y2 - 2, width, y2, xlColor(c.red, c.green, c.blue, 170));
+        }
+        for (int i = 0; i < layer->GetEffectCount(); i++) {
+            Effect* e = layer->GetEffect(i);
+            float x1 = mTimeline->GetPositionFromTimeMS(e->GetStartTimeMS());
+            float x2 = mTimeline->GetPositionFromTimeMS(e->GetEndTimeMS());
+            if (x2 < 0) continue;
+            if (x1 > width) break;
+            SeqObjectId uid = e->GetUid();
+            auto f = o->flashUntil.find(uid);
+            if (f != o->flashUntil.end() && f->second > o->now) {
+                fills->AddRectAsTriangles(x1, y1, x2, y2, xlColor(255, 220, 0, 90));
+            }
+            auto out = o->outlines.find(uid);
+            if (out != o->outlines.end()) {
+                for (size_t k = 0; k < out->second.size(); ++k) {
+                    float in = 1.0f + 2.0f * k;
+                    outlineLines->AddRectAsLines(x1 + in, y1 + in, x2 - in, y2 - in, out->second[k]);
+                }
+            }
+            auto lock = o->locks.find(uid);
+            if (lock != o->locks.end()) {
+                float tw = font.widthOf(lock->second.initials, factor);
+                float bh = (y2 - y1) * 0.6f;
+                fills->AddRectAsTriangles(x1 + 2, y1 + 1, x1 + 6 + tw, y1 + 1 + bh, lock->second.colour);
+                font.populate(*labels, x1 + 4, y1 + bh - 1, lock->second.initials, factor);
+            }
+        }
+        for (const auto& g : o->ghosts) {
+            if (g.effect.layer != layer->GetUid()) continue;
+            float gx1 = mTimeline->GetPositionFromTimeMS(g.startMS);
+            float gx2 = mTimeline->GetPositionFromTimeMS(g.endMS);
+            if (gx2 < 0 || gx1 > width) continue;
+            xlColor tint = g.deleting ? xlColor(200, 40, 40, 60) : xlColor(o->ghostColour.red, o->ghostColour.green, o->ghostColour.blue, 50);
+            fills->AddRectAsTriangles(gx1, y1 + 1, gx2, y2 - 1, tint);
+            ghostLines->AddRectAsDashedLines(gx1 + 1, y1 + 2, gx2 - 1, y2 - 2, translateToBacking(5), o->ghostColour);
+        }
+    }
+    ctx->enableBlending();
+    ctx->drawTriangles(fills->Flush());
+    ctx->drawLines(outlineLines->Flush());
+    ctx->drawLines(ghostLines->Flush());
+    if (fontTexture != nullptr) {
+        ctx->drawTexture(labels->Flush(), fontTexture);
+    }
+    ctx->disableBlending();
+    delete fills;
+    delete outlineLines;
+    delete ghostLines;
+    delete labels;
 }
 
 void EffectsGrid::FillRegionFromTimingMarks() {

@@ -85,6 +85,18 @@ struct SequenceSettingsSheet: View {
                         ScrollView { RenderTab().padding() }
                     }
                 }
+                // Desktop opens its settings dialog read-only the same way.
+                .disabled(viewModel.isSequenceSettingsFrozen)
+            }
+            .safeAreaInset(edge: .top) {
+                if viewModel.isSequenceSettingsFrozen {
+                    Label(viewModel.isLayoutLocked ? viewModel.layoutLockReason : viewModel.sequenceSettingsFrozenReason,
+                          systemImage: "lock.fill")
+                        .font(.caption)
+                        .frame(maxWidth: .infinity)
+                        .padding(6)
+                        .background(.regularMaterial)
+                }
             }
             .navigationTitle("Sequence Settings")
             .navigationBarTitleDisplayMode(.inline)

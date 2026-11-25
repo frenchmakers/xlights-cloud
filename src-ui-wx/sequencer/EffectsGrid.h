@@ -131,6 +131,7 @@ public:
     void SetEffectsTiming();
     void ProcessDroppedEffect(Effect* effect);
     void DropEffectAt(int row, const std::string& effectName, const std::string& effectSettings, const std::string& effectVersion, int startTime, int endTime);
+    void GenerateAIImageForPhrase(Effect* phraseEffect);
     void CutModelEffects(int row_number, bool allLayers);
     void CopyModelEffects(int row_number, bool allLayers, bool incSubModels = false);
     void CopyModelEffectsToModels(int row_number);
@@ -258,6 +259,7 @@ private:
     void DrawTimingEffects(int row);
     void DrawEffects(xlGraphicsContext *ctx);
     void DrawSongStructureOverlays(xlGraphicsContext *ctx);
+    void DrawCollabOverlay(xlGraphicsContext *ctx);
     void DrawPlayMarker(xlGraphicsContext *ctx) const;
     bool AdjustDropLocations(int x, EffectLayer* el);
     void Resize(int position, bool offset, bool control);
@@ -468,6 +470,7 @@ private:
     static const long ID_GRID_MNU_PRESETS;
     static const long ID_GRID_MNU_BREAKDOWN_PHRASE;
     static const long ID_GRID_MNU_BREAKDOWN_PHRASES;
+    static const long ID_GRID_MNU_AI_IMAGE_PHRASE;
     static const long ID_GRID_MNU_AUTOLABEL;
     static const long ID_GRID_MNU_HALVETIMINGS;
     static const long ID_GRID_MNU_BREAKDOWN_WORD;

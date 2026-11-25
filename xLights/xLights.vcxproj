@@ -435,7 +435,7 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
   </Target>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(MSBuildProjectDirectory)\..\include\klightmapper;$(MSBuildProjectDirectory)\..\dependencies\Vulkan-Headers\include;$(MSBuildProjectDirectory)\..\dependencies\volk;$(MSBuildProjectDirectory)\..\dependencies\VulkanMemoryAllocator\include;$(VULKAN_SDK)/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildProjectDirectory)\..\include\klightmapper;$(MSBuildProjectDirectory)\..\dependencies\mbedtls\include;$(MSBuildProjectDirectory)\..\dependencies\Vulkan-Headers\include;$(MSBuildProjectDirectory)\..\dependencies\volk;$(MSBuildProjectDirectory)\..\dependencies\VulkanMemoryAllocator\include;$(VULKAN_SDK)/Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -906,6 +906,7 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClCompile Include="..\src-core\utils\LayoutRecords.cpp" />
     <ClCompile Include="..\src-core\utils\LayoutRenameHints.cpp" />
     <ClCompile Include="..\src-core\utils\LayoutRenameLog.cpp" />
+    <ClCompile Include="..\src-core\utils\LayoutLock.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\KeyBindings.cpp" />
     <ClCompile Include="..\src-core\media\kiss_fft\kiss_fft.c" />
     <ClCompile Include="..\src-core\media\kiss_fft\tools\kiss_fftr.c" />
@@ -1015,6 +1016,7 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClCompile Include="..\src-ui-wx\setup\DiscoveryAuthDialog.cpp" />
     <ClCompile Include="..\src-ui-wx\sequencer\RenameTextDialog.cpp" />
     <ClCompile Include="..\src-core\render\RenderEngine.cpp" />
+    <ClCompile Include="..\src-core\render\RemoteRenderScheduler.cpp" />
     <ClCompile Include="..\src-core\render\xLightsShowContext.cpp" />
     <ClCompile Include="..\src-core\render\ViewpointMgr.cpp" />
     <ClCompile Include="..\src-ui-wx\render\RenderUI.cpp" />
@@ -1057,6 +1059,23 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClCompile Include="..\src-core\lyrics\LyricBreakdown.cpp" />
     <ClCompile Include="..\src-ui-wx\sequencer\RowHeading.cpp" />
     <ClCompile Include="..\src-core\render\SequenceElements.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabCommandInfo.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabController.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabDocHash.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabFiles.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabGroup.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabLayout.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabManifest.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabMessages.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabNet.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabRoles.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabNetPortable.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabSession.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabTlsClient.c" />
+    <ClCompile Include="..\src-core\collab\CollabTlsCrypto.c" />
+    <ClCompile Include="..\src-core\collab\CollabTlsServer.c" />
+    <ClCompile Include="..\src-core\collab\CollabTransport.cpp" />
+    <ClCompile Include="..\src-core\collab\CollabUidTable.cpp" />
     <ClCompile Include="..\src-core\render\SequenceCommands.cpp" />
     <ClCompile Include="..\src-core\render\SequenceElementCommands.cpp" />
     <ClCompile Include="..\src-core\render\CommandExecutor.cpp" />
@@ -1095,6 +1114,7 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClCompile Include="..\src-ui-wx\app-shell\TabConvert.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\TabPreview.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\TabSequence.cpp" />
+    <ClCompile Include="..\src-ui-wx\app-shell\Collaboration.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\ShowFileWatch.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\DiscoveryHelpers.cpp" />
     <ClCompile Include="..\src-ui-wx\app-shell\TabSetup.cpp" />
@@ -1621,6 +1641,8 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClInclude Include="..\src-core\utils\LayoutRecords.h" />
     <ClInclude Include="..\src-core\utils\LayoutRenameHints.h" />
     <ClInclude Include="..\src-core\utils\LayoutRenameLog.h" />
+    <ClInclude Include="..\src-core\utils\LayoutDirt.h" />
+    <ClInclude Include="..\src-core\utils\LayoutLock.h" />
     <ClInclude Include="..\src-ui-wx\app-shell\KeyBindings.h" />
     <ClInclude Include="..\src-ui-wx\layout\LayoutGroup.h" />
     <ClInclude Include="..\src-ui-wx\layout\LayoutPanel.h" />
@@ -1761,6 +1783,8 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClInclude Include="..\src-ui-wx\EffectSymbolDialog.h" />
     <ClInclude Include="..\src-ui-wx\sequencer\EffectDropTarget.h" />
     <ClInclude Include="..\src-core\render\EffectLayer.h" />
+    <ClInclude Include="..\src-ui-wx\app-shell\Collaboration.h" />
+    <ClInclude Include="..\src-ui-wx\sequencer\CollabOverlay.h" />
     <ClInclude Include="..\src-ui-wx\sequencer\EffectsGrid.h" />
     <ClInclude Include="..\src-core\render\Element.h" />
     <ClInclude Include="..\src-ui-wx\sequencer\ElementLayers.h" />
@@ -1768,6 +1792,22 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClInclude Include="..\src-core\lyrics\LyricBreakdown.h" />
     <ClInclude Include="..\src-ui-wx\sequencer\RowHeading.h" />
     <ClInclude Include="..\src-core\render\SequenceElements.h" />
+    <ClInclude Include="..\src-core\collab\CollabCommandInfo.h" />
+    <ClInclude Include="..\src-core\collab\CollabController.h" />
+    <ClInclude Include="..\src-core\collab\CollabDocHash.h" />
+    <ClInclude Include="..\src-core\collab\CollabFiles.h" />
+    <ClInclude Include="..\src-core\collab\CollabGroup.h" />
+    <ClInclude Include="..\src-core\collab\CollabGroupWire.h" />
+    <ClInclude Include="..\src-core\collab\CollabLayout.h" />
+    <ClInclude Include="..\src-core\collab\CollabManifest.h" />
+    <ClInclude Include="..\src-core\collab\CollabMessages.h" />
+    <ClInclude Include="..\src-core\collab\CollabNet.h" />
+    <ClInclude Include="..\src-core\collab\CollabNetWire.h" />
+    <ClInclude Include="..\src-core\collab\CollabRoles.h" />
+    <ClInclude Include="..\src-core\collab\CollabTlsConfig.h" />
+    <ClInclude Include="..\src-core\collab\CollabSession.h" />
+    <ClInclude Include="..\src-core\collab\CollabTransport.h" />
+    <ClInclude Include="..\src-core\collab\CollabUidTable.h" />
     <ClInclude Include="..\src-core\render\SequenceCommands.h" />
     <ClInclude Include="..\src-core\render\SequenceElementCommands.h" />
     <ClInclude Include="..\src-core\render\SequenceIds.h" />
@@ -1900,6 +1940,7 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClInclude Include="..\src-ui-wx\shared\utils\xlSlider.h" />
     <ClInclude Include="..\src-ui-wx\shared\controls\MediaPickerCtrl.h" />
     <ClInclude Include="..\src-ui-wx\graphics\wxTextDrawingContext.h" />
+    <ClInclude Include="..\src-ui-wx\layout\CollabLayoutOverlay.h" />
     <ClInclude Include="..\src-ui-wx\layout\ControllerListPanel.h" />
     <ClInclude Include="..\src-ui-wx\layout\ControllerTreeUtils.h" />
     <ClInclude Include="..\src-ui-wx\layout\ControllerFullColumnsDialog.h" />
@@ -1986,6 +2027,7 @@ xcopy /Y /S /I "$(SolutionDir)..\resources\meshobjects\*" "$(TargetDir)meshobjec
     <ClInclude Include="..\src-core\render\RenderProfile.h" />
     <ClInclude Include="..\src-core\render\RenderProgressInfo.h" />
     <ClInclude Include="..\src-core\render\RenderContext.h" />
+    <ClInclude Include="..\src-core\render\RemoteRenderScheduler.h" />
     <ClInclude Include="..\src-core\render\JukeboxButtonData.h" />
     <ClInclude Include="..\src-core\render\IRenderProgressSink.h" />
     <ClInclude Include="..\src-core\render\IRenderJobStatus.h" />

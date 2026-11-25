@@ -122,6 +122,7 @@
 #include "utils/ShowAutosave.h"
 #include "utils/ShowPresence.h"
 #include "utils/ShowFileWatcher.h"
+#include "app-shell/Collaboration.h"
 #include "render/ShowFileLiveMerge.h"
 #include "utils/ShowFileGuard.h"
 #include "utils/ShowGuid.h"
@@ -1628,6 +1629,8 @@ xLightsFrame::xLightsFrame(wxWindow* parent, int ab, wxWindowID id, bool renderO
     _presenceHint->Hide();
     StatusBarSizer->Add(_presenceHint, wxGBPosition(0, 4), wxDefaultSpan, wxALL | wxALIGN_CENTER_VERTICAL, 2);
     CreateShowFileBanner();
+    _collab = std::make_unique<DesktopCollab>(this);
+    _collab->CreateUI(MenuFile, MenuItem_File_Close_Sequence);
     StatusBarSizer->AddGrowableCol(1, 2);
     StatusBarSizer->AddGrowableCol(3, 1);
     ProgressBar->Connect(wxEVT_LEFT_DOWN, (wxObjectEventFunction)&xLightsFrame::OnProgressBarDoubleClick, nullptr, this);
@@ -2325,6 +2328,8 @@ xLightsFrame::~xLightsFrame()
     // render thread is completely stuck
     AbortRender(2000);
 
+    _collab.reset();
+
     delete _presetModel;
     _presetModel = nullptr;
     delete _presetModelManager;
@@ -2959,6 +2964,11 @@ void xLightsFrame::OnOutputTimerTrigger(wxTimerEvent& event)
                 _outputManager.StartFrame(curtime);
                 _outputManager.EndFrame();
             }
+            // Other participants' edits waiting for a quiet moment render on
+            // every tab, not only once the sequencer is shown again.
+            needTimer |= RemoteRendersIdle((uint64_t)std::chrono::duration_cast<std::chrono::milliseconds>(
+                                               std::chrono::steady_clock::now().time_since_epoch())
+                                               .count());
             break;
         }
     }
@@ -3191,6 +3201,9 @@ void xLightsFrame::OnNotebook1PageChanged1(wxAuiNotebookEvent& event)
         MenuItem_File_Save->Enable(!readOnlyMode);
         MenuItem_File_Save->SetItemLabel(_("Save Layout\tCTRL-s"));
         layoutPanel->RestoreFloatingPanes();
+        if (IsControllerListVisible()) {
+            RefreshControllerStatusNow();
+        }
     } else if (pagenum == NEWSEQUENCER) {
         InitSequencer();
         ShowHideAllSequencerWindows(true);
@@ -3239,6 +3252,11 @@ bool xLightsFrame::UploadControllerForImmediateOutput(Controller* controller)
 bool xLightsFrame::ForceEnableOutputs(bool startTimer, bool skipAutoUpload)
 {
     bool outputting = false;
+    if (std::string why = CollabHostOnlyReason("output to lights"); !why.empty()) {
+        spdlog::info("{}", why);
+        SetStatusText(wxString::FromUTF8(why));
+        return false;
+    }
     if (!_outputManager.IsOutputting()) {
         DisableSleepModes();
         outputting = _outputManager.StartOutput();
@@ -3328,6 +3346,10 @@ bool xLightsFrame::ToggleOutputs(bool ignoreCheck)
 void xLightsFrame::OnCheckBoxLightOutputClick(wxCommandEvent& event)
 {
     if (event.GetInt()) {
+        if (RefuseIfCollabHostOnly("output to lights")) {
+            DisableOutputs();
+            return;
+        }
         EnableOutputs();
     } else {
         DisableOutputs();
@@ -3444,6 +3466,9 @@ void xLightsFrame::OnClose(wxCloseEvent& event)
         event.Veto();
         inClose = false;
         return;
+    }
+    if (_collab) {
+        _collab->Shutdown();
     }
 
     selectedEffect = nullptr;
@@ -3905,6 +3930,9 @@ void xLightsFrame::ShowSequenceSettings()
 
     // populate dialog
     SeqSettingsDialog dialog(this, xLightsFrame::CurrentSeqXmlFile, &_sequenceElements, mediaDirectories, wxEmptyString, wxEmptyString);
+    if (std::string frozen = SequenceSettingsFreezeReason(); !frozen.empty()) {
+        dialog.SetReadOnly(frozen);
+    }
     // Constrain before Fit() so Fit() → SetSize() → DoSetSize() clips to the max.
     // Setting max size here is the reliable cross-platform approach: DoSetSize()
     // checks GetMaxSize() and won't exceed it, even on Wayland where post-Fit
@@ -6432,6 +6460,22 @@ void xLightsFrame::OnMenuItemShiftEffectsSelected(wxCommandEvent& event)
 
 #pragma region Tools Menu
 
+void xLightsFrame::OfferSaveBeforeUpload(wxWindow* parent)
+{
+    if (CurrentSeqXmlFile == nullptr || mSavedChangeCount == _sequenceElements.GetChangeCount() || IsNonInteractiveSave()) {
+        return;
+    }
+    if (_collab != nullptr && _collab->IsClientDocument()) {
+        // A session's sequence here is a temporary copy, and saving it means
+        // a Save As; an upload uses what is already saved and rendered.
+        spdlog::info("Upload: not offering to save the collaboration session's temporary copy of the sequence.");
+        return;
+    }
+    if (wxMessageBox(_("Open sequence has not been saved. If you plan on uploading it to FPP then it needs to be saved. Do you want to save it now?"), _("Save Sequence"), wxYES_NO | wxCENTRE, parent) == wxYES) {
+        SaveSequence();
+    }
+}
+
 void xLightsFrame::OnMenuItem_FPP_ConnectSelected(wxCommandEvent& event)
 {
     // make sure everything is up to date
@@ -6439,12 +6483,10 @@ void xLightsFrame::OnMenuItem_FPP_ConnectSelected(wxCommandEvent& event)
         layoutPanel->UnSelectAllModels();
     RecalcModels();
 
-    if (mSavedChangeCount != _sequenceElements.GetChangeCount()) {
-        if (wxMessageBox(_("Open sequence has not been saved. If you plan on uploading it to FPP then it needs to be saved. Do you want to save it now?"), _("Save Sequence"), wxYES_NO | wxCENTRE, this) == wxYES) {
-            SaveSequence();
-        }
+    if (RefuseIfCollabHostOnly("upload to controllers")) {
+        return;
     }
-
+    OfferSaveBeforeUpload(this);
     FPPConnectDialog dlg(this, &_outputManager);
 
     dlg.ShowModal();
@@ -6961,6 +7003,9 @@ void xLightsFrame::OpenShowDirectoriesDialog() {
 
 void xLightsFrame::OnMenuItem_CleanupFileLocationsSelected(wxCommandEvent& event)
 {
+    if (RefuseIfLayoutLocked()) {
+        return;
+    }
     
     spdlog::debug("Cleaning up file locations.");
     CleanupRGBEffectsFileLocations();
@@ -8156,6 +8201,14 @@ void xLightsFrame::SaveCurrentTab()
             DisplayError("Layout cannot be saved in read only mode!", this);
             break;
         }
+        // A session holding the layout refuses both files; say so once. The
+        // presets are a file of this device's own and are still saved.
+        if (RefuseIfLayoutLocked(this) || RefuseIfCollabHostOnly("save the layout and controllers", this)) {
+            if (UnsavedPresetChanges) {
+                SavePresetsFile();
+            }
+            break;
+        }
         layoutPanel->SaveEffects();
         SaveNetworksFile();
         break;
@@ -9224,6 +9277,15 @@ void xLightsFrame::SetUserEMAIL(const wxString& e)
     spdlog::info("User email changed to {}", _userEmail.ToStdString());
 }
 
+void xLightsFrame::SetLinkedControllerUpload(const wxString& e)
+{
+    _linkedControllerUpload = e;
+    auto* config = GetXLightsConfig();
+    config->Write("xLightsLinkedControllerUpload", _linkedControllerUpload);
+    config->Flush();
+    spdlog::info("Linked controller upload set to {}", _linkedControllerUpload.ToStdString());
+}
+
 void xLightsFrame::SetRenameModelAliasPromptBehavior(const wxString& e)
 {
 
@@ -9649,6 +9711,9 @@ void xLightsFrame::OnMenuItem_RemapCustomSelected(wxCommandEvent& event)
 
 void xLightsFrame::OnMenuItemRestoreBackupSelected(wxCommandEvent& event)
 {
+    if (RefuseIfLayoutLocked()) {
+        return;
+    }
     if (CurrentSeqXmlFile != nullptr) {
         wxMessageBox(_("Please Close the Open Sequence Before Using the Restore Backup Dialog"));
         return;
@@ -9769,6 +9834,14 @@ void xLightsFrame::UpdateFromBaseShowFolder(bool prompt)
 {
     
     spdlog::debug("Updating from base show folder.");
+    if (IsLayoutLocked()) {
+        if (prompt) {
+            RefuseIfLayoutLocked();
+        } else {
+            spdlog::info("Not updating from the base show folder: {}", GetLayoutLockReason());
+        }
+        return;
+    }
 
     // ModelManager/ViewObjectManager::MergeFromBase replace models in place,
     // freeing the ones they replace. The iPad path holds a ModelMutationScope
@@ -9877,6 +9950,9 @@ bool xLightsFrame::CanPromoteToBaseShowFolder() const
 
 void xLightsFrame::PromoteToBaseShowFolder(const std::vector<std::string>& controllers, const std::vector<std::string>& models, const std::vector<std::string>& objects)
 {
+    if (RefuseIfLayoutLocked()) {
+        return;
+    }
     if (!CanPromoteToBaseShowFolder()) return;
     std::string const baseDir = _outputManager.GetBaseShowDir();
     if (!ObtainAccessToURL(baseDir, true)) {
@@ -9914,7 +9990,75 @@ void xLightsFrame::PromoteToBaseShowFolder(const std::vector<std::string>& contr
 void xLightsFrame::UpdateReadOnlyState()
 {
     // disable a bunch of things
-    layoutPanel->ButtonSavePreview->Enable(!readOnlyMode);
+    const std::string hostOnly = CollabHostOnlyReason("save the layout and controllers");
+    layoutPanel->ButtonSavePreview->Enable(!readOnlyMode && !IsLayoutLocked() && hostOnly.empty());
+    if (!hostOnly.empty()) {
+        layoutPanel->ButtonSavePreview->SetToolTip(wxString::FromUTF8(hostOnly));
+    } else {
+        layoutPanel->ButtonSavePreview->UnsetToolTip();
+    }
+}
+
+void xLightsFrame::OnLayoutLockChanged()
+{
+    if (wxThread::IsMain()) {
+        UpdateLayoutLockState();
+    } else {
+        CallAfter([this]() { UpdateLayoutLockState(); });
+    }
+}
+
+void xLightsFrame::UpdateLayoutLockState()
+{
+    const bool locked = IsLayoutLocked();
+    const wxString reason = locked ? wxString(GetLayoutLockReason()) : wxString();
+    auto setHelp = [&](wxMenuItem* item, const wxString& refusal) {
+        auto it = _unlockedMenuHelp.find(item);
+        if (it == _unlockedMenuHelp.end()) {
+            it = _unlockedMenuHelp.emplace(item, item->GetHelp()).first;
+        }
+        item->SetHelp(refusal.empty() ? it->second : refusal);
+    };
+    auto lockItem = [&](wxMenuItem* item) {
+        if (item != nullptr) {
+            item->Enable(!locked);
+            setHelp(item, reason);
+        }
+    };
+    lockItem(MenuItemViewSavePerspective);
+    lockItem(MenuItemViewSaveAsPerspective);
+    // These write the show folder's files, which only a session's host does.
+    const std::string hostOnly = CollabHostOnlyReason("change the show folder's files");
+    for (wxMenuItem* item : { MenuItemRestoreBackup, MenuItem_CleanupFileLocations }) {
+        if (item != nullptr) {
+            item->Enable(!locked && hostOnly.empty());
+            setHelp(item, locked ? reason : wxString::FromUTF8(hostOnly));
+        }
+    }
+    if (layoutPanel != nullptr) {
+        layoutPanel->UpdateLayoutLockState();
+    }
+    UpdateReadOnlyState();
+    if (!CollabHostOnlyReason("output to lights").empty() && _outputManager.IsOutputting()) {
+        DisableOutputs();
+    }
+    EnableNetworkChanges();
+    if (locked) {
+        SetStatusText(reason);
+    }
+}
+
+bool xLightsFrame::RefuseIfLayoutLocked(wxWindow* parent)
+{
+    if (!IsLayoutLocked()) {
+        return false;
+    }
+    if (!IsNonInteractiveSave()) {
+        DisplayInfo(GetLayoutLockReason() + ": the layout, controllers and sequence settings cannot be changed.", parent != nullptr ? parent : this);
+    } else {
+        spdlog::warn("{}: not changing the layout", GetLayoutLockReason());
+    }
+    return true;
 }
 
 void xLightsFrame::OnMenuItemFindShowFolderSelected(wxCommandEvent& event)
@@ -9968,5 +10112,22 @@ void xLightsFrame::SetPaletteSizeString(const wxString& size) {
         if (colorPanel) {
             colorPanel->RefreshPaletteSize();
         }
+    }
+}
+
+bool xLightsFrame::CollaborationAvailable() const
+{
+    return _collab != nullptr && _collab->Available();
+}
+
+bool xLightsFrame::GetCollaborationEnabled() const
+{
+    return DesktopCollab::PreferenceEnabled();
+}
+
+void xLightsFrame::SetCollaborationEnabled(bool b)
+{
+    if (_collab != nullptr) {
+        _collab->SetPreferenceEnabled(b);
     }
 }

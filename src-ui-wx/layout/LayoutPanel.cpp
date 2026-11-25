@@ -128,6 +128,8 @@
 #include <wx/aui/floatpane.h>
 #include <wx/aui/dockart.h>
 #include "utils/CursorType.h"
+#include "layout/CollabLayoutOverlay.h"
+#include "app-shell/Collaboration.h"
 
 inline wxCursor CursorTypeToWx(CursorType ct) {
     switch (ct) {
@@ -576,6 +578,10 @@ public:
         }
         return model;
     }
+    // The model pointer this item holds, never dereferenced (it may have
+    // been freed until the list reloads).
+    Model* HeldModel() const { return model; }
+    bool IsSubModel() const { return !subModel.empty(); }
 
     int startingChannel;
     int endingChannel;
@@ -794,6 +800,8 @@ LayoutPanel::LayoutPanel(wxWindow* parent, xLightsFrame *xl, wxPanel* sequencer)
     propertyEditor->EnableLabelTranslation();
     propertyEditor->SetExtraStyle(wxWS_EX_PROCESS_IDLE | wxPG_EX_HELP_AS_TOOLTIPS);
     LayoutUtils::CreateImageList(m_imageList);
+    _collabLockIcon = (int)m_imageList.size();
+    m_imageList.push_back(wxArtProvider::GetBitmapBundle("xlART_PADLOCK_CLOSED", wxART_LIST));
 
     wxFlexGridSizer* FlexGridSizerModels = new wxFlexGridSizer(0, 1, 0, 0);
 	FlexGridSizerModels->AddGrowableCol(0);
@@ -1430,6 +1438,9 @@ LayoutPanel::~LayoutPanel()
 }
 
 void LayoutPanel::OnPropertyGridChange(wxPropertyGridEvent& event) {
+    if (xlights->IsLayoutLocked()) {
+        return;
+    }
     wxString name = event.GetPropertyName();
     updatingProperty = true;
     if (name == "BkgBrightness") {
@@ -1631,6 +1642,14 @@ void LayoutPanel::SetNamePropertyInvalid(wxPGProperty* prop, bool invalid) {
 }
 
 void LayoutPanel::OnPropertyGridChanging(wxPropertyGridEvent& event) {
+    if (xlights->IsLayoutLocked()) {
+        event.Veto();
+        return;
+    }
+    if (IsSelectedBaseObjectValid() && !CollabReadOnlyReason(selectedBaseObject).empty()) {
+        event.Veto();
+        return;
+    }
     std::string name = event.GetPropertyName().ToStdString();
     xlights->AddTraceMessage("LayoutPanel::OnPropertyGridChanging  Property: " + name);
     // event.GetProperty() can be null when wxPropertyGrid fires CHANGING
@@ -1761,6 +1780,9 @@ void LayoutPanel::OnPropertyGridRightClick(wxPropertyGridEvent& event)
 
 void LayoutPanel::OnPropertyGridContextMenu(wxCommandEvent& event)
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     if (selectedBaseObject != nullptr) {
         if (_propertyAdapter) {
             _propertyAdapter->HandlePropertyGridContextMenu(event);
@@ -2256,6 +2278,7 @@ void LayoutPanel::UpdateModelList(bool full_refresh, std::vector<Model*> &models
 
     ThawTreeListView(TreeListViewModels, TreeListMiewInternalModel, toExpand, modelsSortState);
     ThawTreeListView(TreeListViewGroups, TreeListGroupsInternalModel, toExpandGroups, groupsSortState);
+    RefreshCollabBadges();
 
     if (sw.Time() > 500)
         spdlog::debug("        LayoutPanel::UpdateModelList took {}ms", sw.Time());
@@ -2399,6 +2422,10 @@ void LayoutPanel::UpdateModelsForPreview(const std::string &group, LayoutGroup* 
 void LayoutPanel::BulkEditDimmingCurves()
 {
     std::vector<Model*> modelsToEdit = GetSelectedModelsForEdit();
+    CollabLayoutEditLock collabLock(std::vector<const BaseObject*>(modelsToEdit.begin(), modelsToEdit.end()), "dimming curve", this);
+    if (!collabLock.Granted()) {
+        return;
+    }
     ModelDimmingCurveDialog dlg(this);
     std::map<std::string, std::map<std::string, std::string>> dimmingInfo;
     // Get the first non-empty dimming curve from selected models
@@ -2656,6 +2683,9 @@ void LayoutPanel::BulkEditPixelSize() {
 // direction, ...). Menu entry is gated by IsAllSelectedModelsSameDisplayType
 // so the dialog is never shown for a mixed-type selection.
 void LayoutPanel::BulkEditModelProperties() {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     std::vector<Model*> modelsToEdit = GetSelectedModelsForEdit();
     if (modelsToEdit.size() < 2) {
         return;
@@ -3102,6 +3132,9 @@ void LayoutPanel::CreateSetUndoPointOnce(bool& taken, const std::string& modelNa
 
 void LayoutPanel::DoLinkAsSet()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     auto selected = GetSelectedModelsForSetActions();
     if (selected.size() < 2) return;
     auto& setMgr = xlights->AllModels.GetSetManager();
@@ -3143,6 +3176,9 @@ void LayoutPanel::DoLinkAsSet()
 
 void LayoutPanel::DoAddSelectedToSet(const std::string& setName)
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     auto selected = GetSelectedModelsForSetActions();
     if (selected.empty()) return;
     auto& setMgr = xlights->AllModels.GetSetManager();
@@ -3182,6 +3218,9 @@ void LayoutPanel::DoAddSelectedToSet(const std::string& setName)
 
 void LayoutPanel::DoRemoveSelectedFromSet()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     auto selected = GetSelectedModelsForSetActions();
     if (selected.empty()) return;
     auto& setMgr = xlights->AllModels.GetSetManager();
@@ -3201,6 +3240,9 @@ void LayoutPanel::DoRemoveSelectedFromSet()
 
 void LayoutPanel::DoDeleteSet()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     auto selected = GetSelectedModelsForSetActions();
     if (selected.empty()) return;
     auto& setMgr = xlights->AllModels.GetSetManager();
@@ -3223,6 +3265,9 @@ void LayoutPanel::DoDeleteSet()
 
 void LayoutPanel::DoRenameSet()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     auto selected = GetSelectedModelsForSetActions();
     if (selected.empty()) return;
     auto& setMgr = xlights->AllModels.GetSetManager();
@@ -3358,6 +3403,9 @@ private:
 
 void LayoutPanel::DoManageSet()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     auto selected = GetSelectedModelsForSetActions();
     if (selected.empty()) return;
     auto& setMgr = xlights->AllModels.GetSetManager();
@@ -3808,6 +3856,9 @@ void LayoutPanel::CreateModelGroupFromSelected()
 }
 
 void LayoutPanel::AddSelectedToExistingGroups() {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
 
     wxArrayString selectedModels;
 
@@ -4275,6 +4326,11 @@ void LayoutPanel::showBackgroundProperties()
     prop = propertyEditor->Append(new wxBoolProperty("X0 Is Center", "2DXZeroIsCenter", xlights->GetDisplay2DCenter0()));
     prop->SetAttribute("UseCheckbox", true);
 
+    if (xlights->IsLayoutLocked()) {
+        DisablePropertyGridForLock();
+    } else {
+        propertyEditor->UnsetToolTip();
+    }
     propertyEditor->Thaw();
 }
 
@@ -4437,9 +4493,64 @@ void LayoutPanel::SetupPropGrid(BaseObject *base_object) {
             it.Next(true);
         }
 
+    } else if (xlights->IsLayoutLocked()) {
+        DisablePropertyGridForLock();
+    } else if (std::string why = CollabReadOnlyReason(base_object); !why.empty()) {
+        DisablePropertyGridForLock(why);
     } else {
         propertyEditor->UnsetToolTip();
     }
+    _collabReadOnlyShown = CollabReadOnlyReason(base_object);
+}
+
+void LayoutPanel::DisablePropertyGridForLock(const std::string& reason)
+{
+    // Disabled properties cannot be selected, so the dialog-launching editors
+    // (submodels, faces, states, node names...) cannot open either.
+    propertyEditor->SetToolTip(reason.empty() ? wxString(xlights->GetLayoutLockReason()) : wxString::FromUTF8(reason));
+    auto it = propertyEditor->GetIterator(wxPG_ITERATE_ALL, nullptr);
+    while (!it.AtEnd()) {
+        it.GetProperty()->Enable(false);
+        it.Next(true);
+    }
+}
+
+bool LayoutPanel::IsViewOnlyMenuId(int id)
+{
+    return id == ID_PREVIEW_RESET || id == ID_PREVIEW_MODELS_NOT_ON_CONTROLLER || id == ID_PREVIEW_VIEWPOINT_DEFAULT_RESTORE ||
+           id == ID_PREVIEW_EXPORT_FACESSTATESSUBMODELS || id == ID_PREVIEW_LAYOUT_DXF_EXPORT || id == ID_PREVIEW_MODEL_CAD_EXPORT ||
+           id == ID_PREVIEW_MODEL_EXPORTASCUSTOM || id == ID_PREVIEW_MODEL_EXPORTASCUSTOM3D || id == ID_PREVIEW_MODEL_EXPORTXLIGHTSMODEL ||
+           id == ID_PREVIEW_MODEL_NODELAYOUT || id == ID_PREVIEW_MODEL_WIRINGVIEW || id == ID_PREVIEW_PRINT_LAYOUT_IMAGE ||
+           id == ID_PREVIEW_SAVE_LAYOUT_IMAGE;
+}
+
+void LayoutPanel::UpdateLayoutLockState()
+{
+    const bool locked = xlights->IsLayoutLocked();
+    const wxString reason = locked ? wxString(xlights->GetLayoutLockReason()) : wxString();
+    if (locked) {
+        // Drop a half-made model or an armed "add model" button: adding it
+        // would be an edit the lock refuses.
+        CancelNewModel();
+        if (selectedButton != nullptr) {
+            selectedButton->SetState(0);
+            selectedButton = nullptr;
+        }
+        selectedDmxModelType = "";
+    }
+    for (auto* b : buttons) {
+        b->Enable(!locked);
+        if (locked) {
+            b->SetToolTip(reason);
+        } else {
+            b->SetToolTip("Create new " + b->GetModelType());
+        }
+    }
+    UpdateAddObjectButton();
+    if (ModelGroupWindow != nullptr) {
+        ModelGroupWindow->Enable(!locked);
+    }
+    resetPropertyGrid();
 }
 
 void LayoutPanel::SelectBaseObject3D()
@@ -4628,7 +4739,7 @@ void LayoutPanel::UpdateAddObjectButton()
     if (obj_button == nullptr) {
         return;
     }
-    obj_button->Enable(is_3d && currentLayoutGroup == "Default");
+    obj_button->Enable(is_3d && currentLayoutGroup == "Default" && !xlights->IsLayoutLocked());
 }
 
 std::string LayoutPanel::GetSelectedModelName() const
@@ -4671,6 +4782,9 @@ bool LayoutPanel::SaveEffects()
 
 void LayoutPanel::OnButtonSavePreviewClick(wxCommandEvent& event)
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     // if we have auto layout make sure everything is up to date ... and update zcpp files
     if (xlights->GetOutputManager()->GetAutoLayoutControllerNames().size() > 0) {
         xlights->GetOutputModelManager()->AddImmediateWork(OutputModelManager::WORK_RGBEFFECTS_CHANGE, "LayoutPanel::OnButtonSavePreviewClick");
@@ -5108,7 +5222,7 @@ void LayoutPanel::OnPreviewLeftDClick(wxMouseEvent& event)
             if (m_lastClickWasCentreCycle) {
                 return;
             }
-            if (xlights->GetLayoutDoubleClickAction() == "Faces/States/Submodels") {
+            if (xlights->GetLayoutDoubleClickAction() == "Faces/States/Submodels" && !xlights->IsLayoutLocked()) {
                 EditSubmodels();
             }
             return;
@@ -5578,6 +5692,23 @@ void LayoutPanel::OnPreviewLeftDown(wxMouseEvent& event)
     if (clearedHighlight) {
         xlights->GetOutputModelManager()->AddASAPWork(OutputModelManager::WORK_REDRAW_LAYOUTPREVIEW,
             "LayoutPanel::OnPreviewLeftDown::ClearHighlights");
+    }
+
+    if (xlights->IsLayoutLocked()) {
+        // Select only: no handle drags, moves, marquee or new models. The
+        // drag flags stay clear, so mouse-move and mouse-up change nothing.
+        ShowPropGrid(true);
+        modelPreview->SetFocus();
+        if (!event.ControlDown()) {
+            UnSelectAllModelsInTree();
+        }
+        ViewObject* singleObject = editing_models ? nullptr : SelectSingleViewObject(event.GetX(), event.GetY());
+        if (singleObject != nullptr) {
+            SelectBaseObject(singleObject, true);
+        } else if (Model* singleModel = editing_models ? SelectSingleModel(event.GetX(), event.GetY()) : nullptr; singleModel != nullptr) {
+            SelectModelInTree(singleModel);
+        }
+        return;
     }
 
     if (m_polyline_active)
@@ -6267,6 +6398,41 @@ static bool inFinalize = false;
 bool LayoutPanel::IsFinalizingModel()
 {
     return inFinalize;
+}
+
+void LayoutPanel::CancelNewModel()
+{
+    // Inside FinalizeModel's pumps the outer call owns _newModel until it
+    // returns.
+    if (inFinalize) {
+        return;
+    }
+    m_dragSession.reset();
+    m_moving_handle = false;
+    m_dragging = false;
+    m_creating_bound_rect = false;
+    m_polyline_active = false;
+    m_over_handle.reset();
+    m_polyline_create_handle = NO_HANDLE;
+    if (_newModel == nullptr) {
+        return;
+    }
+    Model* m = _newModel;
+    _newModel = nullptr;
+    if (modelPreview->GetAdditionalModel() == m) {
+        modelPreview->SetAdditionalModel(nullptr);
+    }
+    if (highlightedBaseObject == m) {
+        highlightedBaseObject = nullptr;
+    }
+    if (selectedBaseObject == m) {
+        selectedBaseObject = nullptr;
+        _propertyAdapter.reset();
+    }
+    // Never added to AllModels, so no render job can hold it.
+    delete m;
+    modelPreview->SetCursor(wxCURSOR_DEFAULT);
+    xlights->GetOutputModelManager()->AddASAPWork(OutputModelManager::WORK_REDRAW_LAYOUTPREVIEW, "CancelNewModel");
 }
 
 void LayoutPanel::FinalizeModel()
@@ -8031,6 +8197,9 @@ void LayoutPanel::OnPreviewRightDown(wxMouseEvent& event)
 
 void LayoutPanel::OnPreviewModelPopup(wxCommandEvent& event)
 {
+    if (!IsViewOnlyMenuId(event.GetId()) && xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     if (event.GetId() == ID_PREVIEW_RESET) {
         modelPreview->Reset();
         xlights->GetOutputModelManager()->AddASAPWork(OutputModelManager::WORK_REDRAW_LAYOUTPREVIEW, "LayoutPanel::OnPreviewModelPopup::ID_PREVIEW_RESET");
@@ -8524,6 +8693,10 @@ void LayoutPanel::EditSubmodels()
     if (md == nullptr || md->GetDisplayAs() == DisplayAsType::ModelGroup || md->GetDisplayAs() == DisplayAsType::SubModel)
         return;
 
+    CollabLayoutEditLock collabLock(md, "submodels", this);
+    if (!collabLock.Granted()) {
+        return;
+    }
     ModelDefinitionsDialog dlg(this, &xlights->_outputManager, md, TAB_SUBMODELS);
     if (dlg.ShowModal() == wxID_OK) {
         if (dlg.HasContentChanged()) {
@@ -8546,6 +8719,10 @@ void LayoutPanel::EditFaces()
     if (md == nullptr || md->GetDisplayAs() == DisplayAsType::ModelGroup || md->GetDisplayAs() == DisplayAsType::SubModel)
         return;
 
+    CollabLayoutEditLock collabLock(md, "faces", this);
+    if (!collabLock.Granted()) {
+        return;
+    }
     ModelDefinitionsDialog dlg(this, &xlights->_outputManager, md, TAB_FACES);
     if (dlg.ShowModal() == wxID_OK) {
         if (dlg.HasContentChanged()) {
@@ -8565,6 +8742,10 @@ void LayoutPanel::EditStates()
     if (md == nullptr || md->GetDisplayAs() == DisplayAsType::ModelGroup || md->GetDisplayAs() == DisplayAsType::SubModel)
         return;
 
+    CollabLayoutEditLock collabLock(md, "states", this);
+    if (!collabLock.Granted()) {
+        return;
+    }
     ModelDefinitionsDialog dlg(this, &xlights->_outputManager, md, TAB_STATES);
     if (dlg.ShowModal() == wxID_OK) {
         if (dlg.HasContentChanged()) {
@@ -8581,6 +8762,10 @@ void LayoutPanel::EditModelData()
     if (md == nullptr || md->GetDisplayAs() != DisplayAsType::Custom)
         return;
 
+    CollabLayoutEditLock collabLock(md, "custom model", this);
+    if (!collabLock.Granted()) {
+        return;
+    }
     md->SaveDisplayDimensions();
     auto oldAutoSave = xLightsApp::GetFrame()->_suspendAutoSave;
     xLightsApp::GetFrame()->_suspendAutoSave = true; // because we will tamper with model we need to suspend autosave
@@ -9825,6 +10010,9 @@ void LayoutPanel::OnSplitterWindowSashPosChanged(wxSplitterEvent& event)
 }
 
 void LayoutPanel::OnNewModelTypeButtonClicked(wxCommandEvent& event) {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     for (const auto& it : buttons) {
         if (event.GetId() == it->GetId()) {
             if (it->GetModelType() == "Add Object") {
@@ -9851,6 +10039,19 @@ void LayoutPanel::OnNewModelTypeButtonClicked(wxCommandEvent& event) {
             it->SetState(0);
         }
     }
+}
+
+void LayoutPanel::ExitModelDrawMode() {
+    for (const auto& it : buttons) {
+        if (it->GetState()) {
+            it->SetState(0);
+        }
+    }
+    selectedButton = nullptr;
+    selectedDmxModelType = "";
+    _lastXlightsModel = "";
+    modelPreview->SetCursor(wxCURSOR_DEFAULT);
+    modelPreview->Refresh();
 }
 
 void LayoutPanel::BeginImportModelFromFile(const std::string& xmodelPath) {
@@ -9908,6 +10109,9 @@ void LayoutPanel::DisplayAddObjectPopup() {
 
 void LayoutPanel::OnAddObjectPopup(wxCommandEvent& event)
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     
     int id = event.GetId();
     ViewObject* vobj = nullptr;
@@ -9988,6 +10192,9 @@ void LayoutPanel::DisplayAddDmxPopup() {
 
 void LayoutPanel::OnAddDmxPopup(wxCommandEvent& event)
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     
     int id = event.GetId();
     bool object_created = false;
@@ -10081,6 +10288,9 @@ std::list<BaseObject*> LayoutPanel::GetSelectedBaseObjects() const
 
 void LayoutPanel::Nudge(int key)
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     std::list<BaseObject*> selectedBaseObjects = GetSelectedBaseObjects();
     if (selectedBaseObjects.size() > 0)
     {
@@ -10367,6 +10577,8 @@ void LayoutPanel::OnCharHook(wxKeyEvent& event) {
         case WXK_ESCAPE:
             if (m_polyline_active) {
                 FinalizeModel();
+            } else if (_newModel == nullptr && (selectedButton != nullptr || selectedDmxModelType != "")) {
+                ExitModelDrawMode();
             } else if (is_3d) {
                 if (editing_models) {
                     UnSelectAllModelsInTree();
@@ -10476,6 +10688,9 @@ void LayoutPanel::RemoveSelectedModelsFromGroup() {
 }
 void LayoutPanel::DeleteSelectedModels()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     // I deliberately allow objects that come from base to be deleted.
     if (selectedBaseObject != nullptr) {
         xlights->AddTraceMessage("LayoutPanel::Delete Selected Model");
@@ -10546,11 +10761,17 @@ void LayoutPanel::DeleteSelectedModels()
 
 void LayoutPanel::DeleteSelectedObject()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     objects_panel->DeleteSelectedObject();
 }
 
 void LayoutPanel::DeleteSelectedGroups()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
 	wxArrayString groupsToDelete;
 	wxString groupsToConfirm = "";
 	for (const auto& item : selectedTreeGroups) {
@@ -10922,6 +11143,9 @@ void LayoutPanel::PromoteSelectedModelsToBase()
 
 void LayoutPanel::LockSelectedModels(bool lock)
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     std::vector<Model*> modelsToLock = GetSelectedModelsForEdit();
 
     for (const auto& model : modelsToLock) {
@@ -10951,6 +11175,8 @@ void LayoutPanel::DoCopy(wxCommandEvent& event) {
 void LayoutPanel::DoCut(wxCommandEvent& event) {
     if (!modelPreview->HasFocus() && !ActiveModelTree()->HasFocus() && !ActiveModelTree()->GetView()->HasFocus() && !objects_panel->ObjectListHasFocus()) {
         event.Skip();
+    } else if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
     } else if (selectedBaseObject != nullptr) {
         DoCopy(event);
 		if (editing_models)
@@ -10963,6 +11189,8 @@ void LayoutPanel::DoCut(wxCommandEvent& event) {
 void LayoutPanel::DoPaste(wxCommandEvent& event) {
     if (!modelPreview->HasFocus() && !ActiveModelTree()->HasFocus() && !ActiveModelTree()->GetView()->HasFocus() && !objects_panel->ObjectListHasFocus()) {
         event.Skip();
+    } else if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
     } else {
         if (wxTheClipboard->Open()) {
             if (!xlights->AbortRender()) {
@@ -11118,6 +11346,9 @@ void LayoutPanel::DoPaste(wxCommandEvent& event) {
 }
 
 void LayoutPanel::DoUndo(wxCommandEvent& event) {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     
     spdlog::debug("LayoutPanel::DoUndo");
     int sz = undoBuffer.size() - 1;
@@ -11450,6 +11681,9 @@ void LayoutPanel::OnModelsPopup(wxCommandEvent& event) {
     
 
     int id = event.GetId();
+    if (!IsViewOnlyMenuId(id) && xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     if (id == ID_MNU_DELETE_MODEL) {
         spdlog::debug("LayoutPanel::OnModelsPopup DELETE_MODEL");
         DeleteSelectedModels();
@@ -12010,6 +12244,10 @@ void LayoutPanel::OnChoiceLayoutGroupsSelect(wxCommandEvent& event)
     //}
 
     std::string choice_layout = std::string(ChoiceLayoutGroups->GetStringSelection().c_str());
+    if (choice_layout == "<Create New Preview>" && xlights->RefuseIfLayoutLocked(this)) {
+        SwitchChoiceToCurrentLayoutGroup();
+        return;
+    }
     if( choice_layout == "<Create New Preview>" ) {
         wxTextEntryDialog dlg(this, _("Enter name for new preview"), _("Create New Preview"));
         OptimiseDialogPosition(&dlg);
@@ -12210,6 +12448,9 @@ std::string LayoutPanel::ImportModelsFromPreview(std::list<impTreeItemData*> mod
 
 void LayoutPanel::ImportModelsFromRGBEffects()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     // ImportModelsFromPreview below reaches ModelManager::createAndAddModel,
     // which silently replaces - and frees - a model of the same name.
     if (!xlights->AbortRender()) return;
@@ -12286,6 +12527,9 @@ void LayoutPanel::ImportModelsFromRGBEffects()
 
 void LayoutPanel::ImportModelsFromLORS5()
 {
+    if (xlights->RefuseIfLayoutLocked(this)) {
+        return;
+    }
     wxString lg = ChoiceLayoutGroups->GetStringSelection();
     if (lg == "All Models") lg = "Default";
     LORPreview lorPreview(xlights, lg);
@@ -13616,6 +13860,11 @@ bool LayoutPanel::HandleLayoutKeyBinding(wxKeyEvent& event) {
     auto binding = xlights->GetMainSequencer()->keyBindings.Find(event, KBSCOPE::Layout);
     if (binding != nullptr) {
         std::string type = binding->GetType();
+        const bool viewOnly = type == "WIRING_VIEW" || type == "EXPORT_MODEL_CAD" || type == "EXPORT_LAYOUT_DXF" ||
+                              type == "NODE_LAYOUT" || type == "SELECT_ALL_MODELS";
+        if (!viewOnly && xlights->RefuseIfLayoutLocked(this)) {
+            return true;
+        }
         if (type == "LOCK_MODEL") {
             LockSelectedModels(true);
             xlights->GetOutputModelManager()->AddASAPWork(OutputModelManager::WORK_REDRAW_LAYOUTPREVIEW |
@@ -13875,3 +14124,177 @@ bool LayoutPanel::GroupMatchesFilter(Model* model) const {
     return MatchesFilter(model, _groupFilterString, _groupFilterQuery);
 }
 
+
+bool LayoutPanel::IsLayoutEditInProgress() const
+{
+    return m_dragging || m_moving_handle || m_creating_bound_rect || m_polyline_active || _newModel != nullptr || m_dragSession != nullptr ||
+           IsFinalizingModel();
+}
+
+std::vector<BaseObject*> LayoutPanel::GetSelectedLayoutObjects() const
+{
+    std::vector<BaseObject*> out;
+    for (const auto& it : xlights->AllModels) {
+        Model* m = it.second;
+        if (m == nullptr) {
+            continue;
+        }
+        if (m->Selected() || m->GroupSelected()) {
+            out.push_back(m);
+        }
+        for (auto* sm : m->GetSubModels()) {
+            if (sm->Selected() || sm->GroupSelected()) {
+                out.push_back(sm);
+            }
+        }
+    }
+    for (const auto& it : xlights->AllObjects) {
+        if (it.second != nullptr && it.second->Selected()) {
+            out.push_back(it.second);
+        }
+    }
+    return out;
+}
+
+std::string LayoutPanel::CollabReadOnlyReason(const BaseObject* obj) const
+{
+    const CollabLayoutOverlay* overlay = CollabLayoutOverlay::Current();
+    if (overlay == nullptr || obj == nullptr || overlay->locks.empty()) {
+        return {};
+    }
+    const CollabLayoutOverlay::Lock* lock = overlay->LockOf(obj);
+    if (lock == nullptr) {
+        // A submodel, face or state is edited with its model.
+        if (auto* sm = dynamic_cast<const SubModel*>(obj)) {
+            lock = overlay->LockOf(sm->GetParent());
+        }
+    }
+    return lock != nullptr ? lock->text : std::string();
+}
+
+void LayoutPanel::UpdateCollabBadges(wxTreeListCtrl* tree)
+{
+    // _collabBadged: the items that showed a lock before this call.
+    const CollabLayoutOverlay* overlay = CollabLayoutOverlay::Current();
+    const bool anyLocks = overlay != nullptr && !overlay->locks.empty();
+    if (tree == nullptr || _collabLockIcon < 0) {
+        return;
+    }
+    if (!anyLocks && _collabBadged.empty()) {
+        tree->UnsetToolTip();
+        return;
+    }
+    wxString tip;
+    for (wxTreeListItem item = tree->GetFirstItem(); item.IsOk(); item = tree->GetNextItem(item)) {
+        auto* data = dynamic_cast<ModelTreeData*>(tree->GetItemData(item));
+        if (data == nullptr || data->IsSubModel() || !xlights->AllModels.IsModelValid(data->HeldModel())) {
+            continue;
+        }
+        Model* model = data->HeldModel();
+        const CollabLayoutOverlay::Lock* lock = anyLocks ? overlay->LockOf(model) : nullptr;
+        if (lock != nullptr) {
+            tree->SetItemImage(item, _collabLockIcon, _collabLockIcon);
+            if (tip.Find(wxString::FromUTF8(lock->text)) == wxNOT_FOUND) {
+                tip += (tip.empty() ? "" : "\n") + wxString::FromUTF8(lock->text);
+            }
+        } else if (_collabBadged.count(CollabLayoutOverlay::KeyOf(model)) > 0) {
+            const std::string type = DisplayAsTypeToString(model->GetDisplayAs());
+            tree->SetItemImage(item, LayoutUtils::GetModelTreeIcon(type, LayoutUtils::GroupMode::Closed),
+                               LayoutUtils::GetModelTreeIcon(type, LayoutUtils::GroupMode::Opened));
+        }
+    }
+    if (tip.empty()) {
+        tree->UnsetToolTip();
+    } else {
+        tree->SetToolTip(tip);
+    }
+}
+
+void LayoutPanel::RefreshCollabBadges()
+{
+    UpdateCollabBadges(TreeListViewModels);
+    UpdateCollabBadges(TreeListViewGroups);
+    _collabBadged.clear();
+    if (const CollabLayoutOverlay* overlay = CollabLayoutOverlay::Current()) {
+        for (const auto& [key, lock] : overlay->locks) {
+            _collabBadged.insert(key);
+        }
+    }
+}
+
+void LayoutPanel::UpdateCollabPresence()
+{
+    RefreshCollabBadges();
+    // The property grid follows the selected object's lock.
+    BaseObject* sel = IsSelectedBaseObjectValid() ? selectedBaseObject : nullptr;
+    const std::string why = CollabReadOnlyReason(sel);
+    if (why != _collabReadOnlyShown && !xlights->IsLayoutLocked()) {
+        _collabReadOnlyShown = why;
+        xlights->GetOutputModelManager()->AddASAPWork(OutputModelManager::WORK_RELOAD_PROPERTYGRID, "LayoutPanel::UpdateCollabPresence");
+    }
+    xlights->GetOutputModelManager()->AddASAPWork(OutputModelManager::WORK_REDRAW_LAYOUTPREVIEW, "LayoutPanel::UpdateCollabPresence");
+}
+
+std::optional<std::string> LayoutPanel::ReleaseSelectionFor(const std::function<bool(const std::string&)>& touched)
+{
+    auto hit = [&](const BaseObject* o) {
+        if (o == nullptr) {
+            return false;
+        }
+        if (touched(CollabLayoutOverlay::KeyOf(o)) || touched(o->GetName())) {
+            return true;
+        }
+        if (auto* sm = dynamic_cast<const SubModel*>(o)) {
+            return touched(CollabLayoutOverlay::KeyOf(sm->GetParent())) || touched(sm->GetParent()->GetName());
+        }
+        return false;
+    };
+    BaseObject* primary = IsSelectedBaseObjectValid() ? selectedBaseObject : nullptr;
+    bool affected = (selectedBaseObject != nullptr && primary == nullptr) || hit(primary);
+    if (!affected && highlightedBaseObject != nullptr) {
+        // The hovered object is only compared by address: it may already be stale.
+        for (const auto& it : xlights->AllModels) {
+            if (it.second == highlightedBaseObject) {
+                affected = hit(it.second);
+            }
+        }
+        for (const auto& it : xlights->AllObjects) {
+            if (it.second == highlightedBaseObject) {
+                affected = hit(it.second);
+            }
+        }
+    }
+    if (!affected) {
+        for (BaseObject* o : GetSelectedLayoutObjects()) {
+            if (hit(o)) {
+                affected = true;
+                break;
+            }
+        }
+    }
+    if (!affected) {
+        return std::nullopt;
+    }
+    std::string key = primary != nullptr ? CollabLayoutOverlay::KeyOf(primary) : std::string();
+    UnSelectAllModels();
+    return key;
+}
+
+void LayoutPanel::ReselectLayoutObject(const std::string& key)
+{
+    if (key.empty()) {
+        return;
+    }
+    for (const auto& it : xlights->AllModels) {
+        if (it.second != nullptr && CollabLayoutOverlay::KeyOf(it.second) == key) {
+            SelectBaseObject(it.second, true);
+            return;
+        }
+    }
+    for (const auto& it : xlights->AllObjects) {
+        if (it.second != nullptr && CollabLayoutOverlay::KeyOf(it.second) == key) {
+            SelectBaseObject(it.second, true);
+            return;
+        }
+    }
+}

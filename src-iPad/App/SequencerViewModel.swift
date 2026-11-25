@@ -15,6 +15,11 @@ extension XLSequenceDocument: @retroactive @unchecked Sendable {}
 @Observable @MainActor
 class SequencerViewModel {
     var document = XLSequenceDocument()
+    /// Live collaboration (Collaboration.swift).
+    var collab = CollabState()
+    @ObservationIgnored var collabVisibleRange: (Int, Int) = (-1, -1)
+    @ObservationIgnored var collabPresencePending = false
+    @ObservationIgnored var collabLayoutSelectionPending = false
     @ObservationIgnored let undoActivity = UndoActivity()
     var undoManager: UndoManager { undoActivity.manager }
     /// Inspector edits of one setting on one effect that follow each
@@ -389,6 +394,20 @@ class SequencerViewModel {
     // Controller output
     var isOutputting = false
 
+    /// Collaboration-session layout lock (mirrors `document.isLayoutLocked()`).
+    /// While set, the layout editor, controller setup and sequence settings
+    /// are read-only and show `layoutLockReason`.
+    var isLayoutLocked = false
+    var layoutLockReason = ""
+    /// Sequence settings stay frozen for a whole collaboration session
+    /// (live layout or not); the reason, empty when they can be edited.
+    var sequenceSettingsFrozenReason = ""
+    var isSequenceSettingsFrozen: Bool { isLayoutLocked || !sequenceSettingsFrozenReason.isEmpty }
+    /// Why this device can't write the layout files (a client in a live
+    /// layout session), empty when it can.
+    var layoutSaveRefusal = ""
+    @ObservationIgnored private var layoutLockObserver: NSObjectProtocol?
+
     // Rendering (background)
     var isRendering = false
     var isRenderDone = false
@@ -428,7 +447,9 @@ class SequencerViewModel {
     var previewModelName: String? = nil
 
     // Selection & editing
-    var selectedEffect: EffectSelection?
+    var selectedEffect: EffectSelection? {
+        didSet { scheduleCollabPresence() }
+    }
     /// Full set of selected effects. Always mirrors `selectedEffect`:
     /// single-select sets it to `[primary]`, multi-select via marquee
     /// fills it with N, clear empties it. When multi-selected, the
@@ -436,11 +457,15 @@ class SequencerViewModel {
     /// the grid highlights every member. Bulk ops (delete, lock,
     /// disable) iterate this set; single-effect ops fall back to
     /// selectedEffect.
-    var selectedEffects: Set<EffectSelection> = []
+    var selectedEffects: Set<EffectSelection> = [] {
+        didSet { scheduleCollabPresence() }
+    }
     var selectedEffectSettings: [String: String] = [:]     // legacy: raw key/value map
     var availableEffects: [String] = []
     var selectedPaletteEffect: String?
-    var showInspector = false
+    var showInspector = false {
+        didSet { scheduleCollabPresence() }
+    }
 
     // Command palette (⌘⇧K) — fuzzy command/effect launcher. The
     // sheet is presented by `SequencerView`; flipping this flag from
@@ -464,13 +489,17 @@ class SequencerViewModel {
     // property panel, drag origin). The full selection set lives in
     // `layoutEditorSelection`; the primary is conventionally
     // `selection.first` of insertion order (the last model added).
-    var layoutEditorSelectedModel: String? = nil
+    var layoutEditorSelectedModel: String? = nil {
+        didSet { if oldValue != layoutEditorSelectedModel { scheduleCollabLayoutSelection() } }
+    }
     /// Phase J-4 (multi-select) — full selection set. Empty when
     /// nothing's selected. Contains exactly `layoutEditorSelectedModel`
     /// for single-select; multiple entries when the user has
     /// activated edit mode and tapped / marqueed multiple models.
     /// Align / distribute / multi-delete operate on this set.
-    var layoutEditorSelection: Set<String> = []
+    var layoutEditorSelection: Set<String> = [] {
+        didSet { if oldValue != layoutEditorSelection { scheduleCollabLayoutSelection() } }
+    }
     /// Phase J-4 (multi-select) — when true, taps on the canvas
     /// toggle a model's membership in the selection set instead of
     /// replacing the selection. Driven by a "Select" toggle in the
@@ -483,8 +512,12 @@ class SequencerViewModel {
     /// so flipping tabs doesn't lose the model pick. The canvas
     /// reads these via PreviewPaneView and tints / draws handles
     /// accordingly.
-    var layoutEditorSelectedGroup: String? = nil
-    var layoutEditorSelectedObject: String? = nil
+    var layoutEditorSelectedGroup: String? = nil {
+        didSet { if oldValue != layoutEditorSelectedGroup { scheduleCollabLayoutSelection() } }
+    }
+    var layoutEditorSelectedObject: String? = nil {
+        didSet { if oldValue != layoutEditorSelectedObject { scheduleCollabLayoutSelection() } }
+    }
     /// J-31 — Controllers tab selection. Drives the canvas tint
     /// (via `XLMetalBridge.setSelectedController:`) so every
     /// model assigned to this controller renders in the group-
@@ -1252,6 +1285,7 @@ class SequencerViewModel {
     /// actor boundary.
     private func applyLoadResult(loaded: Bool, sequenceFiles: [SequenceEntry], path: String) async {
         self.isShowFolderLoaded = loaded
+        refreshLayoutLock()
         self.sequenceFiles = sequenceFiles
         if loaded {
             // The show load runs detached so it is off the first-frame path,
@@ -1301,8 +1335,12 @@ class SequencerViewModel {
     }
 
     private func maybeAutoUpdateFromBaseShowFolder() async {
+        // In a collaboration session the layout is the session's, not the
+        // base folder's.
         guard document.autoUpdateFromBaseShowDirectory(),
-              document.baseShowDirectory() != nil else { return }
+              document.baseShowDirectory() != nil,
+              !document.isLayoutLocked(),
+              !collab.inSession else { return }
         // updateFromBaseShowDirectory does heavy synchronous C++ work —
         // OutputManager/ModelManager/ViewObjectManager::MergeFromBase plus
         // security-scoped access on the base folder and every referenced mesh
@@ -1928,6 +1966,12 @@ class SequencerViewModel {
         // Save As to a writable location. Mirrors desktop's
         // readOnlyMode gate on the Save path.
         if isReadOnly { return false }
+        // A collaboration client's copy came from the host, who saves the
+        // sequence; the client can only save a copy.
+        if collab.blocksPlainSave {
+            if interactive { saveAsRequestToken &+= 1 }
+            return false
+        }
         if let changed = document.changedSequenceFileName() {
             if interactive {
                 saveConflict = ShowFileSaveConflict(kind: .sequence, fileNames: [changed])
@@ -2148,6 +2192,9 @@ class SequencerViewModel {
             // path; refresh the display name so the toolbar picks
             // up the new sequence name.
             sequenceName = document.sequenceName()
+            // A collaboration client's copy now lives where the user put
+            // it; once the session is over it saves like any sequence.
+            if !collab.inSession { collab.clientDocument = false }
         }
         return ok
     }
@@ -2280,6 +2327,7 @@ class SequencerViewModel {
         // Read-only source folder — the sibling .xbkp write would just
         // fail; skip it. The user recovers via Save As.
         if isReadOnly { return }
+        if collab.clientDocument { return }
         if isPlaying || isScrubbing { return }
         // Only write when there's something dirty to protect —
         // matches desktop's "skip autosave when no changes since
@@ -2613,6 +2661,11 @@ class SequencerViewModel {
         openInFlight = true
         defer { openInFlight = false }
 
+        // The document a session edits is going away.
+        if collab.inSession {
+            if collab.role == .host { endCollabSession() } else { leaveCollabSession() }
+        }
+
         if isOutputting { toggleOutput() }
         stopPlayback()
         stopDirtyPolling()
@@ -2690,6 +2743,16 @@ class SequencerViewModel {
             }
         }.value
 
+        collab.clientDocument = false
+        collab.overlay = CollabOverlay()
+        if collab.restoreShowFolderOnClose {
+            // The join switched to a copy of the host's show.
+            collab.restoreShowFolderOnClose = false
+            if let own = FolderConfig.showFolder {
+                loadShowFolder(path: own, mediaFolders: FolderConfig.mediaFolders)
+            }
+        }
+
         // Others sharing the show folder shouldn't see the sequence as open
         // here until the next heartbeat (or for 5 minutes once the show is gone).
         let show = isShowFolderLoaded ? (showFolderPath ?? "") : ""
@@ -2766,6 +2829,37 @@ class SequencerViewModel {
         }
     }
 
+    /// Keeps `isLayoutLocked` in step with the document. Call once at app startup.
+    func startLayoutLockMonitoring() {
+        refreshLayoutLock()
+        guard layoutLockObserver == nil else { return }
+        layoutLockObserver = NotificationCenter.default.addObserver(
+            forName: .XLLayoutLockChanged,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            MainActor.assumeIsolated {
+                self?.refreshLayoutLock()
+            }
+        }
+    }
+
+    func refreshLayoutLock() {
+        isLayoutLocked = document.isLayoutLocked()
+        if isLayoutLocked {
+            // Disarm model placement: every tap would be refused. A
+            // polyline being extended is already in the layout and stays.
+            layoutPendingNewModelType = nil
+            layoutPolylineInProgress = nil
+            layoutPendingImportPath = nil
+            layoutPendingImportTargetGroup = nil
+            layoutPendingImportGdtfMode = nil
+        }
+        layoutLockReason = document.layoutLockReason()
+        sequenceSettingsFrozenReason = document.sequenceSettingsRefusal()
+        layoutSaveRefusal = document.layoutSaveRefusal()
+    }
+
     func stopMemoryMonitoring() {
         memoryPressureSource?.cancel()
         memoryPressureSource = nil
@@ -2782,6 +2876,9 @@ class SequencerViewModel {
     func play() {
         stopScrub()
         playbackStopAtMS = nil
+        // Remote edits still waiting to render start before the first frame
+        // plays (every play path comes through here).
+        document.remoteRendersPlaybackStarted(fromMS: -1, toMS: -1)
         if hasAudio {
             // Apply current rate before starting — AVAudioEngine
             // reads the time-pitch unit's rate at Play time and
@@ -3467,7 +3564,10 @@ class SequencerViewModel {
     // MARK: - Playback Timer
 
     private func startPlaybackTimer() {
-        stopPlaybackTimer()
+        // Not stopPlaybackTimer(): that would tell the remote-render
+        // scheduler playback stopped just after play() said it started.
+        playbackTimer?.invalidate()
+        playbackTimer = nil
         let interval = Double(frameIntervalMS) / 1000.0
         playbackTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [weak self] _ in
             MainActor.assumeIsolated {
@@ -3558,6 +3658,7 @@ class SequencerViewModel {
     private func stopPlaybackTimer() {
         playbackTimer?.invalidate()
         playbackTimer = nil
+        document.remoteRendersPlaybackStopped()
     }
 
     // MARK: - Selection-scoped Preview Scrub
@@ -3750,6 +3851,70 @@ class SequencerViewModel {
         trackRenderCompletion()
     }
 
+    /// Re-render what a collaboration change touched: the one place remote
+    /// changes reach the renderer, following the core's plan
+    /// (Collab::PlanRender, the desktop's rule too). Rows go through the
+    /// core's visible-range-first scheduler (rendered now when on screen or
+    /// while playing, otherwise when scrolled to, at playback, when idle, or
+    /// before an fseq write); a layout change renders the models it changed;
+    /// media changes and arriving files render everything, since effects on
+    /// any row may use them. All defer while background render is
+    /// suspended, like a local edit.
+    func markCollabChangeForRender(_ change: XLCollabChange) {
+        guard isSequenceLoaded else { return }
+        let start = change.startMS < 0 ? 0 : change.startMS
+        let end = change.endMS < 0 ? sequenceDurationMS : change.endMS
+        switch change.renderKind {
+        case .nothing:
+            return
+        case .rows:
+            if renderSuspended {
+                noteSuspendedDirty(rowIndex: -1, startMS: start, endMS: end)
+                return
+            }
+            document.markRemoteChange(rows: change.rows,
+                                      fromMS: Int32(change.startMS),
+                                      toMS: Int32(change.endMS))
+            trackRenderCompletion()
+        case .models:
+            if renderSuspended {
+                noteSuspendedDirty(rowIndex: -1, startMS: 0, endMS: sequenceDurationMS)
+                return
+            }
+            for name in change.modelNames {
+                collab.session?.renderModel(named: name, startMS: -1, endMS: -1)
+            }
+            trackRenderCompletion()
+        case .everything:
+            if renderSuspended {
+                noteSuspendedDirty(rowIndex: -1, startMS: 0, endMS: sequenceDurationMS)
+                return
+            }
+            startBackgroundRender()
+        @unknown default:
+            return
+        }
+    }
+
+    /// A joined sequence is about to replace the open one (called
+    /// synchronously by the bridge): stop everything that reads it, as
+    /// opening a sequence does.
+    func quiesceForCollabSequenceReplace() {
+        if isOutputting { _ = toggleOutput() }
+        stopPlayback()
+        stopDirtyPolling()
+        stopAutosaveTimer()
+        cancelBackgroundRender()
+        clearSelection()
+        isSequenceLoaded = false
+        setRows([])
+    }
+
+    func startCollabDirtyPolling() {
+        startDirtyPolling()
+        scheduleBrokenMediaScan()
+    }
+
     /// Accumulate a deferred re-render while `renderSuspended`. Multiple
     /// rows collapse to a whole-sequence render-all on resume (rowIndex
     /// -1); a single repeatedly-edited row keeps its widened range so a
@@ -3826,6 +3991,9 @@ class SequencerViewModel {
             document.stopOutput()
             isOutputting = false
             return nil
+        }
+        if let refusal = collabOutputRefusal {
+            return refusal
         }
         if document.outputCount() == 0 {
             return "No controllers are configured for this show. Set up controllers in desktop xLights and copy the show folder to the iPad."
@@ -9878,6 +10046,8 @@ class SequencerViewModel {
         }
 
         setRows(newRows)
+        // Overlay positions are display-row indices.
+        if collab.role != .none { refreshCollabOverlay() }
     }
 }
 

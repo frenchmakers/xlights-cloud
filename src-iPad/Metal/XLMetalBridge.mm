@@ -54,6 +54,7 @@
 #include <cstring>
 #include <limits>
 #include <memory>
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
@@ -82,6 +83,7 @@
     std::string _selectedGroupName;        // J-6 — sidebar group sync (members tinted)
     std::string _selectedViewObjectName;   // J-6 — sidebar object sync (handles drawn)
     std::string _selectedControllerName;   // J-31 — Controllers tab sync (members tinted)
+    std::map<std::string, xlColor> _remoteSelectionColors; // others in a collaboration session
     BOOL _showLayoutGrid;            // J-2 — Layout Editor 2D grid overlay
     BOOL _showLayoutBoundingBox;     // J-2 — Layout Editor canvas bbox
     BOOL _layoutOverlaysSeeded;      // first draw seeds from rgbeffects state
@@ -299,6 +301,14 @@ static std::unique_ptr<xlImage> LoadImageFile(const std::string& path, int& outW
         _selectedGroupName.clear();
     } else {
         _selectedGroupName = name.UTF8String;
+    }
+}
+
+- (void)setRemoteLayoutSelection:(NSDictionary<NSString*, NSNumber*>*)colors {
+    _remoteSelectionColors.clear();
+    for (NSString* name in colors) {
+        const uint32_t rgb = colors[name].unsignedIntValue;
+        _remoteSelectionColors[name.UTF8String] = xlColor((rgb >> 16) & 0xFF, (rgb >> 8) & 0xFF, rgb & 0xFF);
     }
 }
 
@@ -641,6 +651,7 @@ void TranslateModelSetPeers(iPadRenderContext* rctx,
 
 - (BOOL)saveCurrentViewAs:(NSString*)name
               forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !_preview || !name || name.length == 0) return NO;
     // "Default" is a reserved virtual entry — don't let a user save
@@ -657,6 +668,7 @@ void TranslateModelSetPeers(iPadRenderContext* rctx,
 
 - (BOOL)deleteViewpointNamed:(NSString*)name
                  forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !_preview || !name) return NO;
     if ([name isEqualToString:@"Default"]) return NO;  // can't delete virtual
@@ -1074,6 +1086,7 @@ static void TouchPointToWorldRay(const CGPoint& p, double scale,
 - (NSInteger)pickHandleAtScreenPoint:(CGPoint)point
                             viewSize:(CGSize)viewSize
                          forDocument:(XLSequenceDocument*)doc {
+    if ([doc isLayoutLocked]) return -1;
     if (!_preview || !doc) return -1;
     if (_selectedModelName.empty()) return -1;
     iPadRenderContext* rctx = ContextFromDoc(doc);
@@ -1185,6 +1198,7 @@ static void TouchPointToWorldRay(const CGPoint& p, double scale,
 - (BOOL)handleCenterHandleTapAtScreenPoint:(CGPoint)point
                                   viewSize:(CGSize)viewSize
                                forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!_preview || !doc) return NO;
     if (!_preview->Is3D()) return NO;
     if (_selectedModelName.empty()) return NO;
@@ -1304,6 +1318,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
             toLeader:(NSString*)leader
                   by:(NSString*)edge
          forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!doc || names.count == 0 || edge.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -1366,6 +1381,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
 - (BOOL)distributeModels:(NSArray<NSString*>*)names
                      axis:(NSString*)axis
               forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!doc || names.count < 3 || axis.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -1446,6 +1462,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
                   toLeader:(NSString*)leader
                  dimension:(NSString*)dim
                forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!doc || names.count == 0 || leader.length == 0 || dim.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -1486,6 +1503,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
 - (BOOL)flipModels:(NSArray<NSString*>*)names
               axis:(NSString*)axis
        forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!doc || names.count == 0 || axis.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !rctx->HasModelManager()) return NO;
@@ -1514,6 +1532,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
 
 - (BOOL)swapStartEndForModels:(NSArray<NSString*>*)names
                   forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!doc || names.count == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !rctx->HasModelManager()) return NO;
@@ -1537,6 +1556,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
                 axis:(NSString*)axis
              degrees:(double)degrees
          forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!doc || names.count == 0 || axis.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !rctx->HasModelManager()) return NO;
@@ -1575,6 +1595,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
           keepSizePosition:(BOOL)keepSizePosition
                  groupMode:(NSInteger)groupMode
                forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return 0;
     if (!doc || targets.count == 0 || source.length == 0) return 0;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !rctx->HasModelManager()) return 0;
@@ -1671,6 +1692,9 @@ float ReadAlignReference(Model* model, const std::string& edge) {
     // Reconcile group memberships against the source, per the sheet's Model
     // Groups choice. Same shared core helper the desktop Replace dialog uses.
     mgr.ReconcileReplacedModelGroups(sourceName, replacedNames, static_cast<ReplaceGroupMode>(groupMode));
+    for (const auto& [groupName, group] : mgr.GetModels()) {
+        if (group && group->GetDisplayAs() == DisplayAsType::ModelGroup) rctx->MarkLayoutModelDirty(groupName);
+    }
 
     // The source has now served as the template for every successfully
     // replaced target, so leaving it behind would just be a duplicate of a
@@ -1680,7 +1704,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
     // AddModelPopUpMenu); the iPad action bar doesn't filter on that, so
     // check IsFromBase() here rather than deleting outright.
     if (replaced > 0 && !sourceModel->IsFromBase()) {
-        mgr.Delete(sourceName);
+        rctx->DeleteModelMarked(sourceName);
     }
 
     return replaced;
@@ -1688,6 +1712,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
 
 - (NSArray<NSString*>*)duplicateModels:(NSArray<NSString*>*)names
                            forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return @[];
     NSMutableArray<NSString*>* out = [NSMutableArray array];
     if (!doc || names.count == 0) return out;
     iPadRenderContext* rctx = ContextFromDoc(doc);
@@ -1763,6 +1788,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
 
 - (NSArray<NSString*>*)pasteModelsFromString:(NSString*)xml
                                  forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return @[];
     NSMutableArray<NSString*>* out = [NSMutableArray array];
     if (!doc || xml.length == 0) return out;
     iPadRenderContext* rctx = ContextFromDoc(doc);
@@ -1887,6 +1913,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
    toScreenPoint:(CGPoint)point
         viewSize:(CGSize)viewSize
      forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEditOf:[NSString stringWithUTF8String:_selectedModelName.c_str()]]) return NO;
     if (!_preview || !doc) return NO;
     if (iPadRenderContext* abortCtx = ContextFromDoc(doc)) abortCtx->AbortRender(5000);
 
@@ -2031,6 +2058,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
 - (NSInteger)pickViewObjectHandleAtScreenPoint:(CGPoint)point
                                        viewSize:(CGSize)viewSize
                                     forDocument:(XLSequenceDocument*)doc {
+    if ([doc isLayoutLocked]) return -1;
     if (!_preview || !doc) return -1;
     if (_selectedViewObjectName.empty()) return -1;
     if (_selectedViewObjectName == "2D Background") return -1;
@@ -2097,6 +2125,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
                      dY:(CGFloat)dy
                viewSize:(CGSize)viewSize
             forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEditOf:name]) return NO;
     if (!_preview || !doc || !name || name.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !rctx->HasViewObjectManager()) return NO;
@@ -2158,6 +2187,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
                      delta:(float)delta
         brushRadiusPoints:(CGFloat)brushRadiusPoints
                forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!_preview || !doc || !terrainName || terrainName.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !rctx->HasViewObjectManager()) return NO;
@@ -2297,6 +2327,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
               dY:(CGFloat)dy
         viewSize:(CGSize)viewSize
      forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEditOf:name]) return NO;
     if (!_preview || !doc || !name || name.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -2372,6 +2403,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
                    atScreenPoint:(CGPoint)point
                         viewSize:(CGSize)viewSize
                      forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEditOf:name]) return NO;
     if (!_preview || !doc || !name || name.length == 0) return NO;
     if (!_preview->Is3D()) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
@@ -2442,6 +2474,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
 - (BOOL)dragBody3DToScreenPoint:(CGPoint)point
                         viewSize:(CGSize)viewSize
                      forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!_bodyDrag3DActive || !_preview || !doc) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -2643,6 +2676,7 @@ float ReadAlignReference(Model* model, const std::string& edge) {
                            atScreenPoint:(CGPoint)point
                                 viewSize:(CGSize)viewSize
                              forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return nil;
     if (!_preview || !doc || !type || type.length == 0) return nil;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return nil;
@@ -2812,6 +2846,7 @@ public:
                                           viewSize:(CGSize)viewSize
                                  targetLayoutGroup:(nullable NSString*)targetLayoutGroup
                                        forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return nil;
     _forcedGdtfMode = gdtfMode ? std::string(gdtfMode.UTF8String) : std::string();
     NSArray<NSString*>* result = [self importXmodelFromPath:path
                                               atScreenPoint:point
@@ -2827,6 +2862,7 @@ public:
                                              viewSize:(CGSize)viewSize
                                     targetLayoutGroup:(nullable NSString*)targetLayoutGroup
                                           forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return nil;
     if (!_preview || !doc || !path || path.length == 0) return nil;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return nil;
@@ -3033,6 +3069,7 @@ public:
                   atScreenPoint:(CGPoint)point
                        viewSize:(CGSize)viewSize
                     forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!_preview || !doc || !name || name.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -3225,6 +3262,7 @@ public:
 
 
 - (BOOL)beginPinchScaleForModel:(NSString*)name forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEditOf:name]) return NO;
     if (!doc || !name || name.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -3239,6 +3277,7 @@ public:
 }
 
 - (BOOL)applyPinchScaleFactor:(CGFloat)factor forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!_pinchScaleActive || !doc || _pinchScaleModelName.empty()) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -3273,6 +3312,7 @@ public:
 }
 
 - (BOOL)beginTwistRotateForModel:(NSString*)name forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEditOf:name]) return NO;
     if (!doc || !name || name.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -3287,6 +3327,7 @@ public:
 }
 
 - (BOOL)applyTwistRotationRadians:(CGFloat)radians forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEdit]) return NO;
     if (!_twistRotateActive || !doc || _twistRotateModelName.empty()) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx) return NO;
@@ -3334,6 +3375,7 @@ public:
                         atScreenPoint:(CGPoint)point
                              viewSize:(CGSize)viewSize
                           forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEditOf:name]) return NO;
     if (!_preview || !doc || !name || name.length == 0) return NO;
     if (!_preview->Is3D()) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
@@ -3384,6 +3426,7 @@ public:
 
 - (BOOL)beginPinchScaleForViewObject:(NSString*)name
                            forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEditOf:name]) return NO;
     if (!doc || !name || name.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !rctx->HasViewObjectManager()) return NO;
@@ -3400,6 +3443,7 @@ public:
 
 - (BOOL)beginTwistRotateForViewObject:(NSString*)name
                            forDocument:(XLSequenceDocument*)doc {
+    if ([doc refusesLayoutEditOf:name]) return NO;
     if (!doc || !name || name.length == 0) return NO;
     iPadRenderContext* rctx = ContextFromDoc(doc);
     if (!rctx || !rctx->HasViewObjectManager()) return NO;
@@ -3654,10 +3698,13 @@ public:
                     sloc.SetActiveHandle(std::nullopt);
                     sloc.SetActiveAxis(ModelScreenLocation::MSLAXIS::NO_AXIS);
                 }
+                auto remote = isSel ? _remoteSelectionColors.end() : _remoteSelectionColors.find(model->GetName());
                 if (isSel) {
                     useColor = &sLayoutSelectedColor;
                 } else if (isGroupMember) {
                     useColor = &sLayoutGroupMemberColor;
+                } else if (remote != _remoteSelectionColors.end()) {
+                    useColor = &remote->second;
                 } else {
                     useColor = &sLayoutDefaultColor;
                 }

@@ -518,7 +518,14 @@ void ControllerListPanel::SelectController(const std::string& name, bool dropMod
 }
 
 bool ControllerListPanel::NetworkChangesAllowed() const {
-    return !_frame->GetOutputManager()->IsOutputting() && !_frame->GetCurrentDir().empty();
+    return !_frame->GetOutputManager()->IsOutputting() && !_frame->GetCurrentDir().empty() && !_frame->IsLayoutLocked();
+}
+
+wxString ControllerListPanel::NetworkChangesBlockedReason() const {
+    if (_frame->IsLayoutLocked()) {
+        return _frame->GetLayoutLockReason();
+    }
+    return "Properties cannot be edited when outputting to lights.";
 }
 
 void ControllerListPanel::OnControllerFilterCancelBtn(wxCommandEvent& event) {
@@ -955,15 +962,11 @@ void ControllerListPanel::OnPopup(wxCommandEvent& event) {
                 if (targetIp.empty()) {
                     targetIp = c->GetIP();
                 }
-                if (!targetIp.empty() && targetIp != "MULTICAST") {
+                if (!targetIp.empty() && targetIp != "MULTICAST" && !_frame->RefuseIfCollabHostOnly("upload to controllers", this)) {
                     _layoutPanel->UnSelectAllModels();
                     _frame->RecalcModels();
 
-                    if (_frame->mSavedChangeCount != _frame->_sequenceElements.GetChangeCount()) {
-                        if (wxMessageBox(_("Open sequence has not been saved. If you plan on uploading it to FPP then it needs to be saved. Do you want to save it now?"), _("Save Sequence"), wxYES_NO | wxCENTRE, _frame) == wxYES) {
-                            _frame->SaveSequence();
-                        }
-                    }
+                    _frame->OfferSaveBeforeUpload(_frame);
 
                     FPPConnectDialog dlg(_frame, _frame->GetOutputManager(), targetIp);
                     dlg.ShowModal();
@@ -1180,6 +1183,11 @@ wxWindow* ControllerListPanel::CreatePropertiesPanel(wxWindow* parent) {
     _ledPingBitmaps = CreateControllerLedBitmaps(20);
     _ledPing = new wxStaticBitmap(_propsPanel, wxID_ANY, _ledPingBitmaps.gray, wxDefaultPosition, FromDIP(wxSize(20, 20)));
     _ledPing->Disable();
+    _ledPing->SetToolTip("Controller status - click to check now");
+    _ledPing->Bind(wxEVT_LEFT_UP, [this](wxMouseEvent& e) {
+        _frame->PingControllerAsync(GetFirstSelectedController());
+        e.Skip();
+    });
     leftColSizer->Add(_ledPing, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
 
     _btnAddController = new wxButton(_propsPanel, wxID_ANY, _("Add"));
@@ -1376,7 +1384,7 @@ void ControllerListPanel::UpdateControllerProperties() {
         _propGrid->Append(new wxStringProperty("Global FPP Proxy", "GlobalFPPProxy", om->GetGlobalFPPProxy()));
 
         if (!NetworkChangesAllowed()) {
-            _propGrid->SetToolTip(_("Properties cannot be edited when outputting to lights."));
+            _propGrid->SetToolTip(NetworkChangesBlockedReason());
             auto it = _propGrid->GetIterator(wxPG_ITERATE_ALL, nullptr);
             while (!it.AtEnd()) {
                 auto* prop = it.GetProperty();
@@ -1394,6 +1402,7 @@ void ControllerListPanel::UpdateControllerProperties() {
 
             _ledPing->Enable();
             RefreshPingIndicator(controller);
+            _frame->PingControllerAsync(controller);
 
             bool allowed = NetworkChangesAllowed();
             _btnVisualise->Enable(allowed && usingip == 1 && controller->CanVisualise());
@@ -1482,7 +1491,7 @@ void ControllerListPanel::UpdateControllerProperties() {
                 if (controller->IsFromBase()) {
                     _propGrid->SetToolTip(_("This controller comes from the base folder and its properties cannot be edited."));
                 } else {
-                    _propGrid->SetToolTip(_("Properties cannot be edited when outputting to lights."));
+                    _propGrid->SetToolTip(NetworkChangesBlockedReason());
                 }
                 auto it = _propGrid->GetIterator(wxPG_ITERATE_ALL, nullptr);
                 while (!it.AtEnd()) {
@@ -1555,6 +1564,9 @@ void ControllerListPanel::OnControllerPropertyGridChange(wxPropertyGridEvent& ev
     if (!NetworkChangesAllowed()) {
         return;
     }
+    // A ping thread may be using this controller's outputs, and some edits
+    // (e.g. Protocol) delete and recreate them.
+    _frame->waitForPingsToComplete();
     wxString name = event.GetPropertyName();
     auto* om = _frame->GetOutputManager();
     auto* omm = _frame->GetOutputModelManager();
